@@ -21,3 +21,4 @@ and the build prints no OVERFLOW / CLIP / TABLE / TITLE / NOTE warnings for it.
 | 2 | 2.4 Web and PDF Data Sources | 5 | done |
 | 2 | 2.5 Data Cleaning with Excel | 12 | done |
 | 2 | 2.6 Cleaning and Transforming in Power Query | 20 | done |
+| 2 | 2.7 Excel Cleaning versus Power Query Cleaning | 6 | done |
