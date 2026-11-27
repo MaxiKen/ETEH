@@ -38,6 +38,17 @@ Every topic in all five volumes (663 topics) now has two slides.
   - Week 4: several insight notes, the Solver note, the zone-growth note, the misleading-axis chart and the AI provenance log.
   - Week 3: a misleading 'Saving' calculation in module 3.1.
   - Capstone (P.6 and P.9): the README limitation and the STAR answer wording.
+- The discount-cap recommendation applies to **Furniture only** in every deck, workbook and memo:
+  - Furniture's FY2025 margin fell to 1.4%, and 167 of its lines were discounted above 20%. Those lines lost ₦17.5m.
+  - A 20% Furniture cap adds ₦17.7m–₦18.0m of profit a year, assuming 0–50% volume loss on the re-priced lines.
+  - The chain-wide figures (455 lines lost ₦47.6m; ₦59.6m–₦71.5m for an all-category cap) are shown only as diagnosis or as a possible phase 2.
+  - Models: Week 1 sheet 1.2 (1.2.4) and the Capstone 1 SOLUTION sheet '5 What-If'. The category is an input cell.
+- Coherence checks run on all 1,406 slides (`_build/rev/lint_decks.py`, `lint_topics.py`, `qa_trace.py`):
+  - every concept slide is followed by its worked example;
+  - Next links and module footers are correct;
+  - no empty table cells;
+  - every Try-it workbook and sheet exists;
+  - each figure is traced to a workbook, or was recomputed from the raw data.
 - The decks use only characters that the slide font can display. Signs such as ≥ and ≤ are written as `>=` / `<=` or in words.
 
 ### Slide decks (pack root)

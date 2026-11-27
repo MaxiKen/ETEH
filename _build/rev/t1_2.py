@@ -90,17 +90,17 @@ TOPICS = [
       tip="Always include 'do nothing' as an option so the benefit is clear.",
       trap="Recommending an action without showing its expected result in naira or numbers.",
       who="SuperMart Retail",
-      case="In 2025, 455 sales lines had discounts above 20% and together lost ₦47.6m. Management asks: what if no "
-           "discount could go above 20%?",
-      steps=["Filter the 2025 lines where Discount is above 0.2.",
+      case="In 2025, 455 lines with discounts above 20% lost ₦47.6m. Furniture, whose margin fell to 1.4%, had 167 of "
+           "them. Management asks: what if no Furniture discount could go above 20%?",
+      steps=["Filter the 2025 Furniture lines where Discount is above 0.2.",
              "Rebuild each line's profit as if its discount had been 0.2 (same list price and cost).",
              "Compare total profit for both options."],
-      table=[["Option for the 455 lines", "Profit FY2025"],
-             ["Keep current discounts", "−₦47.6m"],
-             ["Cap all discounts at 20%", "+₦24.0m"],
-             ["Gain from the cap", "+₦71.5m"]],
-      so="If customers still buy at 20% off, capping discounts turns a ₦47.6m loss into a ₦24.0m profit. The "
-         "recommendation is to cap discounts at 20%."),
+      table=[["Option for the 167 Furniture lines", "Profit FY2025"],
+             ["Keep current discounts", "−₦17.5m"],
+             ["Cap Furniture discounts at 20%", "+₦0.4m"],
+             ["Gain from the cap", "+₦18.0m"]],
+      so="If customers still buy at 20% off, the cap turns a ₦17.5m loss into a small profit: about ₦18.0m gained. "
+         "The recommendation is to cap Furniture discounts at 20%."),
 
     T("1.2.5",
       what="The four types work best together, as steps on one problem. **Descriptive** spots the issue, "
@@ -146,7 +146,7 @@ TOPICS = [
              "Crestview: at-risk rate by attendance band (student file).",
              "Lifecare: 30-day readmission by department (admissions, 2023)."],
       table=[["Organisation", "What happened", "Why", "What to do"],
-             ["SuperMart", "Margin fell to 12.7%", "Discounts above 20%", "Cap at 20%"],
+             ["SuperMart", "Margin fell to 12.7%", "Discounts above 20%", "Cap Furniture at 20%"],
              ["Crestview", "901 students at risk", "Attendance below 70%", "Early attendance alerts"],
              ["Lifecare", "10.3% readmitted", "Oncology highest: 13.2%", "Follow-up calls"]],
       split=4.30,

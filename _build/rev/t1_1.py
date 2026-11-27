@@ -100,8 +100,8 @@ TOPICS = [
              ["No discount", "1,590", "₦104.2m"],
              ["1–20%", "1,267", "₦36.9m"],
              ["Above 20%", "455", "−₦47.6m"]],
-      so="Deep discounts above 20% lost ₦47.6 million. That is the 'why'. The action that follows from it is to cap "
-         "discounts. This is analytics: from question to decision."),
+      so="Deep discounts above 20% lost ₦47.6 million. That is the 'why'. The action that follows is to cap "
+         "Furniture discounts, where the margin is thinnest. This is analytics: from question to decision."),
 
     T("1.1.5",
       what="Organisations analyse data for five main reasons: to **see** how they are performing, to **cut waste**, to "

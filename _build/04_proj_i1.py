@@ -65,17 +65,21 @@ subl = b25.groupby("Sub_Category").agg(Sales=("Sales", "sum"), Profit=("Profit",
 
 
 # what-if
-def whatif(cap, loss):
+def whatif(cap, loss, cat="Furniture"):
+    """cat=None caps every category (chain-wide comparison)."""
     x = b25
-    hit = x.Discount > cap
+    hit = (x.Discount > cap) & ((x.Category == cat) if cat else True)
     newsale = x.Sales / (1 - x.Discount) * (1 - cap)
     s = S25 + (hit * (newsale * (1 - loss) - x.Sales)).sum()
     p = P25 + (hit * ((x.Profit + newsale - x.Sales) * (1 - loss) - x.Profit)).sum()
     return s, p, int(hit.sum())
 
 
-CAP, LOSS = 0.20, 0.25
+CAP, LOSS, CAPCAT = 0.20, 0.25, "Furniture"
 ws_s, ws_p, ws_n = whatif(CAP, LOSS)
+# chain-wide comparison (all categories) - quoted as the 'why only Furniture?' alternative
+all_lo, all_hi = whatif(0.20, 0.50, None)[1] - P25, whatif(0.20, 0.0, None)[1] - P25
+n_deep_all, n_deep_cat = whatif(0.20, 0.0, None)[2], whatif(0.20, 0.0)[2]
 
 # SKUs (whole 2022-2025 range)
 allsku = sm.groupby("Product_ID").agg(Category=("Category", "first"), Sub_Category=("Sub_Category", "first"), Product_Name=("Product_Name", "first")).reset_index()
@@ -129,7 +133,7 @@ def build():
     s2 = b.sheet("2 Clean & Reconcile", "Stage 2-3 - Cleaning the store returns and proving the numbers", "The cleaned extract must equal the ledger, to the naira", "P.1, P.2, P.6")
     s3 = b.sheet("3 Dashboard", "Board dashboard - FY2025 at a glance", "All tiles and tables are live formulas over tLedger and tStores", "P.3.4, P.3.8")
     s4 = b.sheet("4 Margin Diagnosis", "Why is margin falling? Discount depth, rate vs mix, quarters, sub-categories", "", "P.3.6")
-    s5 = b.sheet("5 What-If", "Costing the recommendation - cap discounts at a maximum rate", "Change the yellow inputs; everything recalculates", "P.3.9")
+    s5 = b.sheet("5 What-If", "Costing the recommendation - cap Furniture discounts at a maximum rate", "Change the yellow inputs; everything recalculates", "P.3.9")
     s6 = b.sheet("6 SKU Actions", "Product actions - unsold and loss-making SKUs", "", "P.3.7")
     s7 = b.sheet("7 Memo & Defence", "Board memo, defence questions and the marking guide", "", "P.3.10, P.7")
     tL = b.data_sheet("D_Ledger", dled, "tLedger",
@@ -243,20 +247,21 @@ def build():
 
     # =========================== 5 What-If
     s = s5
-    s.band("5.1", "Assumptions (yellow) - a discount cap re-prices every line above the cap")
-    inp = s.inputs([("Maximum discount allowed", CAP, "pct0", "Lines discounted above this are re-priced at the cap"),
+    s.band("5.1", "Assumptions (yellow) - a Furniture discount cap re-prices every Furniture line above the cap")
+    inp = s.inputs([("Category the cap applies to", CAPCAT, "gen", "The recommendation is Furniture only: its margin fell to 1.4%"),
+                    ("Maximum discount allowed", CAP, "pct0", "Lines discounted above this are re-priced at the cap"),
                     ("Volume lost on re-priced lines", LOSS, "pct0", "Some customers will not buy at the higher price - the key uncertainty")])
-    C, LS = inp["Maximum discount allowed"], inp["Volume lost on re-priced lines"]
-    yr = "(tLedger[Year]=2025)"
+    K, C, LS = inp["Category the cap applies to"], inp["Maximum discount allowed"], inp["Volume lost on re-priced lines"]
+    yr = f"(tLedger[Year]=2025)*(tLedger[Category]={K})"
     hit = f"(tLedger[Discount]>{C})"
     newp = f"tLedger[Sales]/(1-tLedger[Discount])*(1-{C})"
-    s.calc([("FY2025 lines affected", f'=COUNTIFS(tLedger[Year],2025,tLedger[Discount],">"&{C})', ws_n, "int", ""),
+    s.calc([("FY2025 lines affected", f'=COUNTIFS(tLedger[Year],2025,tLedger[Category],{K},tLedger[Discount],">"&{C})', ws_n, "int", ""),
             ("Sales after the cap", f"=SUMIFS(tLedger[Sales],tLedger[Year],2025)+SUMPRODUCT({yr}*{hit}*({newp}*(1-{LS})-tLedger[Sales]))", ws_s, "naira", ""),
             ("Profit after the cap", f"=SUMIFS(tLedger[Profit],tLedger[Year],2025)+SUMPRODUCT({yr}*{hit}*((tLedger[Profit]+{newp}-tLedger[Sales])*(1-{LS})-tLedger[Profit]))",
              ws_p, "naira", "Cost of goods is unchanged; only price and volume move"),
             ("Profit gain vs actual FY2025", f"=E{s.r + 4}-SUMIFS(tLedger[Profit],tLedger[Year],2025)", ws_p - P25, "naira", ""),
             ("Margin after the cap", f"=E{s.r + 4}/E{s.r + 3}", ws_p / ws_s, "pct", f"Actual FY2025: {m25:.1%}")])
-    s.band("5.2", "Sensitivity - profit gain (₦m) for different caps and volume losses")
+    s.band("5.2", "Sensitivity - profit gain (₦m) from a Furniture cap, for different caps and volume losses")
     caps, losses = [0.10, 0.20, 0.30], [0.0, 0.25, 0.50]
     r0 = s.r
     s.ws.write(r0, 1, "Cap ↓ / Volume lost →", F["hdr"])
@@ -272,7 +277,9 @@ def build():
             s.ws.write_formula(rr, 2 + j, fx, b.nf("dec1", style="result"), round((whatif(cv, lv)[1] - P25) / 1e6, 6))
     s.r = r0 + 5
     lo, hi = whatif(0.20, 0.50)[1] - P25, whatif(0.20, 0.0)[1] - P25
-    s.insight(f"A 20% cap adds ₦{lo / 1e6:,.1f}m-₦{hi / 1e6:,.1f}m profit even if half the re-priced volume is lost. Present it as a range, not a single number.")
+    s.insight(f"A 20% cap on Furniture adds ₦{lo / 1e6:,.1f}m-₦{hi / 1e6:,.1f}m profit even if half the re-priced volume is lost "
+              f"({n_deep_cat} Furniture lines are re-priced). Present it as a range, not a single number. For comparison, capping every category "
+              f"({n_deep_all} lines) would add ₦{all_lo / 1e6:,.1f}m-₦{all_hi / 1e6:,.1f}m - a phase-2 option once the Furniture pilot holds volume.")
     s.warn("This is a static model: it ignores competitor reaction and basket effects (a discounted table may bring in accessory sales). Pilot in 3 stores first.")
 
     # =========================== 6 SKU Actions
@@ -294,8 +301,8 @@ def build():
             f"FINDING: Sales grew {g25:.1%} to ₦{S25 / 1e6:,.1f}m but margin fell {abs(m25 - m24) * 100:.1f} points to {m25:.1%}.",
             f"EVIDENCE: Lines discounted above 20% lost ₦{-deep25_loss / 1e6:,.1f}m. The fall happened inside categories (rate effect), led by Furniture "
             f"({mix[0][3]:.1%} → {mix[0][4]:.1%}); Q4 was the weakest quarter ({qm[(2025, 'Q4')]:.1%}). {len(loss_stores)} stores made a loss while several beat their sales target.",
-            f"RECOMMENDATION: Cap discounts at 20% from Q1 FY2026 (owner: Commercial Director), piloted in 3 stores for 8 weeks. Expected profit gain "
-            f"₦{lo / 1e6:,.0f}m-₦{hi / 1e6:,.0f}m a year. Add a margin target alongside sales targets. Review the {n_loss} loss-making SKUs and clear the {n_dropped} dropped SKUs.",
+            f"RECOMMENDATION: Cap Furniture discounts at 20% from Q1 FY2026 (owner: Commercial Director), piloted in 3 stores for 8 weeks. Expected profit gain "
+            f"₦{lo / 1e6:,.1f}m-₦{hi / 1e6:,.1f}m a year; extend to all categories (₦{all_lo / 1e6:,.1f}m-₦{all_hi / 1e6:,.1f}m) only if the pilot holds volume. Add a margin target alongside sales targets. Review the {n_loss} loss-making SKUs and clear the {n_dropped} dropped SKUs.",
             "RISKS: volume loss larger than assumed; competitor response. Mitigation: pilot, weekly margin tracking, stop-loss if volume falls more than 50%."]
     for m in memo:
         s.para(m, "text")
@@ -308,7 +315,8 @@ def build():
           ("Did Q4 seasonality cause it?", f"Q4 2024 margin was {qm[(2024, 'Q4')]:.1%} vs {qm[(2025, 'Q4')]:.1%} in 2025 - same season, deeper discount."),
           ("What about the unsold SKUs?", f"{n_unsold25} SKUs had no FY2025 sale; {n_dropped} sold in FY2024 - clearance and delisting candidates."),
           ("Can stores game the cap?", "Monitor with the Discount_Band measure weekly per store; exceptions need approval."),
-          ("Why medians nowhere?", "Margin is a ratio of totals (profit ÷ sales), never an average of line margins."),
+          ("Why only Furniture?", f"Furniture is where the margin collapsed ({mix[0][3]:.1%} → {mix[0][4]:.1%}). A chain-wide cap would add ₦{all_lo / 1e6:,.1f}m-₦{all_hi / 1e6:,.1f}m "
+                                  f"but touches {n_deep_all} lines in every category - extend it only after the Furniture pilot."),
           ("What would change your recommendation?", "If the pilot shows volume loss above about 50% on re-priced lines, revisit the cap level.")]
     s.grid([[q, a] for q, a in qa], header=["Question", "Model answer"], merge_last=True)
     s.band("7.3", "Marking guide (if run as an assessed capstone)")
@@ -347,11 +355,12 @@ def brief():
                          ["Loss on lines discounted > 20%", f"₦{-deep25_loss:,.0f}"], ["Loss-making stores", f"{len(loss_stores)}: " + ", ".join(loss_stores.Store_Name)],
                          ["Furniture margin", f"{mix[0][3]:.1%} → {mix[0][4]:.1%}"], ["Q4 2025 margin", f"{qm[(2025, 'Q4')]:.1%}"],
                          ["SKUs with no FY2025 sale / loss-making", f"{n_unsold25} / {n_loss} (₦{loss_val:,.0f})"],
-                         ["20% cap, 0-50% volume loss", f"+₦{lo / 1e6:,.1f}m to +₦{hi / 1e6:,.1f}m profit"]], [80, 100]),
+                         ["20% Furniture cap, 0-50% volume loss", f"+₦{lo / 1e6:,.1f}m to +₦{hi / 1e6:,.1f}m profit"],
+                         ["(comparison) 20% cap on all categories", f"+₦{all_lo / 1e6:,.1f}m to +₦{all_hi / 1e6:,.1f}m profit"]], [80, 100]),
                   ("h", "5. Session plan"),
                   ("b", ["Frame (20 min) - success criteria; margin = Σprofit ÷ Σsales.", "Acquire + clean (90 min) - Power Query on the dirty file; prove the six control totals.",
                          "Model (45 min) - tables, relationships, measures.", "Analyse (75 min) - discount bands, rate/mix, quarters, SKUs.",
-                         "Recommend (45 min) - discount-cap what-if and sensitivity grid.", "Communicate (45 min) - dashboard, memo, defence."]),
+                         "Recommend (45 min) - Furniture discount-cap what-if and sensitivity grid.", "Communicate (45 min) - dashboard, memo, defence."]),
                   ("h", "6. Common student mistakes"),
                   ("b", ["Averaging line margins instead of Σprofit ÷ Σsales.", "Removing duplicates before standardising text (misses the near-duplicates).",
                          "Summing the ×100 keying outliers - sales look 30% too high.", "Presenting the what-if as one certain number."]),

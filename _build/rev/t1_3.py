@@ -241,9 +241,9 @@ TOPICS = [
              "Action and benefit: the cap and the naira gain."],
       table=[["Part", "What the analyst writes"],
              ["Headline", "Deep discounts lost ₦47.6m in 2025"],
-             ["Evidence", "455 lines had over 20% off; all others made profit"],
-             ["Action", "Cap discounts at 20% without approval"],
-             ["Benefit", "Up to ₦71.5m more profit a year"]],
+             ["Evidence", "455 lines had over 20% off; Furniture's 167 lost ₦17.5m"],
+             ["Action", "Cap Furniture discounts at 20% without approval"],
+             ["Benefit", "About ₦18m more profit a year"]],
       split=4.90,
       so="Four short lines give the CEO everything needed to decide. That is better than a 20-slide walk through the "
          "method."),

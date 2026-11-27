@@ -160,6 +160,7 @@ TOPICS = [
       split=4.20),
 
     O("3.8.11",
+      tryit="ETEH_Week2_Section_Examples.xlsx  ›  sheet '2.10 Live Pivots'  ·  Timeline on Pivot 4",
       what="A **Timeline** is a slicer for **dates**: drag across a range at year, quarter, month or day level. "
            "It needs a real date column, ideally from a date table.",
       like="A Timeline is like the scrub bar on a video: drag to the part you want to watch.",

@@ -88,7 +88,7 @@ s.band("P.1.11-12", "Stakeholders and the post-project review")
 s.grid([["Week 1", "One-page scope to Commercial Director", "Sign-off on question and period"],
         ["Week 2", "Draft dashboard preview to Finance", "Agree control totals before polish"],
         ["Week 3", "Final pack + QA note to board", "Decision on Q4 discount policy"]], header=["When", "What", "Purpose"])
-s.grid([["Did it change a decision?", "Board capped Q4 discounts at 20% for Furniture"], ["What took longer?", "Cleaning the 331 mixed-format dates in the store returns"],
+s.grid([["Did it change a decision?", "Board capped Furniture discounts at 20% from Q1 2026"], ["What took longer?", "Cleaning the 331 mixed-format dates in the store returns"],
         ["Automate next time", "Monthly folder import (Week 2, 2.3) instead of manual copy"], ["Raise with data owner", "Stores typing '₦' into the Sales column of the returns template"]],
        header=["Review question", "Answer recorded"], merge_last=True)
 
@@ -459,7 +459,7 @@ s.grid([["Question", f"Why did SuperMart's margin fall from {m24:.1%} to {m25:.1
         ["Data", f"{len(sm):,} POS lines (2022-2025), 12 stores, {sm.Product_ID.nunique():,} SKUs; dirty store returns cleaned and reconciled"],
         ["Method", "Power Query cleaning, star-schema Data Model, DAX measures, rate/mix decomposition, Pareto"],
         ["Finding", f"Q4 2025 margin fell to {qq[3][3]:.1%} as discount depth rose to {qq[3][4]:.1%}; Furniture margin almost wiped out"],
-        ["Recommendation", "Cap Furniture discounts at 20%; review loss-making SKUs"], ["Outcome", "Board adopted the cap for Q1 2026 (training scenario)"]],
+        ["Recommendation", "Cap Furniture discounts at 20%; review loss-making SKUs"], ["Outcome", "Board adopted the Furniture cap for Q1 2026 (training scenario)"]],
        header=["Heading", "Content"], merge_last=True)
 s.band("P.8.3-4", "Anonymising and packaging")
 s.grid([["Names", "Customer names → 'Customer A, B…'; never publish Patient or respondent rows"], ["Aggregation", "Publish store/zone/faculty totals; suppress cells under 5"],

@@ -38,7 +38,7 @@ TOPICS = [
              ["Data", "9,994 POS lines, 12 stores, 1,862 SKUs; store returns cleaned"],
              ["Method", "Power Query, star schema, DAX, rate/mix split"],
              ["Finding", "Q4 margin 9.8% as discount depth rose to 14.8%"],
-             ["Outcome", "Board adopted the cap for Q1 2026 (training scenario)"]],
+             ["Outcome", "Board adopted the Furniture cap for Q1 2026 (training scenario)"]],
       so="A reviewer understands the whole project in two minutes.",
       split=4.90),
 

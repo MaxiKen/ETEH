@@ -74,6 +74,7 @@ TOPICS = [
       split=4.70),
 
     O("P.1.5",
+      tryit="ETEH_Capstone_Section_Examples.xlsx  ›  sheet 'P.3 Capstone1 SuperMart'",
       what="**Modelling** builds the layer that does the maths: a **star schema** (one fact table of sales linked "
            "to dimension tables like Store and Date), a marked date table, and **explicit measures** written in DAX.",
       like="Like a well-arranged kitchen: ingredients in one place, recipes in another, so any cook gets the same dish.",
@@ -188,7 +189,7 @@ TOPICS = [
       trap="Moving on without learning anything.",
       case="Capstone 1 review (training scenario).",
       steps=["Ask each question.", "Write the answer.", "Assign an action."],
-      table=[["Question", "Answer recorded"], ["Did it change a decision?", "Board capped Q4 Furniture discounts at 20%"],
+      table=[["Question", "Answer recorded"], ["Did it change a decision?", "Board capped Furniture discounts at 20% for Q1 2026"],
              ["What took longer?", "Cleaning the 331 mixed-format dates"],
              ["Automate next time", "Monthly folder import instead of manual copy"],
              ["Raise with data owner", "Stores typing '₦' into the Sales column"]],

@@ -151,7 +151,7 @@ TOPICS = [
       table=[["Segment", "Headline ADR", "Net value per room"], ["Corporate", "₦84,800", "₦74,919"],
              ["Airline Crew", "₦100,704", "₦70,896"], ["Online Travel Agent", "₦114,340", "₦56,872"],
              ["Walk-in / Travel Agent", "₦92,882", "₦54,675"]],
-      so="OTA has the highest ADR but, after about 39% cancellations and 18% commission, earns far less than Corporate.",
+      so="OTA has the highest ADR but, after about 39% cancellations (2024) and 18% commission, earns far less than Corporate.",
       split=4.70),
 
     O("4.6.11",

@@ -8,7 +8,7 @@ Sources for every figure (all verified with pandas against ETEH_Bootcamp_Pack/01
                         growth +20.4% · mean order ₦434,627 · median order ₦148,257 · 50.2% of orders < ₦150k · 4.0% > ₦2m
                         1,525 selling SKUs: top 5% (76) = 44.6% of revenue, top 324 (21%) = 80%, bottom 30% (457) = 1.3%
                         lines discounted > 20%: 455, loss ₦47.6m (FY2024 ₦31.4m); Tables + Machines loss ₦11.0m
-                        20% discount cap -> profit uplift ₦59.6m–₦71.5m (Instructor Capstone 1)
+                        20% Furniture discount cap (167 lines) -> profit uplift ₦17.7m–₦18.0m (Instructor Capstone 1); all-category ₦59.6m–₦71.5m is phase 2 only
   SuperMart dirty file  SuperMart_Sales_2025_DIRTY.csv: 3,387 rows = 3,312 + 60 exact duplicates + 15 spacer rows;
                         duplicates carry ₦13.2m (1.8% of sales); ledger 2022-25 9,994 lines; store-category-month = 1,540 rows
   Crestview             6,607 students; Engineering 1,400; at risk 901 (progression 86.4%); mean exam score 67.2
@@ -83,7 +83,7 @@ FACT_SUBS = {
         (209,): [("On the finished model, revenue reconciles to the finance ledger at ₦18,420,915.40 across 41,654 clean lines. "
                   "The board uses it to delist two slow categories and to reprice 148 SKUs whose margin fell below 15%.",
                   "On the finished model, revenue reconciles to the ledger at ₦733,215,255 across 3,312 clean FY2025 lines. "
-                  "The board uses it to cap discounts at 20% and to review the five loss-making stores.")],
+                  "The board uses it to cap Furniture discounts at 20% and to review the five loss-making stores.")],
         (175,): [("runs 12,400 enquiries, 6,100 applications, 5,200 offers, 4,212 enrolments.",
                   "runs 19,600 enquiries, 9,600 applications, 8,200 offers, 6,607 enrolments."),
                  ("12,400", "19,600"), ("6,100", "9,600"), ("69% of offers", "81% of offers")],
@@ -121,7 +121,7 @@ FACT_SUBS = {
                 ("553", "457"), ("2%", "1.3%")],
         (99,): [("Optimistic (4,600, fees +5%) and Pessimistic (3,900, fees -3%)", "Optimistic (7,200, fees +5%) and Pessimistic (6,100, fees -3%)")],
         (108,): [("Margin fell 1.8 points; 148 SKUs priced below 15%; repricing them recovers ₦1.1m",
-                  "Margin fell 0.7 points; lines discounted above 20% lost ₦47.6m; a 20% cap recovers ₦59.6m–₦71.5m")],
+                  "Margin fell 0.7 points; lines discounted above 20% lost ₦47.6m; a 20% Furniture cap recovers ₦17.7m–₦18.0m")],
         (110,): [("Revenue grew 6.3% but margin fell 1.8 points because discounting doubled in Q3.",
                   "Revenue grew 20.4% but margin fell 0.7 points because deep-discount losses rose from ₦31.4m to ₦47.6m.")],
         (111,): [("Revenue up 6.3%, margin down 1.8pts", "Revenue up 20.4%, margin down 0.7pts"),
@@ -133,7 +133,7 @@ FACT_SUBS = {
         (121,): [("SuperMart's summary: revenue +6.3% to ₦18.4m, margin -1.8 points to 22.8%, 148 SKUs below the 15% threshold; "
                   "recommend repricing (owner: category managers) to recover ₦1.1m by Q1.",
                   "SuperMart's summary: revenue +20.4% to ₦733.2m, margin -0.7 points to 12.7%, 455 lines discounted above 20% "
-                  "lost ₦47.6m; recommend a 20% cap (owner: category managers) to recover ₦59.6m–₦71.5m.")],
+                  "lost ₦47.6m; recommend a 20% Furniture cap (owner: category managers) to recover ₦17.7m–₦18.0m.")],
         (146,): [("rows 4000–4212", "rows 6000–6608")],
         (147,): [("Watching the margin total, revenue total and 148-SKU flag count while fixing a broken IFERROR shows immediately "
                   "that the correction restores ₦1.1m of margin without changing revenue.",
@@ -160,11 +160,11 @@ FACT_SUBS = {
         (106,): [("question (margin fell 1.8 points), data (39,472 clean lines), method (star schema plus twelve measures), "
                   "finding (148 SKUs below 15%), recommendation (repricing, ₦1.1m), outcome (approved).",
                   "question (margin fell 0.7 points), data (3,312 clean lines), method (star schema, 12 measures), "
-                  "finding (deep discounts lost ₦47.6m), action (20% cap, ₦59.6m–₦71.5m), outcome (approved).")],
+                  "finding (deep discounts lost ₦47.6m), action (20% Furniture cap, ₦17.7m–₦18.0m), outcome (approved).")],
         (110,): [("Built a star-schema Excel model over 41,654 transactions, cutting reporting time from 45 minutes to 6 seconds "
                   "and identifying 148 SKUs for repricing worth ₦1.1m.",
                   "Built a star-schema Excel model over 9,994 transactions, cutting reporting time from 45 minutes to 6 seconds "
-                  "and sizing a discount cap worth ₦59.6m–₦71.5m."),
+                  "and sizing a Furniture discount cap worth ₦17.7m–₦18.0m."),
                  ("across 39,472 verified records", "across 3,312 verified records"),
                  ("39,472 records, 6-second refresh", "3,312 records, 6-second refresh")],
         (114,): [("the 41 open admissions that could not be included in length of stay",

@@ -73,6 +73,7 @@ TOPICS = [
       split=4.20),
 
     O("P.4.5",
+      tryit=SOL + "'4 Dashboard'",
       what="Break the at-risk rate down by group to find **where risk concentrates**. If one group stands out, "
            "that's where support pays off most.",
       like="Like a doctor checking which symptom most patients share before choosing a treatment.",

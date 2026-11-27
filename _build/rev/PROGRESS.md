@@ -64,3 +64,6 @@ and the build prints no OVERFLOW / CLIP / TABLE / TITLE / NOTE warnings for it.
 | V5 | P.9 | 8 | done (STAR uses the ₦7.19bn wrong join; v1 'mean CGPA', '8% missing', '96 SKUs' removed) |
 | V5 | fix | - | Capstone workbook P.6 limitation + P.9 STAR wording; rebuilt, verify 0 mismatches |
 | V2-V4 | fix | - | Glyphs missing from Carlito (≥ ≤ ≈ √ α ▲▼) replaced in 2.8.10/24/25, 3.6.37, 3.8.7, 4.1.13, 4.2.5, 4.3.2, 4.4.1, 4.5.5, 4.6.3/9/11 |
+| ALL | cap | - | Discount cap is Furniture-only everywhere: 1.1.4, 1.1.5, 1.2.4 (167 lines, -₦17.5m -> +₦0.4m, gain ₦18.0m), 1.3.12, 1.4.10, P.1.x, P.3.9 (₦17.7m-₦18.0m; all-category = phase 2), P.7.6, P.8.x; Week 1 workbook 1.2.4 rebuilt (FY2025 Category x Discount table, category + cap inputs); Capstone 1 SOLUTION '5 What-If' + memo + brief; Capstone section workbook outcome wording; slide_content/slide_facts aligned |
+| ALL | QA | - | lint_decks: 663 pairs, Next links, module footers, order, pages = 0 issues; lint_topics: 0 empty cells / bad shapes / duplicate cases; qa_trace: 9,368 figures, 129 not in any workbook all recomputed from CSV/SQLite by hand (all correct) |
+| V3/V5 | fix | - | Try-it repointed: 3.8.11 -> Week 2 '2.10 Live Pivots', P.1.5 -> 'P.3 Capstone1 SuperMart', P.4.5 -> Capstone 2 SOLUTION '4 Dashboard'; 4.6.10 cancellation rate labelled 2024 |

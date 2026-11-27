@@ -160,19 +160,30 @@ s.calc([("Linear-trend forecast, 2026 sales", "=FORECAST.LINEAR(2026,tYears[Sale
          "Is this plausible? The last two years grew faster than the trend line.")])
 s.warn("Four data points are a thin basis for prediction. Treat this as a starting estimate, never as a promise.")
 
-s.band("1.2.4", "Prescriptive - what should we do? Cap the discount")
-s.scenario("Proposed policy: no line may be discounted above a cap. The table shows profit at each discount level; "
-           "the formula adds up the profit on lines ABOVE the cap - the losses the policy would stop (assuming those sales still happen at the cap).")
-dl = sm.groupby("Discount").agg(Lines=("Row_ID", "count"), Sales=("Sales", "sum"), Profit=("Profit", "sum")).reset_index()
-tdl = s.table(dl, "tDiscLevel", fmts={"Discount": "pct0", "Lines": "int", "Sales": "naira", "Profit": "naira"})
-inp = s.inputs([("Discount cap (type a %)", 0.2, "pct0", "Try 30% or 10%")])
-cap = inp["Discount cap (type a %)"]
-s.calc([("Lines above the cap", f'=SUMIFS(tDiscLevel[Lines],tDiscLevel[Discount],">"&{cap})', int(dl[dl.Discount > 0.2].Lines.sum()), "int", ""),
-        ("Profit on lines above the cap", f'=SUMIFS(tDiscLevel[Profit],tDiscLevel[Discount],">"&{cap})', dl[dl.Discount > 0.2].Profit.sum(), "naira",
+s.band("1.2.4", "Prescriptive - what should we do? Cap Furniture discounts (FY2025)")
+s.scenario("Proposed policy: no Furniture line may be discounted above a cap. The table shows FY2025 lines, sales and profit for each category and "
+           "discount level. The formulas re-price every Furniture line above the cap at the cap (same list price and cost), assuming customers still buy.")
+y25 = sm[sm.Year == 2025]
+dl = y25.groupby(["Category", "Discount"]).agg(Lines=("Row_ID", "count"), Sales=("Sales", "sum"), Profit=("Profit", "sum")).reset_index()
+tdl = s.table(dl, "tDiscLevel", fmts={"Discount": "pct0", "Lines": "int", "Sales": "naira", "Profit": "naira"}, widths={"Category": 16})
+inp = s.inputs([("Category to cap", "Furniture", "gen", "Furniture margin fell to 1.4% in FY2025"),
+                ("Discount cap (type a %)", 0.2, "pct0", "Try 30% or 10%")])
+cat, cap = inp["Category to cap"], inp["Discount cap (type a %)"]
+hit = (dl.Category == "Furniture") & (dl.Discount > 0.2)
+reprice = (dl.Profit + dl.Sales / (1 - dl.Discount) * 0.8 - dl.Sales)[hit].sum()
+rp_fx = f"SUMPRODUCT((tDiscLevel[Category]={cat})*(tDiscLevel[Discount]>{cap})*(tDiscLevel[Profit]+tDiscLevel[Sales]/(1-tDiscLevel[Discount])*(1-{cap})-tDiscLevel[Sales]))"
+now_fx = f'SUMIFS(tDiscLevel[Profit],tDiscLevel[Category],{cat},tDiscLevel[Discount],">"&{cap})'
+s.calc([("FY2025 lines above the cap (all categories)", f'=SUMIFS(tDiscLevel[Lines],tDiscLevel[Discount],">"&{cap})', int(dl[dl.Discount > 0.2].Lines.sum()), "int", ""),
+        ("Profit on those lines", f'=SUMIFS(tDiscLevel[Profit],tDiscLevel[Discount],">"&{cap})', dl[dl.Discount > 0.2].Profit.sum(), "naira",
          "Negative = money lost on deep discounts."),
-        ("Share of all sales affected", f'=SUMIFS(tDiscLevel[Sales],tDiscLevel[Discount],">"&{cap})/SUM(tDiscLevel[Sales])',
-         dl[dl.Discount > 0.2].Sales.sum() / dl.Sales.sum(), "pct", "How much revenue the policy touches.")])
-s.insight("Prescriptive analytics recommends an action and sizes it. Here: cap discounts at 20% and review the affected lines with store managers.")
+        ("Lines above the cap in the chosen category", f'=SUMIFS(tDiscLevel[Lines],tDiscLevel[Category],{cat},tDiscLevel[Discount],">"&{cap})', int(dl[hit].Lines.sum()), "int", ""),
+        ("Their profit today", "=" + now_fx, dl[hit].Profit.sum(), "naira", ""),
+        ("Their profit if re-priced at the cap", "=" + rp_fx, reprice, "naira", "Same list price and cost; only the discount changes."),
+        ("Gain from the cap", f"={rp_fx}-{now_fx}", reprice - dl[hit].Profit.sum(), "naira", "Assumes customers still buy at the capped discount."),
+        ("Share of FY2025 sales affected", f'=SUMIFS(tDiscLevel[Sales],tDiscLevel[Category],{cat},tDiscLevel[Discount],">"&{cap})/SUM(tDiscLevel[Sales])',
+         dl[hit].Sales.sum() / dl.Sales.sum(), "pct", "How much revenue the policy touches.")])
+s.insight(f"Prescriptive analytics recommends an action and sizes it. Here: cap Furniture discounts at 20% - about ₦{(reprice - dl[hit].Profit.sum()) / 1e6:,.1f}m "
+          "more profit if customers still buy - and review the affected lines with store managers.")
 
 s.band("1.2.5-6", "The four types applied to the university and the hospital")
 cvb = cv.groupby("Attendance_Band").agg(Students=("Student_ID", "count"), At_Risk=("At_Risk", lambda x: (x == "Yes").sum())).reset_index()

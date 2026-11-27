@@ -241,7 +241,7 @@ TOPICS = [
              "EkoSuites: cancellation rate by days booked ahead.",
              "Crestview and Lifecare: at-risk by attendance; readmission by department."],
       table=[["Organisation", "Finding", "Action"],
-             ["SuperMart", "Lines over 20% off lost ₦47.6m", "Cap discounts at 20%"],
+             ["SuperMart", "Lines over 20% off lost ₦47.6m", "Cap Furniture discounts at 20%"],
              ["EkoSuites", "181+ days ahead: 73.9% cancel", "Deposit on long bookings"],
              ["Crestview", "53.5% of low attenders at risk", "Attendance alerts"],
              ["Lifecare", "Oncology readmits 13.2%", "Follow-up calls"]],

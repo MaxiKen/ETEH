@@ -289,7 +289,7 @@ CAPSTONE = {
                       "to 12.7%, which stores and products are responsible, and what to do in FY2026. Success: reconciled numbers, "
                       "a quantified cause and a costed recommendation.",
          "TextBox 13": "The signed brief commits to a ledger-reconciled model, a one-screen dashboard and a memo costing a 20% "
-                       "discount cap, worth ₦59.6m–₦71.5m of extra profit depending on volume loss.",
+                       "Furniture discount cap, worth ₦17.7m–₦18.0m of extra profit depending on volume loss.",
          "Table 14": [["Brief Element", "Content", "Acceptance"], ["Question", "Why margin fell while sales grew", "Answered with evidence"],
                       ["Output", "Model, dashboard, memo", "All reconciled to the ledger"]]},
     37: {"TextBox 9": "Three sources: the store ledger (9,994 lines, 2022–2025), the store directory (12 stores with FY2025 targets) "
@@ -348,7 +348,7 @@ CAPSTONE = {
                       ["Bottom", "Discount bands, quarterly trend", "Why did margin fall?"]]},
     50: {"TextBox 9": "A one-page memo: headline (sales +20.4%, margin down 0.7 points, driven by deep discounts), three supporting "
                       "numbers, the recommendation with owner and expected effect, and the data-quality note.",
-         "TextBox 13": "The memo's ask is specific: cap discounts at 20% from Q1 FY2026; expected profit uplift ₦59.6m–₦71.5m; owner: "
+         "TextBox 13": "The memo's ask is specific: cap Furniture discounts at 20% from Q1 FY2026; expected profit uplift ₦17.7m–₦18.0m; owner: "
                        "Head of Merchandising; loss stores reviewed monthly."},
     51: {"TextBox 9": "Verification: sales and profit reconcile to the ledger, row counts are documented, slicers tested and a "
                       "second-machine render confirmed. Handover: README with refresh steps, measure definitions and known "
