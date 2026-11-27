@@ -84,7 +84,7 @@ s.calc([("Mean salary", "=AVERAGE(tSal[Annual_Salary_NGN])", y.mean(), "naira", 
         ("Median salary", "=MEDIAN(tSal[Annual_Salary_NGN])", y.median(), "naira", "Half earn less, half earn more"),
         ("Most common salary (mode)", "=MODE.SNGL(tSal[Annual_Salary_NGN])", float(y.mode().iloc[0]), "naira", "Survey answers cluster on round numbers"),
         ("Mean order value - SuperMart Online", "=AVERAGE(tOrders[total_price])", ov.mean(), "naira", ""),
-        ("Median order value", "=MEDIAN(tOrders[total_price])", ov.median(), "naira", "Mean is ~2x the median: a few big electronics orders"),
+        ("Median order value", "=MEDIAN(tOrders[total_price])", ov.median(), "naira", "Mean is over 4x the median: a few big electronics orders"),
         ("Mean ÷ median", "=AVERAGE(tOrders[total_price])/MEDIAN(tOrders[total_price])", ov.mean() / ov.median(), "dec2", "> 1.2 → report the median as 'typical'")])
 s.band("4.1.5-7", "Spread: range, IQR, variance, standard deviation, coefficient of variation")
 q1, q3 = y.quantile(.25), y.quantile(.75)
@@ -149,7 +149,7 @@ s.band("4.1.14", "Reporting descriptive statistics honestly")
 s.grid([["Skewed money values", "'Typical online order is ₦" + f"{ov.median():,.0f}" + " (median); mean ₦" + f"{ov.mean():,.0f}" + " is inflated by large electronics orders'"],
         ["Always give n", f"'n = {len(sal):,} respondents' - a mean of 7 'Other' gender respondents is not a finding"],
         ["Spread with centre", f"'Median salary ₦{y.median():,.0f}, IQR ₦{q1:,.0f} - ₦{q3:,.0f}'"],
-        ["Round sensibly", "₦10,762,867.35 → ₦10.8m in a report; keep full precision in the workbook"],
+        ["Round sensibly", "Mean salary ₦11,344,180.18 → ₦11.3m in a report; keep full precision in the workbook"],
         ["State exclusions", "'Cancelled orders included (gross bookings)' or 'excluded (net revenue)' - never leave it ambiguous"]],
        header=["Rule", "Example sentence from our data"], merge_last=True)
 
