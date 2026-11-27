@@ -31,3 +31,4 @@ and the build prints no OVERFLOW / CLIP / TABLE / TITLE / NOTE warnings for it.
 | 3 | 3.2 Introduction to SQL and SQLite | 17 | done |
 | 3 | 3.3 ODBC Connections | 9 | done |
 | 3 | 3.4 Joins, Merge and Append | 16 | done |
+| 3 | 3.5 Data Model and Star Schema | 7 | done |
