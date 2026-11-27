@@ -392,7 +392,8 @@ def revise(vol, fname, xlsx, week, asg, topics, preview_tags, log):
         if i + 1 < len(topic_segs):
             n2 = topic_segs[i + 1]
             same = n2[3][0] == sg[3][0]
-            title2 = names(n2[2][0])["Title 1"].text_frame.text.replace(" (continued)", "")
+            title2 = ((topics.get(n2[1]) or {}).get("title")
+                      or names(n2[2][0])["Title 1"].text_frame.text.replace(" (continued)", ""))
             nxt_of[sg[1]] = fit_next(f"Next  ›  {n2[1]} ", title2) if same else f"Next  ›  Module {n2[3][0]}"
         else:
             nxt_of[sg[1]] = f"End of {week} topics"

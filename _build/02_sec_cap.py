@@ -394,7 +394,7 @@ s.grid([["Purpose", "Explain FY2025 margin decline; support Q1 2026 pricing deci
         ["Sources & owners", "POS ledger (Finance), Store directory (Operations) - see P.2 register"],
         ["Refresh", "Drop new CSV in 01_RAW → Data > Refresh All → check reconciliation cells = 0"],
         ["Measures", "Defined on the Measures sheet with DAX and plain-English meaning"], ["Exclusions", "None for FY totals; dirty returns cleaned per log"],
-        ["Limitations", "Calendar-year view; targets not adjusted for refurbishments"], ["Version / date / contact", "v1.0, 2026-01-20, analyst@supermart.ng"]],
+        ["Limitations", "Calendar-year view; targets not adjusted for store size or opening date"], ["Version / date / contact", "v1.0, 2026-01-20, analyst@supermart.ng"]],
        header=["README section", "Content"], merge_last=True)
 s.band("P.6.3", "Reconciliation testing - every test is a live formula; difference must be 0")
 tests = [("SuperMart lines (all years)", "=ROWS(tSM)", len(sm), 9994), ("SuperMart FY2025 sales", "=SUMIFS(tSM[Sales],tSM[Year],2025)", b25.Sales.sum(), int(ctrl["Total Sales (₦)"])),
@@ -508,7 +508,7 @@ with sqlite3.connect(db) as con:
         s.table(res, f"tSqlInt{i + 1}", fmts={c: ("naira" if "revenue" in c else "int") for c in res.columns if res[c].dtype != object})
 s.band("P.9.4-5", "Explaining your process and a STAR answer")
 s.grid([["Situation", "SuperMart Online SQL project: the AI-written zone query returned ₦7.19bn revenue (56,725 rows)"],
-        ["Task", "Verify before the number went into the deck"], ["Action", "Checked row count (should be 10,430 delivered lines) and control total ₦1.32bn; found the join on customer_id; rewrote on delivery_id"],
+        ["Task", "Verify before the number went into the deck"], ["Action", "Checked row count (should be 10,430 lines with a delivery record) and their control total ₦1.32bn; found the join on customer_id; rewrote on delivery_id"],
         ["Result", "Correct figure published; added a control-total check to every SQL deliverable"]], header=["STAR", "Answer"], merge_last=True)
 s.band("P.9.6-8", "Roadmap: Power BI, SQL, Python")
 s.grid([["Power BI", "Rebuild Capstone 1 in Power BI Desktop: same star schema and DAX; learn the visual layer", "2-4 weeks"],

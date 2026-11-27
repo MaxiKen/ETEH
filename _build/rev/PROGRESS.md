@@ -53,3 +53,13 @@ and the build prints no OVERFLOW / CLIP / TABLE / TITLE / NOTE warnings for it.
 | V4 | 4.13 | 9 | done |
 | V4 | 4.14 | 5 | done (workbook 4.14.2 insight: months-vs-FY rounding gap up to 0.2m) |
 | V3 | fix | - | 3.2 HAVING slide: 85 store names with delivered sales (was 86) |
+| V5 | P.1 | 12 | done (v1 '₦48,000 cash freed' / 'nine visuals' replaced with workbook figures) |
+| V5 | P.2 | 5 | done |
+| V5 | P.3 | 10 | done (points at Capstone 1 SOLUTION sheets) |
+| V5 | P.4 | 10 | done (Crestview: all figures re-derived from the student CSV) |
+| V5 | P.5 | 10 | done (P.5.7 retitled: v1 'Triage Bands' was not in the data; 06 Next-link honours title=) |
+| V5 | P.6 | 8 | done (v1 '41-record exclusion', '3 min 20 s', 'J. Adeyemi' removed) |
+| V5 | P.7 | 8 | done (v1 'Year-1 Engineering fell 3 points' and 'Ward 3' removed) |
+| V5 | P.8 | 9 | done (v1 '45 min to 6 s' removed; CV bullets from workbook) |
+| V5 | P.9 | 8 | done (STAR uses the ₦7.19bn wrong join; v1 'mean CGPA', '8% missing', '96 SKUs' removed) |
+| V5 | fix | - | Capstone workbook P.6 limitation + P.9 STAR wording; rebuilt, verify 0 mismatches |
