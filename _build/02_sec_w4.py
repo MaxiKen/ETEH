@@ -219,7 +219,10 @@ s.table(st, "tStoreZ", fmts={"Sales": "naira", "Margin": "pct", "Attainment": "p
               "Composite_z": ("=AVERAGE([@z_Sales],[@z_Margin],[@z_Attain])", "dec2", comp),
               "Overall_Rank": ("=RANK.EQ([@Composite_z],[Composite_z],0)", "int", crank)})
 best = st.Store_Name[int(np.argmax(comp))]
-s.insight(f"Ikeja dominates on sales, but the composite z-score (equal weight on size, margin and target attainment) ranks {best} first. "
+_last_sales = st.Store_Name[int(np.argmin(st.Sales.values))]
+_rk = dict(zip(st.Store_Name, crank))
+s.insight(f"{best} ranks first on the composite z-score (equal weight on size, margin and target attainment), but the ranking reshuffles below it: "
+          f"{_last_sales} is last on sales yet ranks {_rk[_last_sales]} overall thanks to its margin. "
           "Z-scores put ₦, % and % on one scale - always state the weights you chose.")
 s.band("4.2.8", "Detecting anomalies systematically - Lifecare daily bed occupancy, 2023")
 zc = ((c23.Occupancy_Pct - c23.Occupancy_Pct.mean()) / c23.Occupancy_Pct.std())
@@ -287,7 +290,7 @@ tlb = s.table(lb, "tLeadBand", calc={"Bookings": ('=COUNTIFS(tHotel[Lead_Time_Da
                                      "Cancel_rate": ("=[@Cancelled]/[@Bookings]", "pct", [c_ / n for c_, n in zip(can, cnt)])})
 s.chart("column", [{"name": "Cancel rate", "categories": tlb.ref("Lead_band"), "values": tlb.ref("Cancel_rate"), "labels": True, "label_fmt": "0%"}],
         "Cancellation rate rises with booking lead time", legend=False, y_fmt="0%", rows=14, size=(600, 260))
-s.band("4.3.8", "Confounding: the salary gender gap shrinks once seniority is held constant")
+s.band("4.3.8", "Confounding: test suspected third variables - seniority (no) and years of experience (yes) in the salary gender gap")
 seni = ["Junior", "Mid", "Senior", "Executive"]
 g = sal[sal.Gender.isin(["Female", "Male"])]
 gt = pd.DataFrame({"Seniority": seni + ["All levels"]})
@@ -300,8 +303,31 @@ s.table(gt, "tGapSeniority",
               "Gap_pct": ("=1-[@Female_avg]/[@Male_avg]", "pct", [1 - f_ / m_ for f_, m_ in zip(fem, mal)]),
               "Female_share": ('=IF([@Seniority]="All levels",COUNTIFS(tSal[Gender],"Female")/(COUNTIFS(tSal[Gender],"Female")+COUNTIFS(tSal[Gender],"Male")),'
                                'COUNTIFS(tSal[Gender],"Female",tSal[Seniority],[@Seniority])/(COUNTIFS(tSal[Gender],"Female",tSal[Seniority],[@Seniority])+COUNTIFS(tSal[Gender],"Male",tSal[Seniority],[@Seniority])))', "pct", fsh)})
-s.insight("Part of the raw gap comes from who is in senior roles (a confounder), not only pay within the same role. Report both numbers - "
-          "and remember the within-level gap is still real.")
+_n_s = [int(((g.Seniority == k)).sum()) for k in seni]
+_adj_s = sum(n_ * (1 - f_ / m_) for n_, f_, m_ in zip(_n_s, fem[:4], mal[:4])) / sum(_n_s)
+s.insight(f"Seniority is NOT the confounder here: women and men are spread across levels almost equally, and the gap weighted by level ({_adj_s:.1%}) "
+          f"is the same as the raw gap ({1 - fem[4] / mal[4]:.1%}). Testing a suspected confounder and ruling it out is a valid result.")
+xb = pd.DataFrame({"Experience_band": ["0-2 yrs", "3-5 yrs", "6-10 yrs", "11-15 yrs", "16+ yrs"], "From": [0, 3, 6, 11, 16], "To": [2, 5, 10, 15, 99]})
+def _band(a, b_, gen=None):
+    m_ = (g.Years_of_Experience >= a) & (g.Years_of_Experience <= b_)
+    return g[m_ & (g.Gender == gen)] if gen else g[m_]
+xn = [len(_band(a, b_)) for a, b_ in zip(xb.From, xb.To)]
+xf = [_band(a, b_, "Female").Annual_Salary_NGN.mean() for a, b_ in zip(xb.From, xb.To)]
+xm = [_band(a, b_, "Male").Annual_Salary_NGN.mean() for a, b_ in zip(xb.From, xb.To)]
+xgap = [1 - f_ / m_ for f_, m_ in zip(xf, xm)]
+_crit = 'tSal[Years_of_Experience],">="&[@From],tSal[Years_of_Experience],"<="&[@To]'
+s.table(xb, "tGapExperience",
+        calc={"People": (f'=COUNTIFS(tSal[Gender],"Female",{_crit})+COUNTIFS(tSal[Gender],"Male",{_crit})', "int", xn),
+              "Female_avg": (f'=AVERAGEIFS(tSal[Annual_Salary_NGN],tSal[Gender],"Female",{_crit})', "naira", xf),
+              "Male_avg": (f'=AVERAGEIFS(tSal[Annual_Salary_NGN],tSal[Gender],"Male",{_crit})', "naira", xm),
+              "Gap_pct": ("=1-[@Female_avg]/[@Male_avg]", "pct", xgap)})
+_adj_x = sum(n_ * g_ for n_, g_ in zip(xn, xgap)) / sum(xn)
+s.calc([("Raw gap (all women vs all men)", "=1-AVERAGEIFS(tSal[Annual_Salary_NGN],tSal[Gender],\"Female\")/AVERAGEIFS(tSal[Annual_Salary_NGN],tSal[Gender],\"Male\")",
+             1 - fem[4] / mal[4], "pct", "Women average fewer years of experience than men in this survey"),
+            ("Gap with experience held constant", "=SUMPRODUCT(tGapExperience[People],tGapExperience[Gap_pct])/SUM(tGapExperience[People])",
+             _adj_x, "pct", "About half the raw gap is explained by experience")])
+s.insight(f"Years of experience IS a confounder: it is linked to both gender (women average {g[g.Gender=='Female'].Years_of_Experience.mean():.1f} years, men {g[g.Gender=='Male'].Years_of_Experience.mean():.1f}) "
+          f"and salary. Holding it constant cuts the gap from {1 - fem[4] / mal[4]:.1%} to {_adj_x:.1%}. Report both numbers - the remaining gap is still real.")
 s.band("4.3.9", "Simpson's paradox in Eko Suites bookings: Deluxe vs Standard Twin")
 sp_rows = []
 for yr in ["2023", "2024", "All years"]:

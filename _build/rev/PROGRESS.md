@@ -39,3 +39,5 @@ and the build prints no OVERFLOW / CLIP / TABLE / TITLE / NOTE warnings for it.
 | 3 | 3.9 Dashboard Blueprints | 3 | done |
 | 3 | 3.10 File Extracts into SQL, DAX and Dashboards | 5 | done |
 | V4 | 4.1 | 14 | done (workbook note fixed: mean >4x median; rounding example uses real mean) |
+| V4 | 4.2 | 9 | done (workbook 4.2.7 insight corrected) |
+| V4 | 4.3 | 10 | done (workbook 4.3.8 rebuilt: seniority ruled out, experience-band confounder table added) |
