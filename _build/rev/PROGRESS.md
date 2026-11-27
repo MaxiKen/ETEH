@@ -17,3 +17,5 @@ and the build prints no OVERFLOW / CLIP / TABLE / TITLE / NOTE warnings for it.
 | 1 | 1.9 Tidy Data Laws | 12 | done |
 | 2 | 2.1 Understanding External Data Sources | 8 | done |
 | 2 | 2.2 Introduction to Power Query | 10 | done |
+| 2 | 2.3 Connecting and Importing with Power Query | 8 | done |
+| 2 | 2.4 Web and PDF Data Sources | 5 | done |
