@@ -19,3 +19,4 @@ and the build prints no OVERFLOW / CLIP / TABLE / TITLE / NOTE warnings for it.
 | 2 | 2.2 Introduction to Power Query | 10 | done |
 | 2 | 2.3 Connecting and Importing with Power Query | 8 | done |
 | 2 | 2.4 Web and PDF Data Sources | 5 | done |
+| 2 | 2.5 Data Cleaning with Excel | 12 | done |
