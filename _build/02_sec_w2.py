@@ -512,7 +512,7 @@ sA.calc([
      x[(x.Segment == "Corporate") & (x.Store_ID == "ST01")].Sales.mean(), "naira", ""),
     ("2.8.6 COUNT - numeric Quantity cells", "=COUNT(tSales[Quantity])", int(x.Quantity.count()), "int", "Counts numbers only."),
     ("2.8.7 COUNTA - order lines (non-blank IDs)", "=COUNTA(tSales[Order_ID])", len(x), "int", "Counts anything non-blank."),
-    ("2.8.8 COUNTBLANK - blank Quantity in the RAW file", "=COUNTBLANK(tDirty[Quantity])", int(dirty.Quantity.isna().sum()), "int", "30 missing + 15 spacer rows = 45."),
+    ("2.8.8 COUNTBLANK - blank Quantity in the RAW file", "=COUNTBLANK(tDirty[Quantity])", int(dirty.Quantity.isna().sum()), "int", "31 missing + 15 spacer rows = 46."),
     ("2.8.9 COUNTIF - loss-making lines", '=COUNTIF(tSales[Profit],"<0")', int((x.Profit < 0).sum()), "int", ""),
     ("2.8.10 COUNTIFS - Furniture losses at ≥30% discount", '=COUNTIFS(tSales[Category],"Furniture",tSales[Profit],"<0",tSales[Discount],">=0.3")',
      int(((x.Category == "Furniture") & (x.Profit < 0) & (x.Discount >= 0.3)).sum()), "int", ""),
