@@ -1,0 +1,201 @@
+seller_id,store_name,owner_name,email,phone_number,store_city,store_state,store_country,rating,total_sales,total_revenue,account_status,created_at
+SELL0001,Sokoto Suppliers,Kelechi Yusuf,store12@business.ng,7053939110,Oshogbo,Ondo,Nigeria,3.3,63,5828061.91,Active,2019-02-26
+SELL0002,Sokoto Suppliers,Usman Ekwensi,store244@business.ng,9077134583,Ogbomoso,Kano,Nigeria,3.4,119,8876529.01,Active,2019-03-23
+SELL0003,Eko Mall 3,Zainab Bakare,store324@business.ng,7042378692,Minna,Oyo,Nigeria,3.7,30,652579.35,Active,2020-02-07
+SELL0004,Victoria Island Mart,Olumide Ogunlesi,store483@business.ng,9037681339,Makurdi,Edo,Nigeria,2.9,73,3731220.11,Active,2018-04-19
+SELL0005,Nigerian Pride Store,Kelechi Dauda,store516@business.ng,9059793666,Sokoto,Oyo,Nigeria,4.9,141,13145958.96,Active,2019-03-10
+SELL0006,Wuse Market Digital,Segun Suleiman,store637@business.ng,8131154676,Benin City,Kano,Nigeria,3.2,150,12506950.26,Suspended,2019-02-18
+SELL0007,Abuja Mart,Kelechi Anyanwu,store72@business.ng,8014346230,Oshogbo,Akwa Ibom,Nigeria,3.0,124,6145896.33,Active,2018-07-11
+SELL0008,Mama Nkechi Stores 8,Ngozi Adebayo,store824@business.ng,9086321420,Lagos,Kaduna,Nigeria,4.2,99,6224882.3,Active,2019-05-23
+SELL0009,Ariaria Market Hub,Fatima Danjuma,store960@business.ng,7066680533,Makurdi,Oyo,Nigeria,4.7,22,1352314.92,Active,2020-08-01
+SELL0010,Computer Village Store,Chioma Nnaji,store1088@business.ng,9036040674,Kaduna,Oyo,Nigeria,2.5,31,2276666.29,Active,2018-10-26
+SELL0011,Sokoto Suppliers,Olumide Yusuf,store1136@business.ng,8034796678,Oshogbo,Enugu,Nigeria,3.4,23,1501021.4,Active,2020-05-23
+SELL0012,Sokoto Suppliers,Kelechi Obi,store1272@business.ng,8085591614,Ibadan,Cross River,Nigeria,2.5,54,2251506.57,Active,2020-09-07
+SELL0013,Port Harcourt Depot,Halima Okafor,store1394@business.ng,9053633699,Oshogbo,Kano,Nigeria,4.0,50,2283592.85,Suspended,2018-11-29
+SELL0014,Sokoto Suppliers,Kehinde Eze,store1498@business.ng,8091162973,Ibadan,Bayelsa,Nigeria,3.7,59,4466300.49,Suspended,2020-05-31
+SELL0015,Trade Fair Online,Abubakar Ojo,store1599@business.ng,7062025032,Kano,Kaduna,Nigeria,3.9,72,6187708.0,Active,2018-03-02
+SELL0016,Zaria Emporium,Aisha Okafor,store1622@business.ng,9070741910,Port Harcourt,Ondo,Nigeria,3.9,56,5594027.94,Active,2018-12-31
+SELL0017,Trade Fair Online,Gbenga Uche,store173@business.ng,9045537497,Kaduna,Sokoto,Nigeria,3.6,78,6220214.58,Active,2019-06-02
+SELL0018,Warri Connect 18,Okey Kalu,store1847@business.ng,9050446864,Minna,Akwa Ibom,Nigeria,4.4,100,5670496.68,Active,2018-06-23
+SELL0019,Abuja Mart 19,Rashida Eze,store1977@business.ng,7099269195,Abuja,FCT,Nigeria,2.6,124,9351774.53,Active,2020-03-01
+SELL0020,Naija Best Deals,Zainab Ekong,store2074@business.ng,8141970207,Kano,Plateau,Nigeria,4.8,108,7220586.03,Suspended,2018-08-19
+SELL0021,Port Harcourt Depot,Ade Eze,store2132@business.ng,8135827317,Benin City,Kaduna,Nigeria,3.4,49,5985847.07,Active,2018-06-07
+SELL0022,Adebayo Electronics 22,Ibrahim Okafor,store2294@business.ng,8156177939,Ado Ekiti,Plateau,Nigeria,3.1,206,15790887.38,Active,2018-10-18
+SELL0023,Sabo Mart 23,Adaeze Musa,store2372@business.ng,7040338081,Ilorin,Bayelsa,Nigeria,3.2,58,4850116.08,Active,2019-10-01
+SELL0024,Enugu Plaza,Musa Eze,store2476@business.ng,8031770277,Kaduna,Anambra,Nigeria,3.6,42,4332224.1,Active,2020-04-11
+SELL0025,Wuse Market Digital 25,Titilayo Lawal,store2516@business.ng,8185743176,Ikorodu,Lagos,Nigeria,2.8,235,15383479.66,Active,2020-02-10
+SELL0026,Computer Village Store,Ifeanyi Dauda,store2651@business.ng,8087817765,Onitsha,Oyo,Nigeria,3.3,37,3811744.96,Suspended,2019-09-08
+SELL0027,Nigerian Pride Store,Musa Abubakar,store2710@business.ng,7025824860,Akure,Edo,Nigeria,3.7,51,3697036.41,Active,2019-08-26
+SELL0028,Jos Premium 28,Olumide Dauda,store2835@business.ng,8018800190,Maiduguri,Abia,Nigeria,4.1,34,3465760.6,Suspended,2018-07-28
+SELL0029,Abuja Mart 29,Gbenga Chukwu,store2924@business.ng,8193501427,Yenagoa,Cross River,Nigeria,3.5,19,120249.86,Active,2019-12-21
+SELL0030,Jos Premium,Funmilayo Effiong,store3036@business.ng,9059979600,Enugu,Rivers,Nigeria,3.7,254,18653671.23,Active,2019-11-15
+SELL0031,Kurmi Market Online,Chinedu Jibril,store314@business.ng,9043806025,Minna,Bauchi,Nigeria,4.7,94,5462237.82,Active,2018-05-04
+SELL0032,Port Harcourt Depot,Mustapha Buhari,store3269@business.ng,7010605250,Ogbomoso,Anambra,Nigeria,4.8,69,5337848.33,Active,2020-06-14
+SELL0033,Abuja Mart,Fatima Ajayi,store3389@business.ng,7035642547,Port Harcourt,Abia,Nigeria,3.1,28,1511831.44,Active,2018-12-30
+SELL0034,Computer Village Store,Funmilayo Onuoha,store3475@business.ng,7046360358,Lagos,Borno,Nigeria,4.1,74,1912792.29,Active,2018-09-01
+SELL0035,Sokoto Suppliers 35,Uche Chukwu,store3534@business.ng,9075110960,Ife,Kano,Nigeria,3.7,195,13408099.57,Active,2019-01-19
+SELL0036,Lagos Fashion Hub,Adaeze Ekong,store3631@business.ng,8127621753,Bauchi,Imo,Nigeria,4.3,84,5714486.84,Active,2019-10-06
+SELL0037,Sabo Mart 37,Olumide Buhari,store371@business.ng,8182437391,Ado Ekiti,Niger,Nigeria,3.3,162,14281375.97,Suspended,2019-05-10
+SELL0038,Onitsha Main Market,Rashida Abubakar,store3827@business.ng,9076130323,Owerri,Kano,Nigeria,4.7,54,4803844.54,Active,2019-08-27
+SELL0039,Ariaria Market Hub,Abdul Nwosu,store3922@business.ng,9057552019,Oshogbo,Akwa Ibom,Nigeria,3.4,206,10042637.65,Suspended,2019-11-13
+SELL0040,Zaria Emporium 40,Uche Attah,store4046@business.ng,8117694709,Aba,Ondo,Nigeria,4.3,59,5225597.55,Suspended,2018-07-16
+SELL0041,Victoria Island Mart,Chidinma Chukwu,store4152@business.ng,8053035439,Makurdi,Imo,Nigeria,4.5,45,939012.67,Active,2020-01-28
+SELL0042,Sabo Mart,Aisha Uche,store4240@business.ng,9074727173,Warri,Abia,Nigeria,4.8,151,11465134.04,Active,2020-01-25
+SELL0043,Port Harcourt Depot,Olumide Ajayi,store432@business.ng,9032652329,Maiduguri,Oyo,Nigeria,4.4,139,11406337.23,Suspended,2018-07-07
+SELL0044,Obi Ventures 44,Hadiza Ogunlesi,store4471@business.ng,9032548933,Maiduguri,Imo,Nigeria,3.5,43,3734533.24,Suspended,2020-02-18
+SELL0045,Port Harcourt Depot 45,Aisha Obi,store4536@business.ng,7022165450,Onitsha,Kaduna,Nigeria,2.7,127,6720000.53,Suspended,2019-08-11
+SELL0046,Trade Fair Online,Tolulope Okeke,store4622@business.ng,7011804521,Benin City,Ekiti,Nigeria,4.6,0,0.0,Active,2018-02-10
+SELL0047,Onitsha Main Market,Ifeanyi Nwosu,store4775@business.ng,9010033114,Port Harcourt,Ondo,Nigeria,3.4,95,9481358.15,Active,2018-07-09
+SELL0048,Victoria Island Mart,Amara Okafor,store4810@business.ng,8196841005,Kano,Osun,Nigeria,2.6,75,4243802.48,Active,2019-08-12
+SELL0049,Port Harcourt Depot,Funmilayo Eze,store4939@business.ng,8136949872,Enugu,Anambra,Nigeria,4.6,99,3010090.71,Active,2018-03-30
+SELL0050,Warri Connect,Oluwaseun Oladipo,store5019@business.ng,9010776989,Oshogbo,Anambra,Nigeria,3.7,104,10172716.53,Active,2018-11-25
+SELL0051,Ikeja City Mall Online 51,Tolulope Nwosu,store5161@business.ng,9024884380,Zaria,Abia,Nigeria,4.9,56,5277820.36,Active,2019-02-05
+SELL0052,Zaria Emporium,Amara Okafor,store5223@business.ng,8111385579,Aba,Enugu,Nigeria,3.0,22,2068979.88,Active,2018-04-03
+SELL0053,Ibadan Market Online,Chukwuemeka Fashola,store5315@business.ng,8039921345,Ogbomoso,Ondo,Nigeria,2.5,51,4135652.55,Suspended,2018-09-23
+SELL0054,Ibadan Market Online,Taiwo Onuoha,store5450@business.ng,7068421330,Aba,Bayelsa,Nigeria,3.4,158,13246270.55,Active,2018-04-30
+SELL0055,Nigerian Pride Store,Mustapha Bello,store5567@business.ng,8071708841,Umuahia,Imo,Nigeria,3.4,54,2441909.88,Active,2020-07-04
+SELL0056,Garki Stores 56,Folake Ogunlesi,store5680@business.ng,9037974764,Umuahia,Kano,Nigeria,4.9,100,1680921.41,Active,2020-06-20
+SELL0057,Abuja Mart 57,Adaeze Musa,store5757@business.ng,9053995738,Jos,Oyo,Nigeria,2.5,155,9287634.27,Active,2020-05-05
+SELL0058,Port Harcourt Depot,Chioma Eze,store5837@business.ng,8033143904,Minna,Osun,Nigeria,3.9,170,9623413.68,Active,2018-11-12
+SELL0059,Naija Best Deals,Halima Effiong,store5943@business.ng,7076600213,Onitsha,Abia,Nigeria,4.5,94,6521871.46,Suspended,2020-04-23
+SELL0060,Mama Nkechi Stores,Aisha Ajayi,store6038@business.ng,8170214805,Zaria,Sokoto,Nigeria,4.4,111,7957568.0,Active,2020-02-03
+SELL0061,Adebayo Electronics,Obinna Jibril,store6160@business.ng,8066105911,Enugu,Osun,Nigeria,2.9,70,3375509.2,Suspended,2019-03-21
+SELL0062,Mama Nkechi Stores,Oluchi Nnaji,store6230@business.ng,8118485147,Uyo,Bayelsa,Nigeria,3.8,61,7398304.53,Active,2019-10-03
+SELL0063,Jos Premium,Amina Adebayo,store6331@business.ng,9045959196,Yenagoa,Borno,Nigeria,3.3,89,9658320.76,Suspended,2019-09-10
+SELL0064,Naija Best Deals,Chiamaka Effiong,store647@business.ng,8074015895,Lagos,Kano,Nigeria,3.3,72,2806431.45,Active,2020-01-25
+SELL0065,Eko Mall,Zainab Adebayo,store6528@business.ng,8071151032,Ibadan,Kwara,Nigeria,3.6,81,6273017.63,Active,2020-01-16
+SELL0066,Calabar Shopping 66,Tolulope Yusuf,store6654@business.ng,9097486496,Zaria,Oyo,Nigeria,4.6,133,6539014.11,Active,2019-11-27
+SELL0067,Alaba International Digital,Fatima Uche,store6785@business.ng,8064241700,Yenagoa,Osun,Nigeria,3.2,86,8480658.0,Active,2019-06-16
+SELL0068,Nigerian Pride Store,Kehinde Eze,store6874@business.ng,7018027625,Maiduguri,Bauchi,Nigeria,4.6,121,6938793.71,Active,2020-03-06
+SELL0069,Trade Fair Online,Tochukwu Bello,store693@business.ng,8115504228,Warri,Kwara,Nigeria,3.2,121,12054556.06,Active,2019-01-08
+SELL0070,Enugu Plaza 70,Taiwo Obi,store7057@business.ng,7055293238,Jos,Ondo,Nigeria,3.2,76,3407297.7,Active,2019-08-30
+SELL0071,Trade Fair Online,Hadiza Ogundipe,store7128@business.ng,8013630559,Warri,Anambra,Nigeria,2.6,68,1859869.94,Active,2019-04-28
+SELL0072,Warri Connect 72,Tolulope Adesina,store7274@business.ng,8034566728,Bauchi,Rivers,Nigeria,4.1,106,8082579.91,Active,2019-09-22
+SELL0073,Warri Connect,Ifeanyi Okonkwo,store7365@business.ng,9078194047,Lagos,Bauchi,Nigeria,4.4,77,7150498.87,Suspended,2020-04-07
+SELL0074,Sabo Mart 74,Tolulope Okonkwo,store7439@business.ng,9073180068,Makurdi,Kano,Nigeria,4.2,19,1061714.49,Active,2019-12-15
+SELL0075,Ariaria Market Hub,Blessing Shagari,store7542@business.ng,9063660910,Warri,Bayelsa,Nigeria,4.6,171,9321505.6,Active,2019-08-08
+SELL0076,Trade Fair Online,Tochukwu Effiong,store7698@business.ng,7071124266,Port Harcourt,Edo,Nigeria,4.3,165,12302671.46,Active,2019-07-13
+SELL0077,Ibadan Market Online,Olumide Nwosu,store7798@business.ng,9013991574,Minna,Osun,Nigeria,2.7,179,19074365.07,Active,2019-08-15
+SELL0078,Alaba International Digital,Gbenga Anyanwu,store7823@business.ng,7073695246,Umuahia,Niger,Nigeria,4.4,209,14340071.02,Suspended,2020-05-09
+SELL0079,Kano Traders,Tolulope Jibril,store7942@business.ng,8075838904,Akure,Oyo,Nigeria,4.9,130,7148326.11,Active,2020-03-02
+SELL0080,Mama Nkechi Stores,Safiya Effiong,store8040@business.ng,9022138251,Ado Ekiti,Anambra,Nigeria,4.0,65,6403081.75,Active,2019-02-19
+SELL0081,Victoria Island Mart,Gbenga Ekong,store8188@business.ng,8014054318,Oshogbo,Kwara,Nigeria,4.9,62,3196799.7,Active,2020-09-22
+SELL0082,Trade Fair Online,Oluchi Jibril,store823@business.ng,8053867043,Yenagoa,Oyo,Nigeria,2.8,161,10884927.89,Active,2020-03-04
+SELL0083,Jos Premium,Oluchi Ogunlesi,store839@business.ng,9070349814,Oshogbo,Ekiti,Nigeria,4.0,148,13691517.99,Suspended,2019-03-26
+SELL0084,Eko Mall 84,Aisha Adebayo,store8430@business.ng,8144690389,Kaduna,Lagos,Nigeria,3.9,0,0.0,Suspended,2020-01-31
+SELL0085,Alaba International Digital,Kehinde Azikiwe,store8595@business.ng,8017288491,Sokoto,Abia,Nigeria,2.7,38,1420232.78,Suspended,2018-04-25
+SELL0086,Trade Fair Online,Obinna Ogundipe,store8629@business.ng,7061856982,Jos,Osun,Nigeria,4.2,54,2267611.56,Active,2020-06-23
+SELL0087,Ariaria Market Hub,Zainab Anyanwu,store8793@business.ng,7023818540,Calabar,Bauchi,Nigeria,4.1,183,16631860.07,Suspended,2018-04-06
+SELL0088,Abuja Mart 88,Chidinma Nwosu,store8877@business.ng,8070232661,Ilorin,Lagos,Nigeria,4.9,43,2150714.34,Active,2019-10-08
+SELL0089,Eko Mall,Uche Ekong,store895@business.ng,9016432263,Aba,Kano,Nigeria,3.8,24,933751.92,Active,2019-04-11
+SELL0090,Warri Connect,Tochukwu Ogunlesi,store9084@business.ng,8080959857,Benin City,Osun,Nigeria,4.7,164,11450354.18,Active,2020-05-02
+SELL0091,Mama Nkechi Stores,Babatunde Bakare,store9167@business.ng,8114052129,Aba,Bauchi,Nigeria,3.8,110,9284854.9,Suspended,2020-09-16
+SELL0092,Trade Fair Online,Obinna Adeleke,store9210@business.ng,8096112206,Ilorin,Sokoto,Nigeria,3.5,105,8738221.04,Active,2019-03-10
+SELL0093,Jos Premium 93,Ibrahim Eze,store9361@business.ng,7090509268,Umuahia,Sokoto,Nigeria,3.5,115,9299497.9,Active,2018-01-16
+SELL0094,Abuja Mart,Babatunde Nwosu,store9482@business.ng,8012247218,Ikorodu,Kano,Nigeria,4.4,60,3641600.44,Active,2020-08-02
+SELL0095,Zaria Emporium,Oluchi Bello,store9581@business.ng,8147662975,Jos,Enugu,Nigeria,4.1,130,5022035.69,Active,2018-12-09
+SELL0096,Mama Nkechi Stores,Okey Buhari,store9638@business.ng,9010787815,Warri,Niger,Nigeria,4.5,96,7067724.6,Active,2018-11-02
+SELL0097,Mama Nkechi Stores,Gbenga Adeleke,store9720@business.ng,8138850050,Benin City,Niger,Nigeria,4.9,88,5213179.56,Active,2019-01-08
+SELL0098,Sabo Mart 98,Hadiza Okeke,store9891@business.ng,8083996877,Enugu,Lagos,Nigeria,2.6,115,5998617.24,Suspended,2019-01-21
+SELL0099,Obi Ventures 99,Tunde Bello,store9941@business.ng,7027697837,Calabar,Cross River,Nigeria,2.8,80,7069557.52,Active,2018-02-13
+SELL0100,Computer Village Store,Emmanuel Jibril,store10069@business.ng,8067031028,Maiduguri,Plateau,Nigeria,4.5,22,2329203.14,Active,2020-03-08
+SELL0101,Onitsha Main Market 101,Kehinde Adebayo,store10166@business.ng,7042624513,Onitsha,Niger,Nigeria,3.9,19,1303940.93,Active,2018-12-27
+SELL0102,Calabar Shopping,Obinna Ekwensi,store10252@business.ng,9076895856,Minna,Bayelsa,Nigeria,3.5,119,11844475.19,Active,2020-09-10
+SELL0103,Alaba International Digital,Babatunde Dauda,store10380@business.ng,9015159379,Port Harcourt,Anambra,Nigeria,4.9,82,4713754.34,Active,2018-10-18
+SELL0104,Sabo Mart,Usman Ogundipe,store10423@business.ng,8060040826,Oshogbo,Oyo,Nigeria,2.8,90,3112731.6,Active,2020-09-01
+SELL0105,Warri Connect,Rashida Okafor,store10517@business.ng,9034765706,Onitsha,Kaduna,Nigeria,2.5,45,3778650.81,Active,2019-02-12
+SELL0106,Calabar Shopping,Nkiru Okafor,store10676@business.ng,9033745896,Kano,Cross River,Nigeria,4.8,48,1151497.98,Suspended,2019-11-05
+SELL0107,Wuse Market Digital,Okey Adesina,store10752@business.ng,8038901941,Makurdi,Edo,Nigeria,3.9,141,7301019.95,Active,2019-12-29
+SELL0108,Warri Connect 108,Ade Ojo,store10816@business.ng,8059951669,Owerri,Cross River,Nigeria,3.1,154,13313059.37,Suspended,2018-06-26
+SELL0109,Abuja Mart 109,Blessing Abubakar,store10978@business.ng,8191605547,Abuja,FCT,Nigeria,3.8,212,14733377.57,Active,2020-09-26
+SELL0110,Jos Premium 110,Ade Okafor,store1101@business.ng,7030771252,Sokoto,Ekiti,Nigeria,4.7,109,8209026.48,Active,2018-11-01
+SELL0111,Garki Stores,Amina Buhari,store1119@business.ng,9063538936,Abuja,FCT,Nigeria,4.9,147,10434447.83,Active,2020-01-29
+SELL0112,Ikeja City Mall Online 112,Rashida Balogun,store11228@business.ng,8014530614,Calabar,Niger,Nigeria,3.3,88,5891742.9,Active,2018-07-29
+SELL0113,Trade Fair Online,Safiya Adesina,store11317@business.ng,9053137197,Warri,Sokoto,Nigeria,2.6,120,7400485.45,Suspended,2019-07-08
+SELL0114,Ikeja City Mall Online,Mustapha Jibril,store11418@business.ng,8161505306,Jos,Benue,Nigeria,3.2,15,1602014.55,Active,2018-12-04
+SELL0115,Enugu Plaza,Ifeanyi Lawal,store1154@business.ng,8017464009,Akure,Bayelsa,Nigeria,3.9,122,9859379.13,Active,2019-03-13
+SELL0116,Wuse Market Digital 116,Abdul Okeke,store11617@business.ng,7093535134,Jos,Ekiti,Nigeria,4.8,61,5691819.2,Suspended,2020-08-20
+SELL0117,Calabar Shopping 117,Musa Ekong,store11717@business.ng,7097112002,Makurdi,Akwa Ibom,Nigeria,4.7,139,9713591.71,Active,2019-05-01
+SELL0118,Sokoto Suppliers 118,Abdul Fashola,store11853@business.ng,8094281692,Ife,Plateau,Nigeria,2.8,23,1464818.25,Suspended,2019-03-17
+SELL0119,Trade Fair Online 119,Amina Nnamdi,store11999@business.ng,9030526614,Oshogbo,Borno,Nigeria,3.2,79,7120773.71,Active,2018-11-14
+SELL0120,Port Harcourt Depot,Blessing Lawal,store12010@business.ng,9044578176,Enugu,Kwara,Nigeria,4.1,72,6084925.35,Active,2019-11-08
+SELL0121,Nigerian Pride Store,Usman Kalu,store12126@business.ng,9023010145,Akure,Borno,Nigeria,4.1,110,9587613.11,Active,2019-05-24
+SELL0122,Sabo Mart,Mustapha Ogunlesi,store1226@business.ng,8066243095,Maiduguri,Kano,Nigeria,2.9,59,4651387.76,Active,2020-05-03
+SELL0123,Nigerian Pride Store,Chukwuemeka Okonkwo,store12359@business.ng,7089293994,Akure,Imo,Nigeria,2.6,146,10509533.45,Active,2020-01-20
+SELL0124,Obi Ventures 124,Tochukwu Dauda,store1241@business.ng,8146918152,Benin City,Kwara,Nigeria,4.4,58,3962960.23,Active,2019-03-18
+SELL0125,Zaria Emporium 125,Fatima Adeyemi,store12589@business.ng,9027269901,Lagos,Cross River,Nigeria,4.6,88,6898771.65,Active,2018-11-26
+SELL0126,Victoria Island Mart,Tochukwu Ajayi,store12612@business.ng,7073245675,Kano,Ekiti,Nigeria,3.7,157,13693926.07,Active,2020-09-11
+SELL0127,Jos Premium,Chukwuemeka Yusuf,store1275@business.ng,8120530320,Ife,Kaduna,Nigeria,4.0,115,9413767.81,Active,2019-07-26
+SELL0128,Ikeja City Mall Online,Emmanuel Okoye,store12895@business.ng,7056212929,Ado Ekiti,Plateau,Nigeria,4.5,56,2464906.32,Active,2020-07-05
+SELL0129,Garki Stores 129,Musa Ogundipe,store12947@business.ng,8146406358,Makurdi,Cross River,Nigeria,3.1,134,5161544.75,Active,2020-08-01
+SELL0130,Obi Ventures,Ade Anyanwu,store13032@business.ng,9073457455,Zaria,Kano,Nigeria,4.7,73,7027408.75,Active,2020-01-05
+SELL0131,Mama Nkechi Stores,Tunde Dauda,store13192@business.ng,8125734299,Aba,Borno,Nigeria,3.9,176,7148905.24,Active,2018-03-25
+SELL0132,Jos Premium,Aisha Buhari,store13294@business.ng,7038052325,Ado Ekiti,Akwa Ibom,Nigeria,2.6,146,12587653.09,Suspended,2019-01-16
+SELL0133,Victoria Island Mart,Okey Okafor,store13385@business.ng,9047406640,Umuahia,Akwa Ibom,Nigeria,3.6,29,884575.98,Suspended,2018-01-13
+SELL0134,Zaria Emporium,Emmanuel Bello,store13437@business.ng,8131132291,Port Harcourt,Osun,Nigeria,4.2,77,5270141.71,Suspended,2018-07-31
+SELL0135,Kano Traders 135,Chukwuemeka Nwosu,store13525@business.ng,8055975718,Minna,Enugu,Nigeria,4.0,183,18564964.26,Active,2018-11-04
+SELL0136,Eko Mall,Amina Dauda,store13672@business.ng,7067982400,Onitsha,Lagos,Nigeria,3.7,0,0.0,Active,2019-09-03
+SELL0137,Lagos Fashion Hub,Safiya Okoye,store13789@business.ng,7090461541,Benin City,Kano,Nigeria,4.1,66,1293277.62,Active,2020-06-05
+SELL0138,Kano Traders,Nkiru Bello,store13813@business.ng,7036802227,Enugu,Oyo,Nigeria,2.7,91,5752017.83,Suspended,2018-10-10
+SELL0139,Jos Premium,Tunde Ogunlesi,store13985@business.ng,7056024631,Ikorodu,Borno,Nigeria,2.8,66,6047996.72,Suspended,2019-11-03
+SELL0140,Ajah Shopping 140,Aisha Bakare,store1403@business.ng,8171045153,Zaria,Kano,Nigeria,3.3,125,11668777.38,Suspended,2020-07-15
+SELL0141,Naija Best Deals,Segun Ekwensi,store14136@business.ng,7073894187,Owerri,Niger,Nigeria,3.2,98,8365827.87,Active,2020-06-03
+SELL0142,Lagos Fashion Hub 142,Hadiza Balogun,store14238@business.ng,8095976176,Ikorodu,Niger,Nigeria,3.5,121,10070834.84,Active,2020-04-22
+SELL0143,Warri Connect,Usman Bello,store14353@business.ng,8142733135,Akure,Sokoto,Nigeria,2.8,98,8048722.76,Active,2018-07-04
+SELL0144,Mama Nkechi Stores,Funmilayo Buhari,store14450@business.ng,9010372592,Enugu,Borno,Nigeria,2.7,81,5461542.92,Suspended,2018-11-05
+SELL0145,Sokoto Suppliers 145,Ade Okonkwo,store14550@business.ng,8175251533,Lagos,Edo,Nigeria,3.8,119,8437353.91,Active,2018-12-05
+SELL0146,Jos Premium,Tunde Effiong,store1462@business.ng,9041743034,Umuahia,Kano,Nigeria,3.4,40,4524430.86,Active,2020-01-19
+SELL0147,Naija Best Deals,Ade Okafor,store14770@business.ng,7096836098,Warri,Benue,Nigeria,4.0,50,3278089.75,Active,2020-05-30
+SELL0148,Port Harcourt Depot,Abubakar Buhari,store14831@business.ng,7089505910,Kaduna,Sokoto,Nigeria,4.1,216,13539361.92,Active,2019-01-09
+SELL0149,Ibadan Market Online,Babatunde Uche,store14973@business.ng,8155495302,Port Harcourt,Lagos,Nigeria,3.7,107,7644120.4,Suspended,2019-01-11
+SELL0150,Garki Stores,Taiwo Ekong,store15056@business.ng,8062670144,Enugu,Rivers,Nigeria,2.6,78,5824682.02,Active,2018-12-24
+SELL0151,Alaba International Digital,Obinna Shagari,store15176@business.ng,8198796599,Umuahia,Osun,Nigeria,4.9,80,5808582.61,Active,2018-11-23
+SELL0152,Enugu Plaza 152,Adaeze Adeleke,store15216@business.ng,8148294101,Aba,Imo,Nigeria,3.9,171,9538878.86,Suspended,2018-05-04
+SELL0153,Eko Mall,Yusuf Kanu,store15337@business.ng,9056689082,Bauchi,Akwa Ibom,Nigeria,4.4,72,5322283.87,Active,2019-02-20
+SELL0154,Garki Stores,Usman Nwosu,store15441@business.ng,8130053210,Benin City,Kaduna,Nigeria,4.2,143,10250082.85,Active,2018-01-13
+SELL0155,Obi Ventures 155,Safiya Effiong,store1554@business.ng,7066371321,Enugu,Ondo,Nigeria,3.6,122,7248231.21,Active,2019-04-05
+SELL0156,Jos Premium 156,Oluwaseun Chukwu,store15626@business.ng,8066586109,Minna,Benue,Nigeria,3.4,115,6094926.68,Active,2019-01-10
+SELL0157,Ibadan Market Online,Chiamaka Adeyemi,store1579@business.ng,7019530298,Warri,Plateau,Nigeria,3.6,137,11599414.82,Active,2019-03-10
+SELL0158,Eko Mall,Hadiza Bankole,store1588@business.ng,8166807216,Owerri,Rivers,Nigeria,3.4,156,13854867.77,Active,2018-09-19
+SELL0159,Obi Ventures,Hadiza Bankole,store15934@business.ng,8042922931,Aba,Oyo,Nigeria,2.6,54,1055077.53,Active,2020-09-18
+SELL0160,Alaba International Digital,Blessing Jibril,store16060@business.ng,8138694966,Onitsha,Imo,Nigeria,4.0,95,6388623.49,Active,2020-01-11
+SELL0161,Trade Fair Online 161,Rashida Ekong,store16151@business.ng,7096300090,Ogbomoso,Rivers,Nigeria,3.6,31,3603391.95,Active,2020-05-17
+SELL0162,Kurmi Market Online,Ibrahim Musa,store16231@business.ng,8067671370,Bauchi,Osun,Nigeria,3.0,255,17205381.49,Active,2020-01-01
+SELL0163,Sokoto Suppliers,Musa Musa,store1631@business.ng,8194181529,Akure,Osun,Nigeria,3.4,170,13071060.28,Active,2018-02-20
+SELL0164,Alaba International Digital 164,Amina Adeleke,store16470@business.ng,8074192137,Sokoto,Kaduna,Nigeria,3.2,21,2764972.77,Active,2020-04-05
+SELL0165,Calabar Shopping,Kelechi Kalu,store16531@business.ng,8032003977,Calabar,Rivers,Nigeria,3.0,50,3116103.75,Active,2019-12-08
+SELL0166,Kano Traders 166,Yusuf Bankole,store16652@business.ng,9038548302,Bauchi,Ekiti,Nigeria,3.2,140,13558927.64,Active,2018-07-10
+SELL0167,Port Harcourt Depot,Musa Okafor,store16749@business.ng,8053239585,Minna,Akwa Ibom,Nigeria,4.0,91,5743330.81,Suspended,2019-10-31
+SELL0168,Enugu Plaza,Abdul Ekwensi,store16821@business.ng,8068961318,Benin City,Abia,Nigeria,3.1,100,6080699.94,Suspended,2020-06-07
+SELL0169,Ajah Shopping,Olumide Okafor,store16974@business.ng,8016272544,Ilorin,Benue,Nigeria,2.7,90,5868912.33,Active,2018-03-08
+SELL0170,Port Harcourt Depot 170,Femi Adebayo,store17038@business.ng,8040595359,Jos,Ekiti,Nigeria,2.8,117,11090577.65,Active,2019-05-22
+SELL0171,Ajah Shopping,Chidinma Nnaji,store17142@business.ng,8091618861,Ife,Oyo,Nigeria,4.7,64,2858921.35,Active,2020-05-12
+SELL0172,Adebayo Electronics 172,Hadiza Ibrahim,store17256@business.ng,8127023871,Onitsha,Bayelsa,Nigeria,3.9,67,6791880.54,Suspended,2019-09-30
+SELL0173,Victoria Island Mart,Musa Kanu,store17332@business.ng,8026685559,Kano,Enugu,Nigeria,3.0,75,2666011.01,Active,2018-07-08
+SELL0174,Sokoto Suppliers,Babatunde Okonkwo,store17427@business.ng,8027217582,Sokoto,Ondo,Nigeria,4.8,63,6227787.53,Active,2020-06-26
+SELL0175,Obi Ventures,Amina Adesina,store1754@business.ng,7063475800,Uyo,Bauchi,Nigeria,4.8,195,8977299.01,Active,2018-01-04
+SELL0176,Alaba International Digital,Chioma Nnaji,store17679@business.ng,8117027633,Kaduna,Akwa Ibom,Nigeria,3.3,130,10675919.65,Suspended,2019-05-31
+SELL0177,Ikeja City Mall Online,Chioma Shagari,store17761@business.ng,8094580589,Ado Ekiti,Kwara,Nigeria,4.5,58,2060931.12,Active,2020-01-16
+SELL0178,Ajah Shopping,Titilayo Effiong,store17861@business.ng,8076579910,Abuja,FCT,Nigeria,4.5,128,10629177.17,Active,2019-06-03
+SELL0179,Sabo Mart,Ade Effiong,store17921@business.ng,9066404731,Benin City,Ondo,Nigeria,2.5,133,7043978.45,Active,2018-09-08
+SELL0180,Calabar Shopping,Uche Okeke,store18034@business.ng,8078230475,Bauchi,Osun,Nigeria,4.9,202,12410830.76,Active,2018-10-17
+SELL0181,Trade Fair Online,Gbenga Okonkwo,store18114@business.ng,8152286809,Oshogbo,Cross River,Nigeria,3.8,161,9117390.78,Active,2019-08-25
+SELL0182,Victoria Island Mart 182,Obinna Dauda,store18210@business.ng,9087083309,Bauchi,Sokoto,Nigeria,3.1,104,9370917.18,Suspended,2019-03-14
+SELL0183,Obi Ventures,Oluchi Jibril,store18385@business.ng,8152088357,Abuja,FCT,Nigeria,3.0,18,2228657.94,Active,2020-03-04
+SELL0184,Ikeja City Mall Online,Amara Anyanwu,store18433@business.ng,8139055218,Minna,Ondo,Nigeria,4.7,82,6218627.3,Active,2018-05-14
+SELL0185,Abuja Mart 185,Ifeanyi Okafor,store18537@business.ng,7098655223,Ibadan,Kaduna,Nigeria,3.9,167,17642761.25,Active,2018-08-22
+SELL0186,Sokoto Suppliers,Kelechi Buhari,store18690@business.ng,7019829329,Onitsha,Lagos,Nigeria,5.0,76,4190763.45,Active,2018-05-21
+SELL0187,Onitsha Main Market,Uche Eze,store18744@business.ng,8176801198,Umuahia,Enugu,Nigeria,3.5,75,7035682.92,Active,2020-02-04
+SELL0188,Computer Village Store 188,Adaeze Oladipo,store18819@business.ng,9018618654,Warri,Bayelsa,Nigeria,4.8,107,3293918.65,Active,2018-07-29
+SELL0189,Wuse Market Digital,Folake Balogun,store18950@business.ng,9017758935,Ogbomoso,Bauchi,Nigeria,3.8,101,6093592.67,Active,2019-12-16
+SELL0190,Calabar Shopping,Musa Ojo,store19060@business.ng,8044281600,Kano,Imo,Nigeria,4.4,108,5287157.55,Suspended,2019-09-06
+SELL0191,Zaria Emporium 191,Adaeze Effiong,store19188@business.ng,9013288524,Ikorodu,Abia,Nigeria,3.6,56,5450100.95,Active,2019-08-04
+SELL0192,Mama Nkechi Stores,Abdul Danjuma,store19220@business.ng,8082689185,Sokoto,Osun,Nigeria,3.0,79,5757533.5,Active,2018-02-21
+SELL0193,Warri Connect 193,Emmanuel Bello,store19352@business.ng,7087031592,Makurdi,Akwa Ibom,Nigeria,2.8,111,6353392.44,Active,2019-03-05
+SELL0194,Warri Connect,Obinna Nnaji,store19464@business.ng,8170346785,Ilorin,Plateau,Nigeria,4.2,100,9471782.72,Suspended,2020-08-27
+SELL0195,Calabar Shopping 195,Ngozi Ogunlesi,store19533@business.ng,8158113555,Zaria,Borno,Nigeria,3.7,199,15027092.97,Active,2018-01-06
+SELL0196,Eko Mall,Tolulope Oladipo,store19617@business.ng,9080299876,Lagos,Kano,Nigeria,3.2,60,4246469.1,Active,2019-01-01
+SELL0197,Abuja Mart,Chinedu Ogunlesi,store19733@business.ng,9057365466,Kano,Ondo,Nigeria,4.7,183,15432150.06,Active,2018-03-12
+SELL0198,Alaba International Digital,Chukwuemeka Abubakar,store19868@business.ng,9049742688,Sokoto,Bauchi,Nigeria,3.5,127,8527666.84,Suspended,2019-03-13
+SELL0199,Ariaria Market Hub 199,Chioma Okoye,store1999@business.ng,8052718471,Lagos,Bauchi,Nigeria,3.6,65,2207421.65,Active,2019-02-23
+SELL0200,Ibadan Market Online,Adaeze Nnamdi,store20053@business.ng,8145940979,Kaduna,Kano,Nigeria,2.7,216,18339652.52,Active,2020-03-27
