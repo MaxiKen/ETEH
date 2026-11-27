@@ -767,8 +767,8 @@ s.calc([("Finding 1", f'="Lifecare admitted "&TEXT(ROWS(tLOS),"#,##0")&" patient
          f"Average bed occupancy was {occ23:.1%}, above the 85% safe level, with {d95} days above 95%.", None, ""),
         ("Finding 3", f'="Average length of stay was "&TEXT(AVERAGE(tLOS[Length_of_Stay]),"0.0")&" days and the 30-day readmission rate "&TEXT(COUNTIFS(tLOS[Readmit_30d],"Yes")/ROWS(tLOS),"0.0%")&"."',
          f"Average length of stay was {alos23:.1f} days and the 30-day readmission rate {rr23:.1%}.", None, ""),
-        ("Recommendation", "Open 20 surge beds for Q4 and pilot a discharge-planning nurse in the highest-readmission department.",
-         "Open 20 surge beds for Q4 and pilot a discharge-planning nurse in the highest-readmission department.", None, "Recommendations are typed - judgement, not formula")])
+        ("Recommendation", "Plan surge capacity for Q2 (27 of the 43 days above 95% fell in April-June) and pilot a discharge-planning nurse in Oncology, the highest-readmission department.",
+         "Plan surge capacity for Q2 (27 of the 43 days above 95% fell in April-June) and pilot a discharge-planning nurse in Oncology, the highest-readmission department.", None, "Recommendations are typed - judgement, not formula")])
 s.band("4.8.4", "Table design for reports - department summary")
 dep = los.groupby("Department").agg(Admissions=("Admission_ID", "count")).reset_index().sort_values("Admissions", ascending=False)
 alos_d = [los[los.Department == d].Length_of_Stay.mean() for d in dep.Department]

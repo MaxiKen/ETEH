@@ -45,3 +45,6 @@ and the build prints no OVERFLOW / CLIP / TABLE / TITLE / NOTE warnings for it.
 | V4 | 4.5 | 13 | done |
 | V4 | 4.6 | 12 | done (workbook Solver insight corrected) |
 | V4 | 4.7 | 9 | done (workbook: zone growth, invented refurbishment caveat, misleading-axis chart fixed) |
+| V4 | 4.8 | 10 | done (workbook recommendation now matches data: Q2 peak, Oncology) |
+| V4 | 4.9 | 10 | done |
+| V4 | 4.10 | 8 | done |
