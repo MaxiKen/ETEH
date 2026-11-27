@@ -424,6 +424,12 @@ def revise(vol, fname, xlsx, week, asg, topics, preview_tags, log):
         c, cvc = build_concept(prs, slides[0], t, title, tag, where, tip, trap)
         e, cve = build_example(prs, slides[0], t, title, tag, where, tryit, nxt_of[tag])
         order += [sld_id(prs, c), sld_id(prs, e)]
+        if mod:
+            foot = f"Module {mod[0]}  ·  {mod[1]}"
+            for s_ in (c, e):
+                tb5 = names(s_).get("TextBox 5")
+                if tb5 is not None and K.text_width_pt(foot, 11) / 72 <= tb5.width / K.EMU - 0.1:
+                    K.set_runs_text(tb5, foot)
         for s in slides:
             drop(prs, s)
         done += 1
