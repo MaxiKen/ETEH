@@ -185,8 +185,8 @@ TOPICS = [
              "HAVING SUM(total_price) > 15000000, ORDER BY revenue DESC."],
       table=[["store_name", "orders", "revenue"], ["Jos Premium", "354", "₦82,585,050"],
              ["Alaba International Digital", "361", "₦65,316,100"], ["Ibadan Market Online", "354", "₦63,857,000"],
-             ["Stores passing HAVING", "26 of 86", "Each above ₦15m"]],
-      so="26 of the 86 store names cleared ₦15m. HAVING tested totals that WHERE never sees.",
+             ["Stores passing HAVING", "26 of 85", "Each above ₦15m"]],
+      so="26 of the 85 store names with delivered sales cleared ₦15m. HAVING tested totals that WHERE never sees.",
       split=4.20),
 
     S("3.2.12",

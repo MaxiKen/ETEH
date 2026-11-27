@@ -996,7 +996,7 @@ s.calc([("Control total: FY2025 sales (ledger)", "=SUM(tDash25[Sales])", s25.Sal
         ("Sum of the AI's zone table", float(ai_zone.sum()), float(ai_zone.sum()), "naira", "AI summary listed only 3 zones"),
         ("Difference", f"=SUM(tDash25[Sales])-{ai_zone.sum():.0f}", s25.Sales.sum() - ai_zone.sum(), "naira", "≠ 0 → South-East was silently dropped; discard and redo")])
 s.band("4.12.5-8", "Provenance, discard rules, sign-off and checklist")
-s.grid([["2024-01-12 10:40", "AI assistant (web)", "Schema prompt + 'zone revenue SQL'", "Joined deliveries on customer_id - 56,725 rows, revenue ₦7.19bn (~5.5x)", "Discarded; rewrote join", "A. Analyst"],
+s.grid([["2024-01-12 10:40", "AI assistant (web)", "Schema prompt + 'zone revenue SQL'", "Joined deliveries on customer_id - 56,725 rows, revenue ₦7.19bn (~5.2x)", "Discarded; rewrote join", "A. Analyst"],
         ["2024-01-12 11:05", "AI assistant (web)", "'Explain RANK.EQ ties'", "Explanation matched Microsoft docs", "Used in notes", "A. Analyst"]],
        header=["When", "Tool", "Prompt (no data)", "Check performed", "Outcome", "By"])
 s.grid([["Discard entirely", "Invented columns/functions; fails a control total twice; cannot explain its own logic"],
@@ -1080,7 +1080,7 @@ s.table(bul, "tBulletin", fmts={"Bulletin_FY_m": "0.0", "Sum_of_printed_months_m
               "Status": ('=IF(ABS([@Diff_m])<=0.05,"Rounding only","INVESTIGATE")', None, ["Rounding only" if abs(d) <= .05 else "INVESTIGATE" for d in diff]),
               "Months_vs_FY_m": ("=[@Sum_of_printed_months_m]-[@Bulletin_FY_m]", "0.0", (bul.Sum_of_printed_months_m - bul.Bulletin_FY_m).tolist())},
         total={"Store_Name": "Total", "Bulletin_FY_m": "sum", "Ledger_m": "sum"})
-s.insight("Every store agrees within ±₦0.05m (rounding to one decimal). Adding the 12 printed monthly figures can differ from the printed FY total by ₦0.1m - "
+s.insight("Every store agrees within ±₦0.05m (rounding to one decimal). Adding the 12 printed monthly figures can differ from the printed FY total by up to ₦0.2m (Benin City: 61.9 vs 62.1) - "
           "that is why you reconcile to the ledger, not to a sum of rounded numbers.")
 s.band("4.14.3", "Intermediate: reconcile time periods and definitions")
 fy_apr_prev = sm[(sm.Order_Date >= "2024-04-01") & (sm.Order_Date <= "2025-03-31")].Sales.sum()

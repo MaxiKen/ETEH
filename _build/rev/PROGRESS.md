@@ -48,3 +48,8 @@ and the build prints no OVERFLOW / CLIP / TABLE / TITLE / NOTE warnings for it.
 | V4 | 4.8 | 10 | done (workbook recommendation now matches data: Q2 peak, Oncology) |
 | V4 | 4.9 | 10 | done |
 | V4 | 4.10 | 8 | done |
+| V4 | 4.11 | 10 | done (workbook provenance log: inflation corrected to ~5.2x) |
+| V4 | 4.12 | 8 | done |
+| V4 | 4.13 | 9 | done |
+| V4 | 4.14 | 5 | done (workbook 4.14.2 insight: months-vs-FY rounding gap up to 0.2m) |
+| V3 | fix | - | 3.2 HAVING slide: 85 store names with delivered sales (was 86) |
