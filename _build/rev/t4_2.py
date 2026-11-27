@@ -79,7 +79,7 @@ TOPICS = [
       what="A **percentile rank** says what share of values sit **below** a value (=PERCENTRANK.INC, 0 to 100%). "
            "Group ranks into **bands** (top quartile, and so on) for fair league tables.",
       like="Like saying 'you finished ahead of 82% of runners' instead of 'you came 3rd'.",
-      how=["=PERCENTRANK.INC([Sales],[@Sales]).", "Bands with IFS: ≥75% top quartile, ≥50%, ≥25%.", "Sort by rank."],
+      how=["=PERCENTRANK.INC([Sales],[@Sales]).", "Bands with IFS: >=75% top quartile, >=50%, >=25%.", "Sort by rank."],
       tip="Percentile ranks work the same for 12 stores or 12,000 customers.",
       trap="Reading percentile rank as 'percentage of target'.",
       who=RT,

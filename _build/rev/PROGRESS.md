@@ -63,3 +63,4 @@ and the build prints no OVERFLOW / CLIP / TABLE / TITLE / NOTE warnings for it.
 | V5 | P.8 | 9 | done (v1 '45 min to 6 s' removed; CV bullets from workbook) |
 | V5 | P.9 | 8 | done (STAR uses the ₦7.19bn wrong join; v1 'mean CGPA', '8% missing', '96 SKUs' removed) |
 | V5 | fix | - | Capstone workbook P.6 limitation + P.9 STAR wording; rebuilt, verify 0 mismatches |
+| V2-V4 | fix | - | Glyphs missing from Carlito (≥ ≤ ≈ √ α ▲▼) replaced in 2.8.10/24/25, 3.6.37, 3.8.7, 4.1.13, 4.2.5, 4.3.2, 4.4.1, 4.5.5, 4.6.3/9/11 |

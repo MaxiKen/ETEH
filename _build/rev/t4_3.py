@@ -33,7 +33,7 @@ TOPICS = [
            "columns. It's sensitive to extreme values and misses curved patterns.",
       like="Like checking how well a ruler fits along a scatter of dots.",
       how=["=CORREL(tCV[Attendance_Pct], tCV[Exam_Score]).", "Square it (r²) for the share of variation shared.", "Plot the pair to check (4.3.6)."],
-      tip="r² is easier to explain: 0.58² ≈ 0.34, so about a third.",
+      tip="r² is easier to explain: 0.58² is about 0.34, so a third.",
       trap="Using Pearson on text codes like Faculty.",
       who=CV,
       case="How strongly is attendance linked to exam score?",

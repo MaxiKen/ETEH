@@ -262,7 +262,7 @@ TOPICS = [
       trap="Two departments using different at-risk rules.",
       who="Crestview University",
       case="The registrar wants first-semester 2024/25 KPIs from Crestview_Student_Performance.csv.",
-      steps=["Count students.", "Average Exam_Score and Attendance_Pct.", "Count Grade A (≥70) and At_Risk = Yes."],
+      steps=["Count students.", "Average Exam_Score and Attendance_Pct.", "Count Grade A (70+) and At_Risk = Yes."],
       table=[["KPI", "2024/25 result"], ["Enrolment", "6,607"], ["Average exam score", "67.2"],
              ["Grade A rate (70+)", "24.6%"], ["Average attendance", "80.0%"], ["At-risk students", "901 (13.6%)"]],
       so="About 1 in 4 students earns an A, but 901 students (13.6%) need support.",

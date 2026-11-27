@@ -70,15 +70,15 @@ TOPICS = [
       split=4.20),
 
     O("4.5.5",
-      what="**Simple exponential smoothing** gives more weight to recent months: next forecast = α × latest "
-           "actual + (1 − α) × previous forecast. **α** (alpha) runs from 0 (very smooth) to 1 (copies last month).",
+      what="**Simple exponential smoothing** gives more weight to recent months: next forecast = alpha × latest "
+           "actual + (1 − alpha) × previous forecast. **Alpha** runs from 0 (very smooth) to 1 (copies last month).",
       like="Like updating your opinion of a restaurant: each new visit counts, but you don't forget the old ones.",
-      how=["Put α in an input cell (0.3).", "First forecast = first actual.", "=$α*actual + (1-$α)*previous forecast."],
-      tip="Try α = 0.1, 0.3 and 0.6 and compare the errors.",
+      how=["Put alpha in an input cell (0.3).", "First forecast = first actual.", "=alpha*actual + (1-alpha)*previous forecast."],
+      tip="Try alpha = 0.1, 0.3 and 0.6 and compare the errors.",
       trap="Using simple smoothing on strongly seasonal data.",
-      case="SES forecasts with α = 0.3 for the end of 2025 (SES_forecast column).",
-      steps=["Set α = 0.3.", "Fill the SES formula down.", "Compare forecasts with actuals."],
-      table=[["Month", "Actual", "SES forecast (α 0.3)"], ["Sep 2025", "₦87,866,652", "₦52,311,440"],
+      case="SES forecasts with alpha = 0.3 for the end of 2025 (SES_forecast column).",
+      steps=["Set alpha = 0.3.", "Fill the SES formula down.", "Compare forecasts with actuals."],
+      table=[["Month", "Actual", "SES forecast (alpha 0.3)"], ["Sep 2025", "₦87,866,652", "₦52,311,440"],
              ["Nov 2025", "₦118,447,825", "₦67,417,680"], ["Dec 2025", "₦83,829,319", "₦82,726,723"]],
       so="Simple smoothing lags behind the festive peaks, so seasonal data needs a seasonal method (4.5.6).",
       split=4.70),

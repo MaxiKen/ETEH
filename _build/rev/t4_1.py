@@ -208,7 +208,7 @@ TOPICS = [
       case="The analyst runs Descriptive Statistics on salary and compares it with the live replica on sheet 4.1.",
       steps=["Run the ToolPak on Annual_Salary_NGN.", "Read the key lines.", "Compare with the replica table."],
       table=[["Output line", "Salary", "Check"], ["Mean / Median", "₦11,344,180 / ₦11,000,000", "Close: balanced"],
-             ["Standard Error", "₦121,717", "SD ÷ √1,781"], ["Count", "1,781", "Matches the rows"],
+             ["Standard Error", "₦121,717", "SD ÷ SQRT(1,781)"], ["Count", "1,781", "Matches the rows"],
              ["Confidence Level (95%)", "₦238,724", "Mean ± this"]],
       so="The average salary is ₦11.34m, give or take about ₦0.24m at 95% confidence.",
       split=4.20),

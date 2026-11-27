@@ -24,7 +24,7 @@ TOPICS = [
       table=[["Output", "Value", "Meaning"], ["Slope b", "₦614,499", "Extra pay per year of experience"],
              ["Intercept a", "₦5,706,904", "Line's salary at 0 years"], ["R²", "0.67", "Experience explains 67% of the variation"],
              ["Standard error", "₦2,948,324", "Typical miss of a prediction"]],
-      so="Salary ≈ ₦5.71m + ₦614,499 × years. The fit is good, but predictions miss by about ₦2.9m.",
+      so="Predicted salary = ₦5.71m + ₦614,499 × years. The fit is good, but predictions miss by about ₦2.9m.",
       split=4.20),
 
     O("4.4.2",

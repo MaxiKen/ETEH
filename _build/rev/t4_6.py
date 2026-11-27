@@ -40,7 +40,7 @@ TOPICS = [
       split=4.90),
 
     O("4.6.3",
-      what="Goal Seek changes **only one input**, **can't respect limits** (like 'occupancy ≤ 100%'), and gives "
+      what="Goal Seek changes **only one input**, **can't respect limits** (like 'occupancy at most 100%'), and gives "
            "only one answer. For several inputs or limits, use Solver (4.6.9).",
       like="Like a calculator that tells you the answer, even when the answer is impossible.",
       how=["Check the answer is realistic.", "Use Solver when there are limits.", "Use data tables to see many answers at once."],
@@ -135,7 +135,7 @@ TOPICS = [
       case="EkoSuites wants to split its 320 rooms across 4 market segments to earn the most each night.",
       steps=["Enable Solver.", "Open Data > Solver.", "Identify the three parts of the problem."],
       table=[["Solver part", "In this example"], ["Objective", "Maximise expected net value per night"],
-             ["Changing cells", "Rooms allocated to each segment"], ["Constraints", "Total ≤ 320; within demand; OTA ≤ 50%"]],
+             ["Changing cells", "Rooms allocated to each segment"], ["Constraints", "Total <= 320; within demand; OTA <= 50%"]],
       so="One setting unlocks a tool that solves problems Goal Seek can't.",
       split=4.90),
 
@@ -163,7 +163,7 @@ TOPICS = [
       tip="If Solver says 'not linear', switch to GRG Nonlinear.",
       trap="Accepting a result without checking every constraint holds.",
       case="Solve the room allocation with Simplex LP.",
-      steps=["Objective: max total nightly value.", "Constraints: min, max demand, integer, ≤ 320, OTA ≤ 160.", "Solve and read the allocation."],
+      steps=["Objective: max total nightly value.", "Constraints: min, max demand, integer, <= 320, OTA <= 160.", "Solve and read the allocation."],
       table=[["Segment", "Rooms allocated", "Why"], ["Corporate", "70", "All demand: highest value"],
              ["Airline Crew", "10", "Minimum and maximum are both 10"], ["Online Travel Agent", "160", "Stopped at the 50% cap"],
              ["Walk-in / Travel Agent", "80", "Takes the remaining rooms"]],

@@ -136,7 +136,7 @@ TOPICS = [
       "Using ranges of different sizes, which gives #VALUE!.",
       "The analyst asks: how many Furniture lines lost money at a discount of 30% or more?",
       ["=COUNTIFS(tSales[Category], \"Furniture\", tSales[Profit], \"<0\")", "Add: tSales[Discount], \">=0.3\".", "Compare both counts."],
-      [["Conditions", "Lines"], ["Furniture and Profit < 0", "235"], ["… and Discount ≥ 30%", "167"]],
+      [["Conditions", "Lines"], ["Furniture and Profit < 0", "235"], ["… and Discount 30%+", "167"]],
       "167 of 235 loss-making Furniture lines had discounts of 30% or more. Deep discounts drive the losses."),
 
     F("2.8.11",
@@ -314,7 +314,7 @@ TOPICS = [
       "Putting the bands in the wrong order, so everything matches the first test.",
       "The analyst labels the 2025 chain margin: 15%+ Strong, 8%+ Healthy, otherwise Weak.",
       ["Margin: =SUM(tSales[Profit]) / SUM(tSales[Sales]).", "=IFS(m >= 0.15, \"Strong\", m >= 0.08, \"Healthy\", TRUE, \"Weak\").", "Read the result."],
-      [["Test (in order)", "TRUE?"], ["Margin 12.7% ≥ 15%", "No"], ["Margin 12.7% ≥ 8%", "Yes: Healthy"], ["TRUE (default)", "Not reached"]],
+      [["Test (in order)", "TRUE?"], ["Margin 12.7% >= 15%", "No"], ["Margin 12.7% >= 8%", "Yes: Healthy"], ["TRUE (default)", "Not reached"]],
       "The chain's margin is Healthy. IFS stopped at the first test that was true."),
 
     F("2.8.25",
@@ -325,8 +325,8 @@ TOPICS = [
       "Test each condition on its own before combining them.",
       "Using AND when any one condition should be enough (use OR).",
       "Did Lagos - Ikeja (ST01) meet its target AND keep a margin above 10%?",
-      ["Test 1: Ikeja sales ≥ target (₦146.4m vs ₦142m).", "Test 2: Ikeja margin > 10% (20.1%).", "=AND(test1, test2)."],
-      [["Test", "Result"], ["Sales ≥ target (103%)", "TRUE"], ["Margin > 10% (20.1%)", "TRUE"], ["AND", "TRUE"]],
+      ["Test 1: Ikeja sales >= target (₦146.4m vs ₦142m).", "Test 2: Ikeja margin > 10% (20.1%).", "=AND(test1, test2)."],
+      [["Test", "Result"], ["Sales >= target (103%)", "TRUE"], ["Margin > 10% (20.1%)", "TRUE"], ["AND", "TRUE"]],
       "Ikeja passed both tests, so AND returns TRUE."),
 
     F("2.8.26",

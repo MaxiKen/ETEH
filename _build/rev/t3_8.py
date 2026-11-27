@@ -104,7 +104,7 @@ TOPICS = [
            "last year) and a **status**. Feed it from a formula or GETPIVOTDATA so it updates automatically.",
       like="A KPI card is like a fuel gauge: one number, one comparison, instantly readable.",
       how=["Write the formula that returns the value for the current selection.",
-           "Add the comparison: vs target or last year.", "Add the status: ▲ / ▼ or a word like 'Below'."],
+           "Add the comparison: vs target or last year.", "Add the status: an up/down arrow or a word like 'Below'."],
       tip="Every KPI needs a comparison; a number alone means little.",
       trap="Typing KPI values by hand.",
       case="A manager switches the Zone cell from All to South-East.",
