@@ -127,6 +127,17 @@ def same(a, b):
 
 def verify(path, show=25):
     from pycel import ExcelCompiler
+    import pycel.lib.text as _pt
+    if not getattr(_pt, "_eteh_trim", False):          # pycel's TRIM only collapses inner runs; Excel also strips both ends
+
+        class _Trim:
+            def __init__(self, rx):
+                self.rx = rx
+
+            def sub(self, repl, text, *a, **k):
+                return self.rx.sub(repl, text, *a, **k).strip(" ")
+        _pt.RE_MULTI_SPACE = _Trim(_pt.RE_MULTI_SPACE)
+        _pt._eteh_trim = True
     wb = openpyxl.load_workbook(path)
     cached = openpyxl.load_workbook(path, data_only=True)
     T = table_map(wb)
@@ -171,11 +182,12 @@ def verify(path, show=25):
             got = xc.evaluate(f"{qs(sh)}!{coord}")
         except Exception as e:  # noqa: BLE001
             msg = str(e)
+            xc.graph_todos, xc.range_todos = [], []      # a failed build leaves stale to-dos that break every later cell
             fn = re.findall(r"([A-Z][A-Z0-9.]+)\(", nf)
             unsup += 1
             unsup_f[",".join(sorted(set(fn)))[:60] or msg[:40]] += 1
-            if os.environ.get("VDEBUG") and not fn:
-                print("  UNSUP", sh, coord, orig[:60], "|", msg.strip().splitlines()[-1][:160])
+            if os.environ.get("VDEBUG") and (not fn or os.environ.get("VDEBUG") == "all") and "FORMULATEXT" not in nf:
+                print("  UNSUP", sh, coord, orig[:60], "|", type(e).__name__, " ~ ".join(msg.strip().splitlines())[-260:])
             continue
         if isinstance(got, str) and got.startswith("#") and not (isinstance(exp, str) and exp.startswith("#")):
             fn = re.findall(r"([A-Z][A-Z0-9.]+)\(", nf)

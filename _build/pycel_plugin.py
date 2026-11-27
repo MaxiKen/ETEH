@@ -107,13 +107,23 @@ def datedif(a, b, unit):
     raise ValueError
 
 
+def _hol(h):
+    out = []
+    for x in h:
+        for v in (x if isinstance(x, tuple) else (x,)):
+            for w in (v if isinstance(v, tuple) else (v,)):
+                if w not in (None, ""):
+                    out.append(_d(w))
+    return out
+
+
 def networkdays(a, b, *h):
     a, b = _d(a), _d(b)
-    return int(np.busday_count(a, b + dt.timedelta(days=1)))
+    return int(np.busday_count(a, b + dt.timedelta(days=1), holidays=_hol(h)))
 
 
 def workday(a, n, *h):
-    return _ser(np.busday_offset(_d(a), int(n), roll="backward").astype(dt.date))
+    return _ser(np.busday_offset(_d(a), int(n), roll="forward" if int(n) < 0 else "backward", holidays=_hol(h)).astype(dt.date))
 
 
 def datevalue(s):

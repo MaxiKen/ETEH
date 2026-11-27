@@ -234,10 +234,10 @@ class ModuleSheet:
             elif kind == "tcell":
                 key = cells[next(num_iter)]
                 ka = re.sub(r"([A-Z]+)(\d+)", r"$\1$\2", key)
-                alts = "".join(f',LOWER(TRIM({inp}))="{a.lower()}"' for a in payload)
+                alts = "".join(f',LOWER(TRIM({inp}))="{a.lower().replace(chr(34), chr(34) * 2)}"' for a in payload)
                 fx = f'=IF({inp}="","",IF(OR(LOWER(TRIM({inp}))=LOWER({ka}){alts}),"✓ Correct","✗ Not yet"))'
             else:
-                conds = ",".join(f'LOWER(TRIM({inp}))="{a.lower()}"' for a in payload)
+                conds = ",".join(f'LOWER(TRIM({inp}))="{a.lower().replace(chr(34), chr(34) * 2)}"' for a in payload)
                 fx = f'=IF({inp}="","",IF(OR({conds}),"✓ Correct","✗ Not yet"))'
             self.ws.write_formula(r, 9, fx, self.X["chk"], "")
         return cells
