@@ -35,3 +35,4 @@ and the build prints no OVERFLOW / CLIP / TABLE / TITLE / NOTE warnings for it.
 | 3 | 3.6A Power Pivot and DAX Foundations | 21 | done |
 | 3 | 3.6B DAX Time Intelligence, KPIs and Performance | 20 | done |
 | 3 | 3.7 Chart Anatomy and Chart Types | 26 | done |
+| 3 | 3.8 Dashboard Development | 19 | done |
