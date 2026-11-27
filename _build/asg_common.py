@@ -34,12 +34,14 @@ def _py(v):
 
 
 class Asg:
-    def __init__(self, week: int, title: str, key: bool, subtitle: str):
+    def __init__(self, week, title: str, key: bool, subtitle: str, path=None, label=None, submission=None):
         self.key = key
         self.week = week
         fn = f"ETEH_Week{week}_Assignment" + ("_ANSWER_KEY" if key else "") + ".xlsx"
-        self.path = (KEYDIR if key else ASG) / fn
-        label = f"Week {week} Assignment" + ("  ·  ANSWER KEY (instructor only)" if key else "")
+        self.path = path or ((KEYDIR if key else ASG) / fn)
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        label = (label or f"Week {week} Assignment") + ("  ·  ANSWER KEY (instructor only)" if key else "")
+        self.submission = submission or ("Save as Surname_Firstname_Week%s.xlsx. Do not rename sheets, move answer cells or delete questions." % week)
         self.b = Book(str(self.path), title, label)
         self.subtitle = subtitle
         self.marks: list[tuple[str, str, str, int]] = []   # sheet, task, modules, marks
@@ -230,7 +232,7 @@ class Asg:
             ms.h2("General marking rules")
             ms.grid(rubric, header=["Rule", "Detail"], merge_last=True)
         self.marks_total = total
-        extra = [("Total marks", f"{total}"), ("Submission", "Save as Surname_Firstname_Week%d.xlsx. Do not rename sheets, move answer cells or delete questions." % self.week),
+        extra = [("Total marks", f"{total}"), ("Submission", self.submission),
                  ("How to answer", "Type in the YELLOW cells only. Where a question says 'formula', the cell must contain a live formula - typed numbers score zero."),
                  ("Integrity", "Individual work. You may use the slides, the Section Examples workbook and Microsoft documentation. If you use an AI assistant, say which one and for what in the Working / notes cell beside the answer.")]
         if self.key:

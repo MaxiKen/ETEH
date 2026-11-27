@@ -13,7 +13,7 @@ from wk_common import DATASETS_TEXT
 DB = W3D / "lifecare_hospital.db"
 DATA_DIR = ASG / "Week3_Assignment_Data"
 DATA_DIR.mkdir(parents=True, exist_ok=True)
-shutil.copy(DB, DATA_DIR / "lifecare_hospital.db")
+(DATA_DIR / "lifecare_hospital.db").unlink(missing_ok=True)   # use the shared copy in 01_Section_Examples/Week3_Data_Files
 con = sqlite3.connect(DB)
 
 
@@ -88,7 +88,7 @@ def build(key: bool):
 
     # ---------------------------------------------------------------- T1 database basics
     s = A.task("T1 Database Basics", "Task 1 - Read the schema", "3.1",
-               "Open Week3_Assignment_Data/lifecare_hospital.db in DB Browser for SQLite (Database Structure tab). Tables: admissions, patients, doctors, wards, bed_census.")
+               "Open 01_Section_Examples/Week3_Data_Files/lifecare_hospital.db in DB Browser for SQLite (Database Structure tab). Tables: admissions, patients, doctors, wards, bed_census.")
     A.q(s, "1.1", "Primary key of the admissions table?", "admission_id", marks=1, choices=["admission_id", "patient_id", "doctor_id", "admission_date"], header=True)
     A.q(s, "1.2", "Which admissions column is a foreign key to the doctors table?", "doctor_id", marks=1, choices=["doctor_id", "department", "admission_id", "ward_id"])
     A.q(s, "1.3", "Relationship from patients to admissions?", "One-to-many", marks=2, choices=["One-to-one", "One-to-many", "Many-to-many"],
@@ -181,7 +181,7 @@ def build(key: bool):
     A.q(s, "5.6", "KPI card: change in average occupancy vs 2022 (percentage points, as a %).",
         '=AVERAGEIFS(tCensus[occupancy_pct],tCensus[year],2023)-AVERAGEIFS(tCensus[occupancy_pct],tCensus[year],2022)', occ23 - occ22, "pct2", 2)
     A.q(s, "5.7", "Dashboard built: 4 KPI cards, 2 correct charts, Ward slicer connected to both (instructor inspects My_Dashboard).",
-        "Rubric" if key else "", marks=6, guide="KPIs 2, charts 2 (titles are findings, no 3-D, sorted bars), slicer drives both 1, layout/alignment 1.")
+        "Rubric" if key else "", marks=4, guide="KPIs 1, charts 1 (titles are findings, no 3-D, sorted bars), slicer drives both 1, layout/alignment 1.")
     A.long(s, "5.8", "Write the dashboard's headline and one recommendation for the Medical Director.",
            f"e.g. 'Beds ran at {occ23:.1%} average occupancy in 2023 - above the 85% safe-occupancy guide - while admissions held at {len(a23):,}.' "
            "Recommendation: review discharge planning / open surge capacity in peak months; track readmission alongside LOS so faster discharge does not raise readmissions.",
@@ -231,7 +231,7 @@ def build(key: bool):
                      "(Task 2), a safe way to combine tables (Task 3), a Power Pivot model with standard measures (Task 4) and a one-page dashboard (Task 5).",
                      "You need DB Browser for SQLite (free) and Excel with Power Pivot. Time guide: 7-8 hours."],
                     [("Lifecare", DATASETS_TEXT["Lifecare"])],
-                    files="02_Assignments/Week3_Assignment_Data/lifecare_hospital.db and ETEH_Week3_Assignment_Queries.sql (template).",
+                    files="Database: 01_Section_Examples/Week3_Data_Files/lifecare_hospital.db (shared with the Section Examples). Query template: 02_Assignments/Week3_Assignment_Data/ETEH_Week3_Assignment_Queries.sql.",
                     rubric=[["SQL", "Any query returning the correct result earns the SQL mark; style (aliases, indentation) is commented on, not penalised."],
                             ["DAX", "Equivalent DAX accepted (e.g. COUNTA, FILTER inside CALCULATE)."],
                             ["Tolerance", "Counts exact; money ±₦1; rates ±0.01 pt."]])
