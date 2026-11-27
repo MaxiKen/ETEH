@@ -422,7 +422,7 @@ s.calc([("R² (multiple)", f"={r2c}", r2m, "pct", f"vs {r2_1:.1%} with experienc
 s.insight("p-values below 0.05 mean the coefficient is unlikely to be zero in the population. Look at the Age coefficient: once experience is in the model, "
           "age adds little or even turns negative - that is multicollinearity (4.4.10), not 'older people earn less'.")
 s.band("4.4.9", "Making predictions - type a profile in the yellow cells")
-pin = s.inputs([("Years of experience", 6, "gen", "Stay within the data range: 0 - 25 years"), ("Age", 31, "gen", ""), ("Education (Bachelor's / Master's / PhD)", "Master's", "text", "")])
+pin = s.inputs([("Years of experience", 6, "gen", "Stay within the data range: 0 - 34 years"), ("Age", 31, "gen", ""), ("Education (Bachelor's / Master's / PhD)", "Master's", "text", "")])
 ED = pin["Education (Bachelor's / Master's / PhD)"]
 YR, AG = pin["Years of experience"], pin["Age"]
 pe = (Lm[0][4] + Lm[0][3] * 31 + Lm[0][2] * 6 + Lm[0][1] * 1 + Lm[0][0] * 0)
@@ -442,13 +442,13 @@ trs = s.table(rs, "tResid", fmts={"Years_of_Experience": "dec1", "Annual_Salary_
                     "Residual": ("=[@Annual_Salary_NGN]-[@Predicted]", "naira", (rs.Annual_Salary_NGN - pred).tolist())})
 s.chart("scatter", [{"name": "Residual", "categories": trs.ref("Years_of_Experience"), "values": trs.ref("Residual")}], "Residuals vs experience - look for curves and funnels",
         x_title="Years of experience", y_title="Residual (₦)", legend=False, y_fmt='₦#,##0.0,,"m"', rows=17)
-s.insight("The residuals bend: under-prediction at the low and high ends, over-prediction in the middle. Salary growth is not a straight line in experience - "
-          "a log or polynomial term would fit better. Residual plots reveal what R² hides.")
+s.insight("The residuals bend: the line OVER-predicts at both ends (mostly negative residuals for 0-2 years and for 20+ years) and UNDER-predicts in the middle (6-15 years). "
+          "Pay rises fast early and then levels off - a curved (log or polynomial) term would fit better. Residual plots reveal what R² hides.")
 s.band("4.4.10-12", "Multicollinearity, limitations and honest reporting")
 rag = sal.Age.corr(sal.Years_of_Experience)
 s.calc([("r( Age , Years of experience )", "=CORREL(tSal[Age],tSal[Years_of_Experience])", rag, "dec3", "Above 0.9 → the two variables carry almost the same information"),
         ("Variance inflation factor (VIF)", "=1/(1-CORREL(tSal[Age],tSal[Years_of_Experience])^2)", 1 / (1 - rag ** 2), "dec1", "VIF > 5 is a warning, > 10 serious - drop one or combine them")])
-s.grid([["Range", "Do not predict for 40 years' experience - the data stops at 25"],
+s.grid([["Range", "Do not predict for 40 years' experience - the data stops at 34"],
         ["Survey sample", "Self-reported salaries of 1,781 respondents - not every Nigerian professional"],
         ["Missing drivers", "Company size, city and sector are not in the data"],
         ["Report", f"'Each additional year of experience is associated with about ₦{beta1[0]:,.0f} higher annual salary (R² = {r2_1:.2f}, n = {n_:,}).'"]],

@@ -41,3 +41,5 @@ and the build prints no OVERFLOW / CLIP / TABLE / TITLE / NOTE warnings for it.
 | V4 | 4.1 | 14 | done (workbook note fixed: mean >4x median; rounding example uses real mean) |
 | V4 | 4.2 | 9 | done (workbook 4.2.7 insight corrected) |
 | V4 | 4.3 | 10 | done (workbook 4.3.8 rebuilt: seniority ruled out, experience-band confounder table added) |
+| V4 | 4.4 | 12 | done (workbook: residual insight corrected, experience range 0-34) |
+| V4 | 4.5 | 13 | done |
