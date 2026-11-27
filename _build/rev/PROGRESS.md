@@ -23,3 +23,4 @@ and the build prints no OVERFLOW / CLIP / TABLE / TITLE / NOTE warnings for it.
 | 2 | 2.6 Cleaning and Transforming in Power Query | 20 | done |
 | 2 | 2.7 Excel Cleaning versus Power Query Cleaning | 6 | done |
 | 2 | 2.8A The 65 Analytical Excel Functions (1–33) | 33 | done |
+| 2 | 2.8B Text, Date, Lookup and Dynamic Array Functions (34–65) | 32 | done |
