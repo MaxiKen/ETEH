@@ -2,17 +2,57 @@
 
 Eaglet2EagleHub Ltd · Instructor: Abdulrahaman Kehinde
 
-## Slide decks (pack root)
+## Edition 2: beginner-friendly self-study slides
+
+This is **edition 2** of the pack. The five decks were rewritten so a beginner can learn on their own, without an instructor in the room. The workbooks, datasets, assignments and projects are the same as in edition 1, apart from the corrections listed below. Edition 1 is kept unchanged in `ETEH_Bootcamp_Pack_v1.zip` at the repository root. This edition is in `ETEH_Bootcamp_Pack_v2.zip`.
+
+### How each topic is taught
+Every topic in all five volumes (663 topics) now has two slides.
+
+1. **Concept slide**
+   - **In simple terms**: a plain-language definition with the key words in bold.
+   - **Think of it like this**: an everyday Nigerian analogy, such as a market stall, an owambe, WAEC rules or a danfo route.
+   - **How to do it**: three numbered steps.
+   - **Remember**: one tip.
+   - **Avoid**: the most common beginner mistake.
+2. **Worked-example slide**
+   - **The situation**: a real business question on the pack datasets (SuperMart, Crestview, Lifecare, EkoSuites, the Talent Survey or SuperMart Online).
+   - **Step by step**: three steps.
+   - **What you should see**: a table of the exact results you should get.
+   - **What this tells us**: the business meaning in one line.
+   - **Try it yourself**: the workbook and sheet where you can repeat the example.
+
+### Accuracy
+- Every number on a worked-example slide was recalculated from the pack datasets, section workbooks or solution workbooks.
+  - Hypothetical figures are labelled "example".
+  - Training outcomes are labelled "training scenario".
+- Edition 1 contained figures with no source in the data. These were removed and replaced with the real values. Examples include:
+  - a "Tobacco" category;
+  - "41 million rows";
+  - a weighted CGPA;
+  - "Ward 3 31%";
+  - triage bands;
+  - a Year-1 Engineering decline;
+  - "45 minutes to 6 seconds".
+- Where a slide and its workbook disagreed, the workbook was checked against the data and fixed. Each workbook was then rebuilt and re-verified with 0 formula mismatches.
+  - Week 4: several insight notes, the Solver note, the zone-growth note, the misleading-axis chart and the AI provenance log.
+  - Week 3: a misleading 'Saving' calculation in module 3.1.
+  - Capstone (P.6 and P.9): the README limitation and the STAR answer wording.
+- The decks use only characters that the slide font can display. Signs such as ≥ and ≤ are written as `>=` / `<=` or in words.
+
+### Slide decks (pack root)
 
 | Deck | Slides | Modules / topics | Companion files |
 |---|---|---|---|
-| ETEH_Vol1_Week1_Foundations_Slides.pptx | 178 | 1.1–1.9 · 111 topics | ETEH_Week1_Section_Examples.xlsx, ETEH_Week1_Assignment.xlsx |
-| ETEH_Vol2_Week2_PowerQuery_Pivots_Slides.pptx | 229 | 2.1–2.11 · 175 topics | ETEH_Week2_Section_Examples.xlsx, Week2_Data_Files, ETEH_Week2_Assignment.xlsx |
-| ETEH_Vol3_Week3_SQL_DAX_Dashboards_Slides.pptx | 223 | 3.1–3.10 · 158 topics | ETEH_Week3_Section_Examples.xlsx, Week3_Data_Files (SQLite), ETEH_Week3_Assignment.xlsx |
-| ETEH_Vol4_Week4_Stats_Forecast_AI_Slides.pptx | 203 | 4.1–4.14 · 139 topics | ETEH_Week4_Section_Examples.xlsx, ETEH_Week4_Assignment.xlsx |
-| ETEH_Vol5_Capstone_Career_Slides.pptx | 125 | P.1–P.9 · 80 topics | ETEH_Capstone_Section_Examples.xlsx, Capstones 1–3, Student Projects 1–4 |
+| ETEH_Vol1_Week1_Foundations_Slides.pptx | 236 | 1.1–1.9 · 111 topics | ETEH_Week1_Section_Examples.xlsx, ETEH_Week1_Assignment.xlsx |
+| ETEH_Vol2_Week2_PowerQuery_Pivots_Slides.pptx | 367 | 2.1–2.11 · 175 topics | ETEH_Week2_Section_Examples.xlsx, Week2_Data_Files, ETEH_Week2_Assignment.xlsx |
+| ETEH_Vol3_Week3_SQL_DAX_Dashboards_Slides.pptx | 332 | 3.1–3.10 · 158 topics | ETEH_Week3_Section_Examples.xlsx, Week3_Data_Files (SQLite), ETEH_Week3_Assignment.xlsx |
+| ETEH_Vol4_Week4_Stats_Forecast_AI_Slides.pptx | 297 | 4.1–4.14 · 139 topics | ETEH_Week4_Section_Examples.xlsx, ETEH_Week4_Assignment.xlsx |
+| ETEH_Vol5_Capstone_Career_Slides.pptx | 174 | P.1–P.9 · 80 topics | ETEH_Capstone_Section_Examples.xlsx, Capstones 1–3 (solution workbooks), Student Projects 1–4 |
 
-### Changes from the original volumes
+**How to study a topic:** read the concept slide first. Then open the workbook sheet named under "Try it yourself" and follow the three steps. Check that your answers match the "What you should see" table. If your numbers differ, look at the **Avoid** box first.
+
+### Edition 1 changes from the original volumes (still apply)
 - The final two lab and practice modules of every volume were removed. Roadmaps, topic counts and the "In this session" panels were updated to match.
 - Duplicate module codes were renumbered so slide codes match the worksheet names in the section workbooks:
   - Week 2 now runs 2.1–2.7, 2.8A, 2.8B, 2.9–2.11.
@@ -45,4 +85,6 @@ Eaglet2EagleHub Ltd · Instructor: Abdulrahaman Kehinde
    - P3 Lifecare Diabetes Screening.
    - P4 Talent Salary Benchmark.
 
-All files are generated by the scripts in `_build/` at the repository root. `05_update_slides.py` rebuilds the five decks from the original volumes.
+All files are generated by the scripts in `_build/` at the repository root.
+- `05_update_slides.py` rebuilds the edition 1 decks from the original volumes.
+- `06_revise_slides.py` builds the edition 2 decks from the topic copy in `_build/rev/` (one file per module; the layout rules are in `DESIGN.md`). For example, `python3 _build/06_revise_slides.py --vol=5` rebuilds Volume 5.
