@@ -13,3 +13,4 @@ and the build prints no OVERFLOW / CLIP / TABLE / TITLE / NOTE warnings for it.
 | 1 | 1.5 Introduction to Microsoft Excel | 17 | done |
 | 1 | 1.6 Working with Data in Excel | 14 | done |
 | 1 | 1.7 Excel Formulas and Core Functions | 14 | done |
+| 1 | 1.8 Organising Data with Excel Tables | 12 | done |
