@@ -74,15 +74,14 @@ sqlblock(s, "3.1.3", "Primary key check - is every transaction_id unique?",
 sqlblock(s, "3.1.4", "Foreign key check - orders pointing at a product that does not exist (orphans)",
          "SELECT COUNT(*) AS orphan_lines\nFROM transactions t\nLEFT JOIN products p ON p.product_id = t.product_id\nWHERE p.product_id IS NULL", note="0 = referential integrity holds.")
 s.band("3.1.5-7", "Flat file versus relational: why the marketplace is split into tables")
-flat_cells = 11000 * 30
-s.calc([("Cells if everything sat in one flat sheet (v_order_lines: 11,000 x 30)", flat_cells, flat_cells, "int", "Customer name, tier, state repeated on every order"),
-        ("Cells in the 5 normalised tables", "=" + "+".join(str(n * c_) for n, c_ in [(2500, 16), (200, 14), (800, 15), (10430, 13), (11000, 15)]),
-         2500 * 16 + 200 * 14 + 800 * 15 + 10430 * 13 + 11000 * 15, "int", "Each fact stored once"),
-        ("Saving", f"=1-({2500 * 16 + 200 * 14 + 800 * 15 + 10430 * 13 + 11000 * 15})/{flat_cells}",
-         1 - (2500 * 16 + 200 * 14 + 800 * 15 + 10430 * 13 + 11000 * 15) / flat_cells, "pct", "And one update fixes a customer's address everywhere")])
+s.calc([("Customer cells in the flat view (customer_name, tier, state, zone on all 11,000 lines)", "=11000*4", 11000 * 4, "int", "The same customer facts are copied onto every order line"),
+        ("The same facts stored once in customers (4 columns x 2,500 customers)", "=2500*4", 2500 * 4, "int", "Each fact stored once"),
+        ("Repeated copies avoided by normalising", "=1-(2500*4)/(11000*4)", 1 - (2500 * 4) / (11000 * 4), "pct", "77% of the customer cells in the flat view are repeats"),
+        ("Rows to edit if CUST00985 moves state - flat view", "=14", 14, "int", "CUST00985 has 14 order lines"),
+        ("Rows to edit if CUST00985 moves state - normalised", "=1", 1, "int", "One update in customers fixes every order")])
 s.grid([["1NF", "Atomic values, no repeating groups", "delivery_address '431 Road, Calabar' + separate city/state columns; never 'Phone1, Phone2' in one cell"],
         ["2NF", "Every non-key column depends on the whole key", "product_name lives in products, not in transactions"],
-        ["3NF", "No column depends on another non-key column", "zone depends on state → kept in nigeria_states, looked up by state"]],
+        ["3NF", "No column depends on another non-key column", "zone depends on state → the lookup is nigeria_states (32 rows); customers also keeps a copy of zone for convenience (0 mismatches today - check it after every load)"]],
        header=["Form", "Rule", "In supermart_online.db"])
 s.gap()
 s.band("3.1.10-15", "Views, star schema, facts, dimensions, OLTP vs OLAP")
