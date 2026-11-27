@@ -40,6 +40,35 @@ def build(key: bool):
             "Week 1 · Foundations of analytics and Excel · SuperMart Retail, Q1 2025")
     b = A.b
 
+    # ---------------------------------------------------------------- function guide (self-contained help)
+    # Week 1 teaches SUM/COUNTIF/SUMIF(S)/IF/RANK.EQ/INDEX-MATCH. The tasks also need a few functions that Week 2 covers in depth;
+    # each is shown here on a DIFFERENT question, so the guide teaches the pattern without giving away an answer.
+    g = b.sheet("Function Guide", "Function guide: the functions this assignment uses beyond the Week 1 examples workbook", A.subtitle, "Reference")
+    g.scenario("Every formula below is live and works on this workbook's own tables (tSalesQ1 on D_Q1_Sales, tStores on D_Stores). "
+               "Each one answers a different question from the tasks: learn the pattern, then apply it.")
+    sw = stores[stores.Zone == "South-West"].Annual_Target_2025
+    ss = stores[stores.Zone == "South-South"].Annual_Target_2025
+    feb = q1[(q1.Order_Date >= "2025-02-01") & (q1.Order_Date < "2025-03-01")].Quantity.sum()
+    g.h2("Look up a value: XLOOKUP(lookup_value, lookup_array, return_array)   [Task 3, Task 4, Task 5]")
+    g.calc([("Manager of store ST05", '=XLOOKUP("ST05",tStores[Store_ID],tStores[Store_Manager])', smap.Store_Manager["ST05"], "gen",
+             "Finds ST05 in Store_ID and returns the value from the same row of Store_Manager."),
+            ("Zone of store ST09", '=XLOOKUP("ST09",tStores[Store_ID],tStores[Zone])', smap.Zone["ST09"], "gen",
+             "In a scorecard, replace \"ST09\" with the cell holding the Store_ID so the formula copies down.")])
+    g.h2("Conditional statistics: AVERAGEIFS, MINIFS, COUNTIFS (average_range or min_range first, then range/criteria pairs)   [Tasks 2, 3]")
+    g.calc([("Average annual target, South-West stores", '=AVERAGEIFS(tStores[Annual_Target_2025],tStores[Zone],"South-West")', sw.mean(), "naira", ""),
+            ("Smallest annual target, South-South stores", '=MINIFS(tStores[Annual_Target_2025],tStores[Zone],"South-South")', ss.min(), "naira",
+             "MINIFS also works on dates: the earliest date is the smallest number."),
+            ("Furniture lines with any discount", '=COUNTIFS(tSalesQ1[Category],"Furniture",tSalesQ1[Discount],">0")',
+             int(((q1.Category == "Furniture") & (q1.Discount > 0)).sum()), "int", "Every condition must be true.")])
+    g.h2("Dates: EDATE(start, months), TEXT(date, \"mmm\") and a date window in SUMIFS   [Tasks 4, 5]")
+    g.calc([("One month after 2025-01-01", "=EDATE(DATE(2025,1,1),1)", (pd.Timestamp(2025, 2, 1) - pd.Timestamp(1899, 12, 30)).days, "date", "Use it as the end of a month window."),
+            ("Three-letter month of 2025-03-15", '=TEXT(DATE(2025,3,15),"mmm")', "Mar", "gen", ""),
+            ("Units sold in February 2025", '=SUMIFS(tSalesQ1[Quantity],tSalesQ1[Order_Date],">="&DATE(2025,2,1),tSalesQ1[Order_Date],"<"&EDATE(DATE(2025,2,1),1))',
+             int(feb), "int", "From the first day (>=) up to, but not including, the first day of the next month (<).")])
+    g.h2("Count distinct values: SUMPRODUCT(1/COUNTIF(range, range))   [Task 2]")
+    g.calc([("Distinct zones in tStores", "=SUMPRODUCT(1/COUNTIF(tStores[Zone],tStores[Zone]))", stores.Zone.nunique(), "int",
+             "Each value counts 1/(times it appears), so every distinct value adds up to exactly 1. In Excel 365: =COUNTA(UNIQUE(range)).")])
+
     # ---------------------------------------------------------------- T1 analytics thinking
     s = A.task("T1 Analytics Thinking", "Task 1 - Analytics thinking: question types, process and industry use", "1.1-1.4",
                "SuperMart's Regional Manager has sent you a list of questions from across ETEH's client organisations. Before touching any data, "
@@ -79,7 +108,8 @@ def build(key: bool):
     # ---------------------------------------------------------------- T2 working with data
     s = A.task("T2 Working with Data", "Task 2 - Navigating and interrogating a real extract", "1.5-1.6",
                "Sheet D_Q1_Sales holds every SuperMart sales line for January-March 2025 (Excel Table tSalesQ1). Answer each question. "
-               "You may use Sort, Filter, Find, the status bar or a formula - but the number in the yellow cell must be exact.")
+               "You may use Sort, Filter, Find, the status bar or a formula - but the number in the yellow cell must be exact. "
+               "MINIFS and the distinct-count pattern are shown on the Function Guide sheet.")
     n_disc = int((q1.Discount >= 0.4).sum())
     imax = q1.Sales.idxmax()
     rows = [
@@ -103,7 +133,8 @@ def build(key: bool):
     # ---------------------------------------------------------------- T3 formulas
     s = A.task("T3 Formulas & Functions", "Task 3 - Store scorecard with lookups, conditional aggregation and absolute references", "1.7",
                "Build the Q1 2025 scorecard for the 12 stores. Every yellow cell must be a LIVE formula that refers to tSalesQ1, tStores (sheet D_Stores) "
-               "or the input cells below. Q1 target = Annual_Target_2025 × the Q1 phasing input (absolute reference!).")
+               "or the input cells below. Q1 target = Annual_Target_2025 × the Q1 phasing input (absolute reference!). "
+               "XLOOKUP is explained with a worked example on the Function Guide sheet.")
     inp = s.inputs([("Q1 phasing of the annual target", PHASE, "pct", "Q1 delivered 15.4%, 14.6% and 15.3% of annual sales in 2022-2024"),
                     ("VAT rate (Nigeria)", VAT, "pct", "Standard VAT rate used for the VAT-inclusive questions")])
     PH, VR = inp["Q1 phasing of the annual target"], inp["VAT rate (Nigeria)"]
@@ -220,7 +251,9 @@ def build(key: bool):
                     ["Scenario: you have just joined SuperMart Retail's head-office analytics team in Ikeja. The Regional Manager wants a Q1 2025 store review "
                      "before Monday's management meeting - and is worried that Abuja - Wuse lost money.",
                      "Work through Tasks 1-5 in order. Each task names the slide modules it assesses. Answers go in the yellow cells; marks are shown beside every question.",
-                     "Time guide: 4-5 hours. Everything you need is inside this workbook (tSalesQ1 sales lines and tStores directory)."],
+                     "Time guide: 4-5 hours. Everything you need is inside this workbook (tSalesQ1 sales lines and tStores directory). "
+                     "A few functions go beyond the Week 1 examples workbook (XLOOKUP, AVERAGEIFS, MINIFS, EDATE and a distinct count): "
+                     "the Function Guide sheet shows each one with a live, worked example."],
                     [("SuperMart Stores", DATASETS_TEXT["SuperMart Stores"] + " - this file holds the Q1 2025 subset (500 lines).")],
                     rubric=[["Live formulas", "Where a formula is asked for, typed numbers score zero even if correct."],
                             ["Tolerance", "Money exact to ₦1 unless rounding is asked for; percentages ±0.1 pt."],
