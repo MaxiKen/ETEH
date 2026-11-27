@@ -152,8 +152,8 @@ def build(key: bool):
            f"in its department ({WRONG:,} rows instead of {RIGHT:,}; billing would be inflated about {WRONG / RIGHT:.1f}x). Correct: ON d.doctor_id = a.doctor_id "
            "(primary key = foreign key). Always check the row count after a join equals the fact-table count.", marks=3, rows=4,
            guide="Many-to-many / not a key 1; inflation consequence 1; correct ON clause 1.")
-    s.grid([["ward", "=XLOOKUP([@ward_id],tWards[ward_id],tWards[ward])" if key else "?", "Ward name from tWards"],
-            ["doctor_grade", "=XLOOKUP([@doctor_id],tDoctors[doctor_id],tDoctors[grade])" if key else "?", "Consultant / Registrar ... from tDoctors"]],
+    s.grid([["ward", "'=XLOOKUP([@ward_id],tWards[ward_id],tWards[ward])" if key else "?", "Ward name from tWards"],
+            ["doctor_grade", "'=XLOOKUP([@doctor_id],tDoctors[doctor_id],tDoctors[grade])" if key else "?", "Consultant / Registrar ... from tDoctors"]],
            header=["New column in tAdm", "Formula", "Meaning"], merge_last=True)
     A.q(s, "3.4", "Both lookup columns completed as calculated columns (instructor inspects D_Admissions).", "2 columns" if key else "", marks=2, header=True)
     A.q(s, "3.5", "2023 admissions to Topaz Ward (formula using your new ward column).", '=COUNTIFS(tAdm[ward],"Topaz Ward",tAdm[adm_year],2023)',

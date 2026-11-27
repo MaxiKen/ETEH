@@ -4,7 +4,7 @@ Eaglet2EagleHub Ltd · Instructor: Abdulrahaman Kehinde
 
 ## Edition 3 (in progress): leaner decks, practical work in the workbooks
 
-Edition 2 explained every topic with two fixed slides, which made the decks long and repetitive. Edition 3 is being rolled out one week at a time. **Weeks 1 and 2 are done**; Weeks 3–4 and the Capstone volume are still edition 2.
+Edition 2 explained every topic with two fixed slides, which made the decks long and repetitive. Edition 3 is being rolled out one week at a time. **Weeks 1, 2 and 3 are done**; Week 4 and the Capstone volume are still edition 2.
 
 ### Week 1 deck (`ETEH_Vol1_Week1_Foundations_Slides.pptx`, 146 slides, 111 topics)
 - Built from the ETEH deck template (title, welcome, module divider, content frame, closing).
@@ -92,6 +92,35 @@ Rebuilt from scratch in the Week 1 format.
 - The Task 4 brief and the cover point to the guide.
 - The student file and the answer key both verify with 0 mismatches.
 
+### Week 3 deck (`ETEH_Vol3_Week3_SQL_DAX_Dashboards_Slides.pptx`, 200 slides, 158 topics)
+- The same one-slide-per-topic design, for modules 3.1–3.5, 3.6A, 3.6B and 3.7–3.10. Titles match edition 2.
+- Every figure is computed when the deck is built: SQL panels are run against the SQLite databases in `Week3_Data_Files`, and DAX results are worked out from the same tables (`_build/w3_data.py`, `_build/v3/w3_fx.py`).
+- Edition 2 year counts that did not match the data were recomputed, and the filter used is stated on the slide.
+
+### Week 3 examples workbook (`01_Section_Examples/ETEH_Week3_Section_Examples.xlsx`)
+Rebuilt from scratch in the Week 1 format (`_build/02_sec_w3.py` with `_build/v3/wb3_a.py`, `wb3_b.py`, `wb3_c.py`).
+- **Sheets:**
+  - one sheet per module: 3.1–3.5, 3.6A, 3.6B, 3.7–3.10;
+  - 14 data sheets, each with one table starting in A1: SuperMart Online (tTransactions, tLines, tProducts, tCustomers, tSellers, tDeliveries, tStates, tDimDate), SuperMart Stores FY2025 (tDash, tDashStores), Lifecare (tAdm23, tCensus, and tLcDirty, the raw 2023 extract as received) and Crestview (tCV).
+- **All 158 mini-sections are covered** (the build asserts it). Each has Steps, a Worked solution with live formulas, and **243 "Your turn" exercises** in all, with live ✓/✗ checks and an answer key on every sheet.
+- **SQL:** every topic whose slide has a SQL panel (23 queries, mostly in 3.2–3.4 and 3.10) gives that query beside a worksheet formula twin, so the learner can check the number SQL returns. `Week3_Data_Files/ETEH_Week3_SQL_Examples.sql` is regenerated from the same queries.
+- **DAX topics (3.6A/3.6B):** each measure's result has a worksheet formula twin (mostly SUMIFS/COUNTIFS) that returns the same value for the stated filter. Small helper tables (tCat, tYear) play the part of a PivotTable's rows.
+- **Charts (3.7):** summary tables built from formulas (tZoneSum, tMonth, tTier, tPay, tDept, tBins, tRadar, tStoreMonth) feed real Excel charts: column, bar, line, area, pie, doughnut, scatter, radar and combo, plus a sparkline per store. The file format the build uses cannot store bubble charts or the Excel 2016 chart types (waterfall, funnel, treemap, sunburst, histogram, box and whisker). For those, the sheet has the prepared data and the steps, and the learner inserts the chart in Excel.
+- **Dashboard (3.8):** a zone selector cell (a drop-down) drives the KPI cards, in place of a slicer.
+- **Verification:**
+  - 1,653 formulas checked with `_build/verify_xlsx.py`: 1,104 recalculate to their cached values and none disagree;
+  - the other 549 are the FORMULATEXT column, which pycel cannot evaluate;
+  - every file passes `check_xml.py`;
+  - pycel gained array-aware SUMIFS and COUNTIFS, plus COUNTA and UNIQUE, so SUMPRODUCT over a criteria list can be checked.
+
+### Week 3 assignment
+- The tasks and marks are unchanged.
+- A new **Function Guide** sheet shows the worksheet patterns the tasks use: an XLOOKUP calculated column, year-filtered COUNTIFS/AVERAGEIFS, a month count bounded by EOMONTH, and census rates. Each is a live example on the assignment's own tables that answers a different question from the tasks.
+- **Bug fixed in the key:** the Task 3 formula grid held two `=XLOOKUP([@ward_id],…)` formulas outside any table. Excel cannot resolve `[@…]` there, so it would repair the file on opening. They are now shown as text. A new scan (`_build/rev/scan_thisrow.py`) checks every pack workbook for this; no other file has it.
+- The reference dashboard in the key now counts months with EOMONTH, which Week 3 teaches, instead of EDATE, which no week teaches.
+- An untaught-function scan (`_build/rev/untaught_scan.py`) finds no function in the student file or the key that the Week 1–3 workbooks do not teach.
+- Both files verify with 0 mismatches. The student file has 24 formulas (17 recalculated, 7 FORMULATEXT). The key has 43,677 formulas (43,670 recalculated, 7 FORMULATEXT).
+
 ### Build
 ```
 python3 _build/07_v3_week1_deck.py --preview   # deck (+ PNG previews in _build/_stage/v3_preview)
@@ -101,6 +130,10 @@ python3 _build/03_asg_w1.py                    # assignment + answer key
 python3 _build/07_v3_week2_deck.py && python3 _build/rev/lint_v3.py 2
 cd _build && python3 02_sec_w2.py              # Week 2 workbook (asserts all 175 topics are covered)
 python3 _build/03_asg_w2.py                    # Week 2 assignment + answer key
+python3 _build/07_v3_week3_deck.py && python3 _build/rev/lint_v3.py 3
+cd _build && python3 02_sec_w3.py              # Week 3 workbook + SQL examples file (asserts all 158 topics are covered)
+python3 _build/03_asg_w3.py                    # Week 3 assignment + answer key
+python3 _build/rev/untaught_scan.py <Week3 file.xlsx>   # functions not taught in the Week 1-3 workbooks
 python3 _build/verify_xlsx.py <file.xlsx>      # independent formula check
 ```
 
@@ -159,7 +192,7 @@ Every topic in all five volumes (663 topics) now has two slides.
 |---|---|---|---|
 | ETEH_Vol1_Week1_Foundations_Slides.pptx | 146 (edition 3) | 1.1–1.9 · 111 topics | ETEH_Week1_Section_Examples.xlsx, ETEH_Week1_Assignment.xlsx |
 | ETEH_Vol2_Week2_PowerQuery_Pivots_Slides.pptx | 219 (edition 3) | 2.1–2.11 · 175 topics | ETEH_Week2_Section_Examples.xlsx, Week2_Data_Files, ETEH_Week2_Assignment.xlsx |
-| ETEH_Vol3_Week3_SQL_DAX_Dashboards_Slides.pptx | 332 | 3.1–3.10 · 158 topics | ETEH_Week3_Section_Examples.xlsx, Week3_Data_Files (SQLite), ETEH_Week3_Assignment.xlsx |
+| ETEH_Vol3_Week3_SQL_DAX_Dashboards_Slides.pptx | 200 | 3.1–3.10 · 158 topics | ETEH_Week3_Section_Examples.xlsx, Week3_Data_Files (SQLite), ETEH_Week3_Assignment.xlsx |
 | ETEH_Vol4_Week4_Stats_Forecast_AI_Slides.pptx | 297 | 4.1–4.14 · 139 topics | ETEH_Week4_Section_Examples.xlsx, ETEH_Week4_Assignment.xlsx |
 | ETEH_Vol5_Capstone_Career_Slides.pptx | 174 | P.1–P.9 · 80 topics | ETEH_Capstone_Section_Examples.xlsx, Capstones 1–3 (solution workbooks), Student Projects 1–4 |
 
