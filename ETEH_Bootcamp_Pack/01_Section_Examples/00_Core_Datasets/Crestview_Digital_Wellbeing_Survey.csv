@@ -1,0 +1,706 @@
+Student_ID,Age,Gender,Academic_Level,Country,Avg_Daily_Usage_Hours,Most_Used_Platform,Affects_Academic_Performance,Sleep_Hours_Per_Night,Mental_Health_Score,Relationship_Status,Conflicts_Over_Social_Media,Addicted_Score
+DWS-0001,19,Female,Undergraduate,Bangladesh,5.2,Instagram,Yes,6.5,6,In Relationship,3,8
+DWS-0002,22,Male,Graduate,India,2.1,Twitter,No,7.5,8,Single,0,3
+DWS-0003,20,Female,Undergraduate,USA,6.0,TikTok,Yes,5.0,5,Complicated,4,9
+DWS-0004,18,Male,High School,UK,3.0,YouTube,No,7.0,7,Single,1,4
+DWS-0005,21,Male,Graduate,Canada,4.5,Facebook,Yes,6.0,6,In Relationship,2,7
+DWS-0006,19,Female,Undergraduate,Australia,7.2,Instagram,Yes,4.5,4,Complicated,5,9
+DWS-0007,23,Male,Graduate,Germany,1.5,LinkedIn,No,8.0,9,Single,0,2
+DWS-0008,20,Female,Undergraduate,Brazil,5.8,Snapchat,Yes,6.0,6,In Relationship,2,8
+DWS-0009,18,Male,High School,Japan,4.0,TikTok,No,6.5,7,Single,1,5
+DWS-0010,21,Female,Graduate,South Korea,3.3,Instagram,No,7.0,7,In Relationship,1,4
+DWS-0011,19,Male,Undergraduate,France,4.8,Snapchat,Yes,6.2,5,Complicated,3,7
+DWS-0012,20,Female,Undergraduate,Spain,5.5,TikTok,Yes,5.8,6,In Relationship,2,8
+DWS-0013,22,Male,Graduate,Italy,2.8,LinkedIn,No,7.2,8,Single,1,4
+DWS-0014,18,Female,High School,Mexico,6.5,Instagram,Yes,5.5,5,Single,4,9
+DWS-0015,21,Male,Undergraduate,Russia,3.7,YouTube,No,6.8,7,In Relationship,2,5
+DWS-0016,20,Female,Undergraduate,China,4.2,TikTok,Yes,6.0,6,Complicated,3,7
+DWS-0017,24,Male,Graduate,Sweden,2.0,LinkedIn,No,7.8,8,Single,0,3
+DWS-0018,19,Female,High School,Norway,5.0,Instagram,Yes,5.7,5,In Relationship,3,8
+DWS-0019,21,Male,Undergraduate,Denmark,3.5,Facebook,No,6.7,7,Single,1,5
+DWS-0020,20,Female,Undergraduate,Netherlands,4.7,Snapchat,Yes,5.9,6,Complicated,3,7
+DWS-0021,18,Male,High School,Belgium,5.3,TikTok,Yes,5.5,5,Single,4,8
+DWS-0022,23,Female,Graduate,Switzerland,2.5,LinkedIn,No,7.3,8,In Relationship,1,4
+DWS-0023,19,Male,Undergraduate,Austria,4.9,Instagram,Yes,5.8,6,Complicated,3,7
+DWS-0024,20,Female,Undergraduate,Portugal,5.7,TikTok,Yes,5.4,5,Single,4,8
+DWS-0025,22,Male,Graduate,Greece,3.2,Facebook,No,6.9,7,In Relationship,2,5
+DWS-0026,19,Female,High School,Ireland,6.1,Instagram,Yes,5.2,5,Complicated,4,9
+DWS-0027,21,Male,Undergraduate,New Zealand,3.8,YouTube,No,6.6,7,Single,1,5
+DWS-0028,20,Female,Undergraduate,Singapore,4.4,TikTok,Yes,5.9,6,In Relationship,3,7
+DWS-0029,24,Male,Graduate,Malaysia,2.2,LinkedIn,No,7.4,8,Single,0,3
+DWS-0030,19,Female,High School,Thailand,5.9,Instagram,Yes,5.3,5,Complicated,4,8
+DWS-0031,21,Male,Undergraduate,Vietnam,3.6,Facebook,No,6.7,7,Single,1,5
+DWS-0032,20,Female,Undergraduate,Philippines,4.8,Snapchat,Yes,5.7,6,In Relationship,3,7
+DWS-0033,18,Male,High School,Indonesia,5.4,TikTok,Yes,5.4,5,Complicated,4,8
+DWS-0034,23,Female,Graduate,Taiwan,2.6,LinkedIn,No,7.2,8,Single,1,4
+DWS-0035,19,Male,Undergraduate,Hong Kong,4.7,Instagram,Yes,5.8,6,In Relationship,3,7
+DWS-0036,20,Female,Undergraduate,Turkey,5.6,TikTok,Yes,5.5,5,Complicated,4,8
+DWS-0037,22,Male,Graduate,Israel,3.1,Facebook,No,6.8,7,Single,1,5
+DWS-0038,19,Female,High School,UAE,6.2,Instagram,Yes,5.1,5,In Relationship,4,9
+DWS-0039,21,Male,Undergraduate,Egypt,3.9,YouTube,No,6.5,7,Complicated,2,6
+DWS-0040,20,Female,Undergraduate,Morocco,4.5,TikTok,Yes,5.8,6,Single,3,7
+DWS-0041,24,Male,Graduate,South Africa,2.3,LinkedIn,No,7.3,8,In Relationship,1,4
+DWS-0042,19,Female,High School,Nigeria,5.8,Instagram,Yes,5.4,5,Complicated,4,8
+DWS-0043,21,Male,Undergraduate,Kenya,3.7,Facebook,No,6.6,7,Single,2,5
+DWS-0044,20,Female,Undergraduate,Ghana,4.6,Snapchat,Yes,5.7,6,In Relationship,3,7
+DWS-0045,18,Male,High School,Argentina,5.5,TikTok,Yes,5.3,5,Single,4,8
+DWS-0046,23,Female,Graduate,Chile,2.7,LinkedIn,No,7.1,8,Complicated,1,4
+DWS-0047,19,Male,Undergraduate,Colombia,4.8,Instagram,Yes,5.9,6,In Relationship,3,7
+DWS-0048,20,Female,Undergraduate,Peru,5.5,TikTok,Yes,5.6,5,Single,4,8
+DWS-0049,22,Male,Graduate,Venezuela,3.3,Facebook,No,6.7,7,In Relationship,2,5
+DWS-0050,19,Female,High School,Ecuador,6.3,Instagram,Yes,5.2,5,Complicated,4,9
+DWS-0051,21,Male,Undergraduate,Uruguay,3.8,YouTube,No,6.4,7,Single,2,6
+DWS-0052,20,Female,Undergraduate,Paraguay,4.7,TikTok,Yes,5.8,6,In Relationship,3,7
+DWS-0053,24,Male,Graduate,Bolivia,2.4,LinkedIn,No,7.2,8,Complicated,1,4
+DWS-0054,19,Female,High School,Costa Rica,5.7,Instagram,Yes,5.5,5,Single,4,8
+DWS-0055,21,Male,Undergraduate,Panama,3.6,Facebook,No,6.5,7,In Relationship,2,5
+DWS-0056,20,Female,Undergraduate,Jamaica,4.9,Snapchat,Yes,5.6,6,Complicated,3,7
+DWS-0057,18,Male,High School,Trinidad,5.6,TikTok,Yes,5.2,5,Single,4,8
+DWS-0058,23,Female,Graduate,Bahamas,2.8,LinkedIn,No,7.0,8,In Relationship,1,4
+DWS-0059,19,Male,Undergraduate,Iceland,4.6,Instagram,Yes,5.9,6,Complicated,3,7
+DWS-0060,20,Female,Undergraduate,Finland,5.4,TikTok,Yes,5.7,5,Single,4,8
+DWS-0061,22,Male,Graduate,Poland,3.1,Facebook,No,7.1,7,Single,1,5
+DWS-0062,19,Female,Undergraduate,Romania,5.6,Instagram,Yes,5.6,5,In Relationship,3,8
+DWS-0063,20,Male,Undergraduate,Hungary,4.2,TikTok,Yes,6.0,6,Complicated,3,7
+DWS-0064,18,Female,High School,Czech Republic,6.1,Snapchat,Yes,5.2,4,Single,4,9
+DWS-0065,23,Male,Graduate,Slovakia,2.3,LinkedIn,No,7.4,8,In Relationship,1,3
+DWS-0066,21,Female,Undergraduate,Croatia,4.8,Instagram,Yes,5.8,6,Single,3,7
+DWS-0067,20,Male,Undergraduate,Serbia,3.9,YouTube,No,6.5,7,Complicated,2,6
+DWS-0068,19,Female,High School,Slovenia,5.7,TikTok,Yes,5.4,5,In Relationship,4,8
+DWS-0069,22,Male,Graduate,Bulgaria,2.8,LinkedIn,No,7.2,8,Single,1,4
+DWS-0070,20,Female,Undergraduate,Estonia,4.5,Instagram,Yes,5.9,6,Complicated,3,7
+DWS-0071,18,Male,High School,Latvia,5.4,Snapchat,Yes,5.5,5,Single,4,8
+DWS-0072,21,Female,Graduate,Lithuania,3.2,Facebook,No,6.8,7,In Relationship,2,5
+DWS-0073,19,Male,Undergraduate,Ukraine,4.9,TikTok,Yes,5.7,6,Complicated,3,7
+DWS-0074,20,Female,Undergraduate,Moldova,5.8,Instagram,Yes,5.3,5,Single,4,8
+DWS-0075,23,Male,Graduate,Belarus,2.5,LinkedIn,No,7.3,8,In Relationship,1,4
+DWS-0076,21,Female,Undergraduate,Kazakhstan,4.6,Snapchat,Yes,5.8,6,Single,3,7
+DWS-0077,19,Male,High School,Uzbekistan,5.5,TikTok,Yes,5.4,5,Complicated,4,8
+DWS-0078,22,Female,Graduate,Kyrgyzstan,2.9,Facebook,No,7.0,7,In Relationship,2,5
+DWS-0079,20,Male,Undergraduate,Tajikistan,4.7,YouTube,Yes,5.9,6,Single,3,7
+DWS-0080,18,Female,High School,Armenia,5.9,Instagram,Yes,5.2,5,Complicated,4,9
+DWS-0081,21,Male,Graduate,Georgia,3.0,LinkedIn,No,7.1,8,In Relationship,1,4
+DWS-0082,19,Female,Undergraduate,Azerbaijan,4.8,TikTok,Yes,5.7,6,Single,3,7
+DWS-0083,20,Male,Undergraduate,Cyprus,3.8,Facebook,No,6.6,7,Complicated,2,6
+DWS-0084,22,Female,Graduate,Malta,2.7,LinkedIn,No,7.2,8,In Relationship,1,4
+DWS-0085,18,Male,High School,Luxembourg,5.6,Snapchat,Yes,5.3,5,Single,4,8
+DWS-0086,21,Female,Undergraduate,Monaco,4.5,Instagram,Yes,5.8,6,Complicated,3,7
+DWS-0087,19,Male,High School,Andorra,5.3,TikTok,Yes,5.5,5,In Relationship,4,8
+DWS-0088,23,Female,Graduate,San Marino,2.6,LinkedIn,No,7.3,8,Single,1,4
+DWS-0089,20,Male,Undergraduate,Vatican City,4.4,YouTube,Yes,6.0,6,Complicated,3,7
+DWS-0090,18,Female,High School,Liechtenstein,5.8,Instagram,Yes,5.2,5,Single,4,9
+DWS-0091,22,Male,Graduate,Montenegro,2.9,Facebook,No,7.0,7,In Relationship,2,5
+DWS-0092,19,Female,Undergraduate,Albania,4.7,TikTok,Yes,5.8,6,Complicated,3,7
+DWS-0093,21,Male,Undergraduate,North Macedonia,3.7,Snapchat,No,6.5,7,Single,2,6
+DWS-0094,20,Female,High School,Kosovo,5.5,Instagram,Yes,5.4,5,In Relationship,4,8
+DWS-0095,23,Male,Graduate,Bosnia,2.4,LinkedIn,No,7.4,8,Complicated,1,4
+DWS-0096,19,Female,Undergraduate,Qatar,4.9,TikTok,Yes,5.7,6,Single,3,7
+DWS-0097,18,Male,High School,Kuwait,5.7,Snapchat,Yes,5.3,5,In Relationship,4,8
+DWS-0098,22,Female,Graduate,Bahrain,2.8,LinkedIn,No,7.1,8,Complicated,1,4
+DWS-0099,20,Male,Undergraduate,Oman,4.6,Instagram,Yes,5.9,6,Single,3,7
+DWS-0100,21,Female,Undergraduate,Jordan,5.4,TikTok,Yes,5.5,5,In Relationship,4,8
+DWS-0101,19,Male,High School,Lebanon,5.8,YouTube,Yes,5.2,5,Complicated,4,9
+DWS-0102,23,Female,Graduate,Iraq,2.5,LinkedIn,No,7.3,8,Single,1,4
+DWS-0103,20,Male,Undergraduate,Yemen,4.7,Facebook,Yes,5.8,6,In Relationship,3,7
+DWS-0104,18,Female,High School,Syria,5.6,Instagram,Yes,5.4,5,Single,4,8
+DWS-0105,22,Male,Graduate,Afghanistan,2.9,LinkedIn,No,7.0,7,Complicated,2,5
+DWS-0106,19,Female,Undergraduate,Pakistan,4.8,TikTok,Yes,5.7,6,In Relationship,3,7
+DWS-0107,21,Male,Undergraduate,Nepal,3.8,YouTube,No,6.6,7,Single,2,6
+DWS-0108,20,Female,High School,Bhutan,5.5,Snapchat,Yes,5.5,5,Complicated,4,8
+DWS-0109,23,Male,Graduate,Sri Lanka,2.6,LinkedIn,No,7.2,8,In Relationship,1,4
+DWS-0110,19,Female,Undergraduate,Maldives,4.9,Instagram,Yes,5.8,6,Single,3,7
+DWS-0111,20,Male,Undergraduate,Bangladesh,6.1,Instagram,Yes,6.2,5,Single,4,8
+DWS-0112,21,Female,Undergraduate,India,5.8,TikTok,Yes,5.9,6,In Relationship,3,7
+DWS-0113,19,Male,Undergraduate,Nepal,4.9,Facebook,No,7.1,7,Single,2,5
+DWS-0114,22,Female,Graduate,Pakistan,5.5,Instagram,Yes,6.0,5,Single,4,8
+DWS-0115,20,Male,Undergraduate,Sri Lanka,5.2,TikTok,Yes,6.3,6,In Relationship,3,7
+DWS-0116,19,Female,Undergraduate,Maldives,4.8,Instagram,No,7.2,8,Single,2,5
+DWS-0117,21,Male,Graduate,Bangladesh,6.0,Facebook,Yes,5.8,5,In Relationship,4,8
+DWS-0118,20,Female,Undergraduate,India,5.7,Instagram,Yes,6.1,6,Single,3,7
+DWS-0119,22,Male,Graduate,Nepal,4.7,TikTok,No,7.3,7,Single,2,5
+DWS-0120,19,Female,Undergraduate,Pakistan,5.4,Instagram,Yes,6.2,5,In Relationship,4,8
+DWS-0121,20,Male,Undergraduate,Sri Lanka,5.9,Facebook,Yes,5.9,6,Single,3,7
+DWS-0122,21,Female,Graduate,Maldives,4.6,Instagram,No,7.4,8,In Relationship,2,5
+DWS-0123,19,Male,Undergraduate,Bangladesh,5.3,TikTok,Yes,6.3,5,Single,4,8
+DWS-0124,22,Female,Graduate,India,5.8,Instagram,Yes,5.8,6,In Relationship,3,7
+DWS-0125,20,Male,Undergraduate,Nepal,4.5,Facebook,No,7.5,7,Single,2,5
+DWS-0126,21,Female,Graduate,Pakistan,5.2,Instagram,Yes,6.4,5,In Relationship,4,8
+DWS-0127,19,Male,Undergraduate,Sri Lanka,5.7,TikTok,Yes,5.7,6,Single,3,7
+DWS-0128,20,Female,Undergraduate,Maldives,4.4,Instagram,No,7.6,8,In Relationship,2,5
+DWS-0129,22,Male,Graduate,Bangladesh,5.1,Facebook,Yes,6.5,5,Single,4,8
+DWS-0130,21,Female,Graduate,India,5.6,Instagram,Yes,5.6,6,In Relationship,3,7
+DWS-0131,19,Male,Undergraduate,Nepal,4.3,TikTok,No,7.7,7,Single,2,5
+DWS-0132,20,Female,Undergraduate,Pakistan,5.0,Instagram,Yes,6.6,5,In Relationship,4,8
+DWS-0133,22,Male,Graduate,Sri Lanka,5.5,Facebook,Yes,5.5,6,Single,3,7
+DWS-0134,21,Female,Graduate,Maldives,4.2,Instagram,No,7.8,8,In Relationship,2,5
+DWS-0135,19,Male,Undergraduate,Bangladesh,4.9,TikTok,Yes,6.7,5,Single,4,8
+DWS-0136,20,Female,Undergraduate,India,5.4,Instagram,Yes,5.4,6,In Relationship,3,7
+DWS-0137,22,Male,Graduate,Nepal,4.1,Facebook,No,7.9,7,Single,2,5
+DWS-0138,21,Female,Graduate,Pakistan,4.8,Instagram,Yes,6.8,5,In Relationship,4,8
+DWS-0139,19,Male,Undergraduate,Sri Lanka,5.3,TikTok,Yes,5.3,6,Single,3,7
+DWS-0140,20,Female,Undergraduate,Maldives,4.0,Instagram,No,8.0,8,In Relationship,2,5
+DWS-0141,22,Male,Graduate,Bangladesh,4.7,Facebook,Yes,6.9,5,Single,4,8
+DWS-0142,21,Female,Graduate,India,5.2,Instagram,Yes,5.2,6,In Relationship,3,7
+DWS-0143,19,Male,Undergraduate,Nepal,3.9,TikTok,No,8.1,7,Single,2,5
+DWS-0144,20,Female,Undergraduate,Pakistan,4.6,Instagram,Yes,7.0,5,In Relationship,4,8
+DWS-0145,22,Male,Graduate,Sri Lanka,5.1,Facebook,Yes,5.1,6,Single,3,7
+DWS-0146,21,Female,Graduate,Maldives,3.8,Instagram,No,8.2,8,In Relationship,2,5
+DWS-0147,19,Male,Undergraduate,Bangladesh,4.5,TikTok,Yes,7.1,5,Single,4,8
+DWS-0148,20,Female,Undergraduate,India,5.0,Instagram,Yes,5.0,6,In Relationship,3,7
+DWS-0149,22,Male,Graduate,Nepal,3.7,Facebook,No,8.3,7,Single,2,5
+DWS-0150,21,Female,Graduate,Pakistan,4.4,Instagram,Yes,7.2,5,In Relationship,4,8
+DWS-0151,19,Male,Undergraduate,Sri Lanka,4.9,TikTok,Yes,4.9,6,Single,3,7
+DWS-0152,20,Female,Undergraduate,Maldives,3.6,Instagram,No,8.4,8,In Relationship,2,5
+DWS-0153,22,Male,Graduate,Bangladesh,4.3,Facebook,Yes,7.3,5,Single,4,8
+DWS-0154,21,Female,Graduate,India,4.8,Instagram,Yes,4.8,6,In Relationship,3,7
+DWS-0155,19,Male,Undergraduate,Nepal,3.5,TikTok,No,8.5,7,Single,2,5
+DWS-0156,20,Female,Undergraduate,Pakistan,4.2,Instagram,Yes,7.4,5,In Relationship,4,8
+DWS-0157,22,Male,Graduate,Sri Lanka,4.7,Facebook,Yes,4.7,6,Single,3,7
+DWS-0158,21,Female,Graduate,Maldives,3.4,Instagram,No,8.6,8,In Relationship,2,5
+DWS-0159,19,Male,Undergraduate,Bangladesh,4.1,TikTok,Yes,7.5,5,Single,4,8
+DWS-0160,20,Female,Undergraduate,India,4.6,Instagram,Yes,4.6,6,In Relationship,3,7
+DWS-0161,19,Female,Undergraduate,Bangladesh,5.3,Instagram,Yes,6.1,5,Single,3,7
+DWS-0162,21,Male,Graduate,India,4.8,Facebook,No,7.2,7,In Relationship,2,6
+DWS-0163,20,Female,Undergraduate,Nepal,5.5,TikTok,Yes,5.9,6,Single,4,8
+DWS-0164,22,Male,Graduate,Pakistan,4.7,Instagram,Yes,6.3,5,In Relationship,3,7
+DWS-0165,19,Female,Undergraduate,Sri Lanka,5.1,Facebook,No,7.0,7,Single,2,5
+DWS-0166,21,Male,Graduate,Maldives,5.4,TikTok,Yes,6.0,6,In Relationship,4,8
+DWS-0167,20,Female,Undergraduate,Bangladesh,4.9,Instagram,Yes,6.4,5,Single,3,7
+DWS-0168,22,Male,Graduate,India,5.2,Facebook,No,7.1,7,In Relationship,2,6
+DWS-0169,19,Female,Undergraduate,Nepal,5.6,TikTok,Yes,5.8,6,Single,4,8
+DWS-0170,21,Male,Graduate,Pakistan,4.6,Instagram,Yes,6.5,5,In Relationship,3,7
+DWS-0171,20,Female,Undergraduate,Sri Lanka,5.0,Facebook,No,7.3,7,Single,2,5
+DWS-0172,22,Male,Graduate,Maldives,5.3,TikTok,Yes,5.7,6,In Relationship,4,8
+DWS-0173,19,Female,Undergraduate,Bangladesh,4.8,Instagram,Yes,6.6,5,Single,3,7
+DWS-0174,21,Male,Graduate,India,5.1,Facebook,No,7.4,7,In Relationship,2,6
+DWS-0175,20,Female,Undergraduate,Nepal,5.7,TikTok,Yes,5.6,6,Single,4,8
+DWS-0176,22,Male,Graduate,Pakistan,4.5,Instagram,Yes,6.7,5,In Relationship,3,7
+DWS-0177,19,Female,Undergraduate,Sri Lanka,4.9,Facebook,No,7.5,7,Single,2,5
+DWS-0178,21,Male,Graduate,Maldives,5.2,TikTok,Yes,5.5,6,In Relationship,4,8
+DWS-0179,20,Female,Undergraduate,Bangladesh,4.7,Instagram,Yes,6.8,5,Single,3,7
+DWS-0180,22,Male,Graduate,India,5.0,Facebook,No,7.6,7,In Relationship,2,6
+DWS-0181,19,Female,Undergraduate,Nepal,5.8,TikTok,Yes,5.4,6,Single,4,8
+DWS-0182,21,Male,Graduate,Pakistan,4.4,Instagram,Yes,6.9,5,In Relationship,3,7
+DWS-0183,20,Female,Undergraduate,Sri Lanka,4.8,Facebook,No,7.7,7,Single,2,5
+DWS-0184,22,Male,Graduate,Maldives,5.1,TikTok,Yes,5.3,6,In Relationship,4,8
+DWS-0185,19,Female,Undergraduate,Bangladesh,4.6,Instagram,Yes,7.0,5,Single,3,7
+DWS-0186,21,Male,Graduate,India,4.9,Facebook,No,7.8,7,In Relationship,2,6
+DWS-0187,20,Female,Undergraduate,Nepal,5.9,TikTok,Yes,5.2,6,Single,4,8
+DWS-0188,22,Male,Graduate,Pakistan,4.3,Instagram,Yes,7.1,5,In Relationship,3,7
+DWS-0189,19,Female,Undergraduate,Sri Lanka,4.7,Facebook,No,7.9,7,Single,2,5
+DWS-0190,21,Male,Graduate,Maldives,5.0,TikTok,Yes,5.1,6,In Relationship,4,8
+DWS-0191,20,Female,Undergraduate,Bangladesh,4.5,Instagram,Yes,7.2,5,Single,3,7
+DWS-0192,22,Male,Graduate,India,4.8,Facebook,No,8.0,7,In Relationship,2,6
+DWS-0193,19,Female,Undergraduate,Nepal,6.0,TikTok,Yes,5.0,6,Single,4,8
+DWS-0194,21,Male,Graduate,Pakistan,4.2,Instagram,Yes,7.3,5,In Relationship,3,7
+DWS-0195,20,Female,Undergraduate,Sri Lanka,4.6,Facebook,No,8.1,7,Single,2,5
+DWS-0196,22,Male,Graduate,Maldives,4.9,TikTok,Yes,4.9,6,In Relationship,4,8
+DWS-0197,19,Female,Undergraduate,Bangladesh,4.4,Instagram,Yes,7.4,5,Single,3,7
+DWS-0198,21,Male,Graduate,India,4.7,Facebook,No,8.2,7,In Relationship,2,6
+DWS-0199,20,Female,Undergraduate,Nepal,6.1,TikTok,Yes,4.8,6,Single,4,8
+DWS-0200,22,Male,Graduate,Pakistan,4.1,Instagram,Yes,7.5,5,In Relationship,3,7
+DWS-0201,19,Female,Undergraduate,Sri Lanka,4.5,Facebook,No,8.3,7,Single,2,5
+DWS-0202,21,Male,Graduate,Maldives,4.8,TikTok,Yes,4.7,6,In Relationship,4,8
+DWS-0203,20,Female,Undergraduate,Bangladesh,4.3,Instagram,Yes,7.6,5,Single,3,7
+DWS-0204,22,Male,Graduate,India,4.6,Facebook,No,8.4,7,In Relationship,2,6
+DWS-0205,19,Female,Undergraduate,Nepal,6.2,TikTok,Yes,4.6,6,Single,4,8
+DWS-0206,21,Male,Graduate,Pakistan,4.0,Instagram,Yes,7.7,5,In Relationship,3,7
+DWS-0207,20,Female,Undergraduate,Sri Lanka,4.4,Facebook,No,8.5,7,Single,2,5
+DWS-0208,22,Male,Graduate,Maldives,4.7,TikTok,Yes,4.5,6,In Relationship,4,8
+DWS-0209,19,Female,Undergraduate,Bangladesh,4.2,Instagram,Yes,7.8,5,Single,3,7
+DWS-0210,21,Male,Graduate,India,4.5,Facebook,No,8.6,7,In Relationship,2,6
+DWS-0211,20,Female,Undergraduate,Nepal,6.3,TikTok,Yes,4.4,6,Single,4,8
+DWS-0212,22,Male,Graduate,Pakistan,3.9,Instagram,Yes,7.9,5,In Relationship,3,7
+DWS-0213,19,Female,Undergraduate,Sri Lanka,4.3,Facebook,No,8.7,7,Single,2,5
+DWS-0214,21,Male,Graduate,Maldives,4.6,TikTok,Yes,4.3,6,In Relationship,4,8
+DWS-0215,20,Female,Undergraduate,Bangladesh,4.1,Instagram,Yes,8.0,5,Single,3,7
+DWS-0216,22,Male,Graduate,India,4.4,Facebook,No,8.8,7,In Relationship,2,6
+DWS-0217,19,Female,Undergraduate,Nepal,6.4,TikTok,Yes,4.2,6,Single,4,8
+DWS-0218,21,Male,Graduate,Pakistan,3.8,Instagram,Yes,8.1,5,In Relationship,3,7
+DWS-0219,20,Female,Undergraduate,Sri Lanka,4.2,Facebook,No,8.9,7,Single,2,5
+DWS-0220,22,Male,Graduate,Maldives,4.5,TikTok,Yes,4.1,6,In Relationship,4,8
+DWS-0221,19,Female,Undergraduate,USA,6.5,Instagram,Yes,6.0,5,Single,4,9
+DWS-0222,21,Male,Graduate,UK,5.8,TikTok,Yes,6.5,6,In Relationship,3,7
+DWS-0223,20,Female,Undergraduate,Australia,4.5,Instagram,No,7.5,8,Single,2,5
+DWS-0224,22,Male,Graduate,Germany,4.2,Facebook,No,7.8,7,In Relationship,2,4
+DWS-0225,19,Female,Undergraduate,Japan,3.8,LINE,No,7.9,8,Single,1,3
+DWS-0226,21,Male,Graduate,Italy,5.5,Instagram,Yes,6.8,6,Single,3,7
+DWS-0227,20,Female,Undergraduate,South Korea,5.2,KakaoTalk,Yes,6.5,6,In Relationship,3,6
+DWS-0228,22,Male,Graduate,Russia,4.8,VKontakte,No,7.2,7,Single,2,5
+DWS-0229,19,Female,Undergraduate,USA,7.0,TikTok,Yes,5.8,4,In Relationship,4,9
+DWS-0230,21,Male,Graduate,UK,5.5,Instagram,Yes,6.7,6,Single,3,7
+DWS-0231,20,Female,Undergraduate,Australia,4.7,Facebook,No,7.4,7,In Relationship,2,5
+DWS-0232,22,Male,Graduate,Germany,4.0,Instagram,No,7.9,8,Single,1,4
+DWS-0233,19,Female,Undergraduate,Japan,3.5,LINE,No,8.0,8,Single,1,3
+DWS-0234,21,Male,Graduate,Italy,5.7,TikTok,Yes,6.5,5,In Relationship,3,8
+DWS-0235,20,Female,Undergraduate,South Korea,5.0,KakaoTalk,Yes,6.8,6,Single,3,6
+DWS-0236,22,Male,Graduate,Russia,4.5,VKontakte,No,7.4,7,In Relationship,2,5
+DWS-0237,19,Female,Undergraduate,USA,6.8,Instagram,Yes,5.9,4,Single,4,9
+DWS-0238,21,Male,Graduate,UK,5.6,Facebook,Yes,6.6,6,In Relationship,3,7
+DWS-0239,20,Female,Undergraduate,Australia,4.6,Instagram,No,7.3,7,Single,2,5
+DWS-0240,22,Male,Graduate,Germany,4.1,Facebook,No,7.7,8,In Relationship,2,4
+DWS-0241,19,Female,Undergraduate,Japan,3.7,LINE,No,7.8,8,Single,1,3
+DWS-0242,21,Male,Graduate,Italy,5.4,Instagram,Yes,6.7,5,Single,3,7
+DWS-0243,20,Female,Undergraduate,South Korea,5.1,KakaoTalk,Yes,6.6,6,In Relationship,3,6
+DWS-0244,22,Male,Graduate,Russia,4.7,VKontakte,No,7.3,7,Single,2,5
+DWS-0245,19,Female,Undergraduate,USA,6.9,TikTok,Yes,5.7,4,In Relationship,4,9
+DWS-0246,21,Male,Graduate,UK,5.7,Instagram,Yes,6.4,6,Single,3,7
+DWS-0247,20,Female,Undergraduate,Australia,4.8,Facebook,No,7.2,7,In Relationship,2,5
+DWS-0248,22,Male,Graduate,Germany,3.9,Instagram,No,7.8,8,Single,1,4
+DWS-0249,19,Female,Undergraduate,Japan,3.6,LINE,No,8.1,8,Single,1,3
+DWS-0250,21,Male,Graduate,Italy,5.6,TikTok,Yes,6.6,5,In Relationship,3,8
+DWS-0251,20,Female,Undergraduate,South Korea,4.9,KakaoTalk,Yes,6.9,6,Single,3,6
+DWS-0252,22,Male,Graduate,Russia,4.6,VKontakte,No,7.5,7,In Relationship,2,5
+DWS-0253,19,Female,Undergraduate,USA,6.7,Instagram,Yes,5.8,4,Single,4,9
+DWS-0254,21,Male,Graduate,UK,5.4,Facebook,Yes,6.5,6,In Relationship,3,7
+DWS-0255,20,Female,Undergraduate,Australia,4.4,Instagram,No,7.4,7,Single,2,5
+DWS-0256,22,Male,Graduate,Germany,4.0,Facebook,No,7.6,8,In Relationship,2,4
+DWS-0257,19,Female,Undergraduate,Japan,3.4,LINE,No,8.2,8,Single,1,3
+DWS-0258,21,Male,Graduate,Italy,5.3,Instagram,Yes,6.8,5,Single,3,7
+DWS-0259,20,Female,Undergraduate,South Korea,5.0,KakaoTalk,Yes,6.7,6,In Relationship,3,6
+DWS-0260,22,Male,Graduate,Russia,4.4,VKontakte,No,7.6,7,Single,2,5
+DWS-0261,19,Female,Undergraduate,USA,6.6,TikTok,Yes,5.6,4,In Relationship,4,9
+DWS-0262,21,Male,Graduate,UK,5.3,Instagram,Yes,6.3,6,Single,3,7
+DWS-0263,20,Female,Undergraduate,Australia,4.3,Facebook,No,7.5,7,In Relationship,2,5
+DWS-0264,22,Male,Graduate,Germany,3.8,Instagram,No,7.7,8,Single,1,4
+DWS-0265,19,Female,Undergraduate,Japan,3.3,LINE,No,8.3,8,Single,1,3
+DWS-0266,21,Male,Graduate,Italy,5.2,TikTok,Yes,6.9,5,In Relationship,3,8
+DWS-0267,20,Female,Undergraduate,South Korea,4.8,KakaoTalk,Yes,7.0,6,Single,3,6
+DWS-0268,22,Male,Graduate,Russia,4.3,VKontakte,No,7.7,7,In Relationship,2,5
+DWS-0269,19,Female,Undergraduate,USA,6.4,Instagram,Yes,5.7,4,Single,4,9
+DWS-0270,21,Male,Graduate,UK,5.2,Facebook,Yes,6.4,6,In Relationship,3,7
+DWS-0271,20,Female,Undergraduate,Australia,4.5,Instagram,No,7.3,7,Single,2,5
+DWS-0272,22,Male,Graduate,Germany,3.7,Facebook,No,7.8,8,In Relationship,1,4
+DWS-0273,19,Female,Undergraduate,Japan,3.2,LINE,No,8.4,8,Single,1,3
+DWS-0274,21,Male,Graduate,Italy,5.4,Instagram,Yes,6.7,5,Single,3,7
+DWS-0275,20,Female,Undergraduate,South Korea,4.7,KakaoTalk,Yes,7.1,6,In Relationship,3,6
+DWS-0276,22,Male,Graduate,Russia,4.2,VKontakte,No,7.8,7,Single,2,5
+DWS-0277,19,Female,Undergraduate,USA,6.6,TikTok,Yes,5.5,4,In Relationship,4,9
+DWS-0278,21,Male,Graduate,UK,5.1,Instagram,Yes,6.5,6,Single,3,7
+DWS-0279,20,Female,Undergraduate,Australia,4.4,Facebook,No,7.4,7,In Relationship,2,5
+DWS-0280,22,Male,Graduate,Germany,3.6,Instagram,No,7.9,8,Single,1,4
+DWS-0281,19,Female,Undergraduate,Japan,3.1,LINE,No,8.5,8,Single,1,3
+DWS-0282,21,Male,Graduate,Italy,5.3,TikTok,Yes,6.8,5,In Relationship,3,8
+DWS-0283,20,Female,Undergraduate,South Korea,4.6,KakaoTalk,Yes,7.2,6,Single,3,6
+DWS-0284,22,Male,Graduate,Russia,4.1,VKontakte,No,7.9,7,In Relationship,2,5
+DWS-0285,19,Female,Undergraduate,USA,6.7,Instagram,Yes,5.4,4,Single,4,9
+DWS-0286,21,Male,Graduate,UK,5.0,Facebook,Yes,6.6,6,In Relationship,3,7
+DWS-0287,20,Female,Undergraduate,Australia,4.3,Instagram,No,7.5,7,Single,2,5
+DWS-0288,22,Male,Graduate,Germany,3.5,Facebook,No,8.0,8,In Relationship,1,4
+DWS-0289,19,Female,Undergraduate,Japan,3.0,LINE,No,8.6,8,Single,1,3
+DWS-0290,21,Male,Graduate,Italy,5.2,Instagram,Yes,6.9,5,Single,3,7
+DWS-0291,20,Female,Undergraduate,South Korea,4.5,KakaoTalk,Yes,7.3,6,In Relationship,3,6
+DWS-0292,22,Male,Graduate,Russia,4.0,VKontakte,No,8.0,7,Single,2,5
+DWS-0293,19,Female,Undergraduate,USA,6.8,TikTok,Yes,5.3,4,In Relationship,4,9
+DWS-0294,21,Male,Graduate,UK,4.9,Instagram,Yes,6.7,6,Single,3,7
+DWS-0295,20,Female,Undergraduate,Australia,4.2,Facebook,No,7.6,7,In Relationship,2,5
+DWS-0296,22,Male,Graduate,Germany,3.4,Instagram,No,8.1,8,Single,1,4
+DWS-0297,19,Female,Undergraduate,Japan,2.9,LINE,No,8.7,8,Single,1,3
+DWS-0298,21,Male,Graduate,Italy,5.1,TikTok,Yes,7.0,5,In Relationship,3,8
+DWS-0299,20,Female,Undergraduate,South Korea,4.4,KakaoTalk,Yes,7.4,6,Single,3,6
+DWS-0300,22,Male,Graduate,Russia,3.9,VKontakte,No,8.1,7,In Relationship,2,5
+DWS-0301,19,Female,Undergraduate,USA,6.9,Instagram,Yes,5.2,4,Single,4,9
+DWS-0302,21,Male,Graduate,UK,4.8,Facebook,Yes,6.8,6,In Relationship,3,7
+DWS-0303,20,Female,Undergraduate,Australia,4.1,Instagram,No,7.7,7,Single,2,5
+DWS-0304,22,Male,Graduate,Germany,3.3,Facebook,No,8.2,8,In Relationship,1,4
+DWS-0305,19,Female,Undergraduate,Japan,2.8,LINE,No,8.8,8,Single,1,3
+DWS-0306,21,Male,Graduate,Italy,5.0,Instagram,Yes,7.1,5,Single,3,7
+DWS-0307,20,Female,Undergraduate,South Korea,4.3,KakaoTalk,Yes,7.5,6,In Relationship,3,6
+DWS-0308,22,Male,Graduate,Russia,3.8,VKontakte,No,8.2,7,Single,2,5
+DWS-0309,19,Female,Undergraduate,USA,7.0,TikTok,Yes,5.1,4,In Relationship,4,9
+DWS-0310,21,Male,Graduate,UK,4.7,Instagram,Yes,6.9,6,Single,3,7
+DWS-0311,20,Female,Undergraduate,Australia,4.0,Facebook,No,7.8,7,In Relationship,2,5
+DWS-0312,22,Male,Graduate,Germany,3.2,Instagram,No,8.3,8,Single,1,4
+DWS-0313,19,Female,Undergraduate,Japan,2.7,LINE,No,8.9,8,Single,1,3
+DWS-0314,21,Male,Graduate,Italy,4.9,TikTok,Yes,7.2,5,In Relationship,3,8
+DWS-0315,20,Female,Undergraduate,South Korea,4.2,KakaoTalk,Yes,7.6,6,Single,3,6
+DWS-0316,22,Male,Graduate,Russia,3.7,VKontakte,No,8.3,7,In Relationship,2,5
+DWS-0317,19,Female,Undergraduate,USA,7.1,Instagram,Yes,5.0,4,Single,4,9
+DWS-0318,21,Male,Graduate,UK,4.6,Facebook,Yes,7.0,6,In Relationship,3,7
+DWS-0319,20,Female,Undergraduate,Australia,3.9,Instagram,No,7.9,7,Single,2,5
+DWS-0320,22,Male,Graduate,Germany,3.1,Facebook,No,8.4,8,In Relationship,1,4
+DWS-0321,19,Female,Undergraduate,Spain,5.2,Instagram,Yes,6.8,6,Single,3,7
+DWS-0322,21,Male,Graduate,Denmark,4.1,Facebook,No,7.8,8,In Relationship,2,4
+DWS-0323,20,Female,Undergraduate,Ireland,5.0,Instagram,Yes,7.0,7,Single,3,6
+DWS-0324,22,Male,Graduate,India,5.8,WhatsApp,Yes,6.5,5,In Relationship,4,8
+DWS-0325,19,Female,Undergraduate,Switzerland,4.0,Instagram,No,7.9,8,Single,2,4
+DWS-0326,21,Male,Graduate,Turkey,5.5,Instagram,Yes,6.7,6,Single,3,7
+DWS-0327,20,Female,Undergraduate,USA,6.8,TikTok,Yes,5.5,5,In Relationship,4,9
+DWS-0328,22,Male,Graduate,Mexico,5.6,WhatsApp,Yes,6.6,6,Single,3,7
+DWS-0329,19,Female,Undergraduate,France,4.5,Instagram,No,7.5,7,In Relationship,2,5
+DWS-0330,21,Male,Graduate,Canada,5.3,Instagram,Yes,6.9,6,Single,3,7
+DWS-0331,20,Female,Undergraduate,Spain,5.1,TikTok,Yes,6.7,6,Single,3,7
+DWS-0332,22,Male,Graduate,Denmark,3.9,Facebook,No,7.9,8,In Relationship,2,4
+DWS-0333,19,Female,Undergraduate,Ireland,4.8,Instagram,Yes,7.1,7,Single,3,6
+DWS-0334,21,Male,Graduate,India,5.9,WhatsApp,Yes,6.4,5,In Relationship,4,8
+DWS-0335,20,Female,Undergraduate,Switzerland,3.8,Instagram,No,8.0,8,Single,2,4
+DWS-0336,22,Male,Graduate,Turkey,5.4,TikTok,Yes,6.8,6,Single,3,7
+DWS-0337,19,Female,Undergraduate,USA,6.9,Instagram,Yes,5.4,5,In Relationship,4,9
+DWS-0338,21,Male,Graduate,Mexico,5.7,WhatsApp,Yes,6.5,6,Single,3,7
+DWS-0339,20,Female,Undergraduate,France,4.4,Instagram,No,7.6,7,In Relationship,2,5
+DWS-0340,22,Male,Graduate,Canada,5.2,TikTok,Yes,7.0,6,Single,3,7
+DWS-0341,19,Female,Undergraduate,Spain,5.0,Instagram,Yes,6.9,6,Single,3,7
+DWS-0342,21,Male,Graduate,Denmark,3.8,Facebook,No,8.0,8,In Relationship,2,4
+DWS-0343,20,Female,Undergraduate,Ireland,4.7,TikTok,Yes,7.2,7,Single,3,6
+DWS-0344,22,Male,Graduate,India,6.0,WhatsApp,Yes,6.3,5,In Relationship,4,8
+DWS-0345,19,Female,Undergraduate,Switzerland,3.7,Instagram,No,8.1,8,Single,2,4
+DWS-0346,21,Male,Graduate,Turkey,5.3,Instagram,Yes,6.9,6,Single,3,7
+DWS-0347,20,Female,Undergraduate,USA,7.0,TikTok,Yes,5.3,5,In Relationship,4,9
+DWS-0348,22,Male,Graduate,Mexico,5.8,WhatsApp,Yes,6.4,6,Single,3,7
+DWS-0349,19,Female,Undergraduate,France,4.3,Instagram,No,7.7,7,In Relationship,2,5
+DWS-0350,21,Male,Graduate,Canada,5.1,Instagram,Yes,7.1,6,Single,3,7
+DWS-0351,20,Female,Undergraduate,Spain,4.9,TikTok,Yes,7.0,6,Single,3,7
+DWS-0352,22,Male,Graduate,Denmark,3.7,Facebook,No,8.1,8,In Relationship,2,4
+DWS-0353,19,Female,Undergraduate,Ireland,4.6,Instagram,Yes,7.3,7,Single,3,6
+DWS-0354,21,Male,Graduate,India,6.1,WhatsApp,Yes,6.2,5,In Relationship,4,8
+DWS-0355,20,Female,Undergraduate,Switzerland,3.6,Instagram,No,8.2,8,Single,2,4
+DWS-0356,22,Male,Graduate,Turkey,5.2,TikTok,Yes,7.0,6,Single,3,7
+DWS-0357,19,Female,Undergraduate,USA,7.1,Instagram,Yes,5.2,5,In Relationship,4,9
+DWS-0358,21,Male,Graduate,Mexico,5.9,WhatsApp,Yes,6.3,6,Single,3,7
+DWS-0359,20,Female,Undergraduate,France,4.2,Instagram,No,7.8,7,In Relationship,2,5
+DWS-0360,22,Male,Graduate,Canada,5.0,TikTok,Yes,7.2,6,Single,3,7
+DWS-0361,19,Female,Undergraduate,Spain,4.8,Instagram,Yes,7.1,6,Single,3,7
+DWS-0362,21,Male,Graduate,Denmark,3.6,Facebook,No,8.2,8,In Relationship,2,4
+DWS-0363,20,Female,Undergraduate,Ireland,4.5,TikTok,Yes,7.4,7,Single,3,6
+DWS-0364,22,Male,Graduate,India,6.2,WhatsApp,Yes,6.1,5,In Relationship,4,8
+DWS-0365,19,Female,Undergraduate,Switzerland,3.5,Instagram,No,8.3,8,Single,2,4
+DWS-0366,21,Male,Graduate,Turkey,5.1,Instagram,Yes,7.1,6,Single,3,7
+DWS-0367,20,Female,Undergraduate,USA,7.2,TikTok,Yes,5.1,5,In Relationship,4,9
+DWS-0368,22,Male,Graduate,Mexico,6.0,WhatsApp,Yes,6.2,6,Single,3,7
+DWS-0369,19,Female,Undergraduate,France,4.1,Instagram,No,7.9,7,In Relationship,2,5
+DWS-0370,21,Male,Graduate,Canada,4.9,Instagram,Yes,7.3,6,Single,3,7
+DWS-0371,20,Female,Undergraduate,Spain,4.7,TikTok,Yes,7.2,6,Single,3,7
+DWS-0372,22,Male,Graduate,Denmark,3.5,Facebook,No,8.3,8,In Relationship,2,4
+DWS-0373,19,Female,Undergraduate,Ireland,4.4,Instagram,Yes,7.5,7,Single,3,6
+DWS-0374,21,Male,Graduate,India,6.3,WhatsApp,Yes,6.0,5,In Relationship,4,8
+DWS-0375,20,Female,Undergraduate,Switzerland,3.4,Instagram,No,8.4,8,Single,2,4
+DWS-0376,22,Male,Graduate,Turkey,5.0,TikTok,Yes,7.2,6,Single,3,7
+DWS-0377,19,Female,Undergraduate,USA,7.3,Instagram,Yes,5.0,5,In Relationship,4,9
+DWS-0378,21,Male,Graduate,Mexico,6.1,WhatsApp,Yes,6.1,6,Single,3,7
+DWS-0379,20,Female,Undergraduate,France,4.0,Instagram,No,8.0,7,In Relationship,2,5
+DWS-0380,22,Male,Graduate,Canada,4.8,TikTok,Yes,7.4,6,Single,3,7
+DWS-0381,19,Female,Undergraduate,Spain,4.6,Instagram,Yes,7.3,6,Single,3,7
+DWS-0382,21,Male,Graduate,Denmark,3.4,Facebook,No,8.4,8,In Relationship,2,4
+DWS-0383,20,Female,Undergraduate,Ireland,4.3,TikTok,Yes,7.6,7,Single,3,6
+DWS-0384,22,Male,Graduate,India,6.4,WhatsApp,Yes,5.9,5,In Relationship,4,8
+DWS-0385,19,Female,Undergraduate,Switzerland,3.3,Instagram,No,8.5,8,Single,2,4
+DWS-0386,21,Male,Graduate,Turkey,4.9,Instagram,Yes,7.3,6,Single,3,7
+DWS-0387,20,Female,Undergraduate,USA,7.4,TikTok,Yes,4.9,5,In Relationship,4,9
+DWS-0388,22,Male,Graduate,Mexico,6.2,WhatsApp,Yes,6.0,6,Single,3,7
+DWS-0389,19,Female,Undergraduate,France,3.9,Instagram,No,8.1,7,In Relationship,2,5
+DWS-0390,21,Male,Graduate,Canada,4.7,Instagram,Yes,7.5,6,Single,3,7
+DWS-0391,20,Female,Undergraduate,Spain,4.5,TikTok,Yes,7.4,6,Single,3,7
+DWS-0392,22,Male,Graduate,Denmark,3.3,Facebook,No,8.5,8,In Relationship,2,4
+DWS-0393,19,Female,Undergraduate,Ireland,4.2,Instagram,Yes,7.7,7,Single,3,6
+DWS-0394,21,Male,Graduate,India,6.5,WhatsApp,Yes,5.8,5,In Relationship,4,8
+DWS-0395,20,Female,Undergraduate,Switzerland,3.2,Instagram,No,8.6,8,Single,2,4
+DWS-0396,22,Male,Graduate,Turkey,4.8,TikTok,Yes,7.4,6,Single,3,7
+DWS-0397,19,Female,Undergraduate,USA,7.5,Instagram,Yes,4.8,5,In Relationship,4,9
+DWS-0398,21,Male,Graduate,Mexico,6.3,WhatsApp,Yes,5.9,6,Single,3,7
+DWS-0399,20,Female,Undergraduate,France,3.8,Instagram,No,8.2,7,In Relationship,2,5
+DWS-0400,22,Male,Graduate,Canada,4.6,TikTok,Yes,7.6,6,Single,3,7
+DWS-0401,19,Female,Undergraduate,Spain,4.4,Instagram,Yes,7.5,6,Single,3,7
+DWS-0402,21,Male,Graduate,Denmark,3.2,Facebook,No,8.6,8,In Relationship,2,4
+DWS-0403,20,Female,Undergraduate,Ireland,4.1,TikTok,Yes,7.8,7,Single,3,6
+DWS-0404,22,Male,Graduate,India,6.6,WhatsApp,Yes,5.7,5,In Relationship,4,8
+DWS-0405,19,Female,Undergraduate,Switzerland,3.1,Instagram,No,8.7,8,Single,2,4
+DWS-0406,21,Male,Graduate,Turkey,4.7,Instagram,Yes,7.5,6,Single,3,7
+DWS-0407,20,Female,Undergraduate,USA,7.6,TikTok,Yes,4.7,5,In Relationship,4,9
+DWS-0408,22,Male,Graduate,Mexico,6.4,WhatsApp,Yes,5.8,6,Single,3,7
+DWS-0409,19,Female,Undergraduate,France,3.7,Instagram,No,8.3,7,In Relationship,2,5
+DWS-0410,21,Male,Graduate,Canada,4.5,Instagram,Yes,7.7,6,Single,3,7
+DWS-0411,20,Female,Undergraduate,Spain,4.3,TikTok,Yes,7.6,6,Single,3,7
+DWS-0412,22,Male,Graduate,Denmark,3.1,Facebook,No,8.7,8,In Relationship,2,4
+DWS-0413,19,Female,Undergraduate,Ireland,4.0,Instagram,Yes,7.9,7,Single,3,6
+DWS-0414,21,Male,Graduate,India,6.7,WhatsApp,Yes,5.6,5,In Relationship,4,8
+DWS-0415,20,Female,Undergraduate,Switzerland,3.0,Instagram,No,8.8,8,Single,2,4
+DWS-0416,22,Male,Graduate,Turkey,4.6,TikTok,Yes,7.6,6,Single,3,7
+DWS-0417,19,Female,Undergraduate,USA,7.7,Instagram,Yes,4.6,5,In Relationship,4,9
+DWS-0418,21,Male,Graduate,Mexico,6.5,WhatsApp,Yes,5.7,6,Single,3,7
+DWS-0419,20,Female,Undergraduate,France,3.6,Instagram,No,8.4,7,In Relationship,2,5
+DWS-0420,22,Male,Graduate,Canada,4.4,TikTok,Yes,7.8,6,Single,3,7
+DWS-0421,19,Female,Undergraduate,Spain,4.2,Instagram,Yes,7.7,6,Single,3,7
+DWS-0422,21,Male,Graduate,Denmark,3.0,Facebook,No,8.8,8,In Relationship,2,4
+DWS-0423,20,Female,Undergraduate,Ireland,3.9,TikTok,Yes,8.0,7,Single,3,6
+DWS-0424,22,Male,Graduate,India,6.8,WhatsApp,Yes,5.5,5,In Relationship,4,8
+DWS-0425,19,Female,Undergraduate,Switzerland,2.9,Instagram,No,8.9,8,Single,2,4
+DWS-0426,21,Male,Graduate,Turkey,4.5,Instagram,Yes,7.7,6,Single,3,7
+DWS-0427,20,Female,Undergraduate,USA,7.8,TikTok,Yes,4.5,5,In Relationship,4,9
+DWS-0428,22,Male,Graduate,Mexico,6.6,WhatsApp,Yes,5.6,6,Single,3,7
+DWS-0429,19,Female,Undergraduate,France,3.5,Instagram,No,8.5,7,In Relationship,2,5
+DWS-0430,21,Male,Graduate,Canada,4.3,Instagram,Yes,7.9,6,Single,3,7
+DWS-0431,20,Female,Undergraduate,Spain,4.1,TikTok,Yes,7.8,6,Single,3,7
+DWS-0432,22,Male,Graduate,Denmark,2.9,Facebook,No,8.9,8,In Relationship,2,4
+DWS-0433,19,Female,Undergraduate,Ireland,3.8,Instagram,Yes,8.1,7,Single,3,6
+DWS-0434,21,Male,Graduate,India,6.9,WhatsApp,Yes,5.4,5,In Relationship,4,8
+DWS-0435,20,Female,Undergraduate,Switzerland,2.8,Instagram,No,9.0,8,Single,2,4
+DWS-0436,22,Male,Graduate,Turkey,4.4,TikTok,Yes,7.8,6,Single,3,7
+DWS-0437,19,Female,Undergraduate,USA,7.9,Instagram,Yes,4.4,5,In Relationship,4,9
+DWS-0438,21,Male,Graduate,Mexico,6.7,WhatsApp,Yes,5.5,6,Single,3,7
+DWS-0439,20,Female,Undergraduate,France,3.4,Instagram,No,8.6,7,In Relationship,2,5
+DWS-0440,22,Male,Graduate,Canada,4.2,TikTok,Yes,8.0,6,Single,3,7
+DWS-0441,19,Female,Undergraduate,Spain,4.0,Instagram,Yes,7.9,6,Single,3,7
+DWS-0442,21,Male,Graduate,Denmark,2.8,Facebook,No,9.0,8,In Relationship,2,4
+DWS-0443,20,Female,Undergraduate,Ireland,3.7,TikTok,Yes,8.2,7,Single,3,6
+DWS-0444,22,Male,Graduate,India,7.0,WhatsApp,Yes,5.3,5,In Relationship,4,8
+DWS-0445,19,Female,Undergraduate,Switzerland,2.7,Instagram,No,9.1,8,Single,2,4
+DWS-0446,21,Male,Graduate,Turkey,4.3,Instagram,Yes,7.9,6,Single,3,7
+DWS-0447,20,Female,Undergraduate,USA,8.0,TikTok,Yes,4.3,5,In Relationship,4,9
+DWS-0448,22,Male,Graduate,Mexico,6.8,WhatsApp,Yes,5.4,6,Single,3,7
+DWS-0449,19,Female,Undergraduate,France,3.3,Instagram,No,8.7,7,In Relationship,2,5
+DWS-0450,21,Male,Graduate,Canada,4.1,Instagram,Yes,8.1,6,Single,3,7
+DWS-0451,20,Female,Undergraduate,Spain,3.9,TikTok,Yes,8.0,6,Single,3,7
+DWS-0452,22,Male,Graduate,Denmark,2.7,Facebook,No,9.1,8,In Relationship,2,4
+DWS-0453,19,Female,Undergraduate,Ireland,3.6,Instagram,Yes,8.3,7,Single,3,6
+DWS-0454,21,Male,Graduate,India,7.1,WhatsApp,Yes,5.2,5,In Relationship,4,8
+DWS-0455,20,Female,Undergraduate,Switzerland,2.6,Instagram,No,9.2,8,Single,2,4
+DWS-0456,22,Male,Graduate,Turkey,4.2,TikTok,Yes,8.0,6,Single,3,7
+DWS-0457,19,Female,Undergraduate,USA,8.1,Instagram,Yes,4.2,5,In Relationship,4,9
+DWS-0458,21,Male,Graduate,Mexico,6.9,WhatsApp,Yes,5.3,6,Single,3,7
+DWS-0459,20,Female,Undergraduate,France,3.2,Instagram,No,8.8,7,In Relationship,2,5
+DWS-0460,22,Male,Graduate,Canada,4.0,TikTok,Yes,8.2,6,Single,3,7
+DWS-0461,19,Female,Undergraduate,Spain,3.8,Instagram,Yes,8.1,6,Single,3,7
+DWS-0462,21,Male,Graduate,Denmark,2.6,Facebook,No,9.2,8,In Relationship,2,4
+DWS-0463,20,Female,Undergraduate,Ireland,3.5,TikTok,Yes,8.4,7,Single,3,6
+DWS-0464,22,Male,Graduate,India,7.2,WhatsApp,Yes,5.1,5,In Relationship,4,8
+DWS-0465,19,Female,Undergraduate,Switzerland,2.5,Instagram,No,9.3,8,Single,2,4
+DWS-0466,21,Male,Graduate,Turkey,4.1,Instagram,Yes,8.1,6,Single,3,7
+DWS-0467,20,Female,Undergraduate,USA,8.2,TikTok,Yes,4.1,5,In Relationship,4,9
+DWS-0468,22,Male,Graduate,Mexico,7.0,WhatsApp,Yes,5.2,6,Single,3,7
+DWS-0469,19,Female,Undergraduate,France,3.1,Instagram,No,8.9,7,In Relationship,2,5
+DWS-0470,21,Male,Graduate,Canada,3.9,Instagram,Yes,8.3,6,Single,3,7
+DWS-0471,20,Female,Undergraduate,Spain,3.7,TikTok,Yes,8.2,6,Single,3,7
+DWS-0472,22,Male,Graduate,Denmark,2.5,Facebook,No,9.3,8,In Relationship,2,4
+DWS-0473,19,Female,Undergraduate,Ireland,3.4,Instagram,Yes,8.5,7,Single,3,6
+DWS-0474,21,Male,Graduate,India,7.3,WhatsApp,Yes,5.0,5,In Relationship,4,8
+DWS-0475,20,Female,Undergraduate,Switzerland,2.4,Instagram,No,9.4,8,Single,2,4
+DWS-0476,22,Male,Graduate,Turkey,4.0,TikTok,Yes,8.2,6,Single,3,7
+DWS-0477,19,Female,Undergraduate,USA,8.3,Instagram,Yes,4.0,5,In Relationship,4,9
+DWS-0478,21,Male,Graduate,Mexico,7.1,WhatsApp,Yes,5.1,6,Single,3,7
+DWS-0479,20,Female,Undergraduate,France,3.0,Instagram,No,9.0,7,In Relationship,2,5
+DWS-0480,22,Male,Graduate,Canada,3.8,TikTok,Yes,8.4,6,Single,3,7
+DWS-0481,19,Female,Undergraduate,Spain,3.6,Instagram,Yes,8.3,6,Single,3,7
+DWS-0482,21,Male,Graduate,Denmark,2.4,Facebook,No,9.4,8,In Relationship,2,4
+DWS-0483,20,Female,Undergraduate,Ireland,3.3,TikTok,Yes,8.6,7,Single,3,6
+DWS-0484,22,Male,Graduate,India,7.4,WhatsApp,Yes,4.9,5,In Relationship,4,8
+DWS-0485,19,Female,Undergraduate,Switzerland,2.3,Instagram,No,9.5,8,Single,2,4
+DWS-0486,21,Male,Graduate,Turkey,3.9,Instagram,Yes,8.3,6,Single,3,7
+DWS-0487,20,Female,Undergraduate,USA,8.4,TikTok,Yes,3.9,5,In Relationship,4,9
+DWS-0488,22,Male,Graduate,Mexico,7.2,WhatsApp,Yes,5.0,6,Single,3,7
+DWS-0489,19,Female,Undergraduate,France,2.9,Instagram,No,9.1,7,In Relationship,2,5
+DWS-0490,21,Male,Graduate,Canada,3.7,Instagram,Yes,8.5,6,Single,3,7
+DWS-0491,20,Female,Undergraduate,Spain,3.5,TikTok,Yes,8.4,6,Single,3,7
+DWS-0492,22,Male,Graduate,Denmark,2.3,Facebook,No,9.5,8,In Relationship,2,4
+DWS-0493,19,Female,Undergraduate,Ireland,3.2,Instagram,Yes,8.7,7,Single,3,6
+DWS-0494,21,Male,Graduate,India,7.5,WhatsApp,Yes,4.8,5,In Relationship,4,8
+DWS-0495,20,Female,Undergraduate,Switzerland,2.2,Instagram,No,9.6,8,Single,2,4
+DWS-0496,22,Male,Graduate,Turkey,3.8,TikTok,Yes,8.4,6,Single,3,7
+DWS-0497,19,Female,Undergraduate,USA,8.5,Instagram,Yes,3.8,5,In Relationship,4,9
+DWS-0498,21,Male,Graduate,Mexico,7.3,WhatsApp,Yes,4.9,6,Single,3,7
+DWS-0499,20,Female,Undergraduate,France,2.8,Instagram,No,9.2,7,In Relationship,2,5
+DWS-0500,22,Male,Graduate,Canada,3.6,TikTok,Yes,8.6,6,Single,3,7
+DWS-0501,19,Female,Undergraduate,Brazil,6.2,WhatsApp,Yes,6.3,6,Single,3,7
+DWS-0502,21,Male,Graduate,China,4.5,WeChat,No,7.8,7,In Relationship,2,5
+DWS-0503,20,Female,Undergraduate,Netherlands,3.8,Instagram,No,8.2,8,Single,2,4
+DWS-0504,22,Male,Graduate,New Zealand,4.7,Instagram,Yes,7.5,7,In Relationship,3,6
+DWS-0505,19,Female,Undergraduate,Singapore,5.1,TikTok,Yes,7.0,6,Single,3,7
+DWS-0506,21,Male,Graduate,Malaysia,5.5,WhatsApp,Yes,6.8,6,Single,3,7
+DWS-0507,20,Female,Undergraduate,UAE,6.5,Instagram,Yes,6.5,5,In Relationship,4,8
+DWS-0508,22,Male,Graduate,Poland,4.2,Facebook,No,7.9,7,Single,2,5
+DWS-0509,19,Female,Undergraduate,India,6.8,WhatsApp,Yes,6.0,5,In Relationship,4,8
+DWS-0510,21,Male,Graduate,Canada,4.8,Instagram,Yes,7.4,7,Single,3,6
+DWS-0511,20,Female,Undergraduate,Brazil,6.1,Instagram,Yes,6.4,6,Single,3,7
+DWS-0512,22,Male,Graduate,China,4.4,WeChat,No,7.9,7,In Relationship,2,5
+DWS-0513,19,Female,Undergraduate,Netherlands,3.7,TikTok,No,8.3,8,Single,2,4
+DWS-0514,21,Male,Graduate,New Zealand,4.6,Instagram,Yes,7.6,7,In Relationship,3,6
+DWS-0515,20,Female,Undergraduate,Singapore,5.2,TikTok,Yes,6.9,6,Single,3,7
+DWS-0516,22,Male,Graduate,Malaysia,5.6,WhatsApp,Yes,6.7,6,Single,3,7
+DWS-0517,19,Female,Undergraduate,UAE,6.6,Instagram,Yes,6.4,5,In Relationship,4,8
+DWS-0518,21,Male,Graduate,Poland,4.1,Facebook,No,8.0,7,Single,2,5
+DWS-0519,20,Female,Undergraduate,India,6.9,WhatsApp,Yes,5.9,5,In Relationship,4,8
+DWS-0520,22,Male,Graduate,Canada,4.7,TikTok,Yes,7.5,7,Single,3,6
+DWS-0521,19,Female,Undergraduate,Brazil,6.0,WhatsApp,Yes,6.5,6,Single,3,7
+DWS-0522,21,Male,Graduate,China,4.3,WeChat,No,8.0,7,In Relationship,2,5
+DWS-0523,20,Female,Undergraduate,Netherlands,3.6,Instagram,No,8.4,8,Single,2,4
+DWS-0524,22,Male,Graduate,New Zealand,4.5,Facebook,Yes,7.7,7,In Relationship,3,6
+DWS-0525,19,Female,Undergraduate,Singapore,5.3,TikTok,Yes,6.8,6,Single,3,7
+DWS-0526,21,Male,Graduate,Malaysia,5.7,WhatsApp,Yes,6.6,6,Single,3,7
+DWS-0527,20,Female,Undergraduate,UAE,6.7,Instagram,Yes,6.3,5,In Relationship,4,8
+DWS-0528,22,Male,Graduate,Poland,4.0,Facebook,No,8.1,7,Single,2,5
+DWS-0529,19,Female,Undergraduate,India,7.0,WhatsApp,Yes,5.8,5,In Relationship,4,8
+DWS-0530,21,Male,Graduate,Canada,4.6,Instagram,Yes,7.6,7,Single,3,6
+DWS-0531,20,Female,Undergraduate,Brazil,5.9,TikTok,Yes,6.6,6,Single,3,7
+DWS-0532,22,Male,Graduate,China,4.2,WeChat,No,8.1,7,In Relationship,2,5
+DWS-0533,19,Female,Undergraduate,Netherlands,3.5,Instagram,No,8.5,8,Single,2,4
+DWS-0534,21,Male,Graduate,New Zealand,4.4,Facebook,Yes,7.8,7,In Relationship,3,6
+DWS-0535,20,Female,Undergraduate,Singapore,5.4,TikTok,Yes,6.7,6,Single,3,7
+DWS-0536,22,Male,Graduate,Malaysia,5.8,WhatsApp,Yes,6.5,6,Single,3,7
+DWS-0537,19,Female,Undergraduate,UAE,6.8,Instagram,Yes,6.2,5,In Relationship,4,8
+DWS-0538,21,Male,Graduate,Poland,3.9,Facebook,No,8.2,7,Single,2,5
+DWS-0539,20,Female,Undergraduate,India,7.1,WhatsApp,Yes,5.7,5,In Relationship,4,8
+DWS-0540,22,Male,Graduate,Canada,4.5,TikTok,Yes,7.7,7,Single,3,6
+DWS-0541,19,Female,Undergraduate,Brazil,5.8,WhatsApp,Yes,6.7,6,Single,3,7
+DWS-0542,21,Male,Graduate,China,4.1,WeChat,No,8.2,7,In Relationship,2,5
+DWS-0543,20,Female,Undergraduate,Netherlands,3.4,Instagram,No,8.6,8,Single,2,4
+DWS-0544,22,Male,Graduate,New Zealand,4.3,Instagram,Yes,7.9,7,In Relationship,3,6
+DWS-0545,19,Female,Undergraduate,Singapore,5.5,TikTok,Yes,6.6,6,Single,3,7
+DWS-0546,21,Male,Graduate,Malaysia,5.9,WhatsApp,Yes,6.4,6,Single,3,7
+DWS-0547,20,Female,Undergraduate,UAE,6.9,Instagram,Yes,6.1,5,In Relationship,4,8
+DWS-0548,22,Male,Graduate,Poland,3.8,Facebook,No,8.3,7,Single,2,5
+DWS-0549,19,Female,Undergraduate,India,7.2,WhatsApp,Yes,5.6,5,In Relationship,4,8
+DWS-0550,21,Male,Graduate,Canada,4.4,Instagram,Yes,7.8,7,Single,3,6
+DWS-0551,20,Female,Undergraduate,Brazil,5.7,TikTok,Yes,6.8,6,Single,3,7
+DWS-0552,22,Male,Graduate,China,4.0,WeChat,No,8.3,7,In Relationship,2,5
+DWS-0553,19,Female,Undergraduate,Netherlands,3.3,Instagram,No,8.7,8,Single,2,4
+DWS-0554,21,Male,Graduate,New Zealand,4.2,Facebook,Yes,8.0,7,In Relationship,3,6
+DWS-0555,20,Female,Undergraduate,Singapore,5.6,TikTok,Yes,6.5,6,Single,3,7
+DWS-0556,22,Male,Graduate,Malaysia,6.0,WhatsApp,Yes,6.3,6,Single,3,7
+DWS-0557,19,Female,Undergraduate,UAE,7.0,Instagram,Yes,6.0,5,In Relationship,4,8
+DWS-0558,21,Male,Graduate,Poland,3.7,Facebook,No,8.4,7,Single,2,5
+DWS-0559,20,Female,Undergraduate,India,7.3,WhatsApp,Yes,5.5,5,In Relationship,4,8
+DWS-0560,22,Male,Graduate,Canada,4.3,TikTok,Yes,7.9,7,Single,3,6
+DWS-0561,19,Female,Undergraduate,Brazil,5.6,WhatsApp,Yes,6.9,6,Single,3,7
+DWS-0562,21,Male,Graduate,China,3.9,WeChat,No,8.4,7,In Relationship,2,5
+DWS-0563,20,Female,Undergraduate,Netherlands,3.2,Instagram,No,8.8,8,Single,2,4
+DWS-0564,22,Male,Graduate,New Zealand,4.1,Instagram,Yes,8.1,7,In Relationship,3,6
+DWS-0565,19,Female,Undergraduate,Singapore,5.7,TikTok,Yes,6.4,6,Single,3,7
+DWS-0566,21,Male,Graduate,Malaysia,6.1,WhatsApp,Yes,6.2,6,Single,3,7
+DWS-0567,20,Female,Undergraduate,UAE,7.1,Instagram,Yes,5.9,5,In Relationship,4,8
+DWS-0568,22,Male,Graduate,Poland,3.6,Facebook,No,8.5,7,Single,2,5
+DWS-0569,19,Female,Undergraduate,India,7.4,WhatsApp,Yes,5.4,5,In Relationship,4,8
+DWS-0570,21,Male,Graduate,Canada,4.2,Instagram,Yes,8.0,7,Single,3,6
+DWS-0571,20,Female,Undergraduate,Spain,6.1,Instagram,Yes,7.2,5,Single,4,7
+DWS-0572,23,Male,Graduate,Denmark,3.8,Twitter,No,7.8,8,In Relationship,2,4
+DWS-0573,19,Female,Undergraduate,Ireland,5.5,TikTok,Yes,6.8,6,Single,4,8
+DWS-0574,22,Male,Graduate,India,7.2,Facebook,Yes,5.9,4,Single,5,9
+DWS-0575,21,Female,Undergraduate,Switzerland,4.2,Instagram,No,7.5,7,In Relationship,2,5
+DWS-0576,24,Male,Graduate,Turkey,6.8,TikTok,Yes,6.2,5,Single,4,8
+DWS-0577,20,Female,Undergraduate,USA,5.9,Instagram,Yes,6.7,6,In Relationship,3,7
+DWS-0578,22,Male,Graduate,Mexico,6.5,Facebook,Yes,6.1,5,Single,4,8
+DWS-0579,19,Female,Undergraduate,France,4.7,Twitter,No,7.4,7,Single,2,5
+DWS-0580,23,Male,Graduate,Canada,5.2,Instagram,Yes,7.0,6,In Relationship,3,6
+DWS-0581,21,Female,Undergraduate,UK,6.3,TikTok,Yes,6.4,5,Single,4,8
+DWS-0582,24,Male,Graduate,Italy,4.9,Facebook,No,7.3,7,In Relationship,2,5
+DWS-0583,20,Female,Undergraduate,Russia,6.7,Instagram,Yes,6.0,5,Single,4,8
+DWS-0584,22,Male,Graduate,China,5.8,WeChat,Yes,6.5,6,In Relationship,3,7
+DWS-0585,19,Female,Undergraduate,Japan,4.5,Twitter,No,7.6,8,Single,2,4
+DWS-0586,23,Male,Graduate,Poland,6.4,Facebook,Yes,6.3,5,Single,4,8
+DWS-0587,21,Female,Undergraduate,Finland,4.1,Instagram,No,7.7,7,In Relationship,2,5
+DWS-0588,24,Male,Graduate,Spain,6.6,TikTok,Yes,6.2,5,Single,4,8
+DWS-0589,20,Female,Undergraduate,Denmark,4.4,Instagram,No,7.4,7,In Relationship,2,5
+DWS-0590,22,Male,Graduate,Ireland,5.7,Twitter,Yes,6.8,6,Single,3,7
+DWS-0591,19,Female,Undergraduate,India,7.0,Instagram,Yes,5.8,4,Single,5,9
+DWS-0592,23,Male,Graduate,Switzerland,4.3,Facebook,No,7.5,7,In Relationship,2,5
+DWS-0593,21,Female,Undergraduate,Turkey,6.9,TikTok,Yes,6.1,5,Single,4,8
+DWS-0594,24,Male,Graduate,USA,5.6,Instagram,Yes,6.9,6,In Relationship,3,7
+DWS-0595,20,Female,Undergraduate,Mexico,6.2,Facebook,Yes,6.3,5,Single,4,8
+DWS-0596,21,Male,Undergraduate,France,5.8,Instagram,Yes,6.7,6,Single,3,7
+DWS-0597,23,Female,Graduate,Canada,4.9,TikTok,No,7.3,7,In Relationship,2,5
+DWS-0598,20,Male,Undergraduate,UK,6.4,Facebook,Yes,6.2,5,Single,4,8
+DWS-0599,22,Female,Graduate,Italy,5.1,Twitter,No,7.1,7,In Relationship,2,5
+DWS-0600,19,Male,Undergraduate,Russia,6.7,Instagram,Yes,6.0,4,Single,4,8
+DWS-0601,24,Female,Graduate,China,5.5,WeChat,Yes,6.8,6,In Relationship,3,7
+DWS-0602,21,Male,Undergraduate,Japan,4.3,Twitter,No,7.6,8,Single,2,4
+DWS-0603,23,Female,Graduate,Poland,6.2,Instagram,Yes,6.4,5,Single,4,8
+DWS-0604,20,Male,Undergraduate,Finland,4.5,Facebook,No,7.4,7,In Relationship,2,5
+DWS-0605,22,Female,Graduate,Spain,6.3,TikTok,Yes,6.3,5,Single,4,8
+DWS-0606,19,Male,Undergraduate,Denmark,4.7,Instagram,No,7.2,7,In Relationship,2,5
+DWS-0607,24,Female,Graduate,Ireland,5.9,Twitter,Yes,6.6,6,Single,3,7
+DWS-0608,21,Male,Undergraduate,India,7.1,Facebook,Yes,5.7,4,Single,5,9
+DWS-0609,23,Female,Graduate,Switzerland,4.4,Instagram,No,7.4,7,In Relationship,2,5
+DWS-0610,20,Male,Undergraduate,Turkey,6.6,TikTok,Yes,6.2,5,Single,4,8
+DWS-0611,22,Female,Graduate,USA,5.4,Instagram,Yes,6.9,6,In Relationship,3,7
+DWS-0612,19,Male,Undergraduate,Mexico,6.5,Facebook,Yes,6.1,5,Single,4,8
+DWS-0613,24,Female,Graduate,France,4.8,Twitter,No,7.3,7,In Relationship,2,5
+DWS-0614,21,Male,Undergraduate,Canada,5.7,Instagram,Yes,6.7,6,Single,3,7
+DWS-0615,23,Female,Graduate,UK,6.1,TikTok,Yes,6.4,5,Single,4,8
+DWS-0616,20,Male,Undergraduate,Italy,4.6,Facebook,No,7.2,7,In Relationship,2,5
+DWS-0617,22,Female,Graduate,Russia,6.8,Instagram,Yes,5.9,4,Single,5,9
+DWS-0618,19,Male,Undergraduate,China,5.6,WeChat,Yes,6.8,6,In Relationship,3,7
+DWS-0619,24,Female,Graduate,Japan,4.2,Twitter,No,7.5,8,Single,2,4
+DWS-0620,21,Male,Undergraduate,Poland,6.3,TikTok,Yes,6.3,5,Single,4,8
+DWS-0621,23,Female,Graduate,Finland,4.4,Instagram,No,7.4,7,In Relationship,2,5
+DWS-0622,20,Male,Undergraduate,Spain,6.5,Facebook,Yes,6.2,5,Single,4,8
+DWS-0623,22,Female,Graduate,Denmark,4.6,Twitter,No,7.3,7,In Relationship,2,5
+DWS-0624,19,Male,Undergraduate,Ireland,5.8,Instagram,Yes,6.6,6,Single,3,7
+DWS-0625,24,Female,Graduate,India,7.0,TikTok,Yes,5.8,4,Single,5,9
+DWS-0626,21,Male,Undergraduate,Switzerland,4.5,Facebook,No,7.3,7,In Relationship,2,5
+DWS-0627,23,Female,Graduate,Turkey,6.7,Instagram,Yes,6.1,5,Single,4,8
+DWS-0628,20,Male,Undergraduate,USA,5.5,Twitter,Yes,6.8,6,In Relationship,3,7
+DWS-0629,22,Female,Graduate,Mexico,6.4,Facebook,Yes,6.2,5,Single,4,8
+DWS-0630,19,Male,Undergraduate,France,4.7,Instagram,No,7.2,7,In Relationship,2,5
+DWS-0631,24,Female,Graduate,Canada,5.6,TikTok,Yes,6.7,6,Single,3,7
+DWS-0632,21,Male,Undergraduate,UK,6.2,Facebook,Yes,6.3,5,Single,4,8
+DWS-0633,23,Female,Graduate,Italy,4.8,Twitter,No,7.1,7,In Relationship,2,5
+DWS-0634,20,Male,Undergraduate,Russia,6.9,Instagram,Yes,5.9,4,Single,5,9
+DWS-0635,22,Female,Graduate,China,5.7,WeChat,Yes,6.7,6,In Relationship,3,7
+DWS-0636,19,Male,Undergraduate,Japan,4.4,Twitter,No,7.4,8,Single,2,4
+DWS-0637,24,Female,Graduate,Poland,6.1,TikTok,Yes,6.4,5,Single,4,8
+DWS-0638,21,Male,Undergraduate,Finland,4.3,Instagram,No,7.5,7,In Relationship,2,5
+DWS-0639,23,Female,Graduate,Spain,6.4,Facebook,Yes,6.2,5,Single,4,8
+DWS-0640,20,Male,Undergraduate,Denmark,4.5,Twitter,No,7.3,7,In Relationship,2,5
+DWS-0641,22,Female,Graduate,Ireland,5.9,Instagram,Yes,6.5,6,Single,3,7
+DWS-0642,19,Male,Undergraduate,India,7.2,TikTok,Yes,5.7,4,Single,5,9
+DWS-0643,24,Female,Graduate,Switzerland,4.6,Facebook,No,7.2,7,In Relationship,2,5
+DWS-0644,21,Male,Undergraduate,Turkey,6.8,Instagram,Yes,6.0,5,Single,4,8
+DWS-0645,23,Female,Graduate,USA,5.3,Twitter,Yes,6.8,6,In Relationship,3,7
+DWS-0646,22,Male,Graduate,Mexico,6.3,Facebook,Yes,6.2,5,Single,4,8
+DWS-0647,20,Female,Undergraduate,France,4.8,Instagram,No,7.1,7,In Relationship,2,5
+DWS-0648,23,Male,Graduate,Canada,5.7,TikTok,Yes,6.6,6,Single,3,7
+DWS-0649,21,Female,Undergraduate,UK,6.2,Twitter,Yes,6.3,5,Single,4,8
+DWS-0650,24,Male,Graduate,Italy,4.7,Facebook,No,7.2,7,In Relationship,2,5
+DWS-0651,19,Female,Undergraduate,Russia,6.8,Instagram,Yes,5.9,4,Single,5,9
+DWS-0652,22,Male,Graduate,China,5.6,WeChat,Yes,6.7,6,In Relationship,3,7
+DWS-0653,20,Female,Undergraduate,Japan,4.3,Twitter,No,7.5,8,Single,2,4
+DWS-0654,23,Male,Graduate,Poland,6.2,TikTok,Yes,6.3,5,Single,4,8
+DWS-0655,21,Female,Undergraduate,Finland,4.4,Instagram,No,7.4,7,In Relationship,2,5
+DWS-0656,24,Male,Graduate,Spain,6.5,Facebook,Yes,6.1,5,Single,4,8
+DWS-0657,19,Female,Undergraduate,Denmark,4.6,Twitter,No,7.3,7,In Relationship,2,5
+DWS-0658,22,Male,Graduate,Ireland,5.8,Instagram,Yes,6.6,6,Single,3,7
+DWS-0659,20,Female,Undergraduate,India,7.1,TikTok,Yes,5.8,4,Single,5,9
+DWS-0660,23,Male,Graduate,Switzerland,4.5,Facebook,No,7.3,7,In Relationship,2,5
+DWS-0661,21,Female,Undergraduate,Turkey,6.7,Instagram,Yes,6.0,5,Single,4,8
+DWS-0662,24,Male,Graduate,USA,5.4,Twitter,Yes,6.8,6,In Relationship,3,7
+DWS-0663,19,Female,Undergraduate,Mexico,6.4,TikTok,Yes,6.2,5,Single,4,8
+DWS-0664,22,Male,Graduate,France,4.7,Facebook,No,7.2,7,In Relationship,2,5
+DWS-0665,20,Female,Undergraduate,Canada,5.6,Instagram,Yes,6.7,6,Single,3,7
+DWS-0666,23,Male,Graduate,UK,6.3,Twitter,Yes,6.2,5,Single,4,8
+DWS-0667,21,Female,Undergraduate,Italy,4.8,TikTok,No,7.1,7,In Relationship,2,5
+DWS-0668,24,Male,Graduate,Russia,6.9,Instagram,Yes,5.9,4,Single,5,9
+DWS-0669,19,Female,Undergraduate,China,5.7,WeChat,Yes,6.7,6,In Relationship,3,7
+DWS-0670,22,Male,Graduate,Japan,4.4,Twitter,No,7.4,8,Single,2,4
+DWS-0671,20,Female,Undergraduate,Poland,6.1,Facebook,Yes,6.4,5,Single,4,8
+DWS-0672,23,Male,Graduate,Finland,4.3,Instagram,No,7.5,7,In Relationship,2,5
+DWS-0673,21,Female,Undergraduate,Spain,6.4,TikTok,Yes,6.2,5,Single,4,8
+DWS-0674,24,Male,Graduate,Denmark,4.5,Twitter,No,7.3,7,In Relationship,2,5
+DWS-0675,19,Female,Undergraduate,Ireland,5.9,Instagram,Yes,6.5,6,Single,3,7
+DWS-0676,22,Male,Graduate,India,7.2,Facebook,Yes,5.7,4,Single,5,9
+DWS-0677,20,Female,Undergraduate,Switzerland,4.6,TikTok,No,7.2,7,In Relationship,2,5
+DWS-0678,23,Male,Graduate,Turkey,6.8,Instagram,Yes,6.0,5,Single,4,8
+DWS-0679,21,Female,Undergraduate,USA,5.3,Twitter,Yes,6.8,6,In Relationship,3,7
+DWS-0680,24,Male,Graduate,Mexico,6.2,Facebook,Yes,6.3,5,Single,4,8
+DWS-0681,19,Female,Undergraduate,France,4.7,Instagram,No,7.2,7,In Relationship,2,5
+DWS-0682,22,Male,Graduate,Canada,5.8,TikTok,Yes,6.6,6,Single,3,7
+DWS-0683,20,Female,Undergraduate,UK,6.1,Twitter,Yes,6.4,5,Single,4,8
+DWS-0684,23,Male,Graduate,Italy,4.8,Facebook,No,7.1,7,In Relationship,2,5
+DWS-0685,21,Female,Undergraduate,Russia,6.7,Instagram,Yes,6.0,4,Single,5,9
+DWS-0686,24,Male,Graduate,China,5.5,WeChat,Yes,6.8,6,In Relationship,3,7
+DWS-0687,19,Female,Undergraduate,Japan,4.2,Twitter,No,7.5,8,Single,2,4
+DWS-0688,22,Male,Graduate,Poland,6.3,TikTok,Yes,6.2,5,Single,4,8
+DWS-0689,20,Female,Undergraduate,Finland,4.4,Instagram,No,7.4,7,In Relationship,2,5
+DWS-0690,23,Male,Graduate,Spain,6.5,Facebook,Yes,6.1,5,Single,4,8
+DWS-0691,21,Female,Undergraduate,Denmark,4.6,Twitter,No,7.3,7,In Relationship,2,5
+DWS-0692,24,Male,Graduate,Ireland,5.9,Instagram,Yes,6.5,6,Single,3,7
+DWS-0693,19,Female,Undergraduate,India,7.0,TikTok,Yes,5.8,4,Single,5,9
+DWS-0694,22,Male,Graduate,Switzerland,4.5,Facebook,No,7.3,7,In Relationship,2,5
+DWS-0695,20,Female,Undergraduate,Turkey,6.6,Instagram,Yes,6.1,5,Single,4,8
+DWS-0696,23,Male,Graduate,USA,5.5,Twitter,Yes,6.7,6,In Relationship,3,7
+DWS-0697,21,Female,Undergraduate,Mexico,6.3,TikTok,Yes,6.2,5,Single,4,8
+DWS-0698,24,Male,Graduate,France,4.8,Facebook,No,7.1,7,In Relationship,2,5
+DWS-0699,19,Female,Undergraduate,Canada,5.7,Instagram,Yes,6.6,6,Single,3,7
+DWS-0700,22,Male,Graduate,UK,6.2,Twitter,Yes,6.3,5,Single,4,8
+DWS-0701,20,Female,Undergraduate,Italy,4.7,TikTok,No,7.2,7,In Relationship,2,5
+DWS-0702,23,Male,Graduate,Russia,6.8,Instagram,Yes,5.9,4,Single,5,9
+DWS-0703,21,Female,Undergraduate,China,5.6,WeChat,Yes,6.7,6,In Relationship,3,7
+DWS-0704,24,Male,Graduate,Japan,4.3,Twitter,No,7.5,8,Single,2,4
+DWS-0705,19,Female,Undergraduate,Poland,6.2,Facebook,Yes,6.3,5,Single,4,8

@@ -1,0 +1,13 @@
+Store_ID,Store_Name,City,State,Zone,Opened,Floor_Area_sqm,Store_Manager,Annual_Target_2025
+ST01,Lagos - Ikeja,Ikeja,Lagos,South-West,2015-03-02,2400,Folake Adeyemi,142000000
+ST02,Lagos - Lekki,Lekki,Lagos,South-West,2017-08-14,1850,Tunde Bakare,63000000
+ST03,Ibadan - Ring Road,Ibadan,Oyo,South-West,2016-05-09,1600,Kemi Oladipo,37000000
+ST04,Port Harcourt - GRA,Port Harcourt,Rivers,South-South,2015-11-23,2100,Ebere Amadi,97000000
+ST05,Benin City - Ring Road,Benin City,Edo,South-South,2018-02-05,1400,Osagie Igbinedion,59000000
+ST06,Uyo - Ewet,Uyo,Akwa Ibom,South-South,2019-06-17,1150,Uduak Etim,62000000
+ST07,Abuja - Wuse,Abuja,FCT,North-Central,2016-01-11,2200,Hauwa Bello,52000000
+ST08,Abuja - Garki,Abuja,FCT,North-Central,2018-09-03,1500,Ibrahim Garba,39000000
+ST09,Jos - Rayfield,Jos,Plateau,North-Central,2020-04-20,1050,Ladi Danjuma,61000000
+ST10,Enugu - Independence Layout,Enugu,Enugu,South-East,2017-03-13,1700,Chinedu Okafor,43000000
+ST11,Onitsha - Main Market,Onitsha,Anambra,South-East,2019-10-07,1300,Nkechi Eze,53000000
+ST12,Owerri - New Owerri,Owerri,Imo,South-East,2021-02-01,1100,Ikenna Nwosu,39000000
