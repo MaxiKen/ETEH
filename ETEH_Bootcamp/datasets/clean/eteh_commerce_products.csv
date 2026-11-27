@@ -1,0 +1,801 @@
+product_id,product_name,description,category,subcategory,brand_name,seller_id,price,discount_price,commission_percentage,stock_quantity,weight,total_sold,average_rating,created_at
+PROD00001,Wristwatch,High quality wristwatch available for immediate delivery nationwide,Fashion,Men Clothing,Techno,SELL0192,116752.0,116752.0,7.5,142,33.43,49,3.0,2021-07-28
+PROD00002,Wardrobe,High quality wardrobe available for immediate delivery nationwide,Home,Furniture,Cadbury,SELL0148,71868.93,64682.04,7.5,435,13.71,40,5.0,2020-12-20
+PROD00003,Palm Oil 5L,High quality palm oil 5l available for immediate delivery nationwide,Food,Rice,Guinness,SELL0070,55024.2,46770.57,5.0,157,15.96,15,3.1,2019-12-27
+PROD00004,Indomie Noodles Carton,High quality indomie noodles carton available for immediate delivery nationwide,Food,Beverages,Guinness,SELL0077,113017.02,101715.32,5.0,298,16.16,30,4.3,2022-02-01
+PROD00005, Polo Shirt,High quality  polo shirt available for immediate delivery nationwide,Fashion,Bags,Chi Limited,SELL0150,101847.76,101847.76,15.0,28,7.1,24,5.0,2019-06-02
+PROD00006,Wristwatch,High quality wristwatch available for immediate delivery nationwide,Fashion,Jewelry,Samsung,SELL0167,38395.22,38395.22,7.5,51,17.75,28,4.1,2022-02-23
+PROD00007,Face Masks Pack,High quality face masks pack available for immediate delivery nationwide,Health,Medical Supplies,Nestle,SELL0005,78567.09,66782.03,7.5,437,15.68,25,3.1,2019-09-07
+PROD00008,Hair Gel,High quality hair gel available for immediate delivery nationwide,Beauty,Fragrances,Nestle,SELL0112,71203.58,60523.05,10.0,317,18.33,30,4.9,2021-04-03
+PROD00009,Peak Milk 400g,High quality peak milk 400g available for immediate delivery nationwide,Food,Rice,Guinness,SELL0069,135003.75,108003.0,7.5,108,0.28,24,4.0,2021-06-11
+PROD00010,Designer Asoebi,High quality designer asoebi available for immediate delivery nationwide,Fashion,Bags,Guinness,SELL0102,118219.47,100486.55,10.0,59,28.57,24,3.3,2021-03-24
+PROD00011,Blood Tonic,High quality blood tonic available for immediate delivery nationwide,Health,Medical Supplies,Chi Limited,SELL0008,145690.03,131121.03,10.0,374,27.48,24,4.4,2021-07-14
+PROD00012,Golden Morn 1kg,High quality golden morn 1kg available for immediate delivery nationwide,Food,Beans,Guinness,SELL0075,63578.51,57220.66,7.5,55,42.48,22,3.9,2021-05-17
+PROD00013,Dell Inspiron,High quality dell inspiron available for immediate delivery nationwide,Electronics,Cameras,Chi Limited,SELL0055,28087.2,23874.12,5.0,195,4.7,28,4.6,2022-01-01
+PROD00014,Pain Relief Balm,High quality pain relief balm available for immediate delivery nationwide,Health,Supplements,Itel,SELL0076,81591.47,81591.47,12.5,426,18.15,32,3.7,2020-04-15
+PROD00015,LED Bulb Pack,High quality led bulb pack available for immediate delivery nationwide,Home,Appliances,Itel,SELL0108,89464.25,89464.25,7.5,73,23.06,26,3.3,2021-03-31
+PROD00016,Kitchen Utensils Set,High quality kitchen utensils set available for immediate delivery nationwide,Home,Furniture,Itel,SELL0007,94076.4,79964.94,7.5,121,23.63,17,4.7,2019-07-28
+PROD00017,HP Laptop 15,High quality hp laptop 15 available for immediate delivery nationwide,Electronics,Cameras,Chi Limited,SELL0139,123764.39,99011.51,12.5,33,33.59,26,4.1,2021-09-07
+PROD00018,Wardrobe,High quality wardrobe available for immediate delivery nationwide,Home,Decor,Chi Limited,SELL0019,49121.15,49121.15,12.5,220,24.87,30,3.6,2021-01-28
+PROD00019,Nail Polish,High quality nail polish available for immediate delivery nationwide,Beauty,Skincare,Nestle,SELL0011,81577.25,65261.8,7.5,241,25.76,23,3.7,2019-08-06
+PROD00020,Milo 1kg,High quality milo 1kg available for immediate delivery nationwide,Food,Vegetable Oil,Olam,SELL0078,9653.64,8205.6,15.0,316,38.13,24,4.3,2019-11-19
+PROD00021,Gas Cooker,High quality gas cooker available for immediate delivery nationwide,Home,Appliances,Nestle,SELL0132,76323.66,64875.12,12.5,110,26.3,24,4.7,2022-02-07
+PROD00022,Dell Inspiron,High quality dell inspiron available for immediate delivery nationwide,Electronics,Cameras,Unilever,SELL0152,12811.76,12811.76,5.0,97,5.81,19,4.3,2021-04-14
+PROD00023,Facial Cleanser,High quality facial cleanser available for immediate delivery nationwide,Beauty,Skincare,Infinix,SELL0140,110995.93,94346.54,7.5,480,28.4,22,4.6,2020-11-17
+PROD00024,Car Battery,High quality car battery available for immediate delivery nationwide,Automotive,Tools,Chi Limited,SELL0007,77100.79,77100.79,12.5,8,45.78,17,3.8,2021-07-18
+PROD00025,Vitamin C,High quality vitamin c available for immediate delivery nationwide,Health,Supplements,Dell,SELL0034,8014.22,6812.09,12.5,404,7.42,24,4.1,2020-07-01
+PROD00026,Hair Cream,High quality hair cream available for immediate delivery nationwide,Beauty,Personal Care,P&G,SELL0131,34361.65,27489.32,10.0,316,45.12,28,4.8,2020-02-04
+PROD00027,Engine Oil 4L,High quality engine oil 4l available for immediate delivery nationwide,Automotive,Spare Parts,Guinness,SELL0118,63687.75,63687.75,15.0,216,43.13,23,4.6,2021-11-02
+PROD00028,Designer Asoebi,High quality designer asoebi available for immediate delivery nationwide,Fashion,Women Clothing,Cadbury,SELL0004,53792.67,48413.41,12.5,125,37.01,22,4.5,2021-10-08
+PROD00029,Vitamin C,High quality vitamin c available for immediate delivery nationwide,Health,Medical Supplies,Samsung,SELL0162,49112.79,49112.79,10.0,230,33.84,25,3.1,2019-10-09
+PROD00030,Car Vacuum,High quality car vacuum available for immediate delivery nationwide,Automotive,Car Care,Dell,SELL0173,72287.73,61444.57,15.0,145,35.57,21,3.6,2019-07-16
+PROD00031,Peak Milk 400g,High quality peak milk 400g available for immediate delivery nationwide,Food,Garri,Dangote,SELL0020,81071.84,81071.84,5.0,162,44.4,19,4.9,2021-03-29
+PROD00032,Brake Pads,High quality brake pads available for immediate delivery nationwide,Automotive,Car Care,Samsung,SELL0083,140495.14,112396.11,7.5,210,26.83,34,3.9,2020-04-28
+PROD00033,Car Vacuum,High quality car vacuum available for immediate delivery nationwide,Automotive,Tools,Lafarge,SELL0010,90659.33,72527.47,12.5,454,43.65,17,4.2,2020-12-02
+PROD00034,iPhone 12,High quality iphone 12 available for immediate delivery nationwide,Electronics,Laptops,Chi Limited,SELL0200,96182.62,96182.62,10.0,187,21.37,28,3.6,2020-07-26
+PROD00035,Microwave Oven,High quality microwave oven available for immediate delivery nationwide,Home,Appliances,P&G,SELL0198,4686.22,4686.22,12.5,493,14.98,16,3.0,2020-08-16
+PROD00036,Wristwatch,High quality wristwatch available for immediate delivery nationwide,Fashion,Women Clothing,Cadbury,SELL0195,48575.4,48575.4,15.0,343,10.49,42,3.2,2021-01-17
+PROD00037,Kitchen Utensils Set,High quality kitchen utensils set available for immediate delivery nationwide,Home,Bedding,Itel,SELL0154,106256.35,106256.35,12.5,124,5.31,29,3.8,2020-12-24
+PROD00038,Paracetamol Pack,High quality paracetamol pack available for immediate delivery nationwide,Health,Medical Supplies,Nigerian Breweries,SELL0085,21369.07,21369.07,10.0,476,35.29,12,3.6,2019-11-15
+PROD00039,First Aid Kit,High quality first aid kit available for immediate delivery nationwide,Health,Medical Supplies,Olam,SELL0097,27082.5,27082.5,5.0,286,17.41,27,4.5,2020-12-02
+PROD00040,Traditional Cap,High quality traditional cap available for immediate delivery nationwide,Fashion,Bags,HP,SELL0120,119767.45,119767.45,10.0,154,39.76,22,4.7,2021-05-27
+PROD00041,Yellow Garri 5kg,High quality yellow garri 5kg available for immediate delivery nationwide,Food,Vegetable Oil,Chi Limited,SELL0191,109346.16,109346.16,15.0,187,27.28,27,4.3,2021-12-30
+PROD00042,Car Cover,High quality car cover available for immediate delivery nationwide,Automotive,Tools,P&G,SELL0030,111367.83,94662.65,5.0,231,0.25,22,3.0,2019-11-13
+PROD00043,Handbag,High quality handbag available for immediate delivery nationwide,Fashion,Men Clothing,Nigerian Breweries,SELL0145,99996.25,89996.63,5.0,335,41.72,31,3.6,2019-09-10
+PROD00044, Polo Shirt,High quality  polo shirt available for immediate delivery nationwide,Fashion,Kids Wear,Samsung,SELL0179,100479.3,90431.37,15.0,135,40.88,18,3.4,2020-10-11
+PROD00045,Digital Thermometer,High quality digital thermometer available for immediate delivery nationwide,Health,Wellness,Itel,SELL0152,4848.74,4848.74,15.0,212,14.5,19,4.3,2020-02-03
+PROD00046,Lace Material,High quality lace material available for immediate delivery nationwide,Fashion,Men Clothing,Nokia,SELL0090,64288.1,51430.48,15.0,376,32.33,34,3.8,2021-09-16
+PROD00047,Handbag,High quality handbag available for immediate delivery nationwide,Fashion,Men Clothing,Nestle,SELL0097,133713.06,120341.76,12.5,68,30.03,10,3.8,2020-07-30
+PROD00048,Bed Sheet Set,High quality bed sheet set available for immediate delivery nationwide,Home,Decor,Unilever,SELL0192,1222.85,1222.85,7.5,147,8.78,30,4.9,2019-07-03
+PROD00049,Lace Material,High quality lace material available for immediate delivery nationwide,Fashion,Women Clothing,Dufil,SELL0069,102327.36,102327.36,15.0,283,2.08,25,4.8,2019-12-31
+PROD00050,Tyre Inflator,High quality tyre inflator available for immediate delivery nationwide,Automotive,Tools,Olam,SELL0125,83505.28,75154.76,15.0,384,0.91,27,3.9,2020-09-06
+PROD00051,Facial Cleanser,High quality facial cleanser available for immediate delivery nationwide,Beauty,Skincare,Unilever,SELL0071,23308.27,23308.27,5.0,145,14.76,30,4.2,2020-01-03
+PROD00052,Senator Wear,High quality senator wear available for immediate delivery nationwide,Fashion,Kids Wear,P&G,SELL0093,69230.26,62307.23,10.0,76,43.44,29,3.8,2019-07-24
+PROD00053,Dell Inspiron,High quality dell inspiron available for immediate delivery nationwide,Electronics,Audio,HP,SELL0098,37703.6,37703.6,5.0,295,29.27,24,4.5,2021-06-22
+PROD00054,Seat Covers,High quality seat covers available for immediate delivery nationwide,Automotive,Tools,Apple,SELL0150,95422.15,95422.15,7.5,253,34.3,23,3.8,2021-11-18
+PROD00055,Honey Beans 10kg,High quality honey beans 10kg available for immediate delivery nationwide,Food,Beverages,HP,SELL0007,45495.95,45495.95,15.0,170,0.22,24,3.4,2021-08-29
+PROD00056,Honey Beans 10kg,High quality honey beans 10kg available for immediate delivery nationwide,Food,Garri,Dangote,SELL0070,109562.5,109562.5,10.0,453,27.51,16,4.0,2019-12-02
+PROD00057,Hair Cream,High quality hair cream available for immediate delivery nationwide,Beauty,Personal Care,Dell,SELL0121,86326.77,86326.77,7.5,38,12.71,27,3.7,2020-06-22
+PROD00058,Dashboard Polish,High quality dashboard polish available for immediate delivery nationwide,Automotive,Car Care,HP,SELL0149,103309.02,103309.02,7.5,188,4.73,14,3.5,2021-08-09
+PROD00059,Nail Polish,High quality nail polish available for immediate delivery nationwide,Beauty,Fragrances,HP,SELL0082,78041.73,66335.47,5.0,73,43.75,18,3.0,2019-06-15
+PROD00060,Perfume Oil,High quality perfume oil available for immediate delivery nationwide,Beauty,Makeup,P&G,SELL0167,37335.17,33601.66,12.5,53,25.74,10,3.1,2020-11-23
+PROD00061,Blood Pressure Monitor,High quality blood pressure monitor available for immediate delivery nationwide,Health,Fitness,Nigerian Breweries,SELL0186,8688.15,8688.15,12.5,499,12.24,29,3.6,2021-01-17
+PROD00062,Infinix Note 30,High quality infinix note 30 available for immediate delivery nationwide,Electronics,Accessories,P&G,SELL0059,140809.49,140809.49,12.5,278,20.69,28,4.3,2022-01-23
+PROD00063,Pain Relief Balm,High quality pain relief balm available for immediate delivery nationwide,Health,Supplements,Nestle,SELL0141,119966.34,119966.34,5.0,28,30.8,34,3.8,2020-11-19
+PROD00064,Groundnut Oil 3L,High quality groundnut oil 3l available for immediate delivery nationwide,Food,Vegetable Oil,P&G,SELL0014,20202.21,18181.99,15.0,338,41.91,17,3.3,2020-08-12
+PROD00065,First Aid Kit,High quality first aid kit available for immediate delivery nationwide,Health,Medical Supplies,Olam,SELL0019,138750.16,111000.13,10.0,96,35.37,20,3.4,2020-07-18
+PROD00066,Samsung A14,High quality samsung a14 available for immediate delivery nationwide,Electronics,Phones,P&G,SELL0129,30090.41,30090.41,10.0,336,34.6,24,3.7,2021-05-13
+PROD00067,Samsung A14,High quality samsung a14 available for immediate delivery nationwide,Electronics,Accessories,Infinix,SELL0025,26061.75,20849.4,10.0,408,7.75,24,3.8,2020-10-04
+PROD00068,HP Laptop 15,High quality hp laptop 15 available for immediate delivery nationwide,Electronics,Phones,Lafarge,SELL0190,12232.79,12232.79,15.0,77,1.05,24,5.0,2020-07-16
+PROD00069,Gas Cooker,High quality gas cooker available for immediate delivery nationwide,Home,Kitchen,Itel,SELL0037,127471.88,108351.1,7.5,441,6.92,19,3.1,2020-04-23
+PROD00070,Lace Material,High quality lace material available for immediate delivery nationwide,Fashion,Bags,Olam,SELL0013,28444.19,28444.19,12.5,76,32.79,27,3.2,2021-04-10
+PROD00071,Car Battery,High quality car battery available for immediate delivery nationwide,Automotive,Car Care,Nigerian Breweries,SELL0066,17966.9,17966.9,10.0,112,11.26,20,3.2,2020-01-20
+PROD00072,Dashboard Polish,High quality dashboard polish available for immediate delivery nationwide,Automotive,Accessories,HP,SELL0030,28048.78,25243.91,7.5,129,36.67,39,3.5,2021-09-30
+PROD00073,Digital Thermometer,High quality digital thermometer available for immediate delivery nationwide,Health,Wellness,Apple,SELL0078,50655.23,50655.23,15.0,209,14.99,33,4.6,2021-02-14
+PROD00074,Center Rug,High quality center rug available for immediate delivery nationwide,Home,Decor,P&G,SELL0132,26816.13,22793.71,12.5,103,13.45,21,4.5,2021-06-17
+PROD00075,First Aid Kit,High quality first aid kit available for immediate delivery nationwide,Health,Fitness,Cadbury,SELL0163,66152.55,59537.29,7.5,146,33.13,18,4.1,2021-03-02
+PROD00076,Milo 1kg,High quality milo 1kg available for immediate delivery nationwide,Food,Beans,Unilever,SELL0092,71312.76,71312.76,5.0,176,34.45,29,5.0,2022-02-07
+PROD00077,Plastic Chairs Set,High quality plastic chairs set available for immediate delivery nationwide,Home,Bedding,Cadbury,SELL0069,84845.36,84845.36,12.5,496,7.97,29,4.6,2021-11-10
+PROD00078,Seat Covers,High quality seat covers available for immediate delivery nationwide,Automotive,Car Care,Infinix,SELL0077,137502.23,123752.01,10.0,247,39.16,7,3.7,2020-02-11
+PROD00079,Plastic Chairs Set,High quality plastic chairs set available for immediate delivery nationwide,Home,Appliances,Nigerian Pride,SELL0200,24728.84,22255.96,12.5,227,36.01,14,4.3,2020-05-12
+PROD00080,Wristwatch,High quality wristwatch available for immediate delivery nationwide,Fashion,Bags,Itel,SELL0105,105112.57,84090.06,15.0,287,44.42,32,4.5,2019-11-05
+PROD00081,Indomie Noodles Carton,High quality indomie noodles carton available for immediate delivery nationwide,Food,Beans,Dangote,SELL0039,74584.27,63396.63,5.0,178,23.79,18,3.3,2020-09-11
+PROD00082,First Aid Kit,High quality first aid kit available for immediate delivery nationwide,Health,Wellness,Honeywell,SELL0058,111997.05,95197.49,10.0,113,47.02,26,3.6,2020-12-13
+PROD00083,Indomie Noodles Carton,High quality indomie noodles carton available for immediate delivery nationwide,Food,Spices,P&G,SELL0007,37706.3,32050.36,5.0,206,36.56,19,3.3,2020-12-31
+PROD00084,Gas Cooker,High quality gas cooker available for immediate delivery nationwide,Home,Appliances,Techno,SELL0169,92770.76,78855.14,12.5,54,17.79,26,3.4,2022-01-25
+PROD00085,Black Soap,High quality black soap available for immediate delivery nationwide,Beauty,Skincare,HP,SELL0168,59654.06,50705.95,12.5,50,1.56,35,3.0,2021-09-03
+PROD00086,Lace Material,High quality lace material available for immediate delivery nationwide,Fashion,Shoes,Apple,SELL0177,57551.4,51796.26,5.0,487,4.86,30,4.1,2020-08-07
+PROD00087,Blood Pressure Monitor,High quality blood pressure monitor available for immediate delivery nationwide,Health,Wellness,Itel,SELL0143,135671.56,135671.56,12.5,379,13.83,17,3.4,2019-10-13
+PROD00088,Dell Inspiron,High quality dell inspiron available for immediate delivery nationwide,Electronics,Accessories,Dangote,SELL0197,117779.4,100112.49,12.5,208,9.28,33,4.3,2021-10-06
+PROD00089,Wristwatch,High quality wristwatch available for immediate delivery nationwide,Fashion,Jewelry,Unilever,SELL0043,148732.76,118986.21,10.0,181,37.56,25,3.4,2021-09-13
+PROD00090,Senator Wear,High quality senator wear available for immediate delivery nationwide,Fashion,Bags,Lafarge,SELL0150,69541.41,55633.13,10.0,10,10.84,21,4.6,2020-02-24
+PROD00091,Black Soap,High quality black soap available for immediate delivery nationwide,Beauty,Skincare,Unilever,SELL0180,28046.79,25242.11,10.0,295,23.06,21,4.2,2020-09-05
+PROD00092,Tyre Inflator,High quality tyre inflator available for immediate delivery nationwide,Automotive,Car Care,HP,SELL0058,102607.28,87216.19,10.0,117,30.04,28,3.1,2022-02-03
+PROD00093,Standing Fan,High quality standing fan available for immediate delivery nationwide,Home,Furniture,Infinix,SELL0008,53135.75,45165.39,12.5,402,35.95,23,4.1,2020-03-05
+PROD00094,Car Battery,High quality car battery available for immediate delivery nationwide,Automotive,Car Care,Nigerian Pride,SELL0070,30008.43,30008.43,7.5,248,45.89,25,3.8,2020-10-06
+PROD00095,Car Cover,High quality car cover available for immediate delivery nationwide,Automotive,Accessories,Samsung,SELL0073,80488.39,80488.39,15.0,284,39.88,26,3.5,2021-06-15
+PROD00096,Dell Inspiron,High quality dell inspiron available for immediate delivery nationwide,Electronics,Phones,Techno,SELL0010,74549.95,74549.95,10.0,470,27.27,14,3.2,2019-06-11
+PROD00097,Milo 1kg,High quality milo 1kg available for immediate delivery nationwide,Food,Spices,Nokia,SELL0198,99774.6,99774.6,5.0,439,15.65,39,4.8,2019-11-13
+PROD00098,Wireless Earbuds,High quality wireless earbuds available for immediate delivery nationwide,Electronics,Laptops,Infinix,SELL0107,84711.37,76240.23,12.5,473,27.26,22,3.1,2022-02-12
+PROD00099,Bluetooth Speaker,High quality bluetooth speaker available for immediate delivery nationwide,Electronics,Audio,Infinix,SELL0037,6893.77,6893.77,7.5,137,25.15,23,4.5,2020-05-03
+PROD00100,Groundnut Oil 3L,High quality groundnut oil 3l available for immediate delivery nationwide,Food,Spices,Honeywell,SELL0054,133335.12,133335.12,7.5,43,21.33,13,4.4,2020-12-31
+PROD00101,Jump Cables,High quality jump cables available for immediate delivery nationwide,Automotive,Car Care,HP,SELL0026,125762.68,106898.28,15.0,200,3.03,24,3.6,2020-10-05
+PROD00102,Power Bank 20000mAh,High quality power bank 20000mah available for immediate delivery nationwide,Electronics,Phones,Infinix,SELL0181,18284.91,18284.91,15.0,354,15.54,35,4.7,2019-06-17
+PROD00103,Leather Shoes,High quality leather shoes available for immediate delivery nationwide,Fashion,Kids Wear,Guinness,SELL0042,100682.03,100682.03,15.0,416,32.79,24,3.6,2019-10-01
+PROD00104,Leather Shoes,High quality leather shoes available for immediate delivery nationwide,Fashion,Bags,Itel,SELL0082,127811.57,127811.57,12.5,483,34.89,29,4.5,2021-02-12
+PROD00105,Leather Shoes,High quality leather shoes available for immediate delivery nationwide,Fashion,Shoes,Unilever,SELL0126,127520.84,127520.84,10.0,445,21.49,19,4.2,2020-01-31
+PROD00106,Shea Butter Cream,High quality shea butter cream available for immediate delivery nationwide,Beauty,Skincare,Dufil,SELL0078,137777.63,123999.87,5.0,341,49.3,33,3.2,2021-01-12
+PROD00107,Palm Oil 5L,High quality palm oil 5l available for immediate delivery nationwide,Food,Beans,Dangote,SELL0090,96570.91,96570.91,5.0,43,35.53,22,3.2,2020-05-09
+PROD00108,Ankara Dress,High quality ankara dress available for immediate delivery nationwide,Fashion,Kids Wear,Apple,SELL0111,62233.73,49786.99,12.5,39,20.39,22,3.5,2020-05-18
+PROD00109,Knorr Cubes Pack,High quality knorr cubes pack available for immediate delivery nationwide,Food,Beans,Dangote,SELL0128,27149.55,21719.64,5.0,6,7.03,22,3.7,2020-10-11
+PROD00110,Jump Cables,High quality jump cables available for immediate delivery nationwide,Automotive,Car Care,Dufil,SELL0181,87978.67,74781.87,10.0,271,26.33,25,4.8,2020-08-10
+PROD00111,Microwave Oven,High quality microwave oven available for immediate delivery nationwide,Home,Appliances,Samsung,SELL0057,76495.85,65021.47,5.0,194,5.39,30,5.0,2021-05-18
+PROD00112,Tyre Inflator,High quality tyre inflator available for immediate delivery nationwide,Automotive,Spare Parts,HP,SELL0103,68261.24,54608.99,10.0,191,38.94,36,3.6,2019-10-28
+PROD00113,Pain Relief Balm,High quality pain relief balm available for immediate delivery nationwide,Health,Medical Supplies,Itel,SELL0117,96084.58,96084.58,12.5,211,6.75,24,4.3,2020-07-19
+PROD00114,Groundnut Oil 3L,High quality groundnut oil 3l available for immediate delivery nationwide,Food,Rice,Nokia,SELL0122,58034.46,58034.46,5.0,47,14.77,19,5.0,2021-12-30
+PROD00115,Palm Oil 5L,High quality palm oil 5l available for immediate delivery nationwide,Food,Rice,Chi Limited,SELL0131,1758.95,1583.06,12.5,445,9.08,23,3.1,2021-05-18
+PROD00116,Black Soap,High quality black soap available for immediate delivery nationwide,Beauty,Fragrances,P&G,SELL0164,131665.37,131665.37,12.5,282,30.02,21,4.3,2022-02-20
+PROD00117,Pain Relief Balm,High quality pain relief balm available for immediate delivery nationwide,Health,Supplements,Cadbury,SELL0002,21200.76,21200.76,12.5,91,9.69,19,4.4,2019-10-03
+PROD00118,Yellow Garri 5kg,High quality yellow garri 5kg available for immediate delivery nationwide,Food,Beverages,Itel,SELL0142,21861.04,21861.04,7.5,94,27.85,14,3.6,2020-11-30
+PROD00119,Knorr Cubes Pack,High quality knorr cubes pack available for immediate delivery nationwide,Food,Vegetable Oil,Olam,SELL0050,130082.9,110570.47,15.0,307,29.82,36,3.1,2020-03-06
+PROD00120,Wireless Earbuds,High quality wireless earbuds available for immediate delivery nationwide,Electronics,Phones,Dell,SELL0030,40928.51,34789.23,10.0,460,39.11,11,4.4,2022-01-14
+PROD00121,Ankara Dress,High quality ankara dress available for immediate delivery nationwide,Fashion,Kids Wear,Honeywell,SELL0050,124080.36,124080.36,12.5,479,7.37,31,4.5,2020-11-25
+PROD00122,Shea Butter Cream,High quality shea butter cream available for immediate delivery nationwide,Beauty,Hair,Infinix,SELL0075,118940.3,107046.27,10.0,494,24.52,29,5.0,2021-02-03
+PROD00123,Blood Pressure Monitor,High quality blood pressure monitor available for immediate delivery nationwide,Health,Wellness,Nokia,SELL0139,36799.35,36799.35,5.0,17,44.76,18,3.2,2020-03-21
+PROD00124,First Aid Kit,High quality first aid kit available for immediate delivery nationwide,Health,Fitness,Itel,SELL0086,45891.06,39007.4,15.0,394,45.33,26,4.9,2020-02-24
+PROD00125,Peak Milk 400g,High quality peak milk 400g available for immediate delivery nationwide,Food,Vegetable Oil,Chi Limited,SELL0074,62088.57,55879.71,7.5,286,1.92,19,3.2,2020-11-04
+PROD00126,Engine Oil 4L,High quality engine oil 4l available for immediate delivery nationwide,Automotive,Accessories,Nigerian Breweries,SELL0128,58443.36,58443.36,5.0,349,49.77,34,3.9,2021-01-20
+PROD00127,Blood Tonic,High quality blood tonic available for immediate delivery nationwide,Health,Supplements,Nestle,SELL0159,15504.69,12403.75,10.0,481,45.89,21,3.5,2021-06-07
+PROD00128,Wardrobe,High quality wardrobe available for immediate delivery nationwide,Home,Appliances,Honeywell,SELL0142,3047.38,3047.38,10.0,473,24.7,23,3.7,2021-01-06
+PROD00129,Basmati Rice 50kg,High quality basmati rice 50kg available for immediate delivery nationwide,Food,Snacks,Lafarge,SELL0048,82164.96,82164.96,5.0,432,21.01,19,4.9,2021-01-01
+PROD00130,Car Cover,High quality car cover available for immediate delivery nationwide,Automotive,Car Care,Dufil,SELL0134,54533.63,54533.63,15.0,224,0.84,38,3.1,2019-07-20
+PROD00131,Dining Table,High quality dining table available for immediate delivery nationwide,Home,Bedding,Nigerian Pride,SELL0116,69494.96,69494.96,10.0,232,44.69,37,3.2,2020-04-21
+PROD00132,Traditional Cap,High quality traditional cap available for immediate delivery nationwide,Fashion,Shoes,Nigerian Breweries,SELL0108,14891.78,14891.78,5.0,158,29.43,27,4.1,2019-10-22
+PROD00133,Basmati Rice 50kg,High quality basmati rice 50kg available for immediate delivery nationwide,Food,Beans,Unilever,SELL0123,77292.21,77292.21,15.0,319,8.12,26,4.2,2020-07-12
+PROD00134,Groundnut Oil 3L,High quality groundnut oil 3l available for immediate delivery nationwide,Food,Garri,Honeywell,SELL0047,69514.97,62563.47,5.0,277,14.17,24,3.4,2021-07-01
+PROD00135,Lace Material,High quality lace material available for immediate delivery nationwide,Fashion,Kids Wear,Samsung,SELL0002,32676.19,27774.76,10.0,45,22.77,16,3.3,2019-09-22
+PROD00136,Dashboard Polish,High quality dashboard polish available for immediate delivery nationwide,Automotive,Spare Parts,Infinix,SELL0154,37743.48,33969.13,10.0,278,16.97,19,3.9,2021-10-14
+PROD00137,Body Lotion,High quality body lotion available for immediate delivery nationwide,Beauty,Skincare,Unilever,SELL0145,26943.46,24249.11,5.0,88,13.95,32,3.7,2019-08-02
+PROD00138,Jeans Trousers,High quality jeans trousers available for immediate delivery nationwide,Fashion,Women Clothing,Dufil,SELL0087,98916.69,84079.18,10.0,188,9.15,30,3.4,2019-08-24
+PROD00139,Peak Milk 400g,High quality peak milk 400g available for immediate delivery nationwide,Food,Snacks,Unilever,SELL0135,138321.77,138321.77,7.5,28,14.05,26,4.8,2019-10-22
+PROD00140,Body Lotion,High quality body lotion available for immediate delivery nationwide,Beauty,Fragrances,Dufil,SELL0159,28389.33,22711.46,5.0,231,7.98,15,4.0,2022-01-30
+PROD00141,Lace Material,High quality lace material available for immediate delivery nationwide,Fashion,Bags,Techno,SELL0078,124553.82,124553.82,12.5,242,27.12,29,4.5,2021-12-13
+PROD00142,iPhone 12,High quality iphone 12 available for immediate delivery nationwide,Electronics,Accessories,Dufil,SELL0098,88960.7,80064.63,7.5,248,42.94,13,4.7,2020-07-10
+PROD00143,Designer Asoebi,High quality designer asoebi available for immediate delivery nationwide,Fashion,Women Clothing,Dell,SELL0032,112977.12,112977.12,15.0,85,25.06,34,3.6,2021-08-07
+PROD00144,Paracetamol Pack,High quality paracetamol pack available for immediate delivery nationwide,Health,Fitness,Infinix,SELL0108,28557.04,28557.04,15.0,29,5.4,27,3.5,2020-02-05
+PROD00145,Wristwatch,High quality wristwatch available for immediate delivery nationwide,Fashion,Kids Wear,Techno,SELL0125,34628.25,29434.01,15.0,36,0.2,17,4.3,2019-12-06
+PROD00146,Tyre Inflator,High quality tyre inflator available for immediate delivery nationwide,Automotive,Spare Parts,Honeywell,SELL0048,15818.05,15818.05,12.5,371,35.93,35,3.6,2020-10-17
+PROD00147,HP Laptop 15,High quality hp laptop 15 available for immediate delivery nationwide,Electronics,Audio,Nokia,SELL0080,53730.71,45671.1,12.5,301,49.88,28,4.6,2019-10-25
+PROD00148, Polo Shirt,High quality  polo shirt available for immediate delivery nationwide,Fashion,Men Clothing,HP,SELL0187,119294.35,119294.35,7.5,385,11.79,13,4.9,2021-03-28
+PROD00149,Jump Cables,High quality jump cables available for immediate delivery nationwide,Automotive,Tools,Techno,SELL0197,137491.3,116867.61,10.0,174,18.9,18,3.9,2020-03-21
+PROD00150,Pain Relief Balm,High quality pain relief balm available for immediate delivery nationwide,Health,Medical Supplies,Dufil,SELL0031,2914.43,2331.55,10.0,488,37.87,22,3.4,2021-02-19
+PROD00151,Car Battery,High quality car battery available for immediate delivery nationwide,Automotive,Car Care,P&G,SELL0110,100841.92,90757.73,12.5,179,3.01,42,3.4,2020-09-25
+PROD00152,Car Battery,High quality car battery available for immediate delivery nationwide,Automotive,Tools,Nigerian Breweries,SELL0041,19628.22,16683.99,5.0,425,35.04,29,3.6,2020-12-12
+PROD00153,Infinix Note 30,High quality infinix note 30 available for immediate delivery nationwide,Electronics,Cameras,Itel,SELL0016,119775.88,101809.5,7.5,130,3.56,27,3.2,2020-10-02
+PROD00154,Engine Oil 4L,High quality engine oil 4l available for immediate delivery nationwide,Automotive,Tools,P&G,SELL0162,58570.92,52713.83,7.5,176,12.38,42,3.3,2021-05-01
+PROD00155,LED Bulb Pack,High quality led bulb pack available for immediate delivery nationwide,Home,Furniture,Itel,SELL0019,54004.62,54004.62,12.5,424,31.82,17,4.4,2021-03-24
+PROD00156,Body Lotion,High quality body lotion available for immediate delivery nationwide,Beauty,Makeup,Techno,SELL0022,33879.87,30491.88,10.0,438,7.7,21,3.6,2019-06-23
+PROD00157,iPhone 12,High quality iphone 12 available for immediate delivery nationwide,Electronics,Phones,Dell,SELL0198,68579.83,68579.83,15.0,390,26.94,24,4.8,2019-10-31
+PROD00158,Vitamin C,High quality vitamin c available for immediate delivery nationwide,Health,Medical Supplies,Olam,SELL0112,31869.68,31869.68,15.0,342,31.36,24,4.7,2020-06-24
+PROD00159,Hair Attachment,High quality hair attachment available for immediate delivery nationwide,Beauty,Hair,Nigerian Pride,SELL0183,145663.92,123814.33,5.0,256,32.99,18,3.4,2021-04-30
+PROD00160,Plastic Chairs Set,High quality plastic chairs set available for immediate delivery nationwide,Home,Decor,Guinness,SELL0054,85948.58,85948.58,7.5,26,4.8,26,4.6,2021-04-14
+PROD00161,Hand Sanitizer,High quality hand sanitizer available for immediate delivery nationwide,Health,Supplements,P&G,SELL0180,120770.44,120770.44,12.5,154,9.28,25,3.9,2021-08-21
+PROD00162,Senator Wear,High quality senator wear available for immediate delivery nationwide,Fashion,Kids Wear,Nigerian Pride,SELL0047,121016.84,108915.16,10.0,487,17.34,29,4.9,2021-12-18
+PROD00163,Designer Asoebi,High quality designer asoebi available for immediate delivery nationwide,Fashion,Shoes,Unilever,SELL0193,101223.54,101223.54,15.0,245,48.87,27,3.5,2020-08-25
+PROD00164,Lip Balm,High quality lip balm available for immediate delivery nationwide,Beauty,Makeup,Lafarge,SELL0072,64453.21,64453.21,10.0,367,18.44,20,3.2,2020-04-10
+PROD00165,Plastic Chairs Set,High quality plastic chairs set available for immediate delivery nationwide,Home,Kitchen,Itel,SELL0149,1866.22,1679.6,15.0,219,16.42,27,4.1,2020-05-07
+PROD00166,Blood Tonic,High quality blood tonic available for immediate delivery nationwide,Health,Supplements,Itel,SELL0108,122945.09,122945.09,12.5,453,20.95,32,4.0,2021-02-01
+PROD00167,Designer Asoebi,High quality designer asoebi available for immediate delivery nationwide,Fashion,Jewelry,Lafarge,SELL0113,105620.85,89777.72,7.5,136,34.27,29,3.5,2019-10-20
+PROD00168,Bluetooth Speaker,High quality bluetooth speaker available for immediate delivery nationwide,Electronics,Laptops,Olam,SELL0169,17426.81,15684.13,5.0,100,7.45,21,3.4,2021-12-01
+PROD00169,LED Bulb Pack,High quality led bulb pack available for immediate delivery nationwide,Home,Decor,Nokia,SELL0180,147610.93,118088.75,10.0,471,17.31,25,4.0,2021-01-01
+PROD00170,Plastic Chairs Set,High quality plastic chairs set available for immediate delivery nationwide,Home,Kitchen,Chi Limited,SELL0075,18316.39,15568.93,5.0,239,1.31,42,3.5,2021-02-15
+PROD00171,Black Soap,High quality black soap available for immediate delivery nationwide,Beauty,Hair,Itel,SELL0175,44598.14,37908.42,7.5,103,22.29,28,4.5,2019-11-07
+PROD00172,Seat Covers,High quality seat covers available for immediate delivery nationwide,Automotive,Car Care,Techno,SELL0082,105108.8,105108.8,12.5,254,20.07,31,4.5,2019-06-13
+PROD00173,Dining Table,High quality dining table available for immediate delivery nationwide,Home,Kitchen,Guinness,SELL0036,94890.89,75912.71,12.5,107,0.32,20,3.1,2019-10-20
+PROD00174,Paracetamol Pack,High quality paracetamol pack available for immediate delivery nationwide,Health,Medical Supplies,Guinness,SELL0185,123434.2,123434.2,10.0,262,45.91,45,3.3,2021-09-14
+PROD00175,Peak Milk 400g,High quality peak milk 400g available for immediate delivery nationwide,Food,Beverages,Nestle,SELL0109,31327.5,31327.5,15.0,200,1.24,22,4.6,2019-11-18
+PROD00176,Jump Cables,High quality jump cables available for immediate delivery nationwide,Automotive,Tools,HP,SELL0022,108843.47,87074.77,12.5,9,42.61,16,4.3,2020-02-15
+PROD00177,Body Lotion,High quality body lotion available for immediate delivery nationwide,Beauty,Makeup,Nokia,SELL0035,131629.5,111885.08,15.0,194,45.87,31,3.6,2021-06-02
+PROD00178,Vitamin C,High quality vitamin c available for immediate delivery nationwide,Health,Supplements,Dufil,SELL0067,130195.96,130195.96,10.0,395,43.37,26,4.8,2022-01-08
+PROD00179,Ankara Dress,High quality ankara dress available for immediate delivery nationwide,Fashion,Kids Wear,Infinix,SELL0020,123905.65,123905.65,10.0,154,19.64,41,4.0,2021-08-14
+PROD00180,Nail Polish,High quality nail polish available for immediate delivery nationwide,Beauty,Skincare,Guinness,SELL0135,131788.48,131788.48,15.0,332,37.89,21,4.5,2020-03-19
+PROD00181,Honey Beans 10kg,High quality honey beans 10kg available for immediate delivery nationwide,Food,Snacks,Dell,SELL0070,10126.42,10126.42,5.0,183,20.34,20,4.8,2020-05-14
+PROD00182,HP Laptop 15,High quality hp laptop 15 available for immediate delivery nationwide,Electronics,Laptops,Infinix,SELL0168,29448.89,23559.12,10.0,268,32.32,24,4.0,2020-09-12
+PROD00183,Peak Milk 400g,High quality peak milk 400g available for immediate delivery nationwide,Food,Garri,Chi Limited,SELL0160,8440.86,8440.86,5.0,57,46.12,24,4.0,2020-04-21
+PROD00184,Kitchen Utensils Set,High quality kitchen utensils set available for immediate delivery nationwide,Home,Bedding,Nigerian Pride,SELL0141,17388.49,15649.64,5.0,51,48.11,27,4.2,2019-11-06
+PROD00185,Dining Table,High quality dining table available for immediate delivery nationwide,Home,Furniture,Nigerian Breweries,SELL0178,134721.2,114513.02,7.5,252,35.12,24,3.9,2019-09-18
+PROD00186,Indomie Noodles Carton,High quality indomie noodles carton available for immediate delivery nationwide,Food,Spices,Infinix,SELL0109,64219.7,54586.74,5.0,296,28.61,40,4.7,2020-06-29
+PROD00187,Wardrobe,High quality wardrobe available for immediate delivery nationwide,Home,Bedding,HP,SELL0052,110640.63,94044.54,7.5,216,3.38,22,4.7,2021-06-06
+PROD00188,Basmati Rice 50kg,High quality basmati rice 50kg available for immediate delivery nationwide,Food,Beverages,Olam,SELL0054,50593.08,43004.12,7.5,135,17.89,22,4.1,2021-01-23
+PROD00189,Knorr Cubes Pack,High quality knorr cubes pack available for immediate delivery nationwide,Food,Vegetable Oil,Olam,SELL0140,66520.01,66520.01,7.5,191,47.6,23,5.0,2021-01-13
+PROD00190,Car Cover,High quality car cover available for immediate delivery nationwide,Automotive,Accessories,Itel,SELL0169,24724.13,22251.72,5.0,244,45.28,23,4.4,2020-05-09
+PROD00191,Black Soap,High quality black soap available for immediate delivery nationwide,Beauty,Skincare,P&G,SELL0069,102516.6,87139.11,12.5,285,24.3,22,4.7,2019-06-05
+PROD00192,Paracetamol Pack,High quality paracetamol pack available for immediate delivery nationwide,Health,Medical Supplies,HP,SELL0088,23592.11,20053.29,7.5,466,41.3,24,3.4,2021-07-12
+PROD00193,Wardrobe,High quality wardrobe available for immediate delivery nationwide,Home,Decor,Nigerian Pride,SELL0057,84466.17,67572.93,10.0,40,31.93,24,4.6,2021-05-28
+PROD00194,HP Laptop 15,High quality hp laptop 15 available for immediate delivery nationwide,Electronics,Laptops,Dangote,SELL0095,19741.51,16780.28,12.5,59,48.42,27,3.0,2020-12-09
+PROD00195,Center Rug,High quality center rug available for immediate delivery nationwide,Home,Kitchen,Itel,SELL0121,80740.46,68629.39,5.0,332,22.89,35,4.7,2020-12-20
+PROD00196,Pain Relief Balm,High quality pain relief balm available for immediate delivery nationwide,Health,Medical Supplies,Infinix,SELL0117,119210.36,107289.33,5.0,454,38.02,24,3.6,2020-04-22
+PROD00197,Leather Shoes,High quality leather shoes available for immediate delivery nationwide,Fashion,Jewelry,Nokia,SELL0051,98218.51,88396.66,15.0,36,0.53,33,4.8,2019-10-28
+PROD00198,Samsung A14,High quality samsung a14 available for immediate delivery nationwide,Electronics,Phones,HP,SELL0037,107732.87,107732.87,10.0,350,14.58,36,3.4,2021-04-25
+PROD00199,Power Bank 20000mAh,High quality power bank 20000mah available for immediate delivery nationwide,Electronics,Accessories,Nestle,SELL0170,127466.18,101972.94,12.5,53,37.89,30,4.7,2021-08-11
+PROD00200,Car Battery,High quality car battery available for immediate delivery nationwide,Automotive,Tools,Cadbury,SELL0162,102000.5,86700.43,5.0,197,18.3,28,4.2,2020-05-24
+PROD00201,Hand Sanitizer,High quality hand sanitizer available for immediate delivery nationwide,Health,Wellness,Samsung,SELL0076,115680.12,104112.11,15.0,317,36.2,18,3.8,2021-10-23
+PROD00202, Polo Shirt,High quality  polo shirt available for immediate delivery nationwide,Fashion,Women Clothing,Dufil,SELL0005,117067.82,117067.82,10.0,82,8.16,35,4.6,2020-03-15
+PROD00203,Traditional Cap,High quality traditional cap available for immediate delivery nationwide,Fashion,Jewelry,Nestle,SELL0051,102640.46,102640.46,15.0,107,47.86,23,3.4,2021-10-05
+PROD00204,Infinix Note 30,High quality infinix note 30 available for immediate delivery nationwide,Electronics,Audio,Nokia,SELL0160,114275.62,114275.62,12.5,15,18.16,13,3.6,2021-04-18
+PROD00205,Ankara Dress,High quality ankara dress available for immediate delivery nationwide,Fashion,Shoes,Chi Limited,SELL0127,114577.19,114577.19,15.0,63,4.22,39,4.9,2019-07-09
+PROD00206,Engine Oil 4L,High quality engine oil 4l available for immediate delivery nationwide,Automotive,Car Care,P&G,SELL0039,11317.18,9053.74,5.0,20,25.25,26,3.3,2020-05-23
+PROD00207,Hair Cream,High quality hair cream available for immediate delivery nationwide,Beauty,Personal Care,Dufil,SELL0087,100744.27,90669.84,12.5,447,27.86,25,4.7,2020-01-12
+PROD00208,Peak Milk 400g,High quality peak milk 400g available for immediate delivery nationwide,Food,Garri,Cadbury,SELL0092,75558.66,75558.66,5.0,312,9.43,30,3.6,2020-07-17
+PROD00209,Bed Sheet Set,High quality bed sheet set available for immediate delivery nationwide,Home,Appliances,Guinness,SELL0063,122912.11,110620.9,12.5,329,19.43,18,3.6,2021-09-29
+PROD00210,Ankara Dress,High quality ankara dress available for immediate delivery nationwide,Fashion,Women Clothing,Itel,SELL0127,131612.86,131612.86,12.5,221,18.31,32,4.6,2019-10-24
+PROD00211,Peak Milk 400g,High quality peak milk 400g available for immediate delivery nationwide,Food,Vegetable Oil,Cadbury,SELL0043,50627.82,43033.64,7.5,153,0.23,23,4.6,2021-05-06
+PROD00212,Engine Oil 4L,High quality engine oil 4l available for immediate delivery nationwide,Automotive,Accessories,Techno,SELL0013,82369.55,65895.64,10.0,346,37.34,23,4.6,2020-04-23
+PROD00213,Techno Spark 10,High quality techno spark 10 available for immediate delivery nationwide,Electronics,Audio,HP,SELL0072,84362.27,84362.27,7.5,258,43.88,35,3.8,2021-03-29
+PROD00214,Ankara Dress,High quality ankara dress available for immediate delivery nationwide,Fashion,Jewelry,HP,SELL0186,131987.13,105589.7,7.5,168,44.94,31,4.7,2021-12-18
+PROD00215,Wristwatch,High quality wristwatch available for immediate delivery nationwide,Fashion,Shoes,Techno,SELL0004,107202.49,107202.49,5.0,34,36.15,16,4.2,2020-11-20
+PROD00216,Vitamin C,High quality vitamin c available for immediate delivery nationwide,Health,Medical Supplies,Nokia,SELL0030,83403.61,70893.07,10.0,442,41.22,32,4.9,2019-11-25
+PROD00217,Facial Cleanser,High quality facial cleanser available for immediate delivery nationwide,Beauty,Hair,Honeywell,SELL0017,105154.03,105154.03,15.0,455,47.17,36,4.5,2021-03-01
+PROD00218,Seat Covers,High quality seat covers available for immediate delivery nationwide,Automotive,Car Care,Dell,SELL0068,111199.67,111199.67,12.5,218,21.29,30,3.5,2020-08-01
+PROD00219,LED Bulb Pack,High quality led bulb pack available for immediate delivery nationwide,Home,Kitchen,Techno,SELL0132,137512.31,137512.31,7.5,75,33.75,38,3.9,2019-08-08
+PROD00220,Milo 1kg,High quality milo 1kg available for immediate delivery nationwide,Food,Beverages,Nigerian Pride,SELL0179,46161.87,41545.69,12.5,438,0.29,27,3.7,2021-06-05
+PROD00221,Senator Wear,High quality senator wear available for immediate delivery nationwide,Fashion,Men Clothing,Nigerian Breweries,SELL0175,6414.04,6414.04,7.5,350,39.01,14,3.5,2021-10-30
+PROD00222,Hair Gel,High quality hair gel available for immediate delivery nationwide,Beauty,Fragrances,Dufil,SELL0115,139550.42,118617.86,15.0,153,48.94,17,3.2,2021-01-19
+PROD00223,Samsung A14,High quality samsung a14 available for immediate delivery nationwide,Electronics,Accessories,Cadbury,SELL0060,100422.63,85359.24,12.5,380,43.19,35,4.3,2021-07-15
+PROD00224,Tyre Inflator,High quality tyre inflator available for immediate delivery nationwide,Automotive,Car Care,Infinix,SELL0123,122031.88,109828.69,15.0,258,23.99,31,4.7,2019-10-07
+PROD00225,Tyre Inflator,High quality tyre inflator available for immediate delivery nationwide,Automotive,Accessories,Guinness,SELL0140,139098.71,125188.83,10.0,17,4.48,24,4.3,2021-11-17
+PROD00226,Pain Relief Balm,High quality pain relief balm available for immediate delivery nationwide,Health,Medical Supplies,Apple,SELL0152,138723.44,138723.44,7.5,222,21.67,35,3.9,2021-09-28
+PROD00227,Seat Covers,High quality seat covers available for immediate delivery nationwide,Automotive,Car Care,Chi Limited,SELL0115,105186.31,105186.31,12.5,48,47.49,27,5.0,2020-04-28
+PROD00228,Handbag,High quality handbag available for immediate delivery nationwide,Fashion,Women Clothing,Nigerian Breweries,SELL0174,137599.73,116959.77,15.0,5,23.24,37,4.2,2020-02-03
+PROD00229,Multivitamins,High quality multivitamins available for immediate delivery nationwide,Health,Fitness,Honeywell,SELL0083,80783.64,80783.64,15.0,249,24.07,43,3.3,2020-04-26
+PROD00230,Body Lotion,High quality body lotion available for immediate delivery nationwide,Beauty,Fragrances,Nigerian Breweries,SELL0049,45161.49,38387.26,10.0,496,37.13,20,3.0,2019-07-01
+PROD00231,Infinix Note 30,High quality infinix note 30 available for immediate delivery nationwide,Electronics,Accessories,Unilever,SELL0200,116207.8,116207.8,10.0,252,27.62,15,3.4,2019-08-11
+PROD00232,Multivitamins,High quality multivitamins available for immediate delivery nationwide,Health,Medical Supplies,Olam,SELL0102,143632.65,143632.65,5.0,278,26.69,29,3.2,2019-09-25
+PROD00233,Blood Pressure Monitor,High quality blood pressure monitor available for immediate delivery nationwide,Health,Fitness,Olam,SELL0167,64851.05,64851.05,5.0,7,35.95,33,3.4,2020-03-03
+PROD00234,Nail Polish,High quality nail polish available for immediate delivery nationwide,Beauty,Hair,Olam,SELL0126,142236.23,120900.79,12.5,30,31.36,24,4.3,2021-08-01
+PROD00235,Jeans Trousers,High quality jeans trousers available for immediate delivery nationwide,Fashion,Bags,Itel,SELL0188,3684.66,3684.66,10.0,329,0.76,29,4.3,2020-07-05
+PROD00236,Pain Relief Balm,High quality pain relief balm available for immediate delivery nationwide,Health,Supplements,Nokia,SELL0194,42010.32,35708.77,12.5,343,32.19,10,3.7,2019-12-03
+PROD00237,Jeans Trousers,High quality jeans trousers available for immediate delivery nationwide,Fashion,Women Clothing,Chi Limited,SELL0031,61803.07,61803.07,15.0,13,19.28,20,4.8,2019-06-14
+PROD00238,First Aid Kit,High quality first aid kit available for immediate delivery nationwide,Health,Wellness,Apple,SELL0067,3952.13,3952.13,12.5,338,35.56,16,3.3,2021-05-19
+PROD00239,Face Masks Pack,High quality face masks pack available for immediate delivery nationwide,Health,Wellness,Dangote,SELL0163,36643.49,29314.79,5.0,362,40.47,18,4.0,2021-08-09
+PROD00240,Car Cover,High quality car cover available for immediate delivery nationwide,Automotive,Car Care,Olam,SELL0153,46456.25,37165.0,12.5,352,38.87,13,4.0,2019-07-21
+PROD00241,Car Vacuum,High quality car vacuum available for immediate delivery nationwide,Automotive,Tools,Chi Limited,SELL0093,135579.5,135579.5,10.0,134,46.99,23,3.4,2020-05-04
+PROD00242,Car Cover,High quality car cover available for immediate delivery nationwide,Automotive,Car Care,Nigerian Breweries,SELL0141,57741.77,51967.59,12.5,186,46.38,17,4.0,2021-04-13
+PROD00243,Car Vacuum,High quality car vacuum available for immediate delivery nationwide,Automotive,Spare Parts,Dell,SELL0144,30546.57,30546.57,10.0,340,27.4,14,3.9,2019-11-11
+PROD00244,Pain Relief Balm,High quality pain relief balm available for immediate delivery nationwide,Health,Wellness,Guinness,SELL0077,33159.31,29843.38,10.0,128,7.8,23,4.7,2021-09-08
+PROD00245,Plastic Chairs Set,High quality plastic chairs set available for immediate delivery nationwide,Home,Decor,Dufil,SELL0131,79154.21,79154.21,10.0,129,8.04,24,4.8,2020-07-23
+PROD00246,Digital Thermometer,High quality digital thermometer available for immediate delivery nationwide,Health,Medical Supplies,Dufil,SELL0111,45814.14,36651.31,10.0,448,26.83,23,3.7,2021-07-21
+PROD00247,Dashboard Polish,High quality dashboard polish available for immediate delivery nationwide,Automotive,Spare Parts,Samsung,SELL0185,120156.77,120156.77,15.0,94,26.65,17,3.8,2019-11-17
+PROD00248,Engine Oil 4L,High quality engine oil 4l available for immediate delivery nationwide,Automotive,Car Care,Dufil,SELL0045,69224.96,69224.96,7.5,295,2.38,24,3.9,2020-01-19
+PROD00249,Brake Pads,High quality brake pads available for immediate delivery nationwide,Automotive,Tools,Nigerian Pride,SELL0081,126835.91,107810.53,10.0,346,31.48,18,4.4,2020-02-03
+PROD00250,Black Soap,High quality black soap available for immediate delivery nationwide,Beauty,Skincare,Olam,SELL0144,63834.81,63834.81,5.0,186,2.02,18,3.3,2021-05-14
+PROD00251,Car Cover,High quality car cover available for immediate delivery nationwide,Automotive,Car Care,Apple,SELL0169,148876.12,148876.12,15.0,53,15.65,20,3.7,2021-11-22
+PROD00252,Power Bank 20000mAh,High quality power bank 20000mah available for immediate delivery nationwide,Electronics,Laptops,Dell,SELL0176,89897.13,71917.71,7.5,389,24.62,19,4.7,2021-07-16
+PROD00253,Honey Beans 10kg,High quality honey beans 10kg available for immediate delivery nationwide,Food,Beans,Infinix,SELL0026,119825.6,95860.48,7.5,127,32.88,13,4.2,2020-03-08
+PROD00254,Hand Sanitizer,High quality hand sanitizer available for immediate delivery nationwide,Health,Medical Supplies,Itel,SELL0068,54337.49,48903.74,15.0,227,42.04,26,3.8,2019-12-05
+PROD00255,Vitamin C,High quality vitamin c available for immediate delivery nationwide,Health,Fitness,Cadbury,SELL0094,104093.21,88479.23,7.5,275,9.7,17,4.4,2020-05-24
+PROD00256,Knorr Cubes Pack,High quality knorr cubes pack available for immediate delivery nationwide,Food,Garri,P&G,SELL0162,143229.43,143229.43,5.0,413,30.22,28,4.8,2019-08-22
+PROD00257,Facial Cleanser,High quality facial cleanser available for immediate delivery nationwide,Beauty,Hair,Dangote,SELL0171,14971.28,13474.15,10.0,429,17.94,14,4.5,2020-01-12
+PROD00258,Engine Oil 4L,High quality engine oil 4l available for immediate delivery nationwide,Automotive,Tools,Cadbury,SELL0035,138647.14,124782.42,7.5,283,42.28,24,3.8,2019-12-22
+PROD00259, Polo Shirt,High quality  polo shirt available for immediate delivery nationwide,Fashion,Shoes,Honeywell,SELL0023,58405.42,58405.42,12.5,196,48.17,17,4.4,2021-07-20
+PROD00260,Hand Sanitizer,High quality hand sanitizer available for immediate delivery nationwide,Health,Medical Supplies,P&G,SELL0045,39341.89,39341.89,5.0,268,12.95,18,3.2,2022-02-24
+PROD00261,Hand Sanitizer,High quality hand sanitizer available for immediate delivery nationwide,Health,Wellness,Samsung,SELL0160,24807.78,21086.61,12.5,297,11.78,17,4.2,2020-08-15
+PROD00262,Jeans Trousers,High quality jeans trousers available for immediate delivery nationwide,Fashion,Men Clothing,Techno,SELL0087,138519.13,117741.26,12.5,386,24.75,32,3.1,2020-05-09
+PROD00263,Bluetooth Speaker,High quality bluetooth speaker available for immediate delivery nationwide,Electronics,Accessories,Itel,SELL0037,123404.4,104893.74,12.5,230,11.46,23,4.6,2022-01-26
+PROD00264, Polo Shirt,High quality  polo shirt available for immediate delivery nationwide,Fashion,Women Clothing,Guinness,SELL0143,117465.05,99845.29,5.0,162,25.15,15,4.7,2019-09-01
+PROD00265,Brake Pads,High quality brake pads available for immediate delivery nationwide,Automotive,Spare Parts,Dell,SELL0156,9520.46,9520.46,12.5,157,18.38,37,4.7,2019-10-27
+PROD00266,Hair Cream,High quality hair cream available for immediate delivery nationwide,Beauty,Hair,Cadbury,SELL0034,16952.98,16952.98,10.0,397,18.62,27,3.8,2019-12-07
+PROD00267,Black Soap,High quality black soap available for immediate delivery nationwide,Beauty,Personal Care,Lafarge,SELL0075,17419.67,17419.67,5.0,388,14.33,23,3.5,2021-12-03
+PROD00268,iPhone 12,High quality iphone 12 available for immediate delivery nationwide,Electronics,Audio,Dufil,SELL0112,97387.62,97387.62,10.0,120,45.78,34,3.2,2019-07-10
+PROD00269,Seat Covers,High quality seat covers available for immediate delivery nationwide,Automotive,Accessories,Chi Limited,SELL0174,73087.54,73087.54,5.0,169,0.89,26,3.3,2021-01-19
+PROD00270,Bluetooth Speaker,High quality bluetooth speaker available for immediate delivery nationwide,Electronics,Cameras,Nestle,SELL0017,19849.55,19849.55,7.5,443,8.17,27,3.2,2020-08-11
+PROD00271,Wristwatch,High quality wristwatch available for immediate delivery nationwide,Fashion,Jewelry,Guinness,SELL0188,13423.8,13423.8,12.5,122,41.02,20,3.3,2019-09-09
+PROD00272,Hair Cream,High quality hair cream available for immediate delivery nationwide,Beauty,Personal Care,Nestle,SELL0083,60163.46,60163.46,7.5,352,23.08,22,4.6,2019-09-25
+PROD00273,Face Masks Pack,High quality face masks pack available for immediate delivery nationwide,Health,Supplements,Nestle,SELL0175,21399.44,18189.53,12.5,5,22.16,33,3.6,2021-10-18
+PROD00274,Black Soap,High quality black soap available for immediate delivery nationwide,Beauty,Personal Care,Nigerian Pride,SELL0015,56600.86,56600.86,10.0,167,2.65,31,4.6,2019-11-29
+PROD00275,Dell Inspiron,High quality dell inspiron available for immediate delivery nationwide,Electronics,Laptops,Nigerian Breweries,SELL0063,111617.79,94875.12,12.5,289,30.68,31,4.8,2021-07-02
+PROD00276,Knorr Cubes Pack,High quality knorr cubes pack available for immediate delivery nationwide,Food,Snacks,Honeywell,SELL0153,132194.17,132194.17,15.0,209,22.68,22,3.8,2020-01-30
+PROD00277,Car Cover,High quality car cover available for immediate delivery nationwide,Automotive,Car Care,Nigerian Pride,SELL0053,2267.81,1814.25,12.5,355,34.52,16,4.4,2020-03-31
+PROD00278,Car Vacuum,High quality car vacuum available for immediate delivery nationwide,Automotive,Car Care,P&G,SELL0062,106936.52,106936.52,15.0,263,4.9,30,3.2,2020-02-05
+PROD00279,Pain Relief Balm,High quality pain relief balm available for immediate delivery nationwide,Health,Medical Supplies,Honeywell,SELL0193,26705.95,26705.95,5.0,129,12.3,16,3.8,2019-09-11
+PROD00280,Hair Attachment,High quality hair attachment available for immediate delivery nationwide,Beauty,Makeup,Nigerian Breweries,SELL0061,23185.69,23185.69,15.0,91,18.15,27,3.5,2019-07-03
+PROD00281,Vitamin C,High quality vitamin c available for immediate delivery nationwide,Health,Medical Supplies,Guinness,SELL0100,132341.09,105872.87,5.0,375,39.01,22,3.8,2020-07-30
+PROD00282,First Aid Kit,High quality first aid kit available for immediate delivery nationwide,Health,Supplements,Techno,SELL0171,81083.18,64866.55,12.5,130,36.94,20,4.2,2020-09-20
+PROD00283,Jump Cables,High quality jump cables available for immediate delivery nationwide,Automotive,Spare Parts,Samsung,SELL0012,64833.19,64833.19,5.0,186,6.56,23,3.5,2021-06-04
+PROD00284,Power Bank 20000mAh,High quality power bank 20000mah available for immediate delivery nationwide,Electronics,Phones,P&G,SELL0030,137085.39,123376.85,7.5,142,28.08,33,4.7,2019-06-29
+PROD00285,Vitamin C,High quality vitamin c available for immediate delivery nationwide,Health,Fitness,Guinness,SELL0002,27865.2,25078.68,10.0,46,38.26,19,4.8,2021-01-19
+PROD00286,Multivitamins,High quality multivitamins available for immediate delivery nationwide,Health,Supplements,Olam,SELL0078,40459.88,32367.9,10.0,483,18.23,8,4.2,2019-10-24
+PROD00287,Facial Cleanser,High quality facial cleanser available for immediate delivery nationwide,Beauty,Fragrances,Apple,SELL0154,51426.3,51426.3,12.5,224,24.98,27,3.5,2020-08-30
+PROD00288,Car Vacuum,High quality car vacuum available for immediate delivery nationwide,Automotive,Car Care,Dell,SELL0109,75570.91,75570.91,15.0,186,20.1,32,3.3,2020-07-16
+PROD00289,Pain Relief Balm,High quality pain relief balm available for immediate delivery nationwide,Health,Wellness,Olam,SELL0096,82041.52,82041.52,12.5,111,22.99,34,3.4,2021-10-14
+PROD00290,Digital Thermometer,High quality digital thermometer available for immediate delivery nationwide,Health,Wellness,Itel,SELL0043,123651.48,123651.48,7.5,356,32.8,29,4.4,2022-02-03
+PROD00291,Indomie Noodles Carton,High quality indomie noodles carton available for immediate delivery nationwide,Food,Snacks,Unilever,SELL0077,144250.8,144250.8,12.5,95,24.76,39,3.4,2020-01-10
+PROD00292,Infinix Note 30,High quality infinix note 30 available for immediate delivery nationwide,Electronics,Accessories,Infinix,SELL0107,11671.14,10504.02,10.0,94,31.35,25,3.2,2019-12-08
+PROD00293,Palm Oil 5L,High quality palm oil 5l available for immediate delivery nationwide,Food,Spices,P&G,SELL0137,17791.5,16012.35,7.5,459,46.16,45,3.5,2019-06-28
+PROD00294,Hand Sanitizer,High quality hand sanitizer available for immediate delivery nationwide,Health,Fitness,Unilever,SELL0145,47665.87,40515.99,15.0,266,45.13,30,4.9,2020-01-08
+PROD00295,LED Bulb Pack,High quality led bulb pack available for immediate delivery nationwide,Home,Appliances,Nokia,SELL0001,117132.05,117132.05,10.0,282,11.07,26,4.4,2021-12-29
+PROD00296,Tyre Inflator,High quality tyre inflator available for immediate delivery nationwide,Automotive,Accessories,Olam,SELL0021,109611.54,87689.23,15.0,97,37.37,21,3.3,2022-02-02
+PROD00297,Brake Pads,High quality brake pads available for immediate delivery nationwide,Automotive,Car Care,Honeywell,SELL0099,72900.58,72900.58,15.0,119,14.08,16,3.1,2020-02-26
+PROD00298,Samsung A14,High quality samsung a14 available for immediate delivery nationwide,Electronics,Cameras,Nestle,SELL0140,87272.4,87272.4,7.5,70,25.73,27,3.6,2019-10-06
+PROD00299,Shea Butter Cream,High quality shea butter cream available for immediate delivery nationwide,Beauty,Hair,Lafarge,SELL0115,14038.26,14038.26,12.5,338,2.77,30,4.7,2020-05-08
+PROD00300,Car Vacuum,High quality car vacuum available for immediate delivery nationwide,Automotive,Tools,Chi Limited,SELL0134,92310.47,73848.38,10.0,431,28.87,24,4.8,2021-01-16
+PROD00301,Lip Balm,High quality lip balm available for immediate delivery nationwide,Beauty,Fragrances,Itel,SELL0042,90439.85,90439.85,5.0,256,6.3,29,3.6,2021-10-22
+PROD00302,Dining Table,High quality dining table available for immediate delivery nationwide,Home,Bedding,Nigerian Breweries,SELL0025,54035.98,43228.78,15.0,278,33.18,31,5.0,2021-11-29
+PROD00303,Infinix Note 30,High quality infinix note 30 available for immediate delivery nationwide,Electronics,Cameras,Honeywell,SELL0176,74384.89,59507.91,12.5,446,12.24,30,5.0,2019-12-22
+PROD00304,Blood Tonic,High quality blood tonic available for immediate delivery nationwide,Health,Supplements,Nestle,SELL0091,89860.27,89860.27,7.5,386,43.35,21,3.8,2020-08-02
+PROD00305,Lip Balm,High quality lip balm available for immediate delivery nationwide,Beauty,Makeup,Guinness,SELL0144,62167.59,55950.83,5.0,50,28.74,22,4.8,2020-11-20
+PROD00306,Hand Sanitizer,High quality hand sanitizer available for immediate delivery nationwide,Health,Supplements,Samsung,SELL0179,80029.79,80029.79,5.0,395,10.44,21,4.6,2020-10-24
+PROD00307,Power Bank 20000mAh,High quality power bank 20000mah available for immediate delivery nationwide,Electronics,Cameras,Apple,SELL0179,52860.79,42288.63,5.0,204,11.17,24,5.0,2019-12-17
+PROD00308,Gas Cooker,High quality gas cooker available for immediate delivery nationwide,Home,Furniture,Honeywell,SELL0135,12455.38,10587.07,10.0,301,1.93,9,4.7,2020-04-13
+PROD00309,Air Freshener,High quality air freshener available for immediate delivery nationwide,Automotive,Car Care,Olam,SELL0154,71957.02,71957.02,10.0,195,25.84,19,3.7,2020-01-17
+PROD00310,Indomie Noodles Carton,High quality indomie noodles carton available for immediate delivery nationwide,Food,Snacks,Dufil,SELL0175,135667.0,135667.0,15.0,285,37.95,32,3.2,2020-10-06
+PROD00311,First Aid Kit,High quality first aid kit available for immediate delivery nationwide,Health,Fitness,Honeywell,SELL0038,90959.74,90959.74,10.0,59,21.95,17,3.5,2021-10-01
+PROD00312,Facial Cleanser,High quality facial cleanser available for immediate delivery nationwide,Beauty,Hair,Nigerian Pride,SELL0162,84090.07,84090.07,12.5,449,21.11,33,3.4,2022-01-13
+PROD00313,iPhone 12,High quality iphone 12 available for immediate delivery nationwide,Electronics,Laptops,Nigerian Breweries,SELL0032,61466.59,61466.59,12.5,124,28.62,23,3.5,2020-02-20
+PROD00314,Wireless Earbuds,High quality wireless earbuds available for immediate delivery nationwide,Electronics,Laptops,Honeywell,SELL0025,38501.68,38501.68,12.5,116,38.82,30,4.2,2019-06-09
+PROD00315,Multivitamins,High quality multivitamins available for immediate delivery nationwide,Health,Wellness,Honeywell,SELL0189,60591.48,48473.18,15.0,28,32.57,20,3.9,2021-04-08
+PROD00316,Milo 1kg,High quality milo 1kg available for immediate delivery nationwide,Food,Garri,Nigerian Pride,SELL0162,81218.52,81218.52,5.0,292,49.27,24,4.2,2021-11-04
+PROD00317,Senator Wear,High quality senator wear available for immediate delivery nationwide,Fashion,Jewelry,HP,SELL0199,69674.44,55739.55,10.0,338,47.29,34,4.9,2020-08-02
+PROD00318,Bed Sheet Set,High quality bed sheet set available for immediate delivery nationwide,Home,Appliances,Dufil,SELL0056,10914.84,10914.84,12.5,103,46.72,16,3.9,2020-10-02
+PROD00319,Car Battery,High quality car battery available for immediate delivery nationwide,Automotive,Accessories,Dangote,SELL0181,72344.45,72344.45,5.0,366,46.0,24,3.6,2021-03-28
+PROD00320,Lace Material,High quality lace material available for immediate delivery nationwide,Fashion,Jewelry,Dufil,SELL0025,110511.32,110511.32,15.0,455,39.62,34,4.4,2021-09-08
+PROD00321,Hand Sanitizer,High quality hand sanitizer available for immediate delivery nationwide,Health,Supplements,Dell,SELL0048,101382.69,101382.69,12.5,165,15.5,21,3.0,2021-11-29
+PROD00322,Perfume Oil,High quality perfume oil available for immediate delivery nationwide,Beauty,Skincare,Nigerian Breweries,SELL0076,44238.2,44238.2,10.0,84,33.5,23,4.3,2019-11-09
+PROD00323,Air Freshener,High quality air freshener available for immediate delivery nationwide,Automotive,Spare Parts,Dufil,SELL0002,121467.97,121467.97,10.0,229,20.63,21,4.4,2022-01-16
+PROD00324,Wireless Earbuds,High quality wireless earbuds available for immediate delivery nationwide,Electronics,Phones,P&G,SELL0087,64443.71,64443.71,10.0,9,30.67,26,4.2,2019-09-14
+PROD00325,Knorr Cubes Pack,High quality knorr cubes pack available for immediate delivery nationwide,Food,Vegetable Oil,Techno,SELL0159,29668.42,25218.16,7.5,244,2.04,18,3.6,2021-03-13
+PROD00326,Designer Asoebi,High quality designer asoebi available for immediate delivery nationwide,Fashion,Kids Wear,Dufil,SELL0163,148527.62,118822.1,5.0,265,45.47,28,3.4,2021-10-28
+PROD00327,Techno Spark 10,High quality techno spark 10 available for immediate delivery nationwide,Electronics,Phones,Honeywell,SELL0099,96807.64,96807.64,15.0,141,9.14,32,4.2,2019-11-27
+PROD00328,iPhone 12,High quality iphone 12 available for immediate delivery nationwide,Electronics,Laptops,P&G,SELL0098,72562.45,58049.96,15.0,344,46.83,31,3.8,2019-11-25
+PROD00329,Multivitamins,High quality multivitamins available for immediate delivery nationwide,Health,Medical Supplies,Unilever,SELL0138,52699.14,52699.14,5.0,296,12.58,26,4.7,2021-03-02
+PROD00330,Multivitamins,High quality multivitamins available for immediate delivery nationwide,Health,Medical Supplies,Dangote,SELL0060,101844.29,86567.64,7.5,148,32.72,22,4.7,2020-03-28
+PROD00331,Dell Inspiron,High quality dell inspiron available for immediate delivery nationwide,Electronics,Cameras,HP,SELL0191,101328.78,86129.47,10.0,214,9.65,29,4.6,2021-04-21
+PROD00332,Lip Balm,High quality lip balm available for immediate delivery nationwide,Beauty,Personal Care,HP,SELL0066,35280.75,35280.75,12.5,194,5.22,17,4.9,2020-11-21
+PROD00333,Wardrobe,High quality wardrobe available for immediate delivery nationwide,Home,Decor,P&G,SELL0130,38905.87,38905.87,10.0,420,14.47,21,3.6,2021-06-14
+PROD00334,Body Lotion,High quality body lotion available for immediate delivery nationwide,Beauty,Hair,Honeywell,SELL0142,141622.72,141622.72,10.0,15,22.54,28,3.4,2021-09-18
+PROD00335,Multivitamins,High quality multivitamins available for immediate delivery nationwide,Health,Supplements,Nigerian Breweries,SELL0195,129433.35,129433.35,15.0,418,31.11,30,3.7,2020-03-05
+PROD00336,Gas Cooker,High quality gas cooker available for immediate delivery nationwide,Home,Furniture,Dangote,SELL0109,85828.42,72954.15,10.0,112,16.2,33,3.2,2021-10-30
+PROD00337,Plastic Chairs Set,High quality plastic chairs set available for immediate delivery nationwide,Home,Decor,Nigerian Breweries,SELL0032,7675.43,6907.89,15.0,108,0.33,12,4.5,2021-08-26
+PROD00338,Perfume Oil,High quality perfume oil available for immediate delivery nationwide,Beauty,Makeup,HP,SELL0117,21319.76,18121.8,10.0,150,37.0,25,4.2,2020-07-16
+PROD00339,Car Vacuum,High quality car vacuum available for immediate delivery nationwide,Automotive,Tools,Lafarge,SELL0116,144467.85,130021.07,15.0,317,29.01,24,3.9,2020-07-23
+PROD00340,Jump Cables,High quality jump cables available for immediate delivery nationwide,Automotive,Car Care,P&G,SELL0006,105341.73,84273.39,15.0,31,4.34,21,3.5,2020-08-24
+PROD00341,Techno Spark 10,High quality techno spark 10 available for immediate delivery nationwide,Electronics,Phones,Nigerian Pride,SELL0135,144542.72,144542.72,12.5,57,16.9,34,4.0,2020-06-02
+PROD00342,Plastic Chairs Set,High quality plastic chairs set available for immediate delivery nationwide,Home,Decor,Nigerian Breweries,SELL0020,1007.68,1007.68,15.0,221,47.19,25,4.4,2020-06-28
+PROD00343,Microwave Oven,High quality microwave oven available for immediate delivery nationwide,Home,Bedding,Apple,SELL0175,84883.29,67906.63,7.5,150,34.75,26,4.9,2020-06-11
+PROD00344,Lip Balm,High quality lip balm available for immediate delivery nationwide,Beauty,Fragrances,Honeywell,SELL0072,78051.31,78051.31,5.0,335,16.82,20,3.8,2021-10-25
+PROD00345,Jump Cables,High quality jump cables available for immediate delivery nationwide,Automotive,Accessories,Nigerian Pride,SELL0035,52130.2,52130.2,7.5,412,28.09,40,3.1,2021-09-29
+PROD00346,Dashboard Polish,High quality dashboard polish available for immediate delivery nationwide,Automotive,Accessories,Samsung,SELL0077,120429.06,120429.06,7.5,174,2.88,24,4.7,2021-10-27
+PROD00347,Designer Asoebi,High quality designer asoebi available for immediate delivery nationwide,Fashion,Bags,Apple,SELL0110,130822.7,117740.43,12.5,452,41.56,28,4.0,2021-08-17
+PROD00348,iPhone 12,High quality iphone 12 available for immediate delivery nationwide,Electronics,Cameras,Dell,SELL0147,78077.97,78077.97,12.5,445,28.01,25,3.1,2020-06-29
+PROD00349,Handbag,High quality handbag available for immediate delivery nationwide,Fashion,Kids Wear,Techno,SELL0185,53268.3,53268.3,5.0,399,4.07,30,4.5,2020-08-23
+PROD00350,Body Lotion,High quality body lotion available for immediate delivery nationwide,Beauty,Personal Care,Chi Limited,SELL0157,90561.24,90561.24,7.5,5,37.98,33,4.3,2020-10-28
+PROD00351,Blood Tonic,High quality blood tonic available for immediate delivery nationwide,Health,Fitness,Nestle,SELL0126,136076.13,108860.91,10.0,273,18.86,21,3.9,2021-11-29
+PROD00352,Designer Asoebi,High quality designer asoebi available for immediate delivery nationwide,Fashion,Shoes,P&G,SELL0050,62828.13,62828.13,7.5,134,15.27,25,3.6,2021-03-05
+PROD00353,Body Lotion,High quality body lotion available for immediate delivery nationwide,Beauty,Makeup,Dell,SELL0097,76791.84,65273.06,7.5,58,26.91,21,4.3,2019-11-02
+PROD00354,Designer Asoebi,High quality designer asoebi available for immediate delivery nationwide,Fashion,Women Clothing,Cadbury,SELL0023,66521.92,59869.73,5.0,234,44.15,20,4.7,2021-11-24
+PROD00355,Microwave Oven,High quality microwave oven available for immediate delivery nationwide,Home,Bedding,P&G,SELL0119,130091.66,117082.49,7.5,350,20.73,10,3.3,2020-02-06
+PROD00356,LED Bulb Pack,High quality led bulb pack available for immediate delivery nationwide,Home,Decor,Dufil,SELL0131,47661.1,47661.1,15.0,473,44.34,25,4.0,2020-10-20
+PROD00357,Golden Morn 1kg,High quality golden morn 1kg available for immediate delivery nationwide,Food,Beverages,Nigerian Pride,SELL0157,144962.08,144962.08,10.0,337,12.05,23,3.6,2020-10-27
+PROD00358,Brake Pads,High quality brake pads available for immediate delivery nationwide,Automotive,Spare Parts,Nestle,SELL0115,88527.54,88527.54,10.0,454,41.31,22,3.1,2021-07-11
+PROD00359,Pain Relief Balm,High quality pain relief balm available for immediate delivery nationwide,Health,Medical Supplies,Cadbury,SELL0143,59004.72,53104.24,10.0,17,13.33,31,3.3,2022-02-06
+PROD00360,Hand Sanitizer,High quality hand sanitizer available for immediate delivery nationwide,Health,Wellness,Dufil,SELL0079,70619.64,70619.64,12.5,184,10.07,30,3.2,2020-04-20
+PROD00361,First Aid Kit,High quality first aid kit available for immediate delivery nationwide,Health,Wellness,Dufil,SELL0016,98109.36,98109.36,15.0,34,39.46,29,4.3,2019-07-18
+PROD00362,Shea Butter Cream,High quality shea butter cream available for immediate delivery nationwide,Beauty,Makeup,Olam,SELL0102,119650.0,119650.0,15.0,81,12.18,8,3.6,2020-02-25
+PROD00363,Peak Milk 400g,High quality peak milk 400g available for immediate delivery nationwide,Food,Beans,P&G,SELL0168,147495.45,147495.45,10.0,130,17.16,25,3.4,2019-12-23
+PROD00364,Hand Sanitizer,High quality hand sanitizer available for immediate delivery nationwide,Health,Medical Supplies,Nokia,SELL0162,65045.76,65045.76,5.0,138,23.37,32,4.7,2021-01-05
+PROD00365,Car Battery,High quality car battery available for immediate delivery nationwide,Automotive,Car Care,Lafarge,SELL0079,9929.57,9929.57,10.0,427,21.13,36,3.2,2021-05-06
+PROD00366,Face Masks Pack,High quality face masks pack available for immediate delivery nationwide,Health,Wellness,Infinix,SELL0141,149049.15,149049.15,10.0,262,10.83,20,4.9,2021-08-15
+PROD00367,Indomie Noodles Carton,High quality indomie noodles carton available for immediate delivery nationwide,Food,Vegetable Oil,Cadbury,SELL0079,12398.62,9918.89,12.5,222,46.17,19,4.0,2021-07-22
+PROD00368,Car Vacuum,High quality car vacuum available for immediate delivery nationwide,Automotive,Tools,Nestle,SELL0072,73542.26,73542.26,15.0,215,20.05,31,4.3,2021-08-09
+PROD00369,Blood Pressure Monitor,High quality blood pressure monitor available for immediate delivery nationwide,Health,Wellness,Nokia,SELL0158,132930.28,106344.23,10.0,369,6.75,32,3.8,2021-02-04
+PROD00370,Shea Butter Cream,High quality shea butter cream available for immediate delivery nationwide,Beauty,Makeup,Nigerian Pride,SELL0018,79486.36,67563.4,7.5,364,11.71,23,3.5,2021-06-17
+PROD00371,Lace Material,High quality lace material available for immediate delivery nationwide,Fashion,Bags,Honeywell,SELL0005,74960.56,74960.56,10.0,434,24.11,22,3.5,2020-11-29
+PROD00372,Standing Fan,High quality standing fan available for immediate delivery nationwide,Home,Kitchen,Techno,SELL0091,10995.71,10995.71,7.5,453,4.5,16,3.8,2019-07-04
+PROD00373,Groundnut Oil 3L,High quality groundnut oil 3l available for immediate delivery nationwide,Food,Vegetable Oil,Nigerian Breweries,SELL0055,68209.02,68209.02,15.0,434,4.61,26,3.9,2021-06-28
+PROD00374,Hair Attachment,High quality hair attachment available for immediate delivery nationwide,Beauty,Makeup,Itel,SELL0078,39911.37,39911.37,5.0,101,16.43,36,3.5,2019-09-14
+PROD00375,iPhone 12,High quality iphone 12 available for immediate delivery nationwide,Electronics,Laptops,Dell,SELL0166,117680.57,105912.51,10.0,47,26.91,28,4.5,2021-05-17
+PROD00376,Hand Sanitizer,High quality hand sanitizer available for immediate delivery nationwide,Health,Wellness,Dangote,SELL0123,47203.98,42483.58,5.0,109,4.6,23,3.4,2020-06-10
+PROD00377,iPhone 12,High quality iphone 12 available for immediate delivery nationwide,Electronics,Audio,Olam,SELL0132,2290.74,2290.74,7.5,141,45.05,14,4.9,2021-07-30
+PROD00378,Honey Beans 10kg,High quality honey beans 10kg available for immediate delivery nationwide,Food,Spices,Nigerian Breweries,SELL0135,53040.01,45084.01,10.0,331,8.47,26,3.2,2020-12-15
+PROD00379,Facial Cleanser,High quality facial cleanser available for immediate delivery nationwide,Beauty,Makeup,Lafarge,SELL0015,131646.83,111899.8,15.0,160,35.32,27,4.4,2022-02-21
+PROD00380,Wireless Earbuds,High quality wireless earbuds available for immediate delivery nationwide,Electronics,Laptops,Guinness,SELL0093,146901.71,146901.71,5.0,197,23.09,15,4.5,2019-11-30
+PROD00381,Jeans Trousers,High quality jeans trousers available for immediate delivery nationwide,Fashion,Bags,Dell,SELL0151,141427.14,141427.14,10.0,277,38.13,16,4.1,2020-12-12
+PROD00382,Engine Oil 4L,High quality engine oil 4l available for immediate delivery nationwide,Automotive,Car Care,Nigerian Pride,SELL0017,148920.13,126582.11,12.5,101,13.03,15,4.4,2021-09-14
+PROD00383,Lace Material,High quality lace material available for immediate delivery nationwide,Fashion,Kids Wear,Lafarge,SELL0095,16316.66,13869.16,12.5,386,42.08,23,5.0,2021-10-15
+PROD00384,Infinix Note 30,High quality infinix note 30 available for immediate delivery nationwide,Electronics,Audio,Itel,SELL0081,26834.94,22809.7,12.5,468,9.74,28,3.2,2019-08-29
+PROD00385,Indomie Noodles Carton,High quality indomie noodles carton available for immediate delivery nationwide,Food,Snacks,Honeywell,SELL0022,14130.04,14130.04,10.0,190,9.87,39,3.1,2019-08-04
+PROD00386,Basmati Rice 50kg,High quality basmati rice 50kg available for immediate delivery nationwide,Food,Beans,Nokia,SELL0076,29281.59,29281.59,12.5,230,26.69,26,4.3,2019-09-11
+PROD00387,Dell Inspiron,High quality dell inspiron available for immediate delivery nationwide,Electronics,Audio,Honeywell,SELL0078,54723.82,46515.25,10.0,238,20.4,25,4.7,2020-08-16
+PROD00388, Polo Shirt,High quality  polo shirt available for immediate delivery nationwide,Fashion,Jewelry,Nigerian Breweries,SELL0031,49504.91,49504.91,7.5,310,29.59,27,3.3,2022-01-17
+PROD00389,Perfume Oil,High quality perfume oil available for immediate delivery nationwide,Beauty,Personal Care,Dangote,SELL0107,51845.24,51845.24,5.0,483,30.94,28,4.5,2019-09-14
+PROD00390,Infinix Note 30,High quality infinix note 30 available for immediate delivery nationwide,Electronics,Cameras,Chi Limited,SELL0098,137739.99,110191.99,12.5,358,30.83,19,3.0,2021-12-03
+PROD00391,Blood Tonic,High quality blood tonic available for immediate delivery nationwide,Health,Medical Supplies,Infinix,SELL0190,99958.92,99958.92,12.5,279,7.16,37,4.6,2022-01-03
+PROD00392,Senator Wear,High quality senator wear available for immediate delivery nationwide,Fashion,Women Clothing,Chi Limited,SELL0092,95290.13,85761.12,12.5,92,32.55,24,3.8,2021-02-23
+PROD00393,Hair Attachment,High quality hair attachment available for immediate delivery nationwide,Beauty,Fragrances,Nigerian Pride,SELL0162,5541.07,5541.07,12.5,298,40.0,15,4.4,2021-07-03
+PROD00394,HP Laptop 15,High quality hp laptop 15 available for immediate delivery nationwide,Electronics,Phones,Chi Limited,SELL0170,85736.76,85736.76,10.0,257,6.56,29,3.3,2021-03-04
+PROD00395,Gas Cooker,High quality gas cooker available for immediate delivery nationwide,Home,Furniture,Chi Limited,SELL0012,24527.2,24527.2,12.5,472,42.28,31,4.1,2021-02-20
+PROD00396,Microwave Oven,High quality microwave oven available for immediate delivery nationwide,Home,Kitchen,Infinix,SELL0119,120954.16,102811.03,7.5,317,17.55,17,3.6,2019-12-08
+PROD00397,Dashboard Polish,High quality dashboard polish available for immediate delivery nationwide,Automotive,Car Care,Nokia,SELL0165,101856.82,86578.3,7.5,472,31.62,25,4.0,2019-06-17
+PROD00398,Paracetamol Pack,High quality paracetamol pack available for immediate delivery nationwide,Health,Wellness,Apple,SELL0045,43917.38,43917.38,10.0,11,20.98,17,3.7,2020-04-03
+PROD00399,Kitchen Utensils Set,High quality kitchen utensils set available for immediate delivery nationwide,Home,Bedding,Dufil,SELL0178,143238.28,128914.45,10.0,26,35.93,25,3.0,2021-11-08
+PROD00400,Bluetooth Speaker,High quality bluetooth speaker available for immediate delivery nationwide,Electronics,Audio,Nigerian Pride,SELL0101,76253.86,68628.47,7.5,23,4.78,19,3.8,2021-03-04
+PROD00401,Hand Sanitizer,High quality hand sanitizer available for immediate delivery nationwide,Health,Fitness,Nigerian Breweries,SELL0132,120983.61,120983.61,12.5,276,25.48,14,4.0,2021-06-15
+PROD00402,Dining Table,High quality dining table available for immediate delivery nationwide,Home,Bedding,Dell,SELL0160,104891.29,89157.59,5.0,110,19.53,28,4.9,2020-07-31
+PROD00403,Brake Pads,High quality brake pads available for immediate delivery nationwide,Automotive,Accessories,Infinix,SELL0023,126658.54,126658.54,7.5,289,19.17,21,4.8,2020-10-06
+PROD00404,Pain Relief Balm,High quality pain relief balm available for immediate delivery nationwide,Health,Fitness,Lafarge,SELL0193,135480.07,135480.07,15.0,12,10.79,9,3.0,2020-05-03
+PROD00405,Wireless Earbuds,High quality wireless earbuds available for immediate delivery nationwide,Electronics,Accessories,Dell,SELL0187,88442.65,88442.65,15.0,91,47.54,29,4.1,2020-04-11
+PROD00406,Infinix Note 30,High quality infinix note 30 available for immediate delivery nationwide,Electronics,Audio,Samsung,SELL0188,39682.71,33730.3,10.0,124,15.45,20,3.3,2020-02-01
+PROD00407,Black Soap,High quality black soap available for immediate delivery nationwide,Beauty,Makeup,HP,SELL0122,143639.6,129275.64,5.0,424,28.26,17,4.5,2019-10-08
+PROD00408,Jump Cables,High quality jump cables available for immediate delivery nationwide,Automotive,Tools,Guinness,SELL0066,2166.15,1841.23,15.0,211,40.75,32,4.1,2021-07-28
+PROD00409,Dining Table,High quality dining table available for immediate delivery nationwide,Home,Bedding,Apple,SELL0152,103626.22,103626.22,10.0,401,33.21,25,4.3,2021-04-10
+PROD00410,Handbag,High quality handbag available for immediate delivery nationwide,Fashion,Women Clothing,Nokia,SELL0138,136028.75,108823.0,5.0,274,10.99,19,3.5,2020-01-01
+PROD00411,Wireless Earbuds,High quality wireless earbuds available for immediate delivery nationwide,Electronics,Cameras,Dangote,SELL0138,77621.64,69859.48,12.5,253,45.34,23,4.3,2020-10-27
+PROD00412,Dell Inspiron,High quality dell inspiron available for immediate delivery nationwide,Electronics,Audio,Cadbury,SELL0057,42502.74,36127.33,10.0,380,14.11,29,3.7,2021-01-09
+PROD00413,Standing Fan,High quality standing fan available for immediate delivery nationwide,Home,Bedding,HP,SELL0163,12823.06,12823.06,5.0,485,23.93,24,4.8,2021-05-01
+PROD00414,Multivitamins,High quality multivitamins available for immediate delivery nationwide,Health,Fitness,Dufil,SELL0180,94647.73,80450.57,12.5,145,26.92,32,3.9,2020-03-10
+PROD00415,Nokia C30,High quality nokia c30 available for immediate delivery nationwide,Electronics,Phones,Apple,SELL0176,145639.14,131075.23,12.5,232,16.23,15,3.2,2021-07-06
+PROD00416,Seat Covers,High quality seat covers available for immediate delivery nationwide,Automotive,Car Care,Honeywell,SELL0066,93203.98,83883.58,7.5,142,30.7,32,3.7,2020-04-21
+PROD00417,Dell Inspiron,High quality dell inspiron available for immediate delivery nationwide,Electronics,Accessories,Unilever,SELL0157,47291.4,47291.4,12.5,276,29.98,17,3.5,2021-06-09
+PROD00418,Bluetooth Speaker,High quality bluetooth speaker available for immediate delivery nationwide,Electronics,Phones,Guinness,SELL0189,143356.59,143356.59,7.5,36,41.77,21,3.8,2019-12-14
+PROD00419,Vitamin C,High quality vitamin c available for immediate delivery nationwide,Health,Supplements,Cadbury,SELL0148,114031.54,114031.54,7.5,93,46.11,28,3.3,2020-11-18
+PROD00420,Peak Milk 400g,High quality peak milk 400g available for immediate delivery nationwide,Food,Beverages,Dufil,SELL0079,118990.16,118990.16,7.5,250,19.14,23,4.1,2021-01-02
+PROD00421,Tyre Inflator,High quality tyre inflator available for immediate delivery nationwide,Automotive,Spare Parts,Chi Limited,SELL0022,98581.12,98581.12,15.0,22,13.8,31,4.6,2019-12-19
+PROD00422,Basmati Rice 50kg,High quality basmati rice 50kg available for immediate delivery nationwide,Food,Spices,Nestle,SELL0057,11726.43,11726.43,7.5,196,39.75,20,4.1,2020-07-14
+PROD00423,Car Battery,High quality car battery available for immediate delivery nationwide,Automotive,Tools,Nigerian Pride,SELL0067,139353.04,139353.04,12.5,455,0.89,29,3.5,2019-11-05
+PROD00424,Wardrobe,High quality wardrobe available for immediate delivery nationwide,Home,Furniture,Unilever,SELL0069,133689.11,120320.2,7.5,258,6.89,21,4.3,2021-07-07
+PROD00425, Polo Shirt,High quality  polo shirt available for immediate delivery nationwide,Fashion,Shoes,Dufil,SELL0028,93983.58,93983.58,7.5,368,26.58,21,5.0,2020-07-23
+PROD00426,LED Bulb Pack,High quality led bulb pack available for immediate delivery nationwide,Home,Kitchen,Techno,SELL0044,55300.18,55300.18,10.0,169,36.16,18,4.7,2021-03-26
+PROD00427,Blood Pressure Monitor,High quality blood pressure monitor available for immediate delivery nationwide,Health,Medical Supplies,Cadbury,SELL0173,37639.12,37639.12,12.5,179,43.75,26,4.1,2019-08-31
+PROD00428,Lace Material,High quality lace material available for immediate delivery nationwide,Fashion,Shoes,Olam,SELL0156,63100.96,63100.96,12.5,249,32.1,28,3.5,2021-07-06
+PROD00429,Kitchen Utensils Set,High quality kitchen utensils set available for immediate delivery nationwide,Home,Furniture,Honeywell,SELL0124,84615.62,84615.62,5.0,346,39.09,17,4.1,2021-01-04
+PROD00430,Wireless Earbuds,High quality wireless earbuds available for immediate delivery nationwide,Electronics,Audio,Olam,SELL0096,10636.44,9572.8,5.0,83,28.67,23,4.4,2020-04-02
+PROD00431,Bluetooth Speaker,High quality bluetooth speaker available for immediate delivery nationwide,Electronics,Accessories,Infinix,SELL0053,117332.13,117332.13,12.5,474,13.85,35,4.1,2020-11-14
+PROD00432,Blood Pressure Monitor,High quality blood pressure monitor available for immediate delivery nationwide,Health,Medical Supplies,Lafarge,SELL0170,117312.91,117312.91,12.5,144,22.05,19,3.9,2020-06-23
+PROD00433,Multivitamins,High quality multivitamins available for immediate delivery nationwide,Health,Fitness,Olam,SELL0005,134785.68,121307.11,10.0,160,36.29,11,3.5,2021-08-21
+PROD00434,Car Cover,High quality car cover available for immediate delivery nationwide,Automotive,Accessories,Cadbury,SELL0138,34175.61,30758.05,12.5,57,16.88,23,3.8,2020-12-29
+PROD00435,Ankara Dress,High quality ankara dress available for immediate delivery nationwide,Fashion,Women Clothing,Dufil,SELL0197,124680.2,124680.2,5.0,254,20.31,25,4.9,2020-02-02
+PROD00436,Honey Beans 10kg,High quality honey beans 10kg available for immediate delivery nationwide,Food,Beverages,Nestle,SELL0152,52520.36,52520.36,12.5,68,49.71,22,4.3,2019-09-21
+PROD00437,Nokia C30,High quality nokia c30 available for immediate delivery nationwide,Electronics,Accessories,Dangote,SELL0197,69889.21,69889.21,15.0,497,13.22,30,4.3,2021-09-16
+PROD00438,Car Vacuum,High quality car vacuum available for immediate delivery nationwide,Automotive,Spare Parts,Olam,SELL0091,73079.73,73079.73,12.5,497,25.07,19,3.8,2019-09-15
+PROD00439, Polo Shirt,High quality  polo shirt available for immediate delivery nationwide,Fashion,Kids Wear,Cadbury,SELL0163,97575.51,78060.41,10.0,53,19.74,30,3.7,2021-03-26
+PROD00440,Palm Oil 5L,High quality palm oil 5l available for immediate delivery nationwide,Food,Vegetable Oil,Dell,SELL0039,93316.6,93316.6,7.5,279,18.4,21,3.7,2020-12-17
+PROD00441,HP Laptop 15,High quality hp laptop 15 available for immediate delivery nationwide,Electronics,Audio,Cadbury,SELL0078,73411.68,62399.93,10.0,480,25.13,9,4.3,2020-07-17
+PROD00442,Wireless Earbuds,High quality wireless earbuds available for immediate delivery nationwide,Electronics,Laptops,Chi Limited,SELL0161,116238.45,116238.45,5.0,402,9.75,31,3.3,2020-01-05
+PROD00443,Jump Cables,High quality jump cables available for immediate delivery nationwide,Automotive,Spare Parts,Infinix,SELL0120,1280.26,1280.26,10.0,210,40.36,15,5.0,2020-08-29
+PROD00444,Car Cover,High quality car cover available for immediate delivery nationwide,Automotive,Car Care,Lafarge,SELL0172,109700.46,98730.42,12.5,373,40.49,43,4.6,2020-02-07
+PROD00445,Peak Milk 400g,High quality peak milk 400g available for immediate delivery nationwide,Food,Rice,Honeywell,SELL0147,53045.62,53045.62,5.0,270,35.67,25,4.0,2020-03-17
+PROD00446,Indomie Noodles Carton,High quality indomie noodles carton available for immediate delivery nationwide,Food,Snacks,HP,SELL0007,6524.86,5872.38,15.0,427,19.48,20,3.0,2020-09-14
+PROD00447,Basmati Rice 50kg,High quality basmati rice 50kg available for immediate delivery nationwide,Food,Spices,Infinix,SELL0195,99198.97,99198.97,12.5,388,1.86,23,3.8,2021-01-07
+PROD00448,Multivitamins,High quality multivitamins available for immediate delivery nationwide,Health,Fitness,Dufil,SELL0111,5983.09,5085.63,7.5,488,26.5,22,3.6,2019-09-09
+PROD00449,Bed Sheet Set,High quality bed sheet set available for immediate delivery nationwide,Home,Kitchen,Dell,SELL0149,112639.91,112639.91,15.0,399,39.59,26,4.2,2020-08-29
+PROD00450,Plastic Chairs Set,High quality plastic chairs set available for immediate delivery nationwide,Home,Kitchen,Dell,SELL0125,149733.94,134760.55,10.0,455,33.72,22,3.7,2020-11-21
+PROD00451,Shea Butter Cream,High quality shea butter cream available for immediate delivery nationwide,Beauty,Fragrances,Itel,SELL0033,73868.41,66481.57,15.0,280,10.8,16,4.6,2022-02-15
+PROD00452,Designer Asoebi,High quality designer asoebi available for immediate delivery nationwide,Fashion,Women Clothing,Nokia,SELL0157,123220.65,123220.65,5.0,144,9.56,26,4.2,2021-12-19
+PROD00453,Blood Tonic,High quality blood tonic available for immediate delivery nationwide,Health,Fitness,Dell,SELL0158,74382.34,74382.34,12.5,212,42.57,35,4.8,2020-04-17
+PROD00454,Dining Table,High quality dining table available for immediate delivery nationwide,Home,Appliances,Nigerian Pride,SELL0178,66802.79,66802.79,15.0,498,1.22,27,4.4,2021-10-22
+PROD00455,Engine Oil 4L,High quality engine oil 4l available for immediate delivery nationwide,Automotive,Car Care,Dell,SELL0185,137211.77,109769.42,10.0,401,31.48,37,4.7,2020-12-26
+PROD00456,Hand Sanitizer,High quality hand sanitizer available for immediate delivery nationwide,Health,Medical Supplies,Honeywell,SELL0045,123829.95,105255.46,7.5,490,49.58,19,3.8,2021-12-05
+PROD00457,Seat Covers,High quality seat covers available for immediate delivery nationwide,Automotive,Tools,Techno,SELL0200,141950.39,113560.31,7.5,458,25.38,29,4.5,2020-07-04
+PROD00458,Bed Sheet Set,High quality bed sheet set available for immediate delivery nationwide,Home,Appliances,Itel,SELL0173,14180.64,14180.64,7.5,412,40.13,28,3.2,2021-03-03
+PROD00459,Dashboard Polish,High quality dashboard polish available for immediate delivery nationwide,Automotive,Accessories,Infinix,SELL0022,130143.84,117129.46,15.0,255,39.51,20,4.1,2021-09-03
+PROD00460,Wristwatch,High quality wristwatch available for immediate delivery nationwide,Fashion,Kids Wear,Honeywell,SELL0195,129906.88,116916.19,12.5,498,13.28,28,4.3,2020-06-21
+PROD00461,Palm Oil 5L,High quality palm oil 5l available for immediate delivery nationwide,Food,Snacks,Nigerian Pride,SELL0082,27948.66,22358.93,10.0,478,3.91,42,4.0,2021-08-25
+PROD00462,Vitamin C,High quality vitamin c available for immediate delivery nationwide,Health,Fitness,Guinness,SELL0049,32860.55,29574.49,5.0,356,16.97,34,3.1,2020-12-17
+PROD00463,Multivitamins,High quality multivitamins available for immediate delivery nationwide,Health,Supplements,Guinness,SELL0110,33241.78,26593.42,10.0,404,5.08,23,4.6,2020-03-13
+PROD00464,Vitamin C,High quality vitamin c available for immediate delivery nationwide,Health,Wellness,Apple,SELL0035,39765.45,31812.36,5.0,489,3.82,31,4.3,2020-02-05
+PROD00465,Designer Asoebi,High quality designer asoebi available for immediate delivery nationwide,Fashion,Women Clothing,Infinix,SELL0025,40777.48,40777.48,7.5,231,8.53,22,3.4,2020-07-03
+PROD00466,Techno Spark 10,High quality techno spark 10 available for immediate delivery nationwide,Electronics,Laptops,Nestle,SELL0075,76715.57,69044.02,12.5,28,36.64,26,3.0,2020-08-05
+PROD00467,Tyre Inflator,High quality tyre inflator available for immediate delivery nationwide,Automotive,Tools,Nestle,SELL0061,17152.7,14579.79,12.5,78,37.05,17,3.7,2020-10-07
+PROD00468,Bed Sheet Set,High quality bed sheet set available for immediate delivery nationwide,Home,Decor,Cadbury,SELL0025,95839.78,95839.78,7.5,26,14.17,30,4.0,2020-11-10
+PROD00469,Center Rug,High quality center rug available for immediate delivery nationwide,Home,Appliances,Unilever,SELL0129,98858.83,98858.83,15.0,118,2.33,28,4.8,2021-04-18
+PROD00470, Polo Shirt,High quality  polo shirt available for immediate delivery nationwide,Fashion,Shoes,Dufil,SELL0066,98496.86,88647.17,12.5,244,15.0,32,4.2,2019-08-25
+PROD00471,Plastic Chairs Set,High quality plastic chairs set available for immediate delivery nationwide,Home,Furniture,Dell,SELL0193,107970.68,86376.55,15.0,354,1.12,13,4.6,2020-02-12
+PROD00472,Multivitamins,High quality multivitamins available for immediate delivery nationwide,Health,Supplements,Nokia,SELL0166,108178.4,97360.56,7.5,157,6.62,29,4.6,2019-09-26
+PROD00473,Engine Oil 4L,High quality engine oil 4l available for immediate delivery nationwide,Automotive,Tools,Olam,SELL0189,19384.04,19384.04,15.0,298,5.08,37,3.8,2020-12-09
+PROD00474,Traditional Cap,High quality traditional cap available for immediate delivery nationwide,Fashion,Bags,Nigerian Pride,SELL0119,70217.48,70217.48,7.5,65,48.04,9,4.8,2019-08-08
+PROD00475,Body Lotion,High quality body lotion available for immediate delivery nationwide,Beauty,Hair,Unilever,SELL0044,109565.2,109565.2,5.0,76,8.79,25,3.8,2021-06-22
+PROD00476,Blood Pressure Monitor,High quality blood pressure monitor available for immediate delivery nationwide,Health,Supplements,Nigerian Pride,SELL0094,106468.01,95821.21,15.0,10,7.16,18,4.7,2021-02-07
+PROD00477,Designer Asoebi,High quality designer asoebi available for immediate delivery nationwide,Fashion,Women Clothing,HP,SELL0077,82240.22,69904.19,15.0,332,4.23,17,3.8,2020-09-02
+PROD00478,Senator Wear,High quality senator wear available for immediate delivery nationwide,Fashion,Kids Wear,Unilever,SELL0065,72522.68,72522.68,15.0,116,38.6,29,4.4,2019-10-04
+PROD00479,Infinix Note 30,High quality infinix note 30 available for immediate delivery nationwide,Electronics,Laptops,Nigerian Breweries,SELL0039,46334.47,46334.47,7.5,101,4.43,21,3.7,2020-11-07
+PROD00480,Seat Covers,High quality seat covers available for immediate delivery nationwide,Automotive,Tools,Dufil,SELL0087,87150.1,87150.1,12.5,56,24.69,39,4.0,2021-10-25
+PROD00481,Gas Cooker,High quality gas cooker available for immediate delivery nationwide,Home,Furniture,Nestle,SELL0129,5866.09,5279.48,5.0,462,28.7,23,3.1,2020-02-15
+PROD00482,Engine Oil 4L,High quality engine oil 4l available for immediate delivery nationwide,Automotive,Tools,Nigerian Breweries,SELL0065,50163.98,45147.58,7.5,394,31.77,27,4.1,2020-04-24
+PROD00483,Leather Shoes,High quality leather shoes available for immediate delivery nationwide,Fashion,Women Clothing,Nigerian Breweries,SELL0030,58392.54,58392.54,12.5,396,41.65,23,3.9,2021-11-03
+PROD00484,Engine Oil 4L,High quality engine oil 4l available for immediate delivery nationwide,Automotive,Tools,Dangote,SELL0058,2399.1,2399.1,10.0,487,47.71,28,4.7,2022-01-09
+PROD00485,Hair Cream,High quality hair cream available for immediate delivery nationwide,Beauty,Fragrances,Cadbury,SELL0196,126571.02,101256.82,7.5,27,11.46,34,3.4,2021-01-15
+PROD00486,Pain Relief Balm,High quality pain relief balm available for immediate delivery nationwide,Health,Wellness,Honeywell,SELL0068,50666.32,45599.69,5.0,404,0.12,22,4.1,2021-12-05
+PROD00487,Lip Balm,High quality lip balm available for immediate delivery nationwide,Beauty,Skincare,HP,SELL0186,46217.12,41595.4,5.0,282,4.73,16,3.7,2019-06-21
+PROD00488,Digital Thermometer,High quality digital thermometer available for immediate delivery nationwide,Health,Fitness,Dufil,SELL0117,25167.49,25167.49,15.0,461,46.97,25,4.6,2021-06-05
+PROD00489,Golden Morn 1kg,High quality golden morn 1kg available for immediate delivery nationwide,Food,Beverages,Infinix,SELL0027,62619.93,62619.93,5.0,252,47.67,34,4.2,2020-07-06
+PROD00490,Knorr Cubes Pack,High quality knorr cubes pack available for immediate delivery nationwide,Food,Vegetable Oil,P&G,SELL0090,44199.57,35359.66,10.0,241,7.58,18,4.1,2020-09-09
+PROD00491,Traditional Cap,High quality traditional cap available for immediate delivery nationwide,Fashion,Women Clothing,Guinness,SELL0076,102785.4,102785.4,10.0,142,47.17,36,4.4,2021-07-16
+PROD00492,Ankara Dress,High quality ankara dress available for immediate delivery nationwide,Fashion,Bags,Unilever,SELL0176,91719.41,91719.41,15.0,444,17.51,43,3.8,2021-10-11
+PROD00493,Wardrobe,High quality wardrobe available for immediate delivery nationwide,Home,Decor,P&G,SELL0167,109608.17,109608.17,5.0,116,26.02,20,4.9,2021-08-09
+PROD00494,Shea Butter Cream,High quality shea butter cream available for immediate delivery nationwide,Beauty,Fragrances,Nestle,SELL0113,94094.56,84685.11,12.5,310,18.79,31,3.1,2021-03-31
+PROD00495,Wristwatch,High quality wristwatch available for immediate delivery nationwide,Fashion,Bags,Unilever,SELL0037,134068.94,120662.04,7.5,259,23.47,27,3.4,2021-07-03
+PROD00496,Vitamin C,High quality vitamin c available for immediate delivery nationwide,Health,Wellness,Nestle,SELL0015,100841.91,100841.91,7.5,188,6.25,14,4.1,2020-08-03
+PROD00497,Ankara Dress,High quality ankara dress available for immediate delivery nationwide,Fashion,Women Clothing,Dangote,SELL0043,61623.13,49298.5,7.5,88,11.67,35,4.4,2021-08-03
+PROD00498,Lace Material,High quality lace material available for immediate delivery nationwide,Fashion,Men Clothing,Nigerian Pride,SELL0059,33135.59,28165.25,10.0,199,1.23,28,3.8,2021-05-26
+PROD00499,Bluetooth Speaker,High quality bluetooth speaker available for immediate delivery nationwide,Electronics,Cameras,Dell,SELL0182,147751.69,147751.69,5.0,209,30.64,23,4.3,2019-12-13
+PROD00500,Peak Milk 400g,High quality peak milk 400g available for immediate delivery nationwide,Food,Vegetable Oil,Itel,SELL0200,132113.26,132113.26,15.0,161,4.61,29,4.0,2020-02-04
+PROD00501,Center Rug,High quality center rug available for immediate delivery nationwide,Home,Furniture,Guinness,SELL0065,118035.01,118035.01,15.0,177,14.43,25,4.0,2022-01-25
+PROD00502,Honey Beans 10kg,High quality honey beans 10kg available for immediate delivery nationwide,Food,Beans,Guinness,SELL0162,18350.74,15598.13,5.0,136,8.42,28,3.7,2020-04-14
+PROD00503,Ankara Dress,High quality ankara dress available for immediate delivery nationwide,Fashion,Bags,Dangote,SELL0106,49273.54,44346.18,7.5,191,16.72,21,3.1,2020-12-22
+PROD00504,Blood Pressure Monitor,High quality blood pressure monitor available for immediate delivery nationwide,Health,Wellness,Unilever,SELL0140,79975.06,71977.56,5.0,352,9.1,18,3.5,2021-01-25
+PROD00505,Senator Wear,High quality senator wear available for immediate delivery nationwide,Fashion,Women Clothing,Samsung,SELL0124,38116.86,38116.86,5.0,323,48.45,24,4.8,2020-12-25
+PROD00506,Gas Cooker,High quality gas cooker available for immediate delivery nationwide,Home,Decor,Itel,SELL0170,142761.66,121347.41,15.0,420,23.65,16,4.0,2020-10-08
+PROD00507,Leather Shoes,High quality leather shoes available for immediate delivery nationwide,Fashion,Bags,Nigerian Pride,SELL0020,31244.42,24995.54,7.5,417,15.55,23,3.7,2020-07-23
+PROD00508,Senator Wear,High quality senator wear available for immediate delivery nationwide,Fashion,Bags,Unilever,SELL0148,71609.53,57287.62,10.0,158,5.83,26,3.0,2019-12-17
+PROD00509,Blood Pressure Monitor,High quality blood pressure monitor available for immediate delivery nationwide,Health,Medical Supplies,Nokia,SELL0121,83949.47,83949.47,5.0,170,4.02,15,3.1,2020-11-21
+PROD00510,Plastic Chairs Set,High quality plastic chairs set available for immediate delivery nationwide,Home,Bedding,Itel,SELL0006,103031.44,103031.44,7.5,379,35.2,31,4.5,2019-08-24
+PROD00511,Dashboard Polish,High quality dashboard polish available for immediate delivery nationwide,Automotive,Tools,Unilever,SELL0018,45336.06,45336.06,10.0,276,24.96,32,3.3,2021-11-02
+PROD00512,Engine Oil 4L,High quality engine oil 4l available for immediate delivery nationwide,Automotive,Car Care,P&G,SELL0104,130398.12,130398.12,7.5,452,23.38,20,4.3,2019-06-19
+PROD00513,Face Masks Pack,High quality face masks pack available for immediate delivery nationwide,Health,Supplements,Lafarge,SELL0175,26496.48,21197.18,12.5,134,13.86,35,4.7,2020-01-22
+PROD00514,Paracetamol Pack,High quality paracetamol pack available for immediate delivery nationwide,Health,Wellness,Nigerian Breweries,SELL0075,72710.94,72710.94,7.5,108,0.77,29,4.9,2020-11-01
+PROD00515,Gas Cooker,High quality gas cooker available for immediate delivery nationwide,Home,Kitchen,Nigerian Breweries,SELL0102,103630.38,103630.38,5.0,223,2.54,28,3.2,2020-02-21
+PROD00516,Milo 1kg,High quality milo 1kg available for immediate delivery nationwide,Food,Vegetable Oil,Cadbury,SELL0103,23875.85,23875.85,5.0,142,37.1,26,4.1,2020-10-25
+PROD00517,Seat Covers,High quality seat covers available for immediate delivery nationwide,Automotive,Car Care,Olam,SELL0025,95505.9,95505.9,5.0,374,5.43,25,3.9,2021-02-13
+PROD00518,Blood Tonic,High quality blood tonic available for immediate delivery nationwide,Health,Wellness,Techno,SELL0090,5128.61,5128.61,15.0,71,2.41,31,4.7,2019-11-06
+PROD00519,Hair Attachment,High quality hair attachment available for immediate delivery nationwide,Beauty,Makeup,Lafarge,SELL0039,36502.97,29202.37,12.5,435,0.29,42,3.5,2021-03-24
+PROD00520,Pain Relief Balm,High quality pain relief balm available for immediate delivery nationwide,Health,Medical Supplies,Lafarge,SELL0042,88238.1,75002.38,5.0,180,26.82,30,4.9,2021-12-17
+PROD00521,Honey Beans 10kg,High quality honey beans 10kg available for immediate delivery nationwide,Food,Garri,Chi Limited,SELL0155,12521.47,12521.47,12.5,47,14.19,25,3.3,2019-06-20
+PROD00522,Face Masks Pack,High quality face masks pack available for immediate delivery nationwide,Health,Wellness,Infinix,SELL0078,124743.0,112268.7,10.0,473,9.26,12,4.1,2020-09-21
+PROD00523,Multivitamins,High quality multivitamins available for immediate delivery nationwide,Health,Medical Supplies,Olam,SELL0034,62394.77,56155.29,15.0,45,25.9,23,4.1,2021-05-10
+PROD00524,Nokia C30,High quality nokia c30 available for immediate delivery nationwide,Electronics,Laptops,Nestle,SELL0187,98317.16,88485.44,7.5,393,46.21,33,3.9,2021-08-17
+PROD00525,Standing Fan,High quality standing fan available for immediate delivery nationwide,Home,Decor,HP,SELL0077,132398.41,132398.41,10.0,106,31.52,21,3.7,2020-04-07
+PROD00526,Nail Polish,High quality nail polish available for immediate delivery nationwide,Beauty,Fragrances,Olam,SELL0097,74815.7,63593.34,12.5,61,16.94,30,3.8,2021-05-29
+PROD00527,First Aid Kit,High quality first aid kit available for immediate delivery nationwide,Health,Fitness,Samsung,SELL0166,134254.74,107403.79,7.5,319,45.8,27,3.1,2021-09-03
+PROD00528,Handbag,High quality handbag available for immediate delivery nationwide,Fashion,Kids Wear,Itel,SELL0076,97443.84,77955.07,10.0,246,29.1,30,3.8,2019-07-22
+PROD00529,Engine Oil 4L,High quality engine oil 4l available for immediate delivery nationwide,Automotive,Car Care,Techno,SELL0154,85576.0,85576.0,12.5,362,17.78,14,3.5,2020-07-30
+PROD00530,Lace Material,High quality lace material available for immediate delivery nationwide,Fashion,Kids Wear,Itel,SELL0200,61422.12,49137.69,7.5,192,13.16,21,3.3,2019-07-04
+PROD00531,Wristwatch,High quality wristwatch available for immediate delivery nationwide,Fashion,Shoes,Techno,SELL0195,35408.4,30097.14,10.0,477,41.53,32,4.9,2021-12-21
+PROD00532,Samsung A14,High quality samsung a14 available for immediate delivery nationwide,Electronics,Accessories,Infinix,SELL0182,70547.39,70547.39,12.5,99,41.0,34,3.8,2021-12-20
+PROD00533,Power Bank 20000mAh,High quality power bank 20000mah available for immediate delivery nationwide,Electronics,Accessories,Lafarge,SELL0108,144040.24,144040.24,5.0,454,0.68,29,3.1,2020-02-28
+PROD00534,Jeans Trousers,High quality jeans trousers available for immediate delivery nationwide,Fashion,Bags,Guinness,SELL0157,33396.72,33396.72,10.0,234,40.08,38,3.3,2021-01-10
+PROD00535,Facial Cleanser,High quality facial cleanser available for immediate delivery nationwide,Beauty,Hair,Cadbury,SELL0107,92852.06,74281.65,12.5,413,46.72,17,5.0,2020-02-11
+PROD00536,Blood Tonic,High quality blood tonic available for immediate delivery nationwide,Health,Supplements,Dangote,SELL0190,25758.45,25758.45,12.5,378,38.99,32,3.8,2019-06-11
+PROD00537,Samsung A14,High quality samsung a14 available for immediate delivery nationwide,Electronics,Laptops,Samsung,SELL0148,91161.97,91161.97,5.0,226,15.1,21,3.9,2019-08-09
+PROD00538,Digital Thermometer,High quality digital thermometer available for immediate delivery nationwide,Health,Fitness,Dell,SELL0126,22701.7,19296.44,10.0,167,13.06,38,4.9,2021-06-01
+PROD00539,Palm Oil 5L,High quality palm oil 5l available for immediate delivery nationwide,Food,Beans,Dufil,SELL0127,19616.2,16673.77,7.5,375,35.3,44,3.1,2020-08-17
+PROD00540,Microwave Oven,High quality microwave oven available for immediate delivery nationwide,Home,Bedding,HP,SELL0160,141967.3,141967.3,10.0,494,11.64,13,4.1,2021-01-22
+PROD00541,HP Laptop 15,High quality hp laptop 15 available for immediate delivery nationwide,Electronics,Accessories,Lafarge,SELL0200,128197.07,102557.66,7.5,410,49.57,34,3.7,2020-11-07
+PROD00542,Gas Cooker,High quality gas cooker available for immediate delivery nationwide,Home,Appliances,Guinness,SELL0064,50821.71,50821.71,5.0,461,11.14,12,3.0,2020-10-05
+PROD00543,Designer Asoebi,High quality designer asoebi available for immediate delivery nationwide,Fashion,Kids Wear,Samsung,SELL0054,38034.26,30427.41,7.5,122,21.21,31,3.2,2019-12-01
+PROD00544,Leather Shoes,High quality leather shoes available for immediate delivery nationwide,Fashion,Kids Wear,Lafarge,SELL0163,140077.29,140077.29,15.0,196,9.62,33,4.6,2019-11-09
+PROD00545,iPhone 12,High quality iphone 12 available for immediate delivery nationwide,Electronics,Laptops,Unilever,SELL0019,52679.27,52679.27,5.0,69,12.5,27,3.3,2019-09-07
+PROD00546,Pain Relief Balm,High quality pain relief balm available for immediate delivery nationwide,Health,Supplements,Honeywell,SELL0092,106596.56,106596.56,15.0,444,24.98,22,4.6,2022-02-03
+PROD00547,Basmati Rice 50kg,High quality basmati rice 50kg available for immediate delivery nationwide,Food,Snacks,Dangote,SELL0166,41734.04,41734.04,10.0,206,15.35,21,3.2,2021-02-25
+PROD00548,Designer Asoebi,High quality designer asoebi available for immediate delivery nationwide,Fashion,Kids Wear,Dell,SELL0083,128521.79,128521.79,15.0,415,40.65,17,4.9,2021-07-29
+PROD00549,Lip Balm,High quality lip balm available for immediate delivery nationwide,Beauty,Skincare,Olam,SELL0188,14578.83,14578.83,5.0,183,35.8,19,3.4,2021-05-06
+PROD00550,Groundnut Oil 3L,High quality groundnut oil 3l available for immediate delivery nationwide,Food,Spices,Cadbury,SELL0158,139808.49,139808.49,5.0,175,34.63,22,4.7,2020-04-17
+PROD00551,Honey Beans 10kg,High quality honey beans 10kg available for immediate delivery nationwide,Food,Vegetable Oil,Dell,SELL0111,134226.33,120803.7,7.5,495,25.8,26,4.3,2020-03-11
+PROD00552,Center Rug,High quality center rug available for immediate delivery nationwide,Home,Kitchen,P&G,SELL0031,126144.44,113529.99,7.5,437,42.62,25,4.3,2021-11-10
+PROD00553,Body Lotion,High quality body lotion available for immediate delivery nationwide,Beauty,Makeup,Nokia,SELL0003,36379.53,36379.53,12.5,228,46.98,17,3.6,2020-03-23
+PROD00554,Designer Asoebi,High quality designer asoebi available for immediate delivery nationwide,Fashion,Men Clothing,Guinness,SELL0099,91459.9,73167.92,10.0,346,32.64,20,4.2,2020-09-14
+PROD00555,iPhone 12,High quality iphone 12 available for immediate delivery nationwide,Electronics,Accessories,Nokia,SELL0109,103189.95,82551.96,15.0,26,37.28,13,4.2,2019-09-20
+PROD00556,Nokia C30,High quality nokia c30 available for immediate delivery nationwide,Electronics,Phones,Infinix,SELL0188,115028.28,103525.46,5.0,380,10.91,19,3.3,2021-09-29
+PROD00557,Nail Polish,High quality nail polish available for immediate delivery nationwide,Beauty,Personal Care,HP,SELL0153,84032.95,71428.01,5.0,148,39.98,6,4.8,2021-04-03
+PROD00558,iPhone 12,High quality iphone 12 available for immediate delivery nationwide,Electronics,Cameras,Guinness,SELL0105,83674.53,83674.53,12.5,367,26.83,13,3.7,2020-11-22
+PROD00559,Hand Sanitizer,High quality hand sanitizer available for immediate delivery nationwide,Health,Fitness,Chi Limited,SELL0090,139713.59,139713.59,5.0,343,29.6,21,3.7,2020-07-14
+PROD00560,Hand Sanitizer,High quality hand sanitizer available for immediate delivery nationwide,Health,Medical Supplies,Nokia,SELL0009,72316.31,61468.86,12.5,491,7.89,22,4.0,2021-09-21
+PROD00561,Infinix Note 30,High quality infinix note 30 available for immediate delivery nationwide,Electronics,Audio,Itel,SELL0115,101311.21,101311.21,7.5,239,10.62,26,3.8,2019-06-19
+PROD00562,Gas Cooker,High quality gas cooker available for immediate delivery nationwide,Home,Appliances,Nokia,SELL0200,109345.61,87476.49,15.0,118,2.58,22,3.8,2020-08-28
+PROD00563,Lip Balm,High quality lip balm available for immediate delivery nationwide,Beauty,Personal Care,Infinix,SELL0096,94692.82,80488.9,10.0,182,48.85,20,4.2,2019-12-27
+PROD00564,Bed Sheet Set,High quality bed sheet set available for immediate delivery nationwide,Home,Decor,Lafarge,SELL0068,39771.63,35794.47,5.0,488,21.8,29,4.1,2021-06-10
+PROD00565,Plastic Chairs Set,High quality plastic chairs set available for immediate delivery nationwide,Home,Decor,Cadbury,SELL0087,11188.34,9510.09,5.0,48,21.31,9,3.7,2019-07-17
+PROD00566,Milo 1kg,High quality milo 1kg available for immediate delivery nationwide,Food,Snacks,Dangote,SELL0054,119545.18,107590.66,7.5,479,37.55,41,4.0,2021-12-25
+PROD00567,Air Freshener,High quality air freshener available for immediate delivery nationwide,Automotive,Tools,Samsung,SELL0005,88697.12,88697.12,7.5,183,26.51,17,4.9,2020-08-12
+PROD00568,Palm Oil 5L,High quality palm oil 5l available for immediate delivery nationwide,Food,Beverages,Cadbury,SELL0181,36793.74,33114.36,12.5,411,12.17,24,4.4,2019-09-10
+PROD00569,LED Bulb Pack,High quality led bulb pack available for immediate delivery nationwide,Home,Decor,P&G,SELL0042,72673.67,61772.62,5.0,195,14.23,35,4.0,2019-11-05
+PROD00570,Samsung A14,High quality samsung a14 available for immediate delivery nationwide,Electronics,Phones,Olam,SELL0036,40130.56,40130.56,10.0,177,16.13,34,4.3,2020-05-16
+PROD00571,Basmati Rice 50kg,High quality basmati rice 50kg available for immediate delivery nationwide,Food,Spices,Samsung,SELL0185,76584.84,61267.87,15.0,305,45.93,14,4.7,2021-01-02
+PROD00572,Hand Sanitizer,High quality hand sanitizer available for immediate delivery nationwide,Health,Wellness,Guinness,SELL0134,95033.51,95033.51,12.5,74,15.56,15,3.2,2020-01-06
+PROD00573,Nokia C30,High quality nokia c30 available for immediate delivery nationwide,Electronics,Laptops,Samsung,SELL0198,38060.87,38060.87,5.0,20,29.06,24,3.6,2020-04-16
+PROD00574, Polo Shirt,High quality  polo shirt available for immediate delivery nationwide,Fashion,Bags,Cadbury,SELL0005,93150.74,93150.74,10.0,59,21.94,31,4.1,2022-02-09
+PROD00575,Dashboard Polish,High quality dashboard polish available for immediate delivery nationwide,Automotive,Tools,Unilever,SELL0194,148565.07,133708.57,7.5,267,31.0,32,4.4,2020-06-02
+PROD00576,Bluetooth Speaker,High quality bluetooth speaker available for immediate delivery nationwide,Electronics,Audio,Honeywell,SELL0038,119968.64,119968.64,7.5,236,38.92,21,4.3,2019-07-28
+PROD00577,Samsung A14,High quality samsung a14 available for immediate delivery nationwide,Electronics,Laptops,Dangote,SELL0058,38221.94,38221.94,5.0,195,19.17,17,3.9,2021-10-21
+PROD00578,Blood Tonic,High quality blood tonic available for immediate delivery nationwide,Health,Supplements,Guinness,SELL0095,54554.43,43643.55,15.0,382,2.27,23,3.5,2022-01-01
+PROD00579,Nail Polish,High quality nail polish available for immediate delivery nationwide,Beauty,Hair,Techno,SELL0087,132501.69,132501.69,12.5,211,21.62,22,4.4,2021-08-29
+PROD00580,iPhone 12,High quality iphone 12 available for immediate delivery nationwide,Electronics,Laptops,Nigerian Breweries,SELL0135,87288.09,78559.29,10.0,399,13.84,28,4.3,2019-07-05
+PROD00581,Body Lotion,High quality body lotion available for immediate delivery nationwide,Beauty,Personal Care,Honeywell,SELL0022,120148.95,108134.05,7.5,247,19.61,22,3.6,2020-12-16
+PROD00582,Digital Thermometer,High quality digital thermometer available for immediate delivery nationwide,Health,Fitness,Apple,SELL0038,46136.72,46136.72,10.0,360,27.81,16,3.5,2020-12-09
+PROD00583,First Aid Kit,High quality first aid kit available for immediate delivery nationwide,Health,Wellness,Dell,SELL0119,108903.85,108903.85,12.5,44,15.08,20,3.1,2022-01-21
+PROD00584,Wireless Earbuds,High quality wireless earbuds available for immediate delivery nationwide,Electronics,Phones,Unilever,SELL0098,5703.36,5703.36,15.0,420,6.18,28,3.5,2019-10-03
+PROD00585,Lip Balm,High quality lip balm available for immediate delivery nationwide,Beauty,Hair,Nokia,SELL0022,61905.87,55715.28,10.0,237,46.54,31,4.6,2021-11-11
+PROD00586,Black Soap,High quality black soap available for immediate delivery nationwide,Beauty,Personal Care,Itel,SELL0158,124792.07,106073.26,10.0,438,47.41,14,4.9,2021-04-23
+PROD00587,Perfume Oil,High quality perfume oil available for immediate delivery nationwide,Beauty,Hair,Nigerian Breweries,SELL0144,109215.88,98294.3,7.5,153,3.26,27,3.1,2020-02-24
+PROD00588,Infinix Note 30,High quality infinix note 30 available for immediate delivery nationwide,Electronics,Accessories,Infinix,SELL0133,30502.62,30502.62,5.0,488,42.91,29,4.7,2021-03-10
+PROD00589,Techno Spark 10,High quality techno spark 10 available for immediate delivery nationwide,Electronics,Accessories,Dell,SELL0022,142367.82,142367.82,7.5,166,31.85,26,3.9,2021-01-22
+PROD00590,Car Cover,High quality car cover available for immediate delivery nationwide,Automotive,Car Care,Olam,SELL0129,47461.05,47461.05,12.5,5,28.67,23,3.5,2019-07-19
+PROD00591,Pain Relief Balm,High quality pain relief balm available for immediate delivery nationwide,Health,Wellness,Nestle,SELL0129,15913.04,12730.43,15.0,113,3.55,36,3.4,2020-02-24
+PROD00592,Hand Sanitizer,High quality hand sanitizer available for immediate delivery nationwide,Health,Fitness,Itel,SELL0033,41493.17,37343.86,12.5,172,33.1,12,3.9,2020-03-02
+PROD00593,Pain Relief Balm,High quality pain relief balm available for immediate delivery nationwide,Health,Supplements,HP,SELL0057,109120.94,109120.94,12.5,140,12.99,32,4.3,2021-02-18
+PROD00594,Shea Butter Cream,High quality shea butter cream available for immediate delivery nationwide,Beauty,Fragrances,Dufil,SELL0064,91036.02,91036.02,5.0,367,11.52,17,4.5,2021-02-19
+PROD00595,Yellow Garri 5kg,High quality yellow garri 5kg available for immediate delivery nationwide,Food,Rice,Techno,SELL0077,122557.23,110301.51,5.0,431,19.33,18,3.4,2020-08-10
+PROD00596,Face Masks Pack,High quality face masks pack available for immediate delivery nationwide,Health,Wellness,Chi Limited,SELL0180,35827.68,35827.68,15.0,28,17.45,20,4.9,2020-07-11
+PROD00597,Ankara Dress,High quality ankara dress available for immediate delivery nationwide,Fashion,Men Clothing,Unilever,SELL0155,13100.91,11135.78,10.0,156,20.41,19,3.2,2020-04-25
+PROD00598,Ankara Dress,High quality ankara dress available for immediate delivery nationwide,Fashion,Shoes,Samsung,SELL0006,58886.12,58886.12,10.0,230,14.6,24,4.0,2020-09-18
+PROD00599,Nail Polish,High quality nail polish available for immediate delivery nationwide,Beauty,Makeup,Lafarge,SELL0163,57407.08,45925.67,15.0,307,13.65,19,3.5,2019-08-11
+PROD00600,Gas Cooker,High quality gas cooker available for immediate delivery nationwide,Home,Furniture,Samsung,SELL0007,61387.84,61387.84,12.5,413,23.48,27,4.5,2020-08-29
+PROD00601,Kitchen Utensils Set,High quality kitchen utensils set available for immediate delivery nationwide,Home,Kitchen,HP,SELL0153,47666.6,47666.6,7.5,422,49.51,10,3.1,2020-11-22
+PROD00602,Infinix Note 30,High quality infinix note 30 available for immediate delivery nationwide,Electronics,Phones,P&G,SELL0181,66910.11,56873.6,5.0,23,13.97,27,3.0,2021-12-31
+PROD00603,Nokia C30,High quality nokia c30 available for immediate delivery nationwide,Electronics,Accessories,Lafarge,SELL0086,44764.97,44764.97,12.5,234,14.04,28,3.5,2021-04-12
+PROD00604,Seat Covers,High quality seat covers available for immediate delivery nationwide,Automotive,Spare Parts,Olam,SELL0088,109831.28,87865.02,7.5,122,28.42,19,3.2,2021-08-03
+PROD00605,Air Freshener,High quality air freshener available for immediate delivery nationwide,Automotive,Car Care,Nokia,SELL0063,109307.02,109307.02,5.0,164,30.9,24,4.6,2021-01-18
+PROD00606,Traditional Cap,High quality traditional cap available for immediate delivery nationwide,Fashion,Shoes,Unilever,SELL0185,147012.06,147012.06,5.0,495,37.01,24,4.0,2021-09-29
+PROD00607,Bed Sheet Set,High quality bed sheet set available for immediate delivery nationwide,Home,Kitchen,Dangote,SELL0146,149172.99,149172.99,12.5,360,45.66,21,3.5,2020-10-20
+PROD00608,Air Freshener,High quality air freshener available for immediate delivery nationwide,Automotive,Accessories,Guinness,SELL0090,119124.2,101255.57,12.5,444,16.55,38,4.3,2021-10-03
+PROD00609,Hair Gel,High quality hair gel available for immediate delivery nationwide,Beauty,Hair,Nestle,SELL0142,99169.11,89252.2,5.0,138,35.09,27,5.0,2022-02-06
+PROD00610,Wristwatch,High quality wristwatch available for immediate delivery nationwide,Fashion,Kids Wear,Cadbury,SELL0196,30912.97,30912.97,15.0,204,22.07,26,3.1,2019-06-07
+PROD00611,Peak Milk 400g,High quality peak milk 400g available for immediate delivery nationwide,Food,Garri,Honeywell,SELL0059,96521.5,86869.35,12.5,316,6.35,14,4.8,2019-10-03
+PROD00612,Plastic Chairs Set,High quality plastic chairs set available for immediate delivery nationwide,Home,Kitchen,Nigerian Breweries,SELL0151,4650.14,3720.12,15.0,101,46.73,28,3.7,2020-02-25
+PROD00613,Dining Table,High quality dining table available for immediate delivery nationwide,Home,Bedding,Dufil,SELL0137,32085.26,27272.47,12.5,12,5.17,21,3.6,2022-02-25
+PROD00614,Dashboard Polish,High quality dashboard polish available for immediate delivery nationwide,Automotive,Spare Parts,Dell,SELL0154,73413.65,73413.65,10.0,343,6.7,35,4.4,2019-09-10
+PROD00615,Tyre Inflator,High quality tyre inflator available for immediate delivery nationwide,Automotive,Tools,Olam,SELL0039,143110.93,121644.29,10.0,69,30.26,13,4.7,2019-07-27
+PROD00616,Milo 1kg,High quality milo 1kg available for immediate delivery nationwide,Food,Rice,Nokia,SELL0014,138663.57,124797.21,5.0,346,4.1,20,4.9,2021-09-16
+PROD00617,Infinix Note 30,High quality infinix note 30 available for immediate delivery nationwide,Electronics,Phones,P&G,SELL0019,122878.46,110590.62,5.0,438,29.31,30,3.4,2020-02-20
+PROD00618,Multivitamins,High quality multivitamins available for immediate delivery nationwide,Health,Fitness,Techno,SELL0036,94393.12,94393.12,7.5,5,2.44,30,4.5,2020-11-06
+PROD00619,Jeans Trousers,High quality jeans trousers available for immediate delivery nationwide,Fashion,Jewelry,Unilever,SELL0171,80097.51,80097.51,15.0,324,2.66,13,4.4,2022-01-28
+PROD00620,Jump Cables,High quality jump cables available for immediate delivery nationwide,Automotive,Tools,Techno,SELL0056,20050.65,16040.52,5.0,140,33.3,32,4.1,2020-10-18
+PROD00621,Air Freshener,High quality air freshener available for immediate delivery nationwide,Automotive,Tools,Honeywell,SELL0093,94591.32,85132.19,12.5,40,30.33,20,3.3,2019-08-13
+PROD00622,Blood Tonic,High quality blood tonic available for immediate delivery nationwide,Health,Medical Supplies,Techno,SELL0193,4127.7,4127.7,15.0,377,49.2,30,4.6,2019-10-03
+PROD00623,Bed Sheet Set,High quality bed sheet set available for immediate delivery nationwide,Home,Decor,Dell,SELL0184,96073.17,76858.54,5.0,84,9.56,36,3.5,2019-09-28
+PROD00624,Seat Covers,High quality seat covers available for immediate delivery nationwide,Automotive,Tools,Honeywell,SELL0049,36571.64,31085.89,15.0,307,3.4,27,4.7,2020-08-18
+PROD00625,Palm Oil 5L,High quality palm oil 5l available for immediate delivery nationwide,Food,Rice,Techno,SELL0171,22953.95,19510.86,15.0,380,11.48,17,3.4,2020-05-17
+PROD00626,Lace Material,High quality lace material available for immediate delivery nationwide,Fashion,Bags,Nestle,SELL0103,132941.17,106352.93,5.0,94,19.09,20,4.2,2020-09-15
+PROD00627,Lip Balm,High quality lip balm available for immediate delivery nationwide,Beauty,Makeup,Apple,SELL0083,127011.45,107959.74,7.5,165,9.33,14,4.2,2021-07-19
+PROD00628,Groundnut Oil 3L,High quality groundnut oil 3l available for immediate delivery nationwide,Food,Garri,Dell,SELL0195,102885.33,102885.33,12.5,397,35.2,20,4.1,2020-11-01
+PROD00629,Infinix Note 30,High quality infinix note 30 available for immediate delivery nationwide,Electronics,Phones,Samsung,SELL0057,47057.43,47057.43,12.5,136,1.31,20,4.4,2019-06-26
+PROD00630,Golden Morn 1kg,High quality golden morn 1kg available for immediate delivery nationwide,Food,Spices,Olam,SELL0082,72356.52,72356.52,15.0,350,33.03,19,4.4,2021-07-29
+PROD00631,Brake Pads,High quality brake pads available for immediate delivery nationwide,Automotive,Tools,Dufil,SELL0123,117219.81,99636.84,5.0,92,46.12,37,4.2,2021-05-05
+PROD00632, Polo Shirt,High quality  polo shirt available for immediate delivery nationwide,Fashion,Men Clothing,Apple,SELL0120,143224.93,143224.93,5.0,216,9.01,10,4.4,2020-07-11
+PROD00633,Gas Cooker,High quality gas cooker available for immediate delivery nationwide,Home,Furniture,Dangote,SELL0131,22717.38,22717.38,5.0,279,39.84,26,3.4,2020-04-23
+PROD00634,Milo 1kg,High quality milo 1kg available for immediate delivery nationwide,Food,Snacks,Dell,SELL0120,88826.15,79943.53,12.5,474,39.85,25,3.4,2021-09-28
+PROD00635,Milo 1kg,High quality milo 1kg available for immediate delivery nationwide,Food,Vegetable Oil,Lafarge,SELL0018,48061.22,48061.22,7.5,135,36.02,28,3.5,2019-08-27
+PROD00636,Power Bank 20000mAh,High quality power bank 20000mah available for immediate delivery nationwide,Electronics,Phones,Nokia,SELL0117,101636.46,91472.82,7.5,368,26.43,41,3.3,2020-05-29
+PROD00637,Dining Table,High quality dining table available for immediate delivery nationwide,Home,Decor,Nigerian Breweries,SELL0094,16506.87,16506.87,10.0,378,42.52,25,3.4,2019-07-02
+PROD00638,Blood Pressure Monitor,High quality blood pressure monitor available for immediate delivery nationwide,Health,Supplements,Samsung,SELL0064,7401.22,6661.1,15.0,363,7.39,20,4.9,2021-03-05
+PROD00639,Peak Milk 400g,High quality peak milk 400g available for immediate delivery nationwide,Food,Snacks,Apple,SELL0058,21757.99,19582.19,5.0,25,44.41,15,4.4,2020-11-16
+PROD00640,Black Soap,High quality black soap available for immediate delivery nationwide,Beauty,Hair,P&G,SELL0059,26592.96,23933.66,10.0,395,45.99,24,4.1,2019-10-31
+PROD00641,Leather Shoes,High quality leather shoes available for immediate delivery nationwide,Fashion,Men Clothing,Nestle,SELL0158,20926.41,20926.41,5.0,286,14.82,20,4.1,2020-02-15
+PROD00642,Hand Sanitizer,High quality hand sanitizer available for immediate delivery nationwide,Health,Supplements,Dufil,SELL0126,102599.88,102599.88,12.5,395,44.41,23,4.3,2020-04-30
+PROD00643,Bluetooth Speaker,High quality bluetooth speaker available for immediate delivery nationwide,Electronics,Laptops,Honeywell,SELL0091,109973.97,109973.97,5.0,355,35.5,28,3.0,2020-06-07
+PROD00644,Wireless Earbuds,High quality wireless earbuds available for immediate delivery nationwide,Electronics,Phones,Nigerian Breweries,SELL0177,18108.69,18108.69,10.0,368,6.53,28,3.9,2019-11-25
+PROD00645,Ankara Dress,High quality ankara dress available for immediate delivery nationwide,Fashion,Jewelry,Nestle,SELL0003,2916.87,2625.18,7.5,71,12.11,13,3.1,2021-07-03
+PROD00646,Engine Oil 4L,High quality engine oil 4l available for immediate delivery nationwide,Automotive,Accessories,Nigerian Pride,SELL0172,106103.02,106103.02,7.5,454,40.98,24,3.5,2020-09-10
+PROD00647,Palm Oil 5L,High quality palm oil 5l available for immediate delivery nationwide,Food,Beverages,Lafarge,SELL0197,86573.03,77915.73,7.5,439,47.84,30,3.1,2021-02-10
+PROD00648,Dell Inspiron,High quality dell inspiron available for immediate delivery nationwide,Electronics,Cameras,Dufil,SELL0110,33945.92,30551.32,12.5,433,27.95,16,4.5,2020-04-08
+PROD00649,iPhone 12,High quality iphone 12 available for immediate delivery nationwide,Electronics,Laptops,Nigerian Pride,SELL0096,128861.08,128861.08,10.0,37,47.15,19,3.8,2020-08-20
+PROD00650,Wardrobe,High quality wardrobe available for immediate delivery nationwide,Home,Bedding,Nigerian Breweries,SELL0176,70181.86,70181.86,10.0,153,39.46,23,3.7,2019-06-29
+PROD00651,Infinix Note 30,High quality infinix note 30 available for immediate delivery nationwide,Electronics,Accessories,Lafarge,SELL0037,73980.41,73980.41,12.5,430,34.7,34,4.0,2021-01-21
+PROD00652,Senator Wear,High quality senator wear available for immediate delivery nationwide,Fashion,Kids Wear,Nokia,SELL0082,18733.28,18733.28,15.0,498,40.32,22,4.2,2021-05-23
+PROD00653,Gas Cooker,High quality gas cooker available for immediate delivery nationwide,Home,Furniture,Honeywell,SELL0182,19203.19,19203.19,10.0,86,34.94,19,4.4,2019-10-15
+PROD00654,Dashboard Polish,High quality dashboard polish available for immediate delivery nationwide,Automotive,Car Care,Nestle,SELL0050,75978.94,64582.1,12.5,330,15.28,12,3.7,2020-03-04
+PROD00655,Car Cover,High quality car cover available for immediate delivery nationwide,Automotive,Car Care,Honeywell,SELL0045,75044.66,67540.19,7.5,310,18.27,23,4.5,2019-08-29
+PROD00656,Samsung A14,High quality samsung a14 available for immediate delivery nationwide,Electronics,Accessories,P&G,SELL0130,122743.63,122743.63,7.5,242,22.32,28,4.1,2020-12-03
+PROD00657,Ankara Dress,High quality ankara dress available for immediate delivery nationwide,Fashion,Shoes,Nigerian Breweries,SELL0071,33936.31,30542.68,15.0,14,48.47,38,3.0,2021-12-17
+PROD00658,Peak Milk 400g,High quality peak milk 400g available for immediate delivery nationwide,Food,Beverages,Lafarge,SELL0002,133743.21,113681.73,12.5,65,41.85,44,3.9,2021-08-27
+PROD00659,Blood Tonic,High quality blood tonic available for immediate delivery nationwide,Health,Fitness,Honeywell,SELL0095,27535.54,27535.54,10.0,343,36.57,18,4.2,2019-12-03
+PROD00660,HP Laptop 15,High quality hp laptop 15 available for immediate delivery nationwide,Electronics,Accessories,Nestle,SELL0083,84966.1,76469.49,12.5,311,30.4,18,4.7,2019-09-18
+PROD00661,Jump Cables,High quality jump cables available for immediate delivery nationwide,Automotive,Accessories,Nokia,SELL0058,148426.41,126162.45,10.0,393,16.63,29,3.8,2019-10-25
+PROD00662,Plastic Chairs Set,High quality plastic chairs set available for immediate delivery nationwide,Home,Bedding,Techno,SELL0027,115291.09,92232.87,12.5,5,27.52,17,5.0,2021-10-17
+PROD00663,Milo 1kg,High quality milo 1kg available for immediate delivery nationwide,Food,Spices,Infinix,SELL0194,70248.47,70248.47,10.0,342,46.43,24,3.3,2019-09-28
+PROD00664,First Aid Kit,High quality first aid kit available for immediate delivery nationwide,Health,Medical Supplies,Unilever,SELL0153,57458.44,48839.67,5.0,8,45.78,21,3.4,2020-09-12
+PROD00665,Standing Fan,High quality standing fan available for immediate delivery nationwide,Home,Furniture,Guinness,SELL0148,101071.23,80856.99,15.0,321,36.1,16,3.0,2021-12-29
+PROD00666,Dining Table,High quality dining table available for immediate delivery nationwide,Home,Bedding,Dell,SELL0030,135473.07,108378.46,15.0,314,37.78,42,4.0,2021-11-22
+PROD00667,Pain Relief Balm,High quality pain relief balm available for immediate delivery nationwide,Health,Medical Supplies,Unilever,SELL0179,16664.75,16664.75,5.0,472,39.18,19,4.7,2020-01-03
+PROD00668,Nail Polish,High quality nail polish available for immediate delivery nationwide,Beauty,Fragrances,Itel,SELL0091,132407.3,105925.84,15.0,192,36.72,26,4.9,2020-12-26
+PROD00669,Blood Pressure Monitor,High quality blood pressure monitor available for immediate delivery nationwide,Health,Wellness,Nigerian Pride,SELL0198,98142.21,83420.88,7.5,299,23.42,24,4.4,2019-07-23
+PROD00670,Engine Oil 4L,High quality engine oil 4l available for immediate delivery nationwide,Automotive,Car Care,Dangote,SELL0151,71069.33,63962.4,15.0,303,49.01,13,4.7,2022-01-21
+PROD00671,Car Cover,High quality car cover available for immediate delivery nationwide,Automotive,Spare Parts,Nigerian Pride,SELL0165,47582.31,38065.85,10.0,146,5.6,25,4.9,2020-09-05
+PROD00672,Standing Fan,High quality standing fan available for immediate delivery nationwide,Home,Appliances,Chi Limited,SELL0099,111828.78,111828.78,10.0,150,32.74,12,3.6,2020-09-05
+PROD00673,Multivitamins,High quality multivitamins available for immediate delivery nationwide,Health,Fitness,Nigerian Pride,SELL0008,17259.65,15533.69,7.5,179,29.03,33,4.8,2020-01-01
+PROD00674,Facial Cleanser,High quality facial cleanser available for immediate delivery nationwide,Beauty,Personal Care,Lafarge,SELL0182,143265.91,114612.73,5.0,241,40.64,28,4.4,2021-01-07
+PROD00675,LED Bulb Pack,High quality led bulb pack available for immediate delivery nationwide,Home,Bedding,Dell,SELL0130,128405.73,115565.16,12.5,173,20.89,24,5.0,2020-12-17
+PROD00676,Power Bank 20000mAh,High quality power bank 20000mah available for immediate delivery nationwide,Electronics,Cameras,Samsung,SELL0079,79410.9,79410.9,12.5,435,47.77,22,3.4,2020-08-27
+PROD00677,Jump Cables,High quality jump cables available for immediate delivery nationwide,Automotive,Car Care,Chi Limited,SELL0025,70388.07,63349.26,7.5,166,32.91,39,4.3,2019-06-03
+PROD00678,LED Bulb Pack,High quality led bulb pack available for immediate delivery nationwide,Home,Appliances,Itel,SELL0041,33468.89,28448.56,7.5,106,35.8,16,4.0,2020-03-16
+PROD00679,iPhone 12,High quality iphone 12 available for immediate delivery nationwide,Electronics,Laptops,Honeywell,SELL0155,61911.23,52624.55,7.5,493,27.76,36,4.4,2019-07-15
+PROD00680,Air Freshener,High quality air freshener available for immediate delivery nationwide,Automotive,Accessories,Unilever,SELL0175,13962.76,13962.76,10.0,105,8.02,27,3.5,2021-05-12
+PROD00681,Car Battery,High quality car battery available for immediate delivery nationwide,Automotive,Spare Parts,Nigerian Pride,SELL0040,43426.78,39084.1,15.0,358,2.78,12,3.3,2019-10-10
+PROD00682,Leather Shoes,High quality leather shoes available for immediate delivery nationwide,Fashion,Kids Wear,Dufil,SELL0109,73607.53,73607.53,10.0,458,1.77,26,3.5,2020-05-31
+PROD00683,Knorr Cubes Pack,High quality knorr cubes pack available for immediate delivery nationwide,Food,Garri,Samsung,SELL0039,104534.24,104534.24,5.0,215,5.77,25,3.5,2019-12-17
+PROD00684,Microwave Oven,High quality microwave oven available for immediate delivery nationwide,Home,Bedding,Nigerian Pride,SELL0145,140615.66,140615.66,12.5,414,19.64,26,4.5,2019-09-19
+PROD00685,Hair Cream,High quality hair cream available for immediate delivery nationwide,Beauty,Personal Care,Chi Limited,SELL0024,139148.56,118276.28,7.5,249,33.88,15,4.5,2019-06-15
+PROD00686,Face Masks Pack,High quality face masks pack available for immediate delivery nationwide,Health,Wellness,Infinix,SELL0104,5419.89,4335.92,7.5,91,43.48,30,4.8,2020-12-06
+PROD00687,Engine Oil 4L,High quality engine oil 4l available for immediate delivery nationwide,Automotive,Accessories,P&G,SELL0073,55336.98,55336.98,15.0,360,17.7,26,4.3,2022-01-15
+PROD00688,Knorr Cubes Pack,High quality knorr cubes pack available for immediate delivery nationwide,Food,Garri,Honeywell,SELL0149,49252.46,49252.46,5.0,69,48.48,23,3.4,2020-05-06
+PROD00689,Kitchen Utensils Set,High quality kitchen utensils set available for immediate delivery nationwide,Home,Furniture,Dangote,SELL0156,75264.43,63974.77,7.5,123,32.34,23,4.0,2021-10-26
+PROD00690,Wristwatch,High quality wristwatch available for immediate delivery nationwide,Fashion,Bags,Samsung,SELL0106,10195.75,8156.6,5.0,271,8.98,27,4.5,2020-02-06
+PROD00691,Dining Table,High quality dining table available for immediate delivery nationwide,Home,Appliances,Lafarge,SELL0109,108410.03,108410.03,5.0,99,47.35,20,3.4,2019-08-03
+PROD00692,Facial Cleanser,High quality facial cleanser available for immediate delivery nationwide,Beauty,Fragrances,Unilever,SELL0006,142385.74,113908.59,5.0,239,38.69,33,3.1,2021-03-20
+PROD00693,Bed Sheet Set,High quality bed sheet set available for immediate delivery nationwide,Home,Furniture,Apple,SELL0028,143471.67,114777.34,5.0,33,10.44,13,4.7,2020-02-14
+PROD00694,Basmati Rice 50kg,High quality basmati rice 50kg available for immediate delivery nationwide,Food,Spices,Apple,SELL0122,69107.27,58741.18,5.0,200,9.2,23,3.1,2021-03-26
+PROD00695,Jeans Trousers,High quality jeans trousers available for immediate delivery nationwide,Fashion,Jewelry,Chi Limited,SELL0151,113481.47,113481.47,5.0,384,29.85,23,4.2,2020-06-21
+PROD00696,Vitamin C,High quality vitamin c available for immediate delivery nationwide,Health,Medical Supplies,Nokia,SELL0058,1364.22,1364.22,12.5,48,8.06,27,4.8,2019-07-14
+PROD00697,Blood Pressure Monitor,High quality blood pressure monitor available for immediate delivery nationwide,Health,Supplements,Dell,SELL0131,19762.58,19762.58,12.5,232,37.46,27,3.4,2021-08-07
+PROD00698,Nokia C30,High quality nokia c30 available for immediate delivery nationwide,Electronics,Accessories,Nigerian Breweries,SELL0126,93445.94,93445.94,15.0,460,22.3,32,3.3,2020-12-12
+PROD00699,Traditional Cap,High quality traditional cap available for immediate delivery nationwide,Fashion,Men Clothing,Guinness,SELL0178,29833.84,29833.84,5.0,496,4.05,25,5.0,2020-08-05
+PROD00700,Shea Butter Cream,High quality shea butter cream available for immediate delivery nationwide,Beauty,Personal Care,P&G,SELL0107,135328.98,135328.98,10.0,262,29.02,19,3.3,2021-11-19
+PROD00701,Indomie Noodles Carton,High quality indomie noodles carton available for immediate delivery nationwide,Food,Vegetable Oil,Nokia,SELL0107,2958.0,2514.3,12.5,458,41.53,30,3.5,2019-11-07
+PROD00702,Dashboard Polish,High quality dashboard polish available for immediate delivery nationwide,Automotive,Spare Parts,Nestle,SELL0056,27355.72,24620.15,15.0,243,34.77,31,3.9,2020-12-12
+PROD00703,Shea Butter Cream,High quality shea butter cream available for immediate delivery nationwide,Beauty,Makeup,Dufil,SELL0179,66786.31,53429.05,10.0,218,15.97,24,3.9,2021-08-03
+PROD00704,Hand Sanitizer,High quality hand sanitizer available for immediate delivery nationwide,Health,Supplements,Guinness,SELL0132,13875.18,11793.9,15.0,237,47.68,11,3.3,2020-04-09
+PROD00705,Handbag,High quality handbag available for immediate delivery nationwide,Fashion,Shoes,Guinness,SELL0035,10133.21,8613.23,7.5,462,20.11,31,4.4,2021-05-25
+PROD00706,Car Cover,High quality car cover available for immediate delivery nationwide,Automotive,Tools,Honeywell,SELL0001,18809.43,18809.43,7.5,448,24.69,16,4.3,2022-01-20
+PROD00707,Plastic Chairs Set,High quality plastic chairs set available for immediate delivery nationwide,Home,Furniture,Nigerian Breweries,SELL0102,58691.69,46953.35,15.0,10,39.77,30,3.1,2021-10-07
+PROD00708,Tyre Inflator,High quality tyre inflator available for immediate delivery nationwide,Automotive,Tools,Olam,SELL0148,46536.54,41882.89,5.0,78,23.36,28,4.0,2021-12-06
+PROD00709,Nokia C30,High quality nokia c30 available for immediate delivery nationwide,Electronics,Laptops,Dell,SELL0093,20896.89,16717.51,10.0,349,34.32,28,3.2,2020-07-13
+PROD00710,Vitamin C,High quality vitamin c available for immediate delivery nationwide,Health,Supplements,Nigerian Breweries,SELL0158,86943.33,86943.33,10.0,289,1.08,33,3.9,2022-01-09
+PROD00711,Jump Cables,High quality jump cables available for immediate delivery nationwide,Automotive,Car Care,Unilever,SELL0200,1175.03,998.77,12.5,451,44.93,24,3.7,2019-07-11
+PROD00712,Bed Sheet Set,High quality bed sheet set available for immediate delivery nationwide,Home,Decor,Dangote,SELL0121,108955.14,108955.14,5.0,150,11.38,33,3.8,2020-12-13
+PROD00713,Hair Gel,High quality hair gel available for immediate delivery nationwide,Beauty,Makeup,Itel,SELL0180,89968.29,80971.46,10.0,216,4.25,19,3.1,2022-02-22
+PROD00714,Techno Spark 10,High quality techno spark 10 available for immediate delivery nationwide,Electronics,Phones,Samsung,SELL0001,139029.56,118175.13,12.5,31,40.78,21,4.0,2021-06-24
+PROD00715,Yellow Garri 5kg,High quality yellow garri 5kg available for immediate delivery nationwide,Food,Rice,Olam,SELL0039,2761.28,2761.28,10.0,294,23.73,27,4.4,2022-01-08
+PROD00716,Seat Covers,High quality seat covers available for immediate delivery nationwide,Automotive,Accessories,Apple,SELL0004,27168.15,27168.15,15.0,466,44.3,35,3.7,2021-03-01
+PROD00717,Digital Thermometer,High quality digital thermometer available for immediate delivery nationwide,Health,Wellness,Chi Limited,SELL0178,97614.91,78091.93,10.0,332,11.58,27,4.2,2020-04-25
+PROD00718,Perfume Oil,High quality perfume oil available for immediate delivery nationwide,Beauty,Fragrances,Itel,SELL0089,38906.33,38906.33,12.5,344,33.94,24,4.2,2021-06-29
+PROD00719,Yellow Garri 5kg,High quality yellow garri 5kg available for immediate delivery nationwide,Food,Snacks,Dangote,SELL0104,9367.29,9367.29,5.0,183,38.95,40,3.4,2020-03-25
+PROD00720,Infinix Note 30,High quality infinix note 30 available for immediate delivery nationwide,Electronics,Accessories,Nestle,SELL0062,135168.03,135168.03,15.0,397,11.57,31,3.9,2020-08-07
+PROD00721,Multivitamins,High quality multivitamins available for immediate delivery nationwide,Health,Wellness,Nestle,SELL0156,115945.51,92756.41,12.5,278,5.85,27,4.4,2020-06-20
+PROD00722,Blood Pressure Monitor,High quality blood pressure monitor available for immediate delivery nationwide,Health,Supplements,Techno,SELL0197,48714.36,43842.93,12.5,159,29.98,22,3.1,2020-06-06
+PROD00723,Lip Balm,High quality lip balm available for immediate delivery nationwide,Beauty,Makeup,Techno,SELL0131,108814.51,92492.34,10.0,144,29.45,23,3.1,2019-07-30
+PROD00724,Handbag,High quality handbag available for immediate delivery nationwide,Fashion,Kids Wear,Samsung,SELL0189,60714.4,60714.4,10.0,232,12.85,23,3.7,2020-12-30
+PROD00725,Nail Polish,High quality nail polish available for immediate delivery nationwide,Beauty,Personal Care,Olam,SELL0067,66072.72,66072.72,7.5,167,7.35,15,3.9,2021-01-26
+PROD00726,Infinix Note 30,High quality infinix note 30 available for immediate delivery nationwide,Electronics,Phones,Guinness,SELL0180,14488.85,14488.85,10.0,414,34.68,29,3.1,2020-11-29
+PROD00727,Indomie Noodles Carton,High quality indomie noodles carton available for immediate delivery nationwide,Food,Vegetable Oil,Honeywell,SELL0142,134663.08,114463.62,15.0,118,40.94,29,3.2,2020-05-31
+PROD00728,Vitamin C,High quality vitamin c available for immediate delivery nationwide,Health,Wellness,Nestle,SELL0014,75511.93,75511.93,7.5,338,13.82,22,4.9,2020-11-26
+PROD00729,Samsung A14,High quality samsung a14 available for immediate delivery nationwide,Electronics,Phones,Itel,SELL0068,23021.71,20719.54,10.0,320,48.39,14,4.0,2022-01-10
+PROD00730,Designer Asoebi,High quality designer asoebi available for immediate delivery nationwide,Fashion,Men Clothing,Apple,SELL0140,127882.77,127882.77,15.0,269,43.5,11,4.9,2021-12-30
+PROD00731,Multivitamins,High quality multivitamins available for immediate delivery nationwide,Health,Supplements,Dangote,SELL0195,21995.04,21995.04,12.5,354,12.84,24,4.5,2020-03-13
+PROD00732,Dining Table,High quality dining table available for immediate delivery nationwide,Home,Bedding,Dell,SELL0150,1733.06,1733.06,12.5,495,5.27,10,4.4,2021-12-27
+PROD00733,Golden Morn 1kg,High quality golden morn 1kg available for immediate delivery nationwide,Food,Snacks,Nigerian Pride,SELL0021,148013.33,148013.33,12.5,45,22.95,28,4.0,2020-11-30
+PROD00734,HP Laptop 15,High quality hp laptop 15 available for immediate delivery nationwide,Electronics,Accessories,P&G,SELL0047,120290.85,102247.22,12.5,447,47.14,23,3.9,2021-12-28
+PROD00735,Lip Balm,High quality lip balm available for immediate delivery nationwide,Beauty,Personal Care,Nestle,SELL0135,68794.41,58475.25,12.5,174,14.73,13,3.7,2020-02-20
+PROD00736,Bed Sheet Set,High quality bed sheet set available for immediate delivery nationwide,Home,Bedding,Dufil,SELL0030,36104.42,36104.42,7.5,374,46.79,28,5.0,2020-01-05
+PROD00737,Plastic Chairs Set,High quality plastic chairs set available for immediate delivery nationwide,Home,Furniture,Nestle,SELL0047,144421.59,129979.43,10.0,344,49.55,19,5.0,2021-01-16
+PROD00738,Traditional Cap,High quality traditional cap available for immediate delivery nationwide,Fashion,Kids Wear,Nokia,SELL0155,134476.08,114304.67,5.0,83,42.03,24,4.7,2020-11-22
+PROD00739,Groundnut Oil 3L,High quality groundnut oil 3l available for immediate delivery nationwide,Food,Beverages,Olam,SELL0109,72299.04,72299.04,12.5,65,46.06,26,3.1,2020-06-03
+PROD00740,Dining Table,High quality dining table available for immediate delivery nationwide,Home,Appliances,Dell,SELL0180,21279.37,21279.37,5.0,499,47.1,31,3.9,2021-04-04
+PROD00741,Wardrobe,High quality wardrobe available for immediate delivery nationwide,Home,Bedding,Dell,SELL0081,38596.16,38596.16,5.0,198,1.85,16,4.4,2020-09-03
+PROD00742,Air Freshener,High quality air freshener available for immediate delivery nationwide,Automotive,Spare Parts,Apple,SELL0113,37963.29,37963.29,12.5,39,26.89,27,4.3,2019-11-13
+PROD00743,Golden Morn 1kg,High quality golden morn 1kg available for immediate delivery nationwide,Food,Garri,HP,SELL0108,130958.53,130958.53,5.0,414,40.34,13,3.3,2019-08-18
+PROD00744,Ankara Dress,High quality ankara dress available for immediate delivery nationwide,Fashion,Bags,Cadbury,SELL0143,74239.87,74239.87,15.0,393,39.92,35,4.8,2020-07-31
+PROD00745,Nokia C30,High quality nokia c30 available for immediate delivery nationwide,Electronics,Accessories,Guinness,SELL0085,52660.81,44761.69,12.5,197,11.66,26,3.9,2021-05-26
+PROD00746,Vitamin C,High quality vitamin c available for immediate delivery nationwide,Health,Fitness,Chi Limited,SELL0043,78909.92,78909.92,15.0,353,26.16,27,3.7,2019-08-17
+PROD00747,Handbag,High quality handbag available for immediate delivery nationwide,Fashion,Jewelry,Lafarge,SELL0111,106029.04,95426.14,5.0,471,46.27,19,4.7,2021-02-18
+PROD00748,Milo 1kg,High quality milo 1kg available for immediate delivery nationwide,Food,Vegetable Oil,Dangote,SELL0135,138429.03,117664.67,7.5,279,25.12,26,3.3,2021-05-10
+PROD00749,Pain Relief Balm,High quality pain relief balm available for immediate delivery nationwide,Health,Fitness,Samsung,SELL0040,132630.82,132630.82,7.5,45,33.53,28,4.7,2019-11-19
+PROD00750,Vitamin C,High quality vitamin c available for immediate delivery nationwide,Health,Wellness,Apple,SELL0054,119107.74,119107.74,5.0,111,43.39,25,4.9,2020-11-17
+PROD00751,Standing Fan,High quality standing fan available for immediate delivery nationwide,Home,Bedding,Nigerian Breweries,SELL0124,118359.56,94687.65,12.5,74,21.43,17,4.1,2021-04-10
+PROD00752,Blood Tonic,High quality blood tonic available for immediate delivery nationwide,Health,Fitness,Unilever,SELL0119,71208.54,60527.26,5.0,374,12.24,23,3.0,2021-12-21
+PROD00753,LED Bulb Pack,High quality led bulb pack available for immediate delivery nationwide,Home,Decor,Techno,SELL0113,34748.01,34748.01,5.0,213,9.18,33,4.1,2021-09-21
+PROD00754,Designer Asoebi,High quality designer asoebi available for immediate delivery nationwide,Fashion,Kids Wear,Olam,SELL0181,122176.61,97741.29,12.5,129,17.17,26,3.9,2019-12-15
+PROD00755,Jump Cables,High quality jump cables available for immediate delivery nationwide,Automotive,Accessories,Samsung,SELL0197,75456.16,60364.93,5.0,135,16.6,25,3.7,2020-05-31
+PROD00756,Air Freshener,High quality air freshener available for immediate delivery nationwide,Automotive,Tools,Nestle,SELL0199,10073.45,10073.45,7.5,386,31.84,31,4.6,2019-11-22
+PROD00757,Hair Gel,High quality hair gel available for immediate delivery nationwide,Beauty,Makeup,Apple,SELL0080,138494.35,138494.35,10.0,26,38.19,37,4.9,2020-05-05
+PROD00758,Groundnut Oil 3L,High quality groundnut oil 3l available for immediate delivery nationwide,Food,Garri,Dell,SELL0155,136328.03,115878.82,15.0,412,22.55,18,4.8,2020-09-12
+PROD00759,Car Cover,High quality car cover available for immediate delivery nationwide,Automotive,Car Care,Nigerian Breweries,SELL0123,16534.92,14881.42,15.0,442,47.72,29,3.7,2021-01-18
+PROD00760,Dining Table,High quality dining table available for immediate delivery nationwide,Home,Bedding,Guinness,SELL0060,130547.31,117492.58,12.5,435,39.36,22,4.7,2020-06-24
+PROD00761,Perfume Oil,High quality perfume oil available for immediate delivery nationwide,Beauty,Skincare,Nigerian Pride,SELL0132,144622.53,144622.53,12.5,260,37.33,24,3.4,2021-05-29
+PROD00762,Senator Wear,High quality senator wear available for immediate delivery nationwide,Fashion,Bags,Nigerian Breweries,SELL0073,144761.57,144761.57,15.0,174,17.68,25,3.9,2021-05-07
+PROD00763,Center Rug,High quality center rug available for immediate delivery nationwide,Home,Furniture,Dell,SELL0042,99226.08,89303.48,15.0,139,47.01,16,4.2,2021-01-28
+PROD00764,Brake Pads,High quality brake pads available for immediate delivery nationwide,Automotive,Spare Parts,P&G,SELL0125,63840.13,63840.13,5.0,330,27.8,22,3.6,2019-07-31
+PROD00765,Techno Spark 10,High quality techno spark 10 available for immediate delivery nationwide,Electronics,Laptops,Guinness,SELL0148,34582.95,34582.95,5.0,360,5.95,17,4.4,2020-10-29
+PROD00766,Dining Table,High quality dining table available for immediate delivery nationwide,Home,Furniture,Olam,SELL0064,22423.33,22423.33,12.5,286,31.27,23,3.6,2021-11-25
+PROD00767,Shea Butter Cream,High quality shea butter cream available for immediate delivery nationwide,Beauty,Skincare,Olam,SELL0030,81584.88,81584.88,7.5,110,22.91,24,4.7,2019-12-20
+PROD00768,Golden Morn 1kg,High quality golden morn 1kg available for immediate delivery nationwide,Food,Vegetable Oil,Nestle,SELL0168,4155.2,3324.16,12.5,89,25.62,16,3.9,2020-04-22
+PROD00769,Wardrobe,High quality wardrobe available for immediate delivery nationwide,Home,Bedding,Nestle,SELL0095,65292.52,55498.64,15.0,346,44.91,23,3.7,2020-10-19
+PROD00770,Knorr Cubes Pack,High quality knorr cubes pack available for immediate delivery nationwide,Food,Spices,Nokia,SELL0095,92129.21,92129.21,10.0,170,44.84,16,3.5,2021-03-06
+PROD00771,Wardrobe,High quality wardrobe available for immediate delivery nationwide,Home,Kitchen,Infinix,SELL0114,106800.97,106800.97,10.0,268,18.29,15,4.8,2021-10-07
+PROD00772,Peak Milk 400g,High quality peak milk 400g available for immediate delivery nationwide,Food,Rice,Honeywell,SELL0042,34414.17,34414.17,7.5,383,42.68,17,4.8,2019-10-25
+PROD00773,Pain Relief Balm,High quality pain relief balm available for immediate delivery nationwide,Health,Supplements,Guinness,SELL0166,134238.79,114102.97,7.5,401,37.99,35,3.8,2020-04-16
+PROD00774,Bluetooth Speaker,High quality bluetooth speaker available for immediate delivery nationwide,Electronics,Phones,Dangote,SELL0024,94743.7,94743.7,10.0,256,14.84,27,3.6,2019-10-31
+PROD00775,Techno Spark 10,High quality techno spark 10 available for immediate delivery nationwide,Electronics,Laptops,Cadbury,SELL0035,118634.31,94907.44,12.5,396,31.19,38,3.5,2019-12-25
+PROD00776,Wireless Earbuds,High quality wireless earbuds available for immediate delivery nationwide,Electronics,Audio,Olam,SELL0049,22082.99,22082.99,7.5,93,36.2,18,3.2,2019-11-20
+PROD00777,Car Cover,High quality car cover available for immediate delivery nationwide,Automotive,Spare Parts,Lafarge,SELL0045,2431.43,1945.15,7.5,400,21.88,26,3.6,2021-10-03
+PROD00778,Multivitamins,High quality multivitamins available for immediate delivery nationwide,Health,Supplements,Techno,SELL0184,38326.66,38326.66,15.0,466,2.04,20,4.4,2021-04-06
+PROD00779,Leather Shoes,High quality leather shoes available for immediate delivery nationwide,Fashion,Kids Wear,Samsung,SELL0146,86179.44,73252.53,5.0,149,46.26,19,4.0,2021-12-22
+PROD00780,Yellow Garri 5kg,High quality yellow garri 5kg available for immediate delivery nationwide,Food,Rice,Itel,SELL0061,120271.11,96216.89,10.0,159,20.39,26,3.2,2021-12-08
+PROD00781,Black Soap,High quality black soap available for immediate delivery nationwide,Beauty,Skincare,Dell,SELL0190,31388.01,31388.01,10.0,415,25.17,15,3.7,2019-08-10
+PROD00782,Wristwatch,High quality wristwatch available for immediate delivery nationwide,Fashion,Women Clothing,Apple,SELL0111,115303.43,98007.92,12.5,223,27.39,35,3.2,2020-10-18
+PROD00783,Lace Material,High quality lace material available for immediate delivery nationwide,Fashion,Kids Wear,Nokia,SELL0039,18280.21,18280.21,7.5,322,4.41,13,4.4,2019-12-26
+PROD00784,Hair Cream,High quality hair cream available for immediate delivery nationwide,Beauty,Skincare,Dangote,SELL0152,6875.59,6875.59,15.0,22,8.22,18,4.1,2021-02-06
+PROD00785,Wireless Earbuds,High quality wireless earbuds available for immediate delivery nationwide,Electronics,Audio,Lafarge,SELL0018,97064.0,77651.2,12.5,351,20.67,17,4.6,2019-11-09
+PROD00786,Wristwatch,High quality wristwatch available for immediate delivery nationwide,Fashion,Men Clothing,Samsung,SELL0152,17046.17,14489.24,15.0,83,3.6,33,3.4,2020-04-24
+PROD00787,Gas Cooker,High quality gas cooker available for immediate delivery nationwide,Home,Appliances,P&G,SELL0060,15020.93,15020.93,12.5,255,2.79,32,3.6,2022-01-03
+PROD00788,Jump Cables,High quality jump cables available for immediate delivery nationwide,Automotive,Car Care,Nigerian Breweries,SELL0056,13676.34,10941.08,15.0,52,30.96,21,4.8,2021-08-21
+PROD00789,Digital Thermometer,High quality digital thermometer available for immediate delivery nationwide,Health,Wellness,Dell,SELL0029,6328.94,6328.94,7.5,405,8.03,19,4.5,2020-02-10
+PROD00790,Groundnut Oil 3L,High quality groundnut oil 3l available for immediate delivery nationwide,Food,Beverages,Cadbury,SELL0008,89272.62,80345.36,5.0,136,44.73,19,3.9,2020-07-05
+PROD00791,Golden Morn 1kg,High quality golden morn 1kg available for immediate delivery nationwide,Food,Rice,Olam,SELL0040,68613.51,54890.81,12.5,82,11.38,19,4.7,2021-07-14
+PROD00792,Car Battery,High quality car battery available for immediate delivery nationwide,Automotive,Accessories,Cadbury,SELL0170,59761.72,59761.72,15.0,377,3.93,23,4.3,2021-10-21
+PROD00793,Dashboard Polish,High quality dashboard polish available for immediate delivery nationwide,Automotive,Car Care,Nestle,SELL0194,115810.94,92648.75,5.0,493,9.48,34,4.7,2021-02-16
+PROD00794,Center Rug,High quality center rug available for immediate delivery nationwide,Home,Kitchen,Nokia,SELL0006,64254.31,57828.88,10.0,309,30.42,41,3.8,2021-02-01
+PROD00795,Hand Sanitizer,High quality hand sanitizer available for immediate delivery nationwide,Health,Wellness,Itel,SELL0184,103276.41,103276.41,7.5,116,34.53,26,3.1,2020-10-17
+PROD00796,Wireless Earbuds,High quality wireless earbuds available for immediate delivery nationwide,Electronics,Accessories,Cadbury,SELL0149,123000.04,123000.04,5.0,145,32.83,17,4.1,2019-12-20
+PROD00797,Jeans Trousers,High quality jeans trousers available for immediate delivery nationwide,Fashion,Women Clothing,Unilever,SELL0193,45438.43,45438.43,10.0,460,26.77,16,4.0,2020-03-19
+PROD00798,Seat Covers,High quality seat covers available for immediate delivery nationwide,Automotive,Accessories,Nestle,SELL0063,131415.46,131415.46,10.0,312,36.64,16,4.7,2020-10-17
+PROD00799,Handbag,High quality handbag available for immediate delivery nationwide,Fashion,Women Clothing,Itel,SELL0139,127786.78,127786.78,10.0,286,47.28,22,4.5,2020-05-30
+PROD00800,Honey Beans 10kg,High quality honey beans 10kg available for immediate delivery nationwide,Food,Beverages,P&G,SELL0148,32524.37,32524.37,5.0,498,10.82,40,3.6,2021-10-30
