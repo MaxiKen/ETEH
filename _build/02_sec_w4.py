@@ -1077,7 +1077,11 @@ s.table(dep_ci[["Department", "n", "k"]].rename(columns={"n": "Admissions", "k":
               "Margin_95": ("=1.96*SQRT([@Rate]*(1-[@Rate])/[@Admissions])", "pct", moe.tolist()),
               "Low_95": ("=[@Rate]-[@Margin_95]", "pct", (dep_ci.p - moe).tolist()),
               "High_95": ("=[@Rate]+[@Margin_95]", "pct", (dep_ci.p + moe).tolist())})
-s.insight("Overlapping intervals mean the departments' readmission rates are not clearly different in 2023 - do not rank them as if they were.")
+_ci = dep_ci.assign(lo=dep_ci.p - moe, hi=dep_ci.p + moe).set_index("Department")
+_top = _ci.p.idxmax()
+_sep = [d for d in _ci.index if d != _top and _ci.loc[d, "hi"] < _ci.loc[_top, "lo"]]
+s.insight(f"{_top}'s interval ({_ci.loc[_top, 'lo']:.1%}-{_ci.loc[_top, 'hi']:.1%}) sits clearly above {' and '.join(_sep)} - a real difference worth a clinical review. "
+          "The other departments' intervals overlap each other, so do not rank them as if their small gaps were real.")
 s.band("4.14.5", "Advanced practical: benchmark decision memo")
 low = bm.assign(sq=spsq).sort_values("sq").iloc[0]
 s.grid([["Decision needed", "Which stores get the FY2026 refurbishment budget?"],
