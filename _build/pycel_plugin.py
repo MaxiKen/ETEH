@@ -201,3 +201,36 @@ def norm_dist(x, m, s, cum):
 
 def norm_s_dist(z, cum=True):
     return norm_dist(z, 0, 1, cum)
+
+
+def rank_avg(x, ref, order=0):
+    v = _nums(ref)
+    gt = sum(1 for a in v if (a > x if not order else a < x))
+    eq = sum(1 for a in v if a == x)
+    return gt + (eq + 1) / 2
+
+
+def rank_eq(x, ref, order=0):
+    v = _nums(ref)
+    return 1 + sum(1 for a in v if (a > x if not order else a < x))
+
+
+def percentrank_inc(arr, x, sig=3):
+    v = sorted(_nums(arr))
+    r = sum(1 for a in v if a < x)
+    f = 10 ** int(sig)
+    return math.floor(r / (len(v) - 1) * f) / f
+
+
+def t_dist_2t(x, df):
+    from scipy import stats
+    return float(2 * stats.t.sf(abs(x), df))
+
+
+def confidence_t(alpha, sd, n):
+    from scipy import stats
+    return float(stats.t.ppf(1 - alpha / 2, n - 1) * sd / math.sqrt(n))
+
+
+def stdev(*args):
+    return float(np.std(_nums(args), ddof=1))

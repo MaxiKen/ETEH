@@ -330,9 +330,25 @@ class Sheet:
         else:
             self.ws.write_string(r, c, str(v), fmt)
 
+    def spill(self, r, c, formula, values, kinds=None):
+        """Dynamic-array formula at (r,c) with cached spill values (2-D list)."""
+        nr, nc = len(values), len(values[0])
+        kinds = kinds or [None] * nc
+        first = values[0][0]
+        self.ws.write_dynamic_array_formula(r, c, r + nr - 1, c + nc - 1, formula, self.b.nf(kinds[0] or "gen", style="result"),
+                                            first.item() if hasattr(first, "item") else first)
+        for i in range(nr):
+            for j in range(nc):
+                if i == 0 and j == 0:
+                    continue
+                self._w(r + i, c + j, values[i][j], self.b.nf(kinds[j] or "gen", style="result"))
+
     def table(self, df: pd.DataFrame, name: str, fmts: dict | None = None, c0=1, style="Table Style Medium 2",
               calc: dict | None = None, total: dict | None = None, widths: dict | None = None, autofilter=True) -> TRef:
         """Write df as an official Excel Table. calc = {new_col: (structured formula, kind, cached values list)}"""
+        import re as _re
+        if _re.fullmatch(r"[A-Za-z]{1,3}[0-9]+", name) or _re.fullmatch(r"[RrCc][0-9]*", name):
+            raise ValueError(f"Table name {name!r} looks like a cell reference - Excel will reject it")
         assert name not in self.b.tables, name
         self.b.tables.add(name)
         fmts = fmts or {}

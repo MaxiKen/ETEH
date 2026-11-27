@@ -523,8 +523,8 @@ bp3 = [["Admissions 2023", "COUNT admissions", len(lc23), "int", "KPI card + mon
        ["ALOS 2023 (days)", "AVERAGE Length_of_Stay", lc23.Length_of_Stay.mean(), "dec1", "Bar by department", "EMR"],
        ["30-day readmission rate 2023", "Readmit_30d = Yes ÷ admissions", (lc23.Readmit_30d == "Yes").mean(), "pct", "KPI card with RAG", "EMR + follow-up registry"],
        ["Average bill 2023", "AVERAGE Billing_Amount", lc23.Billing_Amount.mean(), "naira", "Bar by HMO", "Billing"]]
-for tag, title, rows_, tname in [("3.9.1", "Blueprint 1: SuperMart Retail Sales Dashboard", bp1, "tBP1"), ("3.9.2", "Blueprint 2: Crestview University Progression Dashboard", bp2, "tBP2"),
-                                 ("3.9.3", "Blueprint 3: Lifecare Hospital Operations Dashboard", bp3, "tBP3")]:
+for tag, title, rows_, tname in [("3.9.1", "Blueprint 1: SuperMart Retail Sales Dashboard", bp1, "tBlueprint1"), ("3.9.2", "Blueprint 2: Crestview University Progression Dashboard", bp2, "tBlueprint2"),
+                                 ("3.9.3", "Blueprint 3: Lifecare Hospital Operations Dashboard", bp3, "tBlueprint3")]:
     s.band(tag, title)
     d_ = pd.DataFrame([[a, b_, c, e, f] for a, b_, c, d, e, f in rows_], columns=["KPI", "Definition", "Current value", "Visual", "Source"])
     t_ = s.table(d_, tname, widths={"KPI": 26, "Definition": 30, "Current value": 16, "Visual": 30, "Source": 22})

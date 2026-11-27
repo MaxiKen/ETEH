@@ -13,6 +13,7 @@ from __future__ import annotations
 import datetime as dt
 import math
 import re
+import os
 import sys
 import tempfile
 import logging
@@ -110,6 +111,8 @@ def _ser(x):
 def same(a, b):
     if a is None and b in ("", 0, None):
         return True
+    if a == "" and b is None:
+        return True
     a, b = _ser(a), _ser(b)
     if isinstance(b, str) and re.match(r"^\d{4}-\d{2}-\d{2}$", b or ""):
         b = (dt.datetime.fromisoformat(b) - dt.datetime(1899, 12, 30)).days
@@ -171,6 +174,8 @@ def verify(path, show=25):
             fn = re.findall(r"([A-Z][A-Z0-9.]+)\(", nf)
             unsup += 1
             unsup_f[",".join(sorted(set(fn)))[:60] or msg[:40]] += 1
+            if os.environ.get("VDEBUG") and not fn:
+                print("  UNSUP", sh, coord, orig[:60], "|", msg.strip().splitlines()[-1][:160])
             continue
         if isinstance(got, str) and got.startswith("#") and not (isinstance(exp, str) and exp.startswith("#")):
             fn = re.findall(r"([A-Z][A-Z0-9.]+)\(", nf)
