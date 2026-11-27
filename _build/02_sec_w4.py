@@ -685,8 +685,8 @@ s.grid([["Objective", "Maximise SUM(tSegments[Nightly_value])"],
         ["Subject to", "Rooms_allocated ≥ Min_rooms; Rooms_allocated ≤ Max_demand; integer; SUM ≤ Rooms; OTA ≤ 50% of Rooms"],
         ["Method", "Simplex LP (the model is linear) - Solver's answer is already filled in; reset the column to 0 and re-run to see it"]],
        header=["Solver box", "Entry"], merge_last=True)
-s.insight("OTA bookings have the highest headline ADR but the LOWEST net value per room once 36% cancellations and 18% commission are removed. "
-          "Solver fills corporate and walk-in demand first - a result managers rarely guess.")
+s.insight("OTA bookings have the highest headline ADR (about ₦114k) but, after ~39% cancellations and 18% commission, each OTA room is worth only about ₦57k - "
+          "well below Corporate (about ₦75k). Solver fills all Corporate demand first, then OTA only up to the 50% cap, and Walk-in / Travel Agent takes the remaining rooms.")
 s.band("4.6.12", "Documenting what-if analysis")
 s.grid([["Inputs", "Yellow cells only; source and date beside each (2024 bookings, extracted from D_Hotel)"],
         ["Assumptions", f"{ROOMS} rooms, ₦{cost_per:,.0f} variable cost per room-night, ₦{fixed/1e9:.2f}bn fixed costs, commission rates, demand caps"],
@@ -714,9 +714,9 @@ s.calc([("Headline", f'="FY2025 sales grew "&TEXT(SUM(tStory[Sales])/{s24.Sales.
          f'&INDEX(tStory[Store_Name],MATCH(MIN(tStory[Gap_to_target]),tStory[Gap_to_target],0))&" has the largest gap (₦"&TEXT(-MIN(tStory[Gap_to_target])/1000000,"0.0")&"m)"',
          head, None, "FY2024 sales (₦609.2m) typed as the comparison base")])
 s.band("4.7.2 / 4.7.4-5", "Three acts, message hierarchy and evidence by audience")
-s.grid([["Act 1 - Situation", f"SuperMart grew {g25:.0%} in FY2025; every zone grew", "Line: monthly sales 2022-2025"],
+s.grid([["Act 1 - Situation", f"SuperMart grew {g25:.0%} in FY2025; three zones grew strongly, North-Central was flat", "Line: monthly sales 2022-2025"],
         ["Act 2 - Complication", f"{missed} of 12 stores missed target; the North-Central and South-East stores trail", "Bar: attainment by store, target line at 100%"],
-        ["Act 3 - Resolution", "Re-phase targets for new stores; replicate Ikeja/Lekki promotions in Wuse and Owerri", "Table: 3 actions, owner, date"]],
+        ["Act 3 - Resolution", "Review the Wuse and Owerri plans (largest gaps); learn from Lekki and Jos (highest attainment)", "Table: 3 actions, owner, date"]],
        header=["Act", "Message", "Evidence"])
 s.grid([["Board", "Headline + 3 numbers + decision needed", "1 slide"], ["Regional managers", "Their stores vs target, monthly trend", "Dashboard (Week 3, 3.8)"],
         ["Store managers", "Line-level detail, loss-making products", "Filtered table"]], header=["Audience", "Evidence they need", "Format"])
@@ -732,14 +732,14 @@ s.band("4.7.8", "Avoiding misleading presentations - same numbers, two y-axes")
 zt = s25.groupby("Zone").Sales.sum().reset_index().sort_values("Sales", ascending=False)
 tz = s.table(zt, "tZoneStory", fmts={"Sales": "naira"})
 mn = zt.Sales.min()
-s.chart("column", [{"name": "Sales", "categories": tz.ref("Zone"), "values": tz.ref("Sales")}], "MISLEADING: axis starts at ₦140m - South-West looks 4x larger",
-        y_fmt='₦#,##0,,"m"', legend=False, rows=15, size=(520, 260), extra=lambda ch: ch.set_y_axis({"min": 140e6, "num_format": '₦#,##0,,"m"'}))
-s.chart("column", [{"name": "Sales", "categories": tz.ref("Zone"), "values": tz.ref("Sales")}], "HONEST: zero baseline - South-West is about 1.7x the next zone",
+s.chart("column", [{"name": "Sales", "categories": tz.ref("Zone"), "values": tz.ref("Sales")}], "MISLEADING: axis starts at ₦120m - South-West looks over 40x South-East",
+        y_fmt='₦#,##0,,"m"', legend=False, rows=15, size=(520, 260), extra=lambda ch: ch.set_y_axis({"min": 120e6, "num_format": '₦#,##0,,"m"'}))
+s.chart("column", [{"name": "Sales", "categories": tz.ref("Zone"), "values": tz.ref("Sales")}], "HONEST: zero baseline - South-West is about 2x South-East",
         y_fmt='₦#,##0,,"m"', legend=False, rows=15, size=(520, 260), extra=lambda ch: ch.set_y_axis({"min": 0, "num_format": '₦#,##0,,"m"'}))
 s.band("4.7.9", "Structuring the written narrative")
 s.grid([["1. Headline", head], ["2. Why it matters", "Missed stores represent ₦" + f"{-stf[stf.Attainment < 1].eval('Sales-Annual_Target_2025').sum() / 1e6:,.1f}" + "m of unmet target"],
         ["3. Evidence", "Attainment chart; zone table; monthly trend"], ["4. So what / recommendation", "Three actions with owners and dates"],
-        ["5. Caveats", "Targets were set before two store refurbishments; FY2025 figures are unaudited"]], header=["Paragraph", "Content"], merge_last=True)
+        ["5. Caveats", "One annual target per store (Stores Directory); no adjustment for store age or size; FY2025 figures are unaudited"]], header=["Paragraph", "Content"], merge_last=True)
 
 # ======================================================================================
 # 4.8 Report writing
@@ -1113,7 +1113,7 @@ low = bm.assign(sq=spsq).sort_values("sq").iloc[0]
 s.grid([["Decision needed", "Which stores get the FY2026 refurbishment budget?"],
         ["Benchmark used", "Internal: chain median sales per m² and margin, FY2025 ledger (reconciled to the PDF bulletin within ±₦0.05m)"],
         ["Finding", f"{low.Store_Name} has the lowest sales per m² (₦{low.sq:,.0f}) - {abs(low.sq / spsq.median() - 1):.0%} below the chain median"],
-        ["Uncertainty", "One year of data; store refurbishments and openings not adjusted; 2025 figures unaudited"],
+        ["Uncertainty", "One year of data; store age (opened 2015-2021) not adjusted; 2025 figures unaudited"],
         ["Recommendation", "Shortlist the bottom three stores on sales per m² for site review before allocating budget"],
         ["Sign-off", "Analyst / Finance reviewer / Date"]], header=["Memo section", "Content"], merge_last=True)
 
