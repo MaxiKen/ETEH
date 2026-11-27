@@ -382,6 +382,11 @@ def render(ops, path, extra=(), dpi=110):
             th, _ = measure(paras, size, w, bold, gap)
             yy = y if anchor == "t" else y + (h - th) / 2 if anchor == "m" else y + h - th
             draw_lines(x, yy, w, paras, size, color, bold, align, gap)
+        elif k == "code":                      # monospace block (preview stand-in for Consolas)
+            _, x, y, w, h, lines_, size, color = op
+            mono = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf", max(6, int(size * pt * 0.92)))
+            for i, ln in enumerate(lines_):
+                d.text((x * s, (y + i * size * 1.22 / 72) * s), ln, font=mono, fill=col(color))
         elif k == "tick":
             _, x, y, w, h, color = op
             d.line([(x * s, (y + h * 0.55) * s), ((x + w * 0.38) * s, (y + h) * s), ((x + w) * s, y * s)],

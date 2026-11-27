@@ -15,7 +15,8 @@ from pathlib import Path
 from pptx import Presentation
 
 WEEK = int(sys.argv[1]) if len(sys.argv) > 1 else 1
-DECKS = {1: "ETEH_Vol1_Week1_Foundations_Slides.pptx", 2: "ETEH_Vol2_Week2_PowerQuery_Pivots_Slides.pptx"}
+DECKS = {1: "ETEH_Vol1_Week1_Foundations_Slides.pptx", 2: "ETEH_Vol2_Week2_PowerQuery_Pivots_Slides.pptx",
+         3: "ETEH_Vol3_Week3_SQL_DAX_Dashboards_Slides.pptx"}
 DECK = Path(__file__).resolve().parents[2] / "ETEH_Bootcamp_Pack" / DECKS[WEEK]
 GLYPHS = set("α≥≤≈≠✔√▲▼")
 BANNED = ["74 duplicate", "Tobacco", "Ward 3", "Triage Band", "41 million", "Weighted CGPA", "mean CGPA",
@@ -23,7 +24,8 @@ BANNED = ["74 duplicate", "Tobacco", "Ward 3", "Triage Band", "41 million", "Wei
           "26 of 86", " 4x", "OTA 36%", "3 min 20 s"]
 EXPECTS = {1: {"1.1": 14, "1.2": 6, "1.3": 12, "1.4": 10, "1.5": 17, "1.6": 14, "1.7": 14, "1.8": 12, "1.9": 12},
            2: {"2.1": 8, "2.2": 10, "2.3": 8, "2.4": 5, "2.5": 12, "2.6": 20, "2.7": 6, "2.8": 65, "2.9": 11, "2.10": 19,
-               "2.11": 11}}
+               "2.11": 11},
+           3: {"3.1": 15, "3.2": 17, "3.3": 9, "3.4": 16, "3.5": 7, "3.6": 41, "3.7": 26, "3.8": 19, "3.9": 3, "3.10": 5}}
 EXPECT = EXPECTS[WEEK]
 
 
@@ -68,9 +70,9 @@ def main():
                 and "How This Week Works" not in title and "How This Week Works" not in allt:
             issues.append(f"EXCEL  slide {i}: workbook instruction on slide")
         for n, t in tx:
-            if not n.startswith(("run:", "cell")):
+            if not n.startswith(("run:", "cell")) or n == "run:Code":   # code panels keep their own spacing
                 continue
-            if re.search(r"[a-z,;]  +[a-z]| [,.;:](?!\w)| \n", t) or (n == "cell" and re.search(r"\S +$", t)):
+            if re.search(r"[a-z,;]  +[a-z]| [,.;:](?![\w=])| \n", t) or (n == "cell" and re.search(r"\S +$", t)):
                 issues.append(f"SPACE  slide {i} [{n}]: {t[:50]!r}")
     # sequence
     want = [f"{m}.{k}" for m, c in EXPECT.items() for k in range(1, c + 1)]

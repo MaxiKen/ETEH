@@ -81,6 +81,8 @@ class Block:
             if self.note:
                 h += 0.28
             return h
+        if self.kind == "code":
+            return 0.32 + code_h(self.body, self.size) + (0.28 if self.note else 0)
         return self.fixed_h(w) if callable(self.fixed_h) else self.fixed_h
 
     def draw(self, cv, x, y, w, h):
@@ -96,6 +98,12 @@ class Block:
             th = cv.table(x, y + 0.32, w, self.rows, self.size, widths=self.widths)
             if self.note:
                 cv.text(x, y + 0.32 + th + 0.05, w, 0.22, [self.note], 10.5, GREY)
+        elif self.kind == "code":
+            cv.text(x, y, w, 0.26, [self.label], 11.5, self.color, bold=True)
+            ch = code_h(self.body, self.size)
+            code_box(cv, x, y + 0.32, w, ch, self.body, self.size)
+            if self.note:
+                cv.text(x, y + 0.32 + ch + 0.05, w, 0.22, [self.note], 10.5, GREY)
         else:
             self.drawfn(cv, x, y, w, h)
 
@@ -134,12 +142,17 @@ def blocks_of(t, D, k=1.0):
         rows = [head] + [list(r) for r in f]
         out["fx"] = Block("table", t.get("fx_label", "FORMULAS"), TEAL, rows=rows, size=r(12), note=t.get("fx_note", ""),
                           widths=t.get("fx_widths"))
+    if t.get("code"):
+        c = t["code"]
+        lines = c if isinstance(c, list) else c.strip("\n").split("\n")
+        out["code"] = Block("code", t.get("code_label", "SQL"), NAVY, body=lines, size=round(t.get("code_size", 12) * min(k, 1.0) * 2) / 2,
+                            note=t.get("code_note", ""))
     if t.get("points"):
         out["points"] = Block("text", t.get("points_label", "KEY POINTS"), NAVY, body=t["points"], size=r(13))
     if t.get("steps"):
         out["steps"] = Block("text", t.get("steps_label", "HOW TO DO IT IN EXCEL"), GREEN, body=t["steps"], size=r(13),
                              numbered=True)
-    order = t.get("order") or ["diagram", "ex", "grid", "fx", "points", "steps"]
+    order = t.get("order") or ["diagram", "code", "ex", "grid", "fx", "points", "steps"]
     return [out[k] for k in order if k in out]
 
 
@@ -171,6 +184,53 @@ class Dry:
 
     def table(self, x, y, w, rows, size=12, widths=None, name=None):
         return table_height(rows, w, size, widths)
+
+    def code(self, *a, **k):
+        return None
+
+
+# ---------------------------------------------------------------- code panel (SQL / DAX / M), monospace
+CODE_BG, CODE_INK, CODE_W = "1E2A38", "F3F6FA", 0.55     # Consolas advance width = 0.55 em
+CODE_PAD = 0.14
+
+
+def code_h(lines, size):
+    return len(lines) * size * 1.22 / 72 + 2 * CODE_PAD
+
+
+def code_box(cv, x, y, w, h, lines, size):
+    need = max((len(l_) for l_ in lines), default=0) * size * CODE_W / 72 + 2 * CODE_PAD
+    if need > w + 0.005:
+        K.WARN.append(f"CODE {getattr(cv, 'where', '')}: line needs {need:.2f}in, panel {w:.2f}in: {max(lines, key=len)[:50]}")
+    cv.rect(x, y, w, h, CODE_BG, None)
+    if hasattr(cv, "code"):
+        cv.code(x + CODE_PAD, y + CODE_PAD, w - 2 * CODE_PAD, h - 2 * CODE_PAD, lines, size)
+
+
+def _canvas_code(self, x, y, w, h, lines, size):
+    from pptx.util import Emu as _E, Pt as _P
+    from slidekit import EMU as _EMU, _rgb
+    from pptx.oxml.ns import qn as _qn
+    tb = self.slide.shapes.add_textbox(_E(int(x * _EMU)), _E(int(y * _EMU)), _E(int(w * _EMU)), _E(int(h * _EMU)))
+    tb.name = "Code"
+    tf = tb.text_frame
+    tf.word_wrap = False
+    tf.auto_size = None
+    bp = tf._txBody.find(_qn("a:bodyPr"))
+    for k_ in ("lIns", "rIns", "tIns", "bIns"):
+        bp.set(k_, "0")
+    for i, ln in enumerate(lines):
+        p = tf.paragraphs[0] if i == 0 else tf.add_paragraph()
+        p.line_spacing = 1.0
+        r_ = p.add_run()
+        r_.text = ln if ln else " "
+        r_.font.name, r_.font.size, r_.font.bold = "Consolas", _P(size), False
+        r_.font.color.rgb = _rgb(CODE_INK)
+    self.ops.append(("code", x, y, w, h, list(lines), size, CODE_INK))
+    return tb
+
+
+K.Canvas.code = _canvas_code
 
 
 SCALES = (1.25, 1.18, 1.1, 1.0, 0.94, 0.88)
