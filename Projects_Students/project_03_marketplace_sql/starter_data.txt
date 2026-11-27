@@ -1,0 +1,3 @@
+Use the relational database at: ../../Datasets/SQL/ecommerce.db
+Tables: customers, sellers, products, deliveries, transactions (all joined by *_id keys).
+See Datasets/SQL/ecommerce_schema.sql for the full schema.
