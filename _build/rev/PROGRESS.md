@@ -11,3 +11,4 @@ and the build prints no OVERFLOW / CLIP / TABLE / TITLE / NOTE warnings for it.
 | 1 | 1.3 The Data Analytics Process | 12 | done |
 | 1 | 1.4 Applications Across Industries | 10 | done (1.4.9 uses clearly labelled illustrative figures: no mining dataset in the pack) |
 | 1 | 1.5 Introduction to Microsoft Excel | 17 | done |
+| 1 | 1.6 Working with Data in Excel | 14 | done |
