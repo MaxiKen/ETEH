@@ -28,6 +28,7 @@ AMBER, BAND = "B7791F", "F4F1EA"
 LINE = 1.22  # single line spacing as a multiple of the font size
 
 _FONTS = {}
+DRAWN = {"→": 0.60}   # glyphs absent from the Carlito subsets: advance (em), drawn as vectors in previews
 
 
 def font(size, bold=False, scale=1.0):
@@ -45,6 +46,9 @@ def text_width_pt(s, size, bold=False):
     lat, ext = font(size, bold, 100 / size)
     w = 0.0
     for ch in s:
+        if ch in DRAWN:
+            w += DRAWN[ch] * 100
+            continue
         f = lat if ord(ch) < 0x250 or ch in "–—‘’“”•…›‹€−" else ext
         w += f.getlength(ch)
     return w * size / 100.0
@@ -349,6 +353,13 @@ def render(ops, path, extra=(), dpi=110):
                 for t, b in line:
                     lat, ext = font(size, b, pt)
                     for ch in t:
+                        if ch in DRAWN:
+                            aw = DRAWN[ch] * size * pt
+                            cy = yy * s + size * pt * 0.58
+                            d.line([(xx + aw * 0.12, cy), (xx + aw * 0.86, cy)], fill=col(color), width=max(1, int(size * pt / 14)))
+                            d.polygon([(xx + aw * 0.92, cy), (xx + aw * 0.62, cy - size * pt * 0.16), (xx + aw * 0.62, cy + size * pt * 0.16)], fill=col(color))
+                            xx += aw
+                            continue
                         f = lat if ord(ch) < 0x250 or ch in "–—‘’“”•…›‹€−" else ext
                         d.text((xx, yy * s), ch, font=f, fill=col(color))
                         xx += text_width_pt(ch, size, b) * pt
