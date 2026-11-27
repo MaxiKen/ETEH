@@ -3,6 +3,6 @@
 
 def T(tag, **kw):
     kw["tag"] = tag
-    for k in ("what", "like", "case", "steps", "so", "who"):
+    for k in ("what", "like", "tip", "trap", "case", "steps", "so", "who"):
         assert k in kw, f"{tag}: missing {k}"
     return kw

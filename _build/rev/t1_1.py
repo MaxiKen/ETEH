@@ -14,7 +14,7 @@ TOPICS = [
       tip="Always find out what each column means and its unit before using it.",
       trap="Treating a lone number as meaningful without knowing what it measures.",
       who="SuperMart Retail",
-      case="Row 6,684 of the SuperMart sales file holds: SM-2025-144463, 2025-01-01, Gbenga Anyanwu, Lagos - Ikeja, "
+      case="The line with Row_ID 6684 in the SuperMart sales file holds: SM-2025-144463, 2025-01-01, Gbenga Anyanwu, Lagos - Ikeja, "
            "Howard Miller wall clock, 474430, 11, 0, 199261. Each value is raw data. Read alone, none of them answers a question.",
       steps=["Open the file and press Ctrl+G, type A6685 and press Enter to jump to that row.",
              "Read across the row and write down what each value is.",
@@ -61,6 +61,8 @@ TOPICS = [
       how=["Keep the raw rows untouched on one sheet.",
            "Build the summary on a separate sheet.",
            "Make sure the summary total equals the raw total."],
+      tip='Keep raw data and the summary on separate sheets, and make sure their totals agree.',
+      trap='Overwriting or deleting the raw rows once the summary is built.',
       who="SuperMart Retail",
       case="The 2025 sales file has 3,312 rows. The Head of Sales only needs one line per store: sales against the 2025 "
            "target from SuperMart_Stores_Directory.csv.",
@@ -86,6 +88,8 @@ TOPICS = [
            "Find the data that can answer it.",
            "Clean, calculate and compare.",
            "Explain the answer and recommend an action."],
+      tip='Start every analysis with one clear question written down.',
+      trap='Opening Excel and clicking around before you know what you are trying to answer.',
       who="SuperMart Retail",
       case="SuperMart's sales grew 20.4% in 2025, yet its profit margin fell from 13.4% to 12.7%. The board asks: why are "
            "we selling more but keeping less of each naira?",
@@ -108,6 +112,8 @@ TOPICS = [
       how=["Pick one of the five reasons (see, cut, grow, spot risk, prove).",
            "Choose the number that shows it (profit, cost, readmissions…).",
            "Compare it across groups or over time."],
+      tip='Link every analysis to one purpose: see, cut, grow, spot risk or prove.',
+      trap='Reporting sales alone; high sales can still hide a loss.',
       who="SuperMart Retail",
       case="The CEO wants to 'see' which stores actually make money. Total sales look healthy everywhere, so she asks for "
            "profit by store for 2025.",
@@ -131,6 +137,8 @@ TOPICS = [
       how=["Notice a question in your daily life.",
            "Write down a few facts over several days.",
            "Compare them and act on what you see."],
+      tip='Practise noticing everyday questions you could answer with a few facts.',
+      trap='Thinking analytics is only for experts; you already compare and decide daily.',
       who="Crestview University",
       case="Crestview's Digital Wellbeing survey asked 705 students how many hours a day they spend on social media and how "
            "long they sleep. Is there a pattern?",
@@ -154,6 +162,8 @@ TOPICS = [
       how=["Agree one master file or database for the whole organisation.",
            "Let each team build its own view from that file.",
            "Never retype figures into separate spreadsheets."],
+      tip='Agree one master file and let every team build its view from it.',
+      trap='Copying figures into private spreadsheets; versions soon disagree.',
       who="SuperMart Retail",
       case="Three SuperMart departments use the same 2025 sales file, each answering its own question. Because they share "
            "one file, their numbers always agree.",
@@ -178,6 +188,8 @@ TOPICS = [
            "Get and clean the data.",
            "Calculate, check and summarise.",
            "Explain the answer and recommend an action."],
+      tip='Repeat the question back to the person asking before you start.',
+      trap='Sending numbers without a plain-English answer and a next step.',
       who="SuperMart Retail",
       case="The Head of Sales sends a WhatsApp message: 'Which stores missed their 2025 target?' The analyst uses the sales "
            "file and the store directory to answer within the hour.",
@@ -200,6 +212,8 @@ TOPICS = [
       like="Think of building a house. The analyst is the quantity surveyor measuring what is already there. The business "
            "analyst is the architect redesigning the rooms. The data scientist is the engineer predicting how much load "
            "the roof can carry.",
+      tip='Learn the analyst basics well first: clean data, correct sums and clear charts.',
+      trap='Jumping to prediction models before the basic facts are right.',
       who="Lifecare Hospital",
       case="In 2023, 10.3% of Lifecare's 10,918 admissions came back within 30 days. Lifecare's management wants fewer "
            "readmissions, and each of the three roles helps in a different way.",
@@ -222,6 +236,8 @@ TOPICS = [
       how=["Write down the big problem.",
            "Split it into parts (by category, store, month…).",
            "Find the part that explains most of the problem, then split that part again."],
+      tip='Split by one thing at a time and follow the biggest gap.',
+      trap='Looking at only the grand total; problems hide inside the parts.',
       who="SuperMart Retail",
       case="'SuperMart's profit is weak' is too vague to act on. The analyst breaks the 2025 profit down by category, then "
            "looks inside the weakest category.",
@@ -246,6 +262,8 @@ TOPICS = [
       how=["Write the request exactly as you received it.",
            "Add the measure, period, level of detail and comparison.",
            "Confirm the sharper question with the person who asked."],
+      tip='Name the measure, period, level of detail and comparison in every question.',
+      trap='Starting work on a vague request like “how are we doing?”',
       who="EkoSuites Hotel",
       case="The EkoSuites manager says: 'How are our bookings?' The analyst sharpens this to: 'What share of 2023–2024 "
            "bookings were cancelled, and which booking channel cancels most?'",
@@ -269,6 +287,8 @@ TOPICS = [
       how=["Underline each important word in the manager's sentence.",
            "Match each word to a column and a rule.",
            "Write the calculation that answers it."],
+      tip='Write the rule (e.g. exam below 62) down and agree it before counting.',
+      trap='Each person using a different meaning of words like “failing” or “active”.',
       who="Crestview University",
       case="The Senate says: 'Too many students are failing; who needs help?' The analyst turns 'failing' into a clear "
            "rule using Crestview_Student_Performance.csv (6,607 students).",
@@ -291,6 +311,8 @@ TOPICS = [
       how=["Learn the basic rules of the sector you analyse.",
            "Check each column against those rules (ranges, dates, units).",
            "Ask a domain expert when something looks strange."],
+      tip='Ask “could this number really be true?” before you report it.',
+      trap='Trusting a figure just because the formula did not show an error.',
       who="Multi-Sector",
       case="Three files in this bootcamp each contain values that only domain knowledge can judge. The formulas run without "
            "errors, but are the numbers sensible?",

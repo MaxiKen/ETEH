@@ -25,6 +25,7 @@ import openpyxl
 from pptx import Presentation
 from pptx.oxml.ns import qn
 from pptx.util import Emu
+from pptx.opc.packuri import PackURI
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import slidekit as K  # noqa: E402
@@ -196,6 +197,8 @@ def build_concept(prs, tmpl, t, title, tag, where, tip, trap):
     trap = t.get("trap", trap)
     side = [(K.GREEN, "REMEMBER", tip), (K.RED, "AVOID", trap)]
     side = [x for x in side if x[2]]
+    if len(side) < 2:
+        K.WARN.append(f"NOTE {where}: no {'REMEMBER' if not tip else 'AVOID'} text (add tip=/trap= to the topic copy)")
     if how:
         lw = 6.55 if side else W
         hl = cv.card_height(lw, numbered(how), 13)
@@ -283,8 +286,8 @@ def build_guide(prs, tmpl, week, footer, companion):
         "The second slide, marked with the green **WORKED EXAMPLE** badge, ends every topic. Repeat the steps on the real file and check that you get the same result.",
         "After each module, practise on the matching sheet of the Section Examples workbook, then do the weekly assignment.",
     ]
-    h = cv.card_height(6.0, numbered(routine), 13)
-    cv.card(0.70, 1.72, 6.0, 4.70, K.GREEN, "YOUR STUDY ROUTINE", numbered(routine), 13, gap=0.10)
+    h = cv.card_height(6.0, numbered(routine), 13, gap=0.10)
+    cv.card(0.70, 1.72, 6.0, h, K.GREEN, "YOUR STUDY ROUTINE", numbered(routine), 13, gap=0.10)
     lx, lw = 6.95, 5.65
     cv.text(lx, 1.72, lw, 0.26, ["WHAT EACH PART OF A SLIDE MEANS"], 11.5, K.NAVY, bold=True)
     legend = [
@@ -309,11 +312,13 @@ def build_guide(prs, tmpl, week, footer, companion):
     data = ("**Data used in every example:** SuperMart Retail (12 stores), SuperMart Online, Crestview University, "
             "Lifecare General Hospital, EkoSuites Hotel and the ETEH Talent Salary Survey, all in "
             "01_Section_Examples/00_Core_Datasets. " + companion)
-    hh, _ = K.measure([data], 12, 11.6)
-    cv.rect(0.70, 6.55 - 0.02, 11.90, hh + 0.16, "FFF4EC", None)
-    cv.text(0.85, 6.55 + 0.06, 11.6, hh, [data], 12, K.INK)
-    if 6.55 + hh + 0.16 > 7.0:
-        K.WARN.append(f"OVERFLOW {week} guide: data note too long")
+    dy = 1.72 + h + 0.20
+    hh, _ = K.measure([data], 12.5, 5.70)
+    cv.rect(0.70, dy, 6.0, hh + 0.30, "FFF4EC", None)
+    cv.rect(0.70, dy, 0.09, hh + 0.30, K.ORANGE)
+    cv.text(0.95, dy + 0.15, 5.70, hh, [data], 12.5, K.INK)
+    if dy + hh + 0.30 > 6.85:
+        K.WARN.append(f"OVERFLOW {week} guide: data note ends at {dy + hh + 0.30:.2f}in")
     ghost_template(cv, s, ts)
     return s, cv
 
@@ -349,6 +354,27 @@ def sld_id(prs, slide):
             return el.get("id")
 
 
+def check_package(path, where):
+    import zipfile
+    with zipfile.ZipFile(path) as z:
+        nm = z.namelist()
+        dup = {n for n in nm if nm.count(n) > 1}
+        if dup:
+            K.WARN.append(f"PACKAGE {where}: duplicate parts {sorted(dup)[:4]}")
+        bad = z.testzip()
+        if bad:
+            K.WARN.append(f"PACKAGE {where}: corrupt member {bad}")
+
+
+def fit_next(head, title, width_in=3.55, size=11):
+    words = title.split()
+    for n in range(len(words), 0, -1):
+        s = head + " ".join(words[:n]) + ("" if n == len(words) else "…")
+        if K.text_width_pt(s, size) / 72 <= width_in:
+            return s
+    return head.strip()
+
+
 def short(s, n=46):
     return s if len(s) <= n else s[: n - 1].rsplit(" ", 1)[0] + "…"
 
@@ -367,7 +393,7 @@ def revise(vol, fname, xlsx, week, asg, topics, preview_tags, log):
             n2 = topic_segs[i + 1]
             same = n2[3][0] == sg[3][0]
             title2 = names(n2[2][0])["Title 1"].text_frame.text.replace(" (continued)", "")
-            nxt_of[sg[1]] = f"Next  ›  {n2[1]} {short(title2, 40)}" if same else f"Next  ›  Module {n2[3][0]}"
+            nxt_of[sg[1]] = fit_next(f"Next  ›  {n2[1]} ", title2) if same else f"Next  ›  Module {n2[3][0]}"
         else:
             nxt_of[sg[1]] = f"End of {week} topics"
     order, done, kept = [], 0, 0
@@ -432,7 +458,13 @@ def revise(vol, fname, xlsx, week, asg, topics, preview_tags, log):
         if need > s2.height / K.EMU + 0.05:
             K.WARN.append(f"OVERFLOW V{vol} S2 panel: {need:.2f}in")
     renumber(prs)
+    # new slides reuse part names of dropped ones: give every slide (and its notes) a fresh, sequential name
+    for i, s in enumerate(prs.slides, 1):
+        s.part.partname = PackURI(f"/ppt/slides/slide{i}.xml")
+        if s.has_notes_slide:
+            s.notes_slide.part.partname = PackURI(f"/ppt/notesSlides/notesSlide{i}.xml")
     prs.save(str(path))
+    check_package(path, where=f"V{vol}")
     log.append(f"V{vol}: {done} topics revised, {kept} kept as v1, {len(prs.slides)} slides -> {path.relative_to(ROOT)}")
 
 

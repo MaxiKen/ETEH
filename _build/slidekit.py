@@ -45,9 +45,9 @@ def text_width_pt(s, size, bold=False):
     lat, ext = font(size, bold, 100 / size)
     w = 0.0
     for ch in s:
-        f = lat if ord(ch) < 0x250 or ch in "–—‘’“”•…›‹€" else ext
+        f = lat if ord(ch) < 0x250 or ch in "–—‘’“”•…›‹€−" else ext
         w += f.getlength(ch)
-    return w / 100.0
+    return w * size / 100.0
 
 
 # ---------------------------------------------------------------- rich text: **bold** segments
@@ -91,9 +91,29 @@ def wrap(text, size, width_in, bold=False):
     return lines
 
 
+NUM = re.compile(r"^\*\*(\d+\.)\*\*\s+")
+
+
+def hang_of(size):
+    """Hanging indent (inches) for numbered paragraphs: room for '10.' plus a gap."""
+    return round(text_width_pt("10.", size, True) / 72 + 0.10, 3)
+
+
+def split_num(p):
+    m = NUM.match(p)
+    return (m.group(1), p[m.end():]) if m else (None, p)
+
+
+def para_lines(p, size, width_in, bold=False):
+    num, rest = split_num(p)
+    if num is None:
+        return wrap(p, size, width_in, bold)
+    return wrap(rest, size, width_in - hang_of(size), bold)
+
+
 def measure(paras, size, width_in, bold=False, gap=0.0):
     """Height in inches of a list of paragraphs (gap = extra space after each paragraph, in inches)."""
-    n = sum(len(wrap(p, size, width_in, bold)) for p in paras)
+    n = sum(len(para_lines(p, size, width_in, bold)) for p in paras)
     return n * size * LINE / 72 + gap * max(0, len(paras) - 1), n
 
 
@@ -147,6 +167,17 @@ class Canvas:
             p.alignment = {"l": PP_ALIGN.LEFT, "c": PP_ALIGN.CENTER, "r": PP_ALIGN.RIGHT}[align]
             if gap and i < len(paras) - 1:
                 p.space_after = Pt(gap * 72)
+            num, rest = split_num(ptxt)
+            if num is not None:
+                hang = int(hang_of(size) * EMU)
+                pPr = p._p.get_or_add_pPr()
+                pPr.set("marL", str(hang))
+                pPr.set("indent", str(-hang))
+                r = p.add_run()
+                r.text = num + "\t"
+                r.font.name, r.font.size, r.font.bold = "Calibri", Pt(size), True
+                r.font.color.rgb = _rgb(color)
+                ptxt = rest
             for seg, b in segments(ptxt):
                 r = p.add_run()
                 r.text = seg
@@ -307,15 +338,20 @@ def render(ops, path, extra=(), dpi=110):
     def draw_lines(x, y, w, paras, size, color, bold, align, gap=0.0):
         yy = y
         for ptxt in paras:
-            for line in wrap(ptxt, size, w, bold):
+            num, rest = split_num(ptxt)
+            ox, ow = (x, w) if num is None else (x + hang_of(size), w - hang_of(size))
+            if num is not None:
+                lat, _ = font(size, True, pt)
+                d.text((x * s, yy * s), num, font=lat, fill=col(color))
+            for line in wrap(rest, size, ow, bold):
                 lw = sum(text_width_pt(t, size, b) for t, b in line) * pt
-                xx = x * s if align == "l" else (x + w) * s - lw if align == "r" else x * s + (w * s - lw) / 2
+                xx = ox * s if align == "l" else (ox + ow) * s - lw if align == "r" else ox * s + (ow * s - lw) / 2
                 for t, b in line:
                     lat, ext = font(size, b, pt)
                     for ch in t:
-                        f = lat if ord(ch) < 0x250 or ch in "–—‘’“”•…›‹€" else ext
+                        f = lat if ord(ch) < 0x250 or ch in "–—‘’“”•…›‹€−" else ext
                         d.text((xx, yy * s), ch, font=f, fill=col(color))
-                        xx += f.getlength(ch)
+                        xx += text_width_pt(ch, size, b) * pt
                 yy += size * LINE / 72
             yy += gap
     for op in list(extra) + list(ops):
