@@ -4,7 +4,7 @@ Eaglet2EagleHub Ltd · Instructor: Abdulrahaman Kehinde
 
 ## Edition 3 (in progress): leaner decks, practical work in the workbooks
 
-Edition 2 explained every topic with two fixed slides, which made the decks long and repetitive. Edition 3 is being rolled out one week at a time. **Week 1 is done**; Weeks 2–4 and the Capstone volume are still edition 2 until Week 1 is approved.
+Edition 2 explained every topic with two fixed slides, which made the decks long and repetitive. Edition 3 is being rolled out one week at a time. **Weeks 1 and 2 are done**; Weeks 3–4 and the Capstone volume are still edition 2.
 
 ### Week 1 deck (`ETEH_Vol1_Week1_Foundations_Slides.pptx`, 146 slides, 111 topics)
 - Built from the ETEH deck template (title, welcome, module divider, content frame, closing).
@@ -37,8 +37,8 @@ Rebuilt from scratch as a self-contained practice book.
 - **Answer key:** each module sheet ends with one, holding the worked answer to every exercise as a live formula on the module's data.
 - **Datasets:** each module starts with a "This module's dataset" panel listing the tables and practice ranges it uses.
 - **Verification:**
-  - 825 formulas checked with `_build/verify_xlsx.py`: 550 recalculate to their cached values;
-  - 7 known pycel limits were checked by hand: TRIM, hidden rows in SUBTOTAL, TEXT format codes, and INDIRECT on a table the learner has not created yet;
+  - 825 formulas checked with `_build/verify_xlsx.py`: 553 recalculate to their cached values;
+  - 4 known pycel limits were checked by hand: a deliberately hidden row in SUBTOTAL (row 73 of 1.6), TEXT format codes (twice), and INDIRECT on a table the learner has not created yet. (The TRIM cases flagged earlier now verify: the checker uses Excel's TRIM, see Week 2.)
   - the remaining formulas use functions pycel cannot evaluate (mostly FORMULATEXT); their cached values were checked separately;
   - `_build/check_xml.py` passes.
 
@@ -60,12 +60,48 @@ Rebuilt from scratch as a self-contained practice book.
   - Excel's Remove Duplicates (all columns) reports 74 removed, because 14 of the 15 empty rows are duplicates of the first. Deleting the last empty row gives 3,312.
   - The workbook explains this in 1.8.9.
 
+### Week 2 deck (`ETEH_Vol2_Week2_PowerQuery_Pivots_Slides.pptx`, 219 slides, 175 topics)
+- The same one-slide-per-topic design as Week 1, for modules 2.1–2.7, 2.8A, 2.8B and 2.9–2.11. Titles match edition 2.
+- Every figure is computed from the data when the deck is built (`_build/w2_data.py`, `_build/v3/w2_fx.py`); nothing is typed in by hand.
+- Cell addresses quoted on the slides are real cells of `Data_Dirty25` in the workbook. For example R23 holds the text "₦239,240", G31 holds a name with a non-breaking space and a line feed, and C24, C63 and C72 hold the three text-date patterns.
+
+### Week 2 examples workbook (`01_Section_Examples/ETEH_Week2_Section_Examples.xlsx`)
+Rebuilt from scratch in the Week 1 format.
+- **Sheets:**
+  - one sheet per module: 2.1–2.7, 2.8A, 2.8B, 2.9–2.11;
+  - `2.10 Live Pivots`: five real PivotTables on tSM, which Excel builds when the file opens;
+  - five data sheets, each with one table starting in A1: `Data_Sales25` (tSales25), `Data_Stores` (tStores), `Data_Dirty25` (tDirty25, the raw file as Excel opens it), `Data_SM` (tSM, 9,994 lines 2022–2025) and `Data_Adm23` (tAdm23).
+- **All 175 mini-sections are covered** (the build asserts it). Each has Steps, a Worked solution with live formulas, and **281 "Your turn" exercises** in all, with live ✓/✗ checks and an answer key on every sheet.
+- **Power Query topics** (2.2–2.4, 2.6, 2.9) give the M script to paste, and ask for the row count or total the query produces. The answer key works these out from the tables in the workbook wherever the same data is there.
+- **2.8A/2.8B:** one topic per function (65 in all), using the slide's definition. Each function is worked on tSales25, tStores, tDirty25 or tAdm23 and has at least one exercise.
+- **2.10/2.11:** every pivot figure has a formula twin (SUMIFS/COUNTIFS on tSM), so learners can check their pivot. The charts are drawn from the twin tables, so they show in any viewer.
+- **Verification:**
+  - 1,329 formulas checked with `_build/verify_xlsx.py`: 698 recalculate to their cached values;
+  - 3 pycel limits were checked by hand: IFERROR over an array inside SUMPRODUCT (twice), and a TEXT format with `,,` scaling;
+  - the remaining formulas use functions pycel cannot evaluate (mostly the FORMULATEXT column);
+  - every formula passes a syntax check.
+- **Checker fixes found along the way** (`verify_xlsx.py`, `pycel_plugin.py`):
+  - pycel's TRIM did not strip leading and trailing spaces; it now matches Excel's;
+  - NETWORKDAYS and WORKDAY ignored holidays; they now use them;
+  - one failed cell used to make pycel fail every later cell; it is now reset after each error, so many more cells are actually checked.
+- **Bug fixed in the shared exercise code (`w1x.py`):** text answers containing a double quote (for example `₦#,##0.0,,"m"` or `"|"`) produced invalid check formulas. Quotes are now escaped. The Week 1 workbook had no such answers and passes the same syntax check.
+
+### Week 2 assignment
+- The tasks and marks are unchanged.
+- A new **Function Guide** sheet covers WEEKDAY, the only function the tasks use that the Week 2 workbook does not teach. It also shows three patterns the workbook teaches only in simpler forms: a conditional median with AGGREGATE(17,6,…), MAX(COUNTIF(range,{list})) and XLOOKUP(MAX(…)). Each is a live example on tRaw that answers a different question from the tasks.
+- The Task 4 brief and the cover point to the guide.
+- The student file and the answer key both verify with 0 mismatches.
+
 ### Build
 ```
 python3 _build/07_v3_week1_deck.py --preview   # deck (+ PNG previews in _build/_stage/v3_preview)
 python3 _build/rev/lint_v3.py                  # deck lint
 python3 _build/02_sec_w1.py                    # examples workbook (asserts all 111 topics are covered)
 python3 _build/03_asg_w1.py                    # assignment + answer key
+python3 _build/07_v3_week2_deck.py && python3 _build/rev/lint_v3.py 2
+cd _build && python3 02_sec_w2.py              # Week 2 workbook (asserts all 175 topics are covered)
+python3 _build/03_asg_w2.py                    # Week 2 assignment + answer key
+python3 _build/verify_xlsx.py <file.xlsx>      # independent formula check
 ```
 
 ## Edition 2: beginner-friendly self-study slides
@@ -122,7 +158,7 @@ Every topic in all five volumes (663 topics) now has two slides.
 | Deck | Slides | Modules / topics | Companion files |
 |---|---|---|---|
 | ETEH_Vol1_Week1_Foundations_Slides.pptx | 146 (edition 3) | 1.1–1.9 · 111 topics | ETEH_Week1_Section_Examples.xlsx, ETEH_Week1_Assignment.xlsx |
-| ETEH_Vol2_Week2_PowerQuery_Pivots_Slides.pptx | 367 | 2.1–2.11 · 175 topics | ETEH_Week2_Section_Examples.xlsx, Week2_Data_Files, ETEH_Week2_Assignment.xlsx |
+| ETEH_Vol2_Week2_PowerQuery_Pivots_Slides.pptx | 219 (edition 3) | 2.1–2.11 · 175 topics | ETEH_Week2_Section_Examples.xlsx, Week2_Data_Files, ETEH_Week2_Assignment.xlsx |
 | ETEH_Vol3_Week3_SQL_DAX_Dashboards_Slides.pptx | 332 | 3.1–3.10 · 158 topics | ETEH_Week3_Section_Examples.xlsx, Week3_Data_Files (SQLite), ETEH_Week3_Assignment.xlsx |
 | ETEH_Vol4_Week4_Stats_Forecast_AI_Slides.pptx | 297 | 4.1–4.14 · 139 topics | ETEH_Week4_Section_Examples.xlsx, ETEH_Week4_Assignment.xlsx |
 | ETEH_Vol5_Capstone_Career_Slides.pptx | 174 | P.1–P.9 · 80 topics | ETEH_Capstone_Section_Examples.xlsx, Capstones 1–3 (solution workbooks), Student Projects 1–4 |

@@ -111,6 +111,36 @@ def build(key: bool):
             "Week 2 · Power Query, cleaning, functions and PivotTables · Lifecare General Hospital 2023")
     b = A.b
 
+    # ---------------------------------------------------------------- function guide (self-contained help)
+    # Week 2's examples workbook teaches every function the tasks need except WEEKDAY, and shows AGGREGATE, COUNTIF and XLOOKUP in simpler
+    # forms. Each pattern is shown here on tRaw, answering a DIFFERENT question from the tasks, so the guide teaches without giving answers away.
+    g = b.sheet("Function Guide", "Function guide: patterns this assignment uses beyond the Week 2 examples workbook", A.subtitle, "Reference")
+    g.scenario("Every formula below is live and works on this workbook's own table tRaw (sheet D_Raw). Each one answers a different "
+               "question from the tasks: learn the pattern, then apply it to your tClean table.")
+    ad = raw_x.Admission_Date
+    g.h2("Day of the week: WEEKDAY(date, 2) gives Monday = 1 … Sunday = 7   [Task 4]")
+    g.calc([("Weekday number of the first row's admission", "=WEEKDAY(INDEX(tRaw[Admission_Date],1),2)", int(ad.iloc[0].dayofweek) + 1, "int",
+             f"{ad.iloc[0]:%A %d %b %Y}. With return type 2, Saturday = 6 and Sunday = 7, so a weekend test is WEEKDAY(…,2)>5."),
+            ("Raw rows admitted on a Monday", "=SUMPRODUCT(--(WEEKDAY(tRaw[Admission_Date],2)=1))", int((ad.dt.dayofweek == 0).sum()), "int",
+             "WEEKDAY works on the whole column inside SUMPRODUCT; -- turns TRUE/FALSE into 1/0.")])
+    g.h2("Median with a condition: AGGREGATE(17, 6, values / (condition), 2)   [Task 4]")
+    dia = raw[raw.Medical_Condition == "Diabetes"].Age
+    g.calc([("Median age, Diabetes rows (raw)", '=AGGREGATE(17,6,tRaw[Age]/(tRaw[Medical_Condition]="Diabetes"),2)', float(dia.median()), "dec1",
+             "Function 17 is QUARTILE.INC and quartile 2 is the median. Rows that fail the condition divide by 0, and option 6 ignores those errors."),
+            ("Same with FILTER", '=MEDIAN(FILTER(tRaw[Age],tRaw[Medical_Condition]="Diabetes"))', float(dia.median()), "dec1",
+             "Equally valid in Excel 365. Add a second condition by multiplying: (cond1)*(cond2).")])
+    bt = raw.Blood_Type.value_counts()
+    btl = "{" + ",".join(f'"{x}"' for x in sorted(bt.index)) + "}"
+    g.h2("Largest count among several items: MAX(COUNTIF(range, {list}))   [Task 4]")
+    g.calc([("Rows of the most common blood type", f"=MAX(COUNTIF(tRaw[Blood_Type],{btl}))", int(bt.max()), "int",
+             f"COUNTIF with a {{list}} returns one count per item; MAX keeps the largest ({bt.idxmax()})."),
+            ("Which blood type that is", f"=INDEX({btl},MATCH(MAX(COUNTIF(tRaw[Blood_Type],{btl})),COUNTIF(tRaw[Blood_Type],{btl}),0))", bt.idxmax(), "gen",
+             "MATCH finds the position of the largest count in the list of counts.")])
+    ix = raw.Age.idxmax()
+    g.h2("Return a value from the row of the largest number: XLOOKUP(MAX(range), range, return_range)   [Task 4]")
+    g.calc([("Patient with the highest recorded age (raw)", "=XLOOKUP(MAX(tRaw[Age]),tRaw[Age],tRaw[Patient_Name])", raw.loc[ix, "Patient_Name"], "gen",
+             f"Age {int(raw.Age.max())}: an impossible value, which is why tClean carries an Age_Valid flag. XLOOKUP returns the first match.")])
+
     # ---------------------------------------------------------------- T1 import & connect
     s = A.task("T1 Import & Connect", "Task 1 - Getting the EMR export into Excel", "2.1-2.4",
                f"Lifecare's old EMR system exports admissions as {CSV_NAME} (folder Week2_Assignment_Data). The same rows are pasted, as received, "
@@ -203,7 +233,8 @@ def build(key: bool):
 
     # ---------------------------------------------------------------- T4 functions
     s = A.task("T4 Functions on tClean", "Task 4 - Analyse the clean table with functions", "2.8",
-               "Use worksheet functions on YOUR tClean table (loaded in Task 3). Each answer must be a live formula.")
+               "Use worksheet functions on YOUR tClean table (loaded in Task 3). Each answer must be a live formula. "
+               "WEEKDAY, the conditional median and the MAX(COUNTIF({list})) pattern are shown on the Function Guide sheet.")
     nh = cl.HMO.eq("NHIA (National Health Insurance)").mean()
     ix = cl.Billing_Amount.idxmax()
     cancer = valid[valid.Medical_Condition == "Cancer"].Length_of_Stay.median()
@@ -222,7 +253,7 @@ def build(key: bool):
         ("Median length of stay for Cancer (valid rows only).",
          '=AGGREGATE(17,6,tClean[Length_of_Stay]/((tClean[Medical_Condition]="Cancer")*(tClean[LOS_Valid]="Yes")),2)', cancer, "dec1", 2,
          "MEDIAN(FILTER(...)) or MEDIAN(IF(...)) equally valid."),
-        ("Admissions on a Saturday or Sunday.", "=SUMPRODUCT(--(WEEKDAY(tClean[Admission_Date],2)>5))", wk, "int", 2, ""),
+        ("Admissions on a Saturday or Sunday.", "=SUMPRODUCT(--(WEEKDAY(tClean[Admission_Date],2)>5))", wk, "int", 2, "WEEKDAY: see the Function Guide."),
         ("Admissions in the busiest month.", f"=MAX(COUNTIF(tClean[Month],{arr}))", int(mc.max()), "int", 1, f"Busiest month: {mc.idxmax()}."),
     ]
     for i, (t, f, v, k, m, gd) in enumerate(rows, 1):
@@ -299,6 +330,8 @@ def _build(key):
                      "EMR system - mixed-case names, ward-label variants, coded genders, text-formatted bills, duplicates and finance reversals.",
                      "Profile the defects (Task 2), build a repeatable Power Query clean-up (Task 3), then answer the Director's questions with functions "
                      "(Task 4) and PivotTables (Task 5). Tasks 4-5 depend on the table tClean that YOU load in Task 3.",
+                     "Stuck on a function? The Function Guide sheet shows each pattern the tasks need beyond the Week 2 examples workbook, "
+                     "with a live, worked example on a different question.",
                      "Time guide: 6-7 hours."],
                     [("Lifecare", DATASETS_TEXT["Lifecare"] + " - this assignment uses the deliberately dirty 2023 EMR export (11,026 rows).")],
                     files=f"02_Assignments/Week2_Assignment_Data/{CSV_NAME} (same rows as sheet D_Raw).",
