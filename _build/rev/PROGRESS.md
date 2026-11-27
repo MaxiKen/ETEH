@@ -28,3 +28,4 @@ and the build prints no OVERFLOW / CLIP / TABLE / TITLE / NOTE warnings for it.
 | 2 | 2.10 Introduction to PivotTables | 19 | done |
 | 2 | 2.11 Introduction to PivotCharts | 11 | done |
 | 3 | 3.1 Database Fundamentals | 15 | done |
+| 3 | 3.2 Introduction to SQL and SQLite | 17 | done |
