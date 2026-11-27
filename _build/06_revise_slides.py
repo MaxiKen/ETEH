@@ -425,11 +425,13 @@ def revise(vol, fname, xlsx, week, asg, topics, preview_tags, log):
         e, cve = build_example(prs, slides[0], t, title, tag, where, tryit, nxt_of[tag])
         order += [sld_id(prs, c), sld_id(prs, e)]
         if mod:
-            foot = f"Module {mod[0]}  ·  {mod[1]}"
             for s_ in (c, e):
                 tb5 = names(s_).get("TextBox 5")
-                if tb5 is not None and K.text_width_pt(foot, 11) / 72 <= tb5.width / K.EMU - 0.1:
-                    K.set_runs_text(tb5, foot)
+                if tb5 is not None:
+                    K.set_runs_text(tb5, fit_next(f"Module {mod[0]}  ·  ", mod[1], tb5.width / K.EMU - 0.1, 11))
+            for cv_ in (cvc, cve):
+                cv_.ops = [((o[:5] + ([names(c)["TextBox 5"].text_frame.text],) + o[6:])
+                            if o[0] == "text" and o[1:3] == (5.20, 7.05) else o) for o in cv_.ops]
         for s in slides:
             drop(prs, s)
         done += 1
