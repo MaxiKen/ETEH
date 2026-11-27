@@ -1,0 +1,17 @@
+File,Problem injected,Fix (Week 2)
+salary_DIRTY.csv,Duplicates (80 exact copies appended),Remove duplicates; verify with COUNT vs COUNTA
+salary_DIRTY.csv,"Inconsistent categories (BACHELORS/masters/phd, MALE/female)",Standardise via lookup table; TRIM/PROPER
+salary_DIRTY.csv,"Numbers stored as text (₦1,200)",VALUE/SUBSTITUTE to strip currency; set Number format
+salary_DIRTY.csv,Extra spaces in Job Title,TRIM; Text to Columns if needed
+salary_DIRTY.csv,Missing Salary/Age (blanks),Decide: blank vs 0 vs Unknown; document; do not average blanks as 0
+salary_DIRTY.csv,"Impossible values (-5000 salary, Age 150, Exp 99)",Flag with IF; quarantine; do not silently delete
+superstore_DIRTY.csv,Mixed date formats (ISO vs M/D/YYYY vs D-Mon-YY),Parse to ISO YYYY-MM-DD; DATEVALUE with locale check
+superstore_DIRTY.csv,"Sales as text ($1,234.56)",Strip $ and commas; VALUE; check SUM reconciles
+superstore_DIRTY.csv,Category case (FURNITURE) + Region spaces,Standardise case; TRIM
+superstore_DIRTY.csv,Blank Profit + spacer blank row,Filter blanks; delete spacer rows; check row counts
+ecommerce_transactions_DIRTY.csv,delivery_id padding broken (DEL1 vs DEL000001),"Standardise key: 'DEL' & TEXT(VALUE(...),'000000')"
+ecommerce_transactions_DIRTY.csv,"Status case + spaces (DELIVERED, ' Paid ')",TRIM/UPPER standardise; data validation list
+ecommerce_transactions_DIRTY.csv,total_price as text (₦...) + blank quantity + 60 dups + 40 blank rows,Clean numbers; handle blanks; dedupe; remove blank rows
+student_performance_DIRTY.csv,Ordinal case mess (low/MEDIUM/' High '),Map to 1/2/3 via lookup; standardise
+student_performance_DIRTY.csv,Missing Teacher_Quality + Exam_Score >100 + '23 hrs' text,Explicit Unknown; flag >100; VALUE after SUBSTITUTE
+healthcare_DIRTY.csv,Name case (UPPER/lower) + negative billing + mixed dates + blank Blood_Type,PROPER; flag negatives; ISO dates; explicit missing
