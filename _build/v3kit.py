@@ -398,3 +398,107 @@ def ladder(cv, x, y, w, h, steps, highlight=None):
 
 
 DIAGRAMS = {"flow": (flow, flow_h), "pyramid": (pyramid, pyramid_h), "excel": (excel, excel_h), "ladder": (ladder, ladder_h)}
+
+
+def pqeditor_h(w, **_):
+    return 3.30
+
+
+def pqeditor(cv, x, y, w, h, highlight=(), labels=None, query="qSalesClean",
+             cols=("Order_ID", "Order_Date", "Store_Name", "Sales"), types=("ABC", "Date", "ABC", "1.2"),
+             steps=("Source", "Promoted Headers", "Changed Type", "Trimmed Text", "Removed Duplicates"),
+             formula="= Table.Distinct(#\"Trimmed Text\")"):
+    """Schematic Power Query Editor. highlight: ribbon, queries, formulabar, preview, settings, steps, status."""
+    hl = set(highlight)
+    labels = labels or {}
+    o = ORANGE
+    lg = "F3F2EF"
+    ww = w if not labels else w * 0.64
+    cv.rect(x, y, ww, 0.28, "1D6F42")
+    cv.text(x + 0.10, y + 0.05, ww - 0.2, 0.2, [f"{query} - Power Query Editor"], 10, WHITE, align="c")
+    ty = y + 0.28
+    cv.rect(x, ty, ww, 0.24, WHITE, BORDER)
+    tx = x + 0.08
+    for tname in ["File", "Home", "Transform", "Add Column", "View", "Tools", "Help"]:
+        tw = text_width_pt(tname, 9.5) / 72 + 0.16
+        if tx + tw > x + ww:
+            break
+        cv.text(tx, ty + 0.04, tw, 0.18, [tname], 9.5, "1D6F42" if tname == "Home" else INK, bold=(tname == "Home"))
+        tx += tw
+    ry = ty + 0.24
+    cv.rect(x, ry, ww, 0.42, lg, o if "ribbon" in hl else BORDER)
+    groups = ["Close & Load", "Refresh", "Manage Columns", "Reduce Rows", "Sort", "Transform", "Combine"]
+    gw = (ww - 0.1) / len(groups)
+    for i, g in enumerate(groups):
+        cv.rect(x + 0.05 + i * gw, ry + 0.05, gw - 0.06, 0.22, WHITE, BORDER)
+        cv.text(x + 0.05 + i * gw, ry + 0.28, gw - 0.06, 0.13, [g], 8, GREY, align="c")
+    by = ry + 0.48
+    bh = h - (by - y) - 0.26
+    qw, sw = ww * 0.20, ww * 0.25
+    # queries pane
+    cv.rect(x, by, qw, bh, WHITE, o if "queries" in hl else BORDER)
+    cv.text(x + 0.06, by + 0.05, qw - 0.1, 0.18, ["Queries [3]"], 9, NAVY, bold=True)
+    for i, q in enumerate([query, "fxPath", "qZoneSummary"]):
+        cv.text(x + 0.10, by + 0.30 + i * 0.22, qw - 0.12, 0.18, [q], 9, INK, bold=(i == 0))
+    # formula bar + preview
+    px, pw = x + qw + 0.06, ww - qw - sw - 0.12
+    cv.rect(px, by, pw, 0.24, WHITE, o if "formulabar" in hl else BORDER)
+    cv.text(px + 0.06, by + 0.04, pw - 0.1, 0.18, [formula], 9, INK)
+    gy = by + 0.30
+    gh = bh - 0.30
+    cv.rect(px, gy, pw, gh, WHITE, o if "preview" in hl else BORDER)
+    cw = pw / len(cols)
+    for i, (c, t_) in enumerate(zip(cols, types)):
+        cv.rect(px + i * cw, gy, cw, 0.36, lg, BORDER)
+        cv.text(px + i * cw + 0.04, gy + 0.02, cw - 0.06, 0.16, [t_ + "  " + c], 8.5, INK, bold=True)
+        cv.rect(px + i * cw + 0.04, gy + 0.22, cw - 0.10, 0.07, "2E7D32")
+    for r in range(4):
+        cv.rect(px, gy + 0.36 + r * 0.22, pw, 0.22, None, BORDER)
+    # settings pane
+    sx = px + pw + 0.06
+    cv.rect(sx, by, sw, bh, WHITE, o if "settings" in hl else BORDER)
+    cv.text(sx + 0.06, by + 0.05, sw - 0.1, 0.18, ["Query Settings"], 9, NAVY, bold=True)
+    cv.text(sx + 0.06, by + 0.27, sw - 0.1, 0.16, ["PROPERTIES  ·  Name: " + query], 8, GREY)
+    cv.text(sx + 0.06, by + 0.50, sw - 0.1, 0.16, ["APPLIED STEPS"], 8.5, NAVY, bold=True)
+    if "steps" in hl:
+        cv.rect(sx + 0.03, by + 0.47, sw - 0.06, 0.24 + 0.19 * len(steps), None, o)
+    for i, st in enumerate(steps):
+        cv.text(sx + 0.12, by + 0.70 + i * 0.19, sw - 0.15, 0.16, [st], 8.5, INK, bold=(i == len(steps) - 1))
+    # status bar
+    sy = by + bh + 0.04
+    cv.rect(x, sy, ww, 0.20, lg, o if "status" in hl else BORDER)
+    cv.text(x + 0.08, sy + 0.03, ww - 0.2, 0.15, [f"{len(cols)} COLUMNS, 999+ ROWS     Column profiling based on top 1000 rows"], 8.5, GREY)
+    if labels:
+        lx = x + ww + 0.25
+        ly = y + 0.05
+        for k, v in labels.items():
+            hh, _ = measure([f"**{k}**  {v}"], 12, w - ww - 0.25)
+            cv.text(lx, ly, w - ww - 0.25, hh, [f"**{k}**  {v}"], 12, INK)
+            ly += hh + 0.08
+
+
+def pivot_h(w, **_):
+    return 2.75
+
+
+def pivot(cv, x, y, w, h, filters=(), columns=(), rows=(), values=(), table=None, size=11):
+    """PivotTable Fields: the four areas (left) and, optionally, the resulting report (right)."""
+    lw = w * (0.42 if table else 1.0)
+    bw = (lw - 0.15) / 2
+    bh = (h - 0.15) / 2
+    areas = [("FILTERS", filters, NAVY), ("COLUMNS", columns, TEAL), ("ROWS", rows, GREEN), ("VALUES", values, ORANGE)]
+    for i, (lab, items, col) in enumerate(areas):
+        r_, c_ = divmod(i, 2)
+        bx, by = x + c_ * (bw + 0.15), y + r_ * (bh + 0.15)
+        cv.rect(bx, by, bw, bh, WHITE, BORDER)
+        cv.rect(bx, by, bw, 0.30, col)
+        cv.text(bx + 0.08, by + 0.05, bw - 0.1, 0.2, [lab], 11, WHITE, bold=True)
+        for k, it in enumerate(items):
+            cv.rect(bx + 0.10, by + 0.40 + k * 0.34, bw - 0.20, 0.28, "F3F2EF", BORDER)
+            cv.text(bx + 0.16, by + 0.44 + k * 0.34, bw - 0.3, 0.2, [it], 10.5, INK)
+    if table:
+        tx = x + lw + 0.30
+        cv.table(tx, y, w - lw - 0.30, table, size)
+
+
+DIAGRAMS.update({"pqeditor": (pqeditor, pqeditor_h), "pivot": (pivot, pivot_h)})

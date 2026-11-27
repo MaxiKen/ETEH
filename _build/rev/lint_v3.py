@@ -1,4 +1,4 @@
-"""Lint for the v3 Week 1 deck.  python3 _build/rev/lint_v3.py
+"""Lint for the v3 decks.  python3 _build/rev/lint_v3.py [week]   (default week 1)
 
   PAGE     page-number box does not match the slide index
   MODULE   footer module number does not match the topic tag
@@ -9,16 +9,22 @@
   SPACE    double spaces or trailing spaces inside a run of text
 """
 import re
+import sys
 from pathlib import Path
 
 from pptx import Presentation
 
-DECK = Path(__file__).resolve().parents[2] / "ETEH_Bootcamp_Pack" / "ETEH_Vol1_Week1_Foundations_Slides.pptx"
+WEEK = int(sys.argv[1]) if len(sys.argv) > 1 else 1
+DECKS = {1: "ETEH_Vol1_Week1_Foundations_Slides.pptx", 2: "ETEH_Vol2_Week2_PowerQuery_Pivots_Slides.pptx"}
+DECK = Path(__file__).resolve().parents[2] / "ETEH_Bootcamp_Pack" / DECKS[WEEK]
 GLYPHS = set("α≥≤≈≠✔√▲▼")
 BANNED = ["74 duplicate", "Tobacco", "Ward 3", "Triage Band", "41 million", "Weighted CGPA", "mean CGPA",
           "J. Adeyemi", "45 minutes to 6 seconds", "8% missing", "96 unmatched", "Every zone grew", "surge beds",
           "26 of 86", " 4x", "OTA 36%", "3 min 20 s"]
-EXPECT = {"1.1": 14, "1.2": 6, "1.3": 12, "1.4": 10, "1.5": 17, "1.6": 14, "1.7": 14, "1.8": 12, "1.9": 12}
+EXPECTS = {1: {"1.1": 14, "1.2": 6, "1.3": 12, "1.4": 10, "1.5": 17, "1.6": 14, "1.7": 14, "1.8": 12, "1.9": 12},
+           2: {"2.1": 8, "2.2": 10, "2.3": 8, "2.4": 5, "2.5": 12, "2.6": 20, "2.7": 6, "2.8": 65, "2.9": 11, "2.10": 19,
+               "2.11": 11}}
+EXPECT = EXPECTS[WEEK]
 
 
 def texts(s):
@@ -47,9 +53,9 @@ def main():
         mod = next((re.match(r"Module\s+(\S+)", t) for n, t in tx if n == "TextBox 5" and t.startswith("Module")), None)
         if page is not None and int(page) != i:
             issues.append(f"PAGE   slide {i}: box says {page}")
-        if re.fullmatch(r"\d\.\d\.\d+", tag):
+        if re.fullmatch(r"\d\.\d+\.\d+", tag):
             tags.append(tag)
-            if mod and not tag.startswith(mod.group(1) + "."):
+            if mod and not tag.startswith(mod.group(1).rstrip("AB") + "."):
                 issues.append(f"MODULE slide {i}: tag {tag} footer {mod.group(1)}")
         bad = GLYPHS & set(allt)
         if bad:
