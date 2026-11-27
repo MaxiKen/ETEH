@@ -86,6 +86,34 @@ def build(key: bool):
             "Week 3 · SQL, joins, data model, DAX and dashboards · lifecare_hospital.db")
     b = A.b
 
+    # ---------------------------------------------------------------- function guide (self-contained help)
+    # Every worksheet function the tasks need is taught in the Week 1-3 examples workbooks; the guide shows the exact patterns on this
+    # workbook's own tables, each answering a DIFFERENT question from the tasks, so it teaches without giving answers away.
+    g = b.sheet("Function Guide", "Function guide: the worksheet patterns this assignment uses, on its own tables", A.subtitle, "Reference")
+    g.scenario("Every formula below is live and works on this workbook's tables (tAdm, tWards, tDoctors, tCensus on the D_ sheets). Each one answers "
+               "a different question from the tasks: learn the pattern, then apply it. SQL and DAX patterns are on the Week 3 slides and in "
+               "01_Section_Examples/Week3_Data_Files/ETEH_Week3_SQL_Examples.sql.")
+    g.h2("Bring a column across from a lookup table: XLOOKUP([@key], lookup[key], lookup[column])   [Task 3]")
+    beds = wards.set_index("ward_id").staffed_beds
+    g.calc([("Staffed beds of the first admission's ward", "=XLOOKUP(INDEX(tAdm[ward_id],1),tWards[ward_id],tWards[staffed_beds])", int(beds[adm.ward_id.iloc[0]]),
+             "int", f"Ward {adm.ward_id.iloc[0]}. Inside the table, write it once as a calculated column with [@ward_id] and Excel fills every row.")])
+    g.h2("Count or average one year from a two-year table: add the year as a criterion   [Tasks 3-4]")
+    g.calc([("2022 admissions", "=COUNTIFS(tAdm[adm_year],2022)", len(a22), "int", "The adm_year column makes every 2023 measure twin a COUNTIFS / SUMIFS / AVERAGEIFS."),
+            ("2022 average bill", "=AVERAGEIFS(tAdm[billing_amount],tAdm[adm_year],2022)", float(a22.billing_amount.mean()), "naira",
+             "Average range first, then criteria pairs."),
+            ("2022 Elective share", '=COUNTIFS(tAdm[admission_type],"Elective",tAdm[adm_year],2022)/COUNTIFS(tAdm[adm_year],2022)',
+             float((a22.admission_type == "Elective").mean()), "pct", "A rate = count with the condition ÷ count without it (DAX: DIVIDE(CALCULATE(...), ...)).")])
+    g.h2("Count rows in one month: COUNTIFS(date, \">=\"&first day, date, \"<=\"&EOMONTH(first day, 0))   [Task 5]")
+    g.calc([("Admissions in March 2022", '=COUNTIFS(tAdm[admission_date],">="&DATE(2022,3,1),tAdm[admission_date],"<="&EOMONTH(DATE(2022,3,1),0))',
+             int(((adm.admission_date >= "2022-03-01") & (adm.admission_date <= "2022-03-31")).sum()), "int",
+             "EOMONTH(date, 0) is the last day of that month, so the pair of criteria brackets the whole month.")])
+    g.h2("Census rates: AVERAGEIFS / COUNTIFS on the daily table   [Task 5]")
+    c22 = cen[cen.year == 2022]
+    g.calc([("2022 days above 95% full", '=COUNTIFS(tCensus[occupancy_pct],">0.95",tCensus[year],2022)', int((c22.occupancy_pct > 0.95).sum()), "int",
+             "One census row per day, so a count of rows is a count of days."),
+            ("Highest 2022 occupancy", "=MAXIFS(tCensus[occupancy_pct],tCensus[year],2022)", float(c22.occupancy_pct.max()), "pct",
+             "Above 100% means more patients than staffed beds that day.")])
+
     # ---------------------------------------------------------------- T1 database basics
     s = A.task("T1 Database Basics", "Task 1 - Read the schema", "3.1",
                "Open 01_Section_Examples/Week3_Data_Files/lifecare_hospital.db in DB Browser for SQLite (Database Structure tab). Tables: admissions, patients, doctors, wards, bed_census.")
@@ -193,7 +221,7 @@ def build(key: bool):
         cnt = {y: [int(((adm.adm_year == y) & (adm.admission_date.dt.month == m)).sum()) for m in range(1, 13)] for y in (2022, 2023)}
         top = s.r + 1
         s.frame(pd.DataFrame({"Month": md.Month, "2022": cnt[2022], "2023": cnt[2023]}),
-                formulas={(i, c): (f'=COUNTIFS(tAdm[admission_date],">="&DATE({c},{i + 1},1),tAdm[admission_date],"<"&EDATE(DATE({c},{i + 1},1),1))', cnt[int(c)][i]) for i in range(12) for c in ("2022", "2023")},
+                formulas={(i, c): (f'=COUNTIFS(tAdm[admission_date],">="&DATE({c},{i + 1},1),tAdm[admission_date],"<="&EOMONTH(DATE({c},{i + 1},1),0))', cnt[int(c)][i]) for i in range(12) for c in ("2022", "2023")},
                 fmts={"2022": "int", "2023": "int"})
         s.chart("line", [{"name": "2022", "categories": [s.name, top, 1, top + 11, 1], "values": [s.name, top, 2, top + 11, 2]},
                          {"name": "2023", "categories": [s.name, top, 1, top + 11, 1], "values": [s.name, top, 3, top + 11, 3]}],
@@ -231,7 +259,7 @@ def build(key: bool):
                      "(Task 2), a safe way to combine tables (Task 3), a Power Pivot model with standard measures (Task 4) and a one-page dashboard (Task 5).",
                      "You need DB Browser for SQLite (free) and Excel with Power Pivot. Time guide: 7-8 hours."],
                     [("Lifecare", DATASETS_TEXT["Lifecare"])],
-                    files="Database: 01_Section_Examples/Week3_Data_Files/lifecare_hospital.db (shared with the Section Examples). Query template: 02_Assignments/Week3_Assignment_Data/ETEH_Week3_Assignment_Queries.sql.",
+                    files="Function Guide sheet: the worksheet patterns the tasks use. Database: 01_Section_Examples/Week3_Data_Files/lifecare_hospital.db (shared with the Section Examples). Query template: 02_Assignments/Week3_Assignment_Data/ETEH_Week3_Assignment_Queries.sql.",
                     rubric=[["SQL", "Any query returning the correct result earns the SQL mark; style (aliases, indentation) is commented on, not penalised."],
                             ["DAX", "Equivalent DAX accepted (e.g. COUNTA, FILTER inside CALCULATE)."],
                             ["Tolerance", "Counts exact; money ±₦1; rates ±0.01 pt."]])

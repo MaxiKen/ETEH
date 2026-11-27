@@ -1,196 +1,203 @@
--- ETEH Week 3 - SQL examples (SQLite). Run against the database named above each query.
--- Files: Week3_Data_Files/supermart_online.db, Week3_Data_Files/lifecare_hospital.db
+-- ETEH Week 3 - SQL examples (SQLite), edition 3: every query shown on the Week 3 slides.
+-- Run each against the database named above it (folder Week3_Data_Files) in DB Browser for SQLite or sqlite3.
+-- The result printed on the slide is what the query returns on these files.
 
--- 3.1.3 Primary key check - is every transaction_id unique?
+-- 3.1.3 Primary Keys
 -- database: supermart_online.db
-SELECT COUNT(*) AS rows_, COUNT(DISTINCT transaction_id) AS distinct_ids,
-       COUNT(*) - COUNT(DISTINCT transaction_id) AS duplicates
+SELECT COUNT(*) AS rows_,
+       COUNT(DISTINCT transaction_id) AS distinct_ids
 FROM transactions;
 
--- 3.1.4 Foreign key check - orders pointing at a product that does not exist (orphans)
+-- 3.1.4 Foreign Keys
 -- database: supermart_online.db
 SELECT COUNT(*) AS orphan_lines
 FROM transactions t
-LEFT JOIN products p ON p.product_id = t.product_id
+LEFT JOIN products p
+  ON p.product_id = t.product_id
 WHERE p.product_id IS NULL;
 
--- 3.2.5 SELECT and FROM - first rows of products
+-- 3.1.7 Normalisation: Second and Third Normal Form
 -- database: supermart_online.db
-SELECT product_id, product_name, category, price
-FROM products
-LIMIT 5;
+SELECT COUNT(*) AS customers_zone_differs
+FROM customers c
+JOIN nigeria_states s ON s.state = c.state
+WHERE s.zone <> c.zone;
 
--- 3.2.6 WHERE - Electronics priced above ₦500,000
+-- 3.1.8 Database Data Types
 -- database: supermart_online.db
-SELECT product_id, product_name, brand_name, price
-FROM products
-WHERE category = 'Electronics' AND price > 500000
-ORDER BY price DESC;
+SELECT typeof(quantity)    AS quantity,
+       typeof(total_price) AS total_price,
+       typeof(order_date)  AS order_date
+FROM transactions LIMIT 1;
 
--- 3.2.7 AND / OR / NOT - Lagos or Abuja customers who are not Bronze
+-- 3.1.10 Views
 -- database: supermart_online.db
-SELECT membership_tier, COUNT(*) AS customers
+SELECT customer_zone, COUNT(*) AS lines
+FROM v_order_lines
+GROUP BY customer_zone
+ORDER BY lines DESC;
+
+-- 3.2.1 What Is SQL?
+-- database: supermart_online.db
+SELECT COUNT(*)         AS order_lines,
+       SUM(total_price) AS gross_value
+FROM transactions;
+
+-- 3.2.5 SELECT and FROM
+-- database: supermart_online.db
+SELECT product_id, product_name,
+       category, price
+FROM products
+LIMIT 4;
+
+-- 3.2.6 Filtering Rows with WHERE
+-- database: supermart_online.db
+SELECT 'delivery_id IS NULL' AS test, COUNT(*) AS lines
+FROM transactions WHERE delivery_id IS NULL
+UNION ALL
+SELECT 'delivery_id = NULL', COUNT(*)
+FROM transactions WHERE delivery_id = NULL;
+
+-- 3.2.7 Combining Conditions: AND, OR, NOT
+-- database: supermart_online.db
+SELECT COUNT(*) AS customers
 FROM customers
-WHERE (state = 'Lagos' OR state = 'FCT') AND NOT membership_tier = 'Bronze'
-GROUP BY membership_tier;
+WHERE (membership_tier = 'Gold'
+       OR membership_tier = 'Platinum')
+  AND zone = 'South-West';
 
--- 3.2.8-9 ORDER BY + LIMIT - the 10 biggest orders
+-- 3.2.8 Sorting with ORDER BY
 -- database: supermart_online.db
-SELECT order_id, order_date, product_id, quantity, total_price
+SELECT order_id, order_date, total_price
 FROM transactions
 ORDER BY total_price DESC
-LIMIT 10;
+LIMIT 3;
 
--- 3.2.10 GROUP BY - revenue by category (completed and delivered orders only)
+-- 3.2.10 Aggregating with GROUP BY
 -- database: supermart_online.db
 SELECT p.category,
-       COUNT(*)            AS orders,
-       SUM(t.total_price)  AS revenue
+       COUNT(*)           AS lines,
+       SUM(t.total_price) AS revenue
 FROM transactions t
 JOIN products p ON p.product_id = t.product_id
-WHERE t.order_status IN ('Delivered', 'Completed')
+WHERE t.order_status IN ('Delivered','Completed')
 GROUP BY p.category
-ORDER BY revenue DESC;
+ORDER BY revenue DESC
+LIMIT 4;
 
--- 3.2.11 HAVING - sellers with more than ₦15m of delivered revenue
+-- 3.2.11 Filtering Groups with HAVING
 -- database: supermart_online.db
-SELECT s.store_name, COUNT(*) AS orders, SUM(t.total_price) AS revenue
-FROM transactions t
-JOIN sellers s ON s.seller_id = t.seller_id
-WHERE t.order_status = 'Delivered'
-GROUP BY s.store_name
-HAVING SUM(t.total_price) > 15000000
-ORDER BY revenue DESC;
-
--- 3.2.12 Aliases and calculated columns - seller commission rate check
--- database: supermart_online.db
-SELECT order_id, total_price, commission_percentage AS comm_pct,
-       commission_amount,
-       ROUND(total_price * commission_percentage / 100.0, 2) AS recalculated,
-       commission_amount - ROUND(total_price * commission_percentage / 100.0, 2) AS diff
+SELECT seller_id, SUM(total_price) AS net_rev
 FROM transactions
-LIMIT 6;
+WHERE order_status IN ('Delivered','Completed')
+GROUP BY seller_id
+HAVING SUM(total_price) > 15000000
+ORDER BY net_rev DESC
+LIMIT 3;
 
--- 3.2.13 DISTINCT - which couriers deliver for us?
+-- 3.2.12 Aliases and Calculated Columns
 -- database: supermart_online.db
-SELECT DISTINCT courier_name
-FROM deliveries
-ORDER BY courier_name;
+SELECT COUNT(*) AS lines_checked,
+       SUM(ABS(total_price * commission_percentage
+               / 100.0 - commission_amount) > 0.01)
+         AS mismatches
+FROM transactions;
 
--- 3.2.14 CASE - order-value bands
+-- 3.2.13 Removing Duplicates with DISTINCT
 -- database: supermart_online.db
-SELECT CASE WHEN total_price < 50000 THEN '1 Under ₦50k'
-            WHEN total_price < 250000 THEN '2 ₦50k-250k'
-            WHEN total_price < 1000000 THEN '3 ₦250k-1m'
-            ELSE '4 ₦1m+' END AS value_band,
-       COUNT(*) AS orders, SUM(total_price) AS revenue
+SELECT COUNT(*)                     AS deliveries,
+       COUNT(DISTINCT courier_name) AS couriers,
+       COUNT(DISTINCT state)        AS states
+FROM deliveries;
+
+-- 3.2.14 Conditional Logic with CASE
+-- database: supermart_online.db
+SELECT CASE WHEN total_price < 50000  THEN '1 <50k'
+            WHEN total_price < 250000 THEN '2 50k-250k'
+            WHEN total_price < 1000000 THEN '3 250k-1m'
+            ELSE '4 1m+' END AS band,
+       COUNT(*) AS lines, SUM(total_price) AS value
 FROM transactions
-GROUP BY value_band
-ORDER BY value_band;
+GROUP BY band;
 
--- 3.2.15 Subquery - customers who spent more than the average customer
+-- 3.2.15 Subqueries
 -- database: supermart_online.db
-SELECT COUNT(*) AS above_average_customers
+SELECT COUNT(*) AS above_average
 FROM (SELECT customer_id, SUM(total_price) AS spend
-      FROM transactions GROUP BY customer_id) AS c
+      FROM transactions GROUP BY customer_id)
 WHERE spend > (SELECT AVG(spend) FROM
-                 (SELECT SUM(total_price) AS spend FROM transactions GROUP BY customer_id));
+      (SELECT SUM(total_price) AS spend
+       FROM transactions GROUP BY customer_id));
 
--- 3.2.16 String and date functions - revenue by year
+-- 3.2.16 Useful SQL String and Date Functions
 -- database: supermart_online.db
-SELECT strftime('%Y', order_date) AS order_year,
-       COUNT(*) AS orders,
-       SUM(total_price) AS revenue,
-       ROUND(AVG(total_price), 0) AS avg_order
+SELECT strftime('%Y', order_date) AS yr,
+       COUNT(*)         AS lines,
+       SUM(total_price) AS value
 FROM transactions
-WHERE order_status <> 'Cancelled'
-GROUP BY order_year
-ORDER BY order_year;
+GROUP BY yr
+ORDER BY yr;
 
--- 3.2.17 A complete analytical query - 2025 zone scorecard
+-- 3.2.17 Writing a Complete Analytical Query
 -- database: supermart_online.db
--- Business question: which customer zones drove 2025 net revenue, and how fast did we deliver?
-SELECT c.zone                                         AS customer_zone,
-       COUNT(DISTINCT t.customer_id)                  AS customers,
-       COUNT(*)                                       AS orders,
-       SUM(t.total_price)                             AS net_revenue,
-       ROUND(SUM(t.total_price) * 1.0 / COUNT(*), 0)  AS avg_order_value,
-       ROUND(AVG(julianday(d.delivered_date) - julianday(t.order_date)), 1) AS avg_days_to_deliver
-FROM transactions t
-JOIN customers  c ON c.customer_id = t.customer_id
-LEFT JOIN deliveries d ON d.delivery_id = t.delivery_id
-WHERE t.order_date BETWEEN '2025-01-01' AND '2025-12-31'
-  AND t.order_status IN ('Delivered', 'Completed')
-GROUP BY c.zone
-ORDER BY net_revenue DESC;
+SELECT customer_zone,
+       COUNT(*)                   AS orders,
+       SUM(total_price)           AS net_revenue,
+       ROUND(AVG(days_to_deliver), 1) AS avg_days
+FROM v_order_lines
+WHERE order_status IN ('Delivered','Completed')
+GROUP BY customer_zone
+ORDER BY net_revenue DESC
+LIMIT 4;
 
--- 3.2 (hospital) Same skills on lifecare_hospital.db - ALOS and readmission by department
--- database: lifecare_hospital.db
-SELECT department,
-       COUNT(*) AS admissions,
-       ROUND(AVG(length_of_stay), 1) AS alos_days,
-       ROUND(100.0 * SUM(readmit_30d = 'Yes') / COUNT(*), 1) AS readmit_pct
-FROM admissions
-GROUP BY department
-ORDER BY readmit_pct DESC;
-
--- 3.4 Inner join row count
-SELECT COUNT(*) FROM transactions t JOIN deliveries d ON d.delivery_id = t.delivery_id;
-
--- 3.4 Left outer join row count
-SELECT COUNT(*) FROM transactions t LEFT JOIN deliveries d ON d.delivery_id = t.delivery_id;
-
--- 3.4 Right outer join row count
-SELECT COUNT(*) FROM deliveries d LEFT JOIN transactions t ON t.delivery_id = d.delivery_id;
-
--- 3.4 Full outer join row count
-SELECT COUNT(*) FROM (SELECT t.order_id FROM transactions t LEFT JOIN deliveries d ON d.delivery_id = t.delivery_id UNION ALL SELECT d.order_id FROM deliveries d LEFT JOIN transactions t ON t.delivery_id = d.delivery_id WHERE t.transaction_id IS NULL);
-
--- 3.4 Left anti join row count
-SELECT COUNT(*) FROM transactions t LEFT JOIN deliveries d ON d.delivery_id = t.delivery_id WHERE d.delivery_id IS NULL;
-
--- 3.4 Right anti join row count
-SELECT COUNT(*) FROM deliveries d LEFT JOIN transactions t ON t.delivery_id = d.delivery_id WHERE t.transaction_id IS NULL;
-
--- 3.4.6 Left anti in practice - what happened to the orders that never shipped?
+-- 3.4.2 Inner Join
 -- database: supermart_online.db
-SELECT t.order_status, t.payment_status, COUNT(*) AS orders, SUM(t.total_price) AS value
+SELECT COUNT(*)           AS lines,
+       SUM(t.total_price) AS value
 FROM transactions t
-LEFT JOIN deliveries d ON d.delivery_id = t.delivery_id
+JOIN deliveries d
+  ON d.delivery_id = t.delivery_id;
+
+-- 3.4.3 Left Outer Join
+-- database: supermart_online.db
+SELECT COUNT(*)                AS all_orders,
+       COUNT(d.courier_name)   AS with_courier,
+       SUM(d.delivery_id IS NULL) AS courier_null
+FROM transactions t
+LEFT JOIN deliveries d
+  ON d.delivery_id = t.delivery_id;
+
+-- 3.4.6 Left Anti Join
+-- database: supermart_online.db
+SELECT t.order_status, t.payment_status,
+       COUNT(*) AS orders, SUM(t.total_price) AS value
+FROM transactions t
+LEFT JOIN deliveries d
+  ON d.delivery_id = t.delivery_id
 WHERE d.delivery_id IS NULL
-GROUP BY t.order_status, t.payment_status;
+GROUP BY 1, 2;
 
--- 3.4.6b Left anti on customers - registered but never ordered
+-- 3.4.15 Verifying Join Cardinality
 -- database: supermart_online.db
-SELECT c.membership_tier, COUNT(*) AS customers_without_orders
-FROM customers c
-LEFT JOIN transactions t ON t.customer_id = c.customer_id
-WHERE t.transaction_id IS NULL
-GROUP BY c.membership_tier;
-
--- 3.4.10 Cartesian trap: wrong key
-SELECT COUNT(*) FROM transactions t JOIN deliveries d ON d.customer_id = t.customer_id;
-
--- 3.4.15 Cardinality check - is order_id unique on BOTH sides before a one-to-one merge?
--- database: supermart_online.db
-SELECT 'transactions' AS table_name, COUNT(*) AS rows_, COUNT(DISTINCT order_id) AS distinct_keys FROM transactions
+SELECT 'transactions' AS tbl, COUNT(*) AS rows_,
+       COUNT(DISTINCT order_id) AS keys
+FROM transactions
 UNION ALL
-SELECT 'deliveries', COUNT(*), COUNT(DISTINCT order_id) FROM deliveries;
+SELECT 'deliveries', COUNT(*), COUNT(DISTINCT order_id)
+FROM deliveries;
 
--- 3.10.3a Admissions whose doctor is not in the doctors table (orphans)
--- database: lifecare_hospital.db
-SELECT COUNT(*) AS orphan_admissions
-FROM admissions a
-LEFT JOIN doctors d ON d.doctor_id = a.doctor_id
-WHERE d.doctor_id IS NULL;
-
--- 3.10.3b Exception report - one row per rule, with counts
--- database: lifecare_hospital.db
-SELECT 'Discharge before admission' AS rule, COUNT(*) AS rows_ FROM admissions WHERE discharge_date < admission_date
+-- 3.10.3 Intermediate: SQL joins and an exception report
+-- database: a staging copy - load Lifecare_Admissions_2023_DIRTY.csv as stg_admissions_2023 (3.10.2), then
+--           ATTACH DATABASE 'lifecare_hospital.db' AS prod;
+SELECT 'Doctor not in doctors' AS rule, COUNT(*) AS n
+FROM stg_admissions_2023 s
+LEFT JOIN prod.doctors d ON d.doctor_name = s.Doctor_Name
+WHERE d.doctor_id IS NULL
 UNION ALL
-SELECT 'Bill below zero', COUNT(*) FROM admissions WHERE billing_amount < 0
+SELECT 'Discharge before admission', COUNT(*)
+FROM stg_admissions_2023
+WHERE Discharge_Date <> '' AND Discharge_Date < Admission_Date
 UNION ALL
-SELECT 'Stay over 30 days', COUNT(*) FROM admissions WHERE length_of_stay > 30
-UNION ALL
-SELECT 'Room outside ward range', COUNT(*) FROM admissions a JOIN wards w ON w.ward_id = a.ward_id
-       WHERE a.room_number NOT BETWEEN w.first_room AND w.last_room;
+SELECT 'Bill below zero', COUNT(*)
+FROM stg_admissions_2023
+WHERE CAST(REPLACE(Billing_Amount, ',', '') AS REAL) < 0;
