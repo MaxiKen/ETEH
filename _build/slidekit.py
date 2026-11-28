@@ -95,11 +95,13 @@ def wrap(text, size, width_in, bold=False):
     return lines
 
 
-NUM = re.compile(r"^\*\*(\d+\.)\*\*\s+")
+NUM = re.compile(r"^\*\*(\d+\.|•)\*\*\s+")
 
 
-def hang_of(size):
-    """Hanging indent (inches) for numbered paragraphs: room for '10.' plus a gap."""
+def hang_of(size, num="10."):
+    """Hanging indent (inches) for numbered paragraphs: room for '10.' plus a gap (bullets: room for '•')."""
+    if num == "•":
+        return round(text_width_pt("•", size, True) / 72 + 0.12, 3)
     return round(text_width_pt("10.", size, True) / 72 + 0.10, 3)
 
 
@@ -112,7 +114,7 @@ def para_lines(p, size, width_in, bold=False):
     num, rest = split_num(p)
     if num is None:
         return wrap(p, size, width_in, bold)
-    return wrap(rest, size, width_in - hang_of(size), bold)
+    return wrap(rest, size, width_in - hang_of(size, num), bold)
 
 
 def measure(paras, size, width_in, bold=False, gap=0.0):
@@ -173,7 +175,7 @@ class Canvas:
                 p.space_after = Pt(gap * 72)
             num, rest = split_num(ptxt)
             if num is not None:
-                hang = int(hang_of(size) * EMU)
+                hang = int(hang_of(size, num) * EMU)
                 pPr = p._p.get_or_add_pPr()
                 pPr.set("marL", str(hang))
                 pPr.set("indent", str(-hang))
@@ -343,7 +345,7 @@ def render(ops, path, extra=(), dpi=110):
         yy = y
         for ptxt in paras:
             num, rest = split_num(ptxt)
-            ox, ow = (x, w) if num is None else (x + hang_of(size), w - hang_of(size))
+            ox, ow = (x, w) if num is None else (x + hang_of(size, num), w - hang_of(size, num))
             if num is not None:
                 lat, _ = font(size, True, pt)
                 d.text((x * s, yy * s), num, font=lat, fill=col(color))
@@ -380,6 +382,11 @@ def render(ops, path, extra=(), dpi=110):
             th, _ = measure(paras, size, w, bold, gap)
             yy = y if anchor == "t" else y + (h - th) / 2 if anchor == "m" else y + h - th
             draw_lines(x, yy, w, paras, size, color, bold, align, gap)
+        elif k == "code":                      # monospace block (preview stand-in for Consolas)
+            _, x, y, w, h, lines_, size, color = op
+            mono = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf", max(6, int(size * pt * 0.92)))
+            for i, ln in enumerate(lines_):
+                d.text((x * s, (y + i * size * 1.22 / 72) * s), ln, font=mono, fill=col(color))
         elif k == "tick":
             _, x, y, w, h, color = op
             d.line([(x * s, (y + h * 0.55) * s), ((x + w * 0.38) * s, (y + h) * s), ((x + w) * s, y * s)],

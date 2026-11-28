@@ -11,8 +11,8 @@ Sources for every figure (all verified with pandas against ETEH_Bootcamp_Pack/01
                         20% Furniture discount cap (167 lines) -> profit uplift ₦17.7m–₦18.0m (Instructor Capstone 1); all-category ₦59.6m–₦71.5m is phase 2 only
   SuperMart dirty file  SuperMart_Sales_2025_DIRTY.csv: 3,387 rows = 3,312 + 60 exact duplicates + 15 spacer rows;
                         duplicates carry ₦13.2m (1.8% of sales); ledger 2022-25 9,994 lines; store-category-month = 1,540 rows
-  Crestview             6,607 students; Engineering 1,400; at risk 901 (progression 86.4%); mean exam score 67.2
-  Lifecare FY2023       10,918 admissions; occupancy 89.5%; mean LOS 15.5, median 15; readmission 10.3%;
+  Kingsway             6,607 students; Engineering 1,400; at risk 901 (progression 86.4%); mean exam score 67.2
+  Mercyland FY2023       10,918 admissions; occupancy 89.5%; mean LOS 15.5, median 15; readmission 10.3%;
                         billing ₦13,984,047,685.44 (₦1,280,825 per admission); escalations 5,099; +28 staffed beds;
                         full extract 2019-2024 = 54,860 rows; DIRTY 2023 file has 70 blank discharge dates
 """
@@ -20,9 +20,9 @@ Sources for every figure (all verified with pandas against ETEH_Bootcamp_Pack/01
 # ------------------------------------------------------------------ helpers
 _ALL_V2_BUT_207 = tuple(i for i in range(1, 229) if i != 207)
 
-# Crestview headcount appears in many generic CGPA illustrations. Use the real headcount (6,607) everywhere it
+# Kingsway headcount appears in many generic CGPA illustrations. Use the real headcount (6,607) everywhere it
 # denotes students; derived figures on the same slides are fixed first.
-CRESTVIEW = [("4,212", "6,607")]
+KINGSWAY = [("4,212", "6,607")]
 
 FACT_SUBS = {
     1: {
@@ -32,7 +32,7 @@ FACT_SUBS = {
         (150,): [("recalculates live to 648 ,", "recalculates live to 1,400 ,")],
         (175,): [("A typed occupancy figure of 84% on", "A typed occupancy figure of 89% on"),
                  ("gives 84.2% and", "gives 89.5% and")],
-        "*": CRESTVIEW,
+        "*": KINGSWAY,
     },
     2: {
         (72,): [("qrySales filters out Sale_Type = \"QUOTE\" and Store = \"TEST-HQ\" , removing 1,842 non-revenue rows from 41,654 "
@@ -58,7 +58,7 @@ FACT_SUBS = {
                   "because it weights a ₦50 sale equally with a ₦50,000 sale.",
                   "returns the true FY2025 margin of 12.7%. Averaging a row-level margin column would have returned 11.6%, "
                   "because it weights a ₦5,000 sale equally with a ₦5,000,000 sale.")],
-        _ALL_V2_BUT_207: CRESTVIEW,
+        _ALL_V2_BUT_207: KINGSWAY,
     },
     3: {
         (118,): [("and 648 when the Engineering slicer", "and 1,400 when the Engineering slicer")],
@@ -90,9 +90,9 @@ FACT_SUBS = {
         (189,): [("The KPI tile reads 18.4m at 24pt with Revenue · +6.3% vs LY at 8pt",
                   "The KPI tile reads ₦733.2m at 24pt with Revenue · +20.4% vs LY at 8pt"),
                  ("18.4m", "₦733.2m"), ("Revenue up 6.3% on last year", "Revenue up 20.4% on last year")],
-        (190,): [("Crestview's four cards read 4,212 Enrolment · +2.4% , 3.41 Weighted CGPA · flat , 76% Progression · -3pts , "
+        (190,): [("Kingsway's four cards read 4,212 Enrolment · +2.4% , 3.41 Weighted CGPA · flat , 76% Progression · -3pts , "
                   "37 At Risk · +9 .",
-                  "Crestview's four cards read 6,607 Enrolment , 67.2 Mean Exam Score , 86.4% Progression · target 90% , "
+                  "Kingsway's four cards read 6,607 Enrolment , 67.2 Mean Exam Score , 86.4% Progression · target 90% , "
                   "901 At Risk · 13.6% .")],
         (210,): [("The dashboard reports 4,212 students, weighted CGPA 3.41, progression 76% (down 3 points) and 37 students at risk. "
                   "It directly triggered the Week-5 tutorial programme that lifted Year-1 progression from 76% to 89%.",
@@ -102,7 +102,7 @@ FACT_SUBS = {
                   "41 escalations. It exposed a Q4 respiratory surge in Wards 3 and 4 that led to staggered- shift staffing.",
                   "The FY2023 dashboard shows 10,918 admissions, 89.5% occupancy, mean LOS 15.5 days (median 15), readmissions "
                   "10.3% and 5,099 escalations. Occupancy above target all year made the case for 28 more staffed beds.")],
-        "*": CRESTVIEW,
+        "*": KINGSWAY,
     },
     4: {
         (6,): [("SuperMart's mean basket of ₦8,412 is the correct figure for planning till throughput, because the total revenue "
@@ -139,11 +139,11 @@ FACT_SUBS = {
                   "that the correction restores ₦1.1m of margin without changing revenue.",
                   "Watching the profit total (₦93,439,242), revenue total and the 455-line discount flag while fixing a broken "
                   "IFERROR shows immediately that the correction restores profit without changing revenue.")],
-        "*": CRESTVIEW,
+        "*": KINGSWAY,
     },
     5: {
         (8,): [("clinical.admissions, extracted 2026-11-15, 2,104,882 rows, owner: Data Office",
-                "Lifecare_Admissions_2019_2024.csv, extracted 2026-11-15, 54,860 rows, owner: Data Office")],
+                "Mercyland_Inpatient_Episodes_2019_2024.csv, extracted 2026-11-15, 54,860 rows, owner: Data Office")],
         (10,): [("The POS extract is cleaned to 39,472 rows from 41,654: 1,842 quotes and 340 duplicates removed,",
                  "SuperMart_Sales_2025_DIRTY.csv is cleaned to 3,312 rows from 3,387: 15 spacer rows and 60 duplicates removed,")],
         (15,): [("cost reconciles to the finance ledger at ₦4,212,226.50, admissions match the clinical report at 500,",

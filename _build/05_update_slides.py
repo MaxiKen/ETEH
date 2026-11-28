@@ -120,7 +120,7 @@ def structure(prs, vol, cut):
     L.put(s2, "TextBox 13",
           f"{sum(d['n'] for d in kept)} topics across {len(kept)} modules.\n\n"
           "Every topic is presented in full: concept, worked workplace example, tables and best-practice guidance.\n\n"
-          "Datasets: SuperMart Retail, Crestview University, Lifecare General Hospital.\n\n" + COMPANION[vol], f"V{vol}S2")
+          "Datasets: SuperMart Retail, Kingsway University, Mercyland Specialist Hospital.\n\n" + COMPANION[vol], f"V{vol}S2")
     # remove slides last
     L.remove_slides(prs, cut[0], cut[1])
     return info

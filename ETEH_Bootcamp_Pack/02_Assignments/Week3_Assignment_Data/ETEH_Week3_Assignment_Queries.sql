@@ -1,4 +1,4 @@
--- ETEH Week 3 Assignment - SQL answers (lifecare_hospital.db)
+-- ETEH Week 3 Assignment - SQL answers (mercyland_hospital.db)
 -- Write each query under its question. Run it in DB Browser for SQLite and copy the result into the workbook.
 
 -- Q2.1  How many admissions were there in 2023?

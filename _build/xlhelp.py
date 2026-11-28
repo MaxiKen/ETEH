@@ -302,7 +302,10 @@ class Sheet:
                 kind = fmts[j] if fmts and j < len(fmts) else None
                 last = merge_last and j == len(row) - 1
                 fmt = self.b.nf(kind) if kind else self.F["cell"]
-                if isinstance(v, str) and v.startswith("="):
+                if isinstance(v, str) and v.startswith("'="):     # formula shown as text (e.g. [@col] outside a table)
+                    v = v[1:]
+                    ws.write_string(self.r, c0 + j, v, fmt)
+                elif isinstance(v, str) and v.startswith("="):
                     ws.write_formula(self.r, c0 + j, v, fmt)
                 elif last and c0 + j < LAST_COL:
                     ws.merge_range(self.r, c0 + j, self.r, LAST_COL, v, fmt)
