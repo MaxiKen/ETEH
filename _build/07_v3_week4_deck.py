@@ -33,6 +33,9 @@ SHEETS = {"4.1": "4.1 Descriptive Stats", "4.2": "4.2 Distributions & Z", "4.3":
           "4.9": "4.9 Presentations", "4.10": "4.10 Audit & Protect", "4.11": "4.11 AI Co-pilots", "4.12": "4.12 Verify AI",
           "4.13": "4.13 Ethics PII PHI", "4.14": "4.14 Benchmarks"}
 
+import w4_charts  # noqa: E402
+print(f"charts on {w4_charts.attach(MODULES)} topics")
+
 CFG = v3deck.Config(
     week=4,
     week_title="Week 4: Statistics, Forecasting, What-If, Communication, AI & Ethics",

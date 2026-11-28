@@ -147,7 +147,7 @@ def _cat_data(cats, series, fmt=None):
     cd = CategoryChartData(number_format=fmt or "General")
     cd.categories = list(cats)
     for name, vals in series:
-        cd.add_series(name, [None if v is None else float(v) for v in vals])
+        cd.add_series(name, [None if v is None or v != v else float(v) for v in vals])   # v != v: NaN = a gap
     return cd
 
 

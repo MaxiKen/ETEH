@@ -353,7 +353,7 @@ M211 = dict(
           simple="Patterns that are hard to see in a table jump out of a chart.",
           grid=dict(label="Sales by year and quarter: is there a seasonal pattern?", widths=[0.9, 1.3, 1.6], size=12, rows=[
               ["Year", "Q4 sales", "Q4 share of the year"]] + [[str(y), m(r.Q4), P(r.share)] for y, r in SMF["q4"].iterrows()]),
-          points=["Q4 is the biggest quarter every year, at 37-39% of annual sales", "A column chart shows it at a glance",
+          points=[f"Q4 is the biggest quarter every year, at {SMF['q4'].share.min() * 100:.0f}-{SMF['q4'].share.max() * 100:.0f}% of annual sales", "A column chart shows it at a glance",
                   "Plan stock and staff for the fourth quarter"],
           points_label="WHAT THE CHART SHOWS", order=["grid", "points"], split=0.55),
 
@@ -421,7 +421,7 @@ M211 = dict(
           grid=dict(label="Three charts", widths=[1.1, 0.9, 3.4], size=12, rows=[
               ["Dataset", "Chart", "What it shows"],
               ["SuperMart", "Column", f"South-West grew from {m(ZY.loc['South-West', 2022])} (2022) to {m(ZY.loc['South-West', 2025])} (2025)"],
-              ["Mercyland", "Bar", f"{DEPT.iloc[0].Department}: {DEPT.iloc[0].Admissions:,} admissions in 2023, about twice any other department"],
+              ["Mercyland", "Bar", f"{DEPT.iloc[0].Department}: {DEPT.iloc[0].Admissions:,} admissions in 2023, {DEPT.iloc[0].Admissions / DEPT.iloc[1].Admissions:.1f} times the next department"],
               ["Kingsway", "Pie", " · ".join(f"{g} {v:.1%}" for g, v in CVF["grades"].items())]])),
     ],
     takeaways=["A PivotChart is drawn from a pivot and stays in sync with it.",

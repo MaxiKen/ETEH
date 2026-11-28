@@ -21,6 +21,9 @@ from w2_m5_7 import MODULES as MB  # noqa: E402
 from w2_m8 import MODULES as MC  # noqa: E402
 from w2_m9_11 import MODULES as MD  # noqa: E402
 
+import w2_charts  # noqa: E402
+print(f"charts on {w2_charts.attach(MD)} topics")
+
 CFG = v3deck.Config(
     week=2,
     week_title="Week 2: Data Import, Power Query Cleaning & PivotTable Mastery",
