@@ -3,7 +3,7 @@
 Progression rule for Week 4 (Weeks 1-3 are assumed)
     4.1 - 4.2   descriptive statistics, distributions, percentiles, z-scores (one function per question)
     4.3 - 4.4   correlation and simple regression (CORREL, SLOPE, INTERCEPT, RSQ, FORECAST.LINEAR)
-    4.5         time series: moving average and a linear trend forecast (ETS ideas as multiple choice)
+    4.5         time series: moving average, a linear trend forecast and MAE / MAPE (ETS ideas as multiple choice)
     4.6         what-if: a three-cell profit model for Goal Seek, data tables, scenarios and Solver
     4.7 - 4.9   storytelling, reports, slides (ideas only)
     4.10        auditing, protection, macros
@@ -37,20 +37,20 @@ def build(b):
         return M[code]
 
     m41 = mod("4.1", "4.1 Descriptive Stats", "Descriptive Statistics and the Analysis ToolPak",
-              "Mean, median, mode, range, IQR, variance, standard deviation, coefficient of variation, skewness, "
-              "kurtosis, percentiles and quartiles, the 1.5 × IQR outlier rule and the ToolPak Descriptive Statistics.")
+              "Mean, median, mode, range, IQR, variance, standard deviation, coefficient of variation, percentiles and "
+              "quartiles, the 1.5 × IQR outlier rule and the ToolPak Descriptive Statistics, with worked examples.")
     m42 = mod("4.2", "4.2 Distributions & Z", "Distributions, Pareto, Percentiles and Z-Scores",
               "Distribution shape, the normal curve, histograms, Pareto (80/20), percentile rank, z-scores and "
               "standardising measures, and spotting anomalies.")
     m43 = mod("4.3", "4.3 Correlation", "Correlation Analysis",
-              "Pearson and Spearman correlation, correlation matrices, reading scatterplots first, correlation vs "
+              "Pearson correlation with CORREL, correlation matrices, reading scatterplots first, correlation vs "
               "causation, confounders and Simpson's paradox.")
     m44 = mod("4.4", "4.4 Regression", "Linear Regression",
-              "Simple and multiple regression, the equation and coefficients, R², adjusted R², p-values, residuals, "
-              "prediction, multicollinearity and limits.")
+              "Simple regression with SLOPE, INTERCEPT and RSQ, the equation, R², residuals, prediction with "
+              "FORECAST.LINEAR and the limits of a model.")
     m45 = mod("4.5", "4.5 Forecasting", "Time Series and Forecasting",
-              "Trend, seasonality, moving averages, exponential smoothing, FORECAST.ETS and its confidence interval, "
-              "forecast accuracy (MAE, MAPE) and backtesting.")
+              "Trend, seasonality, moving averages, FORECAST.ETS and the Forecast Sheet, forecast accuracy (MAE, MAPE) "
+              "and choosing a simple method.")
     m46 = mod("4.6", "4.6 What-If & Solver", "Goal Seek, Data Tables, Scenarios and Solver",
               "Goal Seek, one- and two-variable data tables, Scenario Manager and summaries, and Solver "
               "(objective, variable cells, constraints).")
@@ -58,13 +58,13 @@ def build(b):
               "The three-act narrative, the headline message, message hierarchy, evidence for the audience, titles that "
               "state the finding, annotation and avoiding misleading charts.")
     m48 = mod("4.8", "4.8 Report Writing", "Report Writing and PDF Production",
-              "Report structure, the executive summary, layout, table design, page setup, PDF export, metadata and "
-              "version control.")
+              "Report structure, the executive summary, layout, table design, page setup, PDF export, version control "
+              "and the review checklist.")
     m49 = mod("4.9", "4.9 Presentations", "Slide Presentations",
               "One message per slide, charts for projection, text density, visual identity, timing and handling questions.")
     m410 = mod("4.10", "4.10 Audit & Protect", "Formula Auditing, Protection and Light Automation",
                "Trace precedents and dependents, Show Formulas, Evaluate Formula, Error Checking, the Watch Window, "
-               "protecting sheets, recording macros and Office Scripts.")
+               "protecting sheets, recording a macro and documenting it.")
     m411 = mod("4.11", "4.11 AI Co-pilots", "AI Co-pilots for Analysts",
                "What AI can and cannot do, prompt structure, schema prompts, AI for formulas, SQL and narrative, and "
                "what must never be pasted into an AI tool.")
@@ -164,9 +164,8 @@ def build(b):
          "A curve or a single outlier can fool r.")
     m.yn("If ice-cream sales and drownings rise together, does ice cream cause drowning?", "No",
          "A confounder (hot weather) drives both.")
-    m.mc("Spearman correlation is used when ...", ["data are ranks or the relationship is monotonic but not straight",
-                                                   "there are no numbers", "r is exactly 1", "you have one column"], "A",
-         "Spearman works on ranks.")
+    m.mc("Which Excel function returns the correlation coefficient r?", ["CORREL", "SLOPE", "AVERAGE", "COUNT"], "A",
+         "=CORREL(x range, y range) gives r between −1 and +1.")
     m.part("Part B · Work it out on tStudents")
     for col, lab in (("Study_Hours_Wk", "Study_Hours_Wk"), ("Lecture_Attendance_Pct", "Lecture_Attendance_Pct"),
                      ("Sleep_Hrs_Night", "Sleep_Hrs_Night")):
@@ -189,9 +188,8 @@ def build(b):
                                                                   "R²", "The error"], "B", "The slope (coefficient).")
     m.mc("R² = 0.22 means ...", ["22% of the variation in y is explained by the model", "the model is 22% wrong",
                                  "y rises by 0.22", "22 rows"], "A", "R² is the share of variation explained.")
-    m.mc("A p-value below 0.05 for a coefficient usually means ...", ["the coefficient is statistically significant",
-                                                                       "the model is perfect", "remove it", "R² is 0.05"],
-         "A", "Unlikely to be zero by chance.")
+    m.mc("Using Score = 25 + 0.5 × Attendance, what score is predicted at 80% attendance?", ["40", "65", "80", "105"], "B",
+         "25 + 0.5 × 80 = 25 + 40 = 65.")
     m.yn("Is it safe to predict far outside the range of the data used to fit the model?", "No",
          "Extrapolation: the relationship may not hold there.")
     m.part("Part B · Fit Final_Score on Lecture_Attendance_Pct")
@@ -210,12 +208,13 @@ def build(b):
     m.mc("A 3-month moving average ...", ["smooths the series by averaging each month with the two before it",
                                           "predicts the next 3 years", "removes the trend", "counts months"], "A",
          "It smooths short-term ups and downs.")
-    m.mc("FORECAST.ETS.CONFINT gives ...", ["the width of the uncertainty band around a forecast", "the trend",
-                                            "the season length", "the actual value"], "A", "Forecast ± CONFINT = the band.")
+    m.mc("On a Forecast Sheet chart, the shaded band around the forecast shows ...",
+         ["the range the actual values will probably fall in", "the trend", "the season length", "last year's sales"], "A",
+         "A forecast without its band looks more certain than it is.")
     m.mc("MAPE = 8% means ...", ["forecasts were off by 8% on average", "8 forecasts", "R² is 8%", "growth of 8%"], "A",
          "Mean absolute percentage error.")
-    m.yn("Should you test a forecast on past months it did not see (backtesting) before trusting it?", "Yes",
-         "Hold out the last months, forecast them, compare.")
+    m.yn("Should you check a forecast against real months it did not see (e.g. forecast 2025 from 2022-24) before trusting it?",
+         "Yes", "Compare the forecast with what really happened, using MAE or MAPE.")
     m.part("Part B · Work it out on tMonthly")
     m.num("What were total sales in 2025?", '=SUMIFS(tMonthly[Sales],tMonthly[Year],2025)',
           float(mon.loc[mon.Year == 2025, "Sales"].sum()), "SUMIFS by Year.", fmt="naira")
@@ -303,7 +302,8 @@ def build(b):
     m.yn("Does Protect Sheet stop people editing locked cells?", "Yes", "Unlock input cells first (Format Cells › Protection).")
     m.mc("A recorded macro is saved in which file type?", [".xlsx", ".xlsm", ".csv", ".pdf"], "B",
          ".xlsx cannot hold macros.")
-    m.tf("Office Scripts run in Excel for the web and can be scheduled with Power Automate.", True, "VBA macros run in desktop Excel.")
+    m.yn("Should a recorded macro come with a short note of what it does, who recorded it and when?", "Yes",
+         "Document every macro so others can trust and maintain it.")
 
     # ================================================================== 4.11
     m = m411

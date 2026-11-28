@@ -35,6 +35,8 @@ SHEETS = {"4.1": "4.1 Descriptive Stats", "4.2": "4.2 Distributions & Z", "4.3":
 
 import w4_charts  # noqa: E402
 print(f"charts on {w4_charts.attach(MODULES)} topics")
+import w4_examples  # noqa: E402
+print(f"worked examples on {w4_examples.attach(MODULES)} topics")
 
 CFG = v3deck.Config(
     week=4,

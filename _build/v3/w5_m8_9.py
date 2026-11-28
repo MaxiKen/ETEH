@@ -73,8 +73,8 @@ M_P8 = dict(
                "its output.",
           grid=dict(label="Describe honestly as", widths=[1.2, 4.7], size=12.5, rows=[
               ["Tool", "Level you can demonstrate"], ["Excel", "Power Query, Data Model, DAX, PivotTables, what-if, Solver"],
-              ["SQL", "SELECT to multi-table JOIN, subqueries, window functions (SQLite)"],
-              ["Statistics", "Descriptive statistics, correlation, regression, FORECAST.ETS"],
+              ["SQL", "Simple SELECT, WHERE, GROUP BY and two-table JOIN queries (SQLite)"],
+              ["Statistics", "Descriptive statistics, correlation, simple regression, FORECAST.ETS"],
               ["AI", "Co-pilot drafting, every output verified against control totals"]]),
           watch="An overstated skill is found out in the first technical interview."),
 

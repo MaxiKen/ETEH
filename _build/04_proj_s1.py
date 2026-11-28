@@ -27,35 +27,33 @@ def one(sql):
 
 
 NET = "order_status IN ('Delivered','Completed')"
-Y25 = "strftime('%Y', t.order_date) = '2025'"
+Y25 = "t.order_date LIKE '2025%'"
 AUDIT = [(f"Rows in {t}", f"SELECT COUNT(*) FROM {t};") for t in ["customers", "sellers", "products", "deliveries", "transactions"]]
 AUDIT += [("Transactions with a NULL delivery_id", "SELECT COUNT(*) FROM transactions WHERE delivery_id IS NULL;"),
           ("...of which are NOT Cancelled", "SELECT COUNT(*) FROM transactions WHERE delivery_id IS NULL AND order_status <> 'Cancelled';"),
-          ("Products whose seller_id has no match in sellers", "SELECT COUNT(*) FROM products p LEFT JOIN sellers s ON s.seller_id = p.seller_id WHERE s.seller_id IS NULL;"),
+          ("Products with a blank (NULL) seller_id", "SELECT COUNT(*) FROM products WHERE seller_id IS NULL;"),
           ("First order date", "SELECT MIN(order_date) FROM transactions;"),
           ("Rows returned by the WRONG join transactions-deliveries ON customer_id", "SELECT COUNT(*) FROM transactions t JOIN deliveries d ON d.customer_id = t.customer_id;")]
 QS = [
     ("Net revenue in 2025 (Delivered + Completed), ₦.", f"SELECT SUM(total_price) AS net_revenue_2025\nFROM transactions t\nWHERE {Y25}\n  AND t.{NET};", "naira"),
-    ("Net revenue growth, 2025 vs 2024 (as a decimal, 4 dp).",
-     f"SELECT ROUND(SUM(CASE WHEN strftime('%Y', order_date) = '2025' THEN total_price END) * 1.0 /\n       SUM(CASE WHEN strftime('%Y', order_date) = '2024' THEN total_price END) - 1, 4) AS yoy\nFROM transactions\nWHERE {NET};", "pct"),
+    ("Net revenue in 2024 (Delivered + Completed), ₦. (Same query, one change.)",
+     f"SELECT SUM(total_price) AS net_revenue_2024\nFROM transactions t\nWHERE t.order_date LIKE '2024%'\n  AND t.{NET};", "naira"),
     ("Category with the highest 2025 net revenue.",
      f"SELECT p.category, SUM(t.total_price) AS rev\nFROM transactions t\nJOIN products p ON p.product_id = t.product_id\nWHERE {Y25} AND t.{NET}\nGROUP BY p.category\nORDER BY rev DESC\nLIMIT 1;", "gen"),
     ("Seller (store_name) with the highest 2025 net revenue.",
-     f"SELECT s.store_name, SUM(t.total_price) AS rev\nFROM transactions t\nJOIN sellers s ON s.seller_id = t.seller_id\nWHERE {Y25} AND t.{NET}\nGROUP BY s.seller_id, s.store_name\nORDER BY rev DESC\nLIMIT 1;", "gen"),
+     f"SELECT s.store_name, SUM(t.total_price) AS rev\nFROM transactions t\nJOIN sellers s ON s.seller_id = t.seller_id\nWHERE {Y25} AND t.{NET}\nGROUP BY s.store_name\nORDER BY rev DESC\nLIMIT 1;", "gen"),
     ("Platform commission earned on 2025 net orders, ₦ (nearest naira).",
      f"SELECT ROUND(SUM(commission_amount), 0) AS commission\nFROM transactions t\nWHERE {Y25} AND t.{NET};", "naira"),
-    ("2025 return rate = Returned ÷ (Delivered + Completed + Returned), 4 dp.",
-     f"SELECT ROUND(SUM(order_status = 'Returned') * 1.0 /\n       SUM(order_status IN ('Delivered','Completed','Returned')), 4) AS return_rate\nFROM transactions t\nWHERE {Y25};", "pct"),
-    ("Payment method with the highest cancellation rate (all years). Rate = cancelled orders ÷ all orders for that method.",
-     "SELECT payment_method, ROUND(AVG(order_status = 'Cancelled'), 4) AS cancel_rate, COUNT(*) AS n\nFROM transactions\nGROUP BY payment_method\nORDER BY cancel_rate DESC\nLIMIT 1;", "gen"),
-    ("Customer zone with the SLOWEST average order-to-delivery time for 2025 delivered orders. Days = julianday(d.delivered_date) - julianday(t.order_date); julianday turns a date into a day number.",
-     f"SELECT c.zone, ROUND(AVG(julianday(d.delivered_date) - julianday(t.order_date)), 2) AS days\nFROM transactions t\nJOIN deliveries d ON d.delivery_id = t.delivery_id\n"
-     f"JOIN customers c ON c.customer_id = t.customer_id\nWHERE {Y25} AND t.order_status = 'Delivered'\nGROUP BY c.zone\nORDER BY days DESC\nLIMIT 1;", "gen"),
-    ("Share of customers (who ever placed a net order) with TWO or more net orders, 4 dp.",
-     f"SELECT ROUND(AVG(n >= 2), 4) AS repeat_share FROM (\n  SELECT customer_id, COUNT(*) AS n\n  FROM transactions\n  WHERE {NET}\n  GROUP BY customer_id\n);", "pct"),
-    ("How many listed products had NO net sale in 2025? (LEFT JOIN - put the year/status filter in the ON clause)",
-     "SELECT COUNT(*) AS unsold_2025\nFROM products p\nLEFT JOIN transactions t\n       ON t.product_id = p.product_id\n      AND strftime('%Y', t.order_date) = '2025'\n"
-     "      AND t.order_status IN ('Delivered','Completed')\nWHERE t.transaction_id IS NULL;", "int"),
+    ("How many 2025 order lines were Returned?",
+     f"SELECT COUNT(*) AS returned_2025\nFROM transactions t\nWHERE {Y25}\n  AND t.order_status = 'Returned';", "int"),
+    ("Payment method with the most Cancelled order lines (all years).",
+     "SELECT payment_method, COUNT(*) AS cancelled\nFROM transactions\nWHERE order_status = 'Cancelled'\nGROUP BY payment_method\nORDER BY cancelled DESC\nLIMIT 1;", "gen"),
+    ("Customer zone with the highest 2025 net revenue.",
+     f"SELECT c.zone, SUM(t.total_price) AS rev\nFROM transactions t\nJOIN customers c ON c.customer_id = t.customer_id\nWHERE {Y25} AND t.{NET}\nGROUP BY c.zone\nORDER BY rev DESC\nLIMIT 1;", "gen"),
+    ("How many different customers placed a net order in 2025?",
+     f"SELECT COUNT(DISTINCT customer_id) AS active_2025\nFROM transactions t\nWHERE {Y25} AND t.{NET};", "int"),
+    ("Product category with the most products listed (products table).",
+     "SELECT category, COUNT(*) AS products\nFROM products\nGROUP BY category\nORDER BY products DESC\nLIMIT 1;", "gen"),
 ]
 AUD_A = [one(s) for _, s in AUDIT]
 QS_A = [one(s) for _, s, _ in QS]
@@ -66,7 +64,7 @@ def frame(sql):
 
 
 cat_top = frame(QS[2][1].replace("LIMIT 1", "LIMIT 3"))
-pay = frame("SELECT payment_method, ROUND(AVG(order_status = 'Cancelled'), 4) r FROM transactions GROUP BY 1 ORDER BY 2 DESC")
+pay = frame("SELECT payment_method, COUNT(*) AS n FROM transactions WHERE order_status = 'Cancelled' GROUP BY payment_method ORDER BY n DESC")
 zone = frame(QS[7][1].replace("LIMIT 1", ""))
 net25 = frame(f"SELECT t.*, c.zone FROM transactions t JOIN customers c USING(customer_id) WHERE {Y25} AND t.{NET}")
 aov = net25.total_price.mean()
@@ -100,9 +98,9 @@ def build(key):
                "Net revenue = total_price of orders with order_status Delivered or Completed. Result 2 marks, SQL 2 marks.")
     for i, ((t, sq, k), a) in enumerate(zip(QS, QS_A), 1):
         gd = {3: "Top 3: " + "; ".join(f"{r.category} ₦{r.rev:,.0f}" for r in cat_top.itertuples()),
-              7: "Rates: " + ", ".join(f"{r.payment_method} {r.r:.1%}" for r in pay.itertuples()) + " - differences are small; say so.",
-              8: "Zones: " + ", ".join(f"{r.zone} {r.days:.2f}" for r in zone.itertuples()),
-              10: "Putting the filters in WHERE turns the LEFT JOIN into an INNER JOIN and returns 0 - the classic mistake."}.get(i, "")
+              2: f"Growth 2025 vs 2024 = Q1 ÷ Q2 − 1 = {QS_A[0] / QS_A[1] - 1:.2%} (work it out in Excel).",
+              7: "Cancelled lines: " + ", ".join(f"{r.payment_method} {r.n}" for r in pay.itertuples()) + " - differences are small; say so.",
+              8: "Zones: " + ", ".join(f"{r.zone} ₦{r.rev:,.0f}" for r in zone.itertuples())}.get(i, "")
         A.q(s, f"Q{i}", t, a, None, k, 2, gd, header=True)
         A.long(s, "SQL", "Your SQL:", sq, marks=2, rows=max(3, sq.count("\n") + 1), guide="Any correct query earns the marks; check filters (year AND status).")
     A.end_task(s)
@@ -113,15 +111,16 @@ def build(key):
     A.q(s, "3.1", "Net Revenue measure, 2025 (₦) - must equal Q1.", QS_A[0], None, "naira", 2, header=True)
     A.q(s, "3.2", "Net Orders 2025 (count of Delivered + Completed transactions).", len(net25), None, "int", 2)
     A.q(s, "3.3", "Average Order Value 2025 (₦, nearest naira).", round(aov), None, "naira", 2)
-    A.q(s, "3.4", "Active customers 2025 (distinct customers with a net order).", act, None, "int", 2)
+    A.q(s, "3.4", "Active customers 2025 (distinct customers with a net order) - must equal Q9.", act, None, "int", 2)
     A.q(s, "3.5", "Relationship deliveries → transactions: which key?", "delivery_id (1:1)", marks=2,
         choices=["delivery_id (1:1)", "customer_id (1:*)", "order_id (*:*)", "No relationship needed"])
     A.long(s, "3.6", "Paste your DAX for Net Revenue, Net Orders, AOV and Net Revenue YoY %.",
            'Net Revenue := CALCULATE ( SUM ( transactions[total_price] ), transactions[order_status] IN { "Delivered", "Completed" } )\n'
            'Net Orders := CALCULATE ( COUNTROWS ( transactions ), transactions[order_status] IN { "Delivered", "Completed" } )\n'
            "AOV := DIVIDE ( [Net Revenue], [Net Orders] )\n"
-           "Net Revenue YoY % := VAR PY = CALCULATE ( [Net Revenue], SAMEPERIODLASTYEAR ( DimDate[Date] ) ) RETURN DIVIDE ( [Net Revenue] - PY, PY )",
-           marks=6, rows=5, guide="1.5 marks per measure; CALCULATE filter on status required.")
+           "Net Revenue LY := CALCULATE ( [Net Revenue], SAMEPERIODLASTYEAR ( DimDate[Date] ) )\n"
+           "Net Revenue YoY % := DIVIDE ( [Net Revenue] - [Net Revenue LY], [Net Revenue LY] )",
+           marks=6, rows=6, guide="1.5 marks each for Net Revenue, Net Orders, AOV and YoY % (with its LY helper); CALCULATE filter on status required.")
     A.long(s, "3.7", "Screenshot the Diagram View into the box below (or describe the relationships).",
            "transactions (fact) *→1 customers, *→1 products, *→1 sellers, 1↔1 deliveries (delivery_id), *→1 DimDate[Date] on order_date. Single direction filters.",
            marks=4, rows=4)
@@ -138,8 +137,8 @@ def build(key):
     A.q(s, "4.2", "Memo.", "Rubric" if key else "", marks=10)
     A.q(s, "4.3", "Deck.", "Rubric" if key else "", marks=5)
     A.long(s, "4.4", "Write your memo's opening (BLUF) sentence here.",
-           f"SuperMart Online's 2025 net revenue grew {QS_A[1]:.1%} to ₦{QS_A[0] / 1e6:,.1f}m, led by {QS_A[2]}; returns ({QS_A[5]:.1%} of fulfilled orders) and "
-           "repeat purchasing are the two levers for 2026.", marks=0, rows=2, guide="Model answer - not separately marked; part of 4.2.")
+           f"SuperMart Online's 2025 net revenue grew {QS_A[0] / QS_A[1] - 1:.1%} to ₦{QS_A[0] / 1e6:,.1f}m, led by {QS_A[2]}; reducing the "
+           f"{QS_A[5]:,} returned lines and winning repeat orders from the {QS_A[8]:,} active customers are the two levers for 2026.", marks=0, rows=2, guide="Model answer - not separately marked; part of 4.2.")
     A.end_task(s)
     return A.finish("Student Project 1 - SuperMart Online Marketplace Performance Review",
                     ["Client: Head of Marketplace, SuperMart Online. Question: how did the marketplace perform in 2025, where is revenue coming from, and what should change in 2026?",

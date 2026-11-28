@@ -32,10 +32,13 @@ mean_gap = 1 - g[g.Gender == "Female"][SAL].mean() / g[g.Gender == "Male"][SAL].
 exp_m = g.groupby("Gender").Years_of_Experience.mean()
 mid = g[g.Seniority == "Mid"].groupby("Gender")[SAL].median()
 gap_mid = 1 - mid["Female"] / mid["Male"]
-X = np.column_stack([g.Years_of_Experience, (g.Gender == "Female").astype(float), np.ones(len(g))])
-beta, *_ = np.linalg.lstsq(X, g[SAL].values, rcond=None)
-b_exp, b_fem = beta[0], beta[1]
-adj_gap = -b_fem / g[g.Gender == "Male"][SAL].mean()
+
+def _level_gap(level):
+    m = g[g.Seniority == level].groupby("Gender")[SAL].median()
+    return 1 - m["Female"] / m["Male"]
+
+
+gap_jun, gap_sen = _level_gap("Junior"), _level_gap("Senior")
 n_other = int((s.Gender == "Other").sum())
 slope1 = np.polyfit(s.Years_of_Experience, s[SAL], 1)
 pred5 = slope1[0] * 5 + slope1[1]
@@ -46,7 +49,7 @@ OFFER = 9_000_000
 
 def build(key):
     A = Asg("P4", "Student Project 4 - ETEH Talent Salary Survey: Benchmarks, Pay Equity and Bands", key,
-            "Student Project 4 · cleaning · benchmarking · pay-gap analysis · regression · salary bands",
+            "Student Project 4 · cleaning · benchmarking · pay-gap analysis · simple regression · salary bands",
             path=(SKEY / f"{NAME}_KEY.xlsx") if key else (FOLDER / f"{NAME}_Workbook.xlsx"), label="Student Project 4",
             submission="Submit this workbook, your analysis workbook, a dashboard and a 1-page pay-equity note. Names: Surname_Firstname_P4_*.")
     sh = A.task("M1 Clean & Standardise", "Milestone 1 - From form export to analysable survey", "1.9, 2.5-2.9",
@@ -88,15 +91,16 @@ def build(key):
     A.q(sh, "3.3", "Average years of experience - Female.", exp_m["Female"], None, "dec2", 1)
     A.q(sh, "3.4", "Average years of experience - Male.", exp_m["Male"], None, "dec2", 1)
     A.q(sh, "3.5", "Median gap WITHIN the Mid seniority level.", gap_mid, None, "pct", 3)
-    A.q(sh, "3.6", "Regression Salary ~ Experience + Female (1/0): coefficient on Female (₦).", b_fem, None, "naira", 4,
-        "LINEST on [Years_of_Experience, Female] (Male/Female only). Negative = lower pay at the same experience.")
-    A.q(sh, "3.7", "Adjusted gap = −(Female coefficient) ÷ Male mean salary.", adj_gap, None, "pct", 3)
+    A.q(sh, "3.6", "Median gap WITHIN the Junior seniority level.", gap_jun, None, "pct", 3,
+        "Same formula as 3.5, on Junior respondents only (like-for-like comparison).")
+    A.q(sh, "3.7", "Median gap WITHIN the Senior seniority level.", gap_sen, None, "pct", 4)
     A.q(sh, "3.8", "Respondents with Gender = 'Other' (report in totals only).", n_other, None, "int", 2)
-    A.long(sh, "3.9", "Interpret 3.1 vs 3.7 for the HR Director in three sentences.",
-           f"Women's median pay is {gap_unadj:.1%} below men's (mean gap {mean_gap:.1%}). About {1 - adj_gap / mean_gap:.0%} of the mean gap is explained by experience (women in the survey average "
-           f"{exp_m['Female']:.1f} years vs {exp_m['Male']:.1f}), leaving an adjusted gap of about {adj_gap:.1%} at equal experience. "
-           "A survey cannot prove discrimination - role, sector and negotiation are not controlled - but the residual gap justifies an internal pay audit.",
-           marks=6, rows=4, guide="Raw vs adjusted 2; experience explanation with numbers 2; appropriate caution + action 2.")
+    A.long(sh, "3.9", "Interpret 3.1 against 3.5 - 3.7 for the HR Director in three sentences.",
+           f"Overall, women's median pay is {gap_unadj:.1%} below men's (mean gap {mean_gap:.1%}), and women in the survey have slightly less experience "
+           f"({exp_m['Female']:.1f} vs {exp_m['Male']:.1f} years). Comparing like with like, there is {'no gap' if abs(gap_jun) < 0.005 else f'a {gap_jun:.1%} gap'} at Junior level, "
+           f"but {gap_mid:.1%} at Mid and {gap_sen:.1%} at Senior level, so the gap opens up as careers progress. "
+           "A survey cannot prove discrimination - role, sector and negotiation are not controlled - but the gaps at Mid and Senior level justify an internal pay audit.",
+           marks=6, rows=4, guide="Raw vs like-for-like gaps 2; where the gap opens, with numbers 2; appropriate caution + action 2.")
     A.end_task(sh)
 
     sh = A.task("M4 Salary Bands", "Milestone 4 - Propose Data & Analytics salary bands", "4.4, 4.6-4.9",
@@ -108,7 +112,7 @@ def build(key):
         "Below band" if OFFER < da_mid[.25] else ("Within band" if OFFER <= da_mid[.75] else "Above band"), None, "gen", 3,
         choices=["Below band", "Within band", "Above band"])
     A.q(sh, "4.5", "Simple regression (all respondents): predicted salary at 5 years' experience (₦).", pred5, None, "naira", 3, "FORECAST.LINEAR(5, salary, experience).")
-    A.q(sh, "4.6", "Dashboard: family benchmarks, seniority ladder, gender gap (raw vs adjusted), bands table, small-sample flags (instructor marks).",
+    A.q(sh, "4.6", "Dashboard: family benchmarks, seniority ladder, gender gap (raw vs same level), bands table, small-sample flags (instructor marks).",
         "Rubric" if key else "", marks=8, header=True)
     A.q(sh, "4.7", "One-page note to the client's HR Director with the offer recommendation (instructor marks).", "Rubric" if key else "", marks=7)
     A.end_task(sh)
@@ -118,7 +122,7 @@ def build(key):
                      "Clean and standardise the raw survey (M1), benchmark (M2), analyse pay equity (M3), and propose bands (M4). Duration about 12 hours."],
                     [("Salary Survey", DATASETS_TEXT["Salary Survey"] + " - you receive the raw form export (6,704 rows).")],
                     files="Data folder (inside this project folder) › ETEH_Salary_Survey_Form_Export_RAW.csv",
-                    rubric=[["Statistics", "Medians and percentiles with PERCENTILE.INC/QUARTILE.INC; regression with LINEST or the ToolPak."],
+                    rubric=[["Statistics", "Medians and percentiles with PERCENTILE.INC/QUARTILE.INC; simple regression with FORECAST.LINEAR or SLOPE/INTERCEPT."],
                             ["Ethics", "Never single out individuals; suppress groups smaller than 5; describe gaps, do not allege discrimination."],
                             ["Tolerance", "Money ±₦1; percentages ±0.1 pt."]])
 
@@ -145,7 +149,7 @@ def main():
                   ("h", "4. Milestones"),
                   ("t", [["Milestone", "What you produce", "Marks"], ["M1 Clean & standardise", "Clean survey, job families, seniority, control counts", "20"],
                          ["M2 Benchmarks", "Medians and P25/P75 by family and seniority, small-sample flags", "25"],
-                         ["M3 Pay equity", "Raw and experience-adjusted gender gap, interpretation", "25"],
+                         ["M3 Pay equity", "Raw and like-for-like (same level) gender gap, interpretation", "25"],
                          ["M4 Salary bands", "Data & Analytics bands, offer test, dashboard, one-page note", "30"]], [40, 115, 25]),
                   ("h", "5. Assessment"),
                   ("p", "Accuracy, correct statistical choices (medians, percentiles, regression), ethical reporting of sensitive comparisons, and a clear recommendation. "

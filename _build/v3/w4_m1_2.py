@@ -6,7 +6,7 @@ import pandas as pd
 from scipy.stats import norm
 
 from v3kit import T
-from w4_fx import (C23, CV, D25, EX, I, LOS, LS, N, Nm, OV, ORD, P, SAL, STO, Y, F, F2, kurt, pct_rank_inc, q, skew)
+from w4_fx import (C23, CV, D25, EX, I, LOS, LS, N, Nm, OV, ORD, P, SAL, STO, Y, F, F2, pct_rank_inc, q)
 
 # ---------------------------------------------------------------- 4.1 figures
 YM, YMED, YSD = Y.mean(), Y.median(), Y.std()
@@ -81,7 +81,7 @@ M41 = dict(
     subtitle="Centre, spread and shape of a column, the ToolPak summary, and how to report the figures honestly.",
     objectives=["Pick the right centre (mean, median, mode) for the data's shape.",
                 "Measure spread with range, IQR, standard deviation and the coefficient of variation.",
-                "Read skewness and kurtosis, percentiles and quartiles.",
+                "Find percentiles and quartiles, and see when data is lopsided.",
                 "Flag outliers with the 1.5 x IQR rule.",
                 "Run the Analysis ToolPak's Descriptive Statistics and report the results honestly."],
     topics=[
@@ -93,7 +93,7 @@ M41 = dict(
               ["Family", "Measure", "Value"],
               ["Centre", "Median", N(YMED)],
               ["Spread", "Middle 50% (Q1 to Q3)", f"{N(YQ1)} to {N(YQ3)}"],
-              ["Shape", "Skewness", f"{skew(Y):.2f} (balanced)"],
+              ["Shape", "Mean vs median", f"{N(YM)} vs {N(YMED)} (close: balanced)"],
               ["Size", "Count", f"{I(len(Y))} respondents"]]),
           watch="One average on its own is not an analysis; always give centre, spread and shape together."),
 
@@ -115,8 +115,8 @@ M41 = dict(
               ["Measure", "Order value"],
               ["Median (typical order)", N(OMED)],
               ["Mean", N(OM)],
-              ["Mean / median", f"{OM / OMED:.2f}"]]),
-          fx=[("=MEDIAN(tOrders[total_price])", N(OMED), "Middle order value")], fx_widths=[2.4, 1, 1.2],
+              ["Mean / median", f"{OM / OMED:.2f}"]],
+              note="=MEDIAN(tOrders[total_price])"),
           watch="Rule of thumb: when mean / median is above about 1.2, report the median as the typical value."),
 
         T("4.1.4", "Mode",
@@ -160,31 +160,7 @@ M41 = dict(
               ["Measure", "Mean", "SD", "CV"]] + [[n, _m(m_, u), _m(s_, u), P(s_ / m_)] for n, m_, s_, u in CVS]),
           watch="Comparing raw SDs across different units (₦ against days) is meaningless; compare CVs."),
 
-        T("4.1.8", "Skewness",
-          defn="Skewness (SKEW) measures lopsidedness: positive means a long tail of large values, negative a long tail of small "
-               "values, near zero balanced.",
-          simple="Above about +1 the mean is pulled well above the median; report the median.",
-          grid=dict(label="Shape of four columns", widths=[2.4, 1, 2], rows=[
-              ["Column", "SKEW", "Reading"],
-              ["Order value (tOrders)", F2(skew(OV)), SKR(skew(OV))],
-              ["Exam score (tCV)", F2(skew(EX)), SKR(skew(EX))],
-              ["Salary (tSal)", F2(skew(Y)), SKR(skew(Y))],
-              ["Length of stay 2023 (tLOS)", F2(skew(LS)), SKR(skew(LS))]]),
-          watch="Skewness is only a summary; look at a histogram before deciding what it means."),
-
-        T("4.1.9", "Kurtosis",
-          defn="Kurtosis (KURT) compares the weight of a distribution's tails with a normal curve: positive means heavier tails and "
-               "more extreme values, negative means flatter.",
-          simple="High kurtosis warns that extreme values will keep appearing; plan for them.",
-          grid=dict(label="Tails compared with a normal curve", widths=[2.4, 1, 2], rows=[
-              ["Column", "KURT", "Reading"],
-              ["Order value (tOrders)", F2(kurt(OV)), KUR(kurt(OV))],
-              ["Exam score (tCV)", F2(kurt(EX)), KUR(kurt(EX))],
-              ["Salary (tSal)", F2(kurt(Y)), KUR(kurt(Y))],
-              ["Length of stay 2023 (tLOS)", F2(kurt(LS)), KUR(kurt(LS))]]),
-          watch="Excel's KURT reports excess kurtosis: 0 is a normal curve, not 3."),
-
-        T("4.1.10", "Percentiles and Quartiles",
+        T("4.1.8", "Percentiles and Quartiles",
           defn="The kth percentile is the value below which k% of the data falls; quartiles are the 25th, 50th and 75th percentiles.",
           simple="Use PERCENTILE.INC(range, 0.9) or QUARTILE.INC(range, 1); HR uses them to set pay bands.",
           grid=dict(label="Salary percentiles (tSal)", widths=[1.2, 1.8, 2.4], rows=[
@@ -193,7 +169,7 @@ M41 = dict(
               note=f"=PERCENTILE.INC(tSal[Annual_Salary_NGN],0.9) returns {N(PCTS[-1][1])}"),
           watch="PERCENTILE.INC and PERCENTILE.EXC give different answers on small data; state which one you used."),
 
-        T("4.1.11", "Outliers and the 1.5 x IQR Rule",
+        T("4.1.9", "Outliers and the 1.5 x IQR Rule",
           defn="An outlier is a value far from the rest. The 1.5 x IQR rule flags values above Q3 + 1.5 x IQR or below "
                "Q1 - 1.5 x IQR.",
           simple="Flag outliers, then investigate them; never delete them just to tidy a chart.",
@@ -205,7 +181,7 @@ M41 = dict(
               ["Their share of order value", P(O_OUT_SHARE)]]),
           watch=f"Here the 'outliers' are {P(O_OUT_SHARE, 0)} of the money: large electronics orders are the business, not errors."),
 
-        T("4.1.12", "Enabling the Analysis ToolPak",
+        T("4.1.10", "Enabling the Analysis ToolPak",
           defn="The Analysis ToolPak is a free Excel add-in that adds Data › Data Analysis, with tools for descriptive statistics, "
                "histograms, correlation and regression.",
           simple="Turn it on once per computer; the button then appears at the right of the Data tab.",
@@ -215,9 +191,9 @@ M41 = dict(
                   "Mac: Tools › Excel Add-ins."],
           watch="ToolPak results are pasted values; rerun the tool after any change to the data."),
 
-        T("4.1.13", "Descriptive Statistics Output Explained",
+        T("4.1.11", "Descriptive Statistics Output Explained",
           defn="Data › Data Analysis › Descriptive Statistics, with Summary statistics ticked, writes a table of mean, standard error, "
-               "median, mode, SD, variance, kurtosis, skewness, range, minimum, maximum, sum and count.",
+               "median, mode, SD, variance, range, minimum, maximum, sum and count (plus two shape rows you can skip).",
           simple="Every row equals an Excel function, so you can check it with formulas.",
           grid=dict(label="ToolPak rows for salary, with the matching function", widths=[1.7, 1.6, 2.2], size=11.5, rows=[
               ["ToolPak row", "Value", "Same as"],
@@ -225,11 +201,10 @@ M41 = dict(
               ["Standard Error", N(YSD / np.sqrt(len(Y))), "STDEV.S / SQRT(COUNT)"],
               ["Median / Mode", f"{Nm(YMED)} / {Nm(YMODE)}", "MEDIAN / MODE.SNGL"],
               ["Standard Deviation", N(YSD), "STDEV.S"],
-              ["Kurtosis / Skewness", f"{kurt(Y):.2f} / {skew(Y):.2f}", "KURT / SKEW"],
               ["Count", I(len(Y)), "COUNT"]]),
           watch="'Standard Error' is the uncertainty of the mean, not the spread of the data; do not report it as the SD."),
 
-        T("4.1.14", "Reporting Descriptive Statistics Honestly",
+        T("4.1.12", "Reporting Descriptive Statistics Honestly",
           defn="An honest summary states the count, the right centre for the shape, a matching spread measure, and any outliers or "
                "missing values.",
           simple="Median with IQR for lopsided data; mean with SD for balanced data. Round to what the reader needs.",

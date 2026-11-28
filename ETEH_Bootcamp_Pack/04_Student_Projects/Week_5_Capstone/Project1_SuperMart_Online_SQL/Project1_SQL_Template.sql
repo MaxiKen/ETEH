@@ -21,7 +21,7 @@
 -- A7. ...of which are NOT Cancelled
 
 
--- A8. Products whose seller_id has no match in sellers
+-- A8. Products with a blank (NULL) seller_id
 
 
 -- A9. First order date
@@ -33,7 +33,7 @@
 -- Q1. Net revenue in 2025 (Delivered + Completed), ₦.
 
 
--- Q2. Net revenue growth, 2025 vs 2024 (as a decimal, 4 dp).
+-- Q2. Net revenue in 2024 (Delivered + Completed), ₦. (Same query, one change.)
 
 
 -- Q3. Category with the highest 2025 net revenue.
@@ -45,17 +45,17 @@
 -- Q5. Platform commission earned on 2025 net orders, ₦ (nearest naira).
 
 
--- Q6. 2025 return rate = Returned ÷ (Delivered + Completed + Returned), 4 dp.
+-- Q6. How many 2025 order lines were Returned?
 
 
--- Q7. Payment method with the highest cancellation rate (all years). Rate = cancelled orders ÷ all orders for that method.
+-- Q7. Payment method with the most Cancelled order lines (all years).
 
 
--- Q8. Customer zone with the SLOWEST average order-to-delivery time for 2025 delivered orders. Days = julianday(d.delivered_date) - julianday(t.order_date); julianday turns a date into a day number.
+-- Q8. Customer zone with the highest 2025 net revenue.
 
 
--- Q9. Share of customers (who ever placed a net order) with TWO or more net orders, 4 dp.
+-- Q9. How many different customers placed a net order in 2025?
 
 
--- Q10. How many listed products had NO net sale in 2025? (LEFT JOIN - put the year/status filter in the ON clause)
+-- Q10. Product category with the most products listed (products table).
 

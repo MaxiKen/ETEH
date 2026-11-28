@@ -4,6 +4,45 @@ Eaglet2EagleHub Ltd · Instructor: Abdulrahaman Kehinde
 
 > **New to the pack? Read `HOW_TO_USE_THIS_PACK.md` first.** It explains which file to open and when.
 
+## Edition 3.2: simpler Week 3 and Week 4 decks
+
+Every module is still there. Only advanced mini-sections were removed, and the remaining topics were renumbered in order.
+
+- **Vol 3 (Week 3).**
+  - **3.1 is about how a database is built.** Normalisation (1NF to 3NF), ATTACH and ACID transactions are gone. Three new mini-sections take their place:
+    - 3.1.6 Why Relational Databases? (one big sheet against linked tables);
+    - 3.1.7 Relational Databases as Data Grows (cells stored at 11,000 to 5 million order lines, and the Excel row limit);
+    - 3.1.8 How the SuperMart Online Tables Link (the table map).
+  - **3.2 is a short session in DB Browser for SQLite.**
+    - New: the Database Structure tab, Browse Data, a two-table JOIN and "from a quick query to Excel".
+    - Kept: simple one-line and multi-line queries (SELECT, WHERE incl. LIKE, AND/OR, ORDER BY, LIMIT, GROUP BY, DISTINCT).
+    - Removed: HAVING, CASE, subqueries and date functions.
+  - **3.3 is about bringing data into Excel.**
+    - Added: the CSV export route and a first PivotTable on the imported table.
+    - Removed: SQL parameters and injection.
+  - **3.4, 3.6A/B and 3.10 are lighter.**
+    - 3.4 keeps the four join kinds you need. Right outer and right anti joins, fuzzy matching, schema mismatches, cardinality checks and merge documentation are gone.
+    - 3.6 drops advanced DAX: FILTER, ALLEXCEPT, RELATEDTABLE, AVERAGEX, VAR, DATEADD, DATESYTD/DATESINPERIOD, running totals, RANKX, error handling, performance and model documentation.
+    - 3.10 now imports the extract in DB Browser, runs one-line SQL checks and cleans in Power Query.
+- **Vol 4 (Week 4).**
+  - Removed: skewness, kurtosis, Spearman, multiple regression, adjusted R², p-values, multicollinearity, exponential smoothing, ETS.CONFINT, ETS.SEASONALITY, backtesting, Solver methods, font embedding, metadata and Office Scripts.
+  - 4.4 now uses the one-input model throughout (SLOPE, INTERCEPT, RSQ).
+  - **Ten new worked-example slides** use small numbers you can check by hand. They follow these topics:
+    - 4.1.3 mean or median;
+    - 4.1.5 range, quartiles and IQR;
+    - 4.1.6 SD step by step;
+    - 4.2.6 z-scores;
+    - 4.3.2 CORREL;
+    - 4.4.2 fit a line and predict;
+    - 4.5.4 3-month moving average;
+    - 4.5.6 MAE and MAPE;
+    - 4.6.2 Goal Seek;
+    - 4.6.4 one-variable data table.
+- **Linked files follow the decks.**
+  - The Week 3 and 4 Section Examples and assignments replace the questions on removed topics.
+  - Student Project 1 uses only simple single queries (year filter `order_date LIKE '2025%'`, no CASE, julianday or LEFT JOIN tricks).
+  - Student Project 4 compares pay gaps within seniority levels instead of running a regression with two inputs.
+
 ## Edition 3.1: follow the learning, find every file
 
 Edition 3.1 rebuilds every learner workbook around one rule: **a question never asks for something that has not been

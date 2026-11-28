@@ -7,7 +7,7 @@ import pandas as pd
 from scipy.optimize import linprog
 
 from v3kit import T
-from w4_fx import HOT, I, MON, N, Nk, Nm, P, ROOMS, hw_fit, mae, mape, rmse
+from w4_fx import HOT, I, MON, N, Nk, Nm, P, ROOMS, hw_fit, mae, mape
 
 # ---------------------------------------------------------------- 4.5 figures
 S = MON.Sales
@@ -84,13 +84,13 @@ SHORTSEG = {"Corporate": "Corporate", "Airline Crew": "Airline Crew", "Online Tr
 
 M45 = dict(
     id="4.5", title="Time Series and Forecasting",
-    subtitle="Find the trend and the seasonal pattern, forecast with moving averages, smoothing and FORECAST.ETS, and prove the "
-             "forecast with a backtest.",
+    subtitle="Find the trend and the seasonal pattern, smooth with moving averages, forecast with FORECAST.ETS and the "
+             "Forecast Sheet, and check how far off the forecast is.",
     objectives=["Describe a time series by its trend, seasonality and noise.",
-                "Calculate moving averages and simple exponential smoothing.",
-                "Forecast with FORECAST.ETS, its confidence interval and seasonality check.",
-                "Measure accuracy with MAE, MAPE and RMSE, and backtest on held-out data.",
-                "Chart a forecast with bands and choose a method honestly."],
+                "Calculate a moving average to see the trend.",
+                "Forecast with FORECAST.ETS or Data › Forecast Sheet.",
+                "Measure accuracy with MAE and MAPE.",
+                "Chart a forecast with its band and choose a simple method honestly."],
     topics=[
         T("4.5.1", "What a Time Series Is",
           defn="A time series is one measure recorded at regular intervals (daily, monthly, yearly) in time order, with no gaps.",
@@ -126,19 +126,11 @@ M45 = dict(
           notes="tMonthly has Sales in column E, Jan 2022 in row 2 and Dec 2025 in row 49.",
           watch="The 3-month average (Oct-Dec) is inflated by the peak; neither is a forecast for January."),
 
-        T("4.5.5", "Exponential Smoothing",
-          defn="Simple exponential smoothing forecasts the next value as alpha x latest actual + (1 - alpha) x previous forecast.",
-          simple="Alpha near 1 follows the latest month; near 0 it barely moves. Data › Data Analysis › Exponential Smoothing "
-                 "asks for the damping factor, 1 - alpha.",
-          fx=[("=0.3*E49+0.7*F49", Nm(SES), "Smoothed level after Dec 2025 (alpha 0.3)")],
-          fx_widths=[2.2, 1.0, 3.0],
-          watch="Simple smoothing has no trend or season, so its flat forecast misses January's dip and December's peak."),
-
-        T("4.5.6", "FORECAST.ETS",
-          defn="FORECAST.ETS(target_date, values, timeline, [seasonality]) forecasts with triple exponential smoothing: level, "
-               "trend and season together.",
-          simple="It is also behind Data › Forecast Sheet.",
-          grid=dict(label="2026 forecast, triple smoothing on 2022-25", widths=[2.4, 1.8], rows=[
+        T("4.5.5", "FORECAST.ETS",
+          defn="FORECAST.ETS(target_date, values, timeline) forecasts the next periods from the history, combining the recent "
+               "level, the trend and the seasonal pattern.",
+          simple="You give it the dates and the values; Excel finds the pattern. It is also behind Data › Forecast Sheet.",
+          grid=dict(label="2026 forecast from 2022-25 monthly sales", widths=[2.4, 1.8], rows=[
               ["Item", "Forecast"],
               ["January 2026", Nm(HWF["fc"][0])],
               ["December 2026", Nm(HWF["fc"][11])],
@@ -147,44 +139,16 @@ M45 = dict(
               note="=FORECAST.ETS(DATE(2026,1,1),tMonthly[Sales],tMonthly[Month])"),
           watch="Excel tunes its smoothing settings slightly differently, so its numbers can differ a little from these."),
 
-        T("4.5.7", "FORECAST.ETS.CONFINT",
-          defn="FORECAST.ETS.CONFINT returns the half-width of the confidence interval around a FORECAST.ETS value (95% by default).",
-          simple="Lower bound = forecast - CONFINT; upper bound = forecast + CONFINT.",
-          grid=dict(label="95% range, 2026 forecast", widths=[1.2, 1.2, 1.2, 1.8], rows=[
-              ["Month", "Forecast", "± CONFINT", "Range"]] + [
-              [MSHORT[i], Nm(HWF["fc"][i]), Nm(HWF["ci"][i]), f"{Nm(HWF['fc'][i] - HWF['ci'][i])} to {Nm(HWF['fc'][i] + HWF['ci'][i])}"]
-              for i in (0, 5, 11)]),
-          watch="The range widens with each month ahead; quote it with the forecast, every time."),
-
-        T("4.5.8", "FORECAST.ETS.SEASONALITY",
-          defn="FORECAST.ETS.SEASONALITY returns the season length Excel detects in the data (12 for a yearly pattern in monthly "
-               "data; 1 means none).",
-          simple="Check it before forecasting: if it is not what you expect, set seasonality yourself.",
-          grid=dict(label="Why 12? Correlation of sales with itself, n months earlier", widths=[2.2, 1.4], rows=[
-              ["Lag", "Correlation"], ["6 months", f"{AC6:.2f}"], ["12 months", f"{AC12:.2f}"]],
-              note="=FORECAST.ETS.SEASONALITY(tMonthly[Sales],tMonthly[Month])"),
-          watch="Seasonality needs at least two full cycles of history; with one year Excel cannot see it."),
-
-        T("4.5.9", "Measuring Forecast Accuracy",
-          defn="MAE is the average size of the errors; MAPE is the average error as a % of actual; RMSE squares errors first, so "
-               "big misses count more.",
-          simple="Error = actual - forecast. Use MAPE to compare across series, MAE to talk in naira.",
-          grid=dict(label="Triple smoothing fitted on 2022-24, tested on 2025", widths=[1.4, 1.3, 2.4], rows=[
+        T("4.5.6", "Measuring Forecast Accuracy",
+          defn="MAE is the average size of the errors; MAPE is the average error as a % of the actual.",
+          simple="Error = actual - forecast. Forecast 2025 from 2022-24 only, then compare with what really happened.",
+          grid=dict(label="Forecast made from 2022-24, checked against 2025", widths=[1.4, 1.3, 2.4], rows=[
               ["Measure", "Value", "Formula"],
               ["MAE", Nm(mae(ACT, HWB["fc"]), 2), "AVERAGE(ABS(error))"],
-              ["MAPE", P(mape(ACT, HWB["fc"])), "AVERAGE(ABS(error)/actual)"],
-              ["RMSE", Nm(rmse(ACT, HWB["fc"]), 2), "SQRT(AVERAGE(error^2))"]]),
+              ["MAPE", P(mape(ACT, HWB["fc"])), "AVERAGE(ABS(error)/actual)"]]),
           watch="MAPE explodes when actuals are near zero; use MAE for small or zero-heavy series."),
 
-        T("4.5.10", "Backtesting a Forecast",
-          defn="A backtest hides the most recent period, forecasts it from the earlier data, and compares the forecast with what "
-               "actually happened.",
-          simple="It is the only fair way to compare methods: fit on 2022-24, test on 2025.",
-          grid=dict(label=f"Forecasting 2025 (actual {Nm(ACT.sum())})", widths=[2.6, 1.0, 1.2], rows=[
-              ["Method", "MAPE", "2025 total"]] + [[n, P(mape(ACT, f)), Nm(f.sum())] for n, f in BACK]),
-          watch="Never judge a method on the data it was fitted on; its fit always looks better than its forecast."),
-
-        T("4.5.11", "Forecast Charts and Confidence Bands",
+        T("4.5.7", "Forecast Charts and Confidence Bands",
           defn="A forecast chart shows the actual history, the forecast and the confidence band in one picture.",
           simple="Data › Forecast Sheet builds it in one step: pick the end date and the confidence level.",
           steps=["Select the Month and Sales columns", "Data › Forecast Sheet", "Forecast end: Dec 2026; Options: confidence 95%",
@@ -192,7 +156,7 @@ M45 = dict(
           points=["Actuals solid; forecast dashed.", "Shade the band, do not draw it bold.", "Label the forecast start."],
           watch="A forecast line without its band looks far more certain than it is."),
 
-        T("4.5.12", "Forecast Limitations and Assumptions",
+        T("4.5.8", "Forecast Limitations and Assumptions",
           defn="Every forecast assumes the future behaves like the past: the same trend, the same season, no new shocks.",
           simple="State the assumptions next to the number.",
           grid=dict(label="Assumptions behind the 2026 forecast", widths=[1.6, 3.2], rows=[
@@ -203,21 +167,21 @@ M45 = dict(
               ["History is clean", "One-off orders inflate the base"]]),
           watch="Re-forecast monthly and compare with actuals; a forecast is a living number."),
 
-        T("4.5.13", "Choosing a Forecasting Method",
-          defn="Choose the simplest method that captures the patterns in the data and wins the backtest.",
-          simple="Look at the chart, check seasonality, backtest the candidates, then pick.",
+        T("4.5.9", "Choosing a Forecasting Method",
+          defn="Choose the simplest method that captures the patterns in the data and has the smallest error on recent actuals.",
+          simple="Look at the chart, check for a trend and a season, compare the errors (MAE, MAPE), then pick.",
           grid=dict(label="Which method when?", widths=[1.8, 1.6, 1.4], rows=[
               ["Data shows", "Method", "Excel tool"],
-              ["No trend, no season", "Moving average, smoothing", "AVERAGE, ToolPak"],
+              ["No trend, no season", "Moving average", "AVERAGE"],
               ["Trend only", "Straight line", "FORECAST.LINEAR"],
-              ["Trend and season", "Triple smoothing", "FORECAST.ETS"]]),
+              ["Trend and season", "Seasonal forecast", "FORECAST.ETS"]]),
           watch=f"On this series the straight line missed 2025 by {P(mape(ACT, LIN), 0)}: it ignored the season."),
     ],
     takeaways=["A time series needs regular, sorted, complete periods.",
                "Separate trend, season and noise before forecasting.",
-               "FORECAST.ETS handles level, trend and season; CONFINT gives the range.",
-               "Backtest on held-out data with MAE and MAPE.",
-               "Pick the simplest method that wins the backtest; state the assumptions."],
+               "A moving average shows the trend; FORECAST.ETS handles trend and season.",
+               "Check a forecast against real actuals with MAE and MAPE.",
+               "Pick the simplest method with the smallest error; show the band and state the assumptions."],
 )
 
 
@@ -229,7 +193,7 @@ M46 = dict(
                 "Use Goal Seek and know its limits.",
                 "Build one- and two-variable data tables and read a sensitivity grid.",
                 "Store and compare scenarios with Scenario Manager.",
-                "Formulate and solve an optimisation with Solver, and document the analysis."],
+                "Set up a simple Solver problem, and document the analysis."],
     topics=[
         T("4.6.1", "What Is What-If Analysis?",
           defn="What-if analysis changes a model's inputs to see how its outputs respond: for a target, a range, named cases or "
@@ -324,18 +288,7 @@ M46 = dict(
               [SHORTSEG[s], Nk(SG.adr[s]), P(SG.cr[s], 0), P(COMM[s], 0), N(SG.net[s])] for s in SG.net.sort_values(ascending=False).index]),
           watch="OTA has the highest ADR but the lowest net value after cancellations and commission."),
 
-        T("4.6.11", "Solver Methods and Results",
-          defn="Simplex LP solves straight-line models exactly; GRG Nonlinear handles smooth curves; Evolutionary handles jumpy "
-               "models.",
-          simple="Choose the method, Solve, Keep Solver Solution, and ask for the Answer report.",
-          grid=dict(label=f"Simplex LP allocation ({I(LPV)} expected per night)", widths=[1.6, 0.9, 2.5], rows=[
-              ["Segment", "Rooms", "Why"]] + [
-              [SHORTSEG[s], str(ALLOC[s]),
-               {"Corporate": "All demand: highest net value", "Airline Crew": "Minimum and maximum are both 10",
-                "Online Travel Agent": "Stopped at the 50% cap", "Walk-in / Travel Agent": "Takes the remaining rooms"}[s]] for s in SEGS]),
-          watch="Check every constraint in the Answer report: a 'Binding' constraint is the one limiting profit."),
-
-        T("4.6.12", "Documenting What-If Analysis",
+        T("4.6.11", "Documenting What-If Analysis",
           defn="Documentation records the inputs and their source, the assumptions, the tools and settings used, the results and "
                "the limits.",
           simple="Someone else must be able to rerun and challenge the analysis.",

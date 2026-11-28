@@ -221,7 +221,7 @@ def build(b):
     m.part("Interviews and the roadmap")
     m.mc("STAR stands for ...", ["Situation, Task, Action, Result", "Start, Test, Analyse, Report", "SQL, Tables, Arrays, Rows",
                                  "Style, Tone, Audience, Response"], "A", "For behavioural questions.")
-    m.mc("A common SQL interview question asks you to ...", ["GROUP BY and filter with HAVING", "draw a chart",
+    m.mc("A common SQL interview question asks you to ...", ["count or total by group with GROUP BY", "draw a chart",
                                                              "write a macro", "format a table"], "A", "Practise Week 3 queries.")
     m.pick("The natural next tool after Excel Power Pivot and DAX", ["Power BI", "Word", "Paint"], "Power BI",
            "Power BI uses the same Power Query and DAX.")

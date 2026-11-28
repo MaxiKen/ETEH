@@ -167,12 +167,11 @@ M47 = dict(
 
 M48 = dict(
     id="4.8", title="Report Writing and PDF Production",
-    subtitle="Structure, layout, page setup, PDF export, metadata hygiene and version control for a report someone will "
-             "actually read.",
+    subtitle="Structure, layout, page setup, PDF export and version control for a report someone will actually read.",
     objectives=["Structure a report and write an executive summary.",
                 "Lay out pages and tables for reading.",
                 "Set up pages for print and export clean PDFs.",
-                "Check fonts and metadata before release.",
+                "Check the exported PDF page by page before release.",
                 "Version-control a report and review it with a checklist."],
     topics=[
         T("4.8.1", "Report Structure",
@@ -242,28 +241,7 @@ M48 = dict(
               ["Document properties", "Include", "Title, author travel"]]),
           watch="'Entire workbook' can publish the patient-level data sheets: always check the page count."),
 
-        T("4.8.7", "Font Embedding and Rendering Issues",
-          defn="A PDF can look different on another device if fonts are missing or symbols are not embedded.",
-          simple="Use common fonts, export to PDF, then open it on a second device.",
-          grid=dict(label="Rendering risks", widths=[1.4, 1.8, 1.6], rows=[
-              ["Risk", "Symptom", "Prevention"],
-              ["Font missing", "Layout shifts", "Common fonts only"],
-              ["Symbol not embedded", "₦ shows as a box", "Check the PDF"],
-              ["Charts as low-res images", "Blurry when zoomed", "Standard quality"]]),
-          watch="Always open the PDF, not the Excel file, before sending the board pack."),
-
-        T("4.8.8", "Metadata and Document Properties",
-          defn="Metadata is information stored inside the file: title, author, company, comments, hidden sheets, personal "
-               "information.",
-          simple="File › Info › Check for Issues › Inspect Document finds and removes it.",
-          grid=dict(label="Check before release", widths=[1.6, 3.2], rows=[
-              ["Field", "Value"],
-              ["Title", "ETEH Week 4 - Section Examples"],
-              ["Author", "ETEH Ltd - Eaglet2EagleHub Limited"],
-              ["Comments, hidden sheets", "Removed or intended"]]),
-          watch="Old author names, comments and hidden sheets have leaked confidential information in real reports."),
-
-        T("4.8.9", "Version Control for Reports",
+        T("4.8.7", "Version Control for Reports",
           defn="Version control records each version of a report with its number, date, author and what changed.",
           simple="A change log sheet and a clear file name: Report_v1.2_2024-01-15.",
           grid=dict(label="Change log, Mercyland 2023 report", widths=[0.8, 1.3, 2.7], rows=[
@@ -273,7 +251,7 @@ M48 = dict(
               ["v1.0", "2024-01-15", "Approved by the Head of Operations"]]),
           watch="'Final_v2_REALfinal.xlsx' is not version control."),
 
-        T("4.8.10", "Review Checklist for Reports",
+        T("4.8.8", "Review Checklist for Reports",
           defn="A review checklist lists the checks every report passes before release: numbers, text, format, file and approval.",
           simple="A second person ticks it, not the author.",
           grid=dict(label="Final check of the Mercyland report", widths=[1.7, 3.1], rows=[
@@ -287,7 +265,7 @@ M48 = dict(
     takeaways=["Standard structure; executive summary first, written last.",
                "Clean layout and sorted tables make the point.",
                "Set up pages, then export only what should be shared.",
-               "Check fonts and metadata in the PDF itself.",
+               "Open the PDF itself and check every page before sending.",
                "Version every release and review it with a checklist."],
 )
 
@@ -411,12 +389,12 @@ M49 = dict(
 M410 = dict(
     id="4.10", title="Formula Auditing, Protection and Light Automation",
     subtitle="Finding errors in a model inherited from someone else, protecting a workbook without breaking it, and automating "
-             "repetition with macros and Office Scripts.",
+             "repetition with a recorded macro.",
     objectives=["Audit an inherited workbook with independent checks.",
                 "Trace precedents and dependents; show and evaluate formulas.",
                 "Use Error Checking and the Watch Window.",
                 "Protect sheets and workbooks at the right level.",
-                "Record a macro, know Office Scripts, and document automation."],
+                "Record a simple macro and document it."],
     topics=[
         T("4.10.1", "Why Auditing Matters",
           defn="Auditing checks a workbook's formulas, totals and references before you trust or share its numbers.",
@@ -478,18 +456,7 @@ M410 = dict(
                   "Macros cannot be undone with Ctrl+Z."],
           watch="Only enable macros in files from a trusted source; macros are a common route for malware."),
 
-        T("4.10.7", "Office Scripts and Power Automate",
-          defn="Office Scripts are TypeScript automations for Excel on the web (Automate tab); Power Automate runs them on a "
-               "schedule or trigger.",
-          simple="VBA for desktop routines; Office Scripts for the browser and scheduled flows.",
-          grid=dict(label="Which automation tool?", widths=[1.6, 1.4, 1.8], rows=[
-              ["Tool", "Runs in", "Good for"],
-              ["VBA macro", "Desktop Excel", "Local, complex routines"],
-              ["Office Script", "Excel on the web", "Shared files in the cloud"],
-              ["Power Automate", "Cloud service", "Scheduled or triggered runs"]]),
-          watch="Office Scripts need a work or school Microsoft 365 account."),
-
-        T("4.10.8", "Documenting Automation",
+        T("4.10.7", "Documenting Automation",
           defn="Automation documentation records each macro or script: name, purpose, owner, inputs, outputs, schedule and last "
                "test.",
           simple="Keep a log sheet in the workbook and comments in the code.",
@@ -504,7 +471,7 @@ M410 = dict(
                "Trace, Show Formulas and Evaluate find wrong ranges, typed values and drifting references.",
                "Error Checking and the Watch Window keep you honest while fixing.",
                "Protection prevents accidents; encryption protects confidentiality.",
-               "Automate repeated steps, and document every macro and script."],
+               "Record a macro for repeated steps, and document it."],
 )
 
 MODULES = [M47, M48, M49, M410]
