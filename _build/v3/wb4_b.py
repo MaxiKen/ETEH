@@ -68,7 +68,7 @@ def m45(b, D):
     tp(m, "4.5.2",
        [("Straight-line slope, 2022-24 (per month)", f"=SLOPE({E.format(2, 37)},Data_Monthly!$B$2:$B$37)", f(b2), N, ""),
         ("12-month average, end of 2025", f"=AVERAGE({E.format(38, 49)})", f(F6.MA12), N, "Removes the season."),
-        ("12-month average, end of 2024", f"=AVERAGE({E.format(26, 37)})", f(S[25:37].mean()), N, "The trend rose by this much in a year.")],
+        ("12-month average, end of 2024", f"=AVERAGE({E.format(26, 37)})", f(S[24:36].mean()), N, "The trend rose by this much in a year.")],
        [("n", "Straight-line forecast for month 49 (Jan 2026) from all 48 months.", f"=FORECAST.LINEAR(49,{MS},tMonthly[t])", f(al + bl * 49), N,
          "Linear forecast Jan 2026")],
        note="A straight line ignores the season: its January forecast is far above a normal January (4.5.3).")
@@ -401,6 +401,7 @@ def m47(b, D):
     st["Att"] = st.Sales / st.Annual_Target_2025
     st["Gap"] = st.Sales - st.Annual_Target_2025
     st = st.sort_values("Att")
+    wg = st.Gap.idxmin()          # furthest behind = largest gap to target (the slides' WORST)
     tot = float(D25.Sales.sum())
     y24 = float(D.MON[D.MON.Year == 2024].Sales.sum())
     m = ModuleSheet(b, "4.7 Storytelling", "4.7  Data Storytelling",
@@ -423,7 +424,7 @@ def m47(b, D):
         mm.s.r += 1
         red = [{"fill": {"color": "#B23A48"}} if a < 1 else {"fill": {"color": "#9BB7C9"}} for a in st.Att]
         mm.s.chart("bar", [{"name": "Attainment", "categories": T["a"].ref("Store_Name"), "values": T["a"].ref("Attainment"), "points": red}],
-                   f"{int((st.Att < 1).sum())} of 12 stores missed target; {st.index[0]} is furthest behind", "", "Attainment", legend=False,
+                   f"{int((st.Att < 1).sum())} of 12 stores missed target; {wg} is furthest behind", "", "Attainment", legend=False,
                    y_fmt="0%", rows=17, size=(640, 310))
 
     nb = int((st.Att < 1).sum())
@@ -459,17 +460,17 @@ def m47(b, D):
         ("t", "Which audience gets a one-slide summary with the decision needed?", "board", None, None, ("the board",))])
 
     tp(m, "4.7.6",
-       [("Finding title (formula)", '=COUNTIF(tAttain[Attainment],"<1")&" of 12 stores missed target; "&INDEX(tAttain[Store_Name],1)&" is furthest behind"',
-         f"{nb} of 12 stores missed target; {st.index[0]} is furthest behind", "gen", "The chart title states what the chart shows.")],
+       [("Finding title (formula)", '=COUNTIF(tAttain[Attainment],"<1")&" of 12 stores missed target; "&INDEX(tAttain[Store_Name],MATCH(MIN(tAttain[Gap]),tAttain[Gap],0))&" is furthest behind"',
+         f"{nb} of 12 stores missed target; {wg} is furthest behind", "gen", "The chart title states what the chart shows.")],
        [("o", "Rewrite the label title 'Sales by zone FY2025' as a finding.",
          f"South-West brought {zn['South-West'] / tot:.0%} of FY2025 sales, twice the South-East.")])
 
     tp(m, "4.7.7",
-       [(f"Attainment of {st.index[0]}", "=INDEX(tAttain[Attainment],1)", f(st.Att.iloc[0]), "pct", "The callout on the chart."),
+       [(f"Attainment of {wg}", "=INDEX(tAttain[Attainment],MATCH(MIN(tAttain[Gap]),tAttain[Gap],0))", f(st.Att[wg]), "pct", "The callout on the chart."),
         ("Bars to colour red (below 100%)", '=COUNTIF(tAttain[Attainment],"<1")', nb, "int", "")],
        [("n", "What is the attainment of the best store?", "=MAX(tAttain[Attainment])", f(st.Att.max()), "pct", "Best attainment")],
-       do=[("On the attainment chart, add a data label to the lowest bar only (click the bar twice, then + › Data Labels).",
-            f"One label: {st.Att.iloc[0]:.0%} on {st.index[0]}.")])
+       do=[(f"On the attainment chart, add a data label to the {wg} bar only (click the bar twice, then + › Data Labels).",
+            f"One label: {st.Att[wg]:.0%} on {wg}.")])
 
     AX = 120e6
 
@@ -498,7 +499,7 @@ def m47(b, D):
         ("Best store", "=INDEX(tAttain[Store_Name],MATCH(MAX(tAttain[Attainment]),tAttain[Attainment],0))", st.Att.idxmax(), "gen", "")],
        [("o", "Write the four-paragraph summary (headline, evidence, implication, ask) in four sentences.",
          f"Sales grew {tot / y24 - 1:.0%} to ₦{tot / 1e6:.0f}m, but {nb} of 12 stores missed target. {st.Att.idxmax()} led at {st.Att.max():.0%}; "
-         f"{st.index[0]} trailed at {st.Att.iloc[0]:.0%}. The below-target stores fell ₦{-st.Gap[st.Gap < 0].sum() / 1e6:.1f}m short of plan. "
+         f"{wg} trailed at {st.Att[wg]:.0%}. The below-target stores fell ₦{-st.Gap[st.Gap < 0].sum() / 1e6:.1f}m short of plan. "
          "We ask the board to approve recovery plans for those stores.")])
     m.finish()
 
