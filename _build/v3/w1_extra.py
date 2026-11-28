@@ -17,7 +17,7 @@ GLOSSARY = sorted([
     ("AutoFill", "Extending a pattern or formula by dragging or double-clicking the fill handle."),
     ("Conditional formatting", "Formatting that changes automatically according to a cell's value."),
     ("CSV", "Comma-separated values: a plain-text file holding one sheet of values, no formulas or formatting."),
-    ("Data", "Raw, unorganised facts recorded about events, people or things."),
+    ("Data", "Raw facts recorded about events, people or things, before processing (even in a neat table)."),
     ("Data analytics", "Examining, cleaning, transforming and modelling data to support decisions."),
     ("Data cleaning", "Detecting and correcting errors and inconsistencies in data."),
     ("Data dictionary", "A document listing each column's meaning, unit, type and source."),

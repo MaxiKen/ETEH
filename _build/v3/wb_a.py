@@ -34,8 +34,9 @@ def m11(b, D):
 
     # ---------------------------------------------------------------- 1.1.1-3
     m.topic("1.1.1-3", "Data, information and the difference between them",
-            "Data are raw facts with no context, such as one till line. Information is data that has been processed, "
-            "summarised or compared so that it means something to the reader. The facts do not change; the context does.")
+            "Data are raw facts as they were recorded, such as one till line. A table with headers is still data: the "
+            "structure says what each value is, but nothing has been worked out. Information is data that has been "
+            "processed, summarised or compared so that it answers a question. The facts do not change; the processing does.")
     m.steps(["Look at one row of tIkejaLines: an order number, a date, an amount. On its own it answers no question. That is data.",
              "Click any empty cell and type =SUM(tIkejaLines[Sales]), then press Enter. Twelve facts become one number with meaning: that is information.",
              "Add context: =SUM(tIkejaLines[Profit])/SUM(tIkejaLines[Sales]) gives the margin on those lines. Press Ctrl+Shift+5 to show it as a %.",

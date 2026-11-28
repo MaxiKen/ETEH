@@ -31,6 +31,7 @@ Three datasets that were reworked from public Kaggle files are replaced by **ori
   - and, only where it is useful, a short **example from our data**.
 - Example tables are illustrations only. Each one is labelled with its **table name** (for example `tStores25`, `tDept23`, `tHotelSeg`), not a file name.
 - Each module opens with a divider and "What you will learn", and closes with "Key takeaways". The week ends with a summary and a two-slide glossary.
+- **Data vs information (1.1.1–1.1.3), clarified:** data was defined as "raw, *unorganised* facts", yet the 1.1.1 example is a neat table with headers, so learners could fairly call it information. The definitions now separate **structure** from **processing**. A table of till lines with headers is still *structured data*, because nothing has been summed, compared or interpreted. The 1.1.2 store-totals table is information because 3,312 FY2025 lines were summed and compared with targets. Slide 1.1.3 adds the test ("has anything been summarised, calculated or compared to answer a question?"). The glossary, the takeaway and the workbook's 1.1 concept note use the same wording.
 - The Excel companion is introduced **once, at the start of the week** (slides 2 and 4, "How This Week Works"). Modules do not repeat it. After each module the tutor opens that module's sheet in the examples workbook and goes through it.
 
 ### Week 1 examples workbook (`01_Section_Examples/ETEH_Week1_Section_Examples.xlsx`)
@@ -53,7 +54,7 @@ Rebuilt from scratch as a self-contained practice book.
 - **Answer key:** each module sheet ends with one, holding the worked answer to every exercise as a live formula on the module's data.
 - **Datasets:** each module starts with a "This module's dataset" panel listing the tables and practice ranges it uses.
 - **Verification:**
-  - 825 formulas checked with `_build/verify_xlsx.py`: 553 recalculate to their cached values;
+  - 825 formulas checked with `_build/verify_xlsx.py`: 567 recalculate to their cached values;
   - 4 known pycel limits were checked by hand: a deliberately hidden row in SUBTOTAL (row 73 of 1.6), TEXT format codes (twice), and INDIRECT on a table the learner has not created yet. (The TRIM cases flagged earlier now verify: the checker uses Excel's TRIM, see Week 2.)
   - the remaining formulas use functions pycel cannot evaluate (mostly FORMULATEXT); their cached values were checked separately;
   - `_build/check_xml.py` passes.

@@ -17,29 +17,33 @@ M11 = dict(
                 "Use evidence, general knowledge and domain knowledge instead of assumptions."],
     topics=[
         T("1.1.1", "What is Data?",
-          defn="Data are raw, unorganised facts (numbers, text, dates or codes) recorded about events, people or things, "
-               "before any processing or interpretation.",
+          defn="Data are raw facts (numbers, text, dates or codes) recorded about events, people or things, before "
+               "anyone has processed or interpreted them.",
           simple="Data is whatever gets written down when something happens: a sale at a till, a patient's age, a "
-                 "student's score. One value on its own tells you very little.",
+                 "student's score. Storing it neatly in rows and columns does not change that: each row is still one "
+                 "raw event.",
           like="Data is like the loose ingredients in a market basket: rice, tomatoes, pepper and onions. Useful, but "
                "nobody calls them a meal yet.",
           ex=dict(t="tIkejaLines", cols=["Order_ID", "Order_Date", "Category", "Sub_Category", "Sales", "Quantity", "Profit"], n=3,
-                  note="Each cell is one raw fact. 474,430 means nothing until the header tells you it is Sales, in naira."),
-          watch="Never use a number until you know what it measures, its unit and when it was recorded."),
+                  note="This table is structured data, not information. The headers say what each value is, but nothing "
+                       "has been summed, compared or interpreted: each row is one sale as the till recorded it."),
+          watch="A neat table is not automatically information. Ask: has anything been summarised, calculated or "
+                "compared to answer a question? If not, it is still data."),
 
         T("1.1.2", "What is Information?",
-          defn="Information is data that has been processed, organised and given context so that it is meaningful and "
-               "useful for a purpose.",
-          simple="We turn data into information by adding labels and units and by summarising: totals, averages, "
-                 "percentages. 'Lagos - Ikeja sold ₦146.4m in FY2025' is information.",
+          defn="Information is data that has been processed (summarised, calculated or compared) and put in context, "
+               "so that it answers a question and is useful for a decision.",
+          simple="We turn data into information by processing it: totals, averages, percentages, comparisons with a "
+                 "target. 'Lagos - Ikeja sold ₦146.4m in FY2025' is information.",
           like="If data is the raw ingredients, information is the pot of jollof rice: the same ingredients, cleaned, "
                "cooked and served so anyone can enjoy them.",
           ex=dict(t="tStores25", cols=["Store_Name", "Zone", "Sales", "Target", "Attainment"], n=4, sort="Sales",
-                  note="12 store totals summarise 3,312 raw sales lines for FY2025 (top 4 by sales shown).")),
+                  note="Also a table, but now information: 3,312 raw sales lines were summed into 12 store totals and "
+                       "compared with targets (top 4 by sales shown).")),
 
         T("1.1.3", "Difference Between Data and Information",
-          simple="Data is the input; information is the output. Keep both: the raw rows let you check your work, and the "
-                 "summary lets a manager act.",
+          simple="Data is the input; information is the output. Both can sit in a table: the difference is processing, "
+                 "not layout.",
           diagram=("pyramid", dict(levels=["Data", "Information", "Knowledge", "Wisdom"],
                                    notes=["474430 · 11 · Furniture · 2025-01-01 (one sales line)",
                                           "Lagos - Ikeja sold ₦146.4m in FY2025: 103.1% of target",
@@ -47,9 +51,9 @@ M11 = dict(
                                           "Decision: cap Furniture discounts at 20%"])),
           grid=dict(label="Data vs information", widths=[1.2, 2.2, 2.2], size=12, rows=[
               ["", "Data", "Information"],
-              ["Form", "Raw rows of values", "Totals, rates, tables and charts"],
-              ["Size", "Large: 9,994 sales lines", "Small: 12 store totals"],
-              ["Use", "Input to analysis; proof", "Output for decisions"]]),
+              ["Form", "Records as captured: 3,312 FY2025 lines", "Summaries: 12 store totals vs target"],
+              ["Use", "Input to analysis; proof", "Output for decisions"],
+              ["Test", "Nothing summed or compared", "Answers a question"]]),
           order=["diagram", "grid"], diagram_label="The DIKW pyramid: from data to wisdom"),
 
         T("1.1.4", "What is Data Analytics?",
@@ -185,7 +189,7 @@ M11 = dict(
           ex=dict(t="tDiscBand", cols=["Discount_Band", "Lines", "Sales", "Profit", "Margin"], n=3, note=" "),
           order=["grid", "ex"], split=0.5),
     ],
-    takeaways=["Data is raw facts; information is data organised and given context.",
+    takeaways=["Data is raw recorded facts, even in a neat table; information is data processed to answer a question.",
                "Analytics is the process from question to decision: collect, clean, analyse, interpret, communicate.",
                "Analysts answer 'what happened and why'; scientists predict; business analysts redesign processes.",
                "Start with a sharp question; break problems into parts; test assumptions with evidence.",
