@@ -45,6 +45,8 @@ class Config:
     volume: str = ""                # "Volume 1 of 5"
     modules_text: str = ""          # welcome slide wording, default "<n> modules"
     example_table: str = "tStores25"  # named table quoted on the How This Week Works slide
+    unit: str = ""                  # "Capstone": replaces "Week N" in the standard slides (default "Week <week>")
+    assessment: str = ""            # replaces the "Assessment: the Week N assignment ..." line
     preview: Path = field(default_factory=lambda: HERE / "_stage" / "v3_preview")
 
 
@@ -167,6 +169,14 @@ class Ops:
 
 
 # ---------------------------------------------------------------- standard slides
+def U():
+    return CFG.unit or f"Week {CFG.week}"
+
+
+def HOW():
+    return "How This Week Works" if not CFG.unit else f"How the {CFG.unit} Works"
+
+
 def title_slide(deck):
     s = deck.clone(deck.t_title)
     n = names(s)
@@ -190,7 +200,7 @@ def welcome_slide(deck, n_topics):
     K.set_runs_text(n["TextBox 6"], "#")
     txt = (f"{n_topics} topics across {CFG.modules_text or f'{len(MODULES)} modules'}.\n\nEach topic gets the parts it needs: a standard "
            f"definition, a plain-English explanation, an analogy, and a small example from our datasets where it helps.\n\n"
-           f"Practical work happens in the Week {CFG.week} examples workbook at the end of each module.")
+           f"Practical work happens in the {U()} examples workbook at the end of each module.")
     tb = n["TextBox 13"]
     tf = tb.text_frame
     paras = txt.split("\n")
@@ -220,8 +230,8 @@ def welcome_slide(deck, n_topics):
 
 
 def roadmap_slide(deck):
-    W_ = f"WEEK {CFG.week}"
-    s, cv, top = frame(deck, f"Week {CFG.week} Roadmap", W_, f"Week {CFG.week} overview", "roadmap")
+    W_ = U().upper()
+    s, cv, top = frame(deck, f"{U()} Roadmap", W_, f"{U()} overview", "roadmap")
     rows = [["Module", "Title", "Topics", "Examples sheet"]]
     for m in MODULES:
         rows.append([m["id"], m["title"], str(len(m["topics"])), m["sheet"]])
@@ -234,13 +244,13 @@ def roadmap_slide(deck):
 
 
 def how_slide(deck):
-    s, cv, top = frame(deck, "How This Week Works", f"WEEK {CFG.week}", f"Week {CFG.week} overview", "how")
+    s, cv, top = frame(deck, HOW(), U().upper(), f"{U()} overview", "how")
     y = top
     msg = (f"After each module, your tutor opens that module's sheet in **{WORKBOOK}** and works through the "
            f"prepared dataset, the step-by-step solutions and the exercises with you. Keep the workbook open "
            f"alongside these slides; each sheet starts with the module's dataset and ends with exercises and answers.")
     h = V.card_h(V.W, msg, 15)
-    V.card(cv, V.X0, y, V.W, h, ORANGE, f"PRACTICAL WORK: THE WEEK {CFG.week} EXAMPLES WORKBOOK", msg, 15)
+    V.card(cv, V.X0, y, V.W, h, ORANGE, f"PRACTICAL WORK: THE {U().upper()} EXAMPLES WORKBOOK", msg, 15)
     y += h + 0.22
     cv.text(V.X0, y, V.W, 0.26, ["HOW EACH TOPIC IS PRESENTED (ONLY THE PARTS A TOPIC NEEDS)"], 11.5, NAVY, bold=True)
     y += 0.34
@@ -256,7 +266,7 @@ def how_slide(deck):
         x, yy = V.X0 + k * (wc + 0.25), y + r * 1.15
         V.card(cv, x, yy, wc, 1.0, c, lab, txt, 13)
     y += 2.35
-    t = f"Assessment: the Week {CFG.week} assignment (02_Assignments/{CFG.assignment}) is set at the end of the week."
+    t = CFG.assessment or f"Assessment: the Week {CFG.week} assignment (02_Assignments/{CFG.assignment}) is set at the end of the week."
     cv.text(V.X0, y, V.W, 0.3, [t], 13, GREY)
     notes(s, "This is the only place the deck mentions the workbook. After every module, switch to Excel and open the "
              "module's sheet: work the guided example, then let students try the exercises before revealing answers.")
@@ -353,21 +363,22 @@ def takeaways_slide(deck, m):
 
 
 def summary_slide(deck):
-    s, cv, top = frame(deck, f"Week {CFG.week} Summary", f"WEEK {CFG.week}  ·  SUMMARY", f"Week {CFG.week} summary", "summary")
+    s, cv, top = frame(deck, f"{U()} Summary", f"{U().upper()}  ·  SUMMARY", f"{U()} summary", "summary")
     rows = [["Module", "What you can now do"]] + [[f"{m['id']}  {m['title']}", CFG.summary[m["id"]]] for m in MODULES]
     size = 13.5 if len(rows) <= 10 else 12
     h = cv.table(V.X0, top, V.W, rows, size, widths=[3.9, 8.0])
     if top + h > V.BOTTOM + 0.01:
         K.WARN.append(f"OVERFLOW summary: {top + h:.2f}")
-    notes(s, f"Recap the week in two minutes, then point students to the Week {CFG.week} assignment.")
+    notes(s, f"Recap the week in two minutes, then point students to the Week {CFG.week} assignment." if not CFG.unit else
+          "Recap the capstone modules in two minutes, then confirm the capstone deliverables and defence dates.")
 
 
 def glossary_slides(deck):
     per = 15
     chunks = [CFG.glossary[i:i + per] for i in range(0, len(CFG.glossary), per)]
     for k, ch in enumerate(chunks, 1):
-        s, cv, top = frame(deck, f"Week {CFG.week} Glossary" + (f" ({k} of {len(chunks)})" if len(chunks) > 1 else ""),
-                           f"WEEK {CFG.week}  ·  GLOSSARY", f"Week {CFG.week} glossary", f"glossary {k}")
+        s, cv, top = frame(deck, f"{U()} Glossary" + (f" ({k} of {len(chunks)})" if len(chunks) > 1 else ""),
+                           f"{U().upper()}  ·  GLOSSARY", f"{U()} glossary", f"glossary {k}")
         rows = [["Term", "Meaning"]] + [[f"**{a}**", b] for a, b in ch]
         h = cv.table(V.X0, top, V.W, rows, 13, widths=[2.6, 9.3])
         if top + h > V.BOTTOM + 0.01:

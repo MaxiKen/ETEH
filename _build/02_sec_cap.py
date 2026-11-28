@@ -36,6 +36,8 @@ b = Book(str(OUT), "ETEH Capstone - Section Examples", "Volume 5 · Capstone, QA
 F = b.F
 
 g25 = b25.Sales.sum() / a24.Sales.sum() - 1
+_q4 = b25[b25.Quarter == "Q4"]
+_q4m25 = _q4.Profit.sum() / _q4.Sales.sum()
 m24, m25 = a24.Profit.sum() / a24.Sales.sum(), b25.Profit.sum() / b25.Sales.sum()
 
 # ======================================================================================
@@ -148,7 +150,7 @@ s.grid([["Named steps", "Every Power Query step renamed (e.g. 'Removed spacer ro
         ["Refresh test", "Replace the RAW file with the next month's export → Refresh All → control totals still reconcile"],
         ["Second-person test", "A colleague follows the README on another PC and gets ₦733,215,255"],
         ["Handoff pack", "Source register + before/after sample + workbook/SQL + QA checks + findings + uncertainty + owner + follow-up date"],
-        ["Facts vs recommendations", "Facts: 'Q4 margin fell to 9.8%'. Recommendation: 'Cap Furniture discounts at 20%' - kept in separate sections"]],
+        ["Facts vs recommendations", f"Facts: 'Q4 2025 margin fell to {_q4m25:.1%}'. Recommendation: 'Cap Furniture discounts at 20%' - kept in separate sections"]],
        header=["Practice", "Example"], merge_last=True)
 
 # ======================================================================================
@@ -282,7 +284,9 @@ s.calc([("Cohort students", "=ROWS(tCV)", len(cv), "int", "Registry control figu
         ("Progression %", f'=COUNTIFS(tCV[Final_Score],">="&{ST},tCV[Lecture_Attendance_Pct],">="&{AT})/ROWS(tCV)', prog.mean(), "pct", ""),
         ("Gap to target (points)", f'=(COUNTIFS(tCV[Final_Score],">="&{ST},tCV[Lecture_Attendance_Pct],">="&{AT})/ROWS(tCV)-{TG})*100', (prog.mean() - .9) * 100, "dec1", "Negative = below target")])
 s.band("P.4.2-3", "Data inventory and cleaning (registry extract)")
-s.grid([["Matric_No", "Text with prefix (CVU-…) - keep as text so leading characters survive"], ["Final_Score", "1 score of 101 capped at 100 (documented)"],
+_i2 = __import__("importlib").import_module("04_proj_i2")
+s.grid([["Matric_No", f"Text such as {cv.Matric_No.iloc[0]} - keep as text; TRIM the {_i2.n_pad} padded IDs before de-duplicating"],
+        ["Final_Score", f"{_i2.N_OVER} scores keyed above 100 in the raw export, queried and capped at 100 (documented)"],
         ["Lecturer_Rating, Guardian_Education, Commute_Band", "Blanks labelled 'Not Recorded' rather than deleted"],
         ["Faculty / Level", "Mapped from department; 4 faculties, levels 100-400"]], header=["Field", "Cleaning applied"], merge_last=True)
 s.band("P.4.5", "Attrition risk by faculty and level")
@@ -339,9 +343,11 @@ s.calc([("Peak quarterly average occupancy", "=MAX(tOccQ[Occupancy])", float(qoc
         ("Days above 100% (patients on trolleys)", '=COUNTIFS(tCensus[Occupancy_Pct],">1")', int((census.Occupancy_Pct > 1).sum()), "int", "")])
 s.band("P.5.2-3", "Data inventory and cleaning disclosures")
 dl = L("dirty_lc_log")
+_wards = pd.read_csv(CORE / "Mercyland_Wards.csv")
+_ncons = len(pd.read_csv(CORE / "Mercyland_Consultants.csv"))
 s.grid([["Admissions", "Mercyland_Inpatient_Episodes_2019_2024.csv / mercyland_hospital.db", f"{len(lc):,} admissions, {lc.Admit_Date.min():%d-%b-%Y} to {lc.Admit_Date.max():%d-%b-%Y}"],
-        ["Wards", "Mercyland_Wards.csv", "4 wards, 200 staffed beds (60 + 50 + 50 + 40)"], ["Bed census", "Mercyland_Daily_Bed_Census.csv", f"{len(census):,} days"],
-        ["Doctors", "Mercyland_Consultants.csv", "28 doctors across departments"]], header=["Source", "File", "Scale"])
+        ["Wards", "Mercyland_Wards.csv", f"{len(_wards)} wards, {_wards.Open_Beds.sum()} staffed beds ({' + '.join(map(str, _wards.Open_Beds))})"], ["Bed census", "Mercyland_Daily_Bed_Census.csv", f"{len(census):,} days"],
+        ["Doctors", "Mercyland_Consultants.csv", f"{_ncons} doctors across departments"]], header=["Source", "File", "Scale"])
 s.table(dl.head(10), "tLcCleanLog", widths={dl.columns[0]: 24, dl.columns[1]: 44, dl.columns[-1]: 40})
 s.band("P.5.4", "Measuring occupancy properly: occupied bed-days ÷ available bed-days, by quarter")
 oq = census.groupby("Quarter").agg(Days=("Census_Date", "count")).reset_index()
@@ -359,7 +365,8 @@ s.table(wd, "tLOSWard", fmts={"Admissions": "int"}, widths={"Ward": 16},
         calc={"Mean_LOS": ("=AVERAGEIFS(tAdm23[LOS_Days],tAdm23[Ward],[@Ward])", "dec1", [l23[l23.Ward == w].LOS_Days.mean() for w in wd.Ward]),
               "Median_LOS": ("=AGGREGATE(17,6,tAdm23[LOS_Days]/(tAdm23[Ward]=[@Ward]),2)", "dec1", [l23[l23.Ward == w].LOS_Days.median() for w in wd.Ward]),
               "P90_LOS": ("=AGGREGATE(16,6,tAdm23[LOS_Days]/(tAdm23[Ward]=[@Ward]),0.9)", "dec1", [l23[l23.Ward == w].LOS_Days.quantile(.9) for w in wd.Ward])})
-s.para("Mercyland's stays are spread evenly from 1 to 30 days, so mean ≈ median here. Report both anyway: the P90 (28 days) is what discharge planning needs.", "note")
+s.para(f"Stays are right-skewed: mean {l23.LOS_Days.mean():.1f} days, median {l23.LOS_Days.median():.0f}, P90 {l23.LOS_Days.quantile(.9):.0f}, longest {l23.LOS_Days.max()}. "
+       "Report the median and P90 as well as the mean: the P90 is what discharge planning needs.", "note")
 s.band("P.5.6", "Readmission safety by department (2023)")
 dp = l23.groupby("Department").size().reset_index(name="Discharges")
 s.table(dp, "tReadmitDept", fmts={"Discharges": "int"}, widths={"Department": 24},

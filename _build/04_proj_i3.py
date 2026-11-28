@@ -114,7 +114,13 @@ CONDS = sorted(adm.diagnosis_group.unique())
 HMOS = sorted(adm.hmo.unique())
 mocc = {m: cen[cen.month == m].inpatients.sum() / cen[cen.month == m].open_beds.sum() for m in months}
 n_over = sum(v > BEDS_TARGET for v in mocc.values())
-LOSB = [(1, 7, "1-7 days"), (8, 14, "8-14 days"), (15, 21, "15-21 days"), (22, 30, "22-30 days")]
+LOSMAX = int(adm.los_days.max())
+LOSB = [(1, 3, "1-3 days"), (4, 7, "4-7 days"), (8, 14, "8-14 days"), (15, 21, "15-21 days"), (22, LOSMAX, "22+ days")]
+assert sum(adm.los_days.between(a, z).sum() for a, z, _ in LOSB) == len(adm)
+LONG = 8                                                    # long stay = 8+ days
+med_los = float(adm.los_days.median())
+n_long = int((adm.los_days >= LONG).sum())
+sh_long, bd_long = n_long / len(adm), adm.los_days[adm.los_days >= LONG].sum() / adm.los_days.sum()
 
 
 def ci(k, n, p0):
@@ -148,7 +154,7 @@ def build():
     # ---- 1 Brief
     s = s1
     s.band("1.1", "The board's questions")
-    s.scenario(f"Mercyland (4 wards × 130 staffed beds) must decide on FY2024 capacity and safety priorities. The board asks: how full are we, which patients stay longest, "
+    s.scenario(f"Mercyland ({len(WARDS)} wards, {int(c23.open_beds.mean())} staffed beds) must decide on FY2024 capacity and safety priorities. The board asks: how full are we, which patients stay longest, "
                "are any departments' readmission rates genuinely worse, and does our payer mix carry revenue risk?")
     s.grid([["Rule", "Applied as"], ["Data minimisation", "Only Q2's non-identifying columns leave the database; frequent attenders are counted, not named"],
             ["Occupancy", "Σ patients in house ÷ Σ staffed beds (bed-days), never an average of daily percentages"],
@@ -224,7 +230,7 @@ def build():
              int(np.ceil(beds_needed)), "int", "Average demand only - peak days need more"),
             (f"Days above 95% in FY{YEAR}", f'=COUNTIFS(tCensus[year],{YEAR},tCensus[occupancy_pct],">0.95")', d95, "int", "Escalation days"),
             (f"Days above 100% in FY{YEAR}", f'=COUNTIFS(tCensus[year],{YEAR},tCensus[occupancy_pct],">1")', d100, "int", "Patients on trolleys / outlying")])
-    s.insight(f"Occupancy averaged {occ:.1%} in FY{YEAR} with {d95} escalation days. About {int(np.ceil(beds_needed))} extra staffed beds (≈ one bay per ward) "
+    s.insight(f"Occupancy averaged {occ:.1%} in FY{YEAR} with {d95} escalation days. About {int(np.ceil(beds_needed))} extra staffed beds "
               "would bring the average to 85%; alternatively, reducing average LOS by one day frees a similar capacity (see sheet 5).")
 
     # ---- 5 LOS
@@ -246,12 +252,14 @@ def build():
                  calc={"Admissions": ('=COUNTIFS(tAdm[los_days],">="&[@From],tAdm[los_days],"<="&[@To])', "int",
                                       [int(adm.los_days.between(a, z).sum()) for a, z, _ in LOSB]),
                        "Share": ("=[@Admissions]/ROWS(tAdm)", "pct", [adm.los_days.between(a, z).mean() for a, z, _ in LOSB])})
-    s.chart("column", [{"name": "Admissions", "categories": tl.ref("Band"), "values": tl.ref("Admissions")}], "Stays are spread evenly from 1 to 30 days",
+    s.chart("column", [{"name": "Admissions", "categories": tl.ref("Band"), "values": tl.ref("Admissions")}], f"Right-skewed: half of stays are {med_los:.0f} days or less; a long tail runs to {LOSMAX} days",
             legend=False, rows=14, size=(520, 240))
-    s.calc([("Bed-days saved if every stay of 22+ days were 1 day shorter", '=COUNTIFS(tAdm[los_days],">=22")', int((adm.los_days >= 22).sum()), "int",
+    s.calc([(f"Share of admissions staying {LONG}+ days", f'=COUNTIFS(tAdm[los_days],">={LONG}")/ROWS(tAdm)', sh_long, "pct", ""),
+            (f"…their share of all bed-days", f'=SUMIFS(tAdm[los_days],tAdm[los_days],">={LONG}")/SUM(tAdm[los_days])', bd_long, "pct", "The long tail fills the beds"),
+            (f"Bed-days saved if every stay of {LONG}+ days were 1 day shorter", f'=COUNTIFS(tAdm[los_days],">={LONG}")', n_long, "int",
              "≈ beds freed = bed-days ÷ 365"),
-            ("Equivalent beds freed", '=COUNTIFS(tAdm[los_days],">=22")/365', (adm.los_days >= 22).sum() / 365, "dec1", "")])
-    s.para("Mean ≈ median here because stays are uniform; in real hospitals LOS is right-skewed and the median and P90 matter more than the mean.", "note")
+            ("Equivalent beds freed", f'=COUNTIFS(tAdm[los_days],">={LONG}")/365', n_long / 365, "dec1", "")])
+    s.para(f"Mean {alos:.1f} days > median {med_los:.0f}: LOS is right-skewed, so report the median and P90 alongside the mean.", "note")
 
     # ---- 6 Readmission
     s = s6
@@ -297,11 +305,11 @@ def build():
     s.band("8.1", "Board summary")
     for m in [f"CAPACITY: Occupancy averaged {occ:.1%} in FY{YEAR} (target 85%), with {d95} days above 95% and {d100} above 100%. "
               f"About {int(np.ceil(beds_needed))} extra staffed beds - or shorter long stays - are needed to reach the target.",
-              f"FLOW: {len(adm):,} admissions, average stay {alos:.1f} days, evenly spread 1-30 days; {int((adm.los_days >= 22).sum()):,} stays of 22+ days drive bed demand.",
+              f"FLOW: {len(adm):,} admissions, mean stay {alos:.1f} days (median {med_los:.0f}); stays of {LONG}+ days are {sh_long:.0%} of admissions but {bd_long:.0%} of bed-days.",
               f"SAFETY: 30-day readmission {rr:.1%}. {', '.join(above) or 'None'} sit genuinely above the hospital rate (95% CI); {', '.join(below) or 'none'} below. "
               "Findings validated with clinical leads before publication.",
               f"FINANCE: ₦{bill / 1e9:,.2f}bn billed; five payers each hold {min(shares):.0%}-{max(shares):.0%} - no concentration risk.",
-              f"RECOMMENDATIONS: (1) fund {int(np.ceil(beds_needed))} staffed beds or a discharge-planning team targeting 22+ day stays (owner: COO); (2) Surgery readmission review (owner: Medical Director); "
+              f"RECOMMENDATIONS: (1) fund {int(np.ceil(beds_needed))} staffed beds or a discharge-planning team targeting {LONG}+ day stays (owner: COO); (2) readmission review in {', '.join(above)} (owner: Medical Director); "
               "(3) monthly board dashboard from the same SQL queries."]:
         s.para(m, "text")
     s.band("8.2", "Defence questions")
