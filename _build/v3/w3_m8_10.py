@@ -318,26 +318,17 @@ STG_ROWS = sq("SELECT COUNT(*) AS n FROM stg_admissions_2023").n[0]
 COMMA = sq("SELECT COUNT(*) AS n FROM stg_admissions_2023 WHERE Bill_Amount_NGN LIKE '%,%'").n[0]
 EX = sq("SELECT Bill_Amount_NGN AS b, CAST(Bill_Amount_NGN AS REAL) AS c FROM stg_admissions_2023 "
         "WHERE Bill_Amount_NGN LIKE '%,%' LIMIT 1").iloc[0]
-RULES_SQL = """
-SELECT 'Doctor not in doctors' AS rule, COUNT(*) AS n
-FROM stg_admissions_2023 s
-LEFT JOIN prod.doctors d ON d.consultant_name = s.Consultant_Name
-WHERE d.consultant_id IS NULL
-UNION ALL
-SELECT 'Discharge before admission', COUNT(*)
+CHECK_SQL = """
+SELECT COUNT(*) FROM stg_admissions_2023
+WHERE Discharge_Date = '';
+
+SELECT Ward, COUNT(*) AS n
 FROM stg_admissions_2023
-WHERE Discharge_Date <> '' AND Discharge_Date < Admit_Date
-UNION ALL
-SELECT 'Bill below zero', COUNT(*)
-FROM stg_admissions_2023
-WHERE CAST(REPLACE(Bill_Amount_NGN, ',', '') AS REAL) < 0"""
-RULES = sq(RULES_SQL)
+GROUP BY Ward;"""
+BLANK_DIS = sq("SELECT COUNT(*) AS n FROM stg_admissions_2023 WHERE Discharge_Date = ''").n[0]
+WARD_SPELL = sq("SELECT COUNT(DISTINCT Ward) AS n FROM stg_admissions_2023").n[0]
+BEFORE = sq("SELECT COUNT(*) AS n FROM stg_admissions_2023 WHERE Discharge_Date <> '' AND Discharge_Date < Admit_Date").n[0]
 DUPS = int(RAW.duplicated().sum())
-PROD = {r: v(s, "lc") for r, s in [
-    ("Discharge before admission", "SELECT COUNT(*) FROM admissions WHERE discharge_date < admit_date"),
-    ("Bill below zero", "SELECT COUNT(*) FROM admissions WHERE bill_amount_ngn < 0"),
-    ("Doctor not in doctors", "SELECT COUNT(*) FROM admissions a LEFT JOIN doctors d ON d.consultant_id = a.consultant_id "
-                              "WHERE d.consultant_id IS NULL")]}
 PROFILE = {c: (int((RAW[c].str.strip() == "").sum()), RAW[c].replace("", pd.NA).nunique())   # distinct as received
            for c in ("Discharge_Date", "HMO", "Ward", "Gender")}
 EMERG = (LC[LC.Admission_Route == "Emergency"].Readmitted_30d == "Yes").mean()
@@ -347,10 +338,10 @@ SQLREC = q("SELECT COUNT(*) AS n, ROUND(SUM(bill_amount_ngn), 2) AS b FROM admis
 
 M310 = dict(
     id="3.10", title="File Extracts into SQL, DAX and Dashboards",
-    subtitle="The whole week on one extract: profile it, stage it, report exceptions in SQL, measure it in DAX, reconcile it.",
+    subtitle="The whole week on one extract: profile it, load it into DB Browser, check it with simple SQL, measure it in DAX, reconcile it.",
     objectives=["Profile a file extract before loading it.",
-                "Load it unchanged into a staging table and check the row count.",
-                "Find orphans and rule breaks with SQL joins and an exception report.",
+                "Import it unchanged into DB Browser and check the row count.",
+                "Run simple one-line checks in SQL, then clean in Power Query.",
                 "Define explicit DAX measures and test them under filters.",
                 "Reconcile file, SQL and dashboard before publishing."],
     topics=[
@@ -366,29 +357,31 @@ M310 = dict(
               ["Gender", I(PROFILE["Gender"][0]), I(PROFILE["Gender"][1]), "Map to Female / Male"]]),
           watch="Never 'fix' a blank discharge date by guessing; flag it and ask the source system."),
 
-        T("3.10.2", "Beginner: ingest the extract into a staging table",
-          defn="A staging table holds data exactly as received, every column as TEXT, before any cleaning or type conversion.",
-          simple="Load first, check the row count matches the file, then clean in the next step.",
-          **CODE(""".mode csv
-.import --skip 1 Mercyland_Episodes_2023_DIRTY.csv stg_admissions_2023
-SELECT COUNT(*) FROM stg_admissions_2023;""", label="SQLITE3 SHELL", size=11),
-          grid=dict(label="Checks", widths=[2.4, 1.6], size=11.5, rows=[
+        T("3.10.2", "Beginner: import the extract into DB Browser",
+          defn="A staging table holds data exactly as received, every column as text, before any cleaning.",
+          simple="DB Browser imports a CSV in a few clicks. Load first, check the row count matches the file, then clean.",
+          steps=["File › Import › Table from CSV file", "Pick Mercyland_Episodes_2023_DIRTY.csv; tick column names in first line",
+                 "Table name: stg_admissions_2023 › OK › Write Changes", "Execute SQL: SELECT COUNT(*) FROM stg_admissions_2023;"],
+          grid=dict(label="Checks", widths=[2.2, 1.8], size=11.5, rows=[
               ["Check", "Result"],
               ["CSV data rows / staging rows", f"{I(len(RAW))} / {I(STG_ROWS)}"],
               ["Bills written with commas", f"{I(COMMA)}, e.g. '{EX.b}'"],
-              [f"CAST('{EX.b}' AS REAL)", f"{EX.c:g} (wrong): remove commas first"]]),
-          stack=True,
-          watch="Converting types during the import hides the bad values; stage as text, then convert with checks."),
+              ["What to do", "Remove commas before summing"]]),
+          order=["steps", "grid"], split=0.52,
+          watch="Do not change anything during the import; stage it as received, then clean with checks."),
 
-        T("3.10.3", "Intermediate: SQL joins and an exception report",
-          defn="An exception report lists, for each business rule, how many rows break it, so problems can be fixed at source.",
-          simple="A LEFT JOIN … WHERE … IS NULL finds orphans; UNION ALL stacks one count per rule into a single report.",
-          **CODE(RULES_SQL.strip("\n"), label="SQL  ·  STAGING + PROD.DOCTORS", size=10.5),
-          grid=dict(label="Exceptions", widths=[2.2, 1, 1], size=11.5, rows=[
-              ["Rule", "Staging", "Production"]] + [[r.rule, I(r.n), I(PROD[r.rule])] for r in RULES.itertuples()] + [
-              ["Exact duplicate rows", I(DUPS), "0"]]),
-          split=0.6,
-          watch="Run the same report on production: a rule that fails there too is a system problem, not an extract problem."),
+        T("3.10.3", "Intermediate: simple SQL checks, then clean in Power Query",
+          defn="A data check counts how many rows break a simple rule, so you know what to fix before analysing.",
+          simple="Each check is one short query. The fixing itself happens in Power Query (Week 2), where every step is recorded.",
+          **CODE(CHECK_SQL.strip("\n"), label="SQL  ·  STAGING TABLE", size=11.5),
+          grid=dict(label="What the checks find", widths=[2.0, 0.8, 1.9], size=11.5, rows=[
+              ["Check", "Rows", "Fix in Power Query"],
+              ["Blank discharge date", I(BLANK_DIS), "Flag; do not guess"],
+              ["Ward spellings", I(WARD_SPELL), "Trim, Proper case, map to 4"],
+              ["Discharge before admission", I(BEFORE), "Flag for Health Records"],
+              ["Exact duplicate rows", I(DUPS), "Remove Duplicates"]]),
+          split=0.45,
+          watch="Run the checks again after cleaning: every count except the flags should be zero (wards: 4)."),
 
         T("3.10.4", "Intermediate: DAX measures and filter context",
           defn="Explicit measures on the hospital model turn the cleaned admissions into KPIs that respond correctly to filters.",
@@ -427,8 +420,8 @@ DIVIDE (
           watch="A difference of one row is still a FAIL: find it before anyone sees the dashboard."),
     ],
     takeaways=["Profile first: blanks, distinct values, odd formats.",
-               "Stage as text; the row count must match the file.",
-               "Exception reports with LEFT JOIN … IS NULL and UNION ALL.",
+               "Import as received; the row count must match the file.",
+               "One-line SQL checks; the cleaning happens in Power Query.",
                "Explicit DAX measures, tested under filters.",
                "File = SQL = dashboard before publishing."],
 )

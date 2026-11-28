@@ -14,27 +14,20 @@ FROM v_order_lines WHERE order_status IN ('Delivered','Completed') GROUP BY cust
 ZONE_ROWS = len(q(ZONE_SQL))
 
 
-def _top(year):
-    r = q(f"""SELECT t.seller_id, s.store_name, SUM(t.total_price) AS rev, COUNT(*) AS n FROM transactions t
-              JOIN sellers s ON s.seller_id = t.seller_id
-              WHERE strftime('%Y', t.order_date) = '{year}' GROUP BY t.seller_id ORDER BY rev DESC LIMIT 1""").iloc[0]
-    return f"{r.seller_id} {r.store_name} ({N(r.rev)})"
-
-
-SCOPE = {y: v(f"SELECT COUNT(*) FROM transactions WHERE strftime('%Y', order_date) = '{y}'") for y in (2024, 2025)}
-INJ = v("SELECT COUNT(*) FROM transactions WHERE strftime('%Y', order_date) = '2025' OR '1'='1'")
-BAD1 = v("SELECT COUNT(*) FROM transactions WHERE strftime('%Y', order_date) = 2025")
+LIKE25 = v("SELECT COUNT(*) FROM transactions WHERE order_date LIKE '2025%'")
 BAD2 = v("SELECT COUNT(*) FROM transactions WHERE order_date >= 20250101")
 GOOD = v("SELECT COUNT(*) FROM transactions WHERE order_date >= '2025-01-01'")
+STATUS_ROWS = [[r.order_status, I(r.n), N(r.v)] for r in q("SELECT order_status, COUNT(*) AS n, SUM(total_price) AS v "
+               "FROM transactions GROUP BY order_status ORDER BY n DESC").itertuples()]
 
 M33 = dict(
     id="3.3", title="Connecting Excel to Databases with ODBC",
-    subtitle="Drivers, DSNs, connection strings, credentials, SQL sent from Excel, parameters, refresh and the usual errors.",
+    subtitle="Bring database tables into Excel, where the analysis happens: ODBC connections, refresh, a CSV route and a first PivotTable.",
     objectives=["Explain what ODBC and a driver do, and match the driver to Office's bitness.",
-                "Choose between a DSN and a DSN-less connection string.",
-                "Connect from Excel, send a SQL statement and load the result.",
+                "Connect Excel to a database and load a table or a query result.",
                 "Keep credentials out of the workbook and refresh safely.",
-                "Use parameters without SQL injection, and fix the common ODBC errors."],
+                "Use the CSV export route when ODBC is not available.",
+                "Analyse the imported table with a PivotTable and check it against SQL."],
     topics=[
         T("3.3.1", "What Is ODBC?",
           defn="ODBC (Open Database Connectivity) is a standard programming interface that lets an application talk to any "
@@ -82,7 +75,7 @@ Database=C:\\ETEH\\01_Section_Examples\\Week_3\\
         T("3.3.4", "Configuring a Connection in Excel",
           defn="Excel's ODBC connector (Get Data › From Other Sources › From ODBC) opens a connection and lets you pick a "
                "table or send your own SQL statement.",
-          simple=f"Paste the zone query from 3.2.17 under Advanced options: only its {ZONE_ROWS} result rows travel to Excel.",
+          simple=f"Paste the zone query from 3.2.14 under Advanced options: only its {ZONE_ROWS} result rows travel to Excel.",
           steps=["Data › Get Data › From Other Sources › From ODBC", "Data source name: (None); paste the connection string",
                  "Advanced options › SQL statement: paste the query", "OK › Transform Data to check, or Load To › Table"],
           grid=dict(label="What arrives", widths=[1.6, 1.8], rows=[
@@ -126,33 +119,44 @@ Database=C:\\ETEH\\01_Section_Examples\\Week_3\\
               ["Enable background refresh", "Off for big queries", "No half-loaded results"]]),
           watch="A refresh that fails leaves the old numbers on screen; read the status message before you send the file."),
 
-        T("3.3.8", "Parameters in SQL Queries",
-          defn="A query parameter is a named value supplied at run time, so one query can serve many reports.",
-          simple="A parameter such as pYear is placed into the SQL. Never paste free text typed by users into SQL: that "
-                 "invites SQL injection.",
-          grid=dict(label="One query, three values typed", widths=[1.6, 2.6, 1.2], size=11.5, rows=[
-              ["Year typed", "Top seller by revenue", "Rows in scope"],
-              ["2024", _top(2024), I(SCOPE[2024])],
-              ["2025", _top(2025), I(SCOPE[2025])],
-              ["2025' OR '1'='1", "Every row (injection)", I(INJ)]]),
-          watch="The third value turned 'one year' into 'every row' without any error. Validate parameters: a year is four digits."),
-
-        T("3.3.9", "Troubleshooting ODBC Errors",
+        T("3.3.8", "Troubleshooting ODBC Errors",
           defn="Most ODBC failures fall into four groups: driver mismatch, wrong path, missing credentials, and SQL that does "
                "not fit the dialect or the data types.",
-          simple="SQLite stores dates as text. Compare text with text, or the filter silently returns the wrong rows.",
+          simple="SQLite stores dates as text. Compare text with text (in quotes), or the filter silently returns the wrong rows.",
           grid=dict(label="Three ways to ask for 2025 orders", widths=[2.6, 0.8, 2.2], size=11.5, rows=[
               ["Condition", "Rows", "Verdict"],
-              ["strftime('%Y', order_date) = 2025", I(BAD1), "Wrong: text compared with a number"],
-              ["order_date >= 20250101", I(BAD2), "Wrong: text ranks above every number"],
+              ["order_date >= 20250101", I(BAD2), "Wrong: number, not text"],
+              ["order_date LIKE '2025%'", I(LIKE25), "Correct: text starting 2025"],
               ["order_date >= '2025-01-01'", I(GOOD), "Correct"]]),
           watch="Zero rows or all rows, with no error, is the signature of a type mismatch in WHERE."),
+        T("3.3.9", "Another Route: Export a Table to CSV",
+          defn="DB Browser can export any table or view to a CSV file, which Excel imports with Data › From Text/CSV.",
+          simple="Use this when the ODBC driver cannot be installed, for example on a Mac or a locked work laptop. The CSV is a "
+                 "snapshot: it does not refresh.",
+          steps=["DB Browser › File › Export › Table(s) as CSV file", "Pick transactions; keep column names in the first line",
+                 "Save SuperMart_Online_transactions.csv", "Excel › Data › From Text/CSV › Transform Data › Close & Load"],
+          grid=dict(label="ODBC connection versus CSV export", widths=[1.1, 1.7, 1.5], size=11.5, rows=[
+              ["", "ODBC connection", "CSV export"],
+              ["Setup", "Driver + connection", "None"],
+              ["New data", "Data › Refresh All", "Export again"],
+              ["Best for", "Reports you repeat", "One-off analysis"]]),
+          order=["steps", "grid"], split=0.52,
+          watch=f"Check the row count after loading: transactions must arrive with {I(N_LINES)} data rows."),
+
+        T("3.3.10", "Analyse the Imported Table in Excel",
+          defn="Once the data is an Excel table, everything from Weeks 1 and 2 works on it: functions, PivotTables and charts.",
+          simple="Load transactions as a table, insert a PivotTable, put order_status in Rows and total_price in Values. The "
+                 "totals match the SQL you ran in 3.2.",
+          grid=dict(label="PivotTable on the imported transactions", widths=[1.5, 1.0, 1.7], size=11.5, rows=[
+              ["order_status", "Lines", "Sum of total_price"]] + STATUS_ROWS + [["Grand Total", I(N_LINES), N(GROSS)]]),
+          watch="If the Grand Total differs from SELECT SUM(total_price) FROM transactions, the import is incomplete: refresh and check."),
+
     ],
     takeaways=["ODBC + a matching driver connects Excel to almost any database.",
-               "Prefer DSN-less strings so the workbook travels.",
-               "Send SQL so the database does the work; only results travel.",
+               "Prefer DSN-less strings so the workbook travels; refresh before you share.",
                "Credentials stay in the credential store, never in cells.",
-               "Validate parameters; compare text dates with text."],
+               "No driver? Export the table to CSV and import it with Data › From Text/CSV.",
+               "Once imported, analyse with PivotTables and check the totals against SQL."],
 )
 
 # ---------------------------------------------------------------- 3.4
@@ -174,34 +178,15 @@ ZRAW = DIRTY.Zone[DIRTY.Zone != ""]
 Z_FAIL = int((~ZRAW.isin(Z4)).sum())
 Z_FAIL2 = int((~ZRAW.str.strip().isin(Z4)).sum())
 
-# fuzzy example: eight seller names as a supplier typed them (built for the exercise; same table tFuzzy in the workbook)
-FZ = SE.head(8)[["seller_id", "store_name"]].copy()
-# every third name is typed with a different word form (only fuzzy matching finds it), the others in capitals or with a double space
-_FORMS = {"Trading Company": "Trading Co.", "Shopping Centre": "Shopping Center", "Global Concepts": "Global Concept",
-          "Superstore": "Super Store", "Online Shop": "Online Shopping", "Retail Hub": "Retail-Hub", "Enterprises": "Enterprise",
-          "Ventures": "Venture", "Stores": "Store", "Supplies": "Supply", "Merchants": "Merchant", "Emporium": "Emporium Ltd",
-          "Mart": "Mart Ltd", "Depot": "Depot Ltd", "Plaza": "Plaza Ltd"}
-
-
-def _variant(s):
-    k = next(k for k in _FORMS if s.endswith(k))
-    return s[: -len(k)] + _FORMS[k]
-
-
-FZ["typed"] = [_variant(s) if i % 3 == 0 else (s.upper() if i % 3 == 1 else s.replace(" ", "  ", 1))
-               for i, s in enumerate(FZ.store_name)]
-FZ_EXACT = int((FZ.typed == FZ.store_name).sum())
-FZ_NORM = int((FZ.typed.str.lower().str.split().str.join(" ") == FZ.store_name.str.lower()).sum())
-FZ_MISS = FZ[FZ.typed.str.lower().str.split().str.join(" ") != FZ.store_name.str.lower()].typed.tolist()
 
 M34 = dict(
     id="3.4", title="Merging and Appending in Power Query",
-    subtitle="Six join kinds with real row counts, fuzzy matching, expand or aggregate, the Cartesian trap and appending.",
+    subtitle="Combine imported tables in Power Query: the four join kinds you need, expand or aggregate, the Cartesian trap and appending.",
     objectives=["Tell merge (join) from append (union).",
-                "Choose among inner, left, right, full, left anti and right anti joins.",
+                "Choose among inner, left outer, full outer and left anti joins.",
                 "Expand or aggregate a merged column, and avoid the Cartesian trap.",
-                "Append two or many tables and handle mismatched columns.",
-                "Clean keys, verify cardinality and document every merge."],
+                "Append two or more tables with the same columns.",
+                "Clean the keys before merging and check the row count after."],
     topics=[
         T("3.4.1", "Merge versus Append",
           defn="A merge combines two tables side by side by matching key values (a SQL JOIN); an append stacks tables with "
@@ -240,16 +225,7 @@ LEFT JOIN deliveries d
   ON d.delivery_id = t.delivery_id;""", widths=[1, 1, 1], split=0.6),
           watch="Put the main table first (on the left). Swap them and the main table becomes the side that can lose rows."),
 
-        T("3.4.4", "Right Outer Join",
-          defn="A right outer join returns every row of the right table plus matching columns from the left.",
-          simple="It equals a left join with the tables swapped, so most analysts swap the order and keep to left joins.",
-          grid=dict(label="Two ways to keep every delivery", widths=[2.6, 1.4, 0.8], rows=[
-              ["Written as", "Keeps every row of", "Rows"],
-              ["transactions RIGHT JOIN deliveries", "deliveries", I(RIGHT)],
-              ["deliveries LEFT JOIN transactions", "deliveries", I(RIGHT)]]),
-          watch="Mixing left and right joins in one query confuses every reader; pick one direction."),
-
-        T("3.4.5", "Full Outer Join",
+        T("3.4.4", "Full Outer Join",
           defn="A full outer join returns all rows from both tables, matched where possible and null-filled where not.",
           simple="It is the reconciliation join: list everything from both sides and see what is missing from each.",
           like="Like comparing a bank statement with your own record book and ticking off the matches.",
@@ -261,7 +237,7 @@ LEFT JOIN deliveries d
               ["Total", I(LEFT + RANTI), "Full outer result"]]),
           watch="An inner join used for a reconciliation hides exactly the differences you were looking for."),
 
-        T("3.4.6", "Left Anti Join",
+        T("3.4.5", "Left Anti Join",
           defn="A left anti join returns the rows of the left table that have no match in the right table.",
           simple="It answers 'which of mine are missing over there?' and gives you an exception list to investigate.",
           like="Checking the guest list against arrivals: the anti join lists who didn't come.",
@@ -275,33 +251,7 @@ WHERE d.delivery_id IS NULL
 GROUP BY 1, 2;""", fmt={"value": "n"}, size=11.5, split=0.55),
           watch="Find out why rows are missing before calling them errors: here every one is a cancellation."),
 
-        T("3.4.7", "Right Anti Join",
-          defn="A right anti join returns the rows of the right table that have no match in the left table.",
-          simple="The mirror check: which products never sold, which sellers never made a sale.",
-          grid=dict(label="Things with no order lines", widths=[1.6, 0.6, 2.4], rows=[
-              ["Check", "Rows", "Detail"],
-              ["Products never sold", I(PROD_NEVER), f"All {I(len(PR))} products have sales"],
-              ["Sellers never sold", I(len(NEVER_SOLD)), ", ".join(NEVER_SOLD)]]),
-          watch="Checking one direction only misses the gap on the other side; run both anti joins."),
-
-        T("3.4.8", "Fuzzy Matching",
-          defn="A fuzzy merge matches keys that are similar rather than identical, scoring similarity from 0 to 1 against a threshold.",
-          simple="Use it for hand-typed names when no ID exists. Every match is a suggestion to review.",
-          grid=dict(label="A supplier's hand-typed list of 8 seller names", widths=[2, 1.2, 2.2], size=11.5, rows=[
-              ["Method", "Matched", "Note"],
-              ["Exact match", f"{FZ_EXACT} of 8", "Capitals, spaces and word forms fail"],
-              ["Ignore case and spaces", f"{FZ_NORM} of 8", "Missed: " + "; ".join(FZ_MISS)],
-              ["Fuzzy, threshold 0.8", "Candidates for all", "Review each one"]]),
-          **CODE("""
-Table.FuzzyNestedJoin(Supplier, {"typed"},
-  sellers, {"store_name"}, "Match",
-  JoinKind.LeftOuter,
-  [IgnoreCase = true, IgnoreSpace = true,
-   Threshold = 0.8])""", label="M", size=11.5),
-          order=["code", "grid"], split=0.45,
-          watch="A low threshold can match two different sellers with similar names; never accept fuzzy matches unread."),
-
-        T("3.4.9", "Expanding versus Aggregating After a Merge",
+        T("3.4.6", "Expanding versus Aggregating After a Merge",
           defn="After a Power Query merge, each row holds a nested table: Expand brings its columns out as rows; Aggregate "
                "summarises it to one value per row.",
           simple="Expanding a one-to-many merge adds rows; aggregating keeps one row per key.",
@@ -312,7 +262,7 @@ Table.FuzzyNestedJoin(Supplier, {"typed"},
               ["Aggregate", I(len(CU)), f"1 row: {I(C985.n)} orders, {N(C985.v)}"]]),
           watch="Expand a one-to-many merge and then sum a customer column: each customer's value repeats per order."),
 
-        T("3.4.10", "The Cartesian Product Trap",
+        T("3.4.7", "The Cartesian Product Trap",
           defn="When the join key repeats on both sides, every matching row pairs with every other, multiplying rows (a "
                "partial Cartesian product).",
           simple="Join orders to deliveries on customer_id instead of delivery_id and each order meets every delivery of that customer.",
@@ -324,7 +274,7 @@ Table.FuzzyNestedJoin(Supplier, {"typed"},
           watch=f"Names make poor keys: {SE.owner_name.nunique()} owner names cover {len(SE)} sellers, so joining on owner_name multiplies rows too. "
                 "Join and group on seller_id."),
 
-        T("3.4.11", "Appending Two Tables",
+        T("3.4.8", "Appending Two Tables",
           defn="Append Queries stacks two tables, matching columns by name, not by position.",
           simple="Home › Append Queries. A column named differently in one table becomes a separate, half-empty column.",
           grid=dict(label="Week_2 › Ex2.3_Files › SuperMart_Monthly_Sales_2025", widths=[2.4, 0.8, 1.4], rows=[
@@ -334,7 +284,7 @@ Table.FuzzyNestedJoin(Supplier, {"typed"},
               ["Appended", I(MROWS[0] + MROWS[1]), "21, no new columns"]]),
           watch="Column order does not matter in an append; column names do."),
 
-        T("3.4.12", "Appending Three or More Tables",
+        T("3.4.9", "Appending Three or More Tables",
           defn="Append Queries as New accepts three or more tables; the From Folder connector appends every file in a folder, "
                "including files added later.",
           simple="For files that arrive monthly, connect to the folder once and refresh.",
@@ -345,17 +295,7 @@ Table.FuzzyNestedJoin(Supplier, {"typed"},
               ["From Folder", "1 query", f"{I(sum(MROWS))} rows = FY2025 POS lines"]]),
           watch="Appending twelve queries by hand means somebody forgets month thirteen."),
 
-        T("3.4.13", "Handling Schema Mismatches on Append",
-          defn="A schema mismatch is a difference in column names or types between tables being appended.",
-          simple="Power Query keeps every column and fills gaps with null, with no error. Check null counts after each append.",
-          like="Two class lists, one headed 'Surname' and one 'Last name': you get two half-filled columns.",
-          grid=dict(label=f"What if December ({MROWS[-1]} rows) arrived as Sales_NGN?", widths=[1.2, 2, 1.4], rows=[
-              ["Column", "Null after append", "After renaming"],
-              ["Sales", f"{I(MROWS[-1])} of {I(sum(MROWS))} ({P(MROWS[-1] / sum(MROWS))})", "0"],
-              ["Sales_NGN", f"{I(sum(MROWS) - MROWS[-1])} ({P(1 - MROWS[-1] / sum(MROWS))})", "Column gone"]]),
-          watch="The appended total looks plausible while one month's sales sit unused in another column."),
-
-        T("3.4.14", "Cleaning Join Keys Before Merging",
+        T("3.4.10", "Cleaning Join Keys Before Merging",
           defn="Key cleaning makes both sides of a join comparable: same type, trimmed, consistent case and no hidden characters.",
           simple="Merges fail on differences you cannot see. Clean both keys the same way: Trim, Clean, a consistent case, and one type.",
           like="Two keys cut almost the same: a tiny difference stops the lock turning.",
@@ -365,36 +305,12 @@ Table.FuzzyNestedJoin(Supplier, {"typed"},
               ["Rows that fail an exact match", I(Z_FAIL), I(Z_FAIL2)]]),
           watch="Cleaning the key in one table only still fails: both sides must be cleaned the same way."),
 
-        T("3.4.15", "Verifying Join Cardinality",
-          defn="Join cardinality states how many rows on each side share a key: one-to-one, one-to-many or many-to-many.",
-          simple="Before merging, check the key is unique on the 'one' side. After, compare row counts in and out.",
-          like="Count passengers on and off a bus: more off than on means something is wrong.",
-          **SQL("""
-SELECT 'transactions' AS tbl, COUNT(*) AS rows_,
-       COUNT(DISTINCT order_id) AS keys
-FROM transactions
-UNION ALL
-SELECT 'deliveries', COUNT(*), COUNT(DISTINCT order_id)
-FROM deliveries;""", extra=[["left join", I(LEFT), "= left: safe"]], widths=[1.2, 0.9, 0.9], split=0.58),
-          watch="More rows out than in means a duplicated key; fewer means unmatched rows were dropped."),
-
-        T("3.4.16", "Documenting Merge and Append Logic",
-          defn="Merge documentation records each step's name, join kind, key, expected cardinality and row counts.",
-          simple="Rename steps (not 'Merged Queries1') and log the counts in a 00_README sheet, so the next analyst knows what is normal.",
-          like="Like labelling the wires in a fuse box.",
-          grid=dict(label="Merge log entry", widths=[1.5, 3], rows=[
-              ["Item", "Entry"],
-              ["Step name", "Merged Orders to Deliveries"],
-              ["Join kind / key", "Left outer on delivery_id"],
-              ["Cardinality", "One-to-one"],
-              ["Rows in / out", f"{I(N_LINES)} / {I(LEFT)} ({I(NO_DELIV)} with no courier)"]]),
-          watch="An undocumented merge cannot be checked: nobody knows what row count to expect."),
     ],
     takeaways=["Merge adds columns (join); append adds rows (union).",
                "Choose the join kind deliberately; inner joins drop rows silently.",
-               "Anti joins produce exception lists in both directions.",
-               "Join on true keys; check cardinality and row counts.",
-               "Append by column name; clean keys; log every merge."],
+               "A left anti join lists the rows with no match: an exception list.",
+               "Join on true keys and check the row count after every merge.",
+               "Append tables with the same column names; clean keys first."],
 )
 
 # ---------------------------------------------------------------- 3.5
@@ -456,7 +372,7 @@ M35 = dict(
         T("3.5.5", "The Date Table",
           defn="A date table is a dimension with exactly one row per calendar day over the whole period, without gaps, "
                "marked as the model's date table.",
-          simple="It makes time intelligence (3.6.22) reliable and shows days and months with no sales.",
+          simple="It makes time intelligence (3.6.17) reliable and shows days and months with no sales.",
           ex=dict(t="tDimDate", cols=["Date", "Year", "Quarter", "Month_No", "Month", "Weekday"], n=3, size=11.5,
                   note=f"Showing 3 of {I(len(DD))} days · {DD.Date.min():%Y-%m-%d} to {DD.Date.max():%Y-%m-%d}, no gaps"),
           grid=dict(label="Checks", widths=[2.4, 1.2], rows=[

@@ -24,12 +24,12 @@ def band(x):
 
 M36A = dict(
     id="3.6A", title="Power Pivot and DAX: Foundations and Context",
-    subtitle="Measures and calculated columns, row and filter context, CALCULATE, FILTER, ALL, iterators and safe division.",
+    subtitle="Measures and calculated columns, row and filter context, CALCULATE, ALL, RELATED, SUMX and safe division.",
     objectives=["Explain Power Pivot and load tables into the Data Model.",
                 "Tell a calculated column from a measure, and write DAX syntax.",
                 "Explain row context and filter context.",
-                "Change filters with CALCULATE, FILTER, ALL and ALLEXCEPT.",
-                "Use RELATED, iterators, COUNTROWS, DISTINCTCOUNT, DIVIDE, SWITCH and VAR."],
+                "Change filters with CALCULATE and remove them with ALL.",
+                "Use RELATED, SUMX, COUNTROWS, DISTINCTCOUNT, DIVIDE, IF and SWITCH."],
     topics=[
         T("3.6.1", "What Is Power Pivot?",
           defn="Power Pivot is Excel's data modelling engine: it holds related tables in compressed memory and evaluates "
@@ -137,24 +137,7 @@ CALCULATE (
           split=0.48,
           watch="A slicer on order_status is overridden inside this measure: CALCULATE replaces that filter."),
 
-        T("3.6.9", "FILTER",
-          defn="FILTER returns the rows of a table for which a condition is true, testing the rows one at a time.",
-          simple="Use it inside CALCULATE when a simple column filter is not enough, such as a test on a measure or on two columns.",
-          **CODE("""
-Net Rev Big Orders :=
-CALCULATE (
-    [Net Revenue],
-    FILTER ( tTransactions,
-        tTransactions[total_price] > 500000 )
-)""", label="DAX MEASURE"),
-          grid=dict(label="Result", widths=[1.8, 1, 1.5], rows=[
-              ["Measure", "Lines", "Value"],
-              ["[Net Rev Big Orders]", I(len(NET_BIG)), N(NET_BIG.total_price.sum())],
-              ["[Net Revenue]", I(N_NET), N(NETREV)]]),
-          split=0.52,
-          watch="FILTER over a whole fact table is slow on big models; for a simple column test let CALCULATE filter the column."),
-
-        T("3.6.10", "ALL",
+        T("3.6.9", "ALL",
           defn="ALL returns all rows of a table, or all values of a column, ignoring any filters on them.",
           simple="Divide a measure by the same measure with ALL to get each item's share of the whole.",
           **CODE("""
@@ -170,24 +153,7 @@ DIVIDE (
           split=0.5,
           watch="The shares must add up to 100%. If they don't, the ALL is on the wrong column."),
 
-        T("3.6.11", "ALLEXCEPT",
-          defn="ALLEXCEPT removes every filter on a table except those on the columns you list.",
-          simple="Use it for 'share of the parent': each tier's share of its own zone, not of the whole company.",
-          **CODE("""
-Share of Zone :=
-DIVIDE (
-    [Net Revenue],
-    CALCULATE ( [Net Revenue],
-        ALLEXCEPT ( tCustomers,
-                    tCustomers[zone] ) )
-)""", label="DAX MEASURE"),
-          grid=dict(label="South-West tiers", widths=[1.1, 1.6, 1.1], rows=[
-              ["Tier", "[Net Revenue]", "[Share of Zone]"]] + [
-              [t, N(x), P(x / SW.sum())] for t, x in SW.items()]),
-          split=0.5,
-          watch="ALLEXCEPT keeps only the listed columns' filters on that table; a slicer on another column of tCustomers stops working."),
-
-        T("3.6.12", "VALUES and DISTINCT",
+        T("3.6.10", "VALUES and DISTINCT",
           defn="VALUES returns the distinct values of a column visible in the current filter context, plus a blank for "
                "unmatched keys; DISTINCT returns them without that blank.",
           simple="Wrap it in COUNTROWS to count the values in view, or use it to build dynamic titles.",
@@ -201,7 +167,7 @@ COUNTROWS (
           split=0.55,
           watch=f"{I(KCAT.sum())} sellers have sales; none sells all {len(CAT)} categories (the most is {KCAT.index.max()})."),
 
-        T("3.6.13", "RELATED",
+        T("3.6.11", "RELATED",
           defn="RELATED returns a value from the 'one' side of a relationship to the current row on the 'many' side.",
           simple="It is the model's VLOOKUP: no column numbers, no ranges, and it follows the relationship.",
           **CODE("""
@@ -214,24 +180,7 @@ RELATED ( tProducts[category] )
           split=0.5,
           watch="RELATED needs a relationship and a row context; in a measure, use it inside an iterator such as SUMX."),
 
-        T("3.6.14", "RELATEDTABLE",
-          defn="RELATEDTABLE returns the rows on the 'many' side that relate to the current row on the 'one' side.",
-          simple="From each customer, count or sum that customer's transactions.",
-          **CODE("""
-Orders Placed =
-COUNTROWS (
-    RELATEDTABLE ( tTransactions )
-)
--- calculated column in tCustomers""", label="DAX CALCULATED COLUMN"),
-          grid=dict(label="Results on tCustomers", widths=[2, 1.6], rows=[
-              ["Check", "Result"],
-              ["Highest order count", f"{OC.max()} ({OC.idxmax()})"],
-              ["Average per customer", f"{N_LINES / len(CU):.1f} orders"],
-              ["Customers with no orders", f"{I(len(CU) - OC.size)} (blank)"]]),
-          split=0.5,
-          watch="COUNTROWS of an empty table is blank, not 0: add + 0 if the zero must show."),
-
-        T("3.6.15", "SUMX",
+        T("3.6.12", "SUMX",
           defn="SUMX evaluates an expression for each row of a table and returns the sum of the results.",
           simple="Use it when you must multiply or combine columns before adding up.",
           **CODE("""
@@ -247,24 +196,7 @@ SUMX ( tTransactions,
           split=0.45,
           watch="SUM(quantity) × SUM(unit_price) is not revenue: multiply per row first, then add."),
 
-        T("3.6.16", "AVERAGEX",
-          defn="AVERAGEX evaluates an expression for each row of a table and returns the average of the results.",
-          simple="The table you iterate sets the grain: average per order line and average per customer are different questions.",
-          **CODE("""
-Avg Net Spend per Customer :=
-AVERAGEX (
-    VALUES ( tTransactions[customer_id] ),
-    [Net Revenue]
-)""", label="DAX MEASURE"),
-          grid=dict(label="Three averages, three grains", widths=[2, 1.4, 1.1], size=11.5, rows=[
-              ["Measure", "Grain", "Result"],
-              ["Average quantity per line", "Order line", f"{TX.quantity.mean():.2f}"],
-              ["Average net order value", f"Net line ({I(N_NET)})", N(AOV)],
-              ["Avg net spend per customer", f"Customer ({I(NET_BUYERS)})", N(NETREV / NET_BUYERS)]]),
-          split=0.5,
-          watch="State the grain in the measure name: 'average' alone is ambiguous."),
-
-        T("3.6.17", "COUNTROWS",
+        T("3.6.13", "COUNTROWS",
           defn="COUNTROWS returns the number of rows in a table in the current filter context; COUNT counts only the "
                "non-blank values of one column.",
           simple="COUNTROWS is the clearest way to count events such as orders or admissions.",
@@ -274,7 +206,7 @@ AVERAGEX (
               ["COUNT ( tTransactions[delivery_id] )", I(N_LINES - NO_DELIV), f"Skips {I(NO_DELIV)} blanks"]]),
           watch="COUNT on a column with blanks quietly gives a smaller number; count rows unless blanks must be excluded."),
 
-        T("3.6.18", "DISTINCTCOUNT",
+        T("3.6.14", "DISTINCTCOUNT",
           defn="DISTINCTCOUNT returns the number of different values in a column in the current filter context.",
           simple="How many different customers bought? Distinct counts do not add up across groups.",
           grid=dict(label="Counting customers", widths=[2.4, 1, 1.8], rows=[
@@ -284,7 +216,7 @@ AVERAGEX (
               ["Sum of 7 category headcounts", I(HEADS), "Wrong: people counted repeatedly"]]),
           watch="Summing distinct counts by category counts a customer once for every category they bought in."),
 
-        T("3.6.19", "DIVIDE",
+        T("3.6.15", "DIVIDE",
           defn="DIVIDE(numerator, denominator, [alternate]) divides safely, returning blank, or the alternate result, when "
                "the denominator is 0 or blank.",
           simple="Use DIVIDE for every ratio instead of the / operator.",
@@ -301,7 +233,7 @@ DIVIDE (
           split=0.45,
           watch="With the / operator a zero denominator shows Infinity or NaN in the PivotTable; DIVIDE returns blank."),
 
-        T("3.6.20", "IF and SWITCH in DAX",
+        T("3.6.16", "IF and SWITCH in DAX",
           defn="IF returns one of two values; SWITCH(TRUE(), test1, result1, …, default) returns the result of the first true test.",
           simple="SWITCH ( TRUE (), … ) is the tidy way to write three or more bands, like IFS in Excel.",
           **CODE("""
@@ -316,25 +248,12 @@ SWITCH ( TRUE (),
           split=0.5,
           watch="Tests run in order: put the largest threshold first, or every value lands in the first band."),
 
-        T("3.6.21", "Variables in DAX with VAR",
-          defn="VAR name = expression … RETURN result stores an intermediate result once, so it can be reused in the formula.",
-          simple="Measures become easier to read and faster, because the expression is not calculated twice.",
-          **CODE("""
-Comm % :=
-VAR rev  = [Gross Bookings]
-VAR comm = SUM ( tTransactions[commission_amount] )
-RETURN
-    DIVIDE ( comm, rev )""", label="DAX MEASURE"),
-          grid=dict(label="Values", widths=[1.4, 1.6], rows=[
-              ["Part", "Value"], ["rev", N(GROSS)], ["comm", N(COMM, 2)], ["[Comm %]", P(COMM / GROSS)]]),
-          split=0.55,
-          watch="A variable is calculated once, where it is defined; CALCULATE later in the formula cannot change it."),
     ],
     takeaways=["Columns are stored per row; measures calculate per cell.",
                "Row context = current row; filter context = what the cell is filtered by.",
-               "CALCULATE changes filters; ALL and ALLEXCEPT remove them.",
-               "Iterators work row by row; the table sets the grain.",
-               "DIVIDE every ratio; SWITCH for bands; VAR for clarity."],
+               "CALCULATE changes filters; ALL removes them.",
+               "SUMX works row by row; RELATED fetches from the 'one' side.",
+               "DIVIDE every ratio; IF and SWITCH for bands and flags."],
 )
 
 MODULES = [M36A]

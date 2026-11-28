@@ -1,13 +1,13 @@
 """Week 3 edition-3: week summary lines and glossary."""
 
 SUMMARY = {
-    "3.1": "Explain tables, keys, normalisation, types, indexes, views, transactions, and OLTP versus OLAP.",
-    "3.2": "Query SQLite with SELECT, WHERE, ORDER BY, GROUP BY, HAVING, CASE, subqueries and functions.",
-    "3.3": "Connect Excel to a database through ODBC, send SQL, parameterise it safely and refresh it.",
-    "3.4": "Merge with the right join kind, append tables, clean keys and verify row counts.",
+    "3.1": "Explain how a relational database is built: tables, keys, links, and why it copes as data grows.",
+    "3.2": "Explore a database in DB Browser and run simple queries: SELECT, WHERE, ORDER BY, GROUP BY, JOIN.",
+    "3.3": "Bring database tables into Excel (ODBC or CSV), refresh them and analyse them with a PivotTable.",
+    "3.4": "Merge with the right join kind, append tables, clean keys and check row counts.",
     "3.5": "Build a Data Model: facts, dimensions, a date table and one-to-many relationships.",
-    "3.6A": "Write DAX measures: row and filter context, CALCULATE, FILTER, ALL, iterators and DIVIDE.",
-    "3.6B": "Add time intelligence, ranks and KPI sets; organise, format, debug and document measures.",
+    "3.6A": "Write DAX measures: row and filter context, CALCULATE, ALL, RELATED, SUMX and DIVIDE.",
+    "3.6B": "Add year-to-date and last-year measures and KPI sets; organise, format and debug measures.",
     "3.7": "Read chart anatomy and choose among the 17 chart types for the question asked.",
     "3.8": "Plan, lay out, build and test a one-screen dashboard with slicers that reconciles.",
     "3.9": "Specify retail, university and hospital dashboards with defined KPIs and visuals.",
@@ -15,7 +15,6 @@ SUMMARY = {
 }
 
 GLOSSARY = sorted([
-    ("ACID", "Atomic, Consistent, Isolated, Durable: the guarantees of a database transaction."),
     ("Aggregate function", "A function that summarises many rows into one value: COUNT, SUM, AVG, MIN, MAX."),
     ("Anti join", "A join that returns the rows of one table with no match in the other."),
     ("CALCULATE", "The DAX function that evaluates an expression under modified filters."),
@@ -31,13 +30,13 @@ GLOSSARY = sorted([
     ("Filter context", "The set of filters active when a DAX measure is evaluated."),
     ("Foreign key", "A column whose values must match the primary key of another table."),
     ("Grain", "What one row of a table represents, such as one order line or one admission."),
-    ("HAVING", "The SQL clause that filters groups after GROUP BY."),
+    ("GROUP BY", "The SQL clause that returns one row per group, with COUNT, SUM or AVG for each group."),
     ("Index", "A sorted lookup structure that lets the database find rows without reading the whole table."),
-    ("Iterator", "A DAX function that evaluates an expression row by row, such as SUMX or AVERAGEX."),
+    ("Iterator", "A DAX function that evaluates an expression row by row, such as SUMX."),
     ("Join", "Combining two tables side by side by matching key values."),
     ("KPI", "Key performance indicator: a defined measure compared with a target."),
     ("Measure", "A DAX calculation evaluated on demand in the current filter context."),
-    ("Normalisation", "Organising tables so each fact is stored once (1NF, 2NF, 3NF)."),
+    ("Relational database", "Data stored in linked tables, each fact once, joined by keys."),
     ("ODBC", "Open Database Connectivity: a standard interface between applications and databases."),
     ("OLAP / OLTP", "Analytical processing over history / transaction processing of many small writes."),
     ("Primary key", "A column whose value is unique and not empty, identifying one row."),
@@ -45,6 +44,6 @@ GLOSSARY = sorted([
     ("Slicer", "A panel of filter buttons that can drive several PivotTables at once."),
     ("SQL", "Structured Query Language: the standard language for relational databases."),
     ("Star schema", "A model with one fact table joined directly to its dimension tables."),
-    ("Time intelligence", "DAX functions that compare periods: TOTALYTD, SAMEPERIODLASTYEAR, DATEADD."),
+    ("Time intelligence", "DAX functions that compare periods: TOTALYTD, SAMEPERIODLASTYEAR."),
     ("View", "A stored query that can be queried like a table."),
 ], key=lambda kv: kv[0].lower())

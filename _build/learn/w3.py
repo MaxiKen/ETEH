@@ -1,9 +1,9 @@
 """Week 3 Section Examples (Edition 3.1): questions in teaching order.
 
 Progression rule for Week 3 (Weeks 1-2 are assumed)
-    3.1        database words: tables, keys, normal forms, views, star schema (no SQL yet)
-    3.2        SQL, one clause at a time, each answer checked by running the query on supermart_online.db
-    3.3        ODBC ideas
+    3.1        database words: tables, keys, why relational, views, star schema (no SQL yet)
+    3.2        a little SQL in DB Browser: simple single queries, each answer checked by running it on supermart_online.db
+    3.3        bringing the data into Excel (ODBC or CSV)
     3.4        Power Query merge (join types) and append on the SuperMart Online CSV files
     3.5        the Data Model and relationships
     3.6A/B     DAX measures; every number can also be checked with a Week 2 formula on the data sheets
@@ -41,26 +41,27 @@ def build(b):
         return M[code]
 
     m31 = mod("3.1", "3.1 Database Basics", "Database Fundamentals",
-              "Databases, tables, rows and fields, primary and foreign keys, relational vs flat files, normal forms, "
-              "data types, indexes, views, ACID transactions, star schema, fact and dimension tables, OLTP vs OLAP.")
+              "Databases, tables, rows and fields, primary and foreign keys, relational vs flat files, why relational "
+              "databases cope as data grows, the SuperMart table map, data types, indexes, views, star schema, fact and "
+              "dimension tables, OLTP vs OLAP.")
     m32 = mod("3.2", "3.2 SQL with SQLite", "Introduction to SQL and SQLite",
-              "SELECT, FROM, WHERE, AND / OR / NOT, ORDER BY, LIMIT, GROUP BY, HAVING, aliases, DISTINCT, CASE, "
-              "subqueries and date functions, run in DB Browser for SQLite.")
+              "DB Browser for SQLite (Database Structure, Browse Data, Execute SQL) and simple queries: SELECT, FROM, "
+              "WHERE, AND / OR / NOT, ORDER BY, LIMIT, GROUP BY, a two-table JOIN and DISTINCT.")
     m33 = mod("3.3", "3.3 ODBC Connections", "Connecting Excel to Databases with ODBC",
               "ODBC and drivers, DSN and DSN-less connections, credentials, importing a table vs writing SQL, refreshing, "
-              "parameters and troubleshooting.")
+              "troubleshooting, the CSV export route and a first PivotTable on the imported data.")
     m34 = mod("3.4", "3.4 Merge & Append", "Merging and Appending in Power Query",
-              "Merge vs append, the six join kinds, fuzzy matching, expand vs aggregate, the Cartesian trap, appending "
-              "tables, schema mismatches, cleaning join keys and checking row counts.")
+              "Merge vs append, the four join kinds (inner, left outer, full outer, left anti), expand vs aggregate, the "
+              "Cartesian trap, appending tables, cleaning join keys and checking row counts.")
     m35 = mod("3.5", "3.5 Data Model & Star", "The Excel Data Model and Star Schema",
               "The Data Model, relationships and cardinality, fact and dimension tables, the date table, and why "
               "relationships beat VLOOKUP columns.")
     m36a = mod("3.6A", "3.6A DAX Foundations", "Power Pivot and DAX: Foundations and Context",
-               "Power Pivot, calculated columns vs measures, DAX syntax, row and filter context, CALCULATE, FILTER, ALL, "
-               "RELATED, SUMX, COUNTROWS, DISTINCTCOUNT, DIVIDE, IF / SWITCH and VAR.")
-    m36b = mod("3.6B", "3.6B DAX Time & KPIs", "Power Pivot and DAX: Time Intelligence, KPIs and Performance",
-               "TOTALYTD, SAMEPERIODLASTYEAR, DATEADD, running totals, % of total, RANKX, BLANK vs zero, measure tables, "
-               "format strings, implicit vs explicit measures and KPI measures.")
+               "Power Pivot, calculated columns vs measures, DAX syntax, row and filter context, CALCULATE, ALL, VALUES, "
+               "RELATED, SUMX, COUNTROWS, DISTINCTCOUNT, DIVIDE and IF / SWITCH.")
+    m36b = mod("3.6B", "3.6B DAX Time & KPIs", "Power Pivot and DAX: Time Intelligence and KPIs",
+               "TOTALYTD, SAMEPERIODLASTYEAR, % of total, BLANK vs zero, measure tables, format strings, implicit vs "
+               "explicit measures, retail / hospital / university KPI measures and debugging.")
     m37 = mod("3.7", "3.7 Chart Types", "Chart Anatomy and the 17 Excel Chart Types",
               "What makes a chart effective, chart parts (axes, legend, labels, titles) and when to use each chart type.")
     m38 = mod("3.8", "3.8 Dashboard Build", "Dashboard Development",
@@ -69,8 +70,8 @@ def build(b):
     m39 = mod("3.9", "3.9 Blueprints", "Three Dashboard Blueprints",
               "The SuperMart retail, Kingsway progression and Mercyland operations dashboards.")
     m310 = mod("3.10", "3.10 Files to SQL & DAX", "File Extracts into SQL, DAX and Dashboards",
-               "Profiling an extract before loading, staging tables, SQL exception reports, DAX measures and reconciling "
-               "a governed dashboard.")
+               "Profiling an extract, importing it into DB Browser as a staging table, simple SQL checks, cleaning in "
+               "Power Query, DAX measures and reconciling a governed dashboard.")
 
     # ------------------------------------------------------------------ data sheets
     r_tx = b.data("Transactions", tx, "One SuperMart Online order line (transactions table of supermart_online.db)",
@@ -104,10 +105,10 @@ def build(b):
     m.mc("In the transactions table, customer_id points to a row in the customers table. What is customer_id in "
          "transactions?", ["A primary key", "A foreign key", "An index", "A view"], "B",
          "A foreign key links a row to the primary key of another table.")
-    m.mc("Which statement describes First Normal Form (1NF)?", ["Every table has a chart",
-                                                               "Every cell holds one atomic value and there are no repeating groups",
-                                                               "All columns are numbers", "The table has fewer than 100 rows"],
-         "B", "1NF is the database version of the tidy-data law 'atomic values'.")
+    m.mc("Why does a relational database keep a customer's state on ONE row of customers, not on every order line?",
+         ["It looks nicer", "Each fact is stored once, so a change is made in one place and cannot disagree",
+          "SQL cannot read repeated text", "Order lines cannot hold text"], "B",
+         "Store each fact once; order lines only keep customer_id and look the details up.")
     m.mc("What is a view?", ["A saved query that looks like a table", "A copy of the database file",
                              "A type of chart", "A backup"], "A", "supermart_online.db has a view called v_order_lines.")
     m.mc("What does an index do?", ["Deletes duplicates", "Makes lookups and filters on a column faster",
@@ -121,7 +122,8 @@ def build(b):
            "OLTP = online transaction processing: many small writes.")
     m.pick("A model built for analysing sales by month, region and category", ["OLTP", "OLAP"], "OLAP",
            "OLAP = online analytical processing: reading and summarising.")
-    m.yn("Does ACID mean a transaction either completes fully or not at all?", "Yes", "A = Atomicity.")
+    m.yn("Can one Excel worksheet hold 5,000,000 order lines?", "No",
+         "A worksheet stops at 1,048,576 rows; a database has no such limit, and Excel reaches it through a connection.")
     m.part("Part B · Read the schema file")
     m.do(f"Open {f31} › supermart_online_01_schema.sql in Notepad. Which column is the PRIMARY KEY of the sellers table?",
          "seller_id", "seller_id TEXT PRIMARY KEY.")
@@ -148,9 +150,10 @@ def build(b):
     m.tf("SQLite keeps a whole database in one ordinary file (.db).", True, "No server is needed.")
     m.mc("In which order must these clauses be written?", ["FROM, SELECT, WHERE", "SELECT, FROM, WHERE, GROUP BY, ORDER BY",
                                                           "WHERE, FROM, SELECT", "ORDER BY, SELECT, FROM"], "B",
-         "SELECT ... FROM ... WHERE ... GROUP BY ... HAVING ... ORDER BY ... LIMIT.")
-    m.mc("Which clause filters GROUPS after GROUP BY?", ["WHERE", "HAVING", "ORDER BY", "LIMIT"], "B",
-         "WHERE filters rows before grouping; HAVING filters groups after.")
+         "SELECT ... FROM ... WHERE ... GROUP BY ... ORDER BY ... LIMIT.")
+    m.mc("Which DB Browser tab lists every table with its columns and data types?",
+         ["Browse Data", "Database Structure", "Execute SQL", "Edit Pragmas"], "B",
+         "Look at the structure first, then browse the rows, then query.")
     m.part("Part B · Run the queries")
     sql("How many order lines are in the transactions table?", "SELECT COUNT(*) FROM transactions;")
     sql("How many customers live in Lagos state?", "SELECT COUNT(*) FROM customers WHERE state = 'Lagos';")
@@ -161,13 +164,14 @@ def build(b):
     sql("How many order lines were Cancelled? (GROUP BY order_status and read the Cancelled row)",
         "SELECT COUNT(*) FROM transactions WHERE order_status = 'Cancelled';")
     sql("How many different customers placed at least one order?", "SELECT COUNT(DISTINCT customer_id) FROM transactions;")
-    sql("How many states have more than 100 customers?",
-        "SELECT COUNT(*) FROM (SELECT state FROM customers GROUP BY state HAVING COUNT(*) > 100);")
-    sql("How many order lines are 'Large' (total_price of ₦100,000 or more)?",
-        "SELECT COUNT(*) FROM transactions WHERE CASE WHEN total_price >= 100000 THEN 'Large' ELSE 'Small' END = 'Large';")
-    sql("How many products cost more than the average product price? (a subquery)",
-        "SELECT COUNT(*) FROM products WHERE price > (SELECT AVG(price) FROM products);")
-    sql("How many order lines are dated in 2025?", "SELECT COUNT(*) FROM transactions WHERE strftime('%Y', order_date) = '2025';")
+    sql("Which payment method has the most order lines? (GROUP BY, then the top row)",
+        "SELECT payment_method, COUNT(*) AS lines FROM transactions GROUP BY payment_method ORDER BY lines DESC LIMIT 1;")
+    sql("How many order lines have a total_price of ₦100,000 or more?",
+        "SELECT COUNT(*) FROM transactions WHERE total_price >= 100000;")
+    sql("How many order lines are for products in the Electronics category? (JOIN on product_id)",
+        "SELECT COUNT(*) FROM transactions t JOIN products p ON p.product_id = t.product_id WHERE p.category = 'Electronics';")
+    sql("How many order lines are dated on or after 1 January 2025? (dates are text: keep the quotes)",
+        "SELECT COUNT(*) FROM transactions WHERE order_date >= '2025-01-01';")
     sql("What is the net revenue (Delivered + Completed lines) in naira?",
         "SELECT SUM(total_price) AS net_revenue FROM transactions WHERE order_status IN ('Delivered','Completed');",
         fmt="naira")
@@ -265,7 +269,7 @@ def build(b):
     m.mc("Why use DIVIDE(a, b) instead of a / b?", ["It is faster to type", "It returns BLANK instead of an error when b is 0",
                                                     "It rounds the answer", "It only works on dates"], "B",
          "DIVIDE handles division by zero safely.")
-    m.mc("Which function removes filters from a table or column?", ["ALL", "FILTER", "SUMX", "VAR"], "A",
+    m.mc("Which function removes filters from a table or column?", ["ALL", "RELATED", "SUMX", "DIVIDE"], "A",
          "Used for % of total: DIVIDE([Total Revenue], CALCULATE([Total Revenue], ALL(...))).")
     m.part("Part B · Work out each measure (check it with a formula)")
     m.num("Customers := DISTINCTCOUNT(tTransactions[customer_id]). What does it return with no filters?",
@@ -304,7 +308,9 @@ def build(b):
     m.mc("What does SAMEPERIODLASTYEAR do?", ["Deletes last year", "Shifts the dates in the filter back one year",
                                                "Adds one year", "Counts the years"], "B",
          "Used for 'last year' comparisons.")
-    m.mc("Which function ranks stores by a measure?", ["RANKX", "SUMX", "ALL", "VALUES"], "A", "RANKX(ALL(table), [measure]).")
+    m.mc("A PivotTable hides a seller whose [Net Revenue] is BLANK. What makes it show 0 instead?",
+         ["[Net Revenue] + 0", "DELETE the seller", "SUMX", "A slicer"], "A",
+         "Adding + 0 turns BLANK into 0; use it only where the zero matters.")
     m.mc("An explicit measure is ...", ["one you write yourself in DAX", "one Excel makes when you drag a field to Values",
                                          "a column", "a chart"], "A",
          "Explicit measures are named, reusable and documented; implicit ones are not.")

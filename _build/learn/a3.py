@@ -1,6 +1,6 @@
 """Week 3 assignment (Edition 3.1): Mercyland Hospital database. Week 1-3 skills only.
 
-    Task 1  database design: keys, relationships, normal forms (3.1)
+    Task 1  database design: keys, relationships, why relational (3.1)
     Task 2  SQL on mercyland_hospital.db in DB Browser for SQLite (3.2)
     Task 3  merge and the Data Model (3.4 - 3.5)
     Task 4  DAX measures, each checked with a Week 2 formula (3.6A - 3.6B)
@@ -35,9 +35,9 @@ def build(b):
     dd["Quarter"] = "Q" + dd.Date.dt.quarter.astype(str)
 
     t1 = b.module("T1", "T1 Database Design", "Database design", "Module 3.1: tables, primary and foreign keys, "
-                  "relationships, normal forms, views and the star schema.")
-    t2 = b.module("T2", "T2 SQL", "SQL queries", "Module 3.2: SELECT, WHERE, ORDER BY, LIMIT, GROUP BY, HAVING, "
-                  "COUNT / SUM / AVG, DISTINCT, JOIN, CASE and date functions.")
+                  "relationships, why relational tables store each fact once, views and the star schema.")
+    t2 = b.module("T2", "T2 SQL", "SQL queries", "Module 3.2: simple queries in DB Browser: SELECT, WHERE (incl. "
+                  "LIKE), ORDER BY, LIMIT, GROUP BY, COUNT / SUM, DISTINCT and a two-table JOIN.")
     t3 = b.module("T3", "T3 Merge & Model", "Merge and the Data Model", "Modules 3.4 - 3.5: Power Query merge and join "
                   "kinds, row-count checks, the Data Model, relationships and the date table.")
     t4 = b.module("T4", "T4 DAX", "DAX measures", "Modules 3.6A - 3.6B: measures, CALCULATE, DIVIDE, DISTINCTCOUNT, "
@@ -70,7 +70,7 @@ def build(b):
            "Fact table", "Events with numbers.")
     m.pick("doctors (one row per consultant)", ["Fact table", "Dimension table"], "Dimension table", "Describes who.")
     m.mc("Why is patient_name stored in patients and not repeated on every admission?",
-         ["To save colours", "Normalisation: store each fact once, so a name change is made in one place",
+         ["To save colours", "Relational design: store each fact once, so a name change is made in one place",
           "SQLite cannot store names twice", "No reason"], "B", "Avoids update errors.")
     m.yn("Is v_admissions a view (a saved query joining the tables)?", "Yes", "CREATE VIEW v_admissions AS SELECT ...")
 
@@ -87,7 +87,7 @@ def build(b):
     m.info("How", f"Open DB Browser for SQLite › Open Database › {f} › {DB} › Execute SQL. Each question gives the query to "
                   "run (some you finish yourself). Type the number the query returns.")
     sql("How many admissions are in the database?", "SELECT COUNT(*) FROM admissions;")
-    sql("How many admissions were in 2023?", "SELECT COUNT(*) FROM admissions WHERE strftime('%Y', admit_date) = '2023';")
+    sql("How many admissions were in 2023?", "SELECT COUNT(*) FROM admissions WHERE admit_date LIKE '2023%';")
     sql("How many 2023 admissions were in Cardiology?",
         "SELECT COUNT(*) FROM admissions WHERE admit_date LIKE '2023%' AND department = 'Cardiology';")
     sql("How many different patients were admitted in 2023?",
@@ -98,9 +98,9 @@ def build(b):
     sql("JOIN: how many 2023 admissions were in Iroko Ward?",
         "SELECT COUNT(*) FROM admissions a JOIN wards w ON w.ward_code = a.ward_code "
         "WHERE a.admit_date LIKE '2023%' AND w.ward = 'Iroko Ward';")
-    sql("How many consultants have more than 600 admissions in 2023? (GROUP BY ... HAVING)",
-        "SELECT COUNT(*) FROM (SELECT consultant_id FROM admissions WHERE admit_date LIKE '2023%' "
-        "GROUP BY consultant_id HAVING COUNT(*) > 600);")
+    sql("What was the total bill (in naira) for 2023 Cardiology admissions?",
+        "SELECT SUM(bill_amount_ngn) FROM admissions WHERE admit_date LIKE '2023%' AND department = 'Cardiology';",
+        fmt="naira")
     sql("How many 2023 stays were long (los_days of 14 or more)?",
         "SELECT COUNT(*) FROM admissions WHERE admit_date LIKE '2023%' AND los_days >= 14;")
 

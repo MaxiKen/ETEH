@@ -46,7 +46,7 @@ CFG = v3deck.Config(
     summary=SUMMARY,
     glossary=GLOSSARY,
     roadmap_label="TEN MODULES THIS WEEK (MODULE 3.6 IN TWO PARTS)",
-    roadmap_notes="Walk through the modules. 3.1-3.3 are databases, SQL and connecting Excel; 3.4-3.5 combine tables and "
+    roadmap_notes="Walk through the modules. 3.1-3.2 show how a database is built and let students try simple queries in DB Browser; 3.3 brings the data into Excel; 3.4-3.5 combine tables and "
                   "model them as a star; 3.6 is DAX; 3.7-3.9 are charts and dashboards; 3.10 puts it all together.",
     title_notes="Welcome students. Weeks 1 and 2 worked on files; this week the data lives in databases. We query it with "
                 "SQL, model it in a star schema, measure it with DAX and present it on dashboards that reconcile.",
