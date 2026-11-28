@@ -38,6 +38,20 @@ def student_intro(n):
             f"Save the file as ETEH_Week{n}_Assignment_YourName.xlsx and hand it in. Your tutor marks it with the answer key."]
 
 
+def tutor_intro(n):
+    files = (f"The students' outside files are in 02_Assignments › Week_{n} › Assignment_Files; the questions on this copy "
+             "name them the same way." if n in (2, 3) else "All the data is inside this workbook (the Data_ tabs), exactly as in the students' copy.")
+    return [f"TUTOR COPY - do not share. Same tasks, questions, order and data as the students' ETEH_Week{n}_Assignment.xlsx "
+            "(02_Assignments › Week_" + str(n) + ").",
+            "Solutions (last tab) lists every answer with a one-line 'How to get it'. Number answers are live formulas on this "
+            "workbook's own tables: click one to see the exact calculation.",
+            "To mark: open the student's file beside this one. Copy their column E answers (Paste Values) into column E of the "
+            "same task sheet here; column F then shows ✓ Correct or ✗ Try again for every question.",
+            "Award 2 marks for each correct number or 'Do it in Excel' question and 1 for every other question (the student's "
+            "own column F shows each question's marks). Number checks already allow small rounding differences.",
+            files]
+
+
 def build_week(n):
     title, modname = WEEKS[n]
     mod = __import__(modname)
@@ -47,7 +61,7 @@ def build_week(n):
         folder.mkdir(parents=True, exist_ok=True)
         fname = f"ETEH_Week{n}_Assignment" + ("_ANSWER_KEY" if key else "") + ".xlsx"
         b = lkit.LBook(folder / fname, fname, n, title, title_suffix="Assignment" + (" · Answer key" if key else ""),
-                       assignment=key, with_solutions=key, intro=None if key else student_intro(n),
+                       assignment=key, with_solutions=key, intro=tutor_intro(n) if key else student_intro(n),
                        files_home=paths.rel(paths.asg(n)) if key else None)
         mod.build(b)
         b.close()
