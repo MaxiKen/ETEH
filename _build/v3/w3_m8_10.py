@@ -433,4 +433,60 @@ DIVIDE (
                "File = SQL = dashboard before publishing."],
 )
 
+
+# ---------------------------------------------------------------- 3.9 continuation slides: each blueprint drawn as a dashboard
+from slidekit import GREEN as _G, NAVY as _NV, ORANGE as _OR, RED as _RD  # noqa: E402
+_FM = '₦#,##0,,"m"'
+_MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+_ms = S25.groupby(S25.Order_Date.dt.month).Sales.sum().reindex(range(1, 13)).fillna(0)
+_g = FY25 / FY24 - 1
+DASH1 = dict(kind="dashboard", full=True, h=4.95, label="THE BLUEPRINT BUILT  ·  SUPERMART STORES FY2025",
+             banner="SuperMart Retail Sales  ·  FY2025  ·  Slicers: Zone, Month",
+             kpis=[("Net sales", Nm(FY25), "FY2025"), ("Growth vs FY2024", f"{'+' if _g >= 0 else '−'}{abs(_g):.1%}", "year on year", _G if _g >= 0 else _RD),
+                   ("Target attainment", P(ALL_ATT), f"{len(ON)} of {len(DS)} stores on target", _G if ALL_ATT >= 1 else _OR),
+                   ("Margin", P(PROFIT25 / FY25), "profit ÷ sales"), ("Loss-making lines", I(LOSS), "drill-down table", _RD)],
+             charts=[dict(kind="bar", cats=[r.Store_Name for r in DSA.itertuples()], series=[("Attainment", DSA.Attainment.tolist())], fmt="0%", legend=False,
+                          point_colors=[(_G if a >= 1 else _OR) for a in DSA.Attainment], title="Attainment by store"),
+                     dict(kind="combo", cats=ZS.index.tolist(), series=[("Sales", ZS.Sales.tolist()), ("Margin", ZS.Margin.tolist())], fmt=_FM, y2_fmt="0%",
+                          title="Sales and margin by zone"),
+                     dict(kind="line", cats=_MON, series=[("Sales", _ms.tolist())], fmt=_FM, legend=False, labels=[int(_ms.values.argmax())],
+                          label_fmt='₦#,##0.0,,"m"', title="Monthly sales")],
+             widths=[1.15, 1, 1])
+_band = pd.cut(CV.Lecture_Attendance_Pct, [0, 70, 80, 90, 101], right=False, labels=["<70%", "70–79%", "80–89%", "90–100%"])
+_risk = (CV.At_Risk == "Yes").groupby(_band, observed=False).mean()
+_gb = pd.cut(CV.Final_Score, [0, 40, 50, 60, 70, 101], right=False, labels=["<40", "40–49", "50–59", "60–69", "70+"]).value_counts().sort_index()
+DASH2 = dict(kind="dashboard", full=True, h=4.95, label="THE BLUEPRINT BUILT  ·  KINGSWAY 2024/25",
+             banner="Kingsway University Progression  ·  2024/25  ·  Slicers: Faculty, Department, Level",
+             kpis=[("Students", I(len(CV)), "enrolled"), ("Average score", f"{CV.Final_Score.mean():.1f}", "final exam"),
+                   ("Attendance", P(CV.Lecture_Attendance_Pct.mean() / 100), "average"), ("Grade A (70+)", P((CV.Final_Score >= 70).mean()), "of students", _G),
+                   ("At risk", I(AR), f"{AR / len(CV):.1%}  ·  restricted list", _RD)],
+             charts=[dict(kind="bar", cats=FAC.index.tolist(), series=[("Average score", FAC.tolist())], fmt="0", labels=True, label_fmt="0.0", legend=False,
+                          y_min=0, title="Average score by faculty"),
+                     dict(kind="column", cats=[str(k) for k in _risk.index], series=[("At risk", _risk.tolist())], fmt="0%", labels=True, legend=False,
+                          colors=[_RD], title="At-risk rate by attendance band"),
+                     dict(kind="histogram", cats=[str(k) for k in _gb.index], series=[("Students", _gb.tolist())], fmt="#,##0", legend=False,
+                          title="Score distribution")])
+_occ = C23.groupby(C23.Census_Date.dt.month).Occupancy_Pct.mean().reindex(range(1, 13))
+_alos = LC23.groupby("Department").LOS_Days.mean().sort_values(ascending=False)
+_bill = LC23.groupby("HMO").Bill_Amount_NGN.mean().sort_values(ascending=False)
+_bill.index = [h.replace(" (National Health Insurance)", "") for h in _bill.index]
+_rr = (LC23.Readmitted_30d == "Yes").mean()
+DASH3 = dict(kind="dashboard", full=True, h=4.95, label="THE BLUEPRINT BUILT  ·  MERCYLAND 2023",
+             banner="Mercyland Hospital Operations  ·  2023  ·  Slicers: Department, Month, HMO",
+             kpis=[("Admissions", I(len(LC23)), "2023"), ("Occupancy", P(C23.Occupancy_Pct.mean()), "average, daily census", _OR),
+                   ("ALOS", f"{LC23.LOS_Days.mean():.1f} days", "average length of stay"), ("30-day readmission", P(_rr), "status: watch", _OR),
+                   ("Average bill", Nm(LC23.Bill_Amount_NGN.mean(), 2), "per admission")],
+             charts=[dict(kind="line", cats=_MON, series=[("Occupancy", _occ.tolist()), ("85% target", [0.85] * 12), ("95% ceiling", [0.95] * 12)],
+                          fmt="0%", legend=True, colors=[_NV, _G, _RD], y_min=0.6, y_max=1.0, title="Monthly occupancy with bands"),
+                     dict(kind="bar", cats=_alos.index.tolist(), series=[("ALOS", _alos.tolist())], fmt="0.0", labels=True, legend=False, title="ALOS by department (days)"),
+                     dict(kind="bar", cats=_bill.index.tolist(), series=[("Average bill", _bill.tolist())], fmt='₦#,##0,"k"', labels=True, legend=False,
+                          colors=[_OR], title="Average bill by HMO")],
+             widths=[1.1, 1, 1])
+_NOTE = ("Every number on this mock-up is the current value from the KPI table on the previous slide. Build it in the 3.8 dashboard "
+         "sheet of the examples workbook: KPI cards on top, then the charts, then connect the slicers.")
+for _t in M39["topics"]:
+    _d = {"3.9.1": DASH1, "3.9.2": DASH2, "3.9.3": DASH3}.get(_t["tag"])
+    if _d:
+        _t["more"] = [dict(title=_t["title"].split(": ", 1)[1] + ": the dashboard", pill="DASHBOARD", chart=_d, notes=_NOTE)]
+
 MODULES = [M38, M39, M310]
