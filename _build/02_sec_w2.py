@@ -102,8 +102,8 @@ def main():
          "result and read how it was worked out."],
         [("SuperMart Retail", "tSales25 (3,312 clean FY2025 lines), tDirty25 (the raw FY2025 export, 3,387 rows), tSM (9,994 lines "
                               "2022-2025), tStores (12 stores) and the monthly files, web page and PDF bulletin."),
-         ("Mercyland Specialist Hospital", "tAdm23: 10,918 admissions in 2023 (pipe-delimited file), plus the dirty 2023 extract used in 2.9."),
-         ("Kingsway University", "6,607 students, used in the M examples of 2.9."),
+         ("Mercyland Specialist Hospital", "tAdm23: 12,626 admissions in 2023 (pipe-delimited file), plus the dirty 2023 extract used in 2.9."),
+         ("Kingsway University", "5,840 students, used in the M examples of 2.9."),
          ("SuperMart Online", "SuperMart_Online_RAW_Export.xlsx (5 sheets) and the sellers JSON, used in 2.1 and 2.3.")],
         extra_rows=[("Answer cells", "White cell with a gold border: type here. The check cell beside it updates as you type."),
                     ("Folder path", "Set your own folder once in the DataFolder cell on sheet 2.3 Connect & Combine."),

@@ -275,7 +275,7 @@ M37 = dict(
           simple="It is the best chart for comparing distributions side by side.",
           grid=dict(label="Length of stay (days) by department", widths=[1.8, 0.7, 0.9, 0.7], rows=[
               ["Department", "Q1", "Median", "Q3"]] + [[d, F1(r[0.25]), F1(r[0.5]), F1(r[0.75])] for d, r in BOX.head(5).iterrows()]),
-          watch="Near-identical boxes are a finding too: here, length of stay barely differs by department."),
+          watch="Compare medians and box heights: Surgery stays run longest; Obstetrics & Gynaecology stays are short and tightly grouped."),
 
         T("3.7.26", "Sparklines",
           defn="A sparkline is a small chart drawn inside one cell: a line, columns or win/loss.",

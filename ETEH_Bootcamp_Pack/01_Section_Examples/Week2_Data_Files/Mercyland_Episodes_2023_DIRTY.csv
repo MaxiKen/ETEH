@@ -53,7 +53,7 @@ OSas i. AdebayO,25,Female,O+,Childbirth,2023-01-02,2023-01-06,Dr Daniel K. Igwe,
 kemi I. gARbA,54,Female,O+,Diabetes,2023-01-02,2023-01-04,Dr Safiya N. Abiodun,Baobab Ward,438,Avon HMO,398711.93,Emergency,Metformin,Abnormal
 ABdulLahi G. EKpo,29,Male,O+,Malaria,2023-01-02,2023-01-05,Dr Onyinye I. Lawal,Iroko Ward,120,Clearline HMO,366198.07,Urgent,Artemether-Lumefantrine,Normal
 aDeboLa K. onUoha,32,F,O+,Childbirth,2023-01-02,2023-01-04,Dr Daniel K. Igwe,Obeche Ward,313,Hallmark HMO,1389482.63,Emergency,Oxytocin,Normal
-ikenNa t. IbEkwe,0,Male,A+,Pneumonia,2023-01-02,2023-01-04,Dr Ebuka W. Adewale,Obeche Ward,314,NHIA (National Health Insurance),242730.99,Urgent,Paracetamol,Abnormal
+ikenNa t. IbEkwe,1,Male,A+,Pneumonia,2023-01-02,2023-01-04,Dr Ebuka W. Adewale,Obeche Ward,314,NHIA (National Health Insurance),242730.99,Urgent,Paracetamol,Abnormal
 nkEcHi r. EDEt,19,Female,O+,Childbirth,2023-01-02,2023-01-10,Dr Amina O. Lawal,Obeche Ward,333,Total Health Trust,1697254.14,Elective,Oxytocin,Normal
 cHinwe l. osEni,21,Female,B+,Childbirth,2023-01-02,,Dr Yetunde A. Dauda,Obeche Ward,332,NHIA (National Health Insurance),1107476.01,Urgent,Oxytocin,Normal
 AmAka T. bANkOLe,1,Female,O+,Pneumonia,2023-01-02,2023-01-09,Dr Oluchi P. Ogundipe,Obeche Ward,313,Hallmark HMO,759974.18,Emergency,Ceftriaxone,Inconclusive
@@ -123,8 +123,8 @@ olUCHI y. NwAcHukWu,27,Female,AB+,Childbirth,2023-01-04,2023-01-11,Dr Obiageli F
 abDULlahi B. eZenwa,38,Male,O+,Trauma,2023-01-04,2023-01-15,Dr Adaobi M. Uzor,Mahogany Ward,212,Avon HMO,1742735.75,Emergency,Paracetamol,Normal
 rONkE R. AkinOla,23,Female,B+,Childbirth,2023-01-04,2023-01-07,Dr Amina O. Lawal,Obeche Ward,317,Total Health Trust,965839.09,Urgent,Oxytocin,Inconclusive
 ADEsUwa W. garbA,50,Female,B+,Hypertension,2023-01-04,2023-01-08,Dr Ifunanya W. Babangida,Baobab Ward,417,Clearline HMO,677716.4,Emergency,Amlodipine,Abnormal
-gRace B. NWaCHUkwu,0,Female,A+,Pneumonia,2023-01-04,2023-01-07,Dr Asabe W. Ojo,Baobab Ward,435,NHIA (National Health Insurance),337580.96,Urgent,Ceftriaxone,Abnormal
-safiya F. IDowU,0,Female,O+,Pneumonia,2023-01-04,2023-01-18,Dr Ebuka W. Adewale,Obeche Ward,343,Clearline HMO,992269.22,Emergency,Ceftriaxone,Normal
+gRace B. NWaCHUkwu,1,Female,A+,Pneumonia,2023-01-04,2023-01-07,Dr Asabe W. Ojo,Baobab Ward,435,NHIA (National Health Insurance),337580.96,Urgent,Ceftriaxone,Abnormal
+safiya F. IDowU,1,Female,O+,Pneumonia,2023-01-04,2023-01-18,Dr Ebuka W. Adewale,Obeche Ward,343,Clearline HMO,992269.22,Emergency,Ceftriaxone,Normal
 umAR g. OKAfor,1,Male,B+,Pneumonia,2023-01-04,2023-01-07,Dr Funmilayo A. Nnaji,Obeche Ward,348,Clearline HMO,388955.43,Urgent,Ceftriaxone,Normal
 tobILoba i. oguNdiPe,64,Male,AB-,Hypertension,2023-01-04,2023-01-14,Dr Hauwa W. Onwuka,Baobab Ward,426,NHIA (National Health Insurance),1047876.1,Urgent,Amlodipine,Normal
 aisha d. EdEt,33,Female,O+,Hypertension,2023-01-04,2023-01-10,Dr Ekene A. Odu,Baobab Ward,427,Hallmark HMO,822248.34,Emergency,Amlodipine,Abnormal
@@ -224,7 +224,7 @@ abuBAKaR T. ike,38,Male,O+,Trauma,2023-01-07,2023-01-19,Dr Adaobi M. Uzor,Mahoga
 Yakubu b. EFfioNg,5,Male,A+,Pneumonia,2023-01-07,2023-01-12,Dr Funmilayo A. Nnaji,Obeche Ward,308,Hallmark HMO,410752.39,Urgent,Ceftriaxone,Normal
 chiBUzOR E. OlAdIpo,76,Male,B+,Hypertension,2023-01-07,2023-01-10,Dr Ifunanya W. Babangida,Baobab Ward,411,NHIA (National Health Insurance),385391.16,Urgent,Amlodipine,Abnormal
 EFoSa p. ObaSi,59,Male,O+,Hypertension,2023-01-07,2023-01-10,Dr Ifunanya W. Babangida,Baobab Ward,415,Hallmark HMO,429176.7,Elective,Amlodipine,Normal
-olucHI F. nNamDi,0,Female,O+,Pneumonia,2023-01-07,2023-01-12,Dr Oluchi P. Ogundipe,Obeche Ward,330,NHIA (National Health Insurance),585420.35,Urgent,Ceftriaxone,Abnormal
+olucHI F. nNamDi,1,Female,O+,Pneumonia,2023-01-07,2023-01-12,Dr Oluchi P. Ogundipe,Obeche Ward,330,NHIA (National Health Insurance),585420.35,Urgent,Ceftriaxone,Abnormal
 oMolaRA d. nwosU,4,Female,O+,Pneumonia,2023-01-07,2023-01-10,Dr Oluchi P. Ogundipe,Obeche Ward,333,Avon HMO,418029.18,urgent,Ceftriaxone,Abnormal
 khADIJa B. okORO,27,Female,A+,Trauma,2023-01-07,2023-01-15,Dr Oluwaseun D. Bakare,Mahogany Ward,237,Avon HMO,2679433.15,Urgent,Paracetamol,Normal
 lAdi o. Garba,70,Female,O+,Diabetes,2023-01-07,2023-01-11,Dr Zainab B. Dauda,Iroko Ward,119,Hallmark HMO,583128.05,Emergency,Metformin,Normal
@@ -452,7 +452,7 @@ kAYode w. okONkwO,43,Male,O+,Diabetes,2023-01-14,2023-02-02,Dr Ifeanyi M. Musa,I
 uCHenNa c. Okeke,33,Female,O+,Trauma,2023-01-14,2023-01-21,Dr Adaobi M. Uzor,Mahogany Ward,205,NHIA (National Health Insurance),2649406.78,Urgent,Paracetamol,Normal
 temItOpE u. KaNU,44,Female,A+,Trauma,2023-01-14,2023-01-20,Dr Adaobi M. Uzor,Mahogany Ward,202,Avon HMO,"1,418,365.98",Urgent,Paracetamol,Abnormal
 AdeBayO s. EzEnwA,62,Male,O+,Diabetes,2023-01-15,2023-01-17,Dr Onyinye I. Lawal,Iroko Ward,137,Hallmark HMO,"301,885.22",Urgent,Metformin,Abnormal
-idrIs i. odIli,0,Male,A+,Pneumonia,2023-01-15,2023-01-18,Dr Funmilayo A. Nnaji,Obeche Ward,334,Avon HMO,312168.26,Urgent,Ceftriaxone,Abnormal
+idrIs i. odIli,1,Male,A+,Pneumonia,2023-01-15,2023-01-18,Dr Funmilayo A. Nnaji,Obeche Ward,334,Avon HMO,312168.26,Urgent,Ceftriaxone,Abnormal
 Kelechi f. aliyu,4,Male,A+,Pneumonia,2023-01-15,2023-01-24,Dr Funmilayo A. Nnaji,Obeche Ward,314,Total Health Trust,708973.66,Urgent,Ceftriaxone,Abnormal
 cHIdi D. effioNG,25,Male,O+,Trauma,2023-01-15,2023-01-28,Dr Oluwaseun D. Bakare,Mahogany Ward,210,Avon HMO,3150254.69,Emergency,Paracetamol,Normal
 eberE B. Udoh,32,Female,O+,Childbirth,2023-01-15,2023-01-16,Dr Adenike F. Kanu,Obeche Ward,301,NHIA (National Health Insurance),337717.95,Elective,Oxytocin,Normal
@@ -613,10 +613,10 @@ FOlakE E. aZIkiWe,29,Female,O+,Childbirth,2023-01-20,2023-01-22,Dr Ifeanyi B. Fa
 adebolA T. eZe,71,Female,O+,Diabetes,2023-01-20,2023-01-29,Dr Onyinye I. Lawal,Iroko Ward,152,Avon HMO,1132603.44,Urgent,Metformin,Abnormal
 grace I. KAlU,1,Female,O+,Pneumonia,2023-01-20,2023-01-26,Dr Oluchi P. Ogundipe,Obeche Ward,325,Hallmark HMO,549843.81,Emergency,Ceftriaxone,Abnormal
 ADeSUwa r. ekpO,56,Female,O+,Malaria,2023-01-20,2023-01-21,Dr Ifeanyi M. Musa,Iroko Ward,146,Clearline HMO,346059.07,Urgent,Artemether-Lumefantrine,Abnormal
-rotImI w. BabangidA,0,male,O-,Pneumonia,2023-01-20,2023-01-26,Dr Funmilayo A. Nnaji,Obeche Ward,310,Hallmark HMO,564586.11,Emergency,Ceftriaxone,Normal
+rotImI w. BabangidA,1,male,O-,Pneumonia,2023-01-20,2023-01-26,Dr Funmilayo A. Nnaji,Obeche Ward,310,Hallmark HMO,564586.11,Emergency,Ceftriaxone,Normal
 sani d. ayodele,20,Male,O+,Malaria,2023-01-20,2023-01-23,Dr Safiya N. Abiodun,Iroko Ward,129,Total Health Trust,506994.45,Urgent,Artemether-Lumefantrine,Abnormal
 Adenike F. oLatunji,31,Female,B+,Childbirth,2023-01-20,2023-01-24,Dr Obiageli F. Azikiwe,Obeche Ward,350,Avon HMO,646811.21,Urgent,Paracetamol,Normal
-bIlkiSu T. onyeKa,0,Female,A+,Pneumonia,2023-01-20,2023-01-22,Dr Oluchi P. Ogundipe,Baobab Ward,419,NHIA (National Health Insurance),356808.0,Urgent,Paracetamol,Normal
+bIlkiSu T. onyeKa,1,Female,A+,Pneumonia,2023-01-20,2023-01-22,Dr Oluchi P. Ogundipe,Baobab Ward,419,NHIA (National Health Insurance),356808.0,Urgent,Paracetamol,Normal
 ifeanyI w. oKoro,6,Male,O+,Pneumonia,2023-01-20,2023-01-24,Dr Asabe W. Ojo,Obeche Ward,314,Total Health Trust,473649.45,Emergency,Ceftriaxone,Abnormal
 ADenikE F. aLiyU,46,Female,O+,Hypertension,2023-01-20,2023-01-21,Dr Nkechi C. Obasi,Baobab Ward,432,Hallmark HMO,310195.34,Elective,Amlodipine,Normal
 ladi N. OLaTunjI,16,Female,O+,Trauma,2023-01-20,2023-01-24,Dr Damola R. Salami,Baobab Ward,408,Hallmark HMO,888758.71,Emergency,Paracetamol,Abnormal
@@ -678,7 +678,7 @@ MuSTaPhA m. EkoNg,54,Male,O+,Hypertension,2023-01-22,2023-01-25,Dr Ekene A. Odu,
 ikechUkWu l. DaudA,78,Male,AB+,Diabetes,2023-01-22,2023-01-28,Dr Onyinye I. Lawal,Iroko Ward,128,Avon HMO,795693.81,Emergency,Metformin,Abnormal
 chINWE r. oKeke,36,Female,O+,Childbirth,2023-01-22,2023-01-26,Dr Obiageli F. Azikiwe,BAOBAB WARD ,417,Avon HMO,1004379.78,Urgent,Oxytocin,Normal
 blEssiNg A. akAnde,28,Female,A+,Childbirth,2023-01-22,2023-01-24,Dr Ifeanyi B. Fashola,Obeche Ward,330,Clearline HMO,499596.5,Elective,Oxytocin,Normal
-aDesuwa w. atTah,0,Female,O+,Pneumonia,2023-01-22,2023-01-23,Dr Asabe W. Ojo,Obeche Ward,309,Avon HMO,203883.14,Urgent,Ceftriaxone,Abnormal
+aDesuwa w. atTah,1,Female,O+,Pneumonia,2023-01-22,2023-01-23,Dr Asabe W. Ojo,Obeche Ward,309,Avon HMO,203883.14,Urgent,Ceftriaxone,Abnormal
 OsagIe y. OdILi,1,Male,O+,Pneumonia,2023-01-22,2023-01-24,Dr Oluchi P. Ogundipe,Obeche Ward,348,Total Health Trust,341029.61,Urgent,Ceftriaxone,Abnormal
 OmOlaRa t. MBaH,21,Female,A+,Trauma,2023-01-22,2023-01-25,Dr Oluwaseun D. Bakare,Mahogany Ward,232,Total Health Trust,661660.1,Urgent,Paracetamol,Normal
 simisola F. muSa,73,Female,O+,Hypertension,2023-01-22,2023-01-25,Dr Ifunanya W. Babangida,Baobab Ward,416,Clearline HMO,422390.9,Urgent,Amlodipine,Abnormal
@@ -790,7 +790,7 @@ omoLara c. oLAdipo,38,Female,O+,Childbirth,2023-01-26,2023-01-28,Dr Ifeanyi B. F
 UchennA b. DANjuma,33,female,AB+,Malaria,2023-01-26,2023-01-28,Dr Zainab B. Dauda,Iroko Ward,152,NHIA (National Health Insurance),311004.33,Emergency,Artemether-Lumefantrine,Abnormal
 oMolara o. BAkARe,22,Female,O+,Childbirth,2023-01-26,2023-01-27,Dr Obiageli F. Azikiwe,Obeche Ward,320,Total Health Trust,266011.01,Urgent,Oxytocin,Abnormal
 funmilayO f. nwosu,78,Female,B+,Diabetes,2023-01-26,2023-02-05,Dr Onyinye I. Lawal,Iroko Ward,142,Total Health Trust,751567.35,Urgent,Metformin,Abnormal
-sAni g. IbRahim,0,Male,O+,Pneumonia,2023-01-26,2023-01-28,Dr Funmilayo A. Nnaji,Obeche Ward,337,Hallmark HMO,243078.33,Emergency,Ceftriaxone,Abnormal
+sAni g. IbRahim,1,Male,O+,Pneumonia,2023-01-26,2023-01-28,Dr Funmilayo A. Nnaji,Obeche Ward,337,Hallmark HMO,243078.33,Emergency,Ceftriaxone,Abnormal
 oluChi g. oyelAraN,68,Female,O+,Malaria,2023-01-26,2023-01-31,Dr Adenike O. Suleiman,Iroko Ward,107,Avon HMO,622724.28,Urgent,Artemether-Lumefantrine,Inconclusive
 tiTIlAyO a. ibrahIm,23,Female,A+,Childbirth,2023-01-26,2023-01-27,Dr Yetunde A. Dauda,Obeche  Ward,320,Total Health Trust,441622.61,Urgent,Oxytocin,Abnormal
 Okey i. mbAh,38,Male,A-,Trauma,2023-01-26,2023-02-04,Dr Damola R. Salami,Mahogany Ward,245,Total Health Trust,1387958.05,Emergency,Paracetamol,Abnormal
@@ -815,7 +815,7 @@ ChinedU c. aNyanwu,59,male,A+,Malaria,2023-01-26,2023-01-29,Dr Safiya N. Abiodun
 graCE y. Iwu,23,Female,B+,Childbirth,2023-01-26,2023-01-30,Dr Adenike F. Kanu,Obeche Ward,325,Clearline HMO,470032.87,Elective,Oxytocin,Normal
 eniOla p. okpara,32,Female,O+,Childbirth,2023-01-26,2023-01-28,Dr Yetunde A. Dauda,Obeche Ward,316,Avon HMO,924905.57,Urgent,Oxytocin,Normal
 ChIjIoKe g. Bakare,3,Male,B+,Pneumonia,2023-01-26,2023-01-30,Dr Ebuka W. Adewale,Baobab Ward,417,Total Health Trust,423431.07,Urgent,Ceftriaxone,Normal
-toChukWu d. NnAMdi,0,Male,O+,Pneumonia,2023-01-27,2023-02-05,Dr Ebuka W. Adewale,Obeche Ward,332,NHIA (National Health Insurance),757217.93,Emergency,Ceftriaxone,Normal
+toChukWu d. NnAMdi,1,Male,O+,Pneumonia,2023-01-27,2023-02-05,Dr Ebuka W. Adewale,Obeche Ward,332,NHIA (National Health Insurance),757217.93,Emergency,Ceftriaxone,Normal
 abIMbola s. obI,72,Female,O+,Hypertension,2023-01-27,2023-02-05,Dr Hauwa W. Onwuka,Baobab Ward,405,Avon HMO,1130265.73,Emergency,Amlodipine,Abnormal
 kElEChi j. BAnkoLe,40,Male,O-,Malaria,2023-01-27,2023-01-29,Dr Zainab B. Dauda,Iroko Ward,103,Clearline HMO,348299.64,Elective,Paracetamol,Abnormal
 eFoSA i. NwaCHUkwu,15,Male,A-,Malaria,2023-01-27,2023-02-01,Dr Adenike O. Suleiman,Iroko Ward,140,Avon HMO,553556.08,Emergency,Artemether-Lumefantrine,Abnormal
@@ -865,7 +865,7 @@ saNi w. BALOGun,1,Male,O-,Pneumonia,2023-01-28,2023-01-29,Dr Ebuka W. Adewale,Ob
 olUwaseun g. uZOR,2,Male,O+,Pneumonia,2023-01-28,2023-01-30,Dr Funmilayo A. Nnaji,Obeche Ward,335,NHIA (National Health Insurance),393458.6,Emergency,Ceftriaxone,Abnormal
 oluWaSeun j. Ekpo,5,Male,A+,Pneumonia,2023-01-28,2023-02-06,Dr Oluchi P. Ogundipe,Obeche Ward,347,NHIA (National Health Insurance),888903.47,Emergency,Ceftriaxone,Normal
 Usman c. uzoR,68,Male,O+,Diabetes,2023-01-28,2023-01-31,Dr Adebayo D. Ezenwa,Iroko Ward,138,NHIA (National Health Insurance),386636.09,Elective,Metformin,Normal
-chiaMAka p. TiJaNi,0,female,O+,Pneumonia,2023-01-28,2023-02-04,Dr Oluchi P. Ogundipe,Obeche Ward,308,Avon HMO,722729.58,Emergency,Ceftriaxone,Abnormal
+chiaMAka p. TiJaNi,1,female,O+,Pneumonia,2023-01-28,2023-02-04,Dr Oluchi P. Ogundipe,Obeche Ward,308,Avon HMO,722729.58,Emergency,Ceftriaxone,Abnormal
 aBimbolA r. umeh,58,Female,B+,Diabetes,2023-01-28,2023-02-08,Dr Adebayo D. Ezenwa,Iroko Ward,148,NHIA (National Health Insurance),843010.65,Urgent,Paracetamol,Abnormal
 amaka f. OyELaran,58,Female,B+,Hypertension,2023-01-28,2023-02-08,Dr Hauwa W. Onwuka,Baobab Ward,439,NHIA (National Health Insurance),1566669.58,Elective,Paracetamol,Normal
 oMOlaRA D. aliyU,54,Female,O+,Malaria,2023-01-28,2023-02-03,Dr Safiya N. Abiodun,Iroko Ward,151,Avon HMO,600292.55,Emergency,Artemether-Lumefantrine,Abnormal
@@ -950,7 +950,7 @@ Ekene m. ONwuKA,32,Male,O+,Malaria,2023-01-30,2023-02-03,Dr Zainab B. Dauda,Baob
 NnAMDI b. yakUBu,29,Male,A+,Trauma,2023-01-31,2023-02-03,Dr Adaobi M. Uzor,Mahogany Ward,249,Clearline HMO,815762.95,Urgent,Paracetamol,Abnormal
 aisHa p. dauDa,22,F,A+,Childbirth,2023-01-31,2023-02-02,Dr Obiageli F. Azikiwe,Obeche Ward,344,Clearline HMO,992762.9,Elective,Oxytocin,Normal
 KELeChi G. ogUNLeSi,2,Male,O+,Pneumonia,2023-01-31,2023-02-09,Dr Funmilayo A. Nnaji,Obeche Ward,341,Total Health Trust,696664.86,Emergency,Ceftriaxone,Abnormal
-muSa w. shaGari,0,Male,O+,Pneumonia,2023-01-31,2023-02-03,Dr Oluchi P. Ogundipe,Obeche Ward,337,Avon HMO,509086.73,Emergency,Paracetamol,Abnormal
+muSa w. shaGari,1,Male,O+,Pneumonia,2023-01-31,2023-02-03,Dr Oluchi P. Ogundipe,Obeche Ward,337,Avon HMO,509086.73,Emergency,Paracetamol,Abnormal
 aMarA B. oLaDiPo,72,Female,O+,Diabetes,2023-01-31,2023-02-04,Dr Adebayo D. Ezenwa,Iroko Ward,106,NHIA (National Health Insurance),565507.88,Urgent,Metformin,Inconclusive
 RoNKe e. nwosu,15,Female,O+,Malaria,2023-01-31,2023-02-03,Dr Onyinye I. Lawal,Iroko Ward,147,Total Health Trust,468527.93,Emergency,Artemether-Lumefantrine,Normal
 ADAobi a. aNyaNwu,55,Female,O+,Diabetes,2023-01-31,2023-02-04,Dr Ifeanyi M. Musa,Iroko Ward,139,Avon HMO,492372.64,Urgent,Metformin,Abnormal
@@ -1045,7 +1045,7 @@ OKeY B. Okoye,44,Male,B+,Trauma,2023-02-02,2023-02-08,Dr Oluwaseun D. Bakare,Mah
 funke s. akPan,76,Female,A+,Diabetes,2023-02-03,2023-02-08,Dr Safiya N. Abiodun,Iroko Ward,157,Clearline HMO,663327.45,Urgent,Paracetamol,Abnormal
 EMMaNUel A. effiOnG,58,Male,O+,Malaria,2023-02-03,2023-02-06,Dr Adenike O. Suleiman,Iroko Ward,131,NHIA (National Health Insurance),435453.33,Elective,Artemether-Lumefantrine,Abnormal
 ejiro S. AmADi,4,Female,O-,Pneumonia,2023-02-03,2023-02-11,Dr Ebuka W. Adewale,Obeche,319,Avon HMO,591778.73,Urgent,Ceftriaxone,Abnormal
-DAniel e. garbA,0,Male,O+,Pneumonia,2023-02-03,2023-02-07,Dr Oluchi P. Ogundipe,Obeche Ward,332,NHIA (National Health Insurance),459590.1,Emergency,Ceftriaxone,Normal
+DAniel e. garbA,1,Male,O+,Pneumonia,2023-02-03,2023-02-07,Dr Oluchi P. Ogundipe,Obeche Ward,332,NHIA (National Health Insurance),459590.1,Emergency,Ceftriaxone,Normal
 HauwA r. Amadi,37,Female,B+,Childbirth,2023-02-03,2023-02-06,Dr Amina O. Lawal,Obeche Ward,329,Clearline HMO,1430384.26,Elective,Oxytocin,Abnormal
 foLake w. aNYaNwu,56,Female,O+,Malaria,2023-02-03,2023-02-11,Dr Onyinye I. Lawal,Iroko Ward,142,NHIA (National Health Insurance),1021919.19,Emergency,Artemether-Lumefantrine,Abnormal
 OLucHI I. AzIkiWe,48,Female,A+,Malaria,2023-02-03,2023-02-07,Dr Adebayo D. Ezenwa,Iroko Ward,114,NHIA (National Health Insurance),340372.5,Emergency,Artemether-Lumefantrine,Abnormal
@@ -1056,11 +1056,11 @@ uzoma P. OGUnlesI,3,Male,O+,Pneumonia,2023-02-03,2023-02-07,Dr Ebuka W. Adewale,
 ZUbaiRU o. ekWensI,5,Male,O+,Pneumonia,2023-02-03,2023-02-07,Dr Funmilayo A. Nnaji,Obeche Ward,318,Avon HMO,402086.84,Emergency,Ceftriaxone,Normal
 nneka n. osagIe,67,Female,B+,Malaria,2023-02-03,2023-02-08,Dr Adenike O. Suleiman,Iroko Ward,137,NHIA (National Health Insurance),473638.46,EMERG,Artemether-Lumefantrine,Abnormal
 chIdinMa f. AmaDi,31,Female,O+,Childbirth,2023-02-03,2023-02-06,Dr Yetunde A. Dauda,Obeche Ward,342,NHIA (National Health Insurance),1365335.42,Urgent,Oxytocin,Normal
-eJIRO l. adeSina,0,Female,O+,Pneumonia,2023-02-03,2023-02-09,Dr Ebuka W. Adewale,Obeche Ward,303,Total Health Trust,550188.22,urgent,Ceftriaxone,Normal
+eJIRO l. adeSina,1,Female,O+,Pneumonia,2023-02-03,2023-02-09,Dr Ebuka W. Adewale,Obeche Ward,303,Total Health Trust,550188.22,urgent,Ceftriaxone,Normal
 emMAnuel T. aTTaH,46,Male,B+,Malaria,2023-02-03,2023-02-08,Dr Safiya N. Abiodun,Iroko Ward,149,NHIA (National Health Insurance),433512.44,Urgent,Artemether-Lumefantrine,Abnormal
 uSmaN B. cHime,2,M,A+,Pneumonia,2023-02-03,2023-02-05,Dr Ebuka W. Adewale,Baobab Ward,405,NHIA (National Health Insurance),314926.09,Urgent,Ceftriaxone,Abnormal
 UcHenna m. EkpO,20,Female,O+,Malaria,2023-02-03,2023-02-06,Dr Ifeanyi M. Musa,Iroko Ward,134,Avon HMO,357196.45,Emergency,Artemether-Lumefantrine,Abnormal
-eJIRO l. adeSina,0,Female,O+,Pneumonia,2023-02-03,2023-02-09,Dr Ebuka W. Adewale,Obeche Ward,303,Total Health Trust,-550188.22,Urgent,Ceftriaxone,Normal
+eJIRO l. adeSina,1,Female,O+,Pneumonia,2023-02-03,2023-02-09,Dr Ebuka W. Adewale,Obeche Ward,303,Total Health Trust,-550188.22,Urgent,Ceftriaxone,Normal
 baLA a. aTTah,66,Male,O+,Malaria,2023-02-03,2023-02-12,Dr Safiya N. Abiodun,IROKO WARD,144,NHIA (National Health Insurance),851702.53,Emergency,Artemether-Lumefantrine,Normal
 ikeNNa G. Onyeka,37,Male,B+,Trauma,2023-02-03,2023-02-08,Dr Adaobi M. Uzor,Mahogany Ward,237,Clearline HMO,2415554.21,Emergency,Paracetamol,Inconclusive
 ikEChukWU l. Okoro,58,Male,A+,Hypertension,2023-02-03,2023-02-10,Dr Ifunanya W. Babangida,Iroko Ward,149,Hallmark HMO,1422301.24,Elective,Amlodipine,Abnormal
@@ -1073,7 +1073,7 @@ EsTheR p. saLaMi,31,Female,B+,Childbirth,2023-02-03,2023-02-05,Dr Daniel K. Igwe
 chioma I. odili,29,Female,A+,Childbirth,2023-02-03,2023-02-08,Dr Amina O. Lawal,Obeche Ward,347,NHIA (National Health Insurance),1400601.62,Elective,Oxytocin,Normal
 iFeanYI a. Ayodele,46,Male,O+,Trauma,2023-02-03,2023-02-18,Dr Damola R. Salami,Mahogany Ward,248,NHIA (National Health Insurance),2870082.06,Emergency,Paracetamol,Normal
 CHiNWe N. aZikiwe,9,Female,B+,Pneumonia,2023-02-04,2023-02-08,Dr Funmilayo A. Nnaji,Obeche,312,Total Health Trust,437894.44,Emergency,Ceftriaxone,Abnormal
-fUNkE N. Obi,0,Female,O+,Pneumonia,2023-02-04,2023-02-06,Dr Oluchi P. Ogundipe,Obeche Ward,350,Avon HMO,377546.32,Urgent,Ceftriaxone,Abnormal
+fUNkE N. Obi,1,Female,O+,Pneumonia,2023-02-04,2023-02-06,Dr Oluchi P. Ogundipe,Obeche Ward,350,Avon HMO,377546.32,Urgent,Ceftriaxone,Abnormal
 Fatima s. EkwEnsi,60,Female,O+,Hypertension,2023-02-04,2023-02-09,Dr Hauwa W. Onwuka,Baobab Ward,421,NHIA (National Health Insurance),-637250.27,Emergency,Paracetamol,Abnormal
 haUwa I. aDeWale,55,Female,O+,Diabetes,2023-02-04,2023-02-09,Dr Ifeanyi M. Musa,Iroko Ward,148,Total Health Trust,"771,089.41",Urgent,Metformin,Abnormal
 bello I. AbUbAkaR,62,Male,B+,Diabetes,2023-02-04,2023-02-09,Dr Safiya N. Abiodun,Iroko Ward,159,Avon HMO,661250.78,Urgent,Metformin,Abnormal
@@ -1133,7 +1133,7 @@ abUBakaR y. AZikIwE,50,Male,O+,Trauma,2023-02-05,2023-02-09,Dr Damola R. Salami,
 emManUeL Y. EKpO,4,Male,AB+,Pneumonia,2023-02-05,2023-02-06,Dr Oluchi P. Ogundipe,Obeche Ward,313,NHIA (National Health Insurance),242230.55,Emergency,Ceftriaxone,Abnormal
 faTimA s. bAnKOle,24,female,AB+,Childbirth,2023-02-05,2023-02-07,Dr Amina O. Lawal,Baobab Ward,433,Avon HMO,478100.14,Emergency,Oxytocin,Abnormal
 chiOMa n. SuLEiMAn,55,Female,O-,Diabetes,2023-02-05,2023-02-08,Dr Adebayo D. Ezenwa,Iroko Ward,131,Clearline HMO,395575.83,Elective,Metformin,Normal
-rOtImi o. aDEbaYo,0,Male,O+,Pneumonia,2023-02-06,2023-02-09,Dr Ebuka W. Adewale,Obeche Ward,308,Clearline HMO,390635.03,Emergency,Ceftriaxone,Normal
+rOtImi o. aDEbaYo,1,Male,O+,Pneumonia,2023-02-06,2023-02-09,Dr Ebuka W. Adewale,Obeche Ward,308,Clearline HMO,390635.03,Emergency,Ceftriaxone,Normal
 chinedu y. edet,32,Male,O+,Malaria,2023-02-06,2023-02-09,Dr Onyinye I. Lawal,Iroko Ward,139,NHIA (National Health Insurance),453130.62,Emergency,Artemether-Lumefantrine,Abnormal
 yUSUf L. akaNdE,40,Male,O+,Trauma,2023-02-06,2023-02-09,Dr Adaobi M. Uzor,Mahogany Ward,245,NHIA (National Health Insurance),1509246.82,Emergency,Paracetamol,Abnormal
 juMoke b. aDESina,29,Female,A+,Childbirth,2023-02-06,2023-02-11,Dr Amina O. Lawal,Obeche Ward,346,NHIA (National Health Insurance),1319202.89,Emergency,Oxytocin,Abnormal
@@ -1160,7 +1160,7 @@ mUsa D. oSagie,15,Male,O+,Malaria,2023-02-06,2023-02-07,Dr Adebayo D. Ezenwa,Iro
 efosA i. EZe,61,Male,O+,Hypertension,2023-02-06,2023-02-13,Dr Ekene A. Odu,Iroko Ward,105,NHIA (National Health Insurance),903285.83,Emergency,Paracetamol,Abnormal
 dAMilolA R. uSman,18,Female,A+,Malaria,2023-02-06,2023-02-08,Dr Ifeanyi M. Musa,Iroko Ward,118,Avon HMO,304782.08,Emergency,Artemether-Lumefantrine,Abnormal
 ejirO g. nnAmdi,53,Female,A+,Malaria,2023-02-06,2023-02-08,Dr Onyinye I. Lawal,Iroko Ward,122,Avon HMO,461596.63,Emergency,Artemether-Lumefantrine,Abnormal
-ChInwe J. AkpaN,0,Female,B+,Pneumonia,2023-02-06,2023-02-08,Dr Asabe W. Ojo,Obeche Ward,319,Avon HMO,292802.5,Urgent,Ceftriaxone,Abnormal
+ChInwe J. AkpaN,1,Female,B+,Pneumonia,2023-02-06,2023-02-08,Dr Asabe W. Ojo,Obeche Ward,319,Avon HMO,292802.5,Urgent,Ceftriaxone,Abnormal
 damilOlA J. EdEt,39,Female,O+,Malaria,2023-02-06,2023-02-09,Dr Onyinye I. Lawal,Iroko Ward,107,Clearline HMO,491876.95,Urgent,Artemether-Lumefantrine,Abnormal
 EbukA w. akpaN,3,Male,O+,Pneumonia,2023-02-06,2023-02-19,Dr Ebuka W. Adewale,Obeche Ward,316,NHIA (National Health Insurance),1105895.9,Emergency,Ceftriaxone,Abnormal
 YeTuNde U. aKpan,36,Female,B+,Trauma,2023-02-06,2023-02-14,Dr Oluwaseun D. Bakare,Baobab Ward,403,Clearline HMO,2695530.14,Emergency,Paracetamol,Normal
@@ -1240,7 +1240,7 @@ eJIro p. mOHaMmeD,24,Female,O+,Malaria,2023-02-08,2023-02-12,Dr Adenike O. Sulei
 eMmAnUel r. OkOyE,52,Male,O-,Hypertension,2023-02-08,2023-02-10,Dr Hauwa W. Onwuka,Baobab Ward,431,NHIA (National Health Insurance),363345.04,Emergency,Amlodipine,Abnormal
 adeBAYO j. iDOwU,33,Male,O+,Trauma,2023-02-08,2023-02-19,Dr Oluwaseun D. Bakare,Mahogany Ward,202,NHIA (National Health Insurance),2172850.76,Emergency,Paracetamol,Abnormal
 itOhAn f. moHAmmed,77,Female,A+,Hypertension,2023-02-08,2023-02-24,Dr Ekene A. Odu,Baobab Ward,405,Avon HMO,2147422.8,Elective,Amlodipine,Normal
-eSTHer F. SHagaRi,0,Female,B+,Pneumonia,2023-02-08,2023-02-10,Dr Oluchi P. Ogundipe,Baobab Ward,416,NHIA (National Health Insurance),226296.64,Urgent,Ceftriaxone,Normal
+eSTHer F. SHagaRi,1,Female,B+,Pneumonia,2023-02-08,2023-02-10,Dr Oluchi P. Ogundipe,Baobab Ward,416,NHIA (National Health Insurance),226296.64,Urgent,Ceftriaxone,Normal
 chiaMAka t. OjO,37,female,A+,Malaria,2023-02-08,2023-02-10,Dr Zainab B. Dauda,Baobab Ward,424,NHIA (National Health Insurance),409445.17,Urgent,Artemether-Lumefantrine,Abnormal
 bABatuNDe a. ONYEKA,49,Male,O+,Malaria,2023-02-08,2023-02-15,Dr Adebayo D. Ezenwa,Iroko Ward,136,NHIA (National Health Insurance),760962.32,Emergency,Artemether-Lumefantrine,Abnormal
 uChE E. okoYe,18,Male,A+,Malaria,2023-02-08,2023-02-12,Dr Adenike O. Suleiman,Iroko Ward,150,Total Health Trust,625444.04,Urgent,Artemether-Lumefantrine,Abnormal
@@ -1373,7 +1373,7 @@ OsagIe O. kaNu,25,Male,O+,Trauma,2023-02-13,2023-02-16,Dr Damola R. Salami,Mahog
 adAoBi e. iGWe,4,Female,O-,Pneumonia,2023-02-13,2023-02-16,Dr Ebuka W. Adewale,Obeche Ward,318,Clearline HMO,424810.06,Emergency,Ceftriaxone,Abnormal
 shEhu E. obasi,67,Male,O+,Diabetes,2023-02-13,2023-02-16,Dr Adebayo D. Ezenwa,Iroko,155,NHIA (National Health Insurance),431106.92,Urgent,Metformin,Normal
 Onyinye f. UkPabi,27,Female,O+,Childbirth,2023-02-13,2023-02-18,Dr Yetunde A. Dauda,Obeche Ward,341,Avon HMO,722135.52,Elective,Oxytocin,Normal
-ngOzi e. ojo,0,Female,A+,Pneumonia,2023-02-13,2023-02-17,Dr Asabe W. Ojo,Obeche Ward,307,Total Health Trust,413620.33,Emergency,Paracetamol,Normal
+ngOzi e. ojo,1,Female,A+,Pneumonia,2023-02-13,2023-02-17,Dr Asabe W. Ojo,Obeche Ward,307,Total Health Trust,413620.33,Emergency,Paracetamol,Normal
 SaFiya d. ibE,24,Female,O+,Childbirth,2023-02-13,2023-02-15,Dr Ifeanyi B. Fashola,Obeche Ward,336,Hallmark HMO,1101619.84,Emergency,Oxytocin,Normal
 jumokE F. ogundiPE,56,Female,O+,Hypertension,2023-02-13,2023-03-07,Dr Hauwa W. Onwuka,Iroko Ward,107,NHIA (National Health Insurance),2530469.13,Elective,Amlodipine,Abnormal
 mariam d. okAFor,24,F,B+,Childbirth,2023-02-13,2023-02-15,Dr Yetunde A. Dauda,Obeche Ward,332,Clearline HMO,1508682.99,Elective,Oxytocin,Normal
@@ -1385,7 +1385,7 @@ bilkISU L. Eze,32,Female,A+,Childbirth,2023-02-13,2023-02-17,Dr Yetunde A. Dauda
 haDiza y. yAkUbu,54,Female,A+,Hypertension,2023-02-13,2023-02-15,Dr Ifunanya W. Babangida,Baobab Ward,410,NHIA (National Health Insurance),"467,067.18",Urgent,Amlodipine,Abnormal
 hauwA p. Raji,64,Female,A+,Hypertension,2023-02-14,2023-02-17,Dr Ifunanya W. Babangida,Baobab Ward,417,Avon HMO,365549.95,Emergency,Amlodipine,Normal
 SalamATu i. akandE,52,Female,O+,Hypertension,2023-02-14,2023-02-21,Dr Hauwa W. Onwuka,BAOBAB WARD ,419,Avon HMO,811423.51,Elective,Amlodipine,Abnormal
-BAla S. ogundipE,0,Male,O+,Pneumonia,2023-02-14,2023-02-21,Dr Asabe W. Ojo,Obeche Ward,322,NHIA (National Health Insurance),887836.35,Urgent,Ceftriaxone,Normal
+BAla S. ogundipE,1,Male,O+,Pneumonia,2023-02-14,2023-02-21,Dr Asabe W. Ojo,Obeche Ward,322,NHIA (National Health Insurance),887836.35,Urgent,Ceftriaxone,Normal
 yEtUnDe a. bAnkole,47,Female,AB+,Hypertension,2023-02-14,2023-03-05,Dr Ekene A. Odu,Baobab Ward,418,NHIA (National Health Insurance),2304839.23,Emergency,Amlodipine,Abnormal
 JumoKe i. onUoHa,60,Female,O+,Diabetes,2023-02-14,2023-02-17,Dr Ifeanyi M. Musa,BAOBAB WARD ,426,Clearline HMO,457784.95,Urgent,Metformin,Normal
 ademOlA L. etiM,59,Male,O+,Hypertension,2023-02-14,2023-02-16,Dr Nkechi C. Obasi,Baobab Ward,410,NHIA (National Health Insurance),400943.77,Urgent,Amlodipine,Abnormal
@@ -1439,7 +1439,7 @@ dAMoLA E. obiora,24,Male,O+,Trauma,2023-02-15,2023-03-03,Dr Damola R. Salami,Mah
 lanRe T. suleiMaN,51,Male,B+,Hypertension,2023-02-15,2023-02-20,Dr Ifunanya W. Babangida,Baobab Ward,440,Clearline HMO,598949.14,Emergency,Amlodipine,Abnormal
 ADEbayo O. OkorO,3,Male,B+,Pneumonia,2023-02-15,2023-02-18,Dr Ebuka W. Adewale,Obeche Ward,329,Total Health Trust,290261.71,Urgent,Ceftriaxone,Normal
 adamu f. ezEnwa,57,Male,O+,Trauma,2023-02-15,2023-02-21,Dr Oluwaseun D. Bakare,Mahogany Ward,220,NHIA (National Health Insurance),1363906.72,Emergency,Paracetamol,Normal
-kEMI b. adELeKe,0,Female,O+,Pneumonia,2023-02-15,2023-02-28,Dr Oluchi P. Ogundipe,Obeche Ward,327,Total Health Trust,986044.43,Emergency,Ceftriaxone,Normal
+kEMI b. adELeKe,1,Female,O+,Pneumonia,2023-02-15,2023-02-28,Dr Oluchi P. Ogundipe,Obeche Ward,327,Total Health Trust,986044.43,Emergency,Ceftriaxone,Normal
 cHIDinma K. OYelaran,30,Female,O+,Malaria,2023-02-15,2023-02-16,Dr Onyinye I. Lawal,Iroko Ward,131,NHIA (National Health Insurance),224636.33,Urgent,Artemether-Lumefantrine,Abnormal
 Ebere d. AyodeLe,31,Female,O+,Childbirth,2023-02-15,2023-02-18,Dr Daniel K. Igwe,Obeche Ward,342,Clearline HMO,1199579.19,Elective,Oxytocin,Normal
 UzomA n. Amadi,39,Male,AB-,Hypertension,2023-02-15,2023-02-20,Dr Ifunanya W. Babangida,Baobab Ward,427,NHIA (National Health Insurance),667746.54,Emergency,Paracetamol,Abnormal
@@ -1522,7 +1522,7 @@ AHMED n. OKorO,4,Male,O+,Pneumonia,2023-02-17,2023-02-19,Dr Asabe W. Ojo,Obeche 
 HAlIma l. eZeANi,4,Female,A+,Pneumonia,2023-02-17,2023-02-20,Dr Ebuka W. Adewale,Obeche Ward,313,Avon HMO,445413.83,Emergency,Ceftriaxone,Abnormal
 NkechI p. Uba,25,Female,O+,Childbirth,2023-02-18,2023-02-19,Dr Daniel K. Igwe,Obeche Ward,334,Clearline HMO,467691.6,Emergency,Oxytocin,Abnormal
 damoLA r. AziKIwe,71,Male,O+,Hypertension,2023-02-18,2023-02-23,Dr Hauwa W. Onwuka,Baobab Ward,406,Hallmark HMO,657010.37,Elective,Amlodipine,Abnormal
-safiyA u. OnUoHa,0,Female,B+,Pneumonia,2023-02-18,2023-02-21,Dr Ebuka W. Adewale,Obeche Ward,325,NHIA (National Health Insurance),"340,420.69",Emergency,Paracetamol,Abnormal
+safiyA u. OnUoHa,1,Female,B+,Pneumonia,2023-02-18,2023-02-21,Dr Ebuka W. Adewale,Obeche Ward,325,NHIA (National Health Insurance),"340,420.69",Emergency,Paracetamol,Abnormal
 estHer p. iBrAhIm,62,Female,B+,Hypertension,2023-02-18,2023-02-27,Dr Ekene A. Odu,Iroko Ward,152,Avon HMO,1024478.57,Emergency,Amlodipine,Abnormal
 TUnDe r. adebAyO,65,Male,O+,Hypertension,2023-02-18,2023-02-23,Dr Ifunanya W. Babangida,Baobab,409,Clearline HMO,735300.93,Urgent,Amlodipine,Abnormal
 chiNedu d. suleiman,3,Male,B+,Pneumonia,2023-02-18,2023-02-21,Dr Asabe W. Ojo,Obeche Ward,323,Clearline HMO,292599.5,Emergency,Paracetamol,Abnormal
@@ -1661,7 +1661,7 @@ AMaka j. ibrahIm,38,Female,O+,Childbirth,2023-02-22,2023-02-25,Dr Obiageli F. Az
 FoLaKE t. onyeka,38,Female,O+,Trauma,2023-02-22,2023-03-07,Dr Adaobi M. Uzor,Mahogany Ward,221,NHIA (National Health Insurance),3555582.72,Urgent,Paracetamol,Normal
 jUmoke m. Etim,5,Female,B+,Pneumonia,2023-02-22,2023-02-24,Dr Ebuka W. Adewale,Obeche Ward,308,Avon HMO,322578.51,Urgent,Ceftriaxone,Abnormal
 chukwueMeka n. mAdU,51,Male,A+,Diabetes,2023-02-22,2023-02-27,Dr Onyinye I. Lawal,Iroko Ward,152,Hallmark HMO,405736.03,Urgent,Metformin,Abnormal
-beLLO a. oyElaRan,0,Male,B+,Pneumonia,2023-02-22,2023-02-26,Dr Funmilayo A. Nnaji,Baobab Ward,434,NHIA (National Health Insurance),367606.39,Emergency,Ceftriaxone,Abnormal
+beLLO a. oyElaRan,1,Male,B+,Pneumonia,2023-02-22,2023-02-26,Dr Funmilayo A. Nnaji,Baobab Ward,434,NHIA (National Health Insurance),367606.39,Emergency,Ceftriaxone,Abnormal
 folAke m. iWU,31,Female,O+,Childbirth,2023-02-22,2023-02-24,Dr Daniel K. Igwe,Obeche Ward,331,Avon HMO,586320.05,Elective,Oxytocin,Normal
 buKola O. agbaje,31,Female,A+,Childbirth,2023-02-23,2023-02-25,Dr Yetunde A. Dauda,Baobab Ward,427,Clearline HMO,541728.8,Elective,Oxytocin,Abnormal
 jUMoke d. oRjI,36,Female,O+,Childbirth,2023-02-23,2023-02-24,Dr Ifeanyi B. Fashola,Obeche Ward,323,Total Health Trust,1298204.34,Elective,Oxytocin,Abnormal
@@ -1687,7 +1687,7 @@ EBERe e. abuBaKar,1,Female,B+,Pneumonia,2023-02-23,2023-02-27,Dr Ebuka W. Adewal
 grAcE p. raJi,35,Female,B+,Childbirth,2023-02-23,2023-02-27,Dr Obiageli F. Azikiwe,Obeche Ward,310,Clearline HMO,721098.17,Emergency,Paracetamol,Normal
 adenike k. NwachuKwu,29,Female,O+,Childbirth,2023-02-23,2023-02-26,Dr Amina O. Lawal,Obeche Ward,340,NHIA (National Health Insurance),"1,272,733.56",Urgent,Paracetamol,Normal
 lAdi n. aKiNola,63,Female,O+,Malaria,2023-02-23,2023-02-28,Dr Onyinye I. Lawal,Iroko Ward,107,NHIA (National Health Insurance),886351.41,Emergency,Paracetamol,Normal
-sAni g. IbRahim,0,Male,O+,Pneumonia,2023-02-23,2023-03-03,Dr Oluchi P. Ogundipe,Obeche Ward,323,Avon HMO,678888.63,Urgent,Ceftriaxone,Normal
+sAni g. IbRahim,1,Male,O+,Pneumonia,2023-02-23,2023-03-03,Dr Oluchi P. Ogundipe,Obeche Ward,323,Avon HMO,678888.63,Urgent,Ceftriaxone,Normal
 ayoMide k. idowu,22,Female,O+,Childbirth,2023-02-23,,Dr Daniel K. Igwe,Obeche Ward,311,NHIA (National Health Insurance),493448.79,Elective,Oxytocin,Normal
 bUkola f. MuSA,88,Female,B+,Diabetes,2023-02-23,2023-03-12,Dr Safiya N. Abiodun,Iroko Ward,157,NHIA (National Health Insurance),1624285.17,Emergency,Metformin,Normal
 KHadIJA d. OKOyE,79,Female,B+,Trauma,2023-02-23,2023-03-08,Dr Safiya G. Onwuka,Mahogany Ward,231,NHIA (National Health Insurance),2587477.89,Emergency,Paracetamol,Inconclusive
@@ -1747,7 +1747,7 @@ adAmu a. Garba,16,Male,A+,Trauma,2023-02-25,2023-03-06,Dr Adaobi M. Uzor,Mahogan
 sAnI s. aGBaJE,63,Male,O+,Hypertension,2023-02-25,2023-03-08,Dr Ifunanya W. Babangida,Baobab Ward,432,Clearline HMO,1461665.38,Elective,Amlodipine,Abnormal
 adEnIke J. oRJi,35,Female,A+,Childbirth,2023-02-25,2023-02-28,Dr Daniel K. Igwe,Obeche Ward,345,NHIA (National Health Insurance),1217063.98,Elective,Oxytocin,Abnormal
 Ebere i. ajayi,60,Female,O+,Hypertension,2023-02-25,2023-03-01,Dr Hauwa W. Onwuka,Iroko Ward,122,NHIA (National Health Insurance),644226.45,Urgent,Amlodipine,Normal
-iFEoma C. adEbayO,0,Female,O+,Pneumonia,2023-02-25,2023-02-26,Dr Ebuka W. Adewale,Obeche Ward,304,Avon HMO,198911.46,Urgent,Ceftriaxone,Abnormal
+iFEoma C. adEbayO,1,Female,O+,Pneumonia,2023-02-25,2023-02-26,Dr Ebuka W. Adewale,Obeche Ward,304,Avon HMO,198911.46,Urgent,Ceftriaxone,Abnormal
 aYoMIde t. okonkwO,63,Female,A-,Hypertension,2023-02-25,2023-03-04,Dr Ifunanya W. Babangida,Baobab Ward,410,Hallmark HMO,832960.0,Emergency,Amlodipine,Abnormal
 damola s. uBa,45,Male,O+,Trauma,2023-02-25,2023-03-01,Dr Safiya G. Onwuka,Baobab Ward,424,Total Health Trust,2011082.7,EMERG,Paracetamol,Normal
 BukolA e. EdEt,48,Female,B+,Hypertension,2023-02-25,2023-03-02,Dr Ekene A. Odu,Baobab Ward,401,NHIA (National Health Insurance),558145.78,Urgent,Amlodipine,Abnormal
@@ -2417,7 +2417,7 @@ TObIloba s. AbiOdUn,47,Male,O+,Diabetes,2023-03-17,2023-04-09,Dr Adebayo D. Ezen
 zuWAiRa g. dANjumA,22,Female,O+,Childbirth,2023-03-17,2023-03-18,Dr Daniel K. Igwe,Obeche Ward,304,NHIA (National Health Insurance),346571.3,Emergency,Oxytocin,Normal
 rOTImI p. umeh,72,Male,O+,Diabetes,2023-03-17,2023-03-19,Dr Zainab B. Dauda,Iroko Ward,140,Hallmark HMO,315954.09,Urgent,Metformin,Abnormal
 ISAh c. uKpABi,16,Male,B+,Malaria,2023-03-17,2023-03-19,Dr Adenike O. Suleiman,Baobab Ward,415,Avon HMO,373795.56,Emergency,Artemether-Lumefantrine,Abnormal
-kEmi E. inyanG,0,Female,O+,Pneumonia,2023-03-17,2023-03-25,Dr Funmilayo A. Nnaji,Obeche Ward,311,Clearline HMO,881355.87,Urgent,Ceftriaxone,Abnormal
+kEmi E. inyanG,1,Female,O+,Pneumonia,2023-03-17,2023-03-25,Dr Funmilayo A. Nnaji,Obeche Ward,311,Clearline HMO,881355.87,Urgent,Ceftriaxone,Abnormal
 zuWAiRa g. dANjumA,22,Female,O+,Childbirth,2023-03-17,2023-03-18,Dr Daniel K. Igwe,Obeche Ward,304,NHIA (National Health Insurance),346571.3,Emergency,Oxytocin,Normal
 aDebayO k. Igwe,38,Male,O+,Diabetes,2023-03-17,2023-03-24,Dr Safiya N. Abiodun,Iroko Ward,113,Total Health Trust,714657.33,Urgent,Metformin,Abnormal
 eniola j. igwe,34,Female,O+,Malaria,2023-03-17,2023-03-22,Dr Onyinye I. Lawal,Iroko Ward,142,Total Health Trust,592170.61,Emergency,Artemether-Lumefantrine,Abnormal
@@ -2526,7 +2526,7 @@ tobiloBA w. UkPabI,46,Male,B+,Trauma,2023-03-20,2023-03-22,Dr Damola R. Salami,M
 AbiMbOLa t. Isiaka,24,Female,B+,Childbirth,2023-03-20,,Dr Adenike F. Kanu,Obeche Ward,349,Total Health Trust,1165135.12,Emergency,Oxytocin,Abnormal
 MariAm n. AKiNOLa,37,Female,O+,Childbirth,2023-03-20,2023-03-21,Dr Obiageli F. Azikiwe,Obeche Ward,341,Clearline HMO,425426.01,Elective,Oxytocin,Normal
 chukwuemeka w. kAlu,21,Male,A+,Trauma,2023-03-20,2023-03-24,Dr Adaobi M. Uzor,Mahogany Ward,214,NHIA (National Health Insurance),938386.35,Emergency,Paracetamol,Normal
-FAtimA W. UkpABi,0,Female,A+,Pneumonia,2023-03-20,2023-03-24,Dr Oluchi P. Ogundipe,Obeche Ward,313,NHIA (National Health Insurance),490100.91,Urgent,Paracetamol,Abnormal
+FAtimA W. UkpABi,1,Female,A+,Pneumonia,2023-03-20,2023-03-24,Dr Oluchi P. Ogundipe,Obeche Ward,313,NHIA (National Health Insurance),490100.91,Urgent,Paracetamol,Abnormal
 adebAYo R. dike,60,Male,B+,Hypertension,2023-03-20,2023-03-22,Dr Nkechi C. Obasi,Iroko Ward ,137,Total Health Trust,416515.57,Emergency,Amlodipine,Abnormal
 UchE L. AZikIWE,8,Male,O+,Pneumonia,2023-03-20,2023-03-26,Dr Asabe W. Ojo,Obeche Ward,322,Hallmark HMO,"635,142.65",Urgent,Paracetamol,Normal
 okeY m. aTtah,46,Male,O+,Hypertension,2023-03-20,2023-03-23,Dr Nkechi C. Obasi,Baobab,415,NHIA (National Health Insurance),658744.14,Urgent,Amlodipine,Abnormal
@@ -2623,7 +2623,7 @@ enioLa W. OsENI,60,female,O+,Diabetes,2023-03-22,2023-03-31,Dr Adenike O. Suleim
 haliMA d. OGundipE,20,Female,B+,Trauma,2023-03-22,2023-03-27,Dr Safiya G. Onwuka,Mahogany Ward,208,NHIA (National Health Insurance),1138905.37,Emergency,Paracetamol,Abnormal
 mustAphA a. aBiODun,1,Male,O+,Pneumonia,2023-03-22,2023-03-24,Dr Funmilayo A. Nnaji,Obeche Ward,340,Clearline HMO,314003.66,Urgent,Ceftriaxone,Normal
 TaYo D. iNYaNg,37,Male,A+,Malaria,2023-03-23,2023-03-27,Dr Adebayo D. Ezenwa,Baobab ward,404,Total Health Trust,462673.09,Emergency,Artemether-Lumefantrine,Abnormal
-NkEchi t. okpAra,0,Female,O+,Pneumonia,2023-03-23,2023-03-25,Dr Asabe W. Ojo,Obeche Ward,333,Clearline HMO,500584.72,Emergency,Ceftriaxone,Abnormal
+NkEchi t. okpAra,1,Female,O+,Pneumonia,2023-03-23,2023-03-25,Dr Asabe W. Ojo,Obeche Ward,333,Clearline HMO,500584.72,Emergency,Ceftriaxone,Abnormal
 eNiOlA f. egwu,34,Female,O+,Trauma,2023-03-23,2023-03-26,Dr Oluwaseun D. Bakare,Mahogany Ward,244,Clearline HMO,1955979.3,Emergency,Paracetamol,Abnormal
 oBInNa L. aYODELe,30,Male,O+,Malaria,2023-03-23,2023-03-27,Dr Ifeanyi M. Musa,Iroko Ward,132,NHIA (National Health Insurance),548311.19,Emergency,Artemether-Lumefantrine,Abnormal
 obINnA Y. umEH,68,Male,B+,Hypertension,2023-03-23,2023-03-28,Dr Nkechi C. Obasi,Baobab Ward,407,NHIA (National Health Insurance),699210.7,Emergency,Amlodipine,Abnormal
@@ -2691,7 +2691,7 @@ AdesuwA o. onwuKA,28,female,A+,Malaria,2023-03-24,2023-03-26,Dr Ifeanyi M. Musa,
 nkEchI k. ORji,2,Female,O+,Pneumonia,2023-03-24,2023-03-31,Dr Oluchi P. Ogundipe,Obeche Ward,325,Clearline HMO,614003.39,Emergency,Ceftriaxone,Normal
 ifunanYA M. adeleke,24,Female,O+,Childbirth,2023-03-24,2023-03-26,Dr Adenike F. Kanu,Obeche Ward,315,NHIA (National Health Insurance),526231.09,Urgent,Oxytocin,Normal
 sAlaMAtU i. EzeaNi,2,Female,B+,Pneumonia,2023-03-25,2023-03-28,Dr Funmilayo A. Nnaji,Obeche Ward,303,NHIA (National Health Insurance),348132.13,Urgent,Ceftriaxone,Abnormal
-ibRahIM s. adEBayo,0,Male,O+,Pneumonia,2023-03-25,2023-03-27,Dr Ebuka W. Adewale,Obeche Ward,322,Hallmark HMO,224683.43,Emergency,Ceftriaxone,Abnormal
+ibRahIM s. adEBayo,1,Male,O+,Pneumonia,2023-03-25,2023-03-27,Dr Ebuka W. Adewale,Obeche Ward,322,Hallmark HMO,224683.43,Emergency,Ceftriaxone,Abnormal
 khadIjA f. bankOle,17,Female,O+,Trauma,2023-03-25,2023-04-12,Dr Oluwaseun D. Bakare,Mahogany Ward,221,Clearline HMO,3731624.84,Urgent,Paracetamol,Inconclusive
 Efosa j. eZEAni,54,Male,A+,Hypertension,2023-03-25,2023-03-31,Dr Nkechi C. Obasi,Baobab Ward,424,NHIA (National Health Insurance),1150134.86,Urgent,Amlodipine,Abnormal
 TitilaYO k. aYoDele,7,Female,B+,Pneumonia,2023-03-25,2023-04-01,Dr Ebuka W. Adewale,Obeche Ward,339,NHIA (National Health Insurance),720040.55,Emergency,Ceftriaxone,Abnormal
@@ -2735,7 +2735,7 @@ AdESuwa k. Udoh,1,Female,AB+,Pneumonia,2023-03-26,2023-04-01,Dr Oluchi P. Ogundi
 musa N. shaGari,34,Male,A+,Malaria,2023-03-26,2023-03-30,Dr Adebayo D. Ezenwa,Iroko Ward,123,Total Health Trust,"586,993.03",Urgent,Artemether-Lumefantrine,Abnormal
 AhMed m. YAkubU,15,Male,O+,Malaria,2023-03-26,2023-03-28,Dr Ifeanyi M. Musa,Baobab Ward,412,Total Health Trust,308826.86,Urgent,Artemether-Lumefantrine,Abnormal
 olucHI T. jibRIl,10,Female,O+,Pneumonia,2023-03-26,2023-03-29,Dr Asabe W. Ojo,Obeche Ward,341,Clearline HMO,382952.26,Emergency,Ceftriaxone,Abnormal
-sImisola c. AdEsINa,0,Female,O+,Pneumonia,2023-03-26,2023-04-17,Dr Asabe W. Ojo,Obeche Ward,341,NHIA (National Health Insurance),1730975.44,Emergency,Ceftriaxone,Normal
+sImisola c. AdEsINa,1,Female,O+,Pneumonia,2023-03-26,2023-04-17,Dr Asabe W. Ojo,Obeche Ward,341,NHIA (National Health Insurance),1730975.44,Emergency,Ceftriaxone,Normal
 daMIlOLA c. aGbajE,36,Female,O+,Childbirth,2023-03-26,2023-03-28,Dr Amina O. Lawal,Obeche Ward,309,NHIA (National Health Insurance),550114.1,Elective,Paracetamol,Abnormal
 ifUnanyA t. bakare,54,Female,O+,Hypertension,2023-03-26,2023-04-02,Dr Ifunanya W. Babangida,Baobab Ward,408,Total Health Trust,833641.22,Emergency,Amlodipine,Normal
 chIBuzor w. chukwu,16,Male,O+,Trauma,2023-03-26,2023-04-03,Dr Adaobi M. Uzor,Mahogany Ward,209,Avon HMO,2011105.17,Emergency,Paracetamol,Normal
@@ -2839,7 +2839,7 @@ ebuka r. EkPo,56,Male,O+,Hypertension,2023-03-29,2023-04-01,Dr Ifunanya W. Baban
 IFeomA m. eFfiong,56,Female,O+,Hypertension,2023-03-29,2023-04-03,Dr Ifunanya W. Babangida,Baobab Ward,419,Clearline HMO,574686.41,Urgent,Amlodipine,Normal
 uzOma b. attAh,30,Male,O+,Trauma,2023-03-29,2023-04-01,Dr Oluwaseun D. Bakare,Baobab Ward,412,NHIA (National Health Insurance),1636952.16,Elective,Paracetamol,Normal
 Musa e. olANIYan,18,Male,A+,Trauma,2023-03-29,2023-04-07,Dr Adaobi M. Uzor,Mahogany Ward,245,Hallmark HMO,2331600.56,Emergency,Paracetamol,Abnormal
-oNYinyE t. NwaChUKWU,0,Female,B+,Pneumonia,2023-03-29,2023-04-01,Dr Asabe W. Ojo,Obeche Ward,320,Total Health Trust,314128.24,Urgent,Ceftriaxone,Abnormal
+oNYinyE t. NwaChUKWU,1,Female,B+,Pneumonia,2023-03-29,2023-04-01,Dr Asabe W. Ojo,Obeche Ward,320,Total Health Trust,314128.24,Urgent,Ceftriaxone,Abnormal
 Ladi O. yakUbu,57,Female,O+,Hypertension,2023-03-29,2023-04-05,Dr Ekene A. Odu,Baobab Ward,414,NHIA (National Health Insurance),"888,779.96",Emergency,Paracetamol,Abnormal
 amina F. ibraHim,82,Female,O+,Hypertension,2023-03-29,2023-04-09,Dr Hauwa W. Onwuka,Baobab Ward,410,Hallmark HMO,"1,576,206.43",Urgent,Amlodipine,Abnormal
 Emeka J. musA,41,Male,A+,Trauma,2023-03-29,2023-04-07,Dr Oluwaseun D. Bakare,Baobab Ward,405,Clearline HMO,2921340.18,Emergency,Paracetamol,Abnormal
@@ -2873,7 +2873,7 @@ tobiLoBA N. AkInOLa,27,Male,A+,Trauma,2023-03-30,2023-04-06,Dr Adaobi M. Uzor,Ma
 ayOMide j. IsiaKA,28,Female,B+,Childbirth,2023-03-30,2023-04-03,Dr Obiageli F. Azikiwe,Obeche Ward,331,Hallmark HMO,1910371.45,Elective,Oxytocin,Inconclusive
 olUChi g. daUda,63,Female,B+,Hypertension,2023-03-30,2023-04-02,Dr Nkechi C. Obasi,Baobab Ward,424,NHIA (National Health Insurance),436490.95,Emergency,Paracetamol,Abnormal
 ebUka r. okorO,59,Male,A+,Diabetes,2023-03-30,2023-04-09,Dr Safiya N. Abiodun,Iroko Ward,129,Avon HMO,"868,237.32",Emergency,Metformin,Normal
-khadIjA w. eKpo,0,Female,O+,Pneumonia,2023-03-30,2023-04-02,Dr Asabe W. Ojo,Obeche Ward,309,Total Health Trust,387093.35,Urgent,Ceftriaxone,Abnormal
+khadIjA w. eKpo,1,Female,O+,Pneumonia,2023-03-30,2023-04-02,Dr Asabe W. Ojo,Obeche Ward,309,Total Health Trust,387093.35,Urgent,Ceftriaxone,Abnormal
 adeniKe r. aDEwaLe,58,Female,O+,Malaria,2023-03-30,2023-04-02,Dr Onyinye I. Lawal,Baobab Ward,417,Hallmark HMO,462840.6,Emergency,Artemether-Lumefantrine,Abnormal
 isAh g. IkE,53,Male,O+,Trauma,2023-03-30,2023-04-12,Dr Oluwaseun D. Bakare,Mahogany Ward,221,Clearline HMO,2977198.23,Emergency,Paracetamol,Normal
 efOsa S. akpan,45,Male,A+,Malaria,2023-03-30,2023-04-03,Dr Adenike O. Suleiman,Iroko Ward,140,Hallmark HMO,321874.39,Urgent,Artemether-Lumefantrine,Abnormal
@@ -2947,7 +2947,7 @@ nneKa O. iwU,26,female,B+,Childbirth,2023-04-01,2023-04-03,Dr Obiageli F. Azikiw
 OKeY U. OgboNNa,15,M,A+,Malaria,2023-04-01,2023-04-03,Dr Zainab B. Dauda,Iroko Ward,151,Clearline HMO,209042.16,Emergency,Paracetamol,Abnormal
 abImBOLa l. OgunlEsi,44,Female,O+,Diabetes,2023-04-01,2023-04-03,Dr Adebayo D. Ezenwa,Baobab Ward,415,Total Health Trust,350341.42,Emergency,Metformin,Normal
 SAlAmAtu j. oKAFoR,29,Female,O+,Childbirth,2023-04-01,2023-04-06,Dr Yetunde A. Dauda,Obeche Ward,304,Hallmark HMO,785282.18,Urgent,Paracetamol,Abnormal
-omoLAra F. kAnU,0,Female,O+,Pneumonia,2023-04-01,2023-04-06,Dr Oluchi P. Ogundipe,Obeche Ward,306,Clearline HMO,385371.96,Emergency,Ceftriaxone,Normal
+omoLAra F. kAnU,1,Female,O+,Pneumonia,2023-04-01,2023-04-06,Dr Oluchi P. Ogundipe,Obeche Ward,306,Clearline HMO,385371.96,Emergency,Ceftriaxone,Normal
 chidi S. oguNlEsi,6,M,A+,Pneumonia,2023-04-01,2023-04-08,Dr Funmilayo A. Nnaji,Obeche Ward,308,,611108.84,Urgent,Ceftriaxone,Abnormal
 Ladi R. BellO,54,Female,O+,Malaria,2023-04-01,2023-04-04,Dr Adenike O. Suleiman,Baobab Ward,410,Clearline HMO,441144.98,Emergency,Artemether-Lumefantrine,Abnormal
 saNi a. IBekwe,5,Male,O+,Pneumonia,2023-04-01,2023-04-09,Dr Asabe W. Ojo,Obeche Ward,333,Total Health Trust,727982.69,Emergency,Paracetamol,Abnormal
@@ -3126,7 +3126,7 @@ EniolA k. baLogUn,34,Female,O+,Childbirth,2023-04-06,2023-04-09,Dr Daniel K. Igw
 JIde c. ugwu,66,Male,B+,Hypertension,2023-04-06,2023-04-25,Dr Hauwa W. Onwuka,Baobab Ward,426,Clearline HMO,2044453.88,Emergency,Amlodipine,Normal
 Osagie w. oBi,33,Male,B+,Trauma,2023-04-06,2023-04-11,Dr Safiya G. Onwuka,Mahogany Ward,214,Total Health Trust,1858443.25,Urgent,Paracetamol,Normal
 damOLa N. IbEkwe,44,Male,O+,Diabetes,2023-04-06,2023-04-13,Dr Ifeanyi M. Musa,Baobab Ward,437,Total Health Trust,779365.14,Elective,Paracetamol,Abnormal
-omOlara I. chukwu,0,Female,O+,Pneumonia,2023-04-06,2023-04-14,Dr Ebuka W. Adewale,Obeche Ward,348,Avon HMO,849063.6,Emergency,Ceftriaxone,Abnormal
+omOlara I. chukwu,1,Female,O+,Pneumonia,2023-04-06,2023-04-14,Dr Ebuka W. Adewale,Obeche Ward,348,Avon HMO,849063.6,Emergency,Ceftriaxone,Abnormal
 BIlkisU j. sanni,80,Female,O+,Hypertension,2023-04-06,2023-04-09,Dr Hauwa W. Onwuka,Baobab Ward,440,Clearline HMO,563047.52,Urgent,Amlodipine,Abnormal
 mOdupe l. EzE,25,Female,B+,Trauma,2023-04-06,2023-04-13,Dr Adaobi M. Uzor,Mahogany Ward,248,Total Health Trust,2455457.09,Urgent,Paracetamol,Normal
 ESTHEr b. bAlogun,35,Female,B+,Malaria,2023-04-06,2023-04-08,Dr Zainab B. Dauda,Iroko Ward,114,Total Health Trust,363941.05,Emergency,Artemether-Lumefantrine,Normal
@@ -3302,7 +3302,7 @@ KhadIja G. mbah,37,Female,B+,Childbirth,2023-04-10,2023-04-15,Dr Yetunde A. Daud
 AnulI y. mustaphA,68,Female,O+,Diabetes,2023-04-10,2023-04-15,Dr Ifeanyi M. Musa,Iroko Ward,131,Total Health Trust,765925.82,Emergency,Metformin,Abnormal
 UsmAn l. eFfionG,58,Male,O+,Hypertension,2023-04-10,2023-04-20,Dr Hauwa W. Onwuka,Baobab Ward,422,Avon HMO,1152933.33,Emergency,Paracetamol,Abnormal
 emeKa u. eze,2,Male,A+,Pneumonia,2023-04-11,2023-04-16,Dr Funmilayo A. Nnaji,Obeche Ward,306,Total Health Trust,843387.81,Urgent,Ceftriaxone,Abnormal
-umAr i. baloGuN,0,Male,O+,Pneumonia,2023-04-11,2023-04-14,Dr Ebuka W. Adewale,Obeche Ward,315,Clearline HMO,344723.24,Urgent,Ceftriaxone,Abnormal
+umAr i. baloGuN,1,Male,O+,Pneumonia,2023-04-11,2023-04-14,Dr Ebuka W. Adewale,Obeche Ward,315,Clearline HMO,344723.24,Urgent,Ceftriaxone,Abnormal
 uMar d. aDewAle,17,Male,O+,Trauma,2023-04-11,2023-04-22,Dr Oluwaseun D. Bakare,Mahogany Ward,224,Avon HMO,1585116.11,Emergency,Paracetamol,Abnormal
 hAuWA a. aliyU,34,Female,A+,Childbirth,2023-04-11,2023-04-12,Dr Yetunde A. Dauda,Obeche Ward,327,Clearline HMO,1182202.02,Emergency,Oxytocin,Normal
 ItOhan r. ChukwU,33,Female,B+,Childbirth,2023-04-11,2023-04-12,Dr Obiageli F. Azikiwe,Baobab Ward,410,NHIA (National Health Insurance),517738.74,Urgent,Oxytocin,Inconclusive
@@ -3336,7 +3336,7 @@ asaBe i. TIjAni,36,Female,O+,Malaria,2023-04-11,2023-04-13,Dr Onyinye I. Lawal,I
 EBere o. isiaKa,30,Female,B+,Trauma,2023-04-11,2023-04-23,Dr Damola R. Salami,Mahogany Ward,220,NHIA (National Health Insurance),2496152.31,EMERG,Paracetamol,Abnormal
 oKey l. Lawal,67,Male,B+,Malaria,2023-04-11,2023-04-14,Dr Onyinye I. Lawal,Iroko Ward,129,Total Health Trust,513855.8,Urgent,Artemether-Lumefantrine,Abnormal
 efOSa o. ajAYi,39,Male,O+,Trauma,2023-04-11,2023-04-21,Dr Damola R. Salami,Mahogany Ward,204,NHIA (National Health Insurance),"1,680,220.12",Emergency,Paracetamol,Abnormal
-sUnDAy p. edEt,0,Male,O+,Pneumonia,2023-04-12,2023-04-16,Dr Funmilayo A. Nnaji,Obeche Ward,307,NHIA (National Health Insurance),395227.09,Urgent,Paracetamol,Abnormal
+sUnDAy p. edEt,1,Male,O+,Pneumonia,2023-04-12,2023-04-16,Dr Funmilayo A. Nnaji,Obeche Ward,307,NHIA (National Health Insurance),395227.09,Urgent,Paracetamol,Abnormal
 ChIdInmA R. ekwENsi,63,Female,O+,Diabetes,2023-04-12,2023-04-19,Dr Safiya N. Abiodun,Iroko Ward,154,Total Health Trust,941505.77,Urgent,Metformin,Abnormal
 gbenGA f. okoYe,84,Male,B+,Malaria,2023-04-12,2023-04-15,Dr Zainab B. Dauda,Iroko Ward,101,NHIA (National Health Insurance),372486.56,Elective,Artemether-Lumefantrine,Normal
 iFunanya d. amaDi,69,Female,O+,Malaria,2023-04-12,2023-04-16,Dr Adenike O. Suleiman,Iroko Ward,158,NHIA (National Health Insurance),471430.97,Urgent,Artemether-Lumefantrine,Abnormal
@@ -3390,7 +3390,7 @@ chibUZor k. azikIwe,59,Male,O+,Hypertension,2023-04-13,2023-04-23,Dr Nkechi C. O
 UDUak u. ADEbaYo,26,Female,O+,Trauma,2023-04-13,2023-04-18,Dr Safiya G. Onwuka,Mahogany Ward,232,NHIA (National Health Insurance),1763432.03,Emergency,Paracetamol,Abnormal
 nnekA k. abioDuN,17,Female,O-,Malaria,2023-04-13,2023-04-15,Dr Safiya N. Abiodun,Iroko Ward ,137,Total Health Trust,392038.67,Urgent,Artemether-Lumefantrine,Abnormal
 ifEoMa P. okOye,54,Female,AB+,Hypertension,2023-04-13,2023-04-17,Dr Ekene A. Odu,Baobab Ward,409,Clearline HMO,878022.94,Urgent,Amlodipine,Normal
-ikEchukWU p. etIm,0,Male,AB+,Pneumonia,2023-04-13,2023-04-16,Dr Asabe W. Ojo,Obeche Ward,303,Hallmark HMO,438428.79,Emergency,Ceftriaxone,Normal
+ikEchukWU p. etIm,1,Male,AB+,Pneumonia,2023-04-13,2023-04-16,Dr Asabe W. Ojo,Obeche Ward,303,Hallmark HMO,438428.79,Emergency,Ceftriaxone,Normal
 Bukola s. yakUBU,21,Female,O+,Trauma,2023-04-13,2023-04-17,Dr Safiya G. Onwuka,Mahogany Ward,218,Clearline HMO,953825.49,Emergency,Paracetamol,Abnormal
 osagie J. mUStaphA,77,Male,O+,Hypertension,2023-04-13,2023-04-27,Dr Hauwa W. Onwuka,Baobab Ward,419,Hallmark HMO,1745180.93,Emergency,Amlodipine,Abnormal
 hAdIZa e. NnAmdi,24,Female,B+,Childbirth,2023-04-13,2023-04-14,Dr Obiageli F. Azikiwe,Obeche,340,NHIA (National Health Insurance),1602941.64,Urgent,Oxytocin,Normal
@@ -3408,7 +3408,7 @@ BELLo o. uBa,1,Male,A+,Pneumonia,2023-04-13,2023-04-15,Dr Oluchi P. Ogundipe,Obe
 Umar j. Obiora,49,Male,A+,Hypertension,2023-04-13,2023-04-21,Dr Hauwa W. Onwuka,Baobab Ward,415,Hallmark HMO,1071242.54,Urgent,Amlodipine,Abnormal
 fuNke n. ajaYi,3,Female,O+,Pneumonia,2023-04-13,2023-04-18,Dr Ebuka W. Adewale,Obeche Ward,332,NHIA (National Health Insurance),604684.92,Emergency,Ceftriaxone,Abnormal
 yEtunDE E. oLawalE,46,Female,B+,Malaria,2023-04-13,2023-04-18,Dr Adebayo D. Ezenwa,Baobab Ward,401,Total Health Trust,563588.72,Urgent,Artemether-Lumefantrine,Normal
-nnamDi N. NNAji,0,Male,B+,Pneumonia,2023-04-13,2023-04-19,Dr Funmilayo A. Nnaji,Obeche Ward,316,Clearline HMO,495268.03,Urgent,Ceftriaxone,Abnormal
+nnamDi N. NNAji,1,Male,B+,Pneumonia,2023-04-13,2023-04-19,Dr Funmilayo A. Nnaji,Obeche Ward,316,Clearline HMO,495268.03,Urgent,Ceftriaxone,Abnormal
 okeY I. etim,1,Male,O+,Pneumonia,2023-04-13,2023-04-17,Dr Ebuka W. Adewale,Obeche Ward,305,Total Health Trust,329338.32,Emergency,Paracetamol,Abnormal
 ronKe N. ogBu,66,Female,O+,Hypertension,2023-04-13,2023-04-19,Dr Hauwa W. Onwuka,Baobab Ward,412,Avon HMO,"901,622.04",Elective,Amlodipine,Abnormal
 UmAr l. IsiakA,33,Male,B+,Malaria,2023-04-13,2023-04-14,Dr Adebayo D. Ezenwa,Iroko Ward,151,Avon HMO,282821.89,Emergency,Artemether-Lumefantrine,Normal
@@ -3422,7 +3422,7 @@ ANuLI i. MbAh,21,Female,O+,Trauma,2023-04-14,2023-04-18,Dr Adaobi M. Uzor,Mahogo
 ijeoma g. adEyemI,64,Female,O+,Hypertension,2023-04-14,2023-04-23,Dr Nkechi C. Obasi,Baobab Ward,437,Total Health Trust,1019699.03,Elective,Amlodipine,Abnormal
 eNiolA J. shagaRi,59,Female,B+,Malaria,2023-04-14,2023-04-17,Dr Adenike O. Suleiman,Iroko,106,NHIA (National Health Insurance),304251.18,Urgent,Artemether-Lumefantrine,Abnormal
 ifeOma d. yAkuBu,39,female,A+,Trauma,2023-04-14,2023-04-30,Dr Safiya G. Onwuka,Mahogany Ward,202,NHIA (National Health Insurance),3911689.92,Emergency,Paracetamol,Normal
-IKeNNa g. chUKWU,0,Male,A+,Pneumonia,2023-04-14,2023-04-21,Dr Ebuka W. Adewale,Obeche Ward,304,Avon HMO,809585.33,Urgent,Ceftriaxone,Abnormal
+IKeNNa g. chUKWU,1,Male,A+,Pneumonia,2023-04-14,2023-04-21,Dr Ebuka W. Adewale,Obeche Ward,304,Avon HMO,809585.33,Urgent,Ceftriaxone,Abnormal
 Itohan p. orjI,47,Female,O+,Hypertension,2023-04-14,2023-04-20,Dr Ekene A. Odu,Baobab Ward,437,Clearline HMO,832094.48,Urgent,Amlodipine,Abnormal
 tITilayo n. iKE,26,Female,O+,Childbirth,2023-04-14,2023-04-16,Dr Yetunde A. Dauda,Obeche Ward,320,Hallmark HMO,1489589.55,Emergency,Paracetamol,Normal
 osAs j. akinola,50,female,A+,Malaria,2023-04-14,2023-04-15,Dr Onyinye I. Lawal,Iroko Ward,104,NHIA (National Health Insurance),"261,134.06",Urgent,Artemether-Lumefantrine,Abnormal
@@ -3679,7 +3679,7 @@ lAmi y. sHaGari,1,Female,O+,Pneumonia,2023-04-20,2023-04-23,Dr Funmilayo A. Nnaj
 nkIRU l. cHime,35,Female,O+,Diabetes,2023-04-20,2023-04-25,Dr Safiya N. Abiodun,Iroko Ward,145,Avon HMO,490816.04,Elective,Metformin,Normal
 OMOLara M. ikE,27,Female,O+,Malaria,2023-04-20,2023-04-21,Dr Safiya N. Abiodun,Iroko Ward,150,Hallmark HMO,233635.1,Urgent,Artemether-Lumefantrine,Abnormal
 abDuLLAHI n. aNYanwU,56,Male,AB-,Hypertension,2023-04-20,2023-04-21,Dr Ifunanya W. Babangida,Baobab Ward,429,Avon HMO,344558.7,Emergency,Amlodipine,Abnormal
-cHiDi i. ibekWe,0,Male,A+,Pneumonia,2023-04-20,2023-04-22,Dr Asabe W. Ojo,Baobab Ward,411,Total Health Trust,278353.07,Emergency,Ceftriaxone,Inconclusive
+cHiDi i. ibekWe,1,Male,A+,Pneumonia,2023-04-20,2023-04-22,Dr Asabe W. Ojo,Baobab Ward,411,Total Health Trust,278353.07,Emergency,Ceftriaxone,Inconclusive
 OCHuko g. nnaji,49,Male,O+,Hypertension,2023-04-20,2023-04-25,Dr Hauwa W. Onwuka,Baobab Ward,421,Avon HMO,893184.05,Emergency,Amlodipine,Abnormal
 hAuwa d. oGunLesi,31,Female,O+,Childbirth,2023-04-20,2023-04-22,Dr Adenike F. Kanu,Obeche Ward,319,NHIA (National Health Insurance),1059859.81,Emergency,Oxytocin,Normal
 aNUli E. nNAji,81,Female,O+,Diabetes,2023-04-20,2023-04-30,Dr Adenike O. Suleiman,Baobab Ward,427,Clearline HMO,1432018.76,Urgent,Paracetamol,Abnormal
@@ -3719,7 +3719,7 @@ nkEcHi y. aYOdEle,36,Female,B+,Trauma,2023-04-20,2023-04-24,Dr Safiya G. Onwuka,
 chiAMakA D. agBAJe,28,Female,O+,Childbirth,2023-04-20,2023-04-21,Dr Adenike F. Kanu,Obeche Ward,327,Avon HMO,1051567.74,Urgent,Oxytocin,Normal
 sAlAmatu k. BaKARe,24,Female,O+,Malaria,2023-04-20,2023-04-23,Dr Safiya N. Abiodun,Iroko Ward,116,NHIA (National Health Insurance),415973.22,Emergency,Paracetamol,Abnormal
 ikechUkwu J. raji,65,Male,A+,Hypertension,2023-04-20,2023-04-25,Dr Hauwa W. Onwuka,Baobab,427,NHIA (National Health Insurance),694569.76,Elective,Amlodipine,Abnormal
-isah G. oBi,0,Male,O+,Pneumonia,2023-04-21,2023-04-27,Dr Asabe W. Ojo,Obeche Ward,313,NHIA (National Health Insurance),621816.62,Emergency,Ceftriaxone,Abnormal
+isah G. oBi,1,Male,O+,Pneumonia,2023-04-21,2023-04-27,Dr Asabe W. Ojo,Obeche Ward,313,NHIA (National Health Insurance),621816.62,Emergency,Ceftriaxone,Abnormal
 tEmitope f. DAudA,36,Female,O+,Childbirth,2023-04-21,2023-04-22,Dr Adenike F. Kanu,Obeche Ward,325,Clearline HMO,503703.93,Urgent,Oxytocin,Normal
 KunLe o. okAfoR,41,Male,B+,Trauma,2023-04-21,2023-05-09,Dr Damola R. Salami,Mahogany Ward,226,Total Health Trust,4567926.76,Urgent,Paracetamol,Inconclusive
 chUkwUemEKa J. Okoye,48,Male,O+,Hypertension,2023-04-21,2023-04-28,Dr Nkechi C. Obasi,Baobab Ward,423,NHIA (National Health Insurance),725319.2,Emergency,Amlodipine,Normal
@@ -3827,9 +3827,9 @@ EMeKa U. OnYekA,26,Male,A+,Malaria,2023-04-24,2023-04-25,Dr Adenike O. Suleiman,
 AdAeze b. adEbayo,3,Female,A+,Pneumonia,2023-04-24,2023-04-30,Dr Oluchi P. Ogundipe,Obeche Ward,313,Clearline HMO,567311.44,Emergency,Ceftriaxone,Normal
 funkE K. danjuMa,23,Female,O+,Childbirth,2023-04-24,2023-04-30,Dr Yetunde A. Dauda,Obeche Ward,338,NHIA (National Health Insurance),793453.02,Urgent,Oxytocin,Abnormal
 Tayo L. ibeKWe,35,Male,O+,Malaria,2023-04-24,2023-04-27,Dr Adebayo D. Ezenwa,Iroko Ward,105,Clearline HMO,313965.56,Urgent,Artemether-Lumefantrine,Abnormal
-chidi d. Ajayi,0,Male,O+,Pneumonia,2023-04-24,2023-04-27,Dr Oluchi P. Ogundipe,Obeche Ward,318,Total Health Trust,291572.38,Emergency,Ceftriaxone,Normal
+chidi d. Ajayi,1,Male,O+,Pneumonia,2023-04-24,2023-04-27,Dr Oluchi P. Ogundipe,Obeche Ward,318,Total Health Trust,291572.38,Emergency,Ceftriaxone,Normal
 AdAEze c. OGUnlESi,27,Female,B+,Malaria,2023-04-24,2023-04-25,Dr Adebayo D. Ezenwa,Iroko Ward,125,Avon HMO,255193.0,Urgent,Artemether-Lumefantrine,Abnormal
-ibrAhim l. aYodelE,0,Male,O+,Pneumonia,2023-04-24,2023-04-27,Dr Funmilayo A. Nnaji,Obeche Ward,302,NHIA (National Health Insurance),532835.6,Elective,Ceftriaxone,Abnormal
+ibrAhim l. aYodelE,1,Male,O+,Pneumonia,2023-04-24,2023-04-27,Dr Funmilayo A. Nnaji,Obeche Ward,302,NHIA (National Health Insurance),532835.6,Elective,Ceftriaxone,Abnormal
 sHehU u. abUbakar,4,Male,O+,Pneumonia,2023-04-24,2023-04-26,Dr Ebuka W. Adewale,Obeche Ward,341,Avon HMO,328479.74,Emergency,Ceftriaxone,Abnormal
 DANiel g. ONYeka,49,Male,AB+,Hypertension,2023-04-24,2023-05-04,Dr Ifunanya W. Babangida,Baobab Ward,438,NHIA (National Health Insurance),1130807.77,Emergency,Amlodipine,Normal
 OnyinYe o. ekwenSi,25,Female,A-,Trauma,2023-04-24,2023-05-01,Dr Adaobi M. Uzor,Mahogany Ward,247,Avon HMO,991758.7,Emergency,Paracetamol,Abnormal
@@ -3846,7 +3846,7 @@ temiTope f. udOh,17,F,O+,Malaria,2023-04-24,2023-04-27,Dr Ifeanyi M. Musa,Iroko 
 MuSA y. ikE,51,male,A+,Hypertension,2023-04-24,2023-04-28,Dr Nkechi C. Obasi,Baobab Ward,440,Total Health Trust,477634.85,Elective,Amlodipine,Abnormal
 bABatundE n. nWAChukwU,22,Male,O+,Malaria,2023-04-24,2023-05-05,Dr Onyinye I. Lawal,Iroko Ward,153,NHIA (National Health Insurance),816984.69,Emergency,Artemether-Lumefantrine,Abnormal
 rashiDa G. OLaNIYaN,31,Female,O+,Childbirth,2023-04-24,2023-04-25,Dr Adenike F. Kanu,Obeche Ward,320,Avon HMO,309735.92,Urgent,Oxytocin,Normal
-beLLo Y. okOnkwo,0,Male,O+,Pneumonia,2023-04-24,2023-04-28,Dr Oluchi P. Ogundipe,Obeche Ward,304,Avon HMO,495797.28,Urgent,Paracetamol,Abnormal
+beLLo Y. okOnkwo,1,Male,O+,Pneumonia,2023-04-24,2023-04-28,Dr Oluchi P. Ogundipe,Obeche Ward,304,Avon HMO,495797.28,Urgent,Paracetamol,Abnormal
 EjirO e. EfFioNg,37,Female,O+,Diabetes,2023-04-24,2023-05-04,Dr Onyinye I. Lawal,Iroko Ward,139,Avon HMO,1171962.09,Elective,Paracetamol,Abnormal
 uMar C. ekPO,65,Male,O+,Hypertension,2023-04-24,2023-04-28,Dr Ifunanya W. Babangida,Baobab Ward,410,Avon HMO,620686.69,Urgent,Amlodipine,Abnormal
 GOdWin W. OgUnDIpe,6,Male,B+,Pneumonia,2023-04-24,2023-05-01,Dr Oluchi P. Ogundipe,Obeche Ward,335,Total Health Trust,697028.37,Emergency,Ceftriaxone,Abnormal
@@ -4013,7 +4013,7 @@ TobILobA W. ogunLESi,47,Male,A+,Diabetes,2023-04-29,2023-05-03,Dr Safiya N. Abio
 nNEKA y. okoyE,7,Female,O+,Pneumonia,2023-04-29,2023-05-01,Dr Ebuka W. Adewale,Baobab Ward,424,Hallmark HMO,449002.71,Emergency,Ceftriaxone,Abnormal
 BukOLA g. nWaChukWu,22,Female,O+,Childbirth,2023-04-29,2023-05-01,Dr Adenike F. Kanu,Obeche Ward,350,Avon HMO,557533.91,Urgent,Paracetamol,Normal
 dAmiLOlA B. AkAnDE,33,Female,O+,Malaria,2023-04-29,2023-05-03,Dr Adenike O. Suleiman,Iroko Ward,152,Hallmark HMO,728555.19,Emergency,Artemether-Lumefantrine,Normal
-FuNMiLaYo G. KAlU,0,Female,O+,Pneumonia,2023-04-29,2023-05-07,Dr Asabe W. Ojo,Baobab Ward,412,NHIA (National Health Insurance),850150.03,Emergency,Ceftriaxone,Normal
+FuNMiLaYo G. KAlU,1,Female,O+,Pneumonia,2023-04-29,2023-05-07,Dr Asabe W. Ojo,Baobab Ward,412,NHIA (National Health Insurance),850150.03,Emergency,Ceftriaxone,Normal
 khadIja A. suLeiMAn,30,Female,O+,Childbirth,2023-04-29,2023-04-30,Dr Obiageli F. Azikiwe,Baobab Ward,438,Hallmark HMO,408897.73,Elective ,Oxytocin,Normal
 chijioKe p. edEt,1,Male,B+,Pneumonia,2023-04-29,2023-05-01,Dr Oluchi P. Ogundipe,Obeche Ward,334,Avon HMO,324357.7,Emergency,Ceftriaxone,Normal
 haLima y. EDEt,42,Female,O+,Trauma,2023-04-29,2023-05-13,Dr Oluwaseun D. Bakare,Mahogany Ward,218,NHIA (National Health Insurance),2320579.2,Emergency,Paracetamol,Normal
@@ -4067,7 +4067,7 @@ YetUnDe f. abUbaKar,35,Female,O+,Childbirth,2023-05-01,2023-04-29,Dr Obiageli F.
 adesuWA p. aGbaJE,10,F,AB+,Pneumonia,2023-05-01,2023-05-09,Dr Asabe W. Ojo,Obeche Ward,308,NHIA (National Health Insurance),612006.04,Urgent,Ceftriaxone,Abnormal
 dAMOLA o. dIke,74,Male,O+,Hypertension,2023-05-01,2023-05-16,Dr Nkechi C. Obasi,Baobab Ward,429,Clearline HMO,1791166.98,Urgent,Amlodipine,Normal
 nkEchi Y. ogUNdIpe,3,Female,O+,Pneumonia,2023-05-01,2023-05-03,Dr Oluchi P. Ogundipe,Obeche Ward,302,NHIA (National Health Insurance),361151.08,Emergency,Ceftriaxone,Abnormal
-iDriS k. jIbril,0,Male,O+,Pneumonia,2023-05-01,2023-05-15,Dr Ebuka W. Adewale,Obeche Ward,336,Total Health Trust,1259311.21,Urgent,Ceftriaxone,Normal
+iDriS k. jIbril,1,Male,O+,Pneumonia,2023-05-01,2023-05-15,Dr Ebuka W. Adewale,Obeche Ward,336,Total Health Trust,1259311.21,Urgent,Ceftriaxone,Normal
 ayomide o. akiNoLa,78,Female,O+,Diabetes,2023-05-01,2023-05-06,Dr Adenike O. Suleiman,Iroko Ward,106,Hallmark HMO,577752.69,Emergency,Metformin,Normal
 fuNmilayo N. AlIyu,8,Female,A+,Pneumonia,2023-05-01,2023-05-03,Dr Ebuka W. Adewale,Obeche Ward,314,NHIA (National Health Insurance),343156.63,Urgent,Ceftriaxone,Abnormal
 IjeOMA o. KAnu,34,Female,O+,Childbirth,2023-05-01,2023-05-03,Dr Ifeanyi B. Fashola,Obeche Ward,349,NHIA (National Health Insurance),1255551.33,Elective,Oxytocin,Abnormal
@@ -4290,7 +4290,7 @@ rashidA w. akiNoLA,34,Female,O+,Childbirth,2023-05-06,2023-05-08,Dr Amina O. Law
 haDiza b. iNyang,47,Female,O+,Malaria,2023-05-06,2023-05-08,Dr Onyinye I. Lawal,Iroko Ward,130,Avon HMO,349229.05,Emergency,Artemether-Lumefantrine,Abnormal
 aLIyU a. MoHammeD,41,Male,O+,Malaria,2023-05-07,2023-05-09,Dr Adebayo D. Ezenwa,Iroko Ward,128,Clearline HMO,270314.79,Urgent,Artemether-Lumefantrine,Abnormal
 titilaYO e. iKE,49,Female,B+,Malaria,2023-05-07,2023-05-15,Dr Adebayo D. Ezenwa,Iroko Ward,141,Clearline HMO,635285.28,Urgent,Artemether-Lumefantrine,Abnormal
-DamoLA C. idowu,0,M,A+,Pneumonia,2023-05-07,2023-05-08,Dr Funmilayo A. Nnaji,Obeche Ward,316,Hallmark HMO,"352,633.38",Urgent,Ceftriaxone,Normal
+DamoLA C. idowu,1,M,A+,Pneumonia,2023-05-07,2023-05-08,Dr Funmilayo A. Nnaji,Obeche Ward,316,Hallmark HMO,"352,633.38",Urgent,Ceftriaxone,Normal
 oluMIDE D. UdOh,39,Male,A+,Malaria,2023-05-07,2023-05-11,Dr Adebayo D. Ezenwa,Iroko Ward,145,NHIA (National Health Insurance),557482.33,Emergency,Artemether-Lumefantrine,Abnormal
 uChe o. okoro,32,Male,A+,Trauma,2023-05-07,2023-05-12,Dr Adaobi M. Uzor,Mahogany Ward,222,Total Health Trust,2283571.44,Emergency,Paracetamol,Abnormal
 KunLe W. ADeSInA,45,Male,O+,Diabetes,2023-05-07,2023-05-15,Dr Safiya N. Abiodun,Iroko Ward,151,Clearline HMO,978846.82,Emergency,Metformin,Normal
@@ -4314,7 +4314,7 @@ ochuKO S. ibe,1,Male,O+,Pneumonia,2023-05-07,2023-05-08,Dr Funmilayo A. Nnaji,Ba
 UsMAn D. Ekwensi,42,Male,O+,Hypertension,2023-05-07,2023-05-12,Dr Hauwa W. Onwuka,Baobab Ward,438,Avon HMO,828195.66,Emergency,Amlodipine,Normal
 tayO l. uZOr,54,Male,A-,Diabetes,2023-05-07,2023-05-11,Dr Adebayo D. Ezenwa,Iroko Ward,146,Total Health Trust,696539.17,Urgent,Paracetamol,Normal
 EnIola Y. aDeYeMi,59,Female,B+,Diabetes,2023-05-07,2023-05-08,Dr Onyinye I. Lawal,Iroko Ward,117,Avon HMO,309161.06,Emergency,Metformin,Abnormal
-WAle L. okoNKWo,0,Male,A+,Pneumonia,2023-05-07,2023-05-14,Dr Oluchi P. Ogundipe,Obeche Ward,310,NHIA (National Health Insurance),630860.41,Urgent,Ceftriaxone,Abnormal
+WAle L. okoNKWo,1,Male,A+,Pneumonia,2023-05-07,2023-05-14,Dr Oluchi P. Ogundipe,Obeche Ward,310,NHIA (National Health Insurance),630860.41,Urgent,Ceftriaxone,Abnormal
 dAmola o. obasi,38,Male,AB+,Trauma,2023-05-07,2023-05-15,Dr Adaobi M. Uzor,Mahogany Ward,214,Hallmark HMO,2612472.26,Elective,Paracetamol,Abnormal
 IkEcHuKWu A. NWankWo,29,M,O+,Trauma,2023-05-07,2023-05-16,Dr Damola R. Salami,Mahogany Ward,231,Clearline HMO,3207769.93,Urgent,Paracetamol,Abnormal
 Kemi u. abiOdun,68,Female,O+,Hypertension,2023-05-07,2023-05-12,Dr Nkechi C. Obasi,Iroko Ward,137,Clearline HMO,586988.98,Emergency,Amlodipine,Abnormal
@@ -4381,7 +4381,7 @@ JumOke l. OrJI,57,Female,A+,Diabetes,2023-05-09,2023-05-13,Dr Onyinye I. Lawal,I
 isah s. akpAn,6,Male,A+,Pneumonia,2023-05-09,2023-05-13,Dr Funmilayo A. Nnaji,Baobab Ward,435,NHIA (National Health Insurance),433809.87,Urgent,Ceftriaxone,Inconclusive
 damilOlA n. aBioDun,15,Female,O+,Malaria,2023-05-09,2023-05-20,Dr Adebayo D. Ezenwa,Iroko Ward,136,Hallmark HMO,924697.8,Emergency,Artemether-Lumefantrine,Abnormal
 tuNde j. oKpara,2,Male,B+,Pneumonia,2023-05-09,2023-05-20,Dr Asabe W. Ojo,Baobab Ward,415,Avon HMO,1270237.34,Emergency,Paracetamol,Abnormal
-nNAmdi T. osENi,0,Male,O+,Pneumonia,2023-05-09,2023-05-11,Dr Asabe W. Ojo,Obeche Ward,329,NHIA (National Health Insurance),366046.49,Emergency,Ceftriaxone,Abnormal
+nNAmdi T. osENi,1,Male,O+,Pneumonia,2023-05-09,2023-05-11,Dr Asabe W. Ojo,Obeche Ward,329,NHIA (National Health Insurance),366046.49,Emergency,Ceftriaxone,Abnormal
 adeNike p. EZeNwa,47,Female,AB+,Malaria,2023-05-09,2023-05-12,Dr Ifeanyi M. Musa,Iroko Ward,137,Hallmark HMO,414516.9,Emergency,Paracetamol,Abnormal
 Tunde c. eGwu,72,Male,A+,Diabetes,2023-05-09,2023-06-03,Dr Ifeanyi M. Musa,Iroko Ward,152,Avon HMO,2486857.29,Emergency,Metformin,Abnormal
 ifEoMa n. oGundiPe,53,Female,O+,Malaria,2023-05-09,2023-05-16,Dr Adebayo D. Ezenwa,Baobab Ward,429,Clearline HMO,1040301.88,Emergency,Artemether-Lumefantrine,Abnormal
@@ -4416,7 +4416,7 @@ cHiAMaKA c. kAnU,42,Female,O+,Malaria,2023-05-10,2023-05-15,Dr Onyinye I. Lawal,
 sunDay k. effIong,31,Male,O+,Trauma,2023-05-10,2023-05-20,Dr Damola R. Salami,Mahogany Ward,201,NHIA (National Health Insurance),2239241.3,Emergency,Paracetamol,Normal
 EjirO o. ekpo,39,Female,O+,Malaria,2023-05-10,2023-05-13,Dr Safiya N. Abiodun,Iroko Ward,123,Clearline HMO,537584.22,Urgent,Artemether-Lumefantrine,Abnormal
 TemitoPe g. oyelaran,46,Female,O+,Diabetes,2023-05-10,2023-05-14,Dr Safiya N. Abiodun,Iroko Ward,142,Clearline HMO,-476641.52,Urgent,Metformin,Normal
-aMARA w. BAloGun,0,Female,O+,Pneumonia,2023-05-10,2023-05-13,Dr Asabe W. Ojo,Obeche Ward,314,Hallmark HMO,391997.56,Emergency,Ceftriaxone,Normal
+aMARA w. BAloGun,1,Female,O+,Pneumonia,2023-05-10,2023-05-13,Dr Asabe W. Ojo,Obeche Ward,314,Hallmark HMO,391997.56,Emergency,Ceftriaxone,Normal
 amina a. iSIakA,80,Female,O+,Hypertension,2023-05-10,2023-05-21,Dr Ifunanya W. Babangida,BAOBAB WARD ,427,Avon HMO,1337455.49,Emergency,Amlodipine,Abnormal
 isAh e. AjaYi,56,Male,B+,Malaria,2023-05-10,2023-05-14,Dr Adenike O. Suleiman,Iroko Ward,102,Avon HMO,448777.54,urgent,Artemether-Lumefantrine,Normal
 AmAra y. aDewaLe,39,Female,O+,Childbirth,2023-05-10,2023-05-16,Dr Ifeanyi B. Fashola,Obeche Ward,340,Hallmark HMO,1915234.58,Emergency,Oxytocin,Inconclusive
@@ -4429,7 +4429,7 @@ Osagie M. tIjani,30,Male,O+,Malaria,2023-05-10,2023-05-12,Dr Adenike O. Suleiman
 HAuWa n. adesINa,58,Female,B+,Malaria,2023-05-10,2023-05-13,Dr Safiya N. Abiodun,Iroko Ward,118,NHIA (National Health Insurance),436429.38,Emergency,Artemether-Lumefantrine,Abnormal
 FolAke b. effiong,32,Female,O+,Childbirth,2023-05-10,2023-05-13,Dr Adenike F. Kanu,Baobab Ward,421,Hallmark HMO,723299.14,Elective,Oxytocin,Abnormal
 olumiDE o. IsiaKA,26,M,O+,Trauma,2023-05-10,2023-05-13,Dr Oluwaseun D. Bakare,Mahogany Ward,223,Avon HMO,556169.79,Emergency,Paracetamol,Abnormal
-aMARA w. BAloGun,0,Female,O+,Pneumonia,2023-05-10,2023-05-13,Dr Asabe W. Ojo,Obeche Ward,314,Hallmark HMO,391997.56,Emergency,Ceftriaxone,Normal
+aMARA w. BAloGun,1,Female,O+,Pneumonia,2023-05-10,2023-05-13,Dr Asabe W. Ojo,Obeche Ward,314,Hallmark HMO,391997.56,Emergency,Ceftriaxone,Normal
 abUBAKar g. AdeLEKe,73,Male,B+,Hypertension,2023-05-10,2023-05-29,Dr Hauwa W. Onwuka,Baobab Ward,408,NHIA (National Health Insurance),2750162.29,Urgent,Paracetamol,Abnormal
 cHiNedU S. AdeLEkE,51,Male,O+,Diabetes,2023-05-10,2023-05-22,Dr Ifeanyi M. Musa,Iroko Ward,150,Avon HMO,1090457.72,Urgent,Metformin,Abnormal
 dAmiLOla p. nwanKWO,50,F,O+,Hypertension,2023-05-10,2023-05-18,Dr Ekene A. Odu,Baobab Ward,415,Total Health Trust,1314965.95,Emergency,Amlodipine,Inconclusive
@@ -4637,7 +4637,7 @@ aDesuwa w. atTah,8,Female,O+,Pneumonia,2023-05-16,2023-05-18,Dr Asabe W. Ojo,Obe
 ZUwaira c. usMAn,19,Female,O+,Malaria,2023-05-16,2023-05-18,Dr Safiya N. Abiodun,Iroko Ward,152,NHIA (National Health Insurance),296029.03,Urgent,Artemether-Lumefantrine,Normal
 hAruNa G. aliYu,67,Male,O+,Hypertension,2023-05-16,2023-05-31,Dr Ifunanya W. Babangida,Baobab Ward,423,NHIA (National Health Insurance),1849622.83,Emergency,Amlodipine,Abnormal
 aDesuwA n. bEllo,63,F,O+,Hypertension,2023-05-16,2023-05-22,Dr Nkechi C. Obasi,Iroko Ward,113,Total Health Trust,944403.34,Urgent,Amlodipine,Normal
-EbeRe e. OKpAra,0,Female,O+,Pneumonia,2023-05-16,2023-05-18,Dr Asabe W. Ojo,Obeche Ward,313,NHIA (National Health Insurance),308304.66,Emergency,Ceftriaxone,Inconclusive
+EbeRe e. OKpAra,1,Female,O+,Pneumonia,2023-05-16,2023-05-18,Dr Asabe W. Ojo,Obeche Ward,313,NHIA (National Health Insurance),308304.66,Emergency,Ceftriaxone,Inconclusive
 onyiNyE t. nnAjI,15,Female,A+,Malaria,2023-05-16,2023-05-18,Dr Ifeanyi M. Musa,Baobab Ward,425,Clearline HMO,387777.39,Urgent,Artemether-Lumefantrine,Abnormal
 Asabe j. olaNiYan,53,Female,O+,Hypertension,2023-05-16,2023-05-21,Dr Hauwa W. Onwuka,Baobab Ward,411,Hallmark HMO,1289054.74,Emergency,Paracetamol,Abnormal
 AMakA p. aGbajE,62,Female,O+,Malaria,2023-05-16,2023-05-23,Dr Safiya N. Abiodun,Iroko Ward,137,NHIA (National Health Insurance),893318.88,Urgent,Artemether-Lumefantrine,Abnormal
@@ -4715,7 +4715,7 @@ IkeNnA U. nDUka,48,Male,B+,Malaria,2023-05-18,2023-05-19,Dr Ifeanyi M. Musa,Baob
 moDupE O. JibrIL,65,Female,O+,Hypertension,2023-05-18,2023-05-23,Dr Nkechi C. Obasi,Iroko Ward,130,NHIA (National Health Insurance),648851.03,Elective,Amlodipine,Abnormal
 NkeChi s. nwankwo,15,Female,O-,Malaria,2023-05-18,2023-05-20,Dr Ifeanyi M. Musa,Iroko Ward,113,Clearline HMO,539800.25,Urgent,Artemether-Lumefantrine,Abnormal
 AdAeze l. nwOsu,35,Female,O-,Malaria,2023-05-18,2023-05-21,Dr Ifeanyi M. Musa,Iroko Ward,124,NHIA (National Health Insurance),388327.53,Emergency,Artemether-Lumefantrine,Normal
-iDrIs r. akpan,0,male,A+,Pneumonia,2023-05-18,2023-05-20,Dr Ebuka W. Adewale,Obeche Ward,344,Avon HMO,307533.58,Urgent,Ceftriaxone,Normal
+iDrIs r. akpan,1,male,A+,Pneumonia,2023-05-18,2023-05-20,Dr Ebuka W. Adewale,Obeche Ward,344,Avon HMO,307533.58,Urgent,Ceftriaxone,Normal
 NnAMdi g. oladipO,62,M,O+,Malaria,2023-05-18,2023-05-21,Dr Adebayo D. Ezenwa,Iroko Ward,105,NHIA (National Health Insurance),343374.68,Urgent,Paracetamol,Abnormal
 haliMA g. nDuka,59,female,O+,Hypertension,2023-05-18,2023-05-24,Dr Ekene A. Odu,Baobab Ward,435,NHIA (National Health Insurance),720368.52,Urgent,Amlodipine,Abnormal
 oBinnA i. EzeNwa,20,Male,O+,Trauma,2023-05-18,2023-05-22,Dr Adaobi M. Uzor,Mahogany Ward,228,Avon HMO,1237509.28,Emergency,Paracetamol,Abnormal
@@ -4828,7 +4828,7 @@ HARuna K. ojo,47,Male,AB+,Diabetes,2023-05-21,2023-06-10,Dr Adenike O. Suleiman,
 ayoMide E. mbaH,17,Female,B+,Childbirth,2023-05-21,2023-05-23,Dr Yetunde A. Dauda,OBECHE WARD,301,Avon HMO,619517.35,Elective,Oxytocin,Abnormal
 jumOke M. KAlu,27,Female,A+,Childbirth,2023-05-21,2023-05-23,Dr Obiageli F. Azikiwe,Obeche Ward,350,Clearline HMO,1510163.47,Elective,Paracetamol,Normal
 oBiNNa a. OSeNi,31,Male,O+,Malaria,2023-05-21,2023-05-28,Dr Adebayo D. Ezenwa,Iroko Ward,107,NHIA (National Health Insurance),630230.35,Emergency,Artemether-Lumefantrine,Abnormal
-ChiJiOkE J. ADebaYo,0,Male,O+,Pneumonia,2023-05-21,2023-05-25,Dr Oluchi P. Ogundipe,Obeche,309,Total Health Trust,365334.39,Emergency,Paracetamol,Abnormal
+ChiJiOkE J. ADebaYo,1,Male,O+,Pneumonia,2023-05-21,2023-05-25,Dr Oluchi P. Ogundipe,Obeche,309,Total Health Trust,365334.39,Emergency,Paracetamol,Abnormal
 ahMEd r. sulEiMan,52,Male,O-,Diabetes,2023-05-21,2023-05-27,Dr Adenike O. Suleiman,Iroko Ward,159,Total Health Trust,634240.45,Emergency,Metformin,Normal
 OmOlara k. Nnaji,63,Female,AB-,Diabetes,2023-05-21,2023-05-23,Dr Safiya N. Abiodun,Iroko Ward,154,NHIA (National Health Insurance),441029.87,Urgent,Metformin,Normal
 OnYinyE g. eGwu,26,Female,B+,Childbirth,2023-05-21,2023-05-22,Dr Adenike F. Kanu,Baobab Ward,404,NHIA (National Health Insurance),400682.02,Elective,Oxytocin,Normal
@@ -4856,7 +4856,7 @@ salamatu c. ANyanWu,36,Female,B+,Childbirth,2023-05-22,2023-05-23,Dr Yetunde A. 
 FOLake r. oladipo,62,Female,O+,Diabetes,2023-05-22,2023-05-25,Dr Safiya N. Abiodun,Iroko Ward,136,Clearline HMO,404261.25,Emergency,Paracetamol,Abnormal
 abimboLA E. fAShOla,32,Female,O+,Malaria,2023-05-22,2023-05-27,Dr Zainab B. Dauda,Iroko Ward,141,NHIA (National Health Insurance),544038.65,Urgent,Paracetamol,Abnormal
 jide W. isIaka,43,Male,O+,Trauma,2023-05-22,2023-05-26,Dr Adaobi M. Uzor,Mahogany Ward,229,Clearline HMO,2306994.59,Emergency,Paracetamol,Abnormal
-roTimi c. Dike,0,Male,A+,Pneumonia,2023-05-22,2023-05-26,Dr Ebuka W. Adewale,Obeche Ward,348,NHIA (National Health Insurance),566265.98,Emergency,Ceftriaxone,Abnormal
+roTimi c. Dike,1,Male,A+,Pneumonia,2023-05-22,2023-05-26,Dr Ebuka W. Adewale,Obeche Ward,348,NHIA (National Health Insurance),566265.98,Emergency,Ceftriaxone,Abnormal
 amina w. AdEwaLe,55,Female,B+,Malaria,2023-05-22,2023-05-26,Dr Ifeanyi M. Musa,Iroko Ward,136,Total Health Trust,549706.74,Emergency,Artemether-Lumefantrine,Abnormal
 ChiNEdu D. ADewAle,52,Male,B-,Malaria,2023-05-22,2023-05-26,Dr Adebayo D. Ezenwa,Iroko Ward,135,Clearline HMO,539614.05,Urgent,Paracetamol,Abnormal
 damilOLa u. etim,53,Female,O+,Diabetes,2023-05-22,2023-05-25,Dr Zainab B. Dauda,Iroko Ward,113,NHIA (National Health Insurance),411754.4,Urgent,Paracetamol,Abnormal
@@ -4982,7 +4982,7 @@ NNamdi D. uDoh,27,Male,O+,Malaria,2023-05-25,2023-05-29,Dr Safiya N. Abiodun,Iro
 uzoma l. ogBONna,21,Male,O+,Malaria,2023-05-25,2023-05-27,Dr Adebayo D. Ezenwa,Iroko Ward,133,NHIA (National Health Insurance),345971.47,Elective,Artemether-Lumefantrine,Abnormal
 obiaGeLI d. ogBoNNa,32,Female,O+,Childbirth,2023-05-25,2023-05-27,Dr Adenike F. Kanu,Obeche Ward,312,NHIA (National Health Insurance),528045.88,Emergency,Paracetamol,Abnormal
 yAkubU s. oKPAra,27,Male,A+,Trauma,2023-05-25,2023-06-13,Dr Oluwaseun D. Bakare,Mahogany Ward,216,Total Health Trust,3889167.19,Emergency,Paracetamol,Abnormal
-IsaH d. kAnu,0,Male,A+,Pneumonia,2023-05-25,2023-05-27,Dr Ebuka W. Adewale,Obeche Ward,330,Clearline HMO,"305,684.71",Urgent,Ceftriaxone,Abnormal
+IsaH d. kAnu,1,Male,A+,Pneumonia,2023-05-25,2023-05-27,Dr Ebuka W. Adewale,Obeche Ward,330,Clearline HMO,"305,684.71",Urgent,Ceftriaxone,Abnormal
 NneKa a. olaNiyan,38,Female,A+,Childbirth,2023-05-25,2023-05-26,Dr Yetunde A. Dauda,Baobab Ward,431,NHIA (National Health Insurance),"1,516,428.41",Emergency,Paracetamol,Normal
 AdaEzE C. kalU,2,Female,O+,Pneumonia,2023-05-25,2023-05-31,Dr Ebuka W. Adewale,Obeche Ward,313,NHIA (National Health Insurance),711174.45,Emergency,Ceftriaxone,Normal
 IjeOmA d. ojO,62,Female,O+,Diabetes,2023-05-25,2023-06-01,Dr Onyinye I. Lawal,Iroko Ward,141,NHIA (National Health Insurance),693695.8,Emergency,Metformin,Normal
@@ -5622,7 +5622,7 @@ ochuKO s. OKoYe,31,Male,A+,Trauma,2023-06-11,2023-06-14,Dr Oluwaseun D. Bakare,M
 sUndAy k. Ike,52,Male,O+,Hypertension,2023-06-11,2023-06-16,Dr Hauwa W. Onwuka,Baobab Ward,416,Hallmark HMO,945594.3,Emergency,Amlodipine,Normal
 onYInyE A. LAwAl,3,Female,O+,Pneumonia,2023-06-11,2023-06-18,Dr Ebuka W. Adewale,Obeche Ward,301,Total Health Trust,789143.57,Urgent,Paracetamol,Normal
 ONyinye i. onwUka,27,Female,O+,Malaria,2023-06-11,2023-06-15,Dr Safiya N. Abiodun,Iroko Ward,158,Total Health Trust,"415,522.31",Urgent,Paracetamol,Normal
-ABImBOla F. oGBonNa,0,Female,A+,Pneumonia,2023-06-11,2023-06-19,Dr Oluchi P. Ogundipe,Baobab Ward,438,Avon HMO,758013.83,Emergency,Ceftriaxone,Normal
+ABImBOla F. oGBonNa,1,Female,A+,Pneumonia,2023-06-11,2023-06-19,Dr Oluchi P. Ogundipe,Baobab Ward,438,Avon HMO,758013.83,Emergency,Ceftriaxone,Normal
 DaMiLOla P. etIm,57,Female,B+,Diabetes,2023-06-11,2023-06-20,Dr Adebayo D. Ezenwa,Iroko Ward,128,Total Health Trust,689885.42,Elective,Metformin,Normal
 bABAtuNde t. NnaJi,30,Male,AB+,Trauma,2023-06-11,2023-06-15,Dr Safiya G. Onwuka,Mahogany Ward,211,Total Health Trust,1125991.75,Emergency,Paracetamol,Abnormal
 abubakar o. ajAyi,64,male,O+,Diabetes,2023-06-11,2023-06-22,Dr Adebayo D. Ezenwa,Iroko Ward,126,Avon HMO,1198892.23,urgent,Metformin,Inconclusive
@@ -5793,7 +5793,7 @@ yakubu B. AKInola,52,Male,O+,Malaria,2023-06-15,2023-06-21,Dr Onyinye I. Lawal,I
 sAni K. bakare,51,Male,A+,Trauma,2023-06-15,2023-06-24,Dr Safiya G. Onwuka,Mahogany Ward,221,NHIA (National Health Insurance),1487193.01,Emergency,Paracetamol,Abnormal
 uche y. Iwu,45,Male,B+,Malaria,2023-06-15,2023-06-18,Dr Adenike O. Suleiman,Iroko Ward,116,Clearline HMO,610655.7,Elective,Artemether-Lumefantrine,Abnormal
 eMEkA B. garBa,16,Male,O-,Trauma,2023-06-15,2023-07-01,Dr Damola R. Salami,Mahogany Ward,207,Clearline HMO,2352139.75,Urgent,Paracetamol,Normal
-tunDe m. NnAmdi,0,Male,A+,Pneumonia,2023-06-15,2023-06-16,Dr Oluchi P. Ogundipe,Obeche Ward,317,NHIA (National Health Insurance),312154.33,urgent,Ceftriaxone,Abnormal
+tunDe m. NnAmdi,1,Male,A+,Pneumonia,2023-06-15,2023-06-16,Dr Oluchi P. Ogundipe,Obeche Ward,317,NHIA (National Health Insurance),312154.33,urgent,Ceftriaxone,Abnormal
 aYomidE K. nwosu,26,Female,A+,Childbirth,2023-06-15,2023-06-16,Dr Ifeanyi B. Fashola,Obeche Ward,332,NHIA (National Health Insurance),1602872.81,Elective,Oxytocin,Normal
 OnyinyE P. oguNdIpE,15,Female,A+,Malaria,2023-06-15,2023-06-17,Dr Onyinye I. Lawal,Iroko Ward,159,NHIA (National Health Insurance),376809.85,Emergency,Paracetamol,Abnormal
 rOTImI Y. udOh,4,Male,O+,Pneumonia,2023-06-15,2023-06-19,Dr Ebuka W. Adewale,Obeche Ward,310,NHIA (National Health Insurance),332675.52,Elective,Paracetamol,Normal
@@ -5915,7 +5915,7 @@ chidI C. bellO,49,Male,B+,Malaria,2023-06-18,2023-06-21,Dr Zainab B. Dauda,Iroko
 bAla i. ikE,45,Male,A-,Malaria,2023-06-18,2023-06-20,Dr Zainab B. Dauda,Iroko Ward,105,Avon HMO,347503.95,Emergency,Paracetamol,Abnormal
 oLucHi r. Uba,64,Female,O+,Diabetes,2023-06-18,2023-06-24,Dr Ifeanyi M. Musa,Iroko Ward,142,Hallmark HMO,718113.25,Elective,Metformin,Normal
 aDaEze m. igwe,77,Female,B+,Diabetes,2023-06-18,2023-07-03,Dr Ifeanyi M. Musa,Iroko Ward,109,Avon HMO,1131611.91,Emergency,Metformin,Normal
-hAliMa b. adELEkE,0,Female,A+,Pneumonia,2023-06-18,2023-06-19,Dr Funmilayo A. Nnaji,Baobab Ward,411,Hallmark HMO,219771.43,Urgent,Ceftriaxone,Abnormal
+hAliMa b. adELEkE,1,Female,A+,Pneumonia,2023-06-18,2023-06-19,Dr Funmilayo A. Nnaji,Baobab Ward,411,Hallmark HMO,219771.43,Urgent,Ceftriaxone,Abnormal
 ikechukwu O. CHimE,28,Male,O+,Malaria,2023-06-18,2023-06-19,Dr Adebayo D. Ezenwa,Baobab Ward,427,Hallmark HMO,234696.34,Emergency,Artemether-Lumefantrine,Abnormal
 ucHEnnA k. ubA,44,Female,O+,Malaria,2023-06-18,2023-06-21,Dr Safiya N. Abiodun,Iroko Ward,144,Avon HMO,531379.06,Emergency,Paracetamol,Normal
 rashiDa y. aDEleke,38,Female,A+,Malaria,2023-06-19,2023-06-21,Dr Adenike O. Suleiman,Iroko Ward,156,Clearline HMO,443697.5,Emergency,Artemether-Lumefantrine,Abnormal
@@ -6009,7 +6009,7 @@ ocHuKo o. ukPAbI,57,male,B+,Hypertension,2023-06-21,2023-07-04,Dr Ekene A. Odu,B
 kemI K. chuKwU,28,Female,A+,Childbirth,2023-06-21,2023-06-23,Dr Ifeanyi B. Fashola,Obeche Ward,305,Clearline HMO,1291610.42,Emergency,Oxytocin,Abnormal
 ZuwaIra o. AttaH,42,Female,AB+,Malaria,2023-06-21,2023-06-23,Dr Safiya N. Abiodun,Baobab Ward,408,Total Health Trust,293430.8,Urgent,Artemether-Lumefantrine,Normal
 abdulLAhI P. DikE,67,Male,O+,Diabetes,2023-06-21,2023-06-30,Dr Ifeanyi M. Musa,Iroko Ward,146,NHIA (National Health Insurance),1019353.38,Urgent,Metformin,Abnormal
-OsAs t. salamI,0,Female,B+,Pneumonia,2023-06-21,2023-06-25,Dr Funmilayo A. Nnaji,Obeche Ward,339,NHIA (National Health Insurance),513792.41,Emergency,Ceftriaxone,Abnormal
+OsAs t. salamI,1,Female,B+,Pneumonia,2023-06-21,2023-06-25,Dr Funmilayo A. Nnaji,Obeche Ward,339,NHIA (National Health Insurance),513792.41,Emergency,Ceftriaxone,Abnormal
 damoLa j. eZEnWa,72,Male,O+,Malaria,2023-06-21,2023-06-25,Dr Zainab B. Dauda,Baobab Ward,425,Clearline HMO,504055.32,Urgent,Artemether-Lumefantrine,Abnormal
 YeTundE E. mustaphA,29,Female,B+,Childbirth,2023-06-21,2023-06-28,Dr Amina O. Lawal,Obeche Ward,313,Total Health Trust,1216633.35,Elective,Paracetamol,Inconclusive
 adebaYO l. nWAcHUkwu,62,M,O+,Diabetes,2023-06-21,2023-06-27,Dr Onyinye I. Lawal,Iroko Ward,128,Hallmark HMO,578656.01,Elective,Metformin,Abnormal
@@ -6271,7 +6271,7 @@ jUMoke A. OkAFOr,35,Female,O+,Childbirth,2023-06-27,2023-06-29,Dr Adenike F. Kan
 aDebola b. ekOng,62,Female,O+,Hypertension,2023-06-27,2023-07-01,Dr Hauwa W. Onwuka,Baobab Ward,410,NHIA (National Health Insurance),695704.25,Urgent,Amlodipine,Abnormal
 laMI c. ibeKWe,16,Female,O+,Childbirth,2023-06-27,2023-06-29,Dr Daniel K. Igwe,Obeche Ward,315,NHIA (National Health Insurance),708199.19,Urgent,Oxytocin,Abnormal
 amiNA f. AKiNola,34,Female,O+,Childbirth,2023-06-27,2023-06-30,Dr Amina O. Lawal,Obeche Ward,309,NHIA (National Health Insurance),594505.06,Emergency,Oxytocin,Abnormal
-bello l. ojO,0,Male,B+,Pneumonia,2023-06-27,2023-07-01,Dr Funmilayo A. Nnaji,Obeche Ward,325,NHIA (National Health Insurance),566963.92,Emergency,Ceftriaxone,Normal
+bello l. ojO,1,Male,B+,Pneumonia,2023-06-27,2023-07-01,Dr Funmilayo A. Nnaji,Obeche Ward,325,NHIA (National Health Insurance),566963.92,Emergency,Ceftriaxone,Normal
 obInna R. obI,32,Male,A+,Malaria,2023-06-27,2023-06-29,Dr Safiya N. Abiodun,Iroko Ward,141,NHIA (National Health Insurance),485843.32,Urgent,Artemether-Lumefantrine,Abnormal
 bLessIng p. CHUkWu,24,Female,O+,Childbirth,2023-06-27,2023-07-01,Dr Obiageli F. Azikiwe,Baobab Ward,438,Clearline HMO,717078.74,Elective,Oxytocin,Abnormal
 oChuko m. aYodEle,35,Male,O+,Trauma,2023-06-27,2023-07-04,Dr Oluwaseun D. Bakare,Mahogany Ward,240,Hallmark HMO,2358110.16,Urgent,Paracetamol,Abnormal
@@ -6461,7 +6461,7 @@ dAmILOlA t. olaniyan,34,Female,A+,Childbirth,2023-07-03,2023-07-05,Dr Obiageli F
 nkiru Y. OkoRO,70,Female,A+,Hypertension,2023-07-03,2023-07-18,Dr Hauwa W. Onwuka,Baobab Ward,415,NHIA (National Health Insurance),2163308.38,Elective,Amlodipine,Abnormal
 chINwe u. bakare,65,Female,O+,Malaria,2023-07-03,2023-07-09,Dr Zainab B. Dauda,Iroko Ward,137,Total Health Trust,718450.59,Emergency,Artemether-Lumefantrine,Abnormal
 cHinWE U. JiBRIL,41,F,O+,Diabetes,2023-07-03,2023-07-07,Dr Adenike O. Suleiman,Iroko Ward,159,Avon HMO,641366.87,Urgent,Metformin,Normal
-blesSing k. oyElarAN,0,Female,B+,Pneumonia,2023-07-03,2023-07-06,Dr Funmilayo A. Nnaji,Obeche Ward,336,NHIA (National Health Insurance),530142.61,Urgent,Ceftriaxone,Abnormal
+blesSing k. oyElarAN,1,Female,B+,Pneumonia,2023-07-03,2023-07-06,Dr Funmilayo A. Nnaji,Obeche Ward,336,NHIA (National Health Insurance),530142.61,Urgent,Ceftriaxone,Abnormal
 Jide g. aKAnde,16,Male,A+,Trauma,2023-07-03,2023-07-09,Dr Safiya G. Onwuka,Mahogany Ward,213,Avon HMO,2227527.73,Urgent,Paracetamol,Abnormal
 onyInye s. ekWensi,24,Female,A+,Malaria,2023-07-03,2023-07-05,Dr Safiya N. Abiodun,Iroko Ward,103,Avon HMO,394287.83,Urgent,Artemether-Lumefantrine,Abnormal
 HAdizA p. aDeLeke,1,Female,B+,Pneumonia,2023-07-03,2023-07-10,Dr Funmilayo A. Nnaji,Obeche Ward,333,NHIA (National Health Insurance),643657.17,Urgent,Ceftriaxone,Normal
@@ -6559,7 +6559,7 @@ kayode s. iBRahim,1,Male,A+,Pneumonia,2023-07-06,2023-07-08,Dr Funmilayo A. Nnaj
 ISAh j. aKPan,61,Male,A+,Hypertension,2023-07-06,2023-07-19,Dr Ifunanya W. Babangida,Baobab Ward,439,Avon HMO,1789556.5,Elective ,Amlodipine,Normal
 modupe R. edEt,34,Female,O+,Childbirth,2023-07-06,2023-07-09,Dr Yetunde A. Dauda,Obeche Ward,329,Total Health Trust,562768.56,Emergency,Paracetamol,Normal
 ebuka P. nwanKWo,51,Male,O-,Trauma,2023-07-07,2023-07-13,Dr Safiya G. Onwuka,Mahogany Ward,210,NHIA (National Health Insurance),1469356.04,Emergency,Paracetamol,Normal
-yaKubu u. okoYe,0,Male,A+,Pneumonia,2023-07-07,2023-07-10,Dr Ebuka W. Adewale,Obeche Ward,308,NHIA (National Health Insurance),414426.03,Urgent,Ceftriaxone,Abnormal
+yaKubu u. okoYe,1,Male,A+,Pneumonia,2023-07-07,2023-07-10,Dr Ebuka W. Adewale,Obeche Ward,308,NHIA (National Health Insurance),414426.03,Urgent,Ceftriaxone,Abnormal
 SimisOla R. uBA,1,Female,O+,Pneumonia,2023-07-07,2023-07-10,Dr Asabe W. Ojo,Obeche Ward,322,Clearline HMO,295383.27,Emergency,Ceftriaxone,Abnormal
 adamu C. beLLo,2,Male,O+,Pneumonia,2023-07-07,2023-07-14,Dr Asabe W. Ojo,Obeche Ward,309,Total Health Trust,1035908.13,Emergency,Ceftriaxone,Abnormal
 LaMI e. okeke,33,Female,O+,Childbirth,2023-07-07,2023-07-08,Dr Amina O. Lawal,Baobab Ward,427,Hallmark HMO,526555.29,Elective,Oxytocin,Abnormal
@@ -6707,7 +6707,7 @@ hALImA f. ADeyEmi,36,Female,O+,Malaria,2023-07-10,2023-07-15,Dr Ifeanyi M. Musa,
 aDamu t. uZor,53,Male,O-,Hypertension,2023-07-10,2023-07-18,Dr Hauwa W. Onwuka,Baobab Ward,408,Clearline HMO,1166557.83,Urgent,Amlodipine,Abnormal
 funke j. onuoha,1,Female,B+,Pneumonia,2023-07-10,2023-07-18,Dr Ebuka W. Adewale,Baobab Ward,436,Avon HMO,745813.02,Urgent,Paracetamol,Abnormal
 FaTIma I. Ogbu,50,Female,O+,Malaria,2023-07-10,2023-07-17,Dr Onyinye I. Lawal,Iroko Ward,101,Clearline HMO,706718.6,Emergency,Artemether-Lumefantrine,Abnormal
-Onyinye d. AGbAjE,0,Female,O+,Pneumonia,2023-07-10,2023-07-13,Dr Asabe W. Ojo,Obeche Ward,336,Avon HMO,496296.8,Urgent,Ceftriaxone,Abnormal
+Onyinye d. AGbAjE,1,Female,O+,Pneumonia,2023-07-10,2023-07-13,Dr Asabe W. Ojo,Obeche Ward,336,Avon HMO,496296.8,Urgent,Ceftriaxone,Abnormal
 YAkubU y. OLatuNji,2,Male,O+,Pneumonia,2023-07-10,2023-07-12,Dr Ebuka W. Adewale,Obeche Ward,347,Hallmark HMO,426914.15,Emergency,Ceftriaxone,Abnormal
 EstHer i. Jibril,23,Female,B+,Childbirth,2023-07-10,2023-07-14,Dr Amina O. Lawal,Obeche Ward,311,Clearline HMO,1090108.8,Urgent,Oxytocin,Normal
 funmIlayo g. mUsa,55,Female,O+,Malaria,2023-07-10,2023-07-13,Dr Onyinye I. Lawal,Iroko Ward,148,Clearline HMO,466103.24,Urgent,Artemether-Lumefantrine,Normal
@@ -6840,7 +6840,7 @@ FunmiLaYo c. ekong,19,Female,O+,Childbirth,2023-07-14,2023-07-22,Dr Yetunde A. D
 ifeAnyi o. oRji,33,Male,O+,Trauma,2023-07-14,2023-07-17,Dr Adaobi M. Uzor,Mahogony Ward,234,NHIA (National Health Insurance),1009840.17,Emergency,Paracetamol,Abnormal
 aBubakAr p. ibekWe,15,Male,O+,Malaria,2023-07-14,2023-07-16,Dr Adebayo D. Ezenwa,Iroko Ward,103,Avon HMO,474957.14,Elective,Artemether-Lumefantrine,Abnormal
 obinna t. OnwUKA,46,Male,B+,Hypertension,2023-07-14,2023-07-26,Dr Ekene A. Odu,Iroko Ward,117,Hallmark HMO,1455819.09,Emergency,Amlodipine,Abnormal
-mARIam e. OnyeKa,0,Female,O+,Pneumonia,2023-07-14,2023-07-16,Dr Funmilayo A. Nnaji,Obeche Ward,316,Total Health Trust,361124.39,Elective ,Ceftriaxone,Normal
+mARIam e. OnyeKa,1,Female,O+,Pneumonia,2023-07-14,2023-07-16,Dr Funmilayo A. Nnaji,Obeche Ward,316,Total Health Trust,361124.39,Elective ,Ceftriaxone,Normal
 NgOzI w. aDesinA,29,female,O+,Childbirth,2023-07-14,2023-07-20,Dr Obiageli F. Azikiwe,Obeche Ward,329,Total Health Trust,2204998.43,Elective,Oxytocin,Normal
 tobIlObA I. ObasI,57,Male,B+,Diabetes,2023-07-14,2023-07-18,Dr Ifeanyi M. Musa,Iroko Ward,103,Avon HMO,492657.57,Elective,Metformin,Normal
 juMOKe b. eGWU,36,Female,O+,Childbirth,2023-07-14,2023-07-21,Dr Daniel K. Igwe,Obeche Ward,329,NHIA (National Health Insurance),1598204.41,Emergency,Oxytocin,Abnormal
@@ -6852,7 +6852,7 @@ ABuBAKAr w. adewale,54,Male,O+,Malaria,2023-07-15,2023-07-16,Dr Onyinye I. Lawal
 EjiRO d. yakUBu,35,Female,A+,Malaria,2023-07-15,2023-07-20,Dr Adebayo D. Ezenwa,Iroko Ward,127,Hallmark HMO,502179.46,Emergency,Artemether-Lumefantrine,Abnormal
 YeTUnDe t. dike,20,Female,B+,Malaria,2023-07-15,2023-07-17,Dr Adenike O. Suleiman,Iroko Ward,124,NHIA (National Health Insurance),344264.16,Emergency,Paracetamol,Abnormal
 UChenna y. adeSina,50,Female,O+,Malaria,2023-07-15,2023-07-18,Dr Zainab B. Dauda,Iroko Ward,157,Total Health Trust,403018.59,Emergency,Artemether-Lumefantrine,Abnormal
-segun n. aDebAyo,0,Male,A+,Pneumonia,2023-07-15,2023-07-22,Dr Oluchi P. Ogundipe,Baobab Ward,437,NHIA (National Health Insurance),702776.43,Emergency,Ceftriaxone,Abnormal
+segun n. aDebAyo,1,Male,A+,Pneumonia,2023-07-15,2023-07-22,Dr Oluchi P. Ogundipe,Baobab Ward,437,NHIA (National Health Insurance),702776.43,Emergency,Ceftriaxone,Abnormal
 ayomiDe a. OLADipO,59,Female,O+,Hypertension,2023-07-15,2023-07-19,Dr Nkechi C. Obasi,Baobab Ward,402,Avon HMO,683198.88,Emergency,Amlodipine,Normal
 RAsHida u. BabanGidA,33,Female,B+,Childbirth,2023-07-15,2023-07-18,Dr Yetunde A. Dauda,Obeche Ward,308,Clearline HMO,1735681.38,Elective,Oxytocin,Normal
 OBinnA F. okOye,1,Male,O-,Pneumonia,2023-07-15,2023-07-18,Dr Funmilayo A. Nnaji,Baobab Ward,417,NHIA (National Health Insurance),398388.12,EMERG,Ceftriaxone,Abnormal
@@ -6876,7 +6876,7 @@ isah W. uGwU,60,Male,O+,Hypertension,2023-07-15,2023-07-29,Dr Nkechi C. Obasi,Ba
 ToChukwU j. OLawAle,15,Male,O+,Malaria,2023-07-15,2023-07-16,Dr Safiya N. Abiodun,Baobab Ward,432,NHIA (National Health Insurance),374126.13,Urgent,Artemether-Lumefantrine,Abnormal
 bukolA K. Ogbu,43,Female,B+,Hypertension,2023-07-15,2023-07-20,Dr Ifunanya W. Babangida,Baobab Ward,419,Total Health Trust,807042.82,Urgent,Paracetamol,Normal
 blessiNg M. bEllo,38,Female,A+,Malaria,2023-07-15,2023-07-19,Dr Adenike O. Suleiman,Iroko Ward,128,Clearline HMO,614280.72,Emergency,Artemether-Lumefantrine,Abnormal
-Funke w. Shagari,0,Female,O+,Pneumonia,2023-07-15,2023-07-20,Dr Asabe W. Ojo,Obeche Ward,308,Avon HMO,691758.78,Emergency,Ceftriaxone,Normal
+Funke w. Shagari,1,Female,O+,Pneumonia,2023-07-15,2023-07-20,Dr Asabe W. Ojo,Obeche Ward,308,Avon HMO,691758.78,Emergency,Ceftriaxone,Normal
 yAkUbU i. olAwaLe,27,Male,O+,Trauma,2023-07-16,2023-07-24,Dr Oluwaseun D. Bakare,Mahogany Ward,219,NHIA (National Health Insurance),2346941.15,Emergency,Paracetamol,Inconclusive
 ObIaGeli P. tijAnI,31,Female,O-,Malaria,2023-07-16,2023-07-18,Dr Safiya N. Abiodun,Iroko Ward,155,Clearline HMO,365949.39,Urgent,Artemether-Lumefantrine,Normal
 bElLO i. AGbaje,55,Male,O+,Diabetes,2023-07-16,2023-07-17,Dr Ifeanyi M. Musa,Baobab Ward,416,NHIA (National Health Insurance),351700.61,Elective,Paracetamol,Normal
@@ -7019,7 +7019,7 @@ KELechi o. iBE,54,Male,O+,Malaria,2023-07-20,2023-07-22,Dr Adenike O. Suleiman,I
 Adesuwa j. JIBril,15,Female,B+,Malaria,2023-07-20,2023-07-22,Dr Onyinye I. Lawal,Iroko Ward,154,Hallmark HMO,373633.7,Elective,Paracetamol,Abnormal
 LanrE T. IGwe,45,Male,O+,Trauma,2023-07-20,2023-08-05,Dr Safiya G. Onwuka,Mahogany Ward,247,NHIA (National Health Insurance),2783274.48,Emergency,Paracetamol,Inconclusive
 vIcTor c. oBIora,36,Male,A+,Trauma,2023-07-20,2023-07-25,Dr Adaobi M. Uzor,Mahogany Ward,201,NHIA (National Health Insurance),2153660.5,Emergency,Paracetamol,Abnormal
-KhadiJa s. aLiyu,0,Female,O+,Pneumonia,2023-07-20,2023-07-22,Dr Oluchi P. Ogundipe,Obeche Ward,320,Clearline HMO,321775.63,Emergency,Paracetamol,Inconclusive
+KhadiJa s. aLiyu,1,Female,O+,Pneumonia,2023-07-20,2023-07-22,Dr Oluchi P. Ogundipe,Obeche Ward,320,Clearline HMO,321775.63,Emergency,Paracetamol,Inconclusive
 ROnke F. oGBu,3,Female,B-,Pneumonia,2023-07-20,2023-07-22,Dr Asabe W. Ojo,Obeche Ward,311,NHIA (National Health Insurance),403706.84,Urgent,Ceftriaxone,Abnormal
 Asabe T. adesina,15,Female,A+,Malaria,2023-07-20,,Dr Ifeanyi M. Musa,Iroko Ward,144,Total Health Trust,514084.17,Emergency,Artemether-Lumefantrine,Abnormal
 zainaB o. EffiOnG,30,Female,O+,Diabetes,2023-07-20,2023-07-25,Dr Ifeanyi M. Musa,Baobab Ward,433,NHIA (National Health Insurance),673771.77,Emergency,Metformin,Abnormal
@@ -7140,7 +7140,7 @@ AsaBe p. onuoHa,37,Female,O+,Trauma,2023-07-24,2023-08-14,Dr Damola R. Salami,Ma
 jUMoke g. eKpo,69,Female,A+,Malaria,2023-07-24,2023-07-29,Dr Adenike O. Suleiman,Iroko Ward,154,Avon HMO,466706.33,Emergency,Artemether-Lumefantrine,Abnormal
 Ikenna P. amAdi,21,M,A-,Trauma,2023-07-24,2023-08-03,Dr Oluwaseun D. Bakare,Mahogany Ward,240,Clearline HMO,2506275.47,Emergency,Paracetamol,Normal
 OnYiNYe o. OdiLI,36,Female,O+,Trauma,2023-07-24,2023-08-01,Dr Oluwaseun D. Bakare,Mahogany Ward,223,NHIA (National Health Insurance),2369233.43,Urgent,Paracetamol,Abnormal
-OKey d. uKpabi,0,Male,B+,Pneumonia,2023-07-24,2023-07-27,Dr Funmilayo A. Nnaji,Obeche Ward,320,Total Health Trust,431515.18,Emergency,Paracetamol,Abnormal
+OKey d. uKpabi,1,Male,B+,Pneumonia,2023-07-24,2023-07-27,Dr Funmilayo A. Nnaji,Obeche Ward,320,Total Health Trust,431515.18,Emergency,Paracetamol,Abnormal
 jidE c. ChImE,6,Male,A+,Pneumonia,2023-07-24,2023-07-31,Dr Funmilayo A. Nnaji,Obeche Ward,345,NHIA (National Health Insurance),"633,721.19",Emergency,Paracetamol,Normal
 umaR K. kAlu,28,Male,O+,Trauma,2023-07-24,2023-09-04,Dr Damola R. Salami,Mahogany Ward,247,Avon HMO,7177639.88,Emergency,Paracetamol,Abnormal
 jIdE u. musA,8,Male,O+,Pneumonia,2023-07-24,2023-07-26,Dr Asabe W. Ojo,Obeche Ward,339,Clearline HMO,489285.41,Emergency,Ceftriaxone,Normal
@@ -7174,7 +7174,7 @@ ladi w. obAsi,42,F,O+,Childbirth,2023-07-25,2023-07-31,Dr Ifeanyi B. Fashola,Obe
 chiamaKa P. OBiorA,36,Female,O+,Diabetes,2023-07-25,2023-07-28,Dr Adenike O. Suleiman,Iroko Ward,124,Clearline HMO,493287.59,Elective,Paracetamol,Abnormal
 hADizA w. dauDa,48,Female,A-,Diabetes,2023-07-25,2023-08-04,Dr Adebayo D. Ezenwa,Iroko Ward,143,Total Health Trust,1432991.33,Elective,Metformin,Abnormal
 abimbOLa g. TIjani,15,Female,B+,Malaria,2023-07-25,2023-07-30,Dr Adebayo D. Ezenwa,Iroko Ward,114,Clearline HMO,766908.16,Emergency,Paracetamol,Abnormal
-GbengA U. ukpABI,0,Male,O+,Pneumonia,2023-07-25,2023-07-29,Dr Funmilayo A. Nnaji,Obeche,314,Clearline HMO,889588.07,Emergency,Ceftriaxone,Abnormal
+GbengA U. ukpABI,1,Male,O+,Pneumonia,2023-07-25,2023-07-29,Dr Funmilayo A. Nnaji,Obeche,314,Clearline HMO,889588.07,Emergency,Ceftriaxone,Abnormal
 TUndE a. rajI,73,Male,O+,Hypertension,2023-07-25,2023-07-29,Dr Hauwa W. Onwuka,Baobab Ward,413,Total Health Trust,703059.16,Emergency,Amlodipine,Abnormal
 AnulI i. ekwensi,43,Female,B+,Malaria,2023-07-25,2023-07-28,Dr Zainab B. Dauda,Iroko Ward,116,NHIA (National Health Insurance),560424.67,Elective,Artemether-Lumefantrine,Abnormal
 OlUcHi e. adewale,58,Female,A+,Trauma,2023-07-25,2023-08-04,Dr Safiya G. Onwuka,Baobab Ward,412,Total Health Trust,1360758.78,Urgent,Paracetamol,Normal
@@ -7723,7 +7723,7 @@ ChiAmaka n. oyelarAN,37,Female,A+,Malaria,2023-08-08,2023-08-12,Dr Onyinye I. La
 ChiOMA i. bAnKOLe,34,Female,O+,Childbirth,2023-08-08,2023-08-11,Dr Yetunde A. Dauda,Baobab Ward,418,Avon HMO,823458.1,Urgent,Oxytocin,Normal
 nnaMDi S. ezeAni,61,Male,B+,Hypertension,2023-08-08,2023-08-12,Dr Nkechi C. Obasi,Baobab Ward,439,NHIA (National Health Insurance),684752.45,Emergency,Amlodipine,Normal
 oluChi a. ndUka,45,Female,O+,Malaria,2023-08-08,2023-08-11,Dr Adenike O. Suleiman,Iroko Ward,139,NHIA (National Health Insurance),410132.85,Emergency,Artemether-Lumefantrine,Abnormal
-kuNle t. aKINOLa,0,Male,O+,Pneumonia,2023-08-08,2023-08-21,Dr Funmilayo A. Nnaji,Obeche Ward,305,Total Health Trust,903365.11,Emergency,Ceftriaxone,Normal
+kuNle t. aKINOLa,1,Male,O+,Pneumonia,2023-08-08,2023-08-21,Dr Funmilayo A. Nnaji,Obeche Ward,305,Total Health Trust,903365.11,Emergency,Ceftriaxone,Normal
 aMInA S. bAkArE,30,Female,AB+,Childbirth,2023-08-09,2023-08-10,Dr Ifeanyi B. Fashola,Obeche Ward,321,Total Health Trust,1298893.78,Emergency,Paracetamol,Normal
 ZainAB t. olANiyan,15,Female,A+,Malaria,2023-08-09,2023-08-13,Dr Ifeanyi M. Musa,Iroko Ward,112,Hallmark HMO,"663,457.31",Urgent,Artemether-Lumefantrine,Abnormal
 ladi c. EffiOnG,34,Female,B+,Childbirth,2023-08-09,2023-08-10,Dr Obiageli F. Azikiwe,Obeche Ward,344,Total Health Trust,1894879.78,Urgent,Oxytocin,Normal
@@ -8111,7 +8111,7 @@ AdaEze m. OgunLeSi,85,Female,O+,Hypertension,2023-08-20,2023-08-27,Dr Ifunanya W
 aBdUL t. agBaje,19,Male,A+,Malaria,2023-08-20,2023-08-22,Dr Onyinye I. Lawal,Iroko Ward,130,NHIA (National Health Insurance),596334.77,Urgent,Artemether-Lumefantrine,Abnormal
 ALIyU n. nwanKwo,2,Male,A+,Pneumonia,2023-08-20,2023-08-31,Dr Ebuka W. Adewale,Obeche Ward,341,NHIA (National Health Insurance),1249033.85,Urgent,Paracetamol,Abnormal
 eNiola R. AkAnde,34,Female,O+,Childbirth,2023-08-20,2023-08-22,Dr Yetunde A. Dauda,Obeche Ward,321,Total Health Trust,1427778.91,Elective,Oxytocin,Normal
-shehu g. ukPabI,0,Male,O+,Pneumonia,2023-08-20,2023-08-25,Dr Oluchi P. Ogundipe,Obeche Ward,305,Avon HMO,710245.23,Urgent,Ceftriaxone,Abnormal
+shehu g. ukPabI,1,Male,O+,Pneumonia,2023-08-20,2023-08-25,Dr Oluchi P. Ogundipe,Obeche Ward,305,Avon HMO,710245.23,Urgent,Ceftriaxone,Abnormal
 MODupE b. sHagari,57,F,O+,Diabetes,2023-08-20,2023-08-24,Dr Ifeanyi M. Musa,Iroko Ward ,157,Hallmark HMO,462915.06,Urgent,Metformin,Abnormal
 ngOzi T. NWosU,38,Female,A+,Hypertension,2023-08-20,2023-08-22,Dr Hauwa W. Onwuka,Baobab Ward,414,Clearline HMO,351645.19,Elective,Paracetamol,Normal
 jidE R. AlIyu,39,Male,O+,Malaria,2023-08-20,2023-08-23,Dr Safiya N. Abiodun,Iroko Ward,153,Avon HMO,416018.8,Emergency,Artemether-Lumefantrine,Abnormal
@@ -8242,7 +8242,7 @@ fAtima A. iSiakA,49,Female,A+,Malaria,2023-08-23,2023-08-26,Dr Safiya N. Abiodun
 oluWaseuN J. MohammEd,67,Male,O+,Diabetes,2023-08-23,2023-08-27,Dr Zainab B. Dauda,Iroko Ward,149,Avon HMO,451425.58,Elective,Metformin,Inconclusive
 fatimA f. IWu,44,Female,O+,Trauma,2023-08-23,2023-08-25,Dr Safiya G. Onwuka,Mahogany Ward,207,Avon HMO,1779631.26,Emergency,Paracetamol,Abnormal
 nnAmdI c. dIKe,1,Male,O+,Pneumonia,2023-08-23,2023-08-28,Dr Funmilayo A. Nnaji,Obeche Ward,302,Avon HMO,509946.49,Urgent,Ceftriaxone,Abnormal
-cHIOma F. muSa,0,Female,A+,Pneumonia,2023-08-23,2023-08-25,Dr Funmilayo A. Nnaji,Obeche Ward,305,NHIA (National Health Insurance),273338.64,Emergency,Ceftriaxone,Abnormal
+cHIOma F. muSa,1,Female,A+,Pneumonia,2023-08-23,2023-08-25,Dr Funmilayo A. Nnaji,Obeche Ward,305,NHIA (National Health Insurance),273338.64,Emergency,Ceftriaxone,Abnormal
 sAni B. lawAl,38,Male,O+,Trauma,2023-08-23,2023-08-31,Dr Safiya G. Onwuka,Mahogany Ward,233,NHIA (National Health Insurance),2456855.22,Emergency,Paracetamol,Abnormal
 WAle p. banKoLe,71,Male,O+,Hypertension,2023-08-23,2023-08-31,Dr Ifunanya W. Babangida,Baobab Ward,416,Hallmark HMO,1206446.94,Urgent,Amlodipine,Normal
 IsAh k. OnUoha,67,Male,O+,Trauma,2023-08-23,2023-08-27,Dr Damola R. Salami,Mahogany Ward,231,NHIA (National Health Insurance),830313.06,Emergency,Paracetamol,Abnormal
@@ -8413,7 +8413,7 @@ nnaMdi u. oLANiYan,57,Male,O+,Trauma,2023-08-28,2023-08-31,Dr Safiya G. Onwuka,M
 MuSTApHa f. OkoYe,6,Male,O+,Pneumonia,2023-08-28,2023-08-30,Dr Ebuka W. Adewale,Baobab Ward,408,Hallmark HMO,359763.07,Emergency,Paracetamol,Normal
 tOchUkwu M. anYanwu,15,Male,O+,Malaria,2023-08-28,2023-09-01,Dr Adenike O. Suleiman,Iroko Ward,123,Clearline HMO,540031.58,Urgent,Paracetamol,Abnormal
 aBdullahi i. nWacHukWu,51,Male,O+,Malaria,2023-08-28,2023-09-06,Dr Onyinye I. Lawal,Iroko Ward,101,Clearline HMO,1030347.62,Elective,Artemether-Lumefantrine,Abnormal
-ademOla m. obAsi,0,Male,O+,Pneumonia,2023-08-28,2023-09-11,Dr Ebuka W. Adewale,Obeche Ward,313,Avon HMO,1655750.19,Emergency,Paracetamol,Abnormal
+ademOla m. obAsi,1,Male,O+,Pneumonia,2023-08-28,2023-09-11,Dr Ebuka W. Adewale,Obeche Ward,313,Avon HMO,1655750.19,Emergency,Paracetamol,Abnormal
 uMaR p. abuBAKAr,1,Male,O+,Pneumonia,2023-08-28,2023-08-31,Dr Asabe W. Ojo,Obeche Ward,314,Clearline HMO,457960.2,Urgent,Paracetamol,Normal
 FoLake c. suleiman,56,female,O+,Hypertension,2023-08-28,2023-08-31,Dr Nkechi C. Obasi,Baobab Ward,438,Avon HMO,"552,764.84",Emergency,Amlodipine,Abnormal
 mUsa T. ABubAkAr,70,M,O+,Hypertension,2023-08-28,2023-09-19,Dr Hauwa W. Onwuka,Iroko Ward,160,Clearline HMO,2380815.35,Emergency,Amlodipine,Abnormal
@@ -8436,7 +8436,7 @@ halIMa Y. wilLiamS,44,Female,A+,Malaria,2023-08-29,2023-08-30,Dr Onyinye I. Lawa
 yaKubu o. okpara,35,Male,O+,Malaria,2023-08-29,2023-09-02,Dr Adenike O. Suleiman,Iroko Ward,156,Clearline HMO,678908.57,Urgent,Artemether-Lumefantrine,Abnormal
 zUbairu l. aJaYi,34,Male,O+,Trauma,2023-08-29,2023-09-10,Dr Oluwaseun D. Bakare,Mahogany Ward,211,NHIA (National Health Insurance),2033291.81,Emergency,Paracetamol,Normal
 AmaKa d. adeleke,28,Female,O+,Childbirth,2023-08-29,2023-08-31,Dr Adenike F. Kanu,Obeche Ward,348,NHIA (National Health Insurance),750944.26,Elective,Paracetamol,Normal
-OsAs k. sALami,0,Female,B+,Pneumonia,2023-08-29,2023-09-05,Dr Oluchi P. Ogundipe,Obeche Ward,316,Total Health Trust,754216.63,Urgent,Ceftriaxone,Abnormal
+OsAs k. sALami,1,Female,B+,Pneumonia,2023-08-29,2023-09-05,Dr Oluchi P. Ogundipe,Obeche Ward,316,Total Health Trust,754216.63,Urgent,Ceftriaxone,Abnormal
 JIDE k. oLAdipo,52,Male,O+,Hypertension,2023-08-29,2023-09-17,Dr Ifunanya W. Babangida,Baobab Ward,418,Clearline HMO,2162416.62,Urgent,Amlodipine,Normal
 mAriAm y. suleimaN,58,Female,B+,Hypertension,2023-08-29,2023-09-01,Dr Ifunanya W. Babangida,Baobab Ward,439,Hallmark HMO,560038.05,urgent,Amlodipine,Abnormal
 jIde s. oGunlesi,46,Male,B+,Trauma,2023-08-29,2023-09-08,Dr Safiya G. Onwuka,Mahogany Ward,204,Avon HMO,1921609.19,Emergency,Paracetamol,Normal
@@ -8581,7 +8581,7 @@ OBiageli j. OBaSi,55,Female,O+,Hypertension,2023-09-01,2023-09-25,Dr Ekene A. Od
 EmmanueL F. nduKA,32,Male,B+,Malaria,2023-09-01,2023-09-06,Dr Ifeanyi M. Musa,Iroko Ward,124,Hallmark HMO,621056.75,Urgent,Artemether-Lumefantrine,Abnormal
 ITohan F. amadi,17,Female,B+,Malaria,2023-09-01,2023-09-03,Dr Adebayo D. Ezenwa,Iroko Ward,124,NHIA (National Health Insurance),310360.4,Emergency,Paracetamol,Abnormal
 chiomA I. uzor,47,Female,B+,Malaria,2023-09-01,2023-09-02,Dr Ifeanyi M. Musa,Iroko Ward,128,Hallmark HMO,217752.0,Urgent,Artemether-Lumefantrine,Abnormal
-mODupE o. abUbakAr,0,Female,O+,Pneumonia,2023-09-01,2023-09-09,Dr Funmilayo A. Nnaji,Obeche Ward,335,Clearline HMO,759484.13,Emergency,Ceftriaxone,Abnormal
+mODupE o. abUbakAr,1,Female,O+,Pneumonia,2023-09-01,2023-09-09,Dr Funmilayo A. Nnaji,Obeche Ward,335,Clearline HMO,759484.13,Emergency,Ceftriaxone,Abnormal
 anulI n. obIoRA,55,Female,B+,Malaria,2023-09-01,2023-09-07,Dr Adebayo D. Ezenwa,Iroko Ward,137,Hallmark HMO,519424.43,Emergency,Artemether-Lumefantrine,Abnormal
 titIlayo A. nwosU,8,Female,O+,Pneumonia,2023-09-01,2023-09-12,Dr Oluchi P. Ogundipe,Obeche Ward,326,Clearline HMO,892709.54,Emergency,Ceftriaxone,Inconclusive
 aDEBaYO g. oLAniyAn,15,Male,O+,Malaria,2023-09-01,2023-09-03,Dr Onyinye I. Lawal,IROKO WARD,130,NHIA (National Health Insurance),342369.03,Emergency,Artemether-Lumefantrine,Abnormal
@@ -8625,7 +8625,7 @@ rAsHida r. mbAH,78,Female,A+,Hypertension,2023-09-03,2023-09-12,Dr Ifunanya W. B
 asaBe w. iGwe,43,Female,O+,Malaria,2023-09-03,2023-09-06,Dr Adenike O. Suleiman,Baobab Ward,435,Total Health Trust,413142.73,Urgent,Artemether-Lumefantrine,Abnormal
 idrIs s. oYeLARAN,15,Male,O+,Malaria,2023-09-03,2023-09-06,Dr Adebayo D. Ezenwa,Iroko Ward,148,Hallmark HMO,558386.03,Emergency,Artemether-Lumefantrine,Abnormal
 adaoBi p. IGwE,5,Female,O+,Pneumonia,2023-09-03,2023-09-11,Dr Asabe W. Ojo,Baobab Ward,435,NHIA (National Health Insurance),695701.28,Urgent,Ceftriaxone,Normal
-RotiMi A. sHaGArI,0,Male,A+,Pneumonia,2023-09-03,2023-09-09,Dr Funmilayo A. Nnaji,Obeche Ward,322,Hallmark HMO,779690.74,Elective,Paracetamol,Normal
+RotiMi A. sHaGArI,1,Male,A+,Pneumonia,2023-09-03,2023-09-09,Dr Funmilayo A. Nnaji,Obeche Ward,322,Hallmark HMO,779690.74,Elective,Paracetamol,Normal
 AbDul L. orJi,75,Male,O+,Hypertension,2023-09-03,2023-09-11,Dr Nkechi C. Obasi,Iroko Ward,139,Clearline HMO,884728.69,Emergency,Amlodipine,Abnormal
 OmOLaRa u. edeT,36,Female,B+,Malaria,2023-09-03,2023-09-05,Dr Adenike O. Suleiman,Iroko Ward,113,Total Health Trust,383272.7,Emergency,Artemether-Lumefantrine,Normal
 CHiaMaka b. OGUnleSi,33,F,O+,Childbirth,2023-09-03,2023-09-05,Dr Yetunde A. Dauda,Obeche Ward,337,Avon HMO,1123932.56,Elective,Oxytocin,Normal
@@ -8674,7 +8674,7 @@ Titilayo W. suLeimaN,28,Female,A+,Childbirth,2023-09-04,2023-09-08,Dr Adenike F.
 FemI J. Odili,41,Male,A+,Malaria,2023-09-04,2023-09-06,Dr Ifeanyi M. Musa,Baobab Ward,423,Clearline HMO,507074.32,Urgent,Artemether-Lumefantrine,Abnormal
 Modupe N. nduka,29,Female,B+,Childbirth,2023-09-04,2023-09-11,Dr Ifeanyi B. Fashola,Obeche Ward,339,Avon HMO,2688417.33,Urgent,Oxytocin,Inconclusive
 UsMAn s. Nwankwo,34,Male,A+,Trauma,2023-09-04,2023-09-09,Dr Damola R. Salami,Baobab Ward,417,Hallmark HMO,2239986.84,Emergency,Paracetamol,Normal
-EBere d. okPaRA,0,Female,B+,Pneumonia,2023-09-04,2023-09-05,Dr Funmilayo A. Nnaji,Obeche Ward,350,NHIA (National Health Insurance),398054.27,Emergency,Paracetamol,Abnormal
+EBere d. okPaRA,1,Female,B+,Pneumonia,2023-09-04,2023-09-05,Dr Funmilayo A. Nnaji,Obeche Ward,350,NHIA (National Health Insurance),398054.27,Emergency,Paracetamol,Abnormal
 kHadIja K. okOnKwo,15,Female,B+,Malaria,2023-09-04,2023-09-09,Dr Ifeanyi M. Musa,Baobab Ward,410,Hallmark HMO,733637.24,Emergency,Artemether-Lumefantrine,Normal
 aDeMOla U. saLamI,15,Male,O+,Malaria,2023-09-04,2023-09-06,Dr Safiya N. Abiodun,Iroko Ward,123,Avon HMO,258961.03,Urgent,Artemether-Lumefantrine,Abnormal
 ItohaN O. Adebayo,34,Female,O+,Childbirth,2023-09-04,2023-09-07,Dr Yetunde A. Dauda,Obeche Ward,328,Clearline HMO,627496.23,Elective,Oxytocin,Abnormal
@@ -8800,7 +8800,7 @@ FunMIlayo f. nWachukWu,31,Female,O+,Childbirth,2023-09-07,2023-09-09,Dr Ifeanyi 
 FuNmiLayo e. Mustapha,43,Female,A+,Childbirth,2023-09-07,2023-09-09,Dr Adenike F. Kanu,Obeche Ward,350,Total Health Trust,793162.32,Urgent,Paracetamol,Abnormal
 blessiNg g. moHAmMed,20,Female,B+,Childbirth,2023-09-07,2023-09-08,Dr Daniel K. Igwe,Baobab Ward,424,NHIA (National Health Insurance),454076.25,Elective,Oxytocin,Abnormal
 EMmanUel e. ibeKWE,2,Male,O+,Pneumonia,2023-09-08,2023-09-12,Dr Funmilayo A. Nnaji,Obeche Ward,342,Clearline HMO,573828.61,Urgent,Ceftriaxone,Inconclusive
-uzOma s. adeWALE,0,Male,A+,Pneumonia,2023-09-08,2023-09-10,Dr Ebuka W. Adewale,Obeche Ward,302,NHIA (National Health Insurance),439241.29,Emergency,Paracetamol,Abnormal
+uzOma s. adeWALE,1,Male,A+,Pneumonia,2023-09-08,2023-09-10,Dr Ebuka W. Adewale,Obeche Ward,302,NHIA (National Health Insurance),439241.29,Emergency,Paracetamol,Abnormal
 modUpe j. belLo,31,Female,O+,Childbirth,2023-09-08,2023-09-11,Dr Obiageli F. Azikiwe,Obeche Ward,323,Hallmark HMO,689758.8,Emergency,Oxytocin,Normal
 ebUKa S. InyANg,40,M,O+,Trauma,2023-09-08,2023-09-17,Dr Oluwaseun D. Bakare,Mahogany Ward,221,NHIA (National Health Insurance),2464558.54,Urgent,Paracetamol,Abnormal
 ASabe B. odiLi,65,Female,A+,Malaria,2023-09-08,2023-09-12,Dr Ifeanyi M. Musa,Iroko Ward,127,Avon HMO,592467.22,Urgent,Paracetamol,Abnormal
@@ -8837,7 +8837,7 @@ kEleChi p. OKONkWo,65,Male,B+,Trauma,2023-09-08,2023-10-19,Dr Oluwaseun D. Bakar
 KUnLe p. nDuka,23,Male,B+,Malaria,2023-09-08,2023-09-13,Dr Adebayo D. Ezenwa,Iroko Ward,103,Total Health Trust,574328.98,Emergency,Artemether-Lumefantrine,Abnormal
 safiya A. OJO,25,Female,O+,Childbirth,2023-09-08,2023-09-11,Dr Ifeanyi B. Fashola,Obeche Ward,306,Total Health Trust,779575.27,Urgent,Oxytocin,Normal
 yetUnDE r. laWAl,4,Female,O+,Pneumonia,2023-09-08,2023-09-13,Dr Funmilayo A. Nnaji,Obeche Ward,324,Avon HMO,713291.61,Emergency,Ceftriaxone,Abnormal
-folAKE P. iWu,0,Female,O+,Pneumonia,2023-09-08,2023-09-11,Dr Asabe W. Ojo,Obeche Ward,349,Avon HMO,323173.24,Urgent,Ceftriaxone,Abnormal
+folAKE P. iWu,1,Female,O+,Pneumonia,2023-09-08,2023-09-11,Dr Asabe W. Ojo,Obeche Ward,349,Avon HMO,323173.24,Urgent,Ceftriaxone,Abnormal
 ayomide c. ibe,37,Female,O+,Malaria,2023-09-08,2023-09-11,Dr Adebayo D. Ezenwa,Baobab Ward,410,Clearline HMO,473728.69,Emergency,Artemether-Lumefantrine,Abnormal
 abdulLAhI P. DikE,67,Male,O+,Diabetes,2023-09-08,2023-09-19,Dr Ifeanyi M. Musa,Iroko Ward,125,Total Health Trust,1057795.79,EMERG,Metformin,Normal
 dAmIlola L. obaSi,40,Female,O+,Diabetes,2023-09-08,2023-09-13,Dr Ifeanyi M. Musa,Iroko Ward,117,NHIA (National Health Insurance),679750.39,Urgent,Metformin,Abnormal
@@ -8862,7 +8862,7 @@ AsabE l. Agbaje,2,Female,O+,Pneumonia,2023-09-09,2023-09-11,Dr Oluchi P. Ogundip
 fATIma B. nwosu,15,Female,B+,Malaria,2023-09-09,2023-09-11,Dr Adebayo D. Ezenwa,Iroko Ward,146,NHIA (National Health Insurance),417738.27,EMERG,Artemether-Lumefantrine,Abnormal
 HauWa a. oGuNlEsI,26,Female,AB-,Childbirth,2023-09-09,2023-09-18,Dr Amina O. Lawal,Obeche Ward,350,Avon HMO,1322091.45,Urgent,Oxytocin,Inconclusive
 BaBaTunde j. suleIman,2,Male,B+,Pneumonia,2023-09-09,2023-09-12,Dr Oluchi P. Ogundipe,Obeche Ward,323,Clearline HMO,371771.78,Emergency,Ceftriaxone,Normal
-blesSIng L. mADu,0,Female,B+,Pneumonia,2023-09-09,2023-09-13,Dr Asabe W. Ojo,Obeche Ward,345,NHIA (National Health Insurance),"587,555.24",Urgent,Ceftriaxone,Abnormal
+blesSIng L. mADu,1,Female,B+,Pneumonia,2023-09-09,2023-09-13,Dr Asabe W. Ojo,Obeche Ward,345,NHIA (National Health Insurance),"587,555.24",Urgent,Ceftriaxone,Abnormal
 obIaGEli w. NnAmdi,71,female,B+,Diabetes,2023-09-09,2023-09-13,Dr Adebayo D. Ezenwa,Iroko Ward,140,NHIA (National Health Insurance),388258.73,Urgent,Metformin,Normal
 mArIam a. obASI,27,Female,O+,Childbirth,2023-09-09,2023-09-13,Dr Yetunde A. Dauda,Baobab Ward,403,NHIA (National Health Insurance),1493510.97,Urgent,Oxytocin,Normal
 OlUMIDe e. kanu,69,Male,O+,Malaria,2023-09-09,2023-09-15,Dr Safiya N. Abiodun,Iroko Ward,139,Total Health Trust,868330.07,Elective,Artemether-Lumefantrine,Normal
@@ -9225,7 +9225,7 @@ adENike o. Obasi,38,Female,B+,Malaria,2023-09-19,2023-09-22,Dr Zainab B. Dauda,B
 RoNke W. iBe,30,Female,A+,Childbirth,2023-09-19,2023-09-20,Dr Daniel K. Igwe,Baobab Ward,426,Total Health Trust,465648.86,Urgent,Oxytocin,Normal
 uZoMa B. baBangiDA,76,Male,O+,Hypertension,2023-09-19,2023-09-26,Dr Nkechi C. Obasi,Baobab Ward,440,Total Health Trust,1110857.4,Urgent,Amlodipine,Normal
 dAmiloLa c. oBi,29,Female,B+,Childbirth,2023-09-20,2023-09-23,Dr Daniel K. Igwe,Obeche Ward,344,Avon HMO,866109.39,Emergency,Oxytocin,Normal
-aMaRA U. nwosU,0,Female,O+,Pneumonia,2023-09-20,2023-09-24,Dr Funmilayo A. Nnaji,Obeche  Ward,318,Avon HMO,637135.4,Emergency,Ceftriaxone,Normal
+aMaRA U. nwosU,1,Female,O+,Pneumonia,2023-09-20,2023-09-24,Dr Funmilayo A. Nnaji,Obeche  Ward,318,Avon HMO,637135.4,Emergency,Ceftriaxone,Normal
 Damilola b. olADIPO,54,Female,O+,Diabetes,2023-09-20,2023-09-23,Dr Safiya N. Abiodun,Iroko Ward,152,Clearline HMO,"356,395.47",Urgent,Metformin,Normal
 lAnRE l. NwOsu,25,Male,A+,Trauma,2023-09-20,2023-10-06,Dr Safiya G. Onwuka,Baobab Ward,404,Clearline HMO,2254437.04,Emergency,Paracetamol,Abnormal
 uZoma k. igwE,35,Male,O+,Trauma,2023-09-20,2023-09-24,Dr Oluwaseun D. Bakare,Mahogany,210,Hallmark HMO,2473897.42,Emergency,Paracetamol,Abnormal
@@ -9271,7 +9271,7 @@ Haruna a. adebayo,54,Male,O+,Malaria,2023-09-21,2023-09-23,Dr Adenike O. Suleima
 ChiDi E. ukPabi,6,Male,B+,Pneumonia,2023-09-21,2023-09-28,Dr Asabe W. Ojo,Obeche Ward,339,Total Health Trust,811683.62,Emergency,Ceftriaxone,Normal
 keLecHi t. Bakare,34,Male,O+,Malaria,2023-09-21,2023-09-24,Dr Safiya N. Abiodun,Baobab Ward,440,NHIA (National Health Insurance),487698.38,Emergency,Artemether-Lumefantrine,Abnormal
 oMoLArA j. sanni,75,Female,O+,Hypertension,2023-09-21,2023-10-07,Dr Ekene A. Odu,Baobab Ward,437,NHIA (National Health Insurance),1902474.59,Urgent,Amlodipine,Abnormal
-cHiNeDU B. WIllIaMs,0,Male,B+,Pneumonia,2023-09-21,2023-09-24,Dr Asabe W. Ojo,Obeche Ward,342,Clearline HMO,414441.38,Emergency,Ceftriaxone,Abnormal
+cHiNeDU B. WIllIaMs,1,Male,B+,Pneumonia,2023-09-21,2023-09-24,Dr Asabe W. Ojo,Obeche Ward,342,Clearline HMO,414441.38,Emergency,Ceftriaxone,Abnormal
 grace a. Chukwu,35,Female,O+,Childbirth,2023-09-21,2023-09-24,Dr Obiageli F. Azikiwe,Obeche Ward,305,NHIA (National Health Insurance),512279.02,Emergency,Oxytocin,Abnormal
 Ayomide P. odu,6,Female,O+,Pneumonia,2023-09-21,2023-09-24,Dr Funmilayo A. Nnaji,Obeche Ward,342,Hallmark HMO,455944.33,Emergency,Ceftriaxone,Abnormal
 oChUkO y. olaniyAn,56,Male,O+,Trauma,2023-09-21,2023-09-27,Dr Damola R. Salami,Mahogany Ward,236,Clearline HMO,2712091.61,Emergency,Paracetamol,Inconclusive
@@ -9455,7 +9455,7 @@ IKEnna r. ezE,66,Male,O+,Trauma,2023-09-26,2023-10-01,Dr Damola R. Salami,Mahoga
 OSAGie r. sulEIman,59,M,B+,Diabetes,2023-09-26,2023-09-30,Dr Zainab B. Dauda,Iroko Ward,108,Avon HMO,487321.36,Urgent,Metformin,Normal
 safiYA c. MuSTapHA,64,Female,B+,Hypertension,2023-09-26,2023-09-30,Dr Ifunanya W. Babangida,Iroko Ward,160,Hallmark HMO,656011.63,Emergency,Paracetamol,Normal
 NKeCHi d. OsEni,33,Female,B+,Malaria,2023-09-26,2023-09-27,Dr Safiya N. Abiodun,Iroko Ward,103,NHIA (National Health Insurance),288805.84,Emergency,Artemether-Lumefantrine,Normal
-FOLake k. aDeBayO,0,Female,O+,Pneumonia,2023-09-26,2023-09-29,Dr Oluchi P. Ogundipe,Obeche Ward,312,Total Health Trust,403291.95,Emergency,Ceftriaxone,Normal
+FOLake k. aDeBayO,1,Female,O+,Pneumonia,2023-09-26,2023-09-29,Dr Oluchi P. Ogundipe,Obeche Ward,312,Total Health Trust,403291.95,Emergency,Ceftriaxone,Normal
 yusuf s. adElEKe,3,Male,A+,Pneumonia,2023-09-26,2023-09-27,Dr Asabe W. Ojo,Obeche Ward,323,Avon HMO,244024.14,Urgent,Ceftriaxone,Normal
 zuwaira g. oKafOr,24,Female,A+,Childbirth,2023-09-26,2023-09-30,Dr Yetunde A. Dauda,Obeche Ward,317,Hallmark HMO,602966.21,Urgent,Oxytocin,Normal
 musA f. ezEAni,45,Male,B+,Trauma,2023-09-26,2023-10-04,Dr Safiya G. Onwuka,Mahogany Ward,220,Total Health Trust,"1,890,899.72",Emergency,Paracetamol,Abnormal
@@ -9665,7 +9665,7 @@ Amara U. madU,35,Female,B+,Hypertension,2023-10-02,2023-10-06,Dr Ekene A. Odu,Ba
 balA u. OGunLesi,39,Male,B-,Trauma,2023-10-02,,Dr Safiya G. Onwuka,Mahogany Ward,202,Total Health Trust,1978568.29,Emergency,Paracetamol,Normal
 TunDe J. yAKuBU,15,Male,O+,Malaria,2023-10-02,2023-10-04,Dr Onyinye I. Lawal,Iroko Ward,154,Avon HMO,442231.89,Emergency,Artemether-Lumefantrine,Abnormal
 anULi s. idowu,52,Female,O+,Malaria,2023-10-02,2023-10-04,Dr Onyinye I. Lawal,Iroko Ward,128,NHIA (National Health Insurance),368727.74,Urgent,Artemether-Lumefantrine,Normal
-LAnrE e. ukPabi,0,Male,A+,Pneumonia,2023-10-02,2023-10-04,Dr Funmilayo A. Nnaji,Obeche Ward,317,NHIA (National Health Insurance),315827.98,EMERG,Ceftriaxone,Normal
+LAnrE e. ukPabi,1,Male,A+,Pneumonia,2023-10-02,2023-10-04,Dr Funmilayo A. Nnaji,Obeche Ward,317,NHIA (National Health Insurance),315827.98,EMERG,Ceftriaxone,Normal
 Chidi w. willIaMs,3,Male,O+,Pneumonia,2023-10-02,2023-10-04,Dr Funmilayo A. Nnaji,Baobab Ward,421,Avon HMO,"349,413.52",Urgent,Ceftriaxone,Abnormal
 abiMBoLA W. eKWensi,39,Female,B+,Malaria,2023-10-03,2023-10-06,Dr Ifeanyi M. Musa,Iroko Ward,150,Avon HMO,"408,101.96",Urgent,Artemether-Lumefantrine,Abnormal
 ejiRo t. nduka,50,Female,A+,Diabetes,2023-10-03,2023-10-14,Dr Adebayo D. Ezenwa,Iroko Ward,154,NHIA (National Health Insurance),1194264.43,Urgent,Paracetamol,Abnormal
@@ -9934,7 +9934,7 @@ aminA c. dauda,33,Female,B+,Childbirth,2023-10-10,2023-10-15,Dr Obiageli F. Azik
 muSTapha G. AdeYEMi,47,Male,O+,Malaria,2023-10-10,2023-10-15,Dr Safiya N. Abiodun,Iroko Ward,132,Total Health Trust,697677.52,Elective,Artemether-Lumefantrine,Normal
 ladi B. IsIakA,56,Female,O+,Hypertension,2023-10-10,2023-11-03,Dr Ekene A. Odu,Baobab,413,Total Health Trust,2979677.48,Emergency,Paracetamol,Normal
 nGoZI p. oKafOR,46,Female,A+,Childbirth,2023-10-10,2023-10-11,Dr Ifeanyi B. Fashola,Obeche Ward,307,NHIA (National Health Insurance),1366663.64,Elective,Oxytocin,Normal
-OLuwaSeUn A. uMEh,0,Male,A+,Pneumonia,2023-10-10,2023-10-12,Dr Asabe W. Ojo,Obeche Ward,349,Avon HMO,382261.42,Emergency,Ceftriaxone,Normal
+OLuwaSeUn A. uMEh,1,Male,A+,Pneumonia,2023-10-10,2023-10-12,Dr Asabe W. Ojo,Obeche Ward,349,Avon HMO,382261.42,Emergency,Ceftriaxone,Normal
 fOlaKe l. sanNi,30,Female,O+,Malaria,2023-10-10,2023-10-13,Dr Zainab B. Dauda,Iroko Ward,126,NHIA (National Health Insurance),413303.37,Emergency,Paracetamol,Normal
 yUSuF U. eGWu,76,Male,B+,Diabetes,2023-10-10,2023-10-19,Dr Adenike O. Suleiman,Baobab Ward,407,Avon HMO,1081315.94,Urgent,Metformin,Abnormal
 RoNkE K. baBangIda,35,Female,B+,Childbirth,2023-10-10,2023-10-13,Dr Yetunde A. Dauda,Obeche Ward,324,Total Health Trust,885284.97,Urgent,Oxytocin,Normal
@@ -10081,7 +10081,7 @@ umaR t. okoro,48,Male,O+,Diabetes,2023-10-14,2023-10-19,Dr Adenike O. Suleiman,I
 tEmitOPE c. adElEKe,19,Female,O+,Malaria,2023-10-14,2023-10-18,Dr Ifeanyi M. Musa,Iroko Ward,139,NHIA (National Health Insurance),389458.43,Urgent,Artemether-Lumefantrine,Abnormal
 ekene N. okekE,41,Male,O+,Trauma,2023-10-14,2023-10-21,Dr Oluwaseun D. Bakare,Mahogany Ward,242,Hallmark HMO,3891511.15,Emergency,Paracetamol,Abnormal
 keleCHi i. ogbU,3,M,A+,Pneumonia,2023-10-14,2023-10-17,Dr Ebuka W. Adewale,Obeche Ward,335,Avon HMO,484657.21,Urgent,Paracetamol,Normal
-ViCTOR p. oGBu,0,Male,O+,Pneumonia,2023-10-14,2023-10-28,Dr Oluchi P. Ogundipe,Obeche Ward,342,NHIA (National Health Insurance),1395953.7,Emergency,Ceftriaxone,Abnormal
+ViCTOR p. oGBu,1,Male,O+,Pneumonia,2023-10-14,2023-10-28,Dr Oluchi P. Ogundipe,Obeche Ward,342,NHIA (National Health Insurance),1395953.7,Emergency,Ceftriaxone,Abnormal
 kuNle o. aDeLEke,50,Male,O+,Trauma,2023-10-14,2023-10-22,Dr Adaobi M. Uzor,Baobab Ward,418,NHIA (National Health Insurance),2552420.79,Emergency,Paracetamol,Abnormal
 aHmeD A. eKpO,35,Male,O+,Malaria,2023-10-14,2023-10-18,Dr Safiya N. Abiodun,Iroko Ward,156,NHIA (National Health Insurance),493684.81,Emergency,Artemether-Lumefantrine,Abnormal
 uzOMA g. AgBAje,19,Male,A+,Trauma,2023-10-14,2023-10-28,Dr Oluwaseun D. Bakare,Baobab Ward,415,Hallmark HMO,2904761.92,Emergency,Paracetamol,Abnormal
@@ -10234,7 +10234,7 @@ cHinWE k. NdukA,38,Female,O+,Malaria,2023-10-19,2023-10-25,Dr Adebayo D. Ezenwa,
 tUndE i. eZeNwA,73,Male,O+,Malaria,2023-10-19,2023-10-20,Dr Adebayo D. Ezenwa,Baobab Ward,436,Hallmark HMO,232315.76,Emergency,Artemether-Lumefantrine,Abnormal
 jIdE o. cHime,3,Male,A+,Pneumonia,2023-10-19,2023-10-22,Dr Oluchi P. Ogundipe,Obeche Ward,320,Total Health Trust,295903.92,Emergency,Ceftriaxone,Abnormal
 dAMOla t. oBasI,62,Male,AB+,Hypertension,2023-10-19,2023-10-22,Dr Hauwa W. Onwuka,Baobab Ward,414,Avon HMO,466054.06,Emergency,Paracetamol,Abnormal
-cHibuzoR i. aBubakAR,0,Male,A+,Pneumonia,2023-10-19,2023-10-21,Dr Oluchi P. Ogundipe,Obeche Ward,304,Hallmark HMO,358062.03,Emergency,Ceftriaxone,Normal
+cHibuzoR i. aBubakAR,1,Male,A+,Pneumonia,2023-10-19,2023-10-21,Dr Oluchi P. Ogundipe,Obeche Ward,304,Hallmark HMO,358062.03,Emergency,Ceftriaxone,Normal
 BABaTuNde M. NwANkWo,49,Male,A+,Malaria,2023-10-19,2023-10-22,Dr Safiya N. Abiodun,Iroko Ward,160,NHIA (National Health Insurance),681461.89,Urgent,Artemether-Lumefantrine,Abnormal
 chIbuzOR l. ogUnlEsi,63,Male,O+,Hypertension,2023-10-19,2023-10-22,Dr Ifunanya W. Babangida,Baobab Ward,430,Clearline HMO,"781,333.34",Urgent,Paracetamol,Abnormal
 NkEChi m. bALoGun,19,Female,B+,Malaria,2023-10-19,2023-10-27,Dr Adenike O. Suleiman,Iroko Ward,112,Avon HMO,973363.29,Emergency,Artemether-Lumefantrine,Normal
@@ -10291,7 +10291,7 @@ SalAmATu t. KaNU,56,Female,O+,Malaria,2023-10-20,2023-10-24,Dr Adenike O. Suleim
 yAkUbU d. daUda,61,M,B+,Malaria,2023-10-20,2023-10-23,Dr Adebayo D. Ezenwa,Iroko Ward,116,Total Health Trust,"470,268.78",Elective,Artemether-Lumefantrine,Inconclusive
 aBdul r. TIJani,22,Male,A+,Trauma,2023-10-20,2023-10-23,Dr Oluwaseun D. Bakare,Mahogany Ward,214,Avon HMO,1745920.37,Emergency,Paracetamol,Normal
 sEGun d. Azikiwe,55,Male,O+,Diabetes,2023-10-21,2023-10-29,Dr Onyinye I. Lawal,Iroko Ward,138,Total Health Trust,996166.19,Elective,Metformin,Abnormal
-NNEKa l. ibRaHim,0,Female,O+,Pneumonia,2023-10-21,2023-10-23,Dr Ebuka W. Adewale,Obeche Ward,349,NHIA (National Health Insurance),313234.84,Urgent,Ceftriaxone,Normal
+NNEKa l. ibRaHim,1,Female,O+,Pneumonia,2023-10-21,2023-10-23,Dr Ebuka W. Adewale,Obeche Ward,349,NHIA (National Health Insurance),313234.84,Urgent,Ceftriaxone,Normal
 KeLechi R. uSman,47,Male,O+,Diabetes,2023-10-21,2023-10-23,Dr Onyinye I. Lawal,Iroko Ward,139,Hallmark HMO,333556.05,Urgent,Metformin,Abnormal
 Funke s. IbeKwe,35,Female,A+,Childbirth,2023-10-21,2023-10-24,Dr Obiageli F. Azikiwe,Obeche Ward,347,Clearline HMO,757975.17,Elective,Oxytocin,Normal
 aliYu e. NnaMdi,33,Male,O+,Trauma,2023-10-21,2023-10-25,Dr Oluwaseun D. Bakare,Baobab Ward,430,Avon HMO,1301563.63,Urgent,Paracetamol,Normal
@@ -10310,7 +10310,7 @@ SeGun s. udOh,15,Male,B+,Malaria,2023-10-21,2023-10-26,Dr Ifeanyi M. Musa,Iroko 
 ChinEdU N. iGWE,4,Male,B+,Pneumonia,2023-10-21,2023-10-27,Dr Oluchi P. Ogundipe,Baobab ward,421,Hallmark HMO,722246.89,Emergency,Ceftriaxone,Abnormal
 esTHeR d. AlIyu,50,Female,A+,Hypertension,2023-10-21,2023-10-24,Dr Ekene A. Odu,Baobab Ward,403,Total Health Trust,555722.55,Urgent,Amlodipine,Abnormal
 olucHi m. dAuDa,72,Female,A+,Trauma,2023-10-21,2023-10-24,Dr Safiya G. Onwuka,Mahogany Ward,231,Clearline HMO,870639.09,Urgent,Paracetamol,Abnormal
-uzOma i. OlawaLE,0,Male,B+,Pneumonia,2023-10-21,2023-10-24,Dr Oluchi P. Ogundipe,Obeche Ward,303,Avon HMO,"519,174.62",Emergency,Paracetamol,Abnormal
+uzOma i. OlawaLE,1,Male,B+,Pneumonia,2023-10-21,2023-10-24,Dr Oluchi P. Ogundipe,Obeche Ward,303,Avon HMO,"519,174.62",Emergency,Paracetamol,Abnormal
 jidE g. oKAfOR,39,Male,O+,Trauma,2023-10-21,2023-10-23,Dr Oluwaseun D. Bakare,Mahogany Ward,221,NHIA (National Health Insurance),1041372.03,Emergency,Paracetamol,Abnormal
 GraCe a. oKPara,38,Female,A+,Malaria,2023-10-22,2023-10-27,Dr Adenike O. Suleiman,Iroko Ward,155,NHIA (National Health Insurance),744215.18,Emergency,Artemether-Lumefantrine,Inconclusive
 aBduLlahI B. Odu,61,Male,A+,Diabetes,2023-10-22,2023-10-28,Dr Onyinye I. Lawal,Iroko Ward,159,NHIA (National Health Insurance),699285.49,Elective,Paracetamol,Abnormal
@@ -10319,7 +10319,7 @@ UduAk s. mohaMmeD,58,Female,O+,Diabetes,2023-10-22,2023-11-01,Dr Zainab B. Dauda
 chiBuZor c. babANgida,15,Male,B+,Malaria,2023-10-22,2023-10-27,Dr Zainab B. Dauda,Baobab Ward,434,NHIA (National Health Insurance),843445.2,Urgent,Artemether-Lumefantrine,Abnormal
 aliyu p. ORJI,50,Male,AB+,Malaria,2023-10-22,2023-11-02,Dr Ifeanyi M. Musa,Iroko Ward,128,Clearline HMO,1256309.75,Emergency,Artemether-Lumefantrine,Abnormal
 nkiRu j. sAnNi,48,Female,O+,Diabetes,2023-10-22,2023-10-27,Dr Adenike O. Suleiman,Iroko Ward,101,NHIA (National Health Insurance),619125.91,EMERG,Metformin,Normal
-uduak u. UzoR,0,Female,O+,Pneumonia,2023-10-22,2023-10-25,Dr Asabe W. Ojo,Obeche Ward,334,Clearline HMO,404956.58,Urgent,Paracetamol,Abnormal
+uduak u. UzoR,1,Female,O+,Pneumonia,2023-10-22,2023-10-25,Dr Asabe W. Ojo,Obeche Ward,334,Clearline HMO,404956.58,Urgent,Paracetamol,Abnormal
 bukOLa W. aLIYu,31,Female,O+,Childbirth,2023-10-22,2023-10-24,Dr Amina O. Lawal,Obeche Ward,306,Total Health Trust,584901.93,Emergency,Paracetamol,Abnormal
 usmAn S. ibe,71,Male,O+,Diabetes,2023-10-22,2023-10-24,Dr Zainab B. Dauda,Iroko Ward,110,Total Health Trust,352390.78,Urgent,Metformin,Abnormal
 olUchI j. okparA,26,Female,O+,Malaria,2023-10-22,2023-10-24,Dr Zainab B. Dauda,Baobab Ward,429,NHIA (National Health Insurance),411524.6,Emergency,Paracetamol,Abnormal
@@ -10366,7 +10366,7 @@ sImIsolA m. ekOng,36,Female,O+,Childbirth,2023-10-23,2023-10-27,Dr Adenike F. Ka
 nkECHi O. bELlO,19,Female,O+,Childbirth,2023-10-23,2023-10-28,Dr Adenike F. Kanu,Obeche Ward,339,Total Health Trust,1041783.63,Emergency,Oxytocin,Inconclusive
 zuWairA f. IsIaka,2,Female,A+,Pneumonia,2023-10-23,2023-10-30,Dr Asabe W. Ojo,Baobab Ward,426,NHIA (National Health Insurance),792556.24,Emergency,Paracetamol,Abnormal
 efOsa L. obI,32,Male,O+,Malaria,2023-10-23,2023-11-01,Dr Ifeanyi M. Musa,Iroko Ward,110,Clearline HMO,1442579.15,Urgent,Artemether-Lumefantrine,Normal
-yAkuBu W. orji,0,Male,O+,Pneumonia,2023-10-23,2023-10-27,Dr Asabe W. Ojo,Obeche Ward,309,Total Health Trust,495067.91,Emergency,Ceftriaxone,Normal
+yAkuBu W. orji,1,Male,O+,Pneumonia,2023-10-23,2023-10-27,Dr Asabe W. Ojo,Obeche Ward,309,Total Health Trust,495067.91,Emergency,Ceftriaxone,Normal
 ahmEd e. oLAwaLe,33,Male,O-,Malaria,2023-10-23,2023-10-26,Dr Adenike O. Suleiman,Iroko Ward,115,Total Health Trust,497545.11,Emergency,Artemether-Lumefantrine,Abnormal
 chiJIoke i. oseni,3,Male,A+,Pneumonia,2023-10-23,2023-10-28,Dr Funmilayo A. Nnaji,Obeche Ward,343,Avon HMO,652165.37,Urgent,Ceftriaxone,Normal
 bAbAtUndE w. madu,2,Male,O+,Pneumonia,2023-10-23,2023-10-28,Dr Funmilayo A. Nnaji,Obeche Ward,345,NHIA (National Health Insurance),821218.19,Emergency,Paracetamol,Abnormal
@@ -10496,12 +10496,12 @@ efosa l. oRJI,33,Male,B+,Trauma,2023-10-26,2023-10-30,Dr Damola R. Salami,Mahoga
 ADamu e. NWachUkwu,60,Male,O+,Malaria,2023-10-26,2023-10-28,Dr Ifeanyi M. Musa,Iroko,140,Avon HMO,409861.8,Emergency,Artemether-Lumefantrine,Abnormal
 nkirU b. RAji,50,Female,A+,Diabetes,2023-10-26,2023-10-28,Dr Adenike O. Suleiman,Baobab Ward,410,Clearline HMO,426212.37,Elective,Metformin,Abnormal
 ebuka f. eze,62,Male,O+,Malaria,2023-10-26,2023-10-29,Dr Adebayo D. Ezenwa,Iroko Ward,131,Total Health Trust,452933.61,Urgent,Artemether-Lumefantrine,Abnormal
-nKiru a. OjO,0,Female,A+,Pneumonia,2023-10-27,2023-10-29,Dr Funmilayo A. Nnaji,Obeche Ward,327,NHIA (National Health Insurance),"306,930.31",Emergency,Ceftriaxone,Abnormal
+nKiru a. OjO,1,Female,A+,Pneumonia,2023-10-27,2023-10-29,Dr Funmilayo A. Nnaji,Obeche Ward,327,NHIA (National Health Insurance),"306,930.31",Emergency,Ceftriaxone,Abnormal
 cHIamAka p. nnAJI,32,Female,O+,Malaria,2023-10-27,2023-10-30,Dr Zainab B. Dauda,Baobab Ward,423,Hallmark HMO,511252.8,EMERG,Artemether-Lumefantrine,Abnormal
 sani m. uzor,50,Male,O+,Malaria,2023-10-27,2023-11-03,Dr Zainab B. Dauda,Iroko Ward,148,Clearline HMO,1251101.14,Emergency,Artemether-Lumefantrine,Abnormal
 NKechi a. OGUnlEsi,29,Female,B+,Trauma,2023-10-27,2023-11-17,Dr Adaobi M. Uzor,Baobab Ward,420,NHIA (National Health Insurance),2502780.33,Urgent,Paracetamol,Normal
 UMar r. iGWe,33,Male,O+,Trauma,2023-10-27,2023-10-30,Dr Adaobi M. Uzor,Mahogany Ward,227,Total Health Trust,2488787.03,Emergency,Paracetamol,Normal
-chinwE g. MUSa,0,Female,O+,Pneumonia,2023-10-27,2023-11-01,Dr Asabe W. Ojo,Baobab Ward,403,NHIA (National Health Insurance),617194.93,Urgent,Ceftriaxone,Normal
+chinwE g. MUSa,1,Female,O+,Pneumonia,2023-10-27,2023-11-01,Dr Asabe W. Ojo,Baobab Ward,403,NHIA (National Health Insurance),617194.93,Urgent,Ceftriaxone,Normal
 dAmiLOLa n. isiaKa,32,Female,O+,Childbirth,2023-10-27,2023-10-29,Dr Adenike F. Kanu,Obeche Ward,321,Clearline HMO,629529.4,Elective,Oxytocin,Normal
 marIam P. wiLliamS,36,Female,O+,Malaria,2023-10-27,2023-10-28,Dr Onyinye I. Lawal,Iroko Ward,112,NHIA (National Health Insurance),296441.65,Urgent,Artemether-Lumefantrine,Abnormal
 ifeOMa e. AGbAjE,23,Female,B+,Childbirth,2023-10-27,2023-10-31,Dr Yetunde A. Dauda,Obeche Ward,309,NHIA (National Health Insurance),1306231.33,Urgent,Oxytocin,Abnormal
@@ -10541,7 +10541,7 @@ ZAinaB B. AnYanwu,66,Female,O+,Diabetes,2023-10-28,2023-11-02,Dr Adebayo D. Ezen
 ebukA f. nnamdi,15,Male,B+,Malaria,2023-10-28,2023-11-04,Dr Safiya N. Abiodun,Iroko Ward,155,Avon HMO,951697.77,Emergency,Artemether-Lumefantrine,Abnormal
 oMolaRA r. ezenWa,47,Female,O+,Malaria,2023-10-28,2023-10-30,Dr Safiya N. Abiodun,Iroko Ward,151,Total Health Trust,441138.0,Urgent,Artemether-Lumefantrine,Abnormal
 RaShida D. IWU,42,Female,O+,Malaria,2023-10-28,2023-10-31,Dr Ifeanyi M. Musa,Baobab Ward,412,Avon HMO,510313.34,Emergency,Artemether-Lumefantrine,Abnormal
-tayo Y. AgBaje,0,Male,O+,Pneumonia,2023-10-28,2023-11-04,Dr Ebuka W. Adewale,Baobab Ward,440,Clearline HMO,"715,675.84",Urgent,Paracetamol,Normal
+tayo Y. AgBaje,1,Male,O+,Pneumonia,2023-10-28,2023-11-04,Dr Ebuka W. Adewale,Baobab Ward,440,Clearline HMO,"715,675.84",Urgent,Paracetamol,Normal
 nkIru Y. KanU,41,Female,A+,Malaria,2023-10-28,2023-11-07,Dr Onyinye I. Lawal,Iroko Ward,141,NHIA (National Health Insurance),1431314.06,Urgent,Paracetamol,Abnormal
 sIMIsoLA j. OlaWale,27,Female,O+,Malaria,2023-10-28,2023-11-05,Dr Onyinye I. Lawal,Iroko Ward,128,NHIA (National Health Insurance),1001217.29,Emergency,Artemether-Lumefantrine,Normal
 roTiMI m. OnWuKA,43,Male,O-,Hypertension,2023-10-28,2023-11-14,Dr Hauwa W. Onwuka,Baobab Ward,402,Avon HMO,1710530.6,Emergency,Amlodipine,Normal
@@ -10599,7 +10599,7 @@ zubaIrU C. ShAGaRi,54,Male,B+,Diabetes,2023-10-30,2023-10-31,Dr Adenike O. Sulei
 kUnLe s. oBIoRA,32,Male,A+,Malaria,2023-10-30,2023-11-06,Dr Adebayo D. Ezenwa,Iroko Ward,129,NHIA (National Health Insurance),1006896.47,Emergency,Artemether-Lumefantrine,Abnormal
 adeniKe p. obi,50,Female,O+,Malaria,2023-10-30,2023-11-01,Dr Adebayo D. Ezenwa,Iroko Ward,148,Avon HMO,438522.37,Emergency,Artemether-Lumefantrine,Abnormal
 Folake t. nnAMDI,59,Female,B+,Malaria,2023-10-30,2023-11-11,Dr Safiya N. Abiodun,Iroko Ward,160,Clearline HMO,1547260.42,EMERG,Artemether-Lumefantrine,Abnormal
-WalE f. anyanWU,0,Male,O+,Pneumonia,2023-10-30,2023-11-02,Dr Oluchi P. Ogundipe,Obeche Ward,302,NHIA (National Health Insurance),514215.8,Urgent,Ceftriaxone,Abnormal
+WalE f. anyanWU,1,Male,O+,Pneumonia,2023-10-30,2023-11-02,Dr Oluchi P. Ogundipe,Obeche Ward,302,NHIA (National Health Insurance),514215.8,Urgent,Ceftriaxone,Abnormal
 ejirO b. RaJi,26,Female,B+,Malaria,2023-10-30,2023-11-01,Dr Zainab B. Dauda,Iroko Ward ,109,NHIA (National Health Insurance),394942.8,Urgent,Paracetamol,Abnormal
 sHehu m. yUSuf,50,Male,B+,Diabetes,2023-10-30,2023-11-04,Dr Ifeanyi M. Musa,Iroko Ward,119,NHIA (National Health Insurance),558342.4,Emergency,Metformin,Normal
 ebere U. OrJi,28,Female,O+,Childbirth,2023-10-30,2023-11-01,Dr Obiageli F. Azikiwe,Obeche Ward,320,NHIA (National Health Insurance),668928.38,Urgent,Paracetamol,Normal
@@ -10622,7 +10622,7 @@ chiAmakA u. oKpaRa,5,Female,A+,Pneumonia,2023-10-30,2023-11-01,Dr Asabe W. Ojo,O
 AdeMoLa M. Odu,68,Male,O+,Hypertension,2023-10-30,2023-11-08,Dr Ifunanya W. Babangida,Baobab Ward,407,NHIA (National Health Insurance),1614908.23,Urgent,Amlodipine,Abnormal
 oSagiE a. oKpara,45,Male,O+,Hypertension,2023-10-30,2023-11-03,Dr Ekene A. Odu,Baobab Ward,421,NHIA (National Health Insurance),823254.64,Elective,Amlodipine,Abnormal
 olUwasEuN O. fasHOla,4,Male,A+,Pneumonia,2023-10-30,2023-11-04,Dr Oluchi P. Ogundipe,Obeche Ward,327,Hallmark HMO,632347.15,Urgent,Ceftriaxone,Abnormal
-ChIjiOKe o. azikIWe,0,Male,A+,Pneumonia,2023-10-30,2023-11-04,Dr Oluchi P. Ogundipe,Baobab Ward,409,Total Health Trust,607700.53,Emergency,Ceftriaxone,Abnormal
+ChIjiOKe o. azikIWe,1,Male,A+,Pneumonia,2023-10-30,2023-11-04,Dr Oluchi P. Ogundipe,Baobab Ward,409,Total Health Trust,607700.53,Emergency,Ceftriaxone,Abnormal
 funMIlaYo l. dauDa,52,Female,O+,Malaria,2023-10-30,2023-11-05,Dr Adebayo D. Ezenwa,Iroko Ward,121,Avon HMO,828049.59,urgent,Artemether-Lumefantrine,Abnormal
 idriS n. tIjani,31,Male,O+,Malaria,2023-10-30,2023-10-31,Dr Adenike O. Suleiman,Iroko Ward,157,Avon HMO,348794.45,Emergency,Artemether-Lumefantrine,Abnormal
 funmILayO A. akpAn,29,Female,O+,Childbirth,2023-10-30,2023-10-31,Dr Obiageli F. Azikiwe,Obeche Ward,314,Hallmark HMO,1561177.64,Emergency,Paracetamol,Abnormal
@@ -10649,7 +10649,7 @@ NKiru S. OBasi,18,female,O+,Childbirth,2023-10-31,2023-11-02,Dr Ifeanyi B. Fasho
 chInwE d. ogUNlesi,25,Female,O-,Malaria,2023-10-31,2023-11-03,Dr Onyinye I. Lawal,Iroko Ward,136,Hallmark HMO,396782.07,Emergency,Artemether-Lumefantrine,Abnormal
 RonkE m. edet,66,Female,O+,Diabetes,2023-10-31,2023-11-10,Dr Onyinye I. Lawal,Iroko Ward,143,Clearline HMO,1281509.33,Urgent,Metformin,Abnormal
 IkEchUKwU k. IBe,38,Male,AB+,Malaria,2023-10-31,2023-11-02,Dr Onyinye I. Lawal,Iroko Ward,101,Avon HMO,665668.44,Emergency,Paracetamol,Normal
-oluchi s. mADU,0,Female,A+,Pneumonia,2023-10-31,2023-11-03,Dr Ebuka W. Adewale,Obeche Ward,335,Clearline HMO,589963.04,Emergency,Paracetamol,Abnormal
+oluchi s. mADU,1,Female,A+,Pneumonia,2023-10-31,2023-11-03,Dr Ebuka W. Adewale,Obeche Ward,335,Clearline HMO,589963.04,Emergency,Paracetamol,Abnormal
 funMilayo k. abUBAkar,16,Female,O+,Trauma,2023-10-31,2023-11-03,Dr Oluwaseun D. Bakare,Mahogany Ward,206,Total Health Trust,3204850.77,Emergency,Paracetamol,Normal
 Aliyu j. egwu,30,Male,A+,Malaria,2023-10-31,2023-11-04,Dr Zainab B. Dauda,Iroko Ward,127,Hallmark HMO,686595.31,Urgent,Artemether-Lumefantrine,Normal
 kUNle k. suleiman,35,Male,A+,Malaria,2023-10-31,2023-11-02,Dr Adebayo D. Ezenwa,Iroko Ward,153,Hallmark HMO,436046.25,Emergency,Artemether-Lumefantrine,Normal
@@ -10686,7 +10686,7 @@ RaShIdA j. EtIm,34,Female,B+,Malaria,2023-11-01,2023-11-04,Dr Onyinye I. Lawal,I
 iFunANyA r. OlAwale,76,Female,O+,Diabetes,2023-11-01,2023-11-10,Dr Safiya N. Abiodun,Iroko Ward,156,Avon HMO,841650.09,Emergency,Metformin,Abnormal
 osas I. ikE,28,Female,A+,Trauma,2023-11-01,2023-11-10,Dr Oluwaseun D. Bakare,Mahogany Ward,208,Total Health Trust,1426751.84,Emergency,Paracetamol,Abnormal
 raShidA M. bAlOgun,2,Female,O+,Pneumonia,2023-11-01,2023-11-04,Dr Funmilayo A. Nnaji,Obeche Ward,333,NHIA (National Health Insurance),452103.6,Emergency,Paracetamol,Normal
-mARIaM b. oRji,0,Female,A-,Pneumonia,2023-11-01,2023-11-09,Dr Asabe W. Ojo,Obeche Ward,350,NHIA (National Health Insurance),975068.55,Urgent,Ceftriaxone,Abnormal
+mARIaM b. oRji,1,Female,A-,Pneumonia,2023-11-01,2023-11-09,Dr Asabe W. Ojo,Obeche Ward,350,NHIA (National Health Insurance),975068.55,Urgent,Ceftriaxone,Abnormal
 aisha f. sHAGari,63,Female,A+,Malaria,2023-11-01,2023-11-04,Dr Adebayo D. Ezenwa,Baobab Ward,440,NHIA (National Health Insurance),384027.89,Urgent,Paracetamol,Abnormal
 cHINeDu o. NdUkA,30,Male,AB+,Trauma,2023-11-01,2023-11-07,Dr Adaobi M. Uzor,Baobab Ward,415,NHIA (National Health Insurance),1644299.39,Emergency,Paracetamol,Abnormal
 oSAgiE j. oJO,64,Male,A+,Diabetes,2023-11-01,2023-11-03,Dr Safiya N. Abiodun,Iroko Ward,118,NHIA (National Health Insurance),517658.36,Urgent,Paracetamol,Abnormal
@@ -10701,7 +10701,7 @@ oBiaGElI d. ODilI,25,Female,O+,Childbirth,2023-11-01,2023-11-03,Dr Adenike F. Ka
 itohaN g. aDEleke,25,Female,O+,Childbirth,2023-11-01,2023-11-09,Dr Daniel K. Igwe,Obeche Ward,312,Avon HMO,2379359.09,Elective,Oxytocin,Normal
 mODupE I. okAFor,4,Female,B+,Pneumonia,2023-11-01,2023-11-03,Dr Funmilayo A. Nnaji,Obeche Ward,305,Avon HMO,398836.73,Emergency,Ceftriaxone,Abnormal
 CHidi i. usmAn,1,Male,O+,Pneumonia,2023-11-01,2023-11-07,Dr Ebuka W. Adewale,Obeche  Ward,319,NHIA (National Health Insurance),538878.76,Emergency,Ceftriaxone,Abnormal
-chiDi D. abIodUN,0,Male,A+,Pneumonia,2023-11-01,2023-11-03,Dr Oluchi P. Ogundipe,Obeche Ward,335,Total Health Trust,339542.5,Emergency,Ceftriaxone,Abnormal
+chiDi D. abIodUN,1,Male,A+,Pneumonia,2023-11-01,2023-11-03,Dr Oluchi P. Ogundipe,Obeche Ward,335,Total Health Trust,339542.5,Emergency,Ceftriaxone,Abnormal
 biLkiSu s. OlANIYan,30,Female,A+,Childbirth,2023-11-01,2023-11-04,Dr Ifeanyi B. Fashola,Baobab Ward,402,Clearline HMO,486298.25,Elective,Oxytocin,Normal
 NnAMdi u. aMadI,50,Male,B+,Trauma,2023-11-01,2023-11-08,Dr Adaobi M. Uzor,Mahogany Ward,209,Hallmark HMO,1372160.01,Emergency,Paracetamol,Normal
 BELlO c. NwAnkwO,56,Male,O+,Hypertension,2023-11-01,2023-11-07,Dr Ifunanya W. Babangida,Baobab Ward,431,Clearline HMO,811413.8,Urgent,Amlodipine,Abnormal
@@ -10791,7 +10791,7 @@ sHeHU d. nnaMDi,48,Male,O+,Diabetes,2023-11-03,2023-11-07,Dr Adenike O. Suleiman
 cHibUZoR K. KanU,18,Male,A+,Malaria,2023-11-03,2023-11-10,Dr Adenike O. Suleiman,Iroko Ward,151,NHIA (National Health Insurance),845680.07,Emergency,Artemether-Lumefantrine,Abnormal
 ucHe e. akpaN,46,Male,O+,Diabetes,2023-11-03,2023-11-08,Dr Adenike O. Suleiman,Iroko Ward,116,NHIA (National Health Insurance),572883.75,Urgent,Metformin,Abnormal
 idris j. AbiOdun,26,Male,B+,Trauma,2023-11-03,2023-11-12,Dr Adaobi M. Uzor,Baobab Ward,413,Avon HMO,2940169.28,Emergency,Paracetamol,Abnormal
-Onyinye l. obI,0,Female,O+,Pneumonia,2023-11-03,2023-11-08,Dr Oluchi P. Ogundipe,Obeche Ward,328,NHIA (National Health Insurance),635901.12,Emergency,Ceftriaxone,Abnormal
+Onyinye l. obI,1,Female,O+,Pneumonia,2023-11-03,2023-11-08,Dr Oluchi P. Ogundipe,Obeche Ward,328,NHIA (National Health Insurance),635901.12,Emergency,Ceftriaxone,Abnormal
 aDAEze E. ogbONNa,39,Female,A+,Childbirth,2023-11-03,2023-11-05,Dr Amina O. Lawal,Obeche Ward,340,NHIA (National Health Insurance),"564,562.69",Elective,Oxytocin,Normal
 cHibUZoR K. KanU,18,Male,A+,Malaria,2023-11-03,2023-11-10,Dr Adenike O. Suleiman,Iroko Ward,151,NHIA (National Health Insurance),845680.07,Emergency,Artemether-Lumefantrine,Abnormal
 LAdi r. aKPan,26,Female,B+,Childbirth,2023-11-03,2023-11-08,Dr Obiageli F. Azikiwe,Obeche Ward,317,Hallmark HMO,1110714.44,Urgent,Oxytocin,Abnormal
@@ -10939,7 +10939,7 @@ kelecHi w. dike,37,Male,A+,Trauma,2023-11-07,2023-11-14,Dr Damola R. Salami,Maho
 esthER E. ibraHim,35,Female,B+,Childbirth,2023-11-07,2023-11-12,Dr Yetunde A. Dauda,Obeche Ward,309,NHIA (National Health Insurance),869065.52,Urgent,Oxytocin,Normal
 amina I. ezeaNI,15,Female,O+,Malaria,2023-11-07,2023-11-08,Dr Zainab B. Dauda,Baobab Ward,439,NHIA (National Health Insurance),291858.15,Emergency,Artemether-Lumefantrine,Normal
 mariam M. InYaNg,16,Female,A+,Trauma,2023-11-07,2023-11-23,Dr Safiya G. Onwuka,Baobab Ward,431,Clearline HMO,4280556.75,Emergency,Paracetamol,Abnormal
-MoDUpe F. ekong,0,Female,O+,Pneumonia,2023-11-07,2023-11-09,Dr Asabe W. Ojo,Obeche Ward,310,Avon HMO,284135.02,Emergency,Ceftriaxone,Inconclusive
+MoDUpe F. ekong,1,Female,O+,Pneumonia,2023-11-07,2023-11-09,Dr Asabe W. Ojo,Obeche Ward,310,Avon HMO,284135.02,Emergency,Ceftriaxone,Inconclusive
 chiBuzor d. kaNU,64,Male,B+,Diabetes,2023-11-07,2023-11-12,Dr Onyinye I. Lawal,Iroko Ward,148,Total Health Trust,535603.09,Emergency,Metformin,Abnormal
 sIMiSola c. MbAh,27,Female,O+,Malaria,2023-11-08,2023-11-11,Dr Adenike O. Suleiman,Iroko Ward,136,Clearline HMO,525085.73,Emergency,Paracetamol,Abnormal
 ahmed f. idowU,2,Male,O+,Pneumonia,2023-11-08,2023-11-14,Dr Oluchi P. Ogundipe,Obeche Ward,323,Hallmark HMO,828597.79,urgent,Paracetamol,Normal
@@ -11038,13 +11038,13 @@ uduak f. ekwEnsi,56,Female,O+,Hypertension,2023-11-10,2023-11-24,Dr Ifunanya W. 
 zAinAb g. Chukwu,59,Female,O+,Diabetes,2023-11-10,2023-11-18,Dr Adebayo D. Ezenwa,Iroko Ward,119,NHIA (National Health Insurance),1088438.28,Urgent,Metformin,Normal
 ChiOmA i. Raji,29,Female,A+,Childbirth,2023-11-10,2023-11-11,Dr Yetunde A. Dauda,Obeche Ward,321,Clearline HMO,531793.59,Urgent,Oxytocin,Normal
 femi i. oyElaran,63,Male,B+,Malaria,2023-11-10,2023-11-17,Dr Onyinye I. Lawal,Iroko Ward,108,Total Health Trust,867679.44,Emergency,Artemether-Lumefantrine,Inconclusive
-ayomIdE U. OGbOnna,0,Female,O+,Pneumonia,2023-11-10,2023-11-17,Dr Asabe W. Ojo,Obeche Ward,305,Total Health Trust,830866.69,Emergency,Ceftriaxone,Abnormal
+ayomIdE U. OGbOnna,1,Female,O+,Pneumonia,2023-11-10,2023-11-17,Dr Asabe W. Ojo,Obeche Ward,305,Total Health Trust,830866.69,Emergency,Ceftriaxone,Abnormal
 ItohAN r. oKafoR,27,Female,O+,Childbirth,2023-11-10,2023-11-12,Dr Ifeanyi B. Fashola,Obeche Ward,320,NHIA (National Health Insurance),583653.72,Elective,Oxytocin,Abnormal
 kuNle A. obAsi,4,Male,B+,Pneumonia,2023-11-10,2023-11-13,Dr Ebuka W. Adewale,Obeche Ward,314,Clearline HMO,409772.66,Emergency,Paracetamol,Abnormal
 halIMA O. ekpo,34,Female,A+,Childbirth,2023-11-10,2023-11-12,Dr Obiageli F. Azikiwe,Obeche Ward,319,NHIA (National Health Insurance),1512104.51,Urgent,Oxytocin,Normal
 oluChi b. ObI,43,Female,AB+,Childbirth,2023-11-10,2023-11-16,Dr Ifeanyi B. Fashola,Obeche Ward,338,Avon HMO,740754.84,Emergency,Oxytocin,Abnormal
 NneKa r. sHagari,26,Female,O+,Malaria,2023-11-10,2023-11-13,Dr Adenike O. Suleiman,Iroko Ward,137,Clearline HMO,444369.56,Emergency,Artemether-Lumefantrine,Normal
-aHMED s. oDili,0,Male,O+,Pneumonia,2023-11-11,2023-11-12,Dr Oluchi P. Ogundipe,Obeche Ward,337,Hallmark HMO,322307.99,Urgent,Ceftriaxone,Abnormal
+aHMED s. oDili,1,Male,O+,Pneumonia,2023-11-11,2023-11-12,Dr Oluchi P. Ogundipe,Obeche Ward,337,Hallmark HMO,322307.99,Urgent,Ceftriaxone,Abnormal
 TiTilAyO i. ikE,24,Female,O+,Childbirth,2023-11-11,2023-11-13,Dr Daniel K. Igwe,Obeche Ward,344,Total Health Trust,635227.57,Elective,Oxytocin,Normal
 aMinA l. sAnni,54,Female,O+,Trauma,2023-11-11,2023-11-16,Dr Damola R. Salami,Mahogany Ward,230,Clearline HMO,1059173.36,Emergency,Paracetamol,Abnormal
 FatIma B. egWU,32,Female,O+,Malaria,2023-11-11,2023-11-13,Dr Zainab B. Dauda,Iroko Ward,117,NHIA (National Health Insurance),626867.42,Emergency,Paracetamol,Abnormal
@@ -11172,9 +11172,9 @@ AmAra E. MADu,18,Female,B+,Childbirth,2023-11-15,2023-11-17,Dr Daniel K. Igwe,Ob
 chiDiNMA U. maDU,32,Female,O+,Malaria,2023-11-15,2023-11-19,Dr Safiya N. Abiodun,Iroko Ward ,137,Hallmark HMO,698643.56,Emergency,Artemether-Lumefantrine,Abnormal
 amAra R. okafor,31,Female,O+,Childbirth,2023-11-15,2023-11-19,Dr Amina O. Lawal,Obeche Ward,315,Avon HMO,909167.88,Elective,Oxytocin,Normal
 uChEnna K. ojo,21,Female,B+,Childbirth,2023-11-15,2023-11-17,Dr Ifeanyi B. Fashola,Obeche Ward,344,Clearline HMO,1229994.37,Urgent,Paracetamol,Inconclusive
-ijeOma g. orjI,0,F,O+,Pneumonia,2023-11-15,2023-11-20,Dr Asabe W. Ojo,Obeche Ward,349,NHIA (National Health Insurance),550465.49,Urgent,Ceftriaxone,Normal
+ijeOma g. orjI,1,F,O+,Pneumonia,2023-11-15,2023-11-20,Dr Asabe W. Ojo,Obeche Ward,349,NHIA (National Health Insurance),550465.49,Urgent,Ceftriaxone,Normal
 oNYInye y. DaUDa,71,Female,O+,Hypertension,2023-11-15,2023-11-30,Dr Ifunanya W. Babangida,Iroko Ward,150,Total Health Trust,2435753.77,Urgent,Paracetamol,Normal
-OmoLara k. OYelarAN,0,Female,O+,Pneumonia,2023-11-15,2023-11-16,Dr Oluchi P. Ogundipe,Obeche Ward,340,Avon HMO,271854.99,Urgent,Ceftriaxone,Normal
+OmoLara k. OYelarAN,1,Female,O+,Pneumonia,2023-11-15,2023-11-16,Dr Oluchi P. Ogundipe,Obeche Ward,340,Avon HMO,271854.99,Urgent,Ceftriaxone,Normal
 IDRIs o. ugWU,54,Male,O+,Diabetes,2023-11-15,2023-11-24,Dr Ifeanyi M. Musa,Iroko Ward,159,NHIA (National Health Insurance),713480.5,Elective,Metformin,Abnormal
 UMar C. OgUNdipe,22,Male,O+,Malaria,2023-11-15,2023-11-20,Dr Onyinye I. Lawal,Iroko,143,Total Health Trust,831801.73,Emergency,Artemether-Lumefantrine,Abnormal
 IjeOMA i. jibrIl,41,Female,O+,Diabetes,2023-11-15,2023-11-19,Dr Onyinye I. Lawal,Iroko Ward,154,Avon HMO,670374.71,Emergency,Metformin,Normal
@@ -11206,7 +11206,7 @@ ijeOma r. baBAnGiDA,3,Female,B+,Pneumonia,2023-11-16,2023-11-20,Dr Ebuka W. Adew
 AyoMide k. nwaNkwO,30,Female,O+,Childbirth,2023-11-16,2023-11-17,Dr Adenike F. Kanu,Obeche Ward,321,Total Health Trust,480396.94,Urgent,Oxytocin,Abnormal
 mustapha W. idOWu,17,Male,O+,Trauma,2023-11-16,2023-11-22,Dr Oluwaseun D. Bakare,Mahogany Ward,211,Clearline HMO,3058449.69,Emergency,Paracetamol,Normal
 AhmEd o. isiaka,5,Male,B+,Pneumonia,2023-11-16,2023-11-22,Dr Funmilayo A. Nnaji,Obeche Ward,310,NHIA (National Health Insurance),734974.07,Emergency,Ceftriaxone,Normal
-haruna k. uKPabi,0,Male,A+,Pneumonia,2023-11-16,2023-11-18,Dr Ebuka W. Adewale,Obeche Ward,309,NHIA (National Health Insurance),282031.02,Urgent,Ceftriaxone,Normal
+haruna k. uKPabi,1,Male,A+,Pneumonia,2023-11-16,2023-11-18,Dr Ebuka W. Adewale,Obeche Ward,309,NHIA (National Health Insurance),282031.02,Urgent,Ceftriaxone,Normal
 ayOmIDE e. nnAji,29,Female,O+,Childbirth,2023-11-16,2023-11-17,Dr Adenike F. Kanu,Obeche Ward,344,Avon HMO,1309574.27,Urgent,Oxytocin,Normal
 funkE E. iBRahim,17,Female,O+,Childbirth,2023-11-16,2023-11-19,Dr Adenike F. Kanu,Obeche Ward,302,Avon HMO,482789.57,Emergency,Oxytocin,Inconclusive
 khAdIjA j. UMEH,28,Female,O+,Childbirth,2023-11-16,2023-11-17,Dr Amina O. Lawal,Obeche Ward,328,Avon HMO,505355.61,Urgent,Paracetamol,Normal
@@ -11236,7 +11236,7 @@ tObILOba c. IBe,26,Male,O+,Trauma,2023-11-16,2023-11-22,Dr Damola R. Salami,Maho
 sHeHu W. suLeiMan,5,Male,B+,Pneumonia,2023-11-16,2023-11-22,Dr Oluchi P. Ogundipe,Baobab Ward,430,Total Health Trust,544709.95,Urgent,Ceftriaxone,Inconclusive
 raSHidA b. nwoSu,23,Female,A+,Trauma,2023-11-16,2023-12-11,Dr Adaobi M. Uzor,Mahogany Ward,209,NHIA (National Health Insurance),3697988.26,Emergency,Paracetamol,Abnormal
 SimiSOlA C. OJo,23,Female,O+,Childbirth,2023-11-17,2023-11-20,Dr Amina O. Lawal,Obeche Ward,328,NHIA (National Health Insurance),744456.95,Urgent,Oxytocin,Inconclusive
-CHiOmA L. GaRba,0,Female,O+,Pneumonia,2023-11-17,2023-11-19,Dr Asabe W. Ojo,Obeche Ward,341,NHIA (National Health Insurance),328922.22,Emergency,Ceftriaxone,Abnormal
+CHiOmA L. GaRba,1,Female,O+,Pneumonia,2023-11-17,2023-11-19,Dr Asabe W. Ojo,Obeche Ward,341,NHIA (National Health Insurance),328922.22,Emergency,Ceftriaxone,Abnormal
 RoNkE n. Musa,5,Female,O+,Pneumonia,2023-11-17,2023-11-19,Dr Funmilayo A. Nnaji,Baobab Ward,408,Avon HMO,270790.23,Urgent,Ceftriaxone,Abnormal
 UmaR g. oKOro,67,Male,O+,Malaria,2023-11-17,2023-11-19,Dr Adebayo D. Ezenwa,Iroko Ward,101,Total Health Trust,442133.36,Emergency,Artemether-Lumefantrine,Abnormal
 OnYInye E. aKpan,62,Female,A+,Hypertension,2023-11-17,2023-11-21,Dr Ifunanya W. Babangida,Baobab ward,421,NHIA (National Health Insurance),808614.98,Urgent,Amlodipine,Abnormal
@@ -11320,7 +11320,7 @@ adEnike y. oNwuka,27,Female,O+,Childbirth,2023-11-19,2023-11-21,Dr Ifeanyi B. Fa
 AdaMu D. kaNu,60,Male,O+,Hypertension,2023-11-19,2023-11-28,Dr Nkechi C. Obasi,Baobab,405,NHIA (National Health Insurance),1380164.84,Elective,Amlodipine,Abnormal
 LADi F. ogbonna,23,Female,O+,Childbirth,2023-11-19,2023-11-20,Dr Ifeanyi B. Fashola,Obeche Ward,334,Hallmark HMO,1457256.23,Elective ,Oxytocin,Normal
 musTaPHA d. etIM,4,Male,O+,Pneumonia,2023-11-19,2023-11-20,Dr Ebuka W. Adewale,Obeche Ward,332,NHIA (National Health Insurance),225648.17,Urgent,Ceftriaxone,Abnormal
-bala w. OsEnI,0,Male,A+,Pneumonia,2023-11-19,2023-11-24,Dr Funmilayo A. Nnaji,Obeche Ward,309,NHIA (National Health Insurance),712955.97,Emergency,Paracetamol,Abnormal
+bala w. OsEnI,1,Male,A+,Pneumonia,2023-11-19,2023-11-24,Dr Funmilayo A. Nnaji,Obeche Ward,309,NHIA (National Health Insurance),712955.97,Emergency,Paracetamol,Abnormal
 tayo w. AdebayO,34,Male,O+,Trauma,2023-11-19,2023-11-25,Dr Adaobi M. Uzor,Mahogany Ward,208,Total Health Trust,"3,089,162.15",Emergency,Paracetamol,Abnormal
 ChiDinMa n. obI,39,Female,O+,Childbirth,2023-11-19,2023-11-22,Dr Yetunde A. Dauda,Obeche Ward,319,NHIA (National Health Insurance),810713.89,Urgent,Oxytocin,Abnormal
 oNyiNYe b. rAji,33,Female,A+,Childbirth,2023-11-19,2023-11-20,Dr Daniel K. Igwe,Obeche Ward,319,NHIA (National Health Insurance),1321842.92,Urgent,Paracetamol,Inconclusive
@@ -11476,7 +11476,7 @@ anULi r. DauDa,60,Female,O+,Diabetes,2023-11-23,2023-11-25,Dr Adenike O. Suleima
 CHidinma w. oKAfOR,32,Female,O+,Childbirth,2023-11-23,2023-11-29,Dr Daniel K. Igwe,Obeche Ward,331,Avon HMO,2458644.96,Emergency,Oxytocin,Inconclusive
 tAYo r. IdoWu,42,M,B+,Malaria,2023-11-23,2023-11-28,Dr Zainab B. Dauda,Iroko Ward,133,Total Health Trust,840476.25,Emergency,Artemether-Lumefantrine,Abnormal
 nnEKA l. aKiNola,81,Female,O+,Hypertension,2023-11-23,2023-12-05,Dr Ifunanya W. Babangida,Baobab Ward,421,Avon HMO,1601606.01,Urgent,Paracetamol,Abnormal
-Chidi a. Isiaka,0,Male,B+,Pneumonia,2023-11-23,2023-12-01,Dr Ebuka W. Adewale,Baobab Ward,402,NHIA (National Health Insurance),647349.84,Emergency,Ceftriaxone,Abnormal
+Chidi a. Isiaka,1,Male,B+,Pneumonia,2023-11-23,2023-12-01,Dr Ebuka W. Adewale,Baobab Ward,402,NHIA (National Health Insurance),647349.84,Emergency,Ceftriaxone,Abnormal
 Femi k. adEWALE,2,Male,A+,Pneumonia,2023-11-23,2023-11-26,Dr Oluchi P. Ogundipe,Obeche Ward,309,NHIA (National Health Insurance),413399.72,Emergency,Ceftriaxone,Normal
 aNuLi s. DiKE,48,Female,O+,Hypertension,2023-11-23,2023-12-01,Dr Hauwa W. Onwuka,Baobab Ward,409,Avon HMO,1278538.45,Urgent,Amlodipine,Abnormal
 lami w. jibRil,47,Female,A+,Trauma,2023-11-23,2023-11-28,Dr Adaobi M. Uzor,Mahogany Ward,240,Hallmark HMO,1984303.24,Emergency,Paracetamol,Inconclusive
@@ -11584,7 +11584,7 @@ haUWA d. oSeni,37,Female,B+,Diabetes,2023-11-26,2023-12-10,Dr Adenike O. Suleima
 ADeSUwa S. moHamMeD,32,female,A+,Childbirth,2023-11-26,2023-11-27,Dr Daniel K. Igwe,Obeche  Ward,302,Total Health Trust,-473193.17,Urgent,Oxytocin,Abnormal
 laDi r. OkAfOR,4,Female,O+,Pneumonia,2023-11-26,2023-11-28,Dr Oluchi P. Ogundipe,Obeche Ward,323,NHIA (National Health Insurance),382277.99,Emergency,Paracetamol,Abnormal
 cHiJioke e. kaNu,56,Male,O+,Malaria,2023-11-26,2023-11-28,Dr Ifeanyi M. Musa,Baobab Ward,402,NHIA (National Health Insurance),337462.65,Urgent,Artemether-Lumefantrine,Abnormal
-taYo j. Uzor,0,Male,O+,Pneumonia,2023-11-26,2023-12-04,Dr Oluchi P. Ogundipe,Obeche Ward,328,NHIA (National Health Insurance),909489.36,Emergency,Ceftriaxone,Abnormal
+taYo j. Uzor,1,Male,O+,Pneumonia,2023-11-26,2023-12-04,Dr Oluchi P. Ogundipe,Obeche Ward,328,NHIA (National Health Insurance),909489.36,Emergency,Ceftriaxone,Abnormal
 EmmanUEL b. obi,61,Male,A+,Malaria,2023-11-26,2023-12-09,Dr Adenike O. Suleiman,Iroko Ward,140,NHIA (National Health Insurance),1522839.32,Emergency,Paracetamol,Abnormal
 wAle N. yAKUBU,21,Male,A+,Malaria,2023-11-26,2023-12-01,Dr Onyinye I. Lawal,Iroko Ward,149,NHIA (National Health Insurance),799392.33,Emergency,Artemether-Lumefantrine,Abnormal
 eNIoLa f. MuSa,23,female,O+,Trauma,2023-11-26,2023-12-10,Dr Safiya G. Onwuka,Mahogany Ward,231,Total Health Trust,2875287.95,Emergency,Paracetamol,Abnormal
@@ -11828,7 +11828,7 @@ IdRIS W. AkinoLA,67,Male,O+,Hypertension,2023-12-04,2023-12-13,Dr Ifunanya W. Ba
 chInwE F. obi,6,female,O+,Pneumonia,2023-12-04,2023-12-08,Dr Asabe W. Ojo,Obeche Ward,308,Clearline HMO,455945.29,Emergency,Ceftriaxone,Abnormal
 FunmILayO E. mOhamMEd,26,Female,O+,Childbirth,2023-12-04,2023-12-05,Dr Daniel K. Igwe,Obeche Ward,311,Total Health Trust,487510.71,Elective,Oxytocin,Inconclusive
 idRiS y. ABubaKAR,70,Male,O+,Hypertension,2023-12-04,2023-12-11,Dr Ekene A. Odu,Baobab Ward,424,Total Health Trust,1079647.78,Emergency,Amlodipine,Abnormal
-ChIjiOke A. osagie,0,Male,AB+,Pneumonia,2023-12-04,2023-12-06,Dr Asabe W. Ojo,Obeche Ward,343,Clearline HMO,451747.5,Emergency,Ceftriaxone,Abnormal
+ChIjiOke A. osagie,1,Male,AB+,Pneumonia,2023-12-04,2023-12-06,Dr Asabe W. Ojo,Obeche Ward,343,Clearline HMO,451747.5,Emergency,Ceftriaxone,Abnormal
 kEmi n. oKpAra,30,Female,O+,Trauma,2023-12-04,2023-12-12,Dr Oluwaseun D. Bakare,Mahogony Ward,211,Avon HMO,1631739.26,Urgent,Paracetamol,Abnormal
 jidE N. MOHAmMed,41,Male,B+,Trauma,2023-12-04,2023-12-21,Dr Damola R. Salami,Mahogany Ward,209,Clearline HMO,3631866.23,Emergency,Paracetamol,Normal
 uDuAK P. efFIoNG,63,Female,O+,Hypertension,2023-12-04,2023-12-06,Dr Ekene A. Odu,Baobab Ward,432,Hallmark HMO,358970.31,Urgent,Amlodipine,Abnormal
@@ -11873,7 +11873,7 @@ zainaB R. AbUbakaR,10,Female,O+,Pneumonia,2023-12-05,2023-12-07,Dr Asabe W. Ojo,
 safIyA p. aDebaYO,6,Female,O+,Pneumonia,2023-12-05,2023-12-08,Dr Oluchi P. Ogundipe,Baobab Ward,425,NHIA (National Health Insurance),422700.67,Emergency,Ceftriaxone,Abnormal
 AiSha j. lawAl,39,Female,A+,Malaria,2023-12-05,2023-12-07,Dr Ifeanyi M. Musa,Iroko Ward,138,Hallmark HMO,390592.22,Emergency,Artemether-Lumefantrine,Normal
 hAdIza U. OlaniYan,28,Female,O+,Diabetes,2023-12-05,2023-12-07,Dr Adebayo D. Ezenwa,Iroko Ward,113,Clearline HMO,327783.33,Elective,Paracetamol,Normal
-tobiloba w. MUSTapHa,0,Male,O+,Pneumonia,2023-12-05,2023-12-14,Dr Asabe W. Ojo,Obeche Ward,322,Clearline HMO,958592.06,Emergency,Ceftriaxone,Normal
+tobiloba w. MUSTapHa,1,Male,O+,Pneumonia,2023-12-05,2023-12-14,Dr Asabe W. Ojo,Obeche Ward,322,Clearline HMO,958592.06,Emergency,Ceftriaxone,Normal
 aDebayo P. BaBAngidA,1,Male,O+,Pneumonia,2023-12-05,2023-12-08,Dr Funmilayo A. Nnaji,Obeche Ward,324,NHIA (National Health Insurance),545070.68,Urgent,Ceftriaxone,Abnormal
 Chiamaka y. aMadI,19,Female,O+,Childbirth,2023-12-05,2023-12-09,Dr Daniel K. Igwe,Obeche Ward,331,Avon HMO,1647768.11,Emergency,Oxytocin,Inconclusive
 jUmokE m. IWu,2,Female,A+,Pneumonia,2023-12-05,2023-12-06,Dr Oluchi P. Ogundipe,Obeche Ward,315,Total Health Trust,304197.97,Emergency,Ceftriaxone,Abnormal
@@ -11911,7 +11911,7 @@ chiDi F. tIjAnI,5,Male,O+,Pneumonia,2023-12-06,2023-12-14,Dr Asabe W. Ojo,Baobab
 uduak t. adeWaLe,51,Female,O+,Hypertension,2023-12-06,2023-12-14,Dr Ifunanya W. Babangida,Baobab Ward,434,Avon HMO,1065943.66,Urgent,Paracetamol,Abnormal
 adESuWa u. nNaMdI,28,Female,O+,Malaria,2023-12-06,2023-12-08,Dr Safiya N. Abiodun,Iroko Ward,126,Hallmark HMO,434313.52,Urgent,Artemether-Lumefantrine,Abnormal
 ADebOla p. dAUda,54,Female,A+,Diabetes,2023-12-06,2023-12-16,Dr Adenike O. Suleiman,Iroko Ward,125,Total Health Trust,1537966.08,Elective,Metformin,Abnormal
-ToChukwu j. agbaje,0,Male,B+,Pneumonia,2023-12-06,2023-12-09,Dr Ebuka W. Adewale,Obeche Ward,333,Avon HMO,695409.41,Elective,Ceftriaxone,Abnormal
+ToChukwu j. agbaje,1,Male,B+,Pneumonia,2023-12-06,2023-12-09,Dr Ebuka W. Adewale,Obeche Ward,333,Avon HMO,695409.41,Elective,Ceftriaxone,Abnormal
 adeBolA I. baNKole,56,Female,O+,Malaria,2023-12-06,2023-12-11,Dr Safiya N. Abiodun,Iroko Ward,116,Avon HMO,765636.18,Urgent,Artemether-Lumefantrine,Abnormal
 femi j. abiOdun,46,Male,O+,Malaria,2023-12-06,2023-12-11,Dr Adebayo D. Ezenwa,Iroko Ward,153,NHIA (National Health Insurance),641058.08,Urgent,Artemether-Lumefantrine,Abnormal
 nNEka Y. ike,33,Female,A+,Childbirth,2023-12-06,2023-12-08,Dr Ifeanyi B. Fashola,Obeche,342,NHIA (National Health Insurance),"653,479.23",Emergency,Oxytocin,Normal
@@ -12144,7 +12144,7 @@ yakubU c. fAShOLA,50,Male,O+,Trauma,2023-12-12,2023-12-20,Dr Safiya G. Onwuka,Ba
 Asabe i. CHime,42,female,O+,Hypertension,2023-12-12,2023-12-15,Dr Ekene A. Odu,Baobab Ward,422,Clearline HMO,366012.92,Urgent,Amlodipine,Abnormal
 foLake P. AKandE,4,Female,B-,Pneumonia,2023-12-12,2023-12-22,Dr Oluchi P. Ogundipe,Obeche Ward,307,Clearline HMO,895653.91,Emergency,Ceftriaxone,Abnormal
 IKechUKwu l. ONUOhA,30,Male,O+,Trauma,2023-12-12,2023-12-27,Dr Adaobi M. Uzor,Mahogany Ward,249,Total Health Trust,2999571.67,Emergency,Paracetamol,Inconclusive
-Ahmed W. ibe,0,Male,B+,Pneumonia,2023-12-13,2023-12-17,Dr Ebuka W. Adewale,Obeche Ward,304,Clearline HMO,551224.69,Emergency,Ceftriaxone,Abnormal
+Ahmed W. ibe,1,Male,B+,Pneumonia,2023-12-13,2023-12-17,Dr Ebuka W. Adewale,Obeche Ward,304,Clearline HMO,551224.69,Emergency,Ceftriaxone,Abnormal
 AdeSuwa l. ezE,58,Female,O+,Trauma,2023-12-13,2023-12-26,Dr Damola R. Salami,Mahogany Ward,235,NHIA (National Health Insurance),3625871.49,Emergency,Paracetamol,Abnormal
 tuNdE m. oBi,59,Male,O+,Diabetes,2023-12-13,2024-01-03,Dr Safiya N. Abiodun,Iroko Ward,136,Clearline HMO,2445776.85,Urgent,Metformin,Abnormal
 BiLKiSu A. Ibe,42,Female,O+,Trauma,2023-12-13,2023-12-17,Dr Damola R. Salami,Mahogany Ward,223,Hallmark HMO,888217.16,Emergency,Paracetamol,Abnormal
@@ -12297,7 +12297,7 @@ RonKe e. maDU,53,Female,A+,Diabetes,2023-12-18,2023-12-23,Dr Safiya N. Abiodun,I
 damilOla s. sanNi,45,F,O+,Hypertension,2023-12-18,2023-12-26,Dr Ifunanya W. Babangida,Baobab Ward,416,Hallmark HMO,1253230.78,Urgent,Amlodipine,Normal
 alIyU s. shaGari,14,Male,B+,Pneumonia,2023-12-18,2023-12-23,Dr Ebuka W. Adewale,Obeche Ward,307,Avon HMO,"434,226.20",Urgent,Ceftriaxone,Abnormal
 ngozi r. Ojo,57,Female,O+,Malaria,2023-12-18,2023-12-21,Dr Zainab B. Dauda,Iroko Ward,117,Clearline HMO,563573.48,Emergency,Paracetamol,Normal
-kEmi c. onWukA,0,Female,O+,Pneumonia,2023-12-18,2023-12-22,Dr Funmilayo A. Nnaji,Obeche Ward,319,Hallmark HMO,418470.96,Emergency,Ceftriaxone,Normal
+kEmi c. onWukA,1,Female,O+,Pneumonia,2023-12-18,2023-12-22,Dr Funmilayo A. Nnaji,Obeche Ward,319,Hallmark HMO,418470.96,Emergency,Ceftriaxone,Normal
 kUNle O. ALiyu,70,Male,B+,Hypertension,2023-12-18,2023-12-28,Dr Hauwa W. Onwuka,Baobab Ward,437,Clearline HMO,1211762.12,Elective,Amlodipine,Abnormal
 khADija r. OlaNiyan,1,Female,O+,Pneumonia,2023-12-18,2023-12-27,Dr Asabe W. Ojo,Obeche Ward,322,Clearline HMO,1149854.54,Urgent,Ceftriaxone,Abnormal
 RoNke p. maDU,48,Female,O+,Diabetes,2023-12-18,2023-12-25,Dr Adenike O. Suleiman,Iroko,138,Avon HMO,1142145.27,Elective,Metformin,Normal
@@ -12353,7 +12353,7 @@ laNre a. AkInola,86,Male,O+,Hypertension,2023-12-19,2024-01-09,Dr Ifunanya W. Ba
 blessINg g. OsENi,46,Female,AB+,Malaria,2023-12-19,2023-12-21,Dr Adenike O. Suleiman,Iroko Ward,133,NHIA (National Health Insurance),348356.32,Elective,Artemether-Lumefantrine,Abnormal
 victOr J. tiJAni,2,Male,O+,Pneumonia,2023-12-19,2023-12-21,Dr Ebuka W. Adewale,Baobab Ward,418,Total Health Trust,461069.4,Emergency,Ceftriaxone,Normal
 OMolARa G. anyAnwU,28,Female,O+,Childbirth,2023-12-19,2023-12-20,Dr Ifeanyi B. Fashola,Obeche Ward,345,Total Health Trust,"511,975.78",Emergency,Oxytocin,Normal
-ChijioKe Y. AbiOduN,0,Male,O+,Pneumonia,2023-12-19,2023-12-22,Dr Asabe W. Ojo,Obeche,337,Hallmark HMO,621912.54,Urgent,Ceftriaxone,Normal
+ChijioKe Y. AbiOduN,1,Male,O+,Pneumonia,2023-12-19,2023-12-22,Dr Asabe W. Ojo,Obeche,337,Hallmark HMO,621912.54,Urgent,Ceftriaxone,Normal
 funke u. oKOrO,32,Female,O+,Childbirth,2023-12-19,2023-12-21,Dr Daniel K. Igwe,Obeche Ward,342,Avon HMO,528448.48,Emergency,Oxytocin,Normal
 amakA E. Nnamdi,2,Female,B+,Pneumonia,2023-12-19,2023-12-27,Dr Ebuka W. Adewale,Obeche Ward,336,Total Health Trust,954696.26,Emergency,Ceftriaxone,Normal
 adEniKe R. aMaDI,33,Female,B+,Childbirth,2023-12-19,2023-12-22,Dr Adenike F. Kanu,Obeche Ward,338,Clearline HMO,573111.54,Emergency,Paracetamol,Abnormal
@@ -12398,7 +12398,7 @@ oLuMIdE a. musTAPha,3,Male,A+,Pneumonia,2023-12-21,2023-12-28,Dr Ebuka W. Adewal
 uDuak P. oJo,29,Female,O+,Childbirth,2023-12-21,2023-12-23,Dr Ifeanyi B. Fashola,Obeche Ward,340,Hallmark HMO,1260498.81,Urgent,Oxytocin,Abnormal
 aDenikE j. AkpAn,33,Female,O+,Malaria,2023-12-21,2023-12-25,Dr Zainab B. Dauda,Iroko Ward,140,NHIA (National Health Insurance),564042.79,Emergency,Artemether-Lumefantrine,Abnormal
 iBrahIM d. danjUMa,39,male,A+,Malaria,2023-12-21,2023-12-26,Dr Adebayo D. Ezenwa,Iroko Ward,106,Hallmark HMO,757277.72,Urgent,Artemether-Lumefantrine,Abnormal
-musa n. adelEke,0,Male,O+,Pneumonia,2023-12-21,2023-12-31,Dr Asabe W. Ojo,Baobab Ward,437,Total Health Trust,1030092.39,Emergency,Ceftriaxone,Abnormal
+musa n. adelEke,1,Male,O+,Pneumonia,2023-12-21,2023-12-31,Dr Asabe W. Ojo,Baobab Ward,437,Total Health Trust,1030092.39,Emergency,Ceftriaxone,Abnormal
 adeniKe a. orjI,16,Female,A+,Trauma,2023-12-21,2024-01-12,Dr Damola R. Salami,Mahogany Ward,215,Clearline HMO,5271310.73,Emergency,Paracetamol,Normal
 chIJiokE Y. SaNni,28,Male,B+,Trauma,2023-12-21,2023-12-29,Dr Adaobi M. Uzor,Mahogany,234,Hallmark HMO,3267384.43,Emergency,Paracetamol,Normal
 anuli B. SAlami,56,Female,A+,Hypertension,2023-12-21,2023-12-24,Dr Hauwa W. Onwuka,Baobab Ward,405,Clearline HMO,587167.0,Urgent,Paracetamol,Normal
@@ -12670,7 +12670,7 @@ aiShA U. uGwu,67,Female,O-,Diabetes,2023-12-28,2024-01-03,Dr Adenike O. Suleiman
 amAra g. EZeaNI,28,Female,A+,Childbirth,2023-12-28,2023-12-29,Dr Ifeanyi B. Fashola,Obeche Ward,325,Clearline HMO,379934.29,Elective,Oxytocin,Abnormal
 sALamaTu b. oyelaraN,27,Female,A+,Childbirth,2023-12-28,2023-12-30,Dr Adenike F. Kanu,Baobab Ward,433,NHIA (National Health Insurance),486897.15,Elective,Oxytocin,Abnormal
 AlIYU k. mUSa,68,Male,O+,Hypertension,2023-12-28,2023-12-30,Dr Ifunanya W. Babangida,IROKO WARD,148,Hallmark HMO,464932.14,Urgent,Amlodipine,Normal
-mOduPE P. tijAni,0,Female,O+,Pneumonia,2023-12-28,2024-01-02,Dr Oluchi P. Ogundipe,Obeche Ward,332,Avon HMO,631609.62,Urgent,Ceftriaxone,Normal
+mOduPE P. tijAni,1,Female,O+,Pneumonia,2023-12-28,2024-01-02,Dr Oluchi P. Ogundipe,Obeche Ward,332,Avon HMO,631609.62,Urgent,Ceftriaxone,Normal
 AISHa D. SalAmi,22,Female,O+,Childbirth,2023-12-28,2024-01-02,Dr Obiageli F. Azikiwe,Obeche Ward,325,NHIA (National Health Insurance),784382.67,Emergency,Oxytocin,Inconclusive
 GodwiN K. onwUka,39,Male,O+,Malaria,2023-12-28,2024-01-01,Dr Ifeanyi M. Musa,Iroko Ward,108,NHIA (National Health Insurance),536776.79,Urgent,Artemether-Lumefantrine,Abnormal
 abdULLAhI A. mBAh,45,Male,A+,Trauma,2023-12-28,2024-01-03,Dr Damola R. Salami,Mahogany Ward,215,Clearline HMO,1422162.54,Emergency,Paracetamol,Normal
@@ -12741,7 +12741,7 @@ mariaM c. IBE,55,Female,B+,Malaria,2023-12-30,2024-01-02,Dr Ifeanyi M. Musa,Irok
 JuMoKe S. AjayI,1,Female,O+,Pneumonia,2023-12-30,2024-01-04,Dr Ebuka W. Adewale,Obeche Ward,318,Avon HMO,623030.54,Emergency,Ceftriaxone,Normal
 segUn G. wilLiams,72,Male,A+,Diabetes,2023-12-30,2024-01-08,Dr Zainab B. Dauda,Iroko Ward,134,NHIA (National Health Insurance),712119.45,Urgent,Metformin,Abnormal
 fOlaKe b. oGBoNnA,28,Female,O+,Trauma,2023-12-30,2024-01-03,Dr Safiya G. Onwuka,Mahogany Ward,242,Avon HMO,-1656736.97,Emergency,Paracetamol,Abnormal
-gOdwin d. anyAnWU,0,Male,O+,Pneumonia,2023-12-30,2024-01-03,Dr Funmilayo A. Nnaji,Obeche Ward,315,NHIA (National Health Insurance),474935.47,Emergency,Ceftriaxone,Abnormal
+gOdwin d. anyAnWU,1,Male,O+,Pneumonia,2023-12-30,2024-01-03,Dr Funmilayo A. Nnaji,Obeche Ward,315,NHIA (National Health Insurance),474935.47,Emergency,Ceftriaxone,Abnormal
 ChIoMA i. iGwE,35,Female,O-,Childbirth,2023-12-30,2023-12-31,Dr Obiageli F. Azikiwe,Obeche,346,Clearline HMO,500355.67,Elective,Oxytocin,Abnormal
 tOcHUkWU w. oGUndIPe,24,Male,O+,Trauma,2023-12-30,2024-01-07,Dr Adaobi M. Uzor,Mahogany,206,Clearline HMO,3021470.61,Elective,Paracetamol,Abnormal
 uDUaK y. ABIOduN,5,Female,A+,Pneumonia,2023-12-30,2024-01-02,Dr Asabe W. Ojo,Obeche Ward,317,Clearline HMO,404212.62,Emergency,Ceftriaxone,Normal

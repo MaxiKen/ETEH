@@ -261,7 +261,8 @@ M46 = dict(
           grid=dict(label=f"Occupancy needed at ADR {N(ADR0)}", widths=[1.4, 1.8, 1.4], rows=[
               ["Profit target", "Occupancy returned", "Possible?"]] + [
               [Nm(t / 1e3, 0).replace("m", "bn"), P(o), "Yes" if o <= 0.85 else "No" if o > 1 else "Hard"] for t, o in OCC_T.items()]),
-          watch=f"Goal Seek returns {P(OCC_T[6e9])} for ₦6bn without complaint: a hotel cannot be more than full."),
+          watch=(f"Goal Seek returns {P(OCC_T[6e9])} for ₦6bn without complaint: a hotel cannot be more than full." if OCC_T[6e9] > 1 else
+                 f"Goal Seek returns {P(OCC_T[6e9])} for ₦6bn without complaint; check it against the best occupancy ever achieved.")),
 
         T("4.6.4", "One-Variable Data Tables",
           defn="A one-variable data table (Data › What-If Analysis › Data Table) recalculates a formula for a list of values of "
@@ -285,7 +286,7 @@ M46 = dict(
           grid=dict(label="Lowest occupancy in the grid that makes a profit", widths=[1.2, 1.6, 1.8], rows=[
               ["ADR", "Occupancy", "Profit there"]] + [
               [Nk(a), P(o, 0), Nm(profit(o, a))] for a in ADRS for o in [next(x for x in OCCS if profit(x, a) > 0)]]),
-          watch=f"At {P(OCC0, 0)} occupancy, break-even ADR is about {N(round(BE_ADR, -2))}; today's {N(ADR0)} leaves little room."),
+          watch=f"At {P(OCC0, 0)} occupancy, break-even ADR is about {N(round(BE_ADR, -2))}; today's {N(ADR0)} is only {P(ADR0 / BE_ADR - 1, 0)} above it."),
 
         T("4.6.7", "Scenario Manager",
           defn="Scenario Manager (Data › What-If Analysis) stores named sets of input values and swaps them into the model on demand.",

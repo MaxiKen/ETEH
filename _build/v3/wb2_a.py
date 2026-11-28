@@ -20,7 +20,7 @@ def m21(b, D):
                                                   "The files themselves are in " + DATA),
                ("tDirty25", "Sheet Data_Dirty25 (starts in A1)", "SuperMart_Sales_2025_DIRTY.csv as Excel opens it: 3,387 rows, 21 columns, "
                                                                  "defects left in on purpose."),
-               ("tAdm23", "Sheet Data_Adm23 (starts in A1)", "Mercyland_Episodes_2023_pipe.txt imported: 10,918 admissions (14 of the 22 columns).")])
+               ("tAdm23", "Sheet Data_Adm23 (starts in A1)", "Mercyland_Episodes_2023_pipe.txt imported: 12,626 admissions (14 of the 22 columns).")])
     m.h("tFiles")
     m.s.table(FILES, "tFiles", fmts={"Rows": "int"}, widths={"File": 40, "Format": 18, "Encoding": 15, "What it holds": 44})
 
@@ -88,7 +88,7 @@ def m21(b, D):
              "Delimiter › --Custom-- › type | (Shift + the key above Enter).",
              "Check the preview: 22 columns, one admission per row.",
              "Transform Data, keep the 14 columns used on Data_Adm23, then Close & Load."])
-    m.worked([("Admissions imported", "=ROWS(tAdm23)", len(A), "int", "Matches the 10,918 records in the file."),
+    m.worked([("Admissions imported", "=ROWS(tAdm23)", len(A), "int", "Matches the 12,626 records in the file."),
               ("Columns kept on Data_Adm23", "=COLUMNS(tAdm23)", A.shape[1], "int", "8 of the 22 were not needed for Week 2."),
               ("Admissions in Internal Medicine", '=COUNTIF(tAdm23[Department],"Internal Medicine")',
                int((A.Department == "Internal Medicine").sum()), "int", "A first question answered from the imported file.")])

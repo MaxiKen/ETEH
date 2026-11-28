@@ -177,7 +177,7 @@ def m11(b, D):
     m.turn()
     m.ex("What was the margin of Enugu - Independence Layout (row 11 of Data_Stores25)?", "=Data_Stores25!I11", ST.Margin[en], "pct",
          short="Enugu margin")
-    m.ex_open("Mercyland's bed occupancy was 95% or higher on 44 days in 2023. What would a hospital manager's domain knowledge add?",
+    m.ex_open("Mercyland's bed occupancy was 95% or higher on 63 days in 2023. What would a hospital manager's domain knowledge add?",
               "Above roughly 85-90% occupancy a hospital struggles to admit emergencies quickly, so the manager would plan extra staffed beds and staff for the peak months.")
 
     # ---------------------------------------------------------------- 1.1.14
@@ -530,7 +530,7 @@ def m13(b, D):
               size=(640, 360))
     m.turn()
     for qq, ans in [("Sales of each of the 12 stores", "Bar"), ("Monthly occupancy across 2023", "Line"),
-                    ("Attendance against exam score for 6,607 students", "Scatter")]:
+                    ("Attendance against exam score for 5,840 students", "Scatter")]:
         m.ex_text(f"Which chart? {qq}. (Bar, Line, Pie, Scatter or Histogram.)", ans, alts=("column",) if ans == "Bar" else ())
 
     # ---------------------------------------------------------------- 1.3.10

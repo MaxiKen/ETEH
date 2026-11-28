@@ -71,7 +71,7 @@ def gen_hospital(namer):
     gender = np.where(r.random(n) < male_p, "Male", "Female")
     age = np.select(
         [dxn == "Pneumonia", dxn == "Childbirth", dxn == "Hypertension", dxn == "Diabetes", dxn == "Trauma"],
-        [np.clip(r.gamma(1.6, 2.2, n), 0, 14), np.clip(r.normal(29, 5.5, n), 16, 46), np.clip(r.normal(59, 12, n), 30, 95),
+        [np.clip(r.gamma(1.6, 2.2, n), 1, 14), np.clip(r.normal(29, 5.5, n), 16, 46), np.clip(r.normal(59, 12, n), 30, 95),
          np.clip(r.normal(55, 12, n), 25, 95), np.clip(r.normal(34, 13, n), 16, 85)],
         np.clip(r.normal(36, 17, n), 15, 90)).round().astype(int)
     route_p = {"Malaria": [.50, .44, .06], "Diabetes": [.30, .40, .30], "Hypertension": [.36, .40, .24],
@@ -248,12 +248,16 @@ def gen_students(n=5840):
     ged = _cat(r, n, ["Secondary", "College", "Postgraduate", "Not Recorded"], [0.49, 0.30, 0.19, 0.02])
     com = _cat(r, n, ["Near", "Moderate", "Far", "Not Recorded"], [0.59, 0.30, 0.10, 0.01])
     eff = lambda a, d: pd.Series(a).map(d).fillna(0).values  # noqa: E731
-    score = (29.5 + 0.30 * att + 0.36 * hours + 0.05 * prev + 0.55 * tut + 0.08 * ex
+    fac = np.array([depts[i][0] for i in ch])
+    score = (31.6 + eff(fac, {"Engineering": -2.4, "Science": -0.8, "Social Sciences": 0.7, "Arts & Education": 0.9})
+             + np.where(level == 100, -1.2, 0) + 0.30 * att + 0.36 * hours + 0.05 * prev + 0.55 * tut + 0.08 * ex
              + eff(guard, {"Low": -1.0, "High": 1.0}) + eff(lib, {"Low": -1.0, "High": 1.0}) + eff(motiv, {"Low": -0.5, "High": 0.5})
              + eff(inc, {"Low": -0.5, "High": 0.5}) + eff(peer, {"Negative": -0.5, "Positive": 0.5}) + eff(lsup, {"Yes": -0.9})
              + eff(com, {"Far": -0.9}) + eff(net, {"No": -0.8}) + r.normal(0, 3.1, n))
-    hi = r.random(n) < 0.015                                       # high-achiever cluster, above the cloud
-    score = np.where(hi, r.integers(84, 100, n), score)
+    u = r.random(n)
+    hi = u < 0.015                                                 # high-achiever cluster, above the cloud
+    lo = u > 0.975                                                 # 2.5% who stopped engaging: low scores at any attendance
+    score = np.where(hi, r.integers(84, 100, n), np.where(lo, r.integers(36, 60, n), score))
     score = np.clip(np.round(score), 0, 100).astype(int)
     entry = 2024 - (level // 100 - 1)
     out = pd.DataFrame({
@@ -333,7 +337,7 @@ ROOM_RATE = {"Standard": 82000, "Standard Twin": 90000, "Business": 128000, "Del
 CHANNELS = ["Online Travel Agent", "Walk-in / Travel Agent", "Corporate", "Complimentary", "Airline Crew"]
 
 
-def gen_hotel(n=34000):
+def gen_hotel(n=38400):
     r = np.random.default_rng(SEED + 606)
     days = pd.date_range("2023-07-01", "2024-12-31", freq="D")
     m = days.month
@@ -358,7 +362,7 @@ def gen_hotel(n=34000):
     wk = np.where(zero, 1, wk)
     nights = wkend + wk
     season = np.select([m == 12, m.isin([7, 8])], [1.25, 1.08], 1.0)
-    rate = (pd.Series(room).map(ROOM_RATE).values * np.where(yr == 2024, 1.16, 1.0) * season[np.searchsorted(days.values, arr.values)]
+    rate = (0.80 * pd.Series(room).map(ROOM_RATE).values * np.where(yr == 2024, 1.16, 1.0) * season[np.searchsorted(days.values, arr.values)]
             * pd.Series(chan).map({"Corporate": 0.88, "Airline Crew": 0.95, "Walk-in / Travel Agent": 1.0,
                                    "Online Travel Agent": 1.06, "Complimentary": 0.0}).values * r.lognormal(0, 0.1, n))
     rate = (np.round(rate / 100) * 100).astype(float)

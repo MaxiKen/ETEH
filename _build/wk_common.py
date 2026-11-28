@@ -42,11 +42,11 @@ def smo():
 DATASETS_TEXT = {
     "SuperMart Stores": "SuperMart Retail - 12 Nigerian stores, 9,994 sales lines 2022-2025 (built from 'Sample - Superstore.csv': stores re-mapped, dates +8 yrs, values x1,000 = ₦)",
     "SuperMart Online": "SuperMart Online marketplace - 5 related tables, 11,000 orders 2020-2025 (built from 'e-commerce.xlsx'; keys and ₦ prices standardised). SQL: supermart_online.db",
-    "Mercyland": "Mercyland Specialist Hospital - 54,860 admissions 2019-2024, 520 staffed beds (built from 'healthcare_dataset.csv'). SQL: mercyland_hospital.db",
-    "Mercyland Screening": "Mercyland diabetes screening clinic - 100,000 screenings (built from 'diabetes_prediction_dataset.csv')",
-    "Kingsway": "Kingsway University - 6,607 students, 2024/2025 first semester (built from 'StudentPerformanceFactors.csv')",
-    "Kingsway Welfare": "Kingsway wellbeing survey - 27,870 respondents, SENSITIVE (built from 'Student Depression Dataset.csv')",
-    "Digital Wellbeing": "Kingsway digital-wellbeing survey - 705 students in 110 countries (built from 'Students Social Media Addiction.csv')",
+    "Mercyland": "Mercyland Specialist Hospital, Abuja - 58,856 inpatient episodes 2019-2024, 200 staffed beds. SQL: mercyland_hospital.db",
+    "Mercyland Screening": "Mercyland community diabetes screening programme - 60,000 adult screenings, 2023-2024",
+    "Kingsway": "Kingsway University, Ilorin - 5,840 students, 2024/2025 first semester",
+    "Kingsway Welfare": "Kingsway student welfare survey - 9,600 respondents, SENSITIVE",
+    "Digital Wellbeing": "Kingsway digital habits survey - 640 students from 5 West African countries",
     "Salary Survey": "ETEH Talent Salary Survey - 1,781 professionals (built from 'Salary_Data.csv')",
-    "Atlantic Pearl": "Atlantic Pearl Hotel, Lekki - 36,275 bookings 2023-2024 (built from 'Hotel Reservations.csv')",
+    "Atlantic Pearl": "Atlantic Pearl Hotel, Lekki - 34,000 room reservations 2023-2024, 320 rooms",
 }

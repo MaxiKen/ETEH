@@ -164,7 +164,7 @@ M15 = dict(
               ["Limit", "Value"], ["Rows per sheet", "1,048,576"], ["Columns per sheet", "16,384 (last is XFD)"],
               ["Characters in one cell", "32,767"], ["Old .xls format", "65,536 rows × 256 columns"]]),
           points=["Ctrl+Down Arrow jumps to the last filled row of a column", "Ctrl+End jumps to the last used cell",
-                  "Our largest dataset (54,860 admissions) uses about 5% of the rows"],
+                  "Our largest dataset (58,856 admissions) uses about 5% of the rows"],
           points_label="SEE IT YOURSELF", order=["grid", "points"], split=0.5),
 
         T("1.5.15", "Navigating Efficiently",

@@ -277,7 +277,7 @@ s.grid([["Cohort", "All students on the 2024/25 first-semester registry extract 
 prog = ((cv.Final_Score >= 62) & (cv.Lecture_Attendance_Pct >= 65))
 tin = s.inputs([("Score threshold", 62, "int", "Senate rule"), ("Attendance threshold (%)", 65, "int", ""), ("Target progression", 0.90, "pct0", "")])
 ST, AT, TG = tin["Score threshold"], tin["Attendance threshold (%)"], tin["Target progression"]
-s.calc([("Cohort students", "=ROWS(tCV)", len(cv), "int", "Registry control figure: 6,607"),
+s.calc([("Cohort students", "=ROWS(tCV)", len(cv), "int", "Registry control figure: 5,840"),
         ("Progressed", f'=COUNTIFS(tCV[Final_Score],">="&{ST},tCV[Lecture_Attendance_Pct],">="&{AT})', int(prog.sum()), "int", ""),
         ("Progression %", f'=COUNTIFS(tCV[Final_Score],">="&{ST},tCV[Lecture_Attendance_Pct],">="&{AT})/ROWS(tCV)', prog.mean(), "pct", ""),
         ("Gap to target (points)", f'=(COUNTIFS(tCV[Final_Score],">="&{ST},tCV[Lecture_Attendance_Pct],">="&{AT})/ROWS(tCV)-{TG})*100', (prog.mean() - .9) * 100, "dec1", "Negative = below target")])
@@ -340,7 +340,7 @@ s.calc([("Peak quarterly average occupancy", "=MAX(tOccQ[Occupancy])", float(qoc
 s.band("P.5.2-3", "Data inventory and cleaning disclosures")
 dl = L("dirty_lc_log")
 s.grid([["Admissions", "Mercyland_Inpatient_Episodes_2019_2024.csv / mercyland_hospital.db", f"{len(lc):,} admissions, {lc.Admit_Date.min():%d-%b-%Y} to {lc.Admit_Date.max():%d-%b-%Y}"],
-        ["Wards", "Mercyland_Wards.csv", "4 wards × 130 staffed beds = 520"], ["Bed census", "Mercyland_Daily_Bed_Census.csv", f"{len(census):,} days"],
+        ["Wards", "Mercyland_Wards.csv", "4 wards, 200 staffed beds (60 + 50 + 50 + 40)"], ["Bed census", "Mercyland_Daily_Bed_Census.csv", f"{len(census):,} days"],
         ["Doctors", "Mercyland_Consultants.csv", "28 doctors across departments"]], header=["Source", "File", "Scale"])
 s.table(dl.head(10), "tLcCleanLog", widths={dl.columns[0]: 24, dl.columns[1]: 44, dl.columns[-1]: 40})
 s.band("P.5.4", "Measuring occupancy properly: occupied bed-days ÷ available bed-days, by quarter")
@@ -400,7 +400,7 @@ s.band("P.6.3", "Reconciliation testing - every test is a live formula; differen
 tests = [("SuperMart lines (all years)", "=ROWS(tSM)", len(sm), 9994), ("SuperMart FY2025 sales", "=SUMIFS(tSM[Sales],tSM[Year],2025)", b25.Sales.sum(), int(ctrl["Total Sales (₦)"])),
          ("SuperMart FY2025 profit", "=SUMIFS(tSM[Profit],tSM[Year],2025)", b25.Profit.sum(), int(ctrl["Total Profit (₦)"])),
          ("SuperMart FY2025 quantity", "=SUMIFS(tSM[Quantity],tSM[Year],2025)", int(b25.Quantity.sum()), int(ctrl["Total Quantity"])),
-         ("Kingsway cohort", "=ROWS(tCV)", len(cv), 6607), ("Mercyland 2023 admissions", "=ROWS(tAdm23)", len(l23), int((lc.Admit_Date.dt.year == 2023).sum())),
+         ("Kingsway cohort", "=ROWS(tCV)", len(cv), 5840), ("Mercyland 2023 admissions", "=ROWS(tAdm23)", len(l23), int((lc.Admit_Date.dt.year == 2023).sum())),
          ("Bed census days", "=ROWS(tCensus)", len(census), 1797)]
 td = pd.DataFrame([[t[0], t[3], float(t[2])] for t in tests], columns=["Test", "Control_total", "Workbook_value"])
 tt = s.table(td, "tRecon", fmts={"Control_total": "#,##0"}, widths={"Test": 32},
@@ -531,7 +531,7 @@ sku["Margin_2025"] = np.where(sku.Sales_2025 > 0, sku.Profit_2025 / sku.Sales_20
 b.data_sheet("D_SKU", sku, "tSKU", fmts={"Sales_2024": "naira", "Profit_2024": "naira", "Sales_2025": "naira", "Profit_2025": "naira", "Margin_2025": "pct"},
              title="SKU summary (1,862 products): FY2024 and FY2025 sales and profit (values aggregated from tSM)")
 b.data_sheet("D_Students", cv[["Matric_No", "Faculty", "Department", "Level", "Gender", "Study_Hours_Wk", "Lecture_Attendance_Pct", "Last_Sem_Score", "Final_Score", "Grade"]], "tCV",
-             fmts={"Level": "gen"}, title="Kingsway cohort 2024/25 (6,607)")
+             fmts={"Level": "gen"}, title="Kingsway cohort 2024/25 (5,840)")
 b.data_sheet("D_Adm_2023", l23[["Episode_ID", "Admit_Date", "Ward", "Department", "Admission_Route", "Age", "LOS_Days", "Readmitted_30d"]].reset_index(drop=True), "tAdm23",
              fmts={"Admit_Date": "date"}, title="Mercyland 2023 admissions - minimised (no names, no Patient_No)")
 b.data_sheet("D_Census", census[["Census_Date", "Quarter", "Inpatients", "Open_Beds", "Occupancy_Pct"]], "tCensus",

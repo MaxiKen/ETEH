@@ -221,7 +221,7 @@ def m37(b, D):
 
     def ch_scatter(mm):
         mm.s.chart("scatter", [{"name": "Students", "categories": ["Data_CV", 1, 6, len(CV), 6], "values": ["Data_CV", 1, 8, len(CV), 8]}],
-                   "Exam score against attendance (6,607 students)", x_title="Attendance %", y_title="Exam score", legend=False, rows=16,
+                   "Exam score against attendance (5,840 students)", x_title="Attendance %", y_title="Exam score", legend=False, rows=16,
                    extra=lambda ch: ch.set_x_axis({"name": "Attendance %", "min": 40, "max": 100}))
 
     tp(m, "3.7.16",
@@ -563,7 +563,7 @@ def m310(b, D):
     m = ModuleSheet(b, "3.10 File Extracts", "3.10  File Extracts into SQL, DAX and Dashboards",
                     "Tutor walk-through after Module 3.10: profile the raw 2023 Mercyland extract, stage it, report exceptions, measure and reconcile",
                     "3.10.1 - 3.10.5")
-    m.dataset([("tMsDirty", "Sheet Data_LcDirty (A1)", "Mercyland_Episodes_2023_DIRTY.csv as received: 11,026 rows, every column text."),
+    m.dataset([("tMsDirty", "Sheet Data_LcDirty (A1)", "Mercyland_Episodes_2023_DIRTY.csv as received: 12,772 rows, every column text."),
                ("tAdm23", "Sheet Data_Adm23 (A1)", "Production: the 2023 admissions in mercyland_hospital.db.")])
     wl = R.Ward[R.Ward != ""].str.lower().nunique()
     tp(m, "3.10.1",

@@ -203,7 +203,7 @@ def build(key: bool):
 
     # ---------------------------------------------------------------- T3 power query pipeline
     s = A.task("T3 Power Query Pipeline", "Task 3 - Build the repeatable cleaning query", "2.6, 2.7, 2.9",
-               f"Build ONE Power Query query on {CSV_NAME} that applies the cleaning rules from Task 2 to all 11,026 rows, removes duplicates and finance "
+               f"Build ONE Power Query query on {CSV_NAME} that applies the cleaning rules from Task 2 to all 12,772 rows, removes duplicates and finance "
                "reversals, and adds LOS_Days, LOS_Valid, Age_Valid, Quarter and Month. Load it to a new sheet as a Table named tClean "
                "(Tasks 4 and 5 use it). Report the control totals below.")
     s.grid([["1", "Standardise text first: PROPER names; TRIM + lower-case Ward, Gender, Admission_Route"],
@@ -280,7 +280,7 @@ def build(key: bool):
         '=COUNTIFS(tClean[Ward],"Baobab Ward",tClean[Admission_Route],"Emergency")/COUNTIF(tClean[Ward],"Baobab Ward")',
         (baobab.Admission_Route == "Emergency").mean(), "pct", 3)
     A.q(s, "5.5", "Filter LOS_Valid = Yes, Rows = Diagnosis_Group, Values = Average of LOS_Days. Which condition has the longest average stay?",
-        los_c.index[0], None, "gen", 3, f"{los_c.iloc[0]:.2f} days - the differences between conditions are small (all ≈ 15.5).")
+        los_c.index[0], None, "gen", 3, f"{los_c.iloc[0]:.2f} days, against {los_c.iloc[-1]:.2f} for {los_c.index[-1]}: conditions differ a lot.")
     A.q(s, "5.6", "Group Age into bands (1-17, 18-39, 40-59, 60-74, 75-120). How many valid-age admissions fall in 60-74?",
         '=COUNTIFS(tClean[Age],">=60",tClean[Age],"<=74",tClean[Age_Valid],"Yes")', band, "int", 3, "Grouping with 'By' intervals or a helper band column.")
     A.q(s, "5.7", "Add a slicer on Admission_Route and select Elective. Total billing shown?", '=SUMIFS(tClean[Bill_Amount_NGN],tClean[Admission_Route],"Elective")',
@@ -333,7 +333,7 @@ def _build(key):
                      "Stuck on a function? The Function Guide sheet shows each pattern the tasks need beyond the Week 2 examples workbook, "
                      "with a live, worked example on a different question.",
                      "Time guide: 6-7 hours."],
-                    [("Mercyland", DATASETS_TEXT["Mercyland"] + " - this assignment uses the deliberately dirty 2023 EMR export (11,026 rows).")],
+                    [("Mercyland", DATASETS_TEXT["Mercyland"] + " - this assignment uses the deliberately dirty 2023 EMR export (12,772 rows).")],
                     files=f"02_Assignments/Week2_Assignment_Data/{CSV_NAME} (same rows as sheet D_Raw).",
                     rubric=[["Live formulas", "Typed numbers score zero where a formula is required."],
                             ["Follow-through", "If your tClean differs from the key, marks for Tasks 4-5 are awarded when the method is right for YOUR table."],

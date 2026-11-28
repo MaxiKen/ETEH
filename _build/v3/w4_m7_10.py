@@ -472,7 +472,7 @@ M410 = dict(
           defn="A macro is a recorded sequence of actions saved as VBA code that can be replayed with one click.",
           simple="View › Macros › Record Macro, do the steps, Stop Recording; save as .xlsm.",
           code="Sub Refresh_And_Export_Report()\n    ThisWorkbook.RefreshAll\n    Sheets(\"4.8 Report Writing\").ExportAsFixedFormat _\n"
-               "        Type:=xlTypePDF, Filename:=\"Lifecare_Report.pdf\"\nEnd Sub",
+               "        Type:=xlTypePDF, Filename:=\"Mercyland_Report.pdf\"\nEnd Sub",
           code_label="VBA (Alt+F11 to view)",
           points=["Record with relative references if the steps should work anywhere.", "Test on a copy first.",
                   "Macros cannot be undone with Ctrl+Z."],

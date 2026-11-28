@@ -173,9 +173,9 @@ M17 = dict(
           grid=dict(label="One pattern, five sectors (results from our datasets)", widths=[1.6, 1.8, 2.6, 1.3], size=12, rows=[
               ["Sector", "Measure", "Formula pattern", "Result"],
               ["Retail", "FY2025 margin", "=SUM(Profit)/SUM(Sales)", "12.7%"],
-              ["University", "At-risk rate", "=COUNTIF(At_Risk,\"Yes\") / COUNTA(Matric_No)", "13.6%"],
-              ["Hospital", "Average length of stay, 2023", "=AVERAGE(LOS_Days)", "15.5 days"],
-              ["Hotel", "Cancellation rate, 2023-2024", "=COUNTIF(Reservation_Status,\"Cancelled\") / COUNTA(Reservation_ID)", "32.8%"],
+              ["University", "At-risk rate", "=COUNTIF(At_Risk,\"Yes\") / COUNTA(Matric_No)", "27.2%"],
+              ["Hospital", "Average length of stay, 2023", "=AVERAGE(LOS_Days)", "5.0 days"],
+              ["Hotel", "Cancellation rate, 2023-2024", "=COUNTIF(Reservation_Status,\"Cancelled\") / COUNTA(Reservation_ID)", "33.3%"],
               ["E-commerce", "Average order value", "=SUM(total_price)/COUNTA(order_id)", "₦126,792"]])),
     ],
     takeaways=["A formula starts with the = sign; a function is a named tool used inside a formula.",
@@ -202,9 +202,9 @@ M18 = dict(
           grid=dict(label="The datasets you will use", widths=[2.2, 1.4, 2.4], size=12, rows=[
               ["Dataset", "Records", "One row is…"],
               ["SuperMart sales (tSales)", "9,994", "one product line on an order"],
-              ["Kingsway students (tStudents)", "6,607", "one student"],
-              ["Mercyland admissions, 2023 (tAdmissions23)", "10,918", "one hospital stay"],
-              ["Atlantic Pearl bookings (tBookings)", "36,275", "one room booking"],
+              ["Kingsway students (tStudents)", "5,840", "one student"],
+              ["Mercyland admissions, 2023 (tAdmissions23)", "12,626", "one hospital stay"],
+              ["Atlantic Pearl bookings (tBookings)", "34,000", "one room booking"],
               ["SuperMart Online orders (tOrdersOnline)", "11,000", "one order line"]])),
 
         T("1.8.2", "Rows as Records, Columns as Variables",

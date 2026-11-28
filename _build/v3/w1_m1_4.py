@@ -91,9 +91,9 @@ M11 = dict(
               ["Organisation", "Typical question", "Data"],
               ["SuperMart Retail (12 stores)", "Which stores missed their sales target?", "9,994 sales lines, 2022-2025"],
               ["SuperMart Online marketplace", "Which payment methods do buyers prefer?", "11,000 orders, 5 linked tables"],
-              ["Kingsway University", "Which students are at risk of failing?", "6,607 student records"],
-              ["Mercyland Specialist Hospital", "Which departments have most readmissions?", "54,860 admissions, 2019-2024"],
-              ["Atlantic Pearl Hotel, Lekki", "Which booking channels cancel most?", "36,275 bookings, 2023-2024"]])),
+              ["Kingsway University", "Which students are at risk of failing?", "5,840 student records"],
+              ["Mercyland Specialist Hospital", "Which departments have most readmissions?", "58,856 admissions, 2019-2024"],
+              ["Atlantic Pearl Hotel, Lekki", "Which booking channels cancel most?", "34,000 reservations, 2023-2024"]])),
 
         T("1.1.8", "The Role of a Data Analyst",
           defn="A data analyst collects, cleans, analyses and interprets data to answer business questions, and "
@@ -170,8 +170,8 @@ M11 = dict(
           grid=dict(label="Same numbers, two kinds of knowledge", widths=[2.1, 2, 2.4], size=12, rows=[
               ["What the data shows", "General knowledge says", "Domain knowledge adds"],
               ["Q4 is 38.2% of SuperMart's FY2025 sales", "Festive season: people buy more", "Order stock and staff for Q4 early"],
-              ["Bed occupancy 95% or higher on 44 days in 2023", "The hospital was very busy", "Above about 85% is widely seen as a safety risk"],
-              ["Online travel agent bookings: 36.5% cancelled", "Many people change plans", "Overbook carefully; ask for deposits"]])),
+              ["Bed occupancy 95% or higher on 63 days in 2023", "The hospital was very busy", "Above about 85% is widely seen as a safety risk"],
+              ["Online travel agent bookings: 37.5% cancelled", "Many people change plans", "Overbook carefully; ask for deposits"]])),
 
         T("1.1.14", "Making Decisions Based on Data Rather Than Assumptions",
           simple="An assumption is a belief nobody has checked. Data-driven decisions test the belief against the "
@@ -266,9 +266,9 @@ M12 = dict(
           simple="The same four questions work in any sector. These are real results from our three main datasets.",
           grid=dict(label="Four types × three datasets", widths=[1.2, 2.2, 2.2, 2.2], size=11.5, rows=[
               ["", "SuperMart Retail", "Kingsway University", "Mercyland Hospital (2023)"],
-              ["Descriptive", "FY2025 sales ₦733.2m; margin 12.7%", "6,607 students; 901 at risk", "10,918 admissions; readmission 10.3%"],
-              ["Diagnostic", "Discounts above 20% lost ₦47.6m", "At-risk share highest in Arts & Education (14.6%)", "Surgery has the highest readmission rate (13.2%)"],
-              ["Predictive", "Q4 brings 38% of the year's sales", "Low attendance flags likely failure early", "Occupancy peaks mid-year (June 95.2%)"],
+              ["Descriptive", "FY2025 sales ₦733.2m; margin 12.7%", "5,840 students; 1,591 at risk", "12,626 admissions; readmission 8.7%"],
+              ["Diagnostic", "Discounts above 20% lost ₦47.6m", "At-risk share highest in Engineering (36.8%)", "Cardiology has the highest readmission rate (14.1%)"],
+              ["Predictive", "Q4 brings 38% of the year's sales", "Low attendance flags likely failure early", "Occupancy peaks mid-year (June 98.1%)"],
               ["Prescriptive", "Cap Furniture discounts at 20%: about +₦17.9m", "Offer tutoring to flagged students first", "Plan extra staffed beds before peak months"]])),
     ],
     takeaways=["Descriptive = what happened; diagnostic = why; predictive = what might happen; prescriptive = what to do.",
@@ -381,7 +381,7 @@ M13 = dict(
         T("1.3.8", "Interpretation of Results",
           defn="Interpretation is explaining what the results mean in the real-world context: whether they are good or "
                "bad, why they matter and what they suggest.",
-          simple="A number is not a finding. '36.5%' becomes a finding when you say 'more than one in three online "
+          simple="A number is not a finding. '37.5%' becomes a finding when you say 'more than one in three online "
                  "travel agent bookings is cancelled, three times the corporate rate'.",
           ex=dict(t="tHotelSeg", cols=["Sales_Channel", "Bookings", "Cancelled", "Cancel_Rate"], n=5),
           points=["Compare with something: a target, last year, another group", "Say what it means for the business",
@@ -468,7 +468,7 @@ M14 = dict(
                   "Course and lecturer evaluations"],
           points_label="KEY MEASURES",
           ex=dict(t="tFaculty", cols=["Faculty", "Students", "Avg_Score", "At_Risk", "At_Risk_Rate"], n=4,
-                  note="Kingsway University, 2024/2025 first semester: 901 of 6,607 students are flagged at risk."),
+                  note="Kingsway University, 2024/2025 first semester: 1,591 of 5,840 students are flagged at risk."),
           order=["points", "ex"], split=0.36),
 
         T("1.4.3", "Healthcare and Hospitals",
@@ -478,7 +478,7 @@ M14 = dict(
                   "Billing and HMO claims"],
           points_label="KEY MEASURES",
           ex=dict(t="tDept23", cols=["Department", "Admissions", "Avg_LOS", "Readmission_Rate"], n=5,
-                  note="Mercyland Specialist Hospital, 2023: 10,918 admissions; overall 30-day readmission 10.3%."),
+                  note="Mercyland Specialist Hospital, 2023: 12,626 admissions; overall 30-day readmission 8.7%."),
           order=["points", "ex"], split=0.34),
 
         T("1.4.4", "Banking and Finance",
@@ -549,9 +549,9 @@ M14 = dict(
           grid=dict(label="From our datasets: evidence → decision", widths=[1.6, 2.6, 2.4], size=12, rows=[
               ["Organisation", "Evidence", "Decision"],
               ["SuperMart Retail", "Lines discounted above 20% lost ₦47.6m in FY2025", "Cap Furniture discounts at 20%"],
-              ["Kingsway University", "901 students flagged at risk", "Target tutoring at flagged students"],
-              ["Mercyland Hospital", "Occupancy 95% or more on 44 days in 2023", "Plan surge staffing for peak months"],
-              ["Atlantic Pearl Hotel", "36.5% of online agency bookings cancelled", "Require deposits on agency bookings"],
+              ["Kingsway University", "1,591 students flagged at risk", "Target tutoring at flagged students"],
+              ["Mercyland Hospital", "Occupancy 95% or more on 63 days in 2023", "Plan surge staffing for peak months"],
+              ["Atlantic Pearl Hotel", "37.5% of online agency bookings cancelled", "Require deposits on agency bookings"],
               ["SuperMart Online", "Paystack and Flutterwave: 52.5% of orders", "Keep both gateways reliable at checkout"]])),
     ],
     takeaways=["Every industry asks the same kinds of questions about performance, causes, forecasts and actions.",

@@ -56,6 +56,17 @@ STZ = ST.sort_values("Comp", ascending=False).reset_index(drop=True)
 OCC = C23.Occupancy_Pct
 OZ = (OCC - OCC.mean()) / OCC.std()
 ANOM = C23[OZ.abs() > 2]
+_nlo, _nhi = int((OZ < -2).sum()), int((OZ > 2).sum())
+ANOM_TXT = ("all unusually low" if not _nhi else "all unusually high" if not _nlo else f"{_nlo} low, {_nhi} high")
+
+
+def SKR(v):
+    return "Strong right tail" if v > 1 else "Moderate right tail" if v > 0.5 else "Left tail" if v < -0.5 else "Roughly balanced"
+
+
+def KUR(v):
+    return "Very heavy tails" if v > 3 else "Heavier tails than normal" if v > 1 else "Flatter than normal" if v < -1 else "Close to normal"
+
 LOWDAY = C23.loc[OZ.idxmin()]
 BAND = pd.cut(Y, [0, YQ1, YMED, YQ3, 1e12], labels=["Band 1 (lowest 25%)", "Band 2", "Band 3", "Band 4 (top 25%)"]).value_counts().sort_index()
 
@@ -154,10 +165,10 @@ M41 = dict(
           simple="Above about +1 the mean is pulled well above the median; report the median.",
           grid=dict(label="Shape of four columns", widths=[2.4, 1, 2], rows=[
               ["Column", "SKEW", "Reading"],
-              ["Order value (tOrders)", F2(skew(OV)), "Strong right tail"],
-              ["Exam score (tCV)", F2(skew(EX)), "A few very high scores"],
-              ["Salary (tSal)", F2(skew(Y)), "Balanced"],
-              ["Length of stay 2023 (tLOS)", F2(skew(LS)), "Balanced"]]),
+              ["Order value (tOrders)", F2(skew(OV)), SKR(skew(OV))],
+              ["Exam score (tCV)", F2(skew(EX)), SKR(skew(EX))],
+              ["Salary (tSal)", F2(skew(Y)), SKR(skew(Y))],
+              ["Length of stay 2023 (tLOS)", F2(skew(LS)), SKR(skew(LS))]]),
           watch="Skewness is only a summary; look at a histogram before deciding what it means."),
 
         T("4.1.9", "Kurtosis",
@@ -166,10 +177,10 @@ M41 = dict(
           simple="High kurtosis warns that extreme values will keep appearing; plan for them.",
           grid=dict(label="Tails compared with a normal curve", widths=[2.4, 1, 2], rows=[
               ["Column", "KURT", "Reading"],
-              ["Order value (tOrders)", F2(kurt(OV)), "Very heavy tails"],
-              ["Exam score (tCV)", F2(kurt(EX)), "Peaked, with outliers"],
-              ["Salary (tSal)", F2(kurt(Y)), "Flatter than normal"],
-              ["Length of stay 2023 (tLOS)", F2(kurt(LS)), "Flat: stays spread evenly"]]),
+              ["Order value (tOrders)", F2(kurt(OV)), KUR(kurt(OV))],
+              ["Exam score (tCV)", F2(kurt(EX)), KUR(kurt(EX))],
+              ["Salary (tSal)", F2(kurt(Y)), KUR(kurt(Y))],
+              ["Length of stay 2023 (tLOS)", F2(kurt(LS)), KUR(kurt(LS))]]),
           watch="Excel's KURT reports excess kurtosis: 0 is a normal curve, not 3."),
 
         T("4.1.10", "Percentiles and Quartiles",
@@ -325,7 +336,7 @@ M42 = dict(
           grid=dict(label="Mercyland daily bed occupancy 2023 (tCensus23), rule |z| > 2", widths=[2.6, 1.8], rows=[
               ["Measure", "Value"],
               ["Mean / SD occupancy", f"{P(OCC.mean())} / {P(OCC.std())}"],
-              ["Days flagged", f"{len(ANOM)} of 365, all unusually low"],
+              ["Days flagged", f"{len(ANOM)} of 365, {ANOM_TXT}"],
               ["Lowest day", f"{LOWDAY.Census_Date:%d %b %Y}: {P(LOWDAY.Occupancy_Pct)} (z {OZ.min():.2f})"]]),
           watch="For a hospital, low occupancy is not the risk: also apply a fixed operational limit, such as 95% full."),
 

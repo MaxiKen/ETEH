@@ -171,7 +171,7 @@ def build():
             ("Exam scores capped at 100", '=COUNTIFS(tRaw[Final_Score],">100")', 1, "int", "One genuine 101 in the source - query, then cap"),
             ("Distinct students (Remove Duplicates on ID_Clean)", "=COUNTA(UNIQUE(tRaw[ID_Clean]))", len(cv), "int", f"{len(raw) - len(cv)} double registrations removed"),
             ("Clean cohort rows", "=ROWS(tStudents)", len(cv), "int", "Must equal the line above"),
-            ("Difference", f"=ROWS(tStudents)-{len(cv)}", 0, "int", "Registry headcount = 6,607")])
+            ("Difference", f"=ROWS(tStudents)-{len(cv)}", 0, "int", "Registry headcount = 5,840")])
     s.insight(f"Every cleaned value in tStudents matches the formula pipeline (verified in the build): {n_exact} exact duplicate rows after trimming, cohort {len(cv):,}.")
 
     # ---- 3 Thresholds & At-Risk (continued)
@@ -285,12 +285,12 @@ def build():
             ["What about the 101 score?", "Queried with the exams office and capped at 100; it does not affect any rate."]],
            header=["Question", "Model answer"], merge_last=True)
     s.band("6.3", "Marking guide")
-    s.grid([["Cleaning & reconciliation", "25", "Formula pipeline; 6,607 students; all checks 0"], ["Analysis", "30", "Faculty/level/band rates, drivers, regression"],
+    s.grid([["Cleaning & reconciliation", "25", "Formula pipeline; 5,840 students; all checks 0"], ["Analysis", "30", "Faculty/level/band rates, drivers, regression"],
             ["At-risk list & estimate", "20", "Threshold-driven list; estimate with range and caveat"], ["Dashboard", "10", "KPI cards, sorted bars, finding titles"],
             ["Senate paper & ethics", "15", "One page, numbers, restricted list, small-group rule"]], header=["Criterion", "Marks", "Full marks when…"], merge_last=True)
 
     b.cover("Capstone 2 - Kingsway University: progression, drivers and the at-risk list (SOLUTION)",
-            ["Instructor solution workbook. The raw registry export is cleaned with visible formulas, reconciled to the 6,607-student cohort, then analysed.",
+            ["Instructor solution workbook. The raw registry export is cleaned with visible formulas, reconciled to the 5,840-student cohort, then analysed.",
              "Change the thresholds on sheet 3: the At_Risk column, dashboard, list and estimate all recalculate."],
             [("Kingsway Student Performance", "Kingsway_Student_Results.csv (built from 'StudentPerformanceFactors.csv')"),
              ("Registry export (dirty)", f"Data/Kingsway_Registry_Export_RAW.csv - {len(raw):,} rows, 8 defect types")])

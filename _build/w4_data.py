@@ -7,9 +7,9 @@ the same tables on Data_ sheets, so a table name seen on a slide is the table th
 Sources (all inside the pack, via the _stage pickles of 01_build_datasets.py):
   tSal       ETEH Talent salary survey, cleaned in Week 2 (1,781 respondents) + 0/1 dummy columns for regression
   tOrders    SuperMart Online order lines (11,000) with product category
-  tCV        Kingsway University student performance 2024/25 (6,607)
+  tCV        Kingsway University student results 2024/25 (5,840)
   tLOS       Mercyland admissions 2023, minimised (no names or patient IDs)
-  tCensus23  Mercyland daily bed census 2023 (365 days, 520 staffed beds)
+  tCensus23  Mercyland daily bed census 2023 (365 days, 200 staffed beds)
   tHotel     Atlantic Pearl bookings 2023-2024
   tDash25    SuperMart Stores FY2025 sales lines (3,312)
   tMonthly   SuperMart Stores monthly sales Jan 2022 - Dec 2025 (48 months): the forecasting series

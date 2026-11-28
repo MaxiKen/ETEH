@@ -177,7 +177,7 @@ def main():
                   ("note", "Definitions: ADR = room revenue ÷ room-nights for stayed, paid stays. Occupancy = stayed room-nights ÷ (320 × days). "
                            "RevPAR = stayed room revenue ÷ available room-nights."),
                   ("h", "4. Deliverables and assessment"),
-                  ("b", ["Project2_EkoSuites_Hotel_Workbook.xlsx with every yellow cell answered", "Your cleaning + analysis workbook (Power Query steps visible)",
+                  ("b", ["Project2_AtlanticPearl_Hotel_Workbook.xlsx with every yellow cell answered", "Your cleaning + analysis workbook (Power Query steps visible)",
                          "Dashboard sheet", "One-page memo to the General Manager"]),
                   ("p", "Pass 50%, distinction 70%. Numbers must reconcile from cleaning through to the memo."),
               ])

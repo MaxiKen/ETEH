@@ -71,6 +71,9 @@ RE["moe"] = 1.96 * np.sqrt(RE.p * (1 - RE.p) / RE.n)
 RE = RE.sort_values("p", ascending=False)
 TOPD = RE.index[0]
 SEPD = [d for d in RE.index[1:] if RE.p[d] + RE.moe[d] < RE.p[TOPD] - RE.moe[TOPD]]
+_lo, _hi = RE.p - RE.moe, RE.p + RE.moe
+OVL = [(a, b) for i, a in enumerate(RE.index) for b in RE.index[i + 1:] if _lo[a] <= _hi[b] and _lo[b] <= _hi[a]]
+OVL_TXT = ("; ".join(f"{a} and {b} overlap" for a, b in OVL) + ", so do not rank those") if OVL else "no two intervals overlap"
 RE_ALL = (LOS.Readmitted_30d == "Yes").mean()
 LC_COLS = pd.read_csv(PACK / "00_Core_Datasets" / "Mercyland_Inpatient_Episodes_2019_2024.csv", nrows=1).columns.tolist()
 NEED = ["Department", "Readmitted_30d", "Admit_Date"]
@@ -94,7 +97,7 @@ N_OTHER = int((SAL.Gender == "Other").sum())
 CLAIMS = [("FY2025 store sales were ₦733.2m", 733.2e6, TOT25, 0.001, "m"),
           ("Lagos stores made 30% of FY2025 sales", 0.30, LAGOS, 0.005, "p"),
           ("Median salary is ₦12.5m", 12.5e6, SAL.Annual_Salary_NGN.median(), 0.001, "m"),
-          ("2023 readmission rate was 10.3%", 0.103, RE_ALL, 0.0005, "p"),
+          ("2023 readmission rate was 8.7%", 0.087, RE_ALL, 0.0005, "p"),
           ("Atlantic Pearl cancellation rate is 22%", 0.22, CR, 0.005, "p"),
           ("Attendance-score correlation is 0.81", 0.81, R_ATT, 0.005, "r")]
 
@@ -497,7 +500,7 @@ M414 = dict(
           grid=dict(label="2023 readmission rate by department (tLOS)", widths=[2.2, 1, 0.9, 1.4], size=11, rows=[
               ["Department", "Admissions", "Rate", "95% interval"]] + [
               [d, I(r.n), P(r.p), f"{P(r.p - r.moe)} - {P(r.p + r.moe)}"] for d, r in RE.iterrows()]),
-          watch=f"{TOPD}'s interval sits above {len(SEPD)} departments' intervals; the others overlap, so do not rank them. "
+          watch=f"{TOPD}'s interval sits above {len(SEPD)} departments' intervals; {OVL_TXT}. "
                 f"Missing data: {QMISS} of {I(NDIRTY)} lines in the Week 2 extract have no quantity, so report units as a range."),
 
         T("4.14.5", "Advanced practical: benchmark decision memo",

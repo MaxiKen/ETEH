@@ -133,7 +133,7 @@ M_DIRTY = '''let
 in
     NoNA'''
 
-M_LIFECARE = '''let
+M_MERCYLAND = '''let
     Source    = Csv.Document(File.Contents(DataFolder & "Mercyland_Episodes_2023_DIRTY.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
     Promoted  = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
     Dedup     = Table.Distinct(Promoted),
@@ -155,7 +155,7 @@ M_LIFECARE = '''let
 in
     Clean'''
 
-M_CRESTVIEW = '''let
+M_KINGSWAY = '''let
     Source  = Csv.Document(File.Contents(CoreFolder & "Kingsway_Student_Results.csv"), [Delimiter = ",", Encoding = 65001]),
     Promote = Table.PromoteHeaders(Source),
     Typed   = Table.TransformColumnTypes(Promote, {{"Lecture_Attendance_Pct", type number}, {"Final_Score", Int64.Type}, {"Study_Hours_Wk", Int64.Type}}),

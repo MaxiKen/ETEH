@@ -76,7 +76,7 @@ M29 = dict(
 
         T("2.9.6", "The Power Query Formula Bar",
           simple="Select a step to see its M in the formula bar (View › Formula Bar). Edit it there to change the step.",
-          diagram=("pqeditor", dict(highlight=("formulabar",), query="qLifecareClean",
+          diagram=("pqeditor", dict(highlight=("formulabar",), query="qMercylandClean",
                                     cols=("Patient_Name", "Ward", "Age"),
                                     types=("ABC", "ABC", "123"),
                                     steps=("Source", "Promoted", "Dedup", "Names", "WardMap"),
@@ -405,7 +405,7 @@ M211 = dict(
           grid=dict(label="Match the chart to the data", widths=[1.9, 1.6, 2], size=12, rows=[
               ["Data shape", "Chart", "Why"], ["Zones over 4 years", "Clustered column", "Compare and see a trend"],
               [f"{len(DEPT)} departments ranked", "Bar", "Long labels, easy ranking"],
-              ["3 grades of one whole", "Pie", "Few parts that add to 100%"], ["12 stores' share", "Sorted bar, not pie", "Too many slices"],
+              ["5 grades of one whole", "Pie", "Few parts that add to 100%"], ["12 stores' share", "Sorted bar, not pie", "Too many slices"],
               ["Months in sequence", "Line", "Trend over time"]])),
 
         T("2.11.10", "Filtering and Sorting in PivotCharts",

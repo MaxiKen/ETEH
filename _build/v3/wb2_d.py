@@ -12,7 +12,7 @@ import pandas as pd
 
 import w2_m9_11 as M9
 from w1x import ModuleSheet
-from wb2_common import M_CRESTVIEW, M_LIFECARE, M_STORE_MONTH, N, code, lit_grid, serial
+from wb2_common import M_KINGSWAY, M_MERCYLAND, M_STORE_MONTH, N, code, lit_grid, serial
 from w2_fx import CVF, LQ, SMF
 from common import SEC
 
@@ -59,7 +59,7 @@ def m29(b, D):
     S, A = D.S, D.A
     m = ModuleSheet(b, "2.9 M Language", "2.9  The M Language", "Tutor walk-through after Module 2.9: reading and writing the M "
                     "behind every Power Query step, on Mercyland, Kingsway and SuperMart", "2.9.1 - 2.9.11")
-    m.dataset([("Mercyland_Episodes_2023_DIRTY.csv", "Week2_Data_Files", f"{LQ['dedup'] + 63:,} raw rows. The main M example (M_LIFECARE below)."),
+    m.dataset([("Mercyland_Episodes_2023_DIRTY.csv", "Week2_Data_Files", f"{LQ['dedup'] + 63:,} raw rows. The main M example (M_MERCYLAND below)."),
                ("Kingsway_Student_Results.csv", "00_Core_Datasets", f"{CVF['n']:,} students. Used for if … then … else (2.9.3, 2.9.11)."),
                ("tSales25", "Sheet Data_Sales25 (starts in A1)", "Excel twins of M functions, and the store-by-month Group By (2.9.10)."),
                ("tDirty25", "Sheet Data_Dirty25 (starts in A1)", "Excel's view of nulls and text (2.9.4).")])
@@ -86,7 +86,7 @@ def m29(b, D):
     grid(m, t)
     lit_grid(m, [[k, v] for k, v in CVF["bands"].items()], header=["Attendance_Band2", "Students"])
     m.turn()
-    _lit(m, "Add the Band column of M_CRESTVIEW (below, 2.9.11). How many students are in the 90%+ band?", CVF["bands"]["90%+"])
+    _lit(m, "Add the Band column of M_KINGSWAY (below, 2.9.11). How many students are in the 90%+ band?", CVF["bands"]["90%+"])
     m.ex_text("Which keyword ends the list of steps and names the step to return?", "in")
     m.ex_text("Write the Excel twin of the band rule for a cell holding 82 (use IFS). What does it return?", "75-89%",
               formula='=IFS(82>=90,"90%+",82>=75,"75-89%",TRUE,"Below 75%")', short="IFS twin for 82")
@@ -105,7 +105,7 @@ def m29(b, D):
     grid(m, t)
     m.steps(t["points"], label="Rules")
     m.turn()
-    _lit(m, "In M_LIFECARE (2.9.7) how many rows does the Dedup step return?", LQ["dedup"])
+    _lit(m, "In M_MERCYLAND (2.9.7) how many rows does the Dedup step return?", LQ["dedup"])
     m.ex_text("A later step refers to a step you deleted. What does Power Query show?", "Error", alts=("an error", "expression.error"))
 
     t = head(m, "2.9.6")
@@ -116,9 +116,9 @@ def m29(b, D):
           ("Add a step with fx and type = Table.RowCount(Dedup).", f"{LQ['dedup']:,}. Delete the step afterwards.")])
 
     t = head(m, "2.9.7")
-    code(m, M_LIFECARE, "M_LIFECARE: the whole Mercyland cleaning query (Home › Advanced Editor › paste; create the DataFolder parameter first, 2.3.7)")
+    code(m, M_MERCYLAND, "M_MERCYLAND: the whole Mercyland cleaning query (Home › Advanced Editor › paste; create the DataFolder parameter first, 2.3.7)")
     grid(m, t)
-    m.do([("Blank Query › Advanced Editor › paste M_LIFECARE › Done.", f"{LQ['clean']:,} rows load."),
+    m.do([("Blank Query › Advanced Editor › paste M_MERCYLAND › Done.", f"{LQ['clean']:,} rows load."),
           ("Display Options › tick Display line numbers.", "Each step on its own numbered line.")])
     m.turn()
     _lit(m, "Change the last line to 'in Exception' and filter Exception to non-null values. How many rows?", sum(LQ["exceptions"].values()))
@@ -140,7 +140,7 @@ def m29(b, D):
     m.worked([("Excel twin of the Gender rule, on 'MALE '", '=IF(OR(LOWER(TRIM("MALE "))="m",LOWER(TRIM("MALE "))="male"),"Male","Female")',
                "Male", None, "")])
     m.turn()
-    _lit(m, "After the Gender step of M_LIFECARE, how many rows are Female?", LQ["gender"]["Female"])
+    _lit(m, "After the Gender step of M_MERCYLAND, how many rows are Female?", LQ["gender"]["Female"])
     _lit(m, "After the AdmType step, how many rows are Emergency?", LQ["atype"]["Emergency"])
 
     t = head(m, "2.9.10")
@@ -157,7 +157,7 @@ def m29(b, D):
 
     t = head(m, "2.9.11")
     grid(m, t)
-    code(m, M_CRESTVIEW, "M_CRESTVIEW: bands and the mentor flag (needs a CoreFolder parameter pointing at 00_Core_Datasets)")
+    code(m, M_KINGSWAY, "M_KINGSWAY: bands and the mentor flag (needs a CoreFolder parameter pointing at 00_Core_Datasets)")
     m.turn()
     _lit(m, "Filter Needs_Mentor to true. How many students?", CVF["mentor"])
     m.ex_open("Write the M condition for 'needs a mentor' in your own words and in M.",

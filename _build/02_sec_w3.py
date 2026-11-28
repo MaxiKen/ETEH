@@ -88,8 +88,8 @@ def main():
         [("SuperMart Online", "supermart_online.db: tTransactions (11,000 order lines 2020-2025), tProducts, tCustomers, tSellers, "
                               "tDeliveries, tStates, and tLines (the v_order_lines view). Used in 3.1 - 3.6."),
          ("SuperMart Stores", "tDash: 3,312 FY2025 sales lines and tDashStores (12 stores with targets), the dashboard data of 3.7 - 3.9."),
-         ("Mercyland Specialist Hospital", "tAdm23 (10,918 admissions in 2023), tCensus (daily beds) and tMsDirty, the raw 2023 extract of 3.10."),
-         ("Kingsway University", "tCV: 6,607 students, used in the KPI, chart and blueprint examples.")],
+         ("Mercyland Specialist Hospital", "tAdm23 (12,626 admissions in 2023), tCensus (daily beds) and tMsDirty, the raw 2023 extract of 3.10."),
+         ("Kingsway University", "tCV: 5,840 students, used in the KPI, chart and blueprint examples.")],
         extra_rows=[("Answer cells", "White cell with a gold border: type here. The check cell beside it updates as you type."),
                     ("Date table", "tDimDate on Data_DimDate is the marked date table for the time-intelligence measures."),
                     ("Assignment", "The Week 3 assignment is in 02_Assignments/ETEH_Week3_Assignment.xlsx.")])

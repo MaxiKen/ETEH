@@ -129,7 +129,7 @@ def build(key: bool):
 
     # ---------------------------------------------------------------- T3 correlation
     s = A.task("T3 Correlation", "Task 3 - What moves exam scores at Kingsway?", "4.3",
-               "D_Students (tStudents) holds 6,607 Kingsway students. The Dean wants to know which habits are most associated with exam performance.")
+               "D_Students (tStudents) holds 5,840 Kingsway students. The Dean wants to know which habits are most associated with exam performance.")
     A.q(s, "3.1", "Correlation between Lecture_Attendance_Pct and Final_Score.", "=CORREL(tStudents[Lecture_Attendance_Pct],tStudents[Final_Score])", r_att, "dec3", 2, header=True)
     A.q(s, "3.2", "Correlation between Study_Hours_Wk and Final_Score.", "=CORREL(tStudents[Study_Hours_Wk],tStudents[Final_Score])", r_hrs, "dec3", 2)
     A.q(s, "3.3", "Which of these has the WEAKEST relationship with Final_Score?", "Sleep_Hrs_Night", marks=1,
