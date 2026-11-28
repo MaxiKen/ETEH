@@ -48,10 +48,10 @@
 -- Q6. 2025 return rate = Returned ÷ (Delivered + Completed + Returned), 4 dp.
 
 
--- Q7. Payment method with the highest cancellation rate (all years).
+-- Q7. Payment method with the highest cancellation rate (all years). Rate = cancelled orders ÷ all orders for that method.
 
 
--- Q8. Customer zone with the SLOWEST average order-to-delivery time for 2025 delivered orders.
+-- Q8. Customer zone with the SLOWEST average order-to-delivery time for 2025 delivered orders. Days = julianday(d.delivered_date) - julianday(t.order_date); julianday turns a date into a day number.
 
 
 -- Q9. Share of customers (who ever placed a net order) with TWO or more net orders, 4 dp.

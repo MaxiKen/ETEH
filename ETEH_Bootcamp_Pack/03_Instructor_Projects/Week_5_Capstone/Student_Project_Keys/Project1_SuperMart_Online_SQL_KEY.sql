@@ -71,14 +71,14 @@ SELECT ROUND(SUM(order_status = 'Returned') * 1.0 /
 FROM transactions t
 WHERE strftime('%Y', t.order_date) = '2025';
 
--- Q7. Payment method with the highest cancellation rate (all years).  -> USSD
+-- Q7. Payment method with the highest cancellation rate (all years). Rate = cancelled orders ÷ all orders for that method.  -> USSD
 SELECT payment_method, ROUND(AVG(order_status = 'Cancelled'), 4) AS cancel_rate, COUNT(*) AS n
 FROM transactions
 GROUP BY payment_method
 ORDER BY cancel_rate DESC
 LIMIT 1;
 
--- Q8. Customer zone with the SLOWEST average order-to-delivery time for 2025 delivered orders.  -> South-West
+-- Q8. Customer zone with the SLOWEST average order-to-delivery time for 2025 delivered orders. Days = julianday(d.delivered_date) - julianday(t.order_date); julianday turns a date into a day number.  -> South-West
 SELECT c.zone, ROUND(AVG(julianday(d.delivered_date) - julianday(t.order_date)), 2) AS days
 FROM transactions t
 JOIN deliveries d ON d.delivery_id = t.delivery_id

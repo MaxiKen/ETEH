@@ -88,7 +88,7 @@ def build(key):
          ("Prevalence - age 60+.", by_age["60+"], 2, ""),
          ("Prevalence - age 18-39.", by_age["18-39"], 2, ""),
          ("Prevalence - with hypertension.", by_ht["Yes"], 2, ""),
-         ("Relative risk: hypertension Yes ÷ No.", rr_ht, 4, "Shown as a ratio (e.g. 3.2x)."),
+         ("Relative risk = prevalence WITH hypertension ÷ prevalence WITHOUT hypertension.", rr_ht, 4, "Shown as a ratio (e.g. 3.2x)."),
          ("Prevalence - Obese (BMI ≥ 30).", by_bmi["Obese"], 4, "Cut-offs: <18.5, 18.5-24.9, 25-29.9, ≥30; blanks excluded."),
          ("Prevalence - Smoking_Status 'Current'.", by_smk["Current"], 2, ""),
          ("Prevalence - Smoking_Status 'Not Recorded'.", by_smk["Not Recorded"], 3, "Much lower - many are children; check age before concluding.")]
@@ -97,14 +97,14 @@ def build(key):
     A.end_task(s)
 
     s = A.task("M3 Screening Rule", "Milestone 3 - Clinical markers and a screening rule", "4.1-4.3",
-               "The clinic proposes to flag a patient for diagnosis if HbA1c ≥ 6.5 OR blood glucose ≥ 200 mg/dL. Evaluate it against the recorded outcome.")
+               "The clinic proposes to flag a patient for diagnosis if HbA1c ≥ 6.5 OR blood glucose ≥ 200 mg/dL. Evaluate it against the recorded outcome. Flagged = the rule says yes. Sensitivity = flagged diabetics ÷ all diabetics; false positive = flagged but no diabetes; PPV = flagged diabetics ÷ all flagged (COUNTIFS does all three).")
     A.q(s, "3.1", "Mean HbA1c - patients WITH diabetes.", hba_d, None, "dec2", 2, header=True)
     A.q(s, "3.2", "Mean HbA1c - patients WITHOUT diabetes.", hba_n, None, "dec2", 2)
     A.q(s, "3.3", "Correlation between HbA1c and blood glucose.", r_hg, None, "dec3", 2, "Weak - the two tests capture different things (long-term vs moment).")
     A.q(s, "3.4", "Share of patients with glucose ≥ 200 who have diabetes.", g200, None, "pct", 2)
     A.q(s, "3.5", "Sensitivity: share of diabetic patients the rule flags.", sens, None, "pct", 4, "Flagged diabetics ÷ all diabetics.")
-    A.q(s, "3.6", "False positives: non-diabetic patients the rule flags.", fp, None, "int", 4)
-    A.q(s, "3.7", "Positive predictive value: share of flagged patients who have diabetes.", ppv, None, "pct", 4)
+    A.q(s, "3.6", "False positives: how many non-diabetic patients does the rule flag (count)?", fp, None, "int", 4)
+    A.q(s, "3.7", "Positive predictive value (PPV): flagged diabetics ÷ all flagged patients.", ppv, None, "pct", 4)
     A.long(s, "3.8", "Would you recommend the rule? Two sentences with numbers.",
            f"Yes as a screening step: it catches {sens:.1%} of diabetic patients, but only {ppv:.1%} of those it flags have diabetes ({fp:,} false positives), "
            "so every flag needs a confirmatory test before diagnosis. Thresholds are for analysis practice - clinical decisions belong to clinicians.",

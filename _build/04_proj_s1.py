@@ -46,9 +46,9 @@ QS = [
      f"SELECT ROUND(SUM(commission_amount), 0) AS commission\nFROM transactions t\nWHERE {Y25} AND t.{NET};", "naira"),
     ("2025 return rate = Returned ÷ (Delivered + Completed + Returned), 4 dp.",
      f"SELECT ROUND(SUM(order_status = 'Returned') * 1.0 /\n       SUM(order_status IN ('Delivered','Completed','Returned')), 4) AS return_rate\nFROM transactions t\nWHERE {Y25};", "pct"),
-    ("Payment method with the highest cancellation rate (all years).",
+    ("Payment method with the highest cancellation rate (all years). Rate = cancelled orders ÷ all orders for that method.",
      "SELECT payment_method, ROUND(AVG(order_status = 'Cancelled'), 4) AS cancel_rate, COUNT(*) AS n\nFROM transactions\nGROUP BY payment_method\nORDER BY cancel_rate DESC\nLIMIT 1;", "gen"),
-    ("Customer zone with the SLOWEST average order-to-delivery time for 2025 delivered orders.",
+    ("Customer zone with the SLOWEST average order-to-delivery time for 2025 delivered orders. Days = julianday(d.delivered_date) - julianday(t.order_date); julianday turns a date into a day number.",
      f"SELECT c.zone, ROUND(AVG(julianday(d.delivered_date) - julianday(t.order_date)), 2) AS days\nFROM transactions t\nJOIN deliveries d ON d.delivery_id = t.delivery_id\n"
      f"JOIN customers c ON c.customer_id = t.customer_id\nWHERE {Y25} AND t.order_status = 'Delivered'\nGROUP BY c.zone\nORDER BY days DESC\nLIMIT 1;", "gen"),
     ("Share of customers (who ever placed a net order) with TWO or more net orders, 4 dp.",
