@@ -2,6 +2,8 @@
 
 Eaglet2EagleHub Ltd · Instructor: Abdulrahaman Kehinde
 
+> **New to the pack? Read `HOW_TO_USE_THIS_PACK.md` first.** It explains which file to open and when.
+
 ## Edition 3.1: follow the learning, find every file
 
 Edition 3.1 rebuilds every learner workbook around one rule: **a question never asks for something that has not been
