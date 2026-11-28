@@ -38,6 +38,16 @@ Every module is still there. Only advanced mini-sections were removed, and the r
     - 4.5.6 MAE and MAPE;
     - 4.6.2 Goal Seek;
     - 4.6.4 one-variable data table.
+  - **Charts and worked tables in 4.1–4.5.** 45 of the 47 topics in Modules 4.1–4.5 now carry a native, editable PowerPoint chart drawn from the same data as the slide. The two without one are how-to slides: enabling the ToolPak (4.1.10) and building the matrix (4.3.4).
+    - **Mean (4.1.2):** a new worked-example slide lists seven real orders from tOrders, adds them (₦1,510,600) and divides by 7 (₦215,800).
+    - **Median (4.1.3):** a new worked-example slide sorts the same seven orders and takes the 4th value (₦28,650). It also shows the even-count rule with an 8th order: (₦28,650 + ₦50,950) ÷ 2 = ₦39,800.
+    - **Mean or Median? (4.1.3):** this slide is now a table plus a chart of the seven salaries.
+    - **Topic slides with working tables:**
+      - 4.1.4 Mode (a frequency table);
+      - 4.1.5 Range and IQR;
+      - 4.1.7 CV (SD ÷ mean);
+      - 4.1.9 the upper fence;
+      - 4.2.6 z-scores for real stores.
 - **Linked files follow the decks.**
   - The Week 3 and 4 Section Examples and assignments replace the questions on removed topics.
   - Student Project 1 uses only simple single queries (year filter `order_date LIKE '2025%'`, no CASE, julianday or LEFT JOIN tricks).

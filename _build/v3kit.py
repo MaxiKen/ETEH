@@ -269,7 +269,7 @@ def layout_topic(cv, t, D, where):
             c["_h"] = 1.9
         del K.WARN[keep:]
     chosen = SCALES[-1]
-    for k in SCALES:
+    for k in [k_ for k_ in SCALES if k_ <= t.get("max_scale", 9)] or SCALES[-1:]:   # max_scale: keep long formulas on one line
         end = _layout(Dry(), t, D, where, k)
         if end <= BOTTOM + 0.005:
             chosen = k

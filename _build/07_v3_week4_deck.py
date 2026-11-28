@@ -37,6 +37,8 @@ import w4_charts  # noqa: E402
 print(f"charts on {w4_charts.attach(MODULES)} topics")
 import w4_examples  # noqa: E402
 print(f"worked examples on {w4_examples.attach(MODULES)} topics")
+import w4_visuals  # noqa: E402
+print(f"4.1-4.5 visuals: charts now on {w4_visuals.attach(MODULES)} topics")
 
 CFG = v3deck.Config(
     week=4,

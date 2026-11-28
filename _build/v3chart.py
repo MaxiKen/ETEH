@@ -21,6 +21,7 @@ SPEC (all optional except kind and the data):
   title     chart title (state the finding)       fmt     value number format, e.g. '₦#,##0,,"m"' or '0%'
   labels    True = data labels on every point, or a list of point indexes to label (first series)
   legend    True/False (default: True when more than one series)
+  markers   line: False = no point markers (long daily series)
   h         chart height in inches (default 2.75)  label   block label (default CHART FROM OUR DATA)
   note      grey note under the chart              colors  list of hex colours (per series, or per point for pie/bar)
   x_title / y_title  axis titles                  y2_fmt  secondary-axis number format (combo)
@@ -35,7 +36,7 @@ import copy
 from lxml import etree
 from pptx.chart.data import BubbleChartData, CategoryChartData, XyChartData
 from pptx.dml.color import RGBColor
-from pptx.enum.chart import XL_CHART_TYPE, XL_LABEL_POSITION, XL_LEGEND_POSITION, XL_TICK_LABEL_POSITION, XL_TICK_MARK
+from pptx.enum.chart import XL_CHART_TYPE, XL_LABEL_POSITION, XL_LEGEND_POSITION, XL_MARKER_STYLE, XL_TICK_LABEL_POSITION, XL_TICK_MARK
 from pptx.oxml.ns import qn
 from pptx.util import Emu, Pt
 
@@ -343,6 +344,8 @@ def draw(cv, x, y, w, h, spec):
                 s.marker.format.fill.solid()
                 s.marker.format.fill.fore_color.rgb = _rgb(c)
                 s.marker.size = 6 if kind == "line" else 5
+                if spec.get("markers") is False:
+                    s.marker.style = XL_MARKER_STYLE.NONE
             else:
                 _fill(s.format, c)
         if spec.get("point_colors") and kind in ("column", "bar", "histogram"):
