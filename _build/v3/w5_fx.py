@@ -22,20 +22,24 @@ C2 = importlib.import_module("04_proj_i2")      # Kingsway progression
 C3 = importlib.import_module("04_proj_i3")      # Mercyland board pack
 
 
+def _neg(s):
+    return "−" + s.replace("-", "", 1) if s.startswith("₦-") or s.startswith("-") else s
+
+
 def N(v):
-    return f"₦{v:,.0f}"
+    return _neg(f"₦{v:,.0f}")
 
 
 def Nm(v, d=1):
-    return f"₦{v / 1e6:,.{d}f}m"
+    return _neg(f"₦{v / 1e6:,.{d}f}m")
 
 
 def Nb(v, d=2):
-    return f"₦{v / 1e9:,.{d}f}bn"
+    return _neg(f"₦{v / 1e9:,.{d}f}bn")
 
 
 def P(v, d=1):
-    return f"{v * 100:.{d}f}%"
+    return _neg(f"{v * 100:.{d}f}%")
 
 
 def I(v):

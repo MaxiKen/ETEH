@@ -113,7 +113,7 @@ M_P5 = dict(
           grid=dict(label="Payer mix: share of FY billing", widths=[2.8, 1.0], size=12.5, rows=[
               ["Payer", "Share"]] + [[h, P(v)] for h, v in HMO.items()]),
           watch=f"No payer holds more than {P(HMO.max(), 0)} of billing: low concentration risk.",
-          more=[dict(title="The Capstone 3 Dashboard", pill="P.5.8  ·  DASHBOARD", chart=DASH,
+          more=[dict(title="The Capstone 3 Dashboard", pill="DASHBOARD", chart=DASH,
                      notes="Five KPI cards and three charts: occupancy against the 85% target, the length-of-stay distribution "
                            "and readmission by department coloured by the confidence-interval verdict.")]),
 

@@ -15,8 +15,10 @@ TABLES = {
     "tBasket": lambda: F.O25.reset_index(),
     "tSKU": lambda: F.SKU,
     "tCV": lambda: F.CV[["Matric_No", "Faculty", "Level", "Final_Score", "Lecture_Attendance_Pct"]],
-    "tAtRisk": lambda: F.LST,
-    "tAdm": lambda: F.ADM[["episode_id", "admit_date", "ward", "department", "admission_route", "los_days", "readmitted_30d"]],
+    "tAtRiskTop20": lambda: F.LST.sort_values(["Final_Score", "Lecture_Attendance_Pct"], kind="stable").head(20),
+    "tAdm23": lambda: F.ADM[["episode_id", "admit_date", "ward", "department", "admission_route", "los_days", "readmitted_30d"]]
+    .rename(columns={"episode_id": "Episode_ID", "admit_date": "Admit_Date", "ward": "Ward", "department": "Department",
+                     "admission_route": "Admission_Route", "los_days": "LOS_Days", "readmitted_30d": "Readmitted_30d"}),
     "tCensus": lambda: F.CEN,
 }
 

@@ -86,7 +86,7 @@ M_P4 = dict(
               ["Low attendance only", I(TRIG["Low attendance"]), "Pastoral call and attendance contract"],
               ["Score and attendance", I(TRIG["Score and attendance"]), "Adviser meeting first"],
               ["Total", I(NRISK), ""]]),
-          ex=dict(t="tAtRisk", cols=["Matric_No", "Faculty", "Level", "Final_Score", "Lecture_Attendance_Pct", "Trigger"], n=3, size=11),
+          ex=dict(t="tAtRiskTop20", cols=["Matric_No", "Faculty", "Level", "Final_Score", "Lecture_Attendance_Pct", "Trigger"], n=3, size=11),
           order=["grid", "ex"], stack=True,
           watch="Named lists are restricted: advisers only, never in the Senate paper."),
 
@@ -95,7 +95,7 @@ M_P4 = dict(
           simple=f"Assume the tutorial programme lifts attendance by {LIFT} points for students below {AT}%; the regression says each "
                  f"attendance point is worth {BETA['Lecture_Attendance_Pct']:.2f} exam points.",
           grid=dict(label="Re-applying the rule to the lifted cohort", widths=[2.6, 1.2], size=12.5, rows=[
-              ["Measure", "Value"], [f"Students below {AT}% attendance", I(NLOWATT)], ["Students who would progress", I(RESCUED)],
+              ["Measure", "Value"], [f"Students below {AT}% attendance", I(NLOWATT)], ["At-risk students who would progress", I(RESCUED)],
               ["…already passing the exam bar", I(MECH)], ["Progression after the lift", P(PROG_AFTER)],
               ["Target", P(TGT, 0)]]),
           chart=dict(kind="column", cats=["Now", "After the lift", "Target"], series=[("Progression", [PROG, PROG_AFTER, TGT])],
@@ -110,7 +110,7 @@ M_P4 = dict(
           grid=dict(label="Drivers of the final score (correlation r)", widths=[2.4, 1.0], size=12.5, rows=[
               ["Variable", "r"]] + [[k.replace("_", " "), f"{v:.2f}"] for k, v in sorted(CORR.items(), key=lambda kv: -abs(kv[1]))]),
           watch="Sleep and exercise show almost no link to the score here; do not build the story on them.",
-          more=[dict(title="The Capstone 2 Dashboard", pill="P.4.8  ·  DASHBOARD", chart=DASH,
+          more=[dict(title="The Capstone 2 Dashboard", pill="DASHBOARD", chart=DASH,
                      notes="Five KPI cards and three at-risk views. The axis-free comparison of faculty, attendance band and level "
                            "shows that attendance is the strongest lever.")]),
 

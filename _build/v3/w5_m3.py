@@ -101,7 +101,7 @@ M_P3 = dict(
           order=["grid", "chart"], split=0.5,
           watch=f"The {I(N_DEEP)} lines discounted above 20% lost {Nm(-DEEP)}. Rate effect {pts(RATE)}, mix effect {pts(MIXE)}: "
                 "the fall is pricing, not product mix.",
-          more=[dict(title="Rate and Mix Effects by Category", pill="P.3.6  ·  RATE AND MIX",
+          more=[dict(title="Rate and Mix Effects by Category", pill="RATE AND MIX",
                      chart=dict(kind="waterfall", full=True, h=4.4, start=M24 * 100,
                                 cats=["FY2024"] + [f"{c} rate" for c in MIX.index] + [f"{c} mix" for c in MIX.index] + ["FY2025"],
                                 steps=[float(MIX.loc[c].rate) for c in MIX.index] + [float(MIX.loc[c].mix) for c in MIX.index],
@@ -132,7 +132,7 @@ M_P3 = dict(
               ["Store", "FY2025 profit", "Attainment"]] + [
               [r.Store_Name, N(r.P25).replace("₦-", "−₦"), P(r.S25 / r.T25)] for r in LOSS_ST.sort_values("P25").itertuples()]),
           watch="Hitting the sales target is not the same as making money: some loss-makers were on target.",
-          more=[dict(title="The Capstone 1 Dashboard", pill="P.3.8  ·  DASHBOARD", chart=DASH,
+          more=[dict(title="The Capstone 1 Dashboard", pill="DASHBOARD", chart=DASH,
                      notes="One screen: five KPI cards and three visuals, each answering a question in the brief. The red figures "
                            "are the problems the memo addresses.")]),
 
