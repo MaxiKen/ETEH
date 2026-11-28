@@ -4,6 +4,39 @@ Eaglet2EagleHub Ltd · Instructor: Abdulrahaman Kehinde
 
 > **New to the pack? Read `HOW_TO_USE_THIS_PACK.md` first.** It explains which file to open and when.
 
+## Edition 3.3: Week 3 uses Power Query and PivotTables only (no DAX)
+
+Students learn one language for cleaning: **M, the code Power Query writes for each step**. DAX is no longer taught anywhere
+in the pack. Every module is still there; the Week 3 deck is now `ETEH_Vol3_Week3_Databases_PowerQuery_Dashboards_Slides.pptx`
+(179 slides, 134 topics).
+
+- **3.4 Merge and Append in Power Query (10 topics), taught as button steps with no SQL.** Each slide shows the clicks
+  (Home › Merge Queries, pick the key columns, choose the Join Kind, expand) and the row count to expect. Some slides also
+  show, read-only, the one line of M that Power Query writes.
+  - 3.4.1 Merge vs Append; 3.4.2 Inner; 3.4.3 Left Outer; 3.4.4 Full Outer; 3.4.5 Left Anti (299 cancelled/failed and
+    271 cancelled/refunded orders with no delivery; 27 customers who never ordered).
+  - 3.4.6 Expand vs Aggregate; 3.4.7 the Cartesian product trap (duplicate keys); 3.4.8 Append two tables; 3.4.9 Append three or more /
+    From Folder; 3.4.10 cleaning keys before a merge.
+- **3.6A Power Pivot and Data Model PivotTables (3.6.1–3.6.14).** It covers PivotTables from the Data Model, fields from
+  related tables, and Custom and Conditional Columns in Power Query (line value, a Net / Not net `sale_type` flag, bands).
+  Then Sum / Count / Average, Distinct Count, % of Grand Total, ratios in a cell beside the PivotTable (AOV), and Group By.
+- **3.6B KPIs and Time Comparisons with PivotTables (3.6.15–3.6.25).** It covers years and months from tDimDate, year to
+  date with Show Values As › Running Total In, and growth with % Difference From (previous). Also % of Column Total,
+  empty cells, and naming and formatting value fields. It ends with the retail / hospital / university KPI sets, checking a
+  PivotTable, and a quick reference.
+- **3.10.4 Hospital KPIs with a PivotTable** replaces the DAX measures (Count of episode_id, Average of los_days, Yes as % of Row Total).
+- **Workbooks and projects follow the deck.**
+  - Week 3 Section Examples: the sheets are renamed `3.6A Data Model Pivots`, `3.6B KPIs & Time` and
+    `3.10 Files to Dashboards`. They have new "which tool?" questions, and every PivotTable value is checked with a
+    SUMIFS / COUNTIFS formula. Total: 94 questions.
+  - Week 3 Assignment Task 4 is now "PivotTable KPIs".
+  - Student Project 1 M3 asks how each value was built (Power Query step, PivotTable setting or cell ratio) instead of pasting DAX.
+  - The Capstone deck (P.1.5, P.3.4) and Capstone 1 speak of PivotTable values. Power BI's DAX is named only as
+    something new to learn after the course (P.9.6).
+- `Ex3.2_Files/ETEH_Week3_SQL_Examples.sql` is now written by the deck build. It holds exactly the 13 SQL panels on the
+  slides: 3.1–3.2 in DB Browser, and the 3.10.3 data checks.
+- Checks: deck lint 0 issues (Weeks 3 and 5); selftest 0 problems; verify_xlsx 0 mismatches; check_facts 20/0.
+
 ## Edition 3.2: simpler Week 3 and Week 4 decks
 
 Every module is still there. Only advanced mini-sections were removed, and the remaining topics were renumbered in order.
@@ -22,7 +55,7 @@ Every module is still there. Only advanced mini-sections were removed, and the r
     - Removed: SQL parameters and injection.
   - **3.4, 3.6A/B and 3.10 are lighter.**
     - 3.4 keeps the four join kinds you need. Right outer and right anti joins, fuzzy matching, schema mismatches, cardinality checks and merge documentation are gone.
-    - 3.6 drops advanced DAX: FILTER, ALLEXCEPT, RELATEDTABLE, AVERAGEX, VAR, DATEADD, DATESYTD/DATESINPERIOD, running totals, RANKX, error handling, performance and model documentation.
+    - 3.6 dropped its advanced topics (edition 3.3 then removed DAX entirely; see above).
     - 3.10 now imports the extract in DB Browser, runs one-line SQL checks and cleans in Power Query.
 - **Vol 4 (Week 4).**
   - Removed: skewness, kurtosis, Spearman, multiple regression, adjusted R², p-values, multicollinearity, exponential smoothing, ETS.CONFINT, ETS.SEASONALITY, backtesting, Solver methods, font embedding, metadata and Office Scripts.
@@ -118,7 +151,7 @@ every exercise that needs outside files has its **own folder next to the workboo
 |---|---|---|
 | 1 | terms: data, information, data analytics (1.1–1.4 have no numbers at all) | the status bar, then SUM / AVERAGE / COUNT / COUNTA / MIN / MAX (1.7), then filter + Total Row (1.8) |
 | 2 | file formats and Power Query | from 2.8A: SUMIFS / COUNTIFS / AVERAGEIFS, ROUND, IF, TEXT; from 2.8B: lookups, dates, FILTER / UNIQUE; then pivots |
-| 3 | database words (no SQL in 3.1) | SQL one clause at a time (each question gives the query); every DAX answer has a Week 2 formula twin |
+| 3 | database words (no SQL in 3.1) | SQL one clause at a time (each question gives the query); Power Query buttons; every PivotTable value has a Week 2 formula twin |
 | 4 | descriptive statistics, one function per question | CORREL, SLOPE, INTERCEPT, RSQ, FORECAST.LINEAR, simple what-if models |
 | 5 | the project lifecycle | Weeks 1–4 skills only (SUMIFS / COUNTIFS / AVERAGE on the capstone tables) |
 
@@ -131,12 +164,12 @@ cleaned copy of the data inside the workbook, so a mistake in an early task does
 |---|---|---|---|
 | Week 1 Section Examples | 9 modules | 105 | tStores25, tStudents, tSales, tDirtySales |
 | Week 2 Section Examples | 12 modules | 106 | tStores, tSales25, tDirty25, tSM |
-| Week 3 Section Examples | 11 modules | 92 | tTransactions, tProducts, tCustomers, tDimDate |
+| Week 3 Section Examples | 11 modules | 94 | tTransactions, tProducts, tCustomers, tDimDate |
 | Week 4 Section Examples | 14 modules | 95 | tSalary, tStudents, tMonthly, tStoreBench |
 | Capstone Section Examples | 9 modules | 52 | tSM, tStudents, tAdmissions, tCensus |
 | Week 1 Assignment · SuperMart Q1 2025 store review | 5 tasks | 46 (64 marks) | tSalesQ1, tStores |
 | Week 2 Assignment · Mercyland admissions: import, clean, summarise | 4 tasks | 32 (48 marks) | tWardMap, tAdm |
-| Week 3 Assignment · Mercyland: SQL, Data Model and DAX | 5 tasks | 35 (52 marks) | tAdm23, tWards, tDoctors, tDate23 |
+| Week 3 Assignment · Mercyland: SQL, Data Model and PivotTables | 5 tasks | 35 (52 marks) | tAdm23, tWards, tDoctors, tDate23 |
 | Week 4 Assignment · statistics, forecasting, what-if, ethics | 5 tasks | 32 (50 marks) | tSalary, tStudents, tHotelMonthly |
 
 - `_build/learn/selftest.py` types every correct answer and then a wrong answer into each workbook and recalculates the
@@ -270,7 +303,7 @@ Rebuilt from scratch in the Week 1 format.
 - The Task 4 brief and the cover point to the guide.
 - The student file and the answer key both verify with 0 mismatches.
 
-### Week 3 deck (`ETEH_Vol3_Week3_SQL_DAX_Dashboards_Slides.pptx`, 200 slides, 158 topics)
+### Week 3 deck (`ETEH_Vol3_Week3_Databases_PowerQuery_Dashboards_Slides.pptx`; edition 3.0 history: 200 slides, 158 topics)
 - The same one-slide-per-topic design, for modules 3.1–3.5, 3.6A, 3.6B and 3.7–3.10. Titles match edition 2.
 - Every figure is computed when the deck is built: SQL panels are run against the SQLite databases in `Week3_Data_Files`, and DAX results are worked out from the same tables (`_build/w3_data.py`, `_build/v3/w3_fx.py`).
 - Edition 2 year counts that did not match the data were recomputed, and the filter used is stated on the slide.
@@ -422,7 +455,7 @@ Every topic in all five volumes (663 topics) now has two slides.
 |---|---|---|---|
 | ETEH_Vol1_Week1_Foundations_Slides.pptx | 146 (edition 3) | 1.1–1.9 · 111 topics | ETEH_Week1_Section_Examples.xlsx, ETEH_Week1_Assignment.xlsx |
 | ETEH_Vol2_Week2_PowerQuery_Pivots_Slides.pptx | 220 (edition 3) | 2.1–2.11 · 175 topics | ETEH_Week2_Section_Examples.xlsx, Week2_Data_Files, ETEH_Week2_Assignment.xlsx |
-| ETEH_Vol3_Week3_SQL_DAX_Dashboards_Slides.pptx | 203 (edition 3) | 3.1–3.10 · 158 topics | ETEH_Week3_Section_Examples.xlsx, Week3_Data_Files (SQLite), ETEH_Week3_Assignment.xlsx |
+| ETEH_Vol3_Week3_Databases_PowerQuery_Dashboards_Slides.pptx | 179 (edition 3.3) | 3.1–3.10 · 134 topics | ETEH_Week3_Section_Examples.xlsx, Week3_Data_Files (SQLite), ETEH_Week3_Assignment.xlsx |
 | ETEH_Vol4_Week4_Stats_Forecast_AI_Slides.pptx | 188 (edition 3) | 4.1–4.14 · 139 topics | ETEH_Week4_Section_Examples.xlsx, ETEH_Week4_Assignment.xlsx |
 | ETEH_Vol5_Capstone_Career_Slides.pptx | 120 (edition 3) | P.1–P.9 · 80 topics | ETEH_Capstone_Section_Examples.xlsx, Capstones 1–3 (solution workbooks), Student Projects 1–4 |
 
@@ -435,7 +468,7 @@ Every topic in all five volumes (663 topics) now has two slides.
   - Week 3 keeps 3.6A and 3.6B.
 - External sources were removed: Wikipedia tables, CBN/NBS figures and "live source" links. The modules that depended on them now use files in the pack:
   - 2.4 · Web and PDF sources: the SuperMart store directory HTML page and the monthly sales bulletin PDF.
-  - 3.10 · File extracts into SQL, DAX and dashboards: the Mercyland 2023 dirty CSV (`Week2_Data_Files/Mercyland_Episodes_2023_DIRTY.csv`) and `Week3_Data_Files/mercyland_hospital.db`.
+  - 3.10 · File extracts into Power Query, PivotTables and dashboards: the Mercyland 2023 dirty CSV (`Week2_Data_Files/Mercyland_Episodes_2023_DIRTY.csv`) and `Week3_Data_Files/mercyland_hospital.db`.
   - 4.14 · Internal benchmarks, PDF checks and reconciliation: the SuperMart ledger and bulletin, and Mercyland readmission intervals.
   - P.2 · Source governance: a register of the capstone sources.
 - The Capstone 1–3 modules (P.3–P.5) are rewritten around the instructor capstones. Every figure on those slides comes from the solution workbooks.

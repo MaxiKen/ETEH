@@ -6,7 +6,8 @@ Progression rule for Week 3 (Weeks 1-2 are assumed)
     3.3        bringing the data into Excel (ODBC or CSV)
     3.4        Power Query merge (join types) and append on the SuperMart Online CSV files
     3.5        the Data Model and relationships
-    3.6A/B     DAX measures; every number can also be checked with a Week 2 formula on the data sheets
+    3.6A/B     Data Model PivotTables and Power Query helper columns (no DAX); every number can also be checked with a
+               Week 2 formula on the data sheets
     3.7 - 3.9  choosing charts, dashboard design, the three blueprints
     3.10       profiling a raw file extract before loading it
 """
@@ -56,12 +57,14 @@ def build(b):
     m35 = mod("3.5", "3.5 Data Model & Star", "The Excel Data Model and Star Schema",
               "The Data Model, relationships and cardinality, fact and dimension tables, the date table, and why "
               "relationships beat VLOOKUP columns.")
-    m36a = mod("3.6A", "3.6A DAX Foundations", "Power Pivot and DAX: Foundations and Context",
-               "Power Pivot, calculated columns vs measures, DAX syntax, row and filter context, CALCULATE, ALL, VALUES, "
-               "RELATED, SUMX, COUNTROWS, DISTINCTCOUNT, DIVIDE and IF / SWITCH.")
-    m36b = mod("3.6B", "3.6B DAX Time & KPIs", "Power Pivot and DAX: Time Intelligence and KPIs",
-               "TOTALYTD, SAMEPERIODLASTYEAR, % of total, BLANK vs zero, measure tables, format strings, implicit vs "
-               "explicit measures, retail / hospital / university KPI measures and debugging.")
+    m36a = mod("3.6A", "3.6A Data Model Pivots", "Power Pivot and Data Model PivotTables",
+               "Power Pivot, PivotTables from the Data Model, fields from related tables, Custom and Conditional Columns "
+               "in Power Query, Sum / Count / Average, Distinct Count, % of Grand Total, ratios beside the PivotTable, "
+               "bands and Group By.")
+    m36b = mod("3.6B", "3.6B KPIs & Time", "KPIs and Time Comparisons with PivotTables",
+               "Years and months from the date table, Running Total In (year to date), % Difference From (growth), "
+               "% of Column Total, empty cells, naming and formatting value fields, retail / hospital / university KPIs "
+               "and checking a PivotTable.")
     m37 = mod("3.7", "3.7 Chart Types", "Chart Anatomy and the 17 Excel Chart Types",
               "What makes a chart effective, chart parts (axes, legend, labels, titles) and when to use each chart type.")
     m38 = mod("3.8", "3.8 Dashboard Build", "Dashboard Development",
@@ -69,9 +72,9 @@ def build(b):
               "interaction, printing, accessibility, performance and the QA checklist.")
     m39 = mod("3.9", "3.9 Blueprints", "Three Dashboard Blueprints",
               "The SuperMart retail, Kingsway progression and Mercyland operations dashboards.")
-    m310 = mod("3.10", "3.10 Files to SQL & DAX", "File Extracts into SQL, DAX and Dashboards",
+    m310 = mod("3.10", "3.10 Files to Dashboards", "File Extracts into Power Query, PivotTables and Dashboards",
                "Profiling an extract, importing it into DB Browser as a staging table, simple SQL checks, cleaning in "
-               "Power Query, DAX measures and reconciling a governed dashboard.")
+               "Power Query, hospital KPIs in a PivotTable and reconciling a governed dashboard.")
 
     # ------------------------------------------------------------------ data sheets
     r_tx = b.data("Transactions", tx, "One SuperMart Online order line (transactions table of supermart_online.db)",
@@ -180,7 +183,7 @@ def build(b):
     m = m33
     m.part("ODBC")
     m.mc("What is ODBC?", ["A chart type", "A standard way for programs such as Excel to connect to databases",
-                           "A file format", "A DAX function"], "B", "Open Database Connectivity.")
+                           "A file format", "A chart type"], "B", "Open Database Connectivity.")
     m.mc("What must be installed before Excel can connect to SQLite with ODBC?", ["A printer", "The SQLite ODBC driver",
                                                                                  "Power BI", "Python"], "B",
          "Each database type needs its own driver.")
@@ -249,48 +252,54 @@ def build(b):
     # ================================================================== 3.6A
     m = m36a
     rev = float(tx.total_price.sum())
-    net = float(tx.loc[tx.order_status.isin(["Delivered", "Completed"]), "total_price"].sum())
-    m.example("measures and their Excel check",
-              ["Power Pivot › Measures › New Measure. Type the DAX on the left.",
-               "With no filters, the measure gives the same number as the Week 2 formula on the right.",
-               "Put the measure in a PivotTable: it recalculates for every row and filter (filter context)."],
-              [("Total Revenue := SUM(tTransactions[total_price])", "=SUM(tTransactions[total_price])",
-                "=SUM(tTransactions[total_price])", rev, "naira"),
-               ("Order Lines := COUNTROWS(tTransactions)", "=ROWS(tTransactions)", "=ROWS(tTransactions)", len(tx), "int")])
-    m.part("Part A · DAX ideas")
-    m.mc("What is the main difference between a calculated column and a measure?",
-         ["None", "A column is worked out row by row and stored; a measure is worked out on demand for the current filters",
-          "A measure is stored in every row", "Columns only work in charts"], "B",
-         "Use measures for totals and ratios; columns for row-level labels.")
-    m.mc("Which function changes the filter context of a calculation?", ["SUM", "CALCULATE", "RELATED", "DIVIDE"], "B",
-         "CALCULATE(expression, filters...).")
-    m.mc("Which function returns a value from the 'one' side of a relationship into a row of the 'many' side?",
-         ["RELATED", "ALL", "COUNTROWS", "VALUES"], "A", "e.g. RELATED(tProducts[category]) in tTransactions.")
-    m.mc("Why use DIVIDE(a, b) instead of a / b?", ["It is faster to type", "It returns BLANK instead of an error when b is 0",
-                                                    "It rounds the answer", "It only works on dates"], "B",
-         "DIVIDE handles division by zero safely.")
-    m.mc("Which function removes filters from a table or column?", ["ALL", "RELATED", "SUMX", "DIVIDE"], "A",
-         "Used for % of total: DIVIDE([Total Revenue], CALCULATE([Total Revenue], ALL(...))).")
-    m.part("Part B · Work out each measure (check it with a formula)")
-    m.num("Customers := DISTINCTCOUNT(tTransactions[customer_id]). What does it return with no filters?",
+    is_net = tx.order_status.isin(["Delivered", "Completed"])
+    net = float(tx.loc[is_net, "total_price"].sum())
+    n_net = int(is_net.sum())
+    NETF = ('SUMIFS(tTransactions[total_price],tTransactions[order_status],"Delivered")'
+            '+SUMIFS(tTransactions[total_price],tTransactions[order_status],"Completed")')
+    NETC = ('COUNTIFS(tTransactions[order_status],"Delivered")+COUNTIFS(tTransactions[order_status],"Completed")')
+    m.example("PivotTable values and their formula check",
+              ["Insert › PivotTable › From Data Model. Drag total_price into Values (Sum) and again (Count).",
+               "With no filters, each PivotTable value equals the Week 2 formula on the right.",
+               "Filters, slicers and Rows then split the same values by category, zone or year."],
+              [("Sum of total_price", "=SUM(tTransactions[total_price])", "=SUM(tTransactions[total_price])", rev, "naira"),
+               ("Count of total_price", "=ROWS(tTransactions)", "=ROWS(tTransactions)", len(tx), "int")])
+    m.part("Part A · Which tool?")
+    T6 = ["Custom Column", "Conditional Column", "Group By", "Merge Queries"]
+    m.pick("Add line_value = [quantity] * [unit_price] to every row in Power Query.", T6, "Custom Column",
+           "Add Column › Custom Column calculates a new value on every row.")
+    m.pick("Add sale_type = Net when order_status is Delivered or Completed, otherwise Not net.", T6, "Conditional Column",
+           "Conditional Column builds if-then-else rules from a form.")
+    m.pick("Make a fixed table with one row per category and its total sales.", T6, "Group By",
+           "Transform › Group By returns one row per group.")
+    m.mc("Where do you find Distinct Count?", ["Home › Sort", "Value Field Settings, in a PivotTable built on the Data Model",
+                                              "Power Query › Append", "It does not exist in Excel"], "B",
+         "Distinct Count is offered only when the data was added to the Data Model.")
+    m.mc("Show Values As › % of Grand Total shows ...", ["each value as a share of the total", "the total twice",
+                                                          "the average", "the running total"], "A",
+         "Use it for each category's share of net revenue.")
+    m.mc("Average order value is ...", ["the average of the category averages", "total net revenue ÷ number of net lines",
+                                        "the largest order ÷ the smallest", "the count ÷ the sum"], "B",
+         "Divide the two totals in a cell beside the PivotTable; never average averages.")
+    m.yn("In a Data Model PivotTable, can category (tProducts) go on Rows with total_price (tTransactions) in Values, "
+         "if the two tables are related?", "Yes", "The relationship joins them; no VLOOKUP column is needed.")
+    m.part("Part B · Work out each PivotTable value (check it with a formula)")
+    m.num("Distinct Count of customer_id, with no filters?",
           "=COUNTA(UNIQUE(tTransactions[customer_id]))", int(tx.customer_id.nunique()),
           "Excel check: =COUNTA(UNIQUE(tTransactions[customer_id])).", dynamic=True)
-    m.num(f"Net Revenue := CALCULATE([Total Revenue], tTransactions[order_status] IN {NET}). What does it return?",
-          '=SUMIFS(tTransactions[total_price],tTransactions[order_status],"Delivered")'
-          '+SUMIFS(tTransactions[total_price],tTransactions[order_status],"Completed")', net,
-          "Excel check: two SUMIFS added together.", fmt="naira")
-    m.num('Cancelled Lines := CALCULATE(COUNTROWS(tTransactions), tTransactions[order_status] = "Cancelled"). Value?',
+    m.num("Filter the PivotTable to sale_type = Net (Delivered or Completed). What is Sum of total_price?",
+          "=" + NETF, net, "Excel check: two SUMIFS added together.", fmt="naira")
+    m.num("Count of lines whose order_status is Cancelled?",
           '=COUNTIFS(tTransactions[order_status],"Cancelled")', int((tx.order_status == "Cancelled").sum()),
           "Excel check: COUNTIFS.")
-    m.num("Avg Line Value := DIVIDE([Total Revenue], [Order Lines]). What does it return? (nearest naira)",
-          "=ROUND(SUM(tTransactions[total_price])/ROWS(tTransactions),0)", round(rev / len(tx)),
-          "Total revenue ÷ 11,000 lines.", fmt="naira")
+    m.num("Average order value on net lines = net revenue ÷ net lines. Value? (nearest naira)",
+          f"=ROUND(({NETF})/({NETC}),0)", round(net / n_net), "Net revenue ÷ net lines.", fmt="naira")
 
     # ================================================================== 3.6B
     m = m36b
 
     def net_between(a, b_):
-        mask = tx.order_status.isin(["Delivered", "Completed"]) & (tx.order_date >= a) & (tx.order_date <= b_)
+        mask = is_net & (tx.order_date >= a) & (tx.order_date <= b_)
         return float(tx.loc[mask, "total_price"].sum())
 
     def sumifs_period(a, z):
@@ -301,28 +310,29 @@ def build(b):
     n25 = net_between("2025-01-01", "2025-12-31")
     n24 = net_between("2024-01-01", "2024-12-31")
     q1 = net_between("2025-01-01", "2025-03-31")
-    m.part("Part A · Time intelligence ideas")
-    m.mc("What does TOTALYTD([Net Revenue], tDimDate[Date]) show for March 2025?",
-         ["March only", "January to March 2025 added together", "The whole of 2024", "The average month"], "B",
-         "Year-to-date = from 1 January up to the current date in the filter.")
-    m.mc("What does SAMEPERIODLASTYEAR do?", ["Deletes last year", "Shifts the dates in the filter back one year",
-                                               "Adds one year", "Counts the years"], "B",
-         "Used for 'last year' comparisons.")
-    m.mc("A PivotTable hides a seller whose [Net Revenue] is BLANK. What makes it show 0 instead?",
-         ["[Net Revenue] + 0", "DELETE the seller", "SUMX", "A slicer"], "A",
-         "Adding + 0 turns BLANK into 0; use it only where the zero matters.")
-    m.mc("An explicit measure is ...", ["one you write yourself in DAX", "one Excel makes when you drag a field to Values",
-                                         "a column", "a chart"], "A",
-         "Explicit measures are named, reusable and documented; implicit ones are not.")
+    m.part("Part A · Which PivotTable setting?")
+    m.mc("Months are on Rows for 2025. Which Show Values As option gives year to date?",
+         ["Running Total In (Base field: Month)", "% of Grand Total", "Rank Largest to Smallest", "Index"], "A",
+         "Each month is added to the months before it.")
+    m.mc("Year is on Rows. Which setting shows growth on the previous year?",
+         ["% Difference From, Base field Year, Base item (previous)", "% of Column Total", "Running Total In",
+          "Distinct Count"], "A", "No year is typed in, so it keeps working next year.")
+    m.mc("A PivotTable hides sellers with no sales. Which setting lists them?",
+         ["PivotTable Options › Display › Show items with no data on rows", "Delete the filter", "Sort A to Z",
+          "Insert a chart"], "A", "Add 'For empty cells show: 0' to print a zero.")
+    m.mc("Where should ₦#,##0 be set so it survives a refresh?",
+         ["Value Field Settings › Number Format", "Home › Number on the cells", "In Power Query", "In the chart"], "A",
+         "Cell formats are lost when the PivotTable changes shape.")
     m.part("Part B · Work out each value (check it with a formula)")
-    m.num("Net Revenue for calendar year 2025?", sumifs_period("2025,1,1", "2025,12,31"), n25,
+    m.num("PivotTable filtered to sale_type = Net, tDimDate Year on Rows. Value for 2025?",
+          sumifs_period("2025,1,1", "2025,12,31"), n25,
           "Delivered + Completed lines dated in 2025 (Excel check: SUMIFS with a date window).", fmt="naira")
-    m.num("Net Revenue LY := CALCULATE([Net Revenue], SAMEPERIODLASTYEAR(tDimDate[Date])). Value for 2025 (i.e. 2024)?",
-          sumifs_period("2024,1,1", "2024,12,31"), n24, "The same measure, one year earlier.", fmt="naira")
-    m.num("Growth % = DIVIDE([Net Revenue] - [Net Revenue LY], [Net Revenue LY]). Value for 2025? (1 decimal place)",
+    m.num("Same PivotTable. Value for 2024?", sumifs_period("2024,1,1", "2024,12,31"), n24,
+          "The previous year: % Difference From compares 2025 with this.", fmt="naira")
+    m.num("% Difference From (previous) for 2025? (1 decimal place)",
           f"=({n25}-{n24})/{n24}", (n25 - n24) / n24, "(2025 − 2024) ÷ 2024.", fmt="pct")
-    m.num("Net Revenue YTD := TOTALYTD([Net Revenue], tDimDate[Date]). Value at 31 March 2025?",
-          sumifs_period("2025,1,1", "2025,3,31"), q1, "January to March 2025.", fmt="naira")
+    m.num("Months of 2025 on Rows, Running Total In by Month. Value at March 2025?",
+          sumifs_period("2025,1,1", "2025,3,31"), q1, "January to March 2025 added together.", fmt="naira")
 
     # ================================================================== 3.7
     m = m37
@@ -346,7 +356,7 @@ def build(b):
     m.mc("What should you decide FIRST when planning a dashboard?", ["The colours", "The audience, their questions and decisions",
                                                                    "The font", "How many charts fit"], "B",
          "Every visual must answer a question someone has.")
-    m.mc("What is a KPI card?", ["A business card", "A big single number (with comparison) for one key measure",
+    m.mc("What is a KPI card?", ["A business card", "A big single number (with comparison) for one key KPI",
                                  "A PivotTable", "A slicer"], "B", "e.g. Net Revenue ₦386.7m, +23.8% vs last year.")
     m.mc("How do you make one slicer filter several PivotTables?", ["Copy it", "Slicer › Report Connections",
                                                                   "Freeze Panes", "Group the charts"], "B",
@@ -367,8 +377,8 @@ def build(b):
            "The university progression dashboard.")
     m.pick("Bed occupancy, length of stay and readmissions by ward.", ["SuperMart", "Kingsway", "Mercyland"], "Mercyland",
            "The hospital operations dashboard.")
-    m.yn("Do all three blueprints follow the same steps: question, model, measures, visuals, checks?", "Yes",
-         "Only the data and the measures change.")
+    m.yn("Do all three blueprints follow the same steps: question, model, KPIs, visuals, checks?", "Yes",
+         "Only the data and the KPIs change.")
 
     # ================================================================== 3.10
     m = m310

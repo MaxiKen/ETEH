@@ -61,13 +61,13 @@ M_P1 = dict(
           note="Difference 0: Gate 3 passes."),
 
         T("P.1.5", "Stage 4: Modelling",
-          defn="Modelling builds the calculation layer: a star schema (one fact table linked to dimension tables) and explicit "
-               "measures.",
-          simple="Write each measure once, in DAX, and every visual reuses it.",
-          fx=[("DIVIDE ( [Profit], [Revenue] )", P(M25, 2), "Gross margin %"),
-              ("DISTINCTCOUNT ( FactSales[Order_ID] )", I(ORD25), "Orders, not lines"),
-              ("DIVIDE ( [Revenue] - [Revenue LY], [Revenue LY] )", P(G25), "Growth vs last year")],
-          fx_head=["DAX measure", "FY2025", "Meaning"], fx_widths=[3.6, 1.2, 1.6],
+          defn="Modelling builds the calculation layer: a star schema (one fact table linked to dimension tables) and one "
+               "Data Model PivotTable that every visual reads from.",
+          simple="Set each value once in the PivotTable (Value Field Settings, Show Values As); ratios go in one cell beside it.",
+          fx=[("Sum of Profit ÷ Sum of Sales", P(M25, 2), "Gross margin %"),
+              ("Distinct Count of Order_ID", I(ORD25), "Orders, not lines"),
+              ("% Difference From (previous year)", P(G25), "Growth vs last year")],
+          fx_head=["PivotTable value", "FY2025", "Meaning"], fx_widths=[3.6, 1.2, 1.6],
           watch="Margin is total profit ÷ total sales. An average of line margins gives a different, wrong answer."),
 
         T("P.1.6", "Stage 5: Visualisation and Dashboard",
@@ -93,12 +93,12 @@ M_P1 = dict(
 
         T("P.1.8", "Stage 7: Handover and Documentation",
           defn="Handover means someone else can run and maintain the work without you.",
-          simple="Hand over the workbook with a 00_README sheet, the cleaning log, measure definitions and refresh steps.",
+          simple="Hand over the workbook with a 00_README sheet, the cleaning log, KPI definitions and refresh steps.",
           grid=dict(label="00_README for Capstone 1", widths=[1.4, 4.4], size=12, rows=[
               ["Section", "Content"],
               ["Purpose", "Explain the FY2025 margin decline; support the Q1 2026 pricing decision"],
               ["Refresh", "New CSV in 01_RAW › Refresh All › reconciliation cells = 0"],
-              ["Measures", "Each DAX measure with a plain-English meaning"],
+              ["KPIs", "Each KPI, where it comes from, and a plain-English meaning"],
               ["Limitations", "Calendar-year view; targets not adjusted for store size"]])),
 
         T("P.1.9", "Quality Gates at Each Stage",
@@ -112,7 +112,7 @@ M_P1 = dict(
               ["4 Model", "Relationships many-to-one; date table marked", "Model diagram"],
               ["5 Visuals", "Every visual answers a brief question", "Visual map"],
               ["6 Verify", f"Dashboard total = {N(S25)}", "Reconciliation cell"],
-              ["7 Handover", "README, log, measures, refresh steps", "00_README"]])),
+              ["7 Handover", "README, log, KPI definitions, refresh steps", "00_README"]])),
 
         T("P.1.10", "Time-Boxing the Project",
           defn="Time-boxing gives each stage a fixed share of the available hours, so no stage silently eats the others.",

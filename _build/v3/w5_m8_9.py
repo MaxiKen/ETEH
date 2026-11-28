@@ -35,7 +35,7 @@ M_P8 = dict(
               ["Heading", "Content"],
               ["Question", f"Why did margin fall from {P(M24)} to {P(M25)} while sales grew {P(G25, 0)}?"],
               ["Data", f"{I(LINES)} POS lines (2022-2025), {NSTORES} stores, {I(SKUS)} SKUs; returns cleaned and reconciled"],
-              ["Method", "Power Query cleaning, star schema, DAX, rate/mix decomposition"],
+              ["Method", "Power Query cleaning, star schema, PivotTables, rate/mix decomposition"],
               ["Finding", f"Q4 2025 margin fell to {P(Q4M25)} as discount depth rose to {P(QD[(2025, 'Q4')])}"],
               ["Recommendation", "Cap Furniture discounts at 20%; review loss-making SKUs"],
               ["Outcome", "Board adopted the cap for Q1 2026 (training scenario)"]])),
@@ -72,7 +72,7 @@ M_P8 = dict(
           defn="List only tools you can demonstrate, describe the level honestly, and say how you used AI and how you checked "
                "its output.",
           grid=dict(label="Describe honestly as", widths=[1.2, 4.7], size=12.5, rows=[
-              ["Tool", "Level you can demonstrate"], ["Excel", "Power Query, Data Model, DAX, PivotTables, what-if, Solver"],
+              ["Tool", "Level you can demonstrate"], ["Excel", "Power Query (M for cleaning), Data Model, PivotTables, what-if, Solver"],
               ["SQL", "Simple SELECT, WHERE, GROUP BY and two-table JOIN queries (SQLite)"],
               ["Statistics", "Descriptive statistics, correlation, simple regression, FORECAST.ETS"],
               ["AI", "Co-pilot drafting, every output verified against control totals"]]),
@@ -82,7 +82,7 @@ M_P8 = dict(
           defn="LinkedIn is a route to your portfolio: a clear headline, a short About section naming your three projects, and "
                "an occasional post sharing one insight.",
           grid=dict(label="Profile elements", widths=[1.2, 4.7], size=12.5, rows=[
-              ["Element", "Example"], ["Headline", "Data Analyst | Excel, Power Query, DAX, SQL | Retail, Health, Education"],
+              ["Element", "Example"], ["Headline", "Data Analyst | Excel, Power Query, SQL | Retail, Health, Education"],
               ["About", "Three projects: retail margin, student progression, hospital capacity"],
               ["Post", f"'Why {LONG}+ day stays fill {P(BD_LONG, 0)} of hospital bed-days' (anonymised training data)"]])),
 
@@ -169,11 +169,11 @@ M_P9 = dict(
           watch="Keep the Result about the outcome and what changed, not about you being clever."),
 
         T("P.9.6", "The Roadmap to Power BI",
-          defn="Power BI is the natural next step: the Data Model, DAX and star-schema skills transfer directly; the new parts "
-               "are the visual layer and publishing.",
+          defn="Power BI is the natural next step: Power Query, the Data Model and star-schema skills transfer directly; the "
+               "new parts are its formula language (DAX), the visual layer and publishing.",
           grid=dict(label="What transfers and what is new", widths=[1.6, 4.3], size=12.5, rows=[
-              ["Item", "Detail"], ["Transfers", "Star schema, DAX measures, chart choices, slicers"],
-              ["New", "Report pages, visual interactions, publishing, row-level security"],
+              ["Item", "Detail"], ["Transfers", "Power Query, star schema, chart choices, slicers"],
+              ["New", "DAX measures, report pages, visual interactions, publishing"],
               ["First project", "Rebuild Capstone 1 in Power BI Desktop (2-4 weeks)"]])),
 
         T("P.9.7", "The Roadmap to SQL and Databases",

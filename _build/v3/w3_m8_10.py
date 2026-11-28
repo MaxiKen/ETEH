@@ -1,5 +1,5 @@
 """Week 3 edition-3 slide copy: Modules 3.8 (dashboard development), 3.9 (three blueprints) and 3.10 (file extracts into
-SQL, DAX and dashboards). Dashboard figures: SuperMart Stores FY2025 (tDash, tDashStores). 3.10 loads
+Power Query, PivotTables and dashboards). Dashboard figures: SuperMart Stores FY2025 (tDash, tDashStores). 3.10 loads
 the Mercyland_Episodes_2023_DIRTY.csv source extract into an in-memory SQLite staging table and runs the SQL shown."""
 import sqlite3
 
@@ -58,7 +58,7 @@ M38 = dict(
 
         T("3.8.3", "Planning: Audience, Questions and Decisions",
           defn="Dashboard planning records who will use it, the questions they must answer and the decision each answer drives.",
-          simple="List the measures needed, then build nothing that does not serve a decision.",
+          simple="List the KPIs needed, then build nothing that does not serve a decision.",
           grid=dict(label="Plan for the regional managers", widths=[1.8, 1.6, 1.6], rows=[
               ["Question", "Decision", "Visual"],
               ["Is my zone on target?", "Act on stores behind", "Attainment card"],
@@ -99,7 +99,7 @@ M38 = dict(
           watch="Five font sizes and three fonts make every element shout equally."),
 
         T("3.8.7", "KPI Cards",
-          defn="A KPI card is a tile showing a measure's name, current value, a comparison (target or last year) and a status.",
+          defn="A KPI card is a tile showing a KPI's name, current value, a comparison (target or last year) and a status.",
           simple="Feed it from a formula or GETPIVOTDATA so it updates with the slicers.",
           grid=dict(label="Cards for two selections", widths=[1.8, 1.5, 1.5], rows=[
               ["KPI card", "All zones", "South-East"],
@@ -337,12 +337,12 @@ SRC = pd.read_csv(CORE / "Mercyland_Inpatient_Episodes_2019_2024.csv", usecols=[
 SQLREC = q("SELECT COUNT(*) AS n, ROUND(SUM(bill_amount_ngn), 2) AS b FROM admissions", "lc").iloc[0]
 
 M310 = dict(
-    id="3.10", title="File Extracts into SQL, DAX and Dashboards",
-    subtitle="The whole week on one extract: profile it, load it into DB Browser, check it with simple SQL, measure it in DAX, reconcile it.",
+    id="3.10", title="File Extracts into Power Query, PivotTables and Dashboards",
+    subtitle="The whole week on one extract: profile it, load it into DB Browser, check it with simple SQL, clean it in Power Query, summarise it in a PivotTable, reconcile it.",
     objectives=["Profile a file extract before loading it.",
                 "Import it unchanged into DB Browser and check the row count.",
                 "Run simple one-line checks in SQL, then clean in Power Query.",
-                "Define explicit DAX measures and test them under filters.",
+                "Build hospital KPIs in a PivotTable and test them under filters.",
                 "Reconcile file, SQL and dashboard before publishing."],
     topics=[
         T("3.10.1", "Beginner: profile the extract before loading",
@@ -383,26 +383,22 @@ M310 = dict(
           split=0.45,
           watch="Run the checks again after cleaning: every count except the flags should be zero (wards: 4)."),
 
-        T("3.10.4", "Intermediate: DAX measures and filter context",
-          defn="Explicit measures on the hospital model turn the cleaned admissions into KPIs that respond correctly to filters.",
-          simple="Admissions = COUNTROWS; ALOS = AVERAGE of length of stay; Readmission % = DIVIDE of two counts.",
-          **CODE("""
-Admissions := COUNTROWS ( Admissions )
-ALOS := AVERAGE ( Admissions[los_days] )
-Readmission % :=
-DIVIDE (
-    CALCULATE ( [Admissions],
-        Admissions[readmitted_30d] = "Yes" ),
-    [Admissions] )""", label="DAX MEASURES", size=11.5),
+        T("3.10.4", "Intermediate: hospital KPIs with a PivotTable",
+          defn="A PivotTable on the cleaned admissions turns them into KPIs that respond correctly to filters and slicers.",
+          simple="Admissions = Count of episode_id; ALOS = Average of los_days; readmission rate = the Yes column shown as % of Row Total.",
+          steps=["Close & Load To › PivotTable Report (add to the Data Model)",
+                 "Values: episode_id (Count) and los_days (Average)",
+                 "Columns: readmitted_30d; Show Values As › % of Row Total",
+                 "Filters: admission_route = Emergency, then department = Surgery"],
           grid=dict(label="2019–2024 results", widths=[2.2, 1.2], rows=[
-              ["Measure / filter", "Result"],
-              ["[Admissions]", I(len(LC))],
-              ["[ALOS]", f"{LC.LOS_Days.mean():.1f} days"],
-              ["[Readmission %]", P((LC.Readmitted_30d == 'Yes').mean())],
-              ["… Admission type = Emergency", P(EMERG)],
-              ["… Department = Surgery", P(ONC)]]),
-          split=0.52,
-          watch="The filtered results only make sense if the department and type columns were cleaned in 3.10.1."),
+              ["Value / filter", "Result"],
+              ["Admissions (Count of episode_id)", I(len(LC))],
+              ["ALOS (Average of los_days)", f"{LC.LOS_Days.mean():.1f} days"],
+              ["Readmitted Yes, % of Row Total", P((LC.Readmitted_30d == 'Yes').mean())],
+              ["… admission_route = Emergency", P(EMERG)],
+              ["… department = Surgery", P(ONC)]]),
+          order=["steps", "grid"], split=0.5,
+          watch="The filtered results only make sense if the department and route columns were cleaned in Power Query first."),
 
         T("3.10.5", "Advanced practical: reconcile a governed dashboard",
           defn="Reconciliation confirms that the source file, the database query and the dashboard report the same totals "
@@ -415,14 +411,14 @@ DIVIDE (
                "PASS" if abs(SRC.Bill_Amount_NGN.sum() - SQLREC.b) < 0.5 else "FAIL"]]),
           points=["Source: the EMR extract Mercyland_Inpatient_Episodes_2019_2024.csv",
                   "SQL: COUNT(*) and SUM(bill_amount_ngn) on mercyland_hospital.db",
-                  "Dashboard: the Admissions card and a billing measure, no slicers"],
+                  "Dashboard: the Admissions card and Sum of bill_amount_ngn, no slicers"],
           points_label="WHERE EACH NUMBER COMES FROM", stack=True,
           watch="A difference of one row is still a FAIL: find it before anyone sees the dashboard."),
     ],
     takeaways=["Profile first: blanks, distinct values, odd formats.",
                "Import as received; the row count must match the file.",
                "One-line SQL checks; the cleaning happens in Power Query.",
-               "Explicit DAX measures, tested under filters.",
+               "KPIs from a PivotTable, tested under filters.",
                "File = SQL = dashboard before publishing."],
 )
 

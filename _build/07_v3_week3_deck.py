@@ -30,15 +30,15 @@ for p in PARTS:
         print(f"(skipping {p}: not written yet)")
 
 SHEETS = {"3.1": "3.1 Database Basics", "3.2": "3.2 SQL with SQLite", "3.3": "3.3 ODBC Connections",
-          "3.4": "3.4 Merge & Append", "3.5": "3.5 Data Model & Star", "3.6A": "3.6A DAX Foundations",
-          "3.6B": "3.6B DAX Time & KPIs", "3.7": "3.7 Chart Types", "3.8": "3.8 Dashboard Build",
-          "3.9": "3.9 Blueprints", "3.10": "3.10 Files to SQL & DAX"}
+          "3.4": "3.4 Merge & Append", "3.5": "3.5 Data Model & Star", "3.6A": "3.6A Data Model Pivots",
+          "3.6B": "3.6B KPIs & Time", "3.7": "3.7 Chart Types", "3.8": "3.8 Dashboard Build",
+          "3.9": "3.9 Blueprints", "3.10": "3.10 Files to Dashboards"}
 
 CFG = v3deck.Config(
     week=3,
-    week_title="Week 3: SQL, Data Modelling, DAX & Dashboard Development",
-    title_sub="Query databases, model data in a star, write DAX measures and build dashboards that reconcile",
-    out=v3deck.ROOT / "ETEH_Bootcamp_Pack" / "ETEH_Vol3_Week3_SQL_DAX_Dashboards_Slides.pptx",
+    week_title="Week 3: Databases, Power Query, Data Modelling & Dashboards",
+    title_sub="Explore databases, combine tables in Power Query, model them in a star, analyse with PivotTables and build dashboards that reconcile",
+    out=v3deck.ROOT / "ETEH_Bootcamp_Pack" / "ETEH_Vol3_Week3_Databases_PowerQuery_Dashboards_Slides.pptx",
     workbook="ETEH_Week3_Section_Examples.xlsx",
     modules=MODULES,
     sheets=SHEETS,
@@ -46,15 +46,33 @@ CFG = v3deck.Config(
     summary=SUMMARY,
     glossary=GLOSSARY,
     roadmap_label="TEN MODULES THIS WEEK (MODULE 3.6 IN TWO PARTS)",
-    roadmap_notes="Walk through the modules. 3.1-3.2 show how a database is built and let students try simple queries in DB Browser; 3.3 brings the data into Excel; 3.4-3.5 combine tables and "
-                  "model them as a star; 3.6 is DAX; 3.7-3.9 are charts and dashboards; 3.10 puts it all together.",
-    title_notes="Welcome students. Weeks 1 and 2 worked on files; this week the data lives in databases. We query it with "
-                "SQL, model it in a star schema, measure it with DAX and present it on dashboards that reconcile.",
+    roadmap_notes="Walk through the modules. 3.1-3.2 show how a database is built and let students try simple queries in DB Browser; 3.3 brings the data into Excel; 3.4-3.5 combine tables in Power Query and "
+                  "model them as a star; 3.6 analyses the model with PivotTables (no DAX); 3.7-3.9 are charts and dashboards; 3.10 puts it all together.",
+    title_notes="Welcome students. Weeks 1 and 2 worked on files; this week the data lives in databases. We look at it "
+                "with a little SQL, combine it in Power Query, model it in a star schema, analyse it with PivotTables and present "
+                "it on dashboards that reconcile.",
     assignment="ETEH_Week3_Assignment.xlsx",
     volume="Volume 3 of 5",
     modules_text="10 modules (Module 3.6 in two parts)",
     example_table="tTransactions",
 )
 
+def write_sql_examples():
+    """ETEH_Week3_SQL_Examples.sql = exactly the SQL panels on the slides (copied to Ex3.2_Files by the Week 3 workbook)."""
+    out = ["-- ETEH Week 3 - SQL examples (SQLite), edition 3.3: every query shown on the Week 3 slides.",
+           "-- Run each against the database named above it (both databases are in this Ex3.2_Files folder) in DB Browser for "
+           "SQLite (Execute SQL tab).",
+           "-- The result printed on the slide is what the query returns on these files.", ""]
+    for m in MODULES:
+        for t in m["topics"] + [x for t in m["topics"] for x in t.get("more", [])]:
+            if t.get("code") and str(t.get("code_label", "")).startswith("SQL"):
+                db = w3_data.DBNAME.get(t.get("code_db"), "the staging table stg_admissions_2023 (load it as in 3.10.2)")
+                out += [f"-- {t.get('tag', m['id'])} {t['title']}", f"-- database: {db}", t["code"].rstrip().rstrip(";") + ";", ""]
+    path = w3_data.W3D / "ETEH_Week3_SQL_Examples.sql"
+    path.write_text("\n".join(out), encoding="utf-8")
+    print(f"{sum(1 for x in out if x.startswith('-- database'))} SQL panels -> {path.name}")
+
+
 if __name__ == "__main__":
     v3deck.build(CFG)
+    write_sql_examples()

@@ -62,7 +62,7 @@ M_P6 = dict(
                  "Check row counts and every reconciliation cell"],
           steps_label="REFRESH TEST",
           grid=dict(label="Failure signals", widths=[1.8, 2.6], size=12, rows=[
-              ["Symptom", "Likely cause"], ["Same number every month", "A pasted value, not a measure"],
+              ["Symptom", "Likely cause"], ["Same number every month", "A pasted value, not a PivotTable or formula"],
               ["Row count unchanged", "Query points at the old file"], ["#REF! after refresh", "A column renamed in the source"]]),
           order=["steps", "grid"], split=0.48),
 
@@ -79,7 +79,7 @@ M_P6 = dict(
           defn="Performance testing times the refresh, checks file size and visual response, against targets set before testing.",
           grid=dict(label="Targets for a monthly workbook", widths=[1.4, 1.3, 3.0], size=12, rows=[
               ["Metric", "Target", "Remedy if missed"], ["Refresh", "Under 60 s", "Group by month and store in Power Query"],
-              ["File size", "Under 30 MB", "Load to the Data Model only"], ["Slicer response", "Under 2 s", "Measures, not calculated columns"],
+              ["File size", "Under 30 MB", "Load to the Data Model only"], ["Slicer response", "Under 2 s", "Remove unused columns in Power Query"],
               ["Formulas", "No volatile functions", "Replace OFFSET/INDIRECT with INDEX"]])),
 
         T("P.6.8", "Release Sign-Off",
@@ -153,7 +153,7 @@ M_P7 = dict(
           defn="Translate every technical choice into a business consequence.",
           grid=dict(label="Technical › business", widths=[2.4, 3.5], size=12.5, rows=[
               ["Technical statement", "Business translation"],
-              ["Star schema with DAX measures", "New months drop in and every number updates itself"],
+              ["Star schema with a Data Model PivotTable", "New months drop in and every number updates itself"],
               ["Rate/mix decomposition", "The fall came from deeper discounts, not from selling different things"],
               ["Reconciliation to control totals", "Finance's numbers and ours are the same, to the naira"],
               ["Sales-weighted discount depth", "Big orders count more than small ones, as they do in the P&L"]])),

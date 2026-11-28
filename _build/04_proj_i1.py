@@ -121,7 +121,7 @@ def build():
             ["1 Frame", "Restate the question, agree KPIs and definitions (margin = profit ÷ sales)", "20 min", "1 Brief & Plan"],
             ["2 Acquire", "Load the dirty store returns + ledger with Power Query", "30 min", "2 Clean & Reconcile"],
             ["3 Clean", "Fix the 16 defect types; prove control totals", "60 min", "2 Clean & Reconcile"],
-            ["4 Model", "Ledger table, store dimension, measures", "45 min", "3 Dashboard"],
+            ["4 Model", "Ledger table, store dimension, one Data Model PivotTable", "45 min", "3 Dashboard"],
             ["5 Analyse", "Discount bands, rate/mix, quarters, SKUs", "75 min", "4, 6"],
             ["6 Recommend", "Discount-cap what-if with sensitivity", "45 min", "5 What-If"],
             ["7 Communicate", "Dashboard, memo, 10-question defence", "45 min", "3, 7"]], merge_last=True)
@@ -318,7 +318,7 @@ def build():
           ("How confident is the ₦ gain?", "It is a range under explicit volume-loss assumptions; the pilot will measure the real elasticity."),
           ("Did Q4 seasonality cause it?", f"Q4 2024 margin was {qm[(2024, 'Q4')]:.1%} vs {qm[(2025, 'Q4')]:.1%} in 2025 - same season, deeper discount."),
           ("What about the unsold SKUs?", f"{n_unsold25} SKUs had no FY2025 sale; {n_dropped} sold in FY2024 - clearance and delisting candidates."),
-          ("Can stores game the cap?", "Monitor with the Discount_Band measure weekly per store; exceptions need approval."),
+          ("Can stores game the cap?", "Monitor the Discount_Band PivotTable weekly per store; exceptions need approval."),
           ("Why only Furniture?", f"Furniture is where the margin collapsed ({mix[0][3]:.1%} → {mix[0][4]:.1%}). A chain-wide cap would add ₦{all_lo / 1e6:,.1f}m-₦{all_hi / 1e6:,.1f}m "
                                   f"but touches {n_deep_all} lines in every category - extend it only after the Furniture pilot."),
           ("What would change your recommendation?", "If the pilot shows volume loss above about 50% on re-priced lines, revisit the cap level.")]
@@ -343,7 +343,7 @@ def build():
 def brief():
     lo, hi = whatif(0.20, 0.50)[1] - P25, whatif(0.20, 0.0)[1] - P25
     brief_pdf(PDF, "Instructor Capstone 1 - SuperMart Retail: growth with a shrinking margin",
-              "Full-lifecycle demonstration project · Power Query cleaning · reconciliation · DAX-style measures · what-if · board memo", "Instructor Capstone 1", [
+              "Full-lifecycle demonstration project · Power Query cleaning · reconciliation · PivotTable KPIs · what-if · board memo", "Instructor Capstone 1", [
                   ("h", "1. Purpose"),
                   ("p", "A complete worked project you run live in the capstone week (Vol 5, P.1-P.3 and P.6-P.7). It models the seven-stage lifecycle end to end on data the students "
                         "already know, so they can copy the method for their own capstone."),
@@ -363,7 +363,7 @@ def brief():
                          ["(comparison) 20% cap on all categories", f"+₦{all_lo / 1e6:,.1f}m to +₦{all_hi / 1e6:,.1f}m profit"]], [80, 100]),
                   ("h", "5. Session plan"),
                   ("b", ["Frame (20 min) - success criteria; margin = Σprofit ÷ Σsales.", "Acquire + clean (90 min) - Power Query on the dirty file; prove the six control totals.",
-                         "Model (45 min) - tables, relationships, measures.", "Analyse (75 min) - discount bands, rate/mix, quarters, SKUs.",
+                         "Model (45 min) - tables, relationships, PivotTable values.", "Analyse (75 min) - discount bands, rate/mix, quarters, SKUs.",
                          "Recommend (45 min) - Furniture discount-cap what-if and sensitivity grid.", "Communicate (45 min) - dashboard, memo, defence."]),
                   ("h", "6. Common student mistakes"),
                   ("b", ["Averaging line margins instead of Σprofit ÷ Σsales.", "Removing duplicates before standardising text (misses the near-duplicates).",

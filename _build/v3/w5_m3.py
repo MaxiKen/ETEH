@@ -29,7 +29,7 @@ M_P3 = dict(
     subtitle="A complete retail build on the store ledger: brief, data, cleaning, model, baskets, margin erosion, slow "
              "movers, dashboard, memo and verification.",
     objectives=["Turn the board's question into success criteria.", "Inventory the sources by grain and clean the returns.",
-                "Model the measures and analyse baskets.", "Explain the margin fall with discount bands and rate/mix.",
+                "Model the data and analyse baskets.", "Explain the margin fall with discount bands and rate/mix.",
                 "Build the dashboard, write the memo and verify the numbers."],
     topics=[
         T("P.3.1", "Capstone 1 Brief and Success Criteria",
@@ -52,7 +52,7 @@ M_P3 = dict(
               ["Products (from ledger)", "One SKU", f"{I(SKUS)} SKUs; 3 categories; {SUBCATS} sub-categories"],
               ["Store directory", "One store", f"{NSTORES} stores; {NZONES} zones; FY2025 targets"],
               ["Store returns (dirty)", "One sales line", f"{I(len(DIRTY))} rows › {I(CLEAN)} after cleaning"]]),
-          watch=f"FY2025 has {I(CLEAN)} lines but only {I(ORD25)} orders: count orders with DISTINCTCOUNT(Order_ID)."),
+          watch=f"FY2025 has {I(CLEAN)} lines but only {I(ORD25)} orders: count orders with Distinct Count of Order_ID."),
 
         T("P.3.3", "Cleaning the POS Extract",
           defn=f"The dirty store returns carry {len(DLOG)} kinds of defect. Fix each with a named step and log the row count.",
@@ -67,12 +67,14 @@ M_P3 = dict(
                 f"({I(CTRL['Distinct orders'])}) and customers ({I(CUST25)}) match the controls."),
 
         T("P.3.4", "Modelling Retail Sales",
-          defn="The model links sales lines to the store table on Store_ID and uses explicit DAX measures.",
-          fx=[("SUM ( FactSales[Profit] )", N(P25), "Profit"),
-              ("DIVIDE ( [Profit], [Revenue] )", P(M25, 2), "Margin %"),
-              ("DIVIDE ( SUMX ( FactSales, FactSales[Discount] * FactSales[Sales] ), [Revenue] )", P(DEPTH25), "Discount depth"),
-              ("DIVIDE ( [Revenue], SUM ( DimStore[Annual_Target_2025] ) )", P(S25 / TARGET), "Target attainment")],
-          fx_head=["DAX measure", "FY2025", "Meaning"], fx_widths=[4.4, 1.2, 1.4], stack=True,
+          defn="The model links sales lines to the store table on Store_ID; one Data Model PivotTable gives the totals and "
+               "each ratio is one total ÷ another.",
+          fx=[("Sum of Profit", N(P25), "Profit"),
+              ("Sum of Profit ÷ Sum of Sales", P(M25, 2), "Margin %"),
+              ("Sum of Discount_Value ÷ Sum of Sales (Discount_Value = Custom Column [Discount] * [Sales])", P(DEPTH25),
+               "Discount depth"),
+              ("Sum of Sales ÷ Sum of Annual_Target_2025", P(S25 / TARGET), "Target attainment")],
+          fx_head=["PivotTable value", "FY2025", "Meaning"], fx_widths=[4.4, 1.2, 1.4], stack=True,
           watch="Discount depth is sales-weighted. A plain AVERAGE(Discount) treats a ₦500 line like a ₦5m line."),
 
         T("P.3.5", "Basket Analysis",

@@ -1,40 +1,48 @@
-"""Week 3 edition-3 slide copy: Module 3.6A (Power Pivot and DAX: foundations and context).
-DAX results are computed in pandas as exact twins of each measure on the SuperMart Online tables (w3_fx)."""
+"""Week 3 edition-3.3 slide copy: Module 3.6A (Power Pivot and Data Model PivotTables, no DAX).
+The course analyses in Excel with PivotTables and Power Query (M) only: helper columns and flags are made with Add Column in
+Power Query, totals, counts, distinct counts and shares with PivotTable Value Field Settings, and ratios in a cell beside the
+PivotTable. Every result is computed in pandas on the SuperMart Online tables (w3_fx), exactly as the PivotTable shows it."""
 from v3kit import T
-from w3_fx import (AOV, CAT, CAT_N, CODE, COMM, CU, DV, GROSS, I, LN, N, N_LINES, N_NET, NETREV, NO_DELIV, NT, P, PR, SE,
-                   TX, BUYERS, NET_BUYERS)
+from w3_fx import (AOV, BUYERS, CAT, CAT_N, CU, DV, GROSS, I, LN, N, N_LINES, N_NET, NETREV, NT, P, PR, SE, TX)
 import w3_data as D
 
 DD = D.dimdate()
 BIG = TX.loc[TX.total_price.idxmax()]
-NET_BIG = NT[NT.total_price > 500000]
+GCAT = LN.groupby("category").total_price.sum().sort_values(ascending=False)          # all lines, by category
+ELEC_Z = LN[LN.category == "Electronics"].groupby("customer_zone").total_price.sum().sort_values(ascending=False)
 SHARE = CAT / NETREV
-SW = NT[NT.customer_zone == "South-West"].groupby("membership_tier").total_price.sum().sort_values(ascending=False)
-KCAT = LN.groupby("seller_id").category.nunique().value_counts().sort_index()
-REL = LN.groupby("category").size().sort_values(ascending=False)
-OC = TX.customer_id.value_counts()
-AOV_CAT = NT.groupby("category").total_price.mean().sort_values(ascending=False)
-NO_SALE = sorted(set(SE.seller_id) - set(TX.seller_id))
 HEADS = LN.groupby("category").customer_id.nunique().sum()
+AOV_CAT = NT.groupby("category").total_price.mean()
+EX36 = "Week_3 › Ex3.4_Files"
 
 
 def band(x):
     return "Large" if x >= 200000 else "Medium" if x >= 50000 else "Small"
 
 
+BAND = NT.assign(b=NT.total_price.map(band)).groupby("b").total_price.agg(["size", "sum"]).reindex(["Large", "Medium", "Small"])
+
+
+def M(text, size=12, note=""):
+    return dict(code=text.strip("\n"), code_label="M  ·  WHAT POWER QUERY WRITES IN THE FORMULA BAR", code_size=size,
+                code_note=note)
+
+
 M36A = dict(
-    id="3.6A", title="Power Pivot and DAX: Foundations and Context",
-    subtitle="Measures and calculated columns, row and filter context, CALCULATE, ALL, RELATED, SUMX and safe division.",
+    id="3.6A", title="Power Pivot and Data Model PivotTables",
+    subtitle="Put the related tables in the Data Model, add helper columns in Power Query, and answer questions with "
+             "PivotTables: sums, counts, distinct counts, shares and simple ratios. No new formula language.",
     objectives=["Explain Power Pivot and load tables into the Data Model.",
-                "Tell a calculated column from a measure, and write DAX syntax.",
-                "Explain row context and filter context.",
-                "Change filters with CALCULATE and remove them with ALL.",
-                "Use RELATED, SUMX, COUNTROWS, DISTINCTCOUNT, DIVIDE, IF and SWITCH."],
+                "Build a PivotTable from the Data Model using fields from several related tables.",
+                "Add helper columns and flags with Power Query's Custom Column and Conditional Column.",
+                "Summarise with Sum, Count, Average and Distinct Count, and show values as % of the total.",
+                "Work out ratios such as average order value in a cell beside the PivotTable."],
     topics=[
         T("3.6.1", "What Is Power Pivot?",
-          defn="Power Pivot is Excel's data modelling engine: it holds related tables in compressed memory and evaluates "
-               "DAX formulas over them.",
-          simple="It goes far beyond the sheet's 1,048,576-row limit and adds DAX measures that work across tables.",
+          defn="Power Pivot is Excel's data modelling engine: it holds related tables in compressed memory so that one "
+               "PivotTable can use fields from all of them.",
+          simple="It goes far beyond the sheet's 1,048,576-row limit. In this course you use it through Power Query and "
+                 "PivotTables, so there is no new formula language to learn.",
           like="Like moving from a filing tray on your desk to a records room with an index.",
           grid=dict(label="Our model", widths=[2.2, 1.2, 1.6], rows=[
               ["Table", "Rows", "Role"],
@@ -42,11 +50,10 @@ M36A = dict(
               ["tDeliveries", I(len(DV)), "Fact details"],
               ["tCustomers / tProducts / tSellers", f"{I(len(CU))} / {I(len(PR))} / {I(len(SE))}", "Dimensions"],
               ["tDimDate", I(len(DD)), "Calendar"]]),
-          watch="Power Pivot does not change the source data: it reads it on refresh."),
+          watch="Power Pivot does not change the source data: it reads it again on every refresh."),
 
         T("3.6.2", "Enabling the Power Pivot Add-in",
-          defn="The Power Pivot add-in adds the Power Pivot ribbon tab, with Manage, Diagram View, calculated columns and "
-               "Mark as Date Table.",
+          defn="The Power Pivot add-in adds the Power Pivot ribbon tab, with Manage, Diagram View and Mark as Date Table.",
           simple="The Data Model is always present; only the tab is hidden by default.",
           steps=["File › Options › Add-ins", "Manage: COM Add-ins › Go", "Tick Microsoft Power Pivot for Excel › OK",
                  "The Power Pivot tab appears on the ribbon"],
@@ -54,7 +61,7 @@ M36A = dict(
               ["Task", "Tab needed?"],
               ["Add tables via Power Query or PivotTable", "No"],
               ["Diagram View, drawing relationships", "Yes"],
-              ["Calculated columns, Mark as Date Table", "Yes"]]),
+              ["Mark as Date Table", "Yes"]]),
           order=["steps", "grid"], split=0.45,
           watch="Some Microsoft 365 plans and Excel for Mac lack Power Pivot; check before the class depends on it."),
 
@@ -69,191 +76,165 @@ M36A = dict(
               ["PivotTable › Add to Data Model", "No steps", "Quick tests"]]),
           watch="Loading the same table twice (once to a sheet, once to the model) doubles memory and confuses users."),
 
-        T("3.6.4", "Calculated Columns versus Measures",
-          defn="A calculated column is evaluated row by row and stored in the table; a measure is evaluated on demand for the "
-               "current filter context and stores nothing.",
-          simple="Use columns to slice or filter; use measures for totals and ratios.",
-          like="A column is a printed label on every item; a measure is the calculator you use at the till.",
-          grid=dict(label="Example on tTransactions", widths=[1.4, 2, 2], rows=[
-              ["Aspect", "Calculated column", "Measure"],
-              ["Example", "Is Net (Yes/No)", "[Net Revenue]"],
-              ["Stored", f"{I(N_LINES)} values", "Nothing; calculated live"],
-              ["Use in PivotTable", "Rows or slicer", "Values"],
-              ["Result", f"{I(N_NET)} Yes, {I(N_LINES - N_NET)} No", N(NETREV)]]),
-          watch="A calculated column for a total stores the same number on every row and ignores slicers; write a measure."),
+        T("3.6.4", "A PivotTable from the Data Model",
+          defn="Insert › PivotTable › From Data Model builds a PivotTable whose field list shows every table in the model.",
+          simple="Drag a field from one table to Rows and a number from another table to Values; the relationship joins them.",
+          steps=["Insert › PivotTable › From Data Model › New Worksheet",
+                 "In the field list click All to see every table",
+                 "tProducts › category to Rows",
+                 "tTransactions › total_price to Values"],
+          grid=dict(label="Sum of total_price by category (all lines)", widths=[1.6, 1.8], rows=[
+              ["category", "Sum of total_price"]] + [[c, N(x)] for c, x in list(GCAT.items())[:3]] + [
+              ["Grand Total", N(GROSS)]]),
+          order=["steps", "grid"], split=0.5,
+          watch="If every row shows the same total, the two tables are not related: build the relationship first (3.5)."),
 
-        T("3.6.5", "DAX Syntax Basics",
-          defn="DAX (Data Analysis Expressions) is a functional formula language whose formulas refer to tables, columns "
-               "and measures rather than cells.",
-          simple="Columns are written Table[column]; measures are named with := and called in brackets, [Measure].",
-          **CODE("""
-Gross Bookings :=
-    SUM ( tTransactions[total_price] )
+        T("3.6.5", "Fields from Several Related Tables",
+          defn="A Data Model PivotTable can put fields from different tables in Rows, Columns, Filters and Values, as long as "
+               "each table is related to the fact table.",
+          simple="Here zone comes from tCustomers, category from tProducts and total_price from tTransactions: no VLOOKUP "
+                 "columns were added.",
+          grid=dict(label="Filter category = Electronics; Rows: tCustomers zone", widths=[1.6, 1.8], rows=[
+              ["zone", "Sum of total_price"]] + [[z, N(x)] for z, x in list(ELEC_Z.items())[:4]] + [
+              ["Grand Total", N(GCAT["Electronics"])]]),
+          steps=["Filters: tProducts › category = Electronics",
+                 "Rows: tCustomers › zone",
+                 "Values: tTransactions › total_price",
+                 "Sort largest to smallest"],
+          order=["steps", "grid"], split=0.45,
+          watch="A yellow 'Relationships between tables may be needed' bar means a table you used is not related yet."),
 
-Orders :=
-    COUNTROWS ( tTransactions )""", label="DAX MEASURES"),
-          grid=dict(label="Result in a PivotTable with no filters", widths=[1.4, 1.4], rows=[
-              ["Measure", "Value"], ["[Gross Bookings]", N(GROSS)], ["[Orders]", I(N_LINES)]]),
-          split=0.52,
-          watch="Always qualify columns with their table, tTransactions[total_price], so readers know where they come from."),
+        T("3.6.6", "Helper Columns with Custom Column",
+          defn="Add Column › Custom Column in Power Query adds a new column calculated on every row from other columns.",
+          simple="Type the calculation in the dialog using column names in square brackets. Power Query writes the M step for you.",
+          like="Like adding a 'line total' column to a paper invoice before you add up the page.",
+          **M("""
+= Table.AddColumn(transactions,
+    "line_value",
+    each [quantity] * [unit_price])"""),
+          grid=dict(label=f"Check on {BIG.transaction_id}", widths=[1.6, 1.6], rows=[
+              ["Column", "Value"],
+              ["quantity", I(BIG.quantity)],
+              ["unit_price", N(BIG.unit_price)],
+              ["line_value (new)", N(BIG.quantity * BIG.unit_price)],
+              ["total_price (given)", N(BIG.total_price)]]),
+          split=0.58,
+          watch="Check a new column against one you trust: here line_value equals total_price on every one of the "
+                f"{I(N_LINES)} rows."),
 
-        T("3.6.6", "Row Context",
-          defn="Row context is the current row, which exists while a calculated column is computed and inside iterator "
-               "functions such as SUMX.",
-          simple="A plain measure has no current row, so a bare column reference there cannot be resolved.",
-          like="Row context is a teacher marking one script at a time; a measure looks at the whole pile.",
-          grid=dict(label="The same expression in three places", widths=[1.6, 2.2, 1.8], size=11.5, rows=[
-              ["Where", "Formula", "Result"],
-              ["Calculated column", "= [quantity] * [unit_price]", f"{N(BIG.total_price)} on {BIG.transaction_id}"],
-              ["Measure, no aggregation", "= tTransactions[quantity]", "Error: no single value"],
-              ["Measure with iterator", "= SUMX ( tTransactions, [quantity] * [unit_price] )", N(GROSS)]]),
-          watch="'A single value for column cannot be determined' means you referred to a column where there is no row."),
+        T("3.6.7", "A Net / Not Net Flag with Conditional Column",
+          defn="Add Column › Conditional Column builds an if-then-else column by filling in a form, with no formula typing.",
+          simple="Our rule: an order line counts as net revenue when order_status is Delivered or Completed.",
+          steps=["Add Column › Conditional Column; New column name: sale_type",
+                 "If order_status equals Delivered › Output: Net",
+                 "Add Clause: order_status equals Completed › Output: Net",
+                 "Else: Not net › OK, then Close & Load"],
+          grid=dict(label="sale_type on tTransactions", widths=[1.2, 1, 1.7], rows=[
+              ["sale_type", "Lines", "Sum of total_price"],
+              ["Net", I(N_NET), N(NETREV)],
+              ["Not net", I(N_LINES - N_NET), N(GROSS - NETREV)],
+              ["Total", I(N_LINES), N(GROSS)]]),
+          order=["steps", "grid"], split=0.52,
+          watch="Write the rule once in Power Query; every PivotTable then filters on the same flag and agrees."),
 
-        T("3.6.7", "Filter Context",
-          defn="Filter context is the set of filters in force when a measure is evaluated: PivotTable rows and columns, "
-               "slicers and report filters.",
-          simple="The same measure gives a different answer in each cell, because each cell has different filters.",
-          grid=dict(label="[Net Revenue] by products[category]", widths=[1.8, 1.1, 1.6], rows=[
-              ["Category (filter)", "Net lines", "[Net Revenue]"]] + [
+        T("3.6.8", "Filtering the PivotTable to Net Sales",
+          defn="Putting the flag in Filters (or on a slicer) restricts every value in the PivotTable to the rows that pass.",
+          simple="Filter sale_type = Net and Sum of total_price becomes net revenue.",
+          grid=dict(label="Filter sale_type = Net", widths=[1.5, 1, 1.7], rows=[
+              ["category", "Lines", "Sum of total_price"]] + [
               [c, I(CAT_N[c]), N(CAT[c])] for c in CAT.index[:3]] + [
-              ["Beauty (lowest)", I(CAT_N["Beauty"]), N(CAT["Beauty"])], ["Grand total (no filter)", I(N_NET), N(NETREV)]]),
-          watch="The grand total is not the sum of the visible rows when a measure is a ratio or a distinct count."),
+              ["Beauty (lowest)", I(CAT_N["Beauty"]), N(CAT["Beauty"])], ["Grand Total", I(N_NET), N(NETREV)]]),
+          steps=["Drag sale_type to Filters", "Choose Net › OK", "Or: PivotTable Analyze › Insert Slicer › sale_type"],
+          order=["grid", "steps"], split=0.58,
+          watch=f"Check the filter is on: the Grand Total falls from {N(GROSS)} (3.3.10) to {N(NETREV)} once cancelled and "
+                "returned lines are left out."),
 
-        T("3.6.8", "CALCULATE",
-          defn="CALCULATE evaluates an expression in a filter context modified by its filter arguments.",
-          simple="It is the most important DAX function. Each filter argument replaces any existing filter on that column.",
-          **CODE("""
-Net Revenue :=
-CALCULATE (
-    [Gross Bookings],
-    tTransactions[order_status]
-        IN { "Delivered", "Completed" }
-)""", label="DAX MEASURE"),
-          grid=dict(label="Result", widths=[1.6, 0.9, 1.5], rows=[
-              ["Measure", "Lines", "Value"],
-              ["[Gross Bookings]", I(N_LINES), N(GROSS)],
-              ["[Net Revenue]", I(N_NET), N(NETREV)],
-              ["Cancelled + Returned", I(N_LINES - N_NET), N(GROSS - NETREV)]]),
-          split=0.48,
-          watch="A slicer on order_status is overridden inside this measure: CALCULATE replaces that filter."),
+        T("3.6.9", "Summarise Values By: Sum, Count and Average",
+          defn="Value Field Settings › Summarize Values By changes how a field in Values is summarised: Sum, Count, Average, "
+               "Max or Min.",
+          simple="Drag total_price into Values several times and set a different summary on each copy.",
+          grid=dict(label="Net lines (sale_type = Net), total_price", widths=[1.8, 1.8], rows=[
+              ["Summarize by", "Result"],
+              ["Sum", N(NETREV)],
+              ["Count", I(N_NET)],
+              ["Average", N(AOV)],
+              ["Max / Min", f"{N(NT.total_price.max())} / {N(NT.total_price.min())}"]]),
+          steps=["Right-click a value › Value Field Settings", "Summarize Values By: pick the summary",
+                 "Number Format › Currency ₦ or Number with 1000 separator"],
+          order=["grid", "steps"], split=0.5,
+          watch="Count counts lines (rows), not orders or customers; use Distinct Count for those (3.6.10)."),
 
-        T("3.6.9", "ALL",
-          defn="ALL returns all rows of a table, or all values of a column, ignoring any filters on them.",
-          simple="Divide a measure by the same measure with ALL to get each item's share of the whole.",
-          **CODE("""
-Cat Share :=
-DIVIDE (
-    [Net Revenue],
-    CALCULATE ( [Net Revenue],
-                ALL ( tProducts[category] ) )
-)""", label="DAX MEASURE"),
-          grid=dict(label="Result by category", widths=[1.4, 1.6, 0.9], rows=[
-              ["Category", "[Net Revenue]", "[Cat Share]"]] + [
-              [c, N(CAT[c]), P(SHARE[c])] for c in CAT.index[:3]] + [["Beauty", N(CAT["Beauty"]), P(SHARE["Beauty"])]]),
-          split=0.5,
-          watch="The shares must add up to 100%. If they don't, the ALL is on the wrong column."),
+        T("3.6.10", "Distinct Count",
+          defn="Distinct Count gives the number of different values in a field; it is offered only in PivotTables built "
+               "on the Data Model.",
+          simple="How many different customers bought? Count gives order lines; Distinct Count gives people.",
+          grid=dict(label="Counting customers (all lines)", widths=[2.4, 1, 1.8], rows=[
+              ["Value field", "Result", "Meaning"],
+              ["Count of customer_id", I(N_LINES), "Order lines"],
+              ["Distinct Count of customer_id", I(BUYERS), "Unique buyers"],
+              ["Adding the 7 category distinct counts", I(HEADS), "Wrong: people counted repeatedly"]]),
+          steps=["Values: customer_id", "Value Field Settings › Distinct Count",
+                 "Not in the list? The PivotTable is not on the Data Model"],
+          order=["grid", "steps"], split=0.55,
+          watch="Distinct counts do not add up across rows: a customer who bought in three categories counts once in the total."),
 
-        T("3.6.10", "VALUES and DISTINCT",
-          defn="VALUES returns the distinct values of a column visible in the current filter context, plus a blank for "
-               "unmatched keys; DISTINCT returns them without that blank.",
-          simple="Wrap it in COUNTROWS to count the values in view, or use it to build dynamic titles.",
-          **CODE("""
-Categories Sold :=
-COUNTROWS (
-    VALUES ( tProducts[category] )
-)""", label="DAX MEASURE"),
-          grid=dict(label="[Categories Sold] per seller", widths=[1.4, 1], rows=[
-              ["Categories", "Sellers"]] + [[str(k), I(n)] for k, n in KCAT.items()]),
+        T("3.6.11", "Show Values As: % of Grand Total",
+          defn="Show Values As re-expresses a value field, for example as a percentage of the grand total, without any formula.",
+          simple="Put total_price in Values twice; show the second copy as % of Grand Total to get each category's share.",
+          grid=dict(label="Net revenue share by category", widths=[1.4, 1.6, 0.9], rows=[
+              ["category", "Net revenue", "Share"]] + [
+              [c, N(CAT[c]), P(SHARE[c])] for c in CAT.index[:3]] + [["Beauty", N(CAT["Beauty"]), P(SHARE["Beauty"])],
+                                                                   ["Grand Total", N(NETREV), "100.0%"]]),
+          steps=["Drag total_price to Values a second time", "Right-click it › Show Values As › % of Grand Total",
+                 "Rename it Share (3.6.20)"],
+          order=["grid", "steps"], split=0.55,
+          watch="The shares must add up to 100%. If they do not, check the filter: a share of filtered data is still 100% of what is shown."),
+
+        T("3.6.12", "Ratios Beside the PivotTable",
+          defn="A ratio KPI, such as average order value, is one total divided by another; work it out in a cell next to the "
+               "PivotTable that points at the two totals.",
+          simple="Type = and click the net revenue cell, type /, click the net lines cell. Excel writes GETPIVOTDATA, which "
+                 "keeps working when the PivotTable moves.",
+          grid=dict(label="Average order value (net lines)", widths=[1.8, 1.8], rows=[
+              ["Item", "Value"],
+              ["Net revenue (Sum)", N(NETREV)],
+              ["Net lines (Count)", I(N_NET)],
+              ["AOV = revenue ÷ lines", N(AOV)],
+              ["Average of the 7 category averages", N(AOV_CAT.mean())]]),
+          watch="Never average the averages: the categories have very different line counts, so the last row is wrong. "
+                "Divide the two totals."),
+
+        T("3.6.13", "Bands with a Conditional Column",
+          defn="A band column puts each row into a range, such as Small, Medium or Large, so a PivotTable can count and sum by band.",
+          simple="Conditional Column tests run from the top: put the largest threshold first.",
+          steps=["Add Column › Conditional Column; name: size_band",
+                 "If total_price is greater than or equal to 200000 › Large",
+                 "Else if total_price is greater than or equal to 50000 › Medium",
+                 "Else: Small; then Rows: size_band in the PivotTable"],
+          grid=dict(label="Net lines by size_band", widths=[1.1, 1, 1.7], rows=[
+              ["size_band", "Lines", "Sum of total_price"]] + [
+              [b_, I(r["size"]), N(r["sum"])] for b_, r in BAND.iterrows()] + [["Total", I(N_NET), N(NETREV)]]),
+          order=["steps", "grid"], split=0.52,
+          watch="Put the smallest test first and every line over ₦50,000 lands in the first band you wrote."),
+
+        T("3.6.14", "Group By in Power Query",
+          defn="Transform › Group By turns many rows into one row per group, with sums or counts, as a new fixed table.",
+          simple="Use it when you need a summary table to load, merge or chart; use a PivotTable when the reader should re-slice.",
+          **M("""
+= Table.Group(net_lines, {"category"}, {
+    {"net_revenue", each List.Sum([total_price])},
+    {"lines", each Table.RowCount(_)}})"""),
+          grid=dict(label="Group By category (net lines)", widths=[1.4, 1.6, 0.8], rows=[
+              ["category", "net_revenue", "lines"]] + [
+              [c, N(CAT[c]), I(CAT_N[c])] for c in CAT.index[:4]] + [["(7 rows in all)", N(NETREV), I(N_NET)]]),
           split=0.55,
-          watch=f"{I(KCAT.sum())} sellers have sales; none sells all {len(CAT)} categories (the most is {KCAT.index.max()})."),
-
-        T("3.6.11", "RELATED",
-          defn="RELATED returns a value from the 'one' side of a relationship to the current row on the 'many' side.",
-          simple="It is the model's VLOOKUP: no column numbers, no ranges, and it follows the relationship.",
-          **CODE("""
-Category =
-RELATED ( tProducts[category] )
--- calculated column in tTransactions""", label="DAX CALCULATED COLUMN"),
-          grid=dict(label="Lines per category via RELATED", widths=[1.5, 1, 1], rows=[
-              ["Category", "Lines", "Share"]] + [
-              [c, I(n), P(n / N_LINES)] for c, n in list(REL.items())[:3]] + [["All 7", I(N_LINES), "100.0%"]]),
-          split=0.5,
-          watch="RELATED needs a relationship and a row context; in a measure, use it inside an iterator such as SUMX."),
-
-        T("3.6.12", "SUMX",
-          defn="SUMX evaluates an expression for each row of a table and returns the sum of the results.",
-          simple="Use it when you must multiply or combine columns before adding up.",
-          **CODE("""
-Revenue X :=
-SUMX ( tTransactions,
-    tTransactions[quantity]
-      * tTransactions[unit_price] )""", label="DAX MEASURE"),
-          grid=dict(label="Three totals", widths=[2, 1.5, 1.2], rows=[
-              ["Measure", "Result", "Meaning"],
-              ["SUMX ( qty × unit_price )", N(GROSS), "Correct revenue"],
-              ["SUM ( total_price )", N(float(TX.total_price.sum())), "Same: a check"],
-              ["SUM ( unit_price )", N(float(TX.unit_price.sum())), "Meaningless"]]),
-          split=0.45,
-          watch="SUM(quantity) × SUM(unit_price) is not revenue: multiply per row first, then add."),
-
-        T("3.6.13", "COUNTROWS",
-          defn="COUNTROWS returns the number of rows in a table in the current filter context; COUNT counts only the "
-               "non-blank values of one column.",
-          simple="COUNTROWS is the clearest way to count events such as orders or admissions.",
-          grid=dict(label="Two counts on tTransactions", widths=[2.4, 1, 1.8], rows=[
-              ["Measure", "Result", "Why"],
-              ["COUNTROWS ( tTransactions )", I(N_LINES), "Every order line"],
-              ["COUNT ( tTransactions[delivery_id] )", I(N_LINES - NO_DELIV), f"Skips {I(NO_DELIV)} blanks"]]),
-          watch="COUNT on a column with blanks quietly gives a smaller number; count rows unless blanks must be excluded."),
-
-        T("3.6.14", "DISTINCTCOUNT",
-          defn="DISTINCTCOUNT returns the number of different values in a column in the current filter context.",
-          simple="How many different customers bought? Distinct counts do not add up across groups.",
-          grid=dict(label="Counting customers", widths=[2.4, 1, 1.8], rows=[
-              ["Measure", "Value", "Meaning"],
-              ["Orders (COUNTROWS)", I(N_LINES), "Order lines"],
-              ["Customers (DISTINCTCOUNT)", I(BUYERS), "Unique buyers"],
-              ["Sum of 7 category headcounts", I(HEADS), "Wrong: people counted repeatedly"]]),
-          watch="Summing distinct counts by category counts a customer once for every category they bought in."),
-
-        T("3.6.15", "DIVIDE",
-          defn="DIVIDE(numerator, denominator, [alternate]) divides safely, returning blank, or the alternate result, when "
-               "the denominator is 0 or blank.",
-          simple="Use DIVIDE for every ratio instead of the / operator.",
-          **CODE("""
-AOV :=
-DIVIDE (
-    [Net Revenue],
-    [Net Orders]
-)""", label="DAX MEASURE"),
-          grid=dict(label="[AOV] by seller", widths=[1.8, 1, 1.6], rows=[
-              ["Seller", "Net lines", "[AOV]"],
-              ["All sellers", I(N_NET), N(AOV)],
-              [f"{NO_SALE[0]} (no sales)", "0", "Blank, not an error"]]),
-          split=0.45,
-          watch="With the / operator a zero denominator shows Infinity or NaN in the PivotTable; DIVIDE returns blank."),
-
-        T("3.6.16", "IF and SWITCH in DAX",
-          defn="IF returns one of two values; SWITCH(TRUE(), test1, result1, …, default) returns the result of the first true test.",
-          simple="SWITCH ( TRUE (), … ) is the tidy way to write three or more bands, like IFS in Excel.",
-          **CODE("""
-Order Size :=
-SWITCH ( TRUE (),
-    [AOV] >= 200000, "Large",
-    [AOV] >= 50000,  "Medium",
-    "Small" )""", label="DAX MEASURE"),
-          grid=dict(label="By category", widths=[1.3, 1.2, 0.9], rows=[
-              ["Category", "[AOV]", "Size"]] + [
-              [c, N(x), band(x)] for c, x in list(AOV_CAT.items())[:4]] + [["All", N(AOV), band(AOV)]]),
-          split=0.5,
-          watch="Tests run in order: put the largest threshold first, or every value lands in the first band."),
-
+          watch="A Group By table does not follow slicers. It updates on Refresh, not when someone clicks a filter."),
     ],
-    takeaways=["Columns are stored per row; measures calculate per cell.",
-               "Row context = current row; filter context = what the cell is filtered by.",
-               "CALCULATE changes filters; ALL removes them.",
-               "SUMX works row by row; RELATED fetches from the 'one' side.",
-               "DIVIDE every ratio; IF and SWITCH for bands and flags."],
+    takeaways=["The Data Model lets one PivotTable use fields from several related tables.",
+               "Helper columns, flags and bands are made once in Power Query (Custom and Conditional Column).",
+               "Sum, Count, Average and Distinct Count come from Value Field Settings.",
+               "Show Values As gives shares; ratios are total ÷ total in a cell beside the PivotTable.",
+               "Never average averages or add distinct counts."],
 )
 
 MODULES = [M36A]

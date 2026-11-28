@@ -3,7 +3,7 @@
     Task 1  database design: keys, relationships, why relational (3.1)
     Task 2  SQL on mercyland_hospital.db in DB Browser for SQLite (3.2)
     Task 3  merge and the Data Model (3.4 - 3.5)
-    Task 4  DAX measures, each checked with a Week 2 formula (3.6A - 3.6B)
+    Task 4  PivotTable KPIs on the Data Model, each checked with a Week 2 formula (3.6A - 3.6B, no DAX)
     Task 5  charts and dashboard design (3.7 - 3.9)
 """
 from __future__ import annotations
@@ -40,8 +40,8 @@ def build(b):
                   "LIKE), ORDER BY, LIMIT, GROUP BY, COUNT / SUM, DISTINCT and a two-table JOIN.")
     t3 = b.module("T3", "T3 Merge & Model", "Merge and the Data Model", "Modules 3.4 - 3.5: Power Query merge and join "
                   "kinds, row-count checks, the Data Model, relationships and the date table.")
-    t4 = b.module("T4", "T4 DAX", "DAX measures", "Modules 3.6A - 3.6B: measures, CALCULATE, DIVIDE, DISTINCTCOUNT, "
-                  "RELATED and time intelligence.")
+    t4 = b.module("T4", "T4 PivotTable KPIs", "PivotTable KPIs", "Modules 3.6A - 3.6B: a Data Model PivotTable with Count, "
+                  "Average, Sum, Distinct Count, % of Row Total and Running Total In.")
     t5 = b.module("T5", "T5 Dashboard", "Charts and dashboard design", "Modules 3.7 - 3.9: choosing charts, dashboard "
                   "layout, KPI cards, slicers and the QA checklist.")
     f = t1.link_files([W3D / "mercyland_hospital_schema.sql", W3D / DB], folder="Assignment_Files")
@@ -125,24 +125,24 @@ def build(b):
     A = "tAdm23"
     n = len(adm)
     rr = float((adm.readmitted_30d == "Yes").mean())
-    m.part("Write each measure; check it with the Week 2 formula shown in the Solutions")
-    m.num("Admissions := COUNTROWS(tAdm23). Value?", f"=ROWS({A})", n, "Excel check: =ROWS(tAdm23).")
-    m.num('Readmission % := DIVIDE(CALCULATE([Admissions], tAdm23[readmitted_30d] = "Yes"), [Admissions]). Value?',
+    m.part("Build one PivotTable on tAdm23 (added to the Data Model); check each value with the formula in the Solutions")
+    m.num("Values: Count of episode_id, no filters. How many admissions?", f"=ROWS({A})", n, "Excel check: =ROWS(tAdm23).")
+    m.num("Columns: readmitted_30d; Show Values As › % of Row Total. What is the Yes share?",
           f'=COUNTIFS({A}[readmitted_30d],"Yes")/ROWS({A})', rr, "Readmitted ÷ admissions.", fmt="pct")
-    m.num("Avg LOS := AVERAGE(tAdm23[los_days]). Value? (1 decimal place)", f"=AVERAGE({A}[los_days])",
+    m.num("Values: Average of los_days. Value? (1 decimal place)", f"=AVERAGE({A}[los_days])",
           float(adm.los_days.mean()), "AVERAGE.", fmt="dec1")
-    m.num('Total Bills := SUM(tAdm23[bill_amount_ngn]). Value for Cardiology? (nearest naira)',
+    m.num("Rows: department; Values: Sum of bill_amount_ngn. Value for Cardiology? (nearest naira)",
           f'=ROUND(SUMIFS({A}[bill_amount_ngn],{A}[department],"Cardiology"),0)',
           round(float(adm.loc[adm.department == "Cardiology", "bill_amount_ngn"].sum())), "SUMIFS by department.",
           fmt="naira")
-    m.num("Patients := DISTINCTCOUNT(tAdm23[patient_no]). Value?", f"=COUNTA(UNIQUE({A}[patient_no]))",
+    m.num("Values: Distinct Count of patient_no. How many different patients?", f"=COUNTA(UNIQUE({A}[patient_no]))",
           int(adm.patient_no.nunique()), "Excel check: =COUNTA(UNIQUE(...)).", dynamic=True)
     q1 = int((adm.admit_date < "2023-04-01").sum())
-    m.num("Admissions YTD := TOTALYTD([Admissions], tDate23[Date]). Value at 31 March 2023?",
-          f'=COUNTIFS({A}[admit_date],"<"&DATE(2023,4,1))', q1, "January to March.")
-    m.mc("Which DAX function brings ward from tWards into a calculated column of tAdm23?", ["RELATED", "ALL", "SUMX",
-                                                                                           "DATEADD"], "A",
-         "RELATED(tWards[ward]).")
+    m.num("Rows: tDate23 Month; Count of episode_id shown as Running Total In Month. Value at March 2023?",
+          f'=COUNTIFS({A}[admit_date],"<"&DATE(2023,4,1))', q1, "January to March added together.")
+    m.mc("What lets the PivotTable show ward (from tWards) next to admissions (from tAdm23)?",
+         ["A relationship on ward_code in the Data Model", "Sorting both tables", "A chart", "Deleting ward_code"], "A",
+         "Related tables can be used together in one Data Model PivotTable.")
 
     # ================================================================== T5
     m = t5

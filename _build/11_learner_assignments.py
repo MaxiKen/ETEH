@@ -22,7 +22,7 @@ import paths  # noqa: E402
 WEEKS = {
     1: ("Week 1 Assignment · SuperMart Q1 2025 Store Review", "a1"),
     2: ("Week 2 Assignment · Mercyland Admissions: Import, Clean and Summarise", "a2"),
-    3: ("Week 3 Assignment · Mercyland Hospital: SQL, Data Model and DAX", "a3"),
+    3: ("Week 3 Assignment · Mercyland Hospital: SQL, Data Model and PivotTables", "a3"),
     4: ("Week 4 Assignment · Statistics, Forecasting and Reporting", "a4"),
 }
 

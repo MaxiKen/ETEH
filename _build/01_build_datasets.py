@@ -373,7 +373,7 @@ def build_supermart_online():
                     Rows=sum(len(v) for v in tables.values()), Columns=sum(v.shape[1] for v in tables.values()),
                     Grain="customers, sellers, products, deliveries, transactions (1 line per order)",
                     Period=f"{t.order_date.min()} to {t.order_date.max()}",
-                    Main_Use="SQL, joins, Power Query merges, Data Model / DAX, student project 1",
+                    Main_Use="SQL, Power Query merges, Data Model and PivotTables, student project 1",
                     Built_From="e-commerce.xlsx (26,000 blank padding rows removed, delivery key repaired, city->state repaired, catalogue & ₦ prices standardised)"))
     for tname, cols_ in {
         "customers": "customer_id PK; names; email; phone (text, leading 0 kept); gender; date_of_birth; city/state/zone; membership_tier; loyalty_points; total_orders & total_spent (recomputed from transactions)",
@@ -610,7 +610,7 @@ def build_lifecare():
     LOG.append(dict(Dataset="Mercyland_Inpatient_Episodes_2019_2024.csv (+ Patients, Consultants, Wards, Daily_Bed_Census) + mercyland_hospital.db",
                     Organisation="Mercyland Specialist Hospital, Abuja", Rows=len(adm), Columns=adm.shape[1],
                     Grain="One inpatient episode (admission to discharge)", Period=f"{adm.Admit_Date.min()} to {adm.Admit_Date.max()}",
-                    Main_Use="Cleaning, LOS/occupancy/readmission KPIs, SQL, DAX, statistics, capstone 3",
+                    Main_Use="Cleaning, LOS/occupancy/readmission KPIs, SQL, PivotTables, statistics, capstone 3",
                     Built_From="Original ETEH teaching data (neworgs.py): 6 diagnosis groups in 5 departments, 4 wards / 200 beds, "
                                "seasonal admissions with a second-quarter surge, medical inflation in bills"))
     for c_, t_, d_, e_ in [

@@ -102,7 +102,7 @@ def SQL(sql, db="smo", fmt=None, head=None, n=None, extra=None, label="Result", 
     return out
 
 
-def CODE(text, label="DAX", size=12, note=""):
+def CODE(text, label="CODE", size=12, note=""):
     return dict(code=_tw.dedent(text).strip("\n"), code_label=label, code_size=size, code_note=note)
 
 

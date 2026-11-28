@@ -195,13 +195,13 @@ ORDER BY lines DESC;""", widths=[1.4, 0.9], split=0.55),
         T("3.1.12", "Star Schema versus the Recording Design",
           defn="A recording design splits data into many small linked tables so each fact is stored once; a star schema has "
                "one central fact table joined directly to dimension tables.",
-          simple="The recording design suits taking orders; a star suits analysis, PivotTables and DAX, because every "
+          simple="The recording design suits taking orders; a star suits analysis and PivotTables, because every "
                  "description is one step from the facts.",
           like="The recording design is a filing cabinet of many folders; a star is hub-and-spoke buses, one ride from the centre.",
           grid=dict(label="supermart_online.db two ways", widths=[1.7, 2.3, 1.6], rows=[
               ["Shape", "Tables", "Best for"],
               ["Recording design (as stored)", f"{I(OBJ['table'])} tables; zone is 2 steps from an order", "Recording orders"],
-              ["Star (for analysis)", "1 fact + customers, products, sellers, deliveries, DimDate", "Pivots and DAX"]]),
+              ["Star (for analysis)", "1 fact + customers, products, sellers, deliveries, DimDate", "PivotTables"]]),
           watch="Chains such as transactions → customers → nigeria_states make filters slow and confusing in a model."),
 
         T("3.1.13", "Fact Tables and Dimension Tables",

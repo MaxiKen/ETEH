@@ -199,7 +199,7 @@ def build(b):
                                                                      "your CV"], "A", "Answer first, then evidence.")
     m.yn("If a panel member challenges a number, should you show where it comes from (the control total)?", "Yes",
          "Calm, evidence-based answers.")
-    m.mc("Explaining a DAX measure to a non-technical panel, you should ...", ["read the formula aloud",
+    m.mc("Explaining a calculation to a non-technical panel, you should ...", ["read the formula aloud",
                                                                               "say in plain words what it calculates and why",
                                                                               "skip it", "show the M code"], "B",
          "Plain language.")
@@ -223,7 +223,7 @@ def build(b):
                                  "Style, Tone, Audience, Response"], "A", "For behavioural questions.")
     m.mc("A common SQL interview question asks you to ...", ["count or total by group with GROUP BY", "draw a chart",
                                                              "write a macro", "format a table"], "A", "Practise Week 3 queries.")
-    m.pick("The natural next tool after Excel Power Pivot and DAX", ["Power BI", "Word", "Paint"], "Power BI",
-           "Power BI uses the same Power Query and DAX.")
+    m.pick("The natural next tool after Excel Power Query and Power Pivot", ["Power BI", "Word", "Paint"], "Power BI",
+           "Power BI uses the same Power Query and the same kind of Data Model.")
     m.tf("In a live Excel test, explaining your steps out loud helps the interviewer follow your thinking.", True,
          "Explaining your analytical process.")

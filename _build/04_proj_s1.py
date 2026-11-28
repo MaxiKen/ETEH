@@ -105,22 +105,24 @@ def build(key):
         A.long(s, "SQL", "Your SQL:", sq, marks=2, rows=max(3, sq.count("\n") + 1), guide="Any correct query earns the marks; check filters (year AND status).")
     A.end_task(s)
 
-    s = A.task("M3 Excel Model", "Milestone 3 - Load to Excel, model and measure", "3.3, 3.5-3.6",
+    s = A.task("M3 Excel Model", "Milestone 3 - Load to Excel, model and summarise", "3.3, 3.5-3.6",
                "Load transactions, customers, products, sellers and deliveries into the Data Model (Power Query from the SuperMart_Online_*.csv files in the Data folder, or ODBC). "
-               "Add a DimDate table, build a star schema and create the measures. Report the 2025 values your measures return.")
-    A.q(s, "3.1", "Net Revenue measure, 2025 (₦) - must equal Q1.", QS_A[0], None, "naira", 2, header=True)
+               "Add a DimDate table, build a star schema, add a sale_type Conditional Column (Net = Delivered or Completed) in Power Query, "
+               "and build one Data Model PivotTable. Report the 2025 values it returns.")
+    A.q(s, "3.1", "Net revenue 2025 (₦): Sum of total_price, sale_type = Net, Year = 2025 - must equal Q1.", QS_A[0], None, "naira", 2, header=True)
     A.q(s, "3.2", "Net Orders 2025 (count of Delivered + Completed transactions).", len(net25), None, "int", 2)
-    A.q(s, "3.3", "Average Order Value 2025 (₦, nearest naira).", round(aov), None, "naira", 2)
-    A.q(s, "3.4", "Active customers 2025 (distinct customers with a net order) - must equal Q9.", act, None, "int", 2)
+    A.q(s, "3.3", "Average Order Value 2025 = net revenue ÷ net orders, in a cell beside the PivotTable (₦, nearest naira).", round(aov), None, "naira", 2)
+    A.q(s, "3.4", "Active customers 2025 (Distinct Count of customer_id, sale_type = Net) - must equal Q9.", act, None, "int", 2)
     A.q(s, "3.5", "Relationship deliveries → transactions: which key?", "delivery_id (1:1)", marks=2,
         choices=["delivery_id (1:1)", "customer_id (1:*)", "order_id (*:*)", "No relationship needed"])
-    A.long(s, "3.6", "Paste your DAX for Net Revenue, Net Orders, AOV and Net Revenue YoY %.",
-           'Net Revenue := CALCULATE ( SUM ( transactions[total_price] ), transactions[order_status] IN { "Delivered", "Completed" } )\n'
-           'Net Orders := CALCULATE ( COUNTROWS ( transactions ), transactions[order_status] IN { "Delivered", "Completed" } )\n'
-           "AOV := DIVIDE ( [Net Revenue], [Net Orders] )\n"
-           "Net Revenue LY := CALCULATE ( [Net Revenue], SAMEPERIODLASTYEAR ( DimDate[Date] ) )\n"
-           "Net Revenue YoY % := DIVIDE ( [Net Revenue] - [Net Revenue LY], [Net Revenue LY] )",
-           marks=6, rows=6, guide="1.5 marks each for Net Revenue, Net Orders, AOV and YoY % (with its LY helper); CALCULATE filter on status required.")
+    A.long(s, "3.6", "List how you built each value: the Power Query step, the PivotTable field and setting, or the cell ratio "
+                     "(Net revenue, Net orders, AOV and growth 2025 vs 2024).",
+           "sale_type: Add Column › Conditional Column, Net if order_status = Delivered or Completed, else Not net\n"
+           "Net revenue: Values › Sum of total_price; Filters: sale_type = Net; Rows: DimDate Year\n"
+           "Net orders: Values › Count of transaction_id, same filters\n"
+           "AOV: cell beside the PivotTable = net revenue ÷ net orders\n"
+           "Growth: second copy of total_price › Show Values As › % Difference From, Base field Year, Base item (previous)",
+           marks=6, rows=6, guide="1.5 marks each for the sale_type column, net revenue / orders, AOV and growth; the Net filter is required.")
     A.long(s, "3.7", "Screenshot the Diagram View into the box below (or describe the relationships).",
            "transactions (fact) *→1 customers, *→1 products, *→1 sellers, 1↔1 deliveries (delivery_id), *→1 DimDate[Date] on order_date. Single direction filters.",
            marks=4, rows=4)
@@ -142,13 +144,13 @@ def build(key):
     A.end_task(s)
     return A.finish("Student Project 1 - SuperMart Online Marketplace Performance Review",
                     ["Client: Head of Marketplace, SuperMart Online. Question: how did the marketplace perform in 2025, where is revenue coming from, and what should change in 2026?",
-                     "You will audit the database, answer business questions in SQL, build an Excel data model with DAX, and present a dashboard, memo and deck.",
+                     "You will audit the database, answer business questions in SQL, build an Excel Data Model with PivotTables, and present a dashboard, memo and deck.",
                      "Duration: assigned at the end of Week 3, due at the end of Week 4 (about 12-15 hours)."],
                     [("SuperMart Online", DATASETS_TEXT["SuperMart Online"])],
                     files="Data folder (inside this project folder) › supermart_online.db and SuperMart_Online_*.csv (5 files). "
                           "SQL template: Project1_SQL_Template.sql (next to this workbook).",
                     rubric=[["SQL", "Correct result 2, correct SQL 2 (any equivalent query)."],
-                            ["Reconciliation", "M3 measures must reconcile to M2 SQL results; unexplained differences lose the marks."],
+                            ["Reconciliation", "M3 PivotTable values must reconcile to M2 SQL results; unexplained differences lose the marks."],
                             ["Communication", "Findings must quote numbers from your own work."]])
 
 
@@ -156,7 +158,7 @@ def main():
     for k in (False, True):
         print("P1", "KEY" if k else "student", "->", build(k))
     brief_pdf(FOLDER / "Project1_Brief.pdf", "Student Project 1 - SuperMart Online Marketplace Performance Review",
-              "SQL · joins · Power Query · Data Model & DAX · dashboard · executive memo", "Student Project 1 brief", [
+              "SQL · Power Query merges · Data Model & PivotTables · dashboard · executive memo", "Student Project 1 brief", [
                   ("h", "1. The client and the question"),
                   ("p", "SuperMart Online is SuperMart's marketplace: 200 independent sellers list 800 products and ship to 2,500 registered customers across Nigeria. "
                         "The Head of Marketplace has asked ETEH for an independent review of 2025: <b>How did the marketplace perform, where does net revenue come from, "
@@ -176,7 +178,7 @@ def main():
                   ("t", [["Milestone", "What you produce", "Marks"],
                          ["M1 Data audit", "Row counts, NULL/orphan checks, join-safety check (SQL)", "15"],
                          ["M2 SQL questions", "10 business questions answered in SQL with results", "40"],
-                         ["M3 Excel model", "Power Query load, star schema, DimDate, 4 DAX measures reconciled to SQL", "20"],
+                         ["M3 Excel model", "Power Query load, star schema, DimDate, 4 PivotTable values reconciled to SQL", "20"],
                          ["M4 Dashboard & story", "One-page dashboard, one-page memo, 5-slide deck", "25"]], [40, 115, 25]),
                   ("h", "4. Deliverables"),
                   ("b", ["Project1_SuperMart_Online_SQL_Workbook.xlsx - answers in the yellow cells", "Your .sql file (one query per question)",

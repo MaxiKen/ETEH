@@ -258,7 +258,7 @@ def build(b):
                                                             "Five stores made a loss in 2025; three are in the North",
                                                             "Analysis"], "C", "A title that states the finding.")
     m.mc("The three acts of a data story are ...", ["Setup, conflict, resolution", "Charts, tables, text",
-                                                    "Start, middle, appendix", "Data, SQL, DAX"], "A",
+                                                    "Start, middle, appendix", "Data, SQL, charts"], "A",
          "Situation → problem → recommended action.")
     m.yn("Should a column chart's axis be cut (not start at zero) to make a small difference look large?", "No",
          "That misleads the reader.")

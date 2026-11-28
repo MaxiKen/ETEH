@@ -20,7 +20,7 @@ import paths  # noqa: E402
 WEEKS = {
     1: ("Week 1 · Data Analytics Foundations & Core Microsoft Excel", "w1"),
     2: ("Week 2 · External Data, Power Query, Functions & PivotTables", "w2"),
-    3: ("Week 3 · Databases, SQL, Data Model, DAX & Dashboards", "w3"),
+    3: ("Week 3 · Databases, Power Query, Data Model & Dashboards", "w3"),
     4: ("Week 4 · Statistics, Forecasting, Reporting, AI & Ethics", "w4"),
     5: ("Week 5 · Capstone Projects, Portfolio & Career", "w5"),
 }

@@ -1,5 +1,6 @@
-"""Week 3 edition-3 slide copy: Modules 3.3 (ODBC), 3.4 (merge and append) and 3.5 (Data Model and star schema).
-Join counts come from running the SQL shown; append counts from the Week 2 monthly files; model facts from w3_data."""
+"""Week 3 edition-3 slide copy: Modules 3.3 (ODBC), 3.4 (merge and append in Power Query) and 3.5 (Data Model and star schema).
+3.4 is taught with Power Query buttons only; its row counts are computed behind the scenes on the same SuperMart Online
+tables (the learner reproduces them with Merge Queries on Ex3.4_Files). Append counts come from the Week 2 monthly files."""
 import glob
 
 import pandas as pd
@@ -179,113 +180,158 @@ Z_FAIL = int((~ZRAW.isin(Z4)).sum())
 Z_FAIL2 = int((~ZRAW.str.strip().isin(Z4)).sum())
 
 
+ANTI = q("SELECT order_status, payment_status, COUNT(*) AS n, SUM(total_price) AS v FROM transactions "
+         "WHERE delivery_id IS NULL GROUP BY 1, 2 ORDER BY n DESC")
+NO_ORDER = v("SELECT COUNT(*) FROM customers WHERE customer_id NOT IN (SELECT customer_id FROM transactions)")
+EX34 = "Week_3 › Ex3.4_Files"
+
+
+def M(text, size=12, note=""):
+    """The M line Power Query writes in the formula bar for a step done with the buttons (shown for reading, not typing)."""
+    return dict(code=text.strip("\n"), code_label="M  ·  WHAT POWER QUERY WRITES IN THE FORMULA BAR", code_size=size,
+                code_note=note)
+
+
 M34 = dict(
     id="3.4", title="Merging and Appending in Power Query",
-    subtitle="Combine imported tables in Power Query: the four join kinds you need, expand or aggregate, the Cartesian trap and appending.",
-    objectives=["Tell merge (join) from append (union).",
-                "Choose among inner, left outer, full outer and left anti joins.",
-                "Expand or aggregate a merged column, and avoid the Cartesian trap.",
-                "Append two or more tables with the same columns.",
+    subtitle="Combine the SuperMart Online CSV files in Power Query with buttons, not code: Merge Queries for joins, Append "
+             "Queries for stacking, and a row-count check after every step.",
+    objectives=["Load several CSV files into Power Query as connections.",
+                "Merge two queries and choose the join kind: inner, left outer, full outer or left anti.",
+                "Expand or aggregate the merged column, and avoid the Cartesian trap.",
+                "Append two tables, or a whole folder of monthly files.",
                 "Clean the keys before merging and check the row count after."],
     topics=[
         T("3.4.1", "Merge versus Append",
-          defn="A merge combines two tables side by side by matching key values (a SQL JOIN); an append stacks tables with "
-               "the same columns on top of each other (SQL UNION ALL).",
-          simple="Merge adds columns; append adds rows.",
+          defn="A merge combines two tables side by side by matching a key column (a join); an append stacks tables "
+               "with the same columns on top of each other.",
+          simple="Merge adds columns; append adds rows. Both are buttons on the Power Query Home tab: Merge Queries and "
+                 "Append Queries.",
           like="Merge is stapling a delivery note to each order; append is putting February's forms under January's.",
           grid=dict(label="Our two jobs", widths=[2, 1.6, 2], rows=[
-              ["Job", "Operation", "Result"],
-              ["transactions + deliveries", "Merge on delivery_id", f"{I(LEFT)} rows, more columns"],
-              [f"Jan ({MROWS[0]}) + Feb ({MROWS[1]}) files", "Append", f"{MROWS[0] + MROWS[1]} rows, same columns"]]),
+              ["Job", "Button", "Result"],
+              ["transactions + deliveries", "Merge Queries on delivery_id", f"{I(LEFT)} rows, more columns"],
+              [f"Jan ({MROWS[0]}) + Feb ({MROWS[1]}) files", "Append Queries", f"{MROWS[0] + MROWS[1]} rows, same columns"]]),
+          steps=[f"Data › Get Data › From File › From Text/CSV: open {EX34} › SuperMart_Online_transactions.csv",
+                 "Click the arrow on Load › Load To… › Only Create Connection",
+                 "Repeat for customers, products and deliveries",
+                 "Data › Queries & Connections now lists four queries, ready to merge"],
+          order=["steps", "grid"], split=0.5,
           watch="Appending tables with different columns, or merging on a column that is not a key, gives a wrong table with no error."),
 
         T("3.4.2", "Inner Join",
-          defn="An inner join returns only the rows whose key appears in both tables.",
+          defn="An inner join keeps only the rows whose key appears in both tables.",
           simple=f"Orders without a delivery ({I(NO_DELIV)} cancelled orders) vanish from the result, without any warning.",
           like="Like a register that lists only pupils who were both enrolled and present.",
-          **SQL("""
-SELECT COUNT(*)           AS lines,
-       SUM(t.total_price) AS value
-FROM transactions t
-JOIN deliveries d
-  ON d.delivery_id = t.delivery_id;""", fmt={"value": "n"}, extra=[["All orders: " + I(N_LINES), N(GROSS)]],
-                widths=[1.3, 1.5], split=0.52),
-          watch=f"The inner join dropped {N(GROSS - INNER.v)} of orders. Check what an inner join drops before trusting its totals."),
+          steps=["Home › Merge Queries › Merge Queries as New",
+                 "Top: transactions; click the delivery_id column",
+                 "Bottom: deliveries; click delivery_id",
+                 "Join Kind: Inner (only matching rows)",
+                 f"Read the message: 'The selection matches {I(INNER.n)} of {I(N_LINES)} rows' › OK"],
+          grid=dict(label="Result of the inner merge", widths=[2.2, 1.2, 1.6], rows=[
+              ["Query", "Rows", "Sum of total_price"],
+              ["transactions (all orders)", I(N_LINES), N(GROSS)],
+              ["Inner merge with deliveries", I(INNER.n), N(INNER.v)],
+              ["Dropped by the inner join", I(N_LINES - INNER.n), N(GROSS - INNER.v)]]),
+          order=["steps", "grid"], split=0.5,
+          watch=f"The inner join dropped {N(GROSS - INNER.v)} of orders. Read the match count before you click OK."),
 
         T("3.4.3", "Left Outer Join",
-          defn="A left outer join returns every row of the left table plus matching columns from the right; unmatched right "
-               "columns are null.",
-          simple="Use it when no row of your main table may be lost. Power Query: Merge Queries › Join Kind › Left Outer.",
-          **SQL("""
-SELECT COUNT(*)                AS all_orders,
-       COUNT(d.courier_name)   AS with_courier,
-       SUM(d.delivery_id IS NULL) AS courier_null
-FROM transactions t
-LEFT JOIN deliveries d
-  ON d.delivery_id = t.delivery_id;""", widths=[1, 1, 1], split=0.6),
-          watch="Put the main table first (on the left). Swap them and the main table becomes the side that can lose rows."),
+          defn="A left outer join keeps every row of the first (left) table and adds the matching columns from the second; "
+               "rows with no match get null.",
+          simple="Use it when no row of your main table may be lost. It is the default Join Kind in the Merge dialog.",
+          **M("""
+= Table.NestedJoin(
+    transactions, {"delivery_id"},
+    deliveries,   {"delivery_id"},
+    "deliveries", JoinKind.LeftOuter)"""),
+          grid=dict(label="After expanding courier_name", widths=[2.2, 1.2], rows=[
+              ["Rows", "Count"],
+              ["All orders kept", I(LEFT)],
+              ["With a courier", I(INNER.n)],
+              ["courier_name = null", I(NO_DELIV)]]),
+          split=0.6,
+          watch="Put the main table on top (left). Swap them and the main table becomes the side that can lose rows."),
 
         T("3.4.4", "Full Outer Join",
-          defn="A full outer join returns all rows from both tables, matched where possible and null-filled where not.",
+          defn="A full outer join keeps all rows from both tables, matched where possible and null-filled where not.",
           simple="It is the reconciliation join: list everything from both sides and see what is missing from each.",
           like="Like comparing a bank statement with your own record book and ticking off the matches.",
-          grid=dict(label="transactions full outer join deliveries", widths=[1.6, 1, 1.8], rows=[
+          grid=dict(label="transactions full outer merge with deliveries", widths=[1.6, 1, 1.8], rows=[
               ["Group", "Rows", "Meaning"],
               ["In both", I(INNER.n), "Order shipped"],
               ["Orders only", I(LEFT - INNER.n), "Never shipped"],
               ["Deliveries only", I(RANTI), "No unknown shipments"],
               ["Total", I(LEFT + RANTI), "Full outer result"]]),
+          steps=["Merge Queries as New: transactions on top, deliveries below",
+                 "Click delivery_id in both; Join Kind: Full Outer",
+                 "Expand deliveries › tick delivery_id only",
+                 "Filter each delivery_id column for null to find the side with no match"],
+          order=["steps", "grid"], split=0.5,
           watch="An inner join used for a reconciliation hides exactly the differences you were looking for."),
 
         T("3.4.5", "Left Anti Join",
-          defn="A left anti join returns the rows of the left table that have no match in the right table.",
+          defn="A left anti join keeps only the rows of the first table that have no match in the second.",
           simple="It answers 'which of mine are missing over there?' and gives you an exception list to investigate.",
           like="Checking the guest list against arrivals: the anti join lists who didn't come.",
-          **SQL("""
-SELECT t.order_status, t.payment_status,
-       COUNT(*) AS orders, SUM(t.total_price) AS value
-FROM transactions t
-LEFT JOIN deliveries d
-  ON d.delivery_id = t.delivery_id
-WHERE d.delivery_id IS NULL
-GROUP BY 1, 2;""", fmt={"value": "n"}, size=11.5, split=0.55),
-          watch="Find out why rows are missing before calling them errors: here every one is a cancellation."),
+          steps=["Merge Queries as New: transactions on top, deliveries below, delivery_id in both",
+                 "Join Kind: Left Anti (rows only in first)",
+                 "OK, then remove the empty deliveries column",
+                 "Home › Group By order_status and payment_status: Count Rows and Sum of total_price"],
+          grid=dict(label="Orders with no delivery", widths=[1.3, 1.3, 0.8, 1.4], size=11.5, rows=[
+              ["order_status", "payment_status", "Orders", "Value"]] + [
+              [r.order_status, r.payment_status, I(r.n), N(r.v)] for r in ANTI.itertuples()]),
+          order=["steps", "grid"], split=0.5,
+          watch=f"Find out why rows are missing before calling them errors: here every one is a cancellation. The same merge on "
+                f"customers finds {I(NO_ORDER)} customers who never ordered."),
 
         T("3.4.6", "Expanding versus Aggregating After a Merge",
-          defn="After a Power Query merge, each row holds a nested table: Expand brings its columns out as rows; Aggregate "
-               "summarises it to one value per row.",
-          simple="Expanding a one-to-many merge adds rows; aggregating keeps one row per key.",
+          defn="After a merge, each row holds a nested table in the new column: Expand brings its columns out as rows; "
+               "Aggregate summarises it to one value per row.",
+          simple="Click the two-arrow button in the merged column's header, then choose Expand or Aggregate.",
           like="Expand unpacks every item from each parcel; aggregate writes 'contains 14 items' on the parcel.",
           grid=dict(label="customers merged with transactions", widths=[1.2, 1, 2.6], rows=[
-              ["Action", "Rows", "CUST00985"],
+              ["Choice", "Rows", "CUST00985"],
               ["Expand", I(EXPAND), f"{I(C985.n)} rows, one per order"],
               ["Aggregate", I(len(CU)), f"1 row: {I(C985.n)} orders, {N(C985.v)}"]]),
+          steps=["Merge customers (top) with transactions (bottom) on customer_id, Left Outer",
+                 "Header button › Aggregate › tick Sum of total_price and Count of transaction_id",
+                 "Untick 'Use original column name as prefix' for tidy names"],
+          order=["steps", "grid"], split=0.5,
           watch="Expand a one-to-many merge and then sum a customer column: each customer's value repeats per order."),
 
         T("3.4.7", "The Cartesian Product Trap",
-          defn="When the join key repeats on both sides, every matching row pairs with every other, multiplying rows (a "
-               "partial Cartesian product).",
-          simple="Join orders to deliveries on customer_id instead of delivery_id and each order meets every delivery of that customer.",
+          defn="When the key repeats on both sides of a merge, every matching row pairs with every other, multiplying rows.",
+          simple="Merge orders with deliveries on customer_id instead of delivery_id and each order meets every delivery of that customer.",
           like="Introducing every guest to every other guest instead of to their partner.",
-          grid=dict(label="Same tables, two keys", widths=[2, 1, 1.8], rows=[
-              ["Join key", "Rows", "Value summed"],
+          grid=dict(label="Same queries, two keys", widths=[2, 1, 1.8], rows=[
+              ["Merge key", "Rows", "Sum of total_price"],
               ["delivery_id (correct)", I(INNER.n), N(INNER.v)],
               ["customer_id (wrong)", I(CART.n), N(CART.v)]]),
-          watch=f"Names make poor keys: {SE.owner_name.nunique()} owner names cover {len(SE)} sellers, so joining on owner_name multiplies rows too. "
-                "Join and group on seller_id."),
+          steps=["Before: note the row count (Transform › Count Rows, then delete that step)",
+                 "After the merge and expand: count again",
+                 "More rows than the main table? The key repeats on the other side"],
+          order=["steps", "grid"], split=0.5,
+          watch=f"Names make poor keys: {SE.owner_name.nunique()} owner names cover {len(SE)} sellers, so merging on owner_name multiplies rows too. "
+                "Merge on seller_id."),
 
         T("3.4.8", "Appending Two Tables",
           defn="Append Queries stacks two tables, matching columns by name, not by position.",
-          simple="Home › Append Queries. A column named differently in one table becomes a separate, half-empty column.",
+          simple="A column named differently in one table becomes a separate, half-empty column.",
           grid=dict(label="Week_2 › Ex2.3_Files › SuperMart_Monthly_Sales_2025", widths=[2.4, 0.8, 1.4], rows=[
               ["Table", "Rows", "Columns"],
               ["2025-01_SuperMart_Sales.csv", I(MROWS[0]), "21, same names"],
               ["2025-02_SuperMart_Sales.csv", I(MROWS[1]), "21, same names"],
               ["Appended", I(MROWS[0] + MROWS[1]), "21, no new columns"]]),
+          steps=["Load both monthly files as connections",
+                 "Home › Append Queries › Append Queries as New",
+                 "Two tables: first January, second February › OK",
+                 "Check: rows = January + February"],
+          order=["steps", "grid"], split=0.48,
           watch="Column order does not matter in an append; column names do."),
 
         T("3.4.9", "Appending Three or More Tables",
-          defn="Append Queries as New accepts three or more tables; the From Folder connector appends every file in a folder, "
+          defn="Append Queries accepts three or more tables; the From Folder connector appends every file in a folder, "
                "including files added later.",
           simple="For files that arrive monthly, connect to the folder once and refresh.",
           like="Like a letterbox: each new letter joins the pile with no extra effort.",
@@ -293,24 +339,34 @@ GROUP BY 1, 2;""", fmt={"value": "n"}, size=11.5, split=0.55),
               ["Method", "Queries", "Result"],
               ["Manual append", f"{len(MFILES)} queries", "Edit it for every new month"],
               ["From Folder", "1 query", f"{I(sum(MROWS))} rows = FY2025 POS lines"]]),
+          steps=["Data › Get Data › From File › From Folder",
+                 "Pick the SuperMart_Monthly_Sales_2025 folder",
+                 "Combine › Combine & Transform Data › OK",
+                 "Next month: drop the new file in the folder, then Data › Refresh All"],
+          order=["steps", "grid"], split=0.5,
           watch="Appending twelve queries by hand means somebody forgets month thirteen."),
 
         T("3.4.10", "Cleaning Join Keys Before Merging",
-          defn="Key cleaning makes both sides of a join comparable: same type, trimmed, consistent case and no hidden characters.",
-          simple="Merges fail on differences you cannot see. Clean both keys the same way: Trim, Clean, a consistent case, and one type.",
+          defn="Key cleaning makes both sides of a merge comparable: same type, trimmed, consistent case and no hidden characters.",
+          simple="Merges fail on differences you cannot see. Clean both keys the same way before you merge.",
           like="Two keys cut almost the same: a tiny difference stops the lock turning.",
           grid=dict(label="Zone in SuperMart_Sales_2025_DIRTY.csv (Week 2)", widths=[2, 1.3, 1.3], rows=[
               ["Check", "Before", "After Trim"],
               ["Distinct non-blank Zone values", I(ZRAW.nunique()), I(ZRAW.str.strip().nunique())],
               ["Rows that fail an exact match", I(Z_FAIL), I(Z_FAIL2)]]),
+          steps=["Select the key column in BOTH queries",
+                 "Transform › Format › Trim, then Clean",
+                 "Transform › Format › Capitalize Each Word (same case)",
+                 "Data Type: Text on both sides, then merge"],
+          order=["steps", "grid"], split=0.5,
           watch="Cleaning the key in one table only still fails: both sides must be cleaned the same way."),
 
     ],
-    takeaways=["Merge adds columns (join); append adds rows (union).",
-               "Choose the join kind deliberately; inner joins drop rows silently.",
-               "A left anti join lists the rows with no match: an exception list.",
-               "Join on true keys and check the row count after every merge.",
-               "Append tables with the same column names; clean keys first."],
+    takeaways=["Load each CSV as a connection, then combine in Power Query.",
+               "Merge Queries adds columns; Append Queries adds rows.",
+               "Choose the join kind deliberately and read the match count; inner drops rows silently.",
+               "Left Anti lists the rows with no match: an exception list.",
+               "Merge on true keys, clean them first, and count rows after every merge."],
 )
 
 # ---------------------------------------------------------------- 3.5
@@ -324,7 +380,7 @@ M35 = dict(
                 "Create one-to-many relationships and state their cardinality.",
                 "Identify fact and dimension tables and their grain.",
                 "Build and mark a gap-free date table.",
-                "Hide keys, sort months and format measures."],
+                "Hide keys, sort months and format value fields."],
     topics=[
         T("3.5.1", "What Is the Excel Data Model?",
           defn="The Data Model is a relational, in-memory database inside the workbook (the Power Pivot engine) that stores "
@@ -352,7 +408,7 @@ M35 = dict(
           watch="If the key repeats on the 'one' side, Excel refuses the relationship; fix the duplicates first."),
 
         T("3.5.3", "Fact Tables in the Data Model",
-          defn="In the Data Model, the fact table holds the events at one grain, the numeric columns measures add up, and "
+          defn="In the Data Model, the fact table holds the events at one grain, the numeric columns PivotTables add up, and "
                "the keys that relate it to each dimension.",
           simple="tTransactions: one row per order line, with quantity, total_price and commission_amount.",
           ex=dict(t="tTransactions", cols=["transaction_id", "customer_id", "product_id", "quantity", "total_price", "order_date"],
@@ -372,18 +428,18 @@ M35 = dict(
         T("3.5.5", "The Date Table",
           defn="A date table is a dimension with exactly one row per calendar day over the whole period, without gaps, "
                "marked as the model's date table.",
-          simple="It makes time intelligence (3.6.17) reliable and shows days and months with no sales.",
+          simple="It makes year-to-date and growth comparisons (3.6.15–3.6.17) reliable and shows days and months with no sales.",
           ex=dict(t="tDimDate", cols=["Date", "Year", "Quarter", "Month_No", "Month", "Weekday"], n=3, size=11.5,
                   note=f"Showing 3 of {I(len(DD))} days · {DD.Date.min():%Y-%m-%d} to {DD.Date.max():%Y-%m-%d}, no gaps"),
           grid=dict(label="Checks", widths=[2.4, 1.2], rows=[
               ["Check", "Result"], ["Days in DimDate", I(len(DD))], ["Days with an order", I(ORDER_DAYS)],
               ["Days with no order (still shown)", I(len(DD) - ORDER_DAYS)]]),
           stack=False, split=0.62,
-          watch="Using the fact table's order_date as the calendar leaves out days with no orders, so time intelligence miscounts."),
+          watch="Using the fact table's order_date as the calendar leaves out days with no orders, so year-to-date and growth figures miscount."),
 
         T("3.5.6", "Hiding, Sorting and Arranging Model Fields",
-          defn="Model housekeeping hides keys and technical columns, sets Sort by Column for month names, and gives every "
-               "measure a format.",
+          defn="Model housekeeping hides keys and technical columns, sets Sort by Column for month names, and gives "
+               "every value field a clear name and format.",
           simple="Users then see only clean, sensible fields in a sensible order.",
           grid=dict(label="Before and after", widths=[1.8, 1.8, 1.8], rows=[
               ["Setting", "Before", "After"],
@@ -410,7 +466,7 @@ M35 = dict(
                "Relationships are one-to-many with unique keys on the 'one' side.",
                "Facts hold events and numbers; dimensions hold descriptions.",
                "Always use a gap-free, marked date table.",
-               "Hide keys, sort months by number, format measures."],
+               "Hide keys, sort months by number, format value fields."],
 )
 
 MODULES = [M33, M34, M35]
