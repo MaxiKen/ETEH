@@ -323,6 +323,15 @@ def topic_slide(deck, m, t):
     V.layout_topic(cv, t, D, t["tag"])
     if t.get("notes"):
         notes(s, t["notes"])
+    # optional continuation slides (e.g. a chart or dashboard mock that needs the full width); their pill is not a bare
+    # topic tag, so the deck lint still sees exactly one slide per mini-section
+    for extra in t.get("more", []):
+        tt = dict(extra)
+        s2, cv2, top2 = frame(deck, tt.get("title", t["title"]), f"{t['tag']}  ·  {tt.get('pill', 'IN PRACTICE')}", foot, t["tag"] + "+")
+        V.TOP = top2
+        V.layout_topic(cv2, tt, D, t["tag"] + "+")
+        if tt.get("notes"):
+            notes(s2, tt["notes"])
 
 
 def takeaways_slide(deck, m):

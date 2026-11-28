@@ -147,12 +147,27 @@ def blocks_of(t, D, k=1.0):
         lines = c if isinstance(c, list) else c.strip("\n").split("\n")
         out["code"] = Block("code", t.get("code_label", "SQL"), NAVY, body=lines, size=round(t.get("code_size", 12) * min(k, 1.0) * 2) / 2,
                             note=t.get("code_note", ""))
+    if t.get("chart"):
+        import v3chart
+        c = t["chart"]
+        lab, note = c.get("label", "CHART FROM OUR DATA"), c.get("note", "")
+
+        def _cdraw(cv, x, y, w, h, c=c, lab=lab, note=note):
+            cv.text(x, y, w, 0.26, [lab], 11.5, ORANGE, bold=True)
+            ch_h = v3chart.height(c)
+            v3chart.draw(cv, x, y + 0.32, w, ch_h, c)
+            if note:
+                cv.text(x, y + 0.32 + ch_h + 0.05, w, 0.22, [note], 10.5, GREY)
+        out["chart"] = Block("chart", lab, ORANGE, draw=_cdraw, h=lambda w, c=c, note=note: 0.32 + v3chart.height(c) + (0.28 if note else 0))
+        out["chart"].full = bool(c.get("full"))
     if t.get("points"):
         out["points"] = Block("text", t.get("points_label", "KEY POINTS"), NAVY, body=t["points"], size=r(13))
     if t.get("steps"):
         out["steps"] = Block("text", t.get("steps_label", "HOW TO DO IT IN EXCEL"), GREEN, body=t["steps"], size=r(13),
                              numbered=True)
-    order = t.get("order") or ["diagram", "code", "ex", "grid", "fx", "points", "steps"]
+    order = t.get("order") or ["diagram", "code", "ex", "grid", "fx", "chart", "points", "steps"]
+    if "chart" in out and "chart" not in order:
+        order = list(order) + ["chart"]
     return [out[k] for k in order if k in out]
 
 
@@ -272,7 +287,7 @@ def _layout(cv, t, D, where, k):
     # diagrams (and everything when stack=True) take a full-width row; others pair up side by side
     rowsets, cur = [], []
     for b_ in bl:
-        if b_.kind == "diagram" or t.get("stack"):
+        if b_.kind == "diagram" or t.get("stack") or getattr(b_, "full", False):
             if cur:
                 rowsets.append(cur)
                 cur = []
