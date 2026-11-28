@@ -13,7 +13,7 @@ from pptx import Presentation
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent))
-from facts3 import F, e23, st  # noqa: E402
+from facts3 import F, c23, e23, st  # noqa: E402
 
 PACK = HERE.parent.parent / "ETEH_Bootcamp_Pack"
 
@@ -39,7 +39,14 @@ W1 = [
     f"({MONTH} {F['PEAKOCC']:.1%})", f"on {F['HI95']} days in 2023", f"{F['OTA']:.1%} of online agency bookings cancelled",
     f"{F['ATRISK']:,} of {F['STUD']:,} students", f"{F['ATRISK'] / F['STUD']:.1%}", f"{F['ALOS23']:.1f} days", f"{F['CANC']:.1%}",
 ]
-CHECKS = {"ETEH_Vol1_Week1_Foundations_Slides.pptx": W1}
+# Capstone (Vol5): recomputed here from the CSVs, independently of the w5_fx/04_proj_i* pipeline that wrote the slides.
+W5 = [
+    f"{F['STUD']:,} students and an at-risk list of {F['ATRISK']:,}", f"{F['ATRISK']:,} at risk; highest rate in "
+    f"{fac.idxmax()} ({fac.max():.1%})", f"Readmission {F['READM23']:.1%}", f"{F['EP23']:,}",
+    f"{F['BEDS']} beds", f"Occupancy {c23.Inpatients.sum() / c23.Open_Beds.sum():.1%} (target 85%); "
+    f"{int((c23.Occupancy_Pct > 0.95).sum())} days above 95%",
+]
+CHECKS = {"ETEH_Vol1_Week1_Foundations_Slides.pptx": W1, "ETEH_Vol5_Capstone_Career_Slides.pptx": W5}
 
 
 def main():

@@ -2,9 +2,9 @@
 
 Eaglet2EagleHub Ltd · Instructor: Abdulrahaman Kehinde
 
-## Edition 3 (in progress): leaner decks, practical work in the workbooks
+## Edition 3: leaner decks, practical work in the workbooks
 
-Edition 2 explained every topic with two fixed slides, which made the decks long and repetitive. Edition 3 is being rolled out one week at a time. **Weeks 1–4 are done** (deck, examples workbook and assignment for each); the Capstone volume is in progress.
+Edition 2 explained every topic with two fixed slides, which made the decks long and repetitive. Edition 3 was rolled out one week at a time and is now **complete for all five volumes**: Weeks 1–4 (deck, examples workbook and assignment for each) and the Capstone deck (Volume 5).
 
 ### New organisations and datasets (edition 3)
 Three datasets that were reworked from public Kaggle files are replaced by **original data from new organisations**, generated from scratch by `_build/neworgs.py` (fixed seed, no third-party rows). Every deck, workbook, assignment, project and capstone is rebuilt on them, and every figure on a slide is computed from the files.
@@ -168,6 +168,18 @@ Rebuilt from scratch in the Week 1 format (`_build/02_sec_w4.py` with `_build/v3
 - The untaught-function scan now checks each assignment against the examples workbooks up to its own week. It reports functions taught only on an assignment's Function Guide separately: EDATE in Week 1, WEEKDAY in Week 2, none in Weeks 3–4.
 - Both files pass `check_xml.py` and the `[@]` scan, and verify with 0 mismatches. The student file has 54 formulas (39 recalculated) and the key has 138 (123 recalculated). In each, the other 15 are 14 FORMULATEXT cells and one cell that uses a defined name pycel cannot read.
 
+### Capstone deck (`ETEH_Vol5_Capstone_Career_Slides.pptx`, 120 slides, 80 topics)
+- Rebuilt in the edition 3 one-slide-per-topic design for P.1–P.9 (`_build/07_v3_capstone_deck.py`; copy in `_build/v3/w5_m1_2.py` … `w5_m8_9.py`). The edition 2 copy is kept in `_build/rev/t5_*.py`.
+  - P.1–P.2: the project lifecycle and source governance, with each capstone's brief, data inventory and source register.
+  - P.3 Capstone 1 SuperMart: FY2025 sales ₦733.2m (+20.4%) but margin 13.4% › 12.7%. Discount bands, a rate/mix margin bridge (rate −1.19 pts, mix +0.51 pts), the Q4 2025 margin of 9.8%, SKU and basket analysis, and the Furniture 20% discount cap (+₦17.7m–₦18.0m a year).
+  - P.4 Capstone 2 Kingsway: 5,885 raw rows cleaned to 5,840 students; progression 72.8% against a 90% target; 1,591 at risk (27.2%) by trigger; at-risk rate by faculty and attendance band; the tutorial-programme estimate (80.7%, +462 students, R² 0.34, labelled as an estimate).
+  - P.5 Capstone 3 Mercyland FY2023: 12,626 admissions, bed-day occupancy 86.9% (June 98.1%; 60 days above 95%, 24 above 100%; about 5 extra beds for 85%); LOS mean 5.0, median 4 (8+ day stays are 18.2% of admissions but 42.2% of bed-days); readmission 8.7%; the Q4 escalation list.
+  - P.6 workbook QA, P.7 executive defence, P.8 portfolio and CV, P.9 interviews (live Excel and SQL tests on the pack's own data, STAR) and the roadmap to Power BI, SQL and Python.
+- **Charts:** 23 native charts on 17 slides: column, bar, line and combo charts, a margin-bridge waterfall, and a one-screen dashboard (KPI cards plus three charts) for each capstone.
+- **Data:** every figure is computed from the edition 3 datasets when the deck is built (`_build/v3/w5_fx.py` reuses the capstone builders `04_proj_i1.py`–`04_proj_i3.py`). The table names and columns quoted on the slides (tSM, tCV, tAtRiskTop20, tAdm23, tCensus, …) are the ones in `ETEH_Capstone_Section_Examples.xlsx`.
+- **Checks:** `_build/rev/lint_v3.py 5` reports 0 issues (topic order and counts, footers, glyphs, formula spacing, workbook references). `_build/rev/check_facts.py` now also checks the Capstone deck: it recomputes the Kingsway and Mercyland headline facts straight from the CSVs, independently of the deck pipeline (20 facts, 0 missing).
+- **Wording fixes:** "days above 95%" (60) and Volume 1's "95% or higher" (63) are both correct; three 2023 days sit at exactly 95.0%. Kingsway's at-risk students are described by rate (Engineering 36.8%, the highest) instead of "most in Engineering", since Engineering holds only 28% of them.
+
 ### Build
 ```
 python3 _build/07_v3_week1_deck.py --preview   # deck (+ PNG previews in _build/_stage/v3_preview)
@@ -183,6 +195,8 @@ python3 _build/03_asg_w3.py                    # Week 3 assignment + answer key
 python3 _build/07_v3_week4_deck.py && python3 _build/rev/lint_v3.py 4
 cd _build && python3 02_sec_w4.py              # Week 4 workbook (asserts all 139 topics are covered)
 python3 _build/03_asg_w4.py                    # Week 4 assignment + answer key
+python3 _build/07_v3_capstone_deck.py && python3 _build/rev/lint_v3.py 5   # Capstone deck
+python3 _build/rev/check_facts.py              # headline facts vs the CSVs (Vol1 and Vol5)
 python3 _build/rev/untaught_scan.py <WeekN file.xlsx>   # functions not taught in the Week 1-N workbooks
 python3 _build/verify_xlsx.py <file.xlsx>      # independent formula check
 ```
@@ -201,7 +215,7 @@ Every topic in all five volumes (663 topics) now has two slides.
    - **Remember**: one tip.
    - **Avoid**: the most common beginner mistake.
 2. **Worked-example slide**
-   - **The situation**: a real business question on the pack datasets (SuperMart, Crestview, Lifecare, EkoSuites, the Talent Survey or SuperMart Online).
+   - **The situation**: a real business question on the pack datasets (SuperMart, Kingsway, Mercyland, Atlantic Pearl, the Talent Survey or SuperMart Online; edition 2 used Crestview, Lifecare and EkoSuites, which edition 3 replaced).
    - **Step by step**: three steps.
    - **What you should see**: a table of the exact results you should get.
    - **What this tells us**: the business meaning in one line.
@@ -241,10 +255,10 @@ Every topic in all five volumes (663 topics) now has two slides.
 | Deck | Slides | Modules / topics | Companion files |
 |---|---|---|---|
 | ETEH_Vol1_Week1_Foundations_Slides.pptx | 146 (edition 3) | 1.1–1.9 · 111 topics | ETEH_Week1_Section_Examples.xlsx, ETEH_Week1_Assignment.xlsx |
-| ETEH_Vol2_Week2_PowerQuery_Pivots_Slides.pptx | 219 (edition 3) | 2.1–2.11 · 175 topics | ETEH_Week2_Section_Examples.xlsx, Week2_Data_Files, ETEH_Week2_Assignment.xlsx |
-| ETEH_Vol3_Week3_SQL_DAX_Dashboards_Slides.pptx | 200 | 3.1–3.10 · 158 topics | ETEH_Week3_Section_Examples.xlsx, Week3_Data_Files (SQLite), ETEH_Week3_Assignment.xlsx |
-| ETEH_Vol4_Week4_Stats_Forecast_AI_Slides.pptx | 297 | 4.1–4.14 · 139 topics | ETEH_Week4_Section_Examples.xlsx, ETEH_Week4_Assignment.xlsx |
-| ETEH_Vol5_Capstone_Career_Slides.pptx | 174 | P.1–P.9 · 80 topics | ETEH_Capstone_Section_Examples.xlsx, Capstones 1–3 (solution workbooks), Student Projects 1–4 |
+| ETEH_Vol2_Week2_PowerQuery_Pivots_Slides.pptx | 220 (edition 3) | 2.1–2.11 · 175 topics | ETEH_Week2_Section_Examples.xlsx, Week2_Data_Files, ETEH_Week2_Assignment.xlsx |
+| ETEH_Vol3_Week3_SQL_DAX_Dashboards_Slides.pptx | 203 (edition 3) | 3.1–3.10 · 158 topics | ETEH_Week3_Section_Examples.xlsx, Week3_Data_Files (SQLite), ETEH_Week3_Assignment.xlsx |
+| ETEH_Vol4_Week4_Stats_Forecast_AI_Slides.pptx | 188 (edition 3) | 4.1–4.14 · 139 topics | ETEH_Week4_Section_Examples.xlsx, ETEH_Week4_Assignment.xlsx |
+| ETEH_Vol5_Capstone_Career_Slides.pptx | 120 (edition 3) | P.1–P.9 · 80 topics | ETEH_Capstone_Section_Examples.xlsx, Capstones 1–3 (solution workbooks), Student Projects 1–4 |
 
 **How to study a topic:** read the concept slide first. Then open the workbook sheet named under "Try it yourself" and follow the three steps. Check that your answers match the "What you should see" table. If your numbers differ, look at the **Avoid** box first.
 
@@ -255,14 +269,14 @@ Every topic in all five volumes (663 topics) now has two slides.
   - Week 3 keeps 3.6A and 3.6B.
 - External sources were removed: Wikipedia tables, CBN/NBS figures and "live source" links. The modules that depended on them now use files in the pack:
   - 2.4 · Web and PDF sources: the SuperMart store directory HTML page and the monthly sales bulletin PDF.
-  - 3.10 · File extracts into SQL, DAX and dashboards: the Lifecare 2023 dirty CSV and lifecare_hospital.db.
-  - 4.14 · Internal benchmarks, PDF checks and reconciliation: the SuperMart ledger and bulletin, and Lifecare readmission intervals.
+  - 3.10 · File extracts into SQL, DAX and dashboards: the Mercyland 2023 dirty CSV (`Week2_Data_Files/Mercyland_Episodes_2023_DIRTY.csv`) and `Week3_Data_Files/mercyland_hospital.db`.
+  - 4.14 · Internal benchmarks, PDF checks and reconciliation: the SuperMart ledger and bulletin, and Mercyland readmission intervals.
   - P.2 · Source governance: a register of the capstone sources.
 - The Capstone 1–3 modules (P.3–P.5) are rewritten around the instructor capstones. Every figure on those slides comes from the solution workbooks.
 - Headline worked examples elsewhere now quote real dataset figures, for example:
   - SuperMart FY2025: ₦733.2m sales, 12.7% margin, 3,312 lines.
-  - Crestview: 6,607 students, 86.4% progression, 901 at risk.
-  - Lifecare FY2023: 10,918 admissions, 89.5% occupancy.
+  - Kingsway: 5,840 students, 1,591 at risk (27.2%).
+  - Mercyland FY2023: 12,626 admissions, 86.9% occupancy.
 - Week 1 dollar amounts were converted to naira. `$` signs inside cell references such as `$B$2` were kept.
 
 ## Folders

@@ -5,9 +5,11 @@ from v3kit import T
 from w5_fx import (BAD_N, BAD_TOT, BD_LONG, CEN_DAYS, DLOG2, DM, EASY, EP_ALL, G25, LINES, LONG, M24, M25, MED, MH_TABLES,
                    N_LOSSSKU, NCV, NRAW2, NRISK, NSTORES, OCC, OK_N, OK_TOT, PROG, Q4M25, QD, RESCUED, S25, SKUS, SMO_TABLES,
                    SQL_EASY, SQL_MED, TX_N, XL_D40, XL_SS, XL_TOPM, YEAR, Nb, Nm, I, N, P)
-from w5_fx import C3
+from w5_fx import C3, SM
 
 FREQ = C3.R["Q5_frequent_attenders"]
+_D40 = SM[(SM.Year == 2025) & (SM.Discount >= 0.4)]
+_D40L = (_D40.Profit < 0).mean()
 
 M_P8 = dict(
     id="P.8", title="Portfolio, Anonymisation and CV",
@@ -127,7 +129,7 @@ M_P9 = dict(
               ("PivotTable: Store × Margin, sorted", f"{XL_TOPM[0]} ({P(XL_TOPM[1])})", "Highest-margin store"),
               ('=COUNTIFS(tSM[Year],2025,tSM[Discount],">=0.4") / COUNTIFS(tSM[Year],2025)', P(XL_D40), "Lines at 40%+ discount")],
           fx_widths=[3.9, 1.6, 1.5], stack=True,
-          watch="Explain one number: 'these deep-discount lines are mostly loss-making, which is why margin fell'."),
+          watch=f"Explain one number: '{P(_D40L, 0)} of these deep-discount lines lost money, which is why margin fell'."),
 
         T("P.9.3", "SQL Interview Questions",
           defn="SQL screens rise in difficulty: filter and aggregate, then a JOIN (state the cardinality first), then a window "

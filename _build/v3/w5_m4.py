@@ -118,7 +118,7 @@ M_P4 = dict(
           defn="The Senate paper runs: context, finding, evidence, recommendation, risks, in that order and on two pages.",
           grid=dict(label="The paper's spine", widths=[1.4, 4.5], size=12, rows=[
               ["Section", "Content"], ["Context", f"Target {P(TGT, 0)} of students in good standing"],
-              ["Finding", f"{P(PROG)} progressed; {I(NRISK)} at risk, most in {FAC.index[0]}"],
+              ["Finding", f"{P(PROG)} progressed; {I(NRISK)} at risk; highest rate in {FAC.index[0]} ({P(FAC.iloc[0])})"],
               ["Evidence", f"At-risk rate {P(BAND_RATE[BANDS[0]])} below 70% attendance vs {P(BAND_RATE[BANDS[-1]])} at 90%+"],
               ["Recommendation", f"Attendance-led tutorial programme; owner: Deans; estimate +{I(RESCUED)} students"],
               ["Risks", "Association is not causation; monitor the effect each semester"]])),
