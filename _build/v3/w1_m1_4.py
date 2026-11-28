@@ -386,7 +386,7 @@ M13 = dict(
           defn="Interpretation is explaining what the results mean in the real-world context: whether they are good or "
                "bad, why they matter and what they suggest.",
           simple="A number is not a finding. '37.8%' becomes a finding when you say 'more than one in three online "
-                 "travel agent bookings is cancelled, three times the corporate rate'.",
+                 "travel agent bookings is cancelled, about eight times the corporate rate of 4.5%'.",
           ex=dict(t="tHotelSeg", cols=["Sales_Channel", "Bookings", "Cancelled", "Cancel_Rate"], n=5),
           points=["Compare with something: a target, last year, another group", "Say what it means for the business",
                   "Note limits: small groups (Airline Crew has only 125 bookings) are less reliable"],
@@ -436,7 +436,7 @@ M13 = dict(
               ["Mistake", "Avoid it by"],
               ["Analysing before agreeing the question", "Write a SMART objective first"],
               ["Skipping cleaning", "Profile every column: blanks, types, duplicates"],
-              ["Wrong join that double-counts", "Check totals: a wrong join in Week 3 shows ₦7.19bn instead of ₦1.32bn"],
+              ["Wrong join that double-counts", "Check totals: in Week 3 a join on the wrong key gives ₦7.19bn; the right key gives ₦1.32bn"],
               ["Averaging percentages", "Recalculate from totals: total profit / total sales"],
               ["Calling a correlation a cause", "Look for other explanations"],
               ["Overwriting the raw data", "Keep raw data on its own sheet; work on a copy"]])),

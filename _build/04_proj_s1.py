@@ -86,7 +86,8 @@ def build(key):
         k = "gen" if isinstance(a, str) else "int"
         gd = {6: "All 570 are Cancelled orders - a NULL delivery is expected, not an error.", 7: "0 confirms the rule."}.get(i, "")
         if i == 10:
-            gd = f"{a:,} rows vs 11,000 transactions - a many-to-many join inflates revenue ~5.5x. Join on delivery_id."
+            bad, tot = con.execute("SELECT SUM(t.total_price) FROM transactions t JOIN deliveries d ON d.customer_id = t.customer_id").fetchone()[0], con.execute("SELECT SUM(total_price) FROM transactions").fetchone()[0]
+            gd = f"{a:,} rows vs 11,000 transactions - a many-to-many join inflates revenue {bad / tot:.1f}x. Join on delivery_id."
         A.q(s, f"A{i}", t, a, None, k, 2 if i >= 6 else 1, gd, header=(i == 1))
     A.end_task(s)
 

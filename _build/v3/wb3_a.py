@@ -552,7 +552,8 @@ def m34(b, D):
     cart = int((TX.groupby("customer_id").size().reindex(DV.customer_id.unique()).fillna(0) *
                 DV.groupby("customer_id").size()).sum())
     tp(m, "3.4.10",
-       [("Join on order_id (correct key)", "=ROWS(tTransactions)", len(TX), "int", "One delivery per order line."),
+       [("Left join on delivery_id (correct key)", "=ROWS(tTransactions)", len(TX), "int",
+         f"Each line meets at most one delivery; the {int(TX.delivery_id.isna().sum())} cancelled lines keep a blank."),
         ("Join on customer_id (wrong key)", "=SUMPRODUCT(COUNTIF(tTransactions[customer_id],tDeliveries[customer_id]))", cart, "int",
          "Every line meets every delivery of the same customer.")],
        [("n", "How many times bigger is the wrong join than the transactions table? (1 decimal)",

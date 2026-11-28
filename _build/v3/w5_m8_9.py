@@ -3,8 +3,8 @@ beyond Excel). Figures from w5_fx."""
 from slidekit import NAVY, ORANGE
 from v3kit import T
 from w5_fx import (BAD_N, BAD_TOT, BD_LONG, CEN_DAYS, DLOG2, DM, EASY, EP_ALL, G25, LINES, LONG, M24, M25, MED, MH_TABLES,
-                   N_LOSSSKU, NCV, NRAW2, NRISK, NSTORES, OCC, OK_N, OK_TOT, PROG, Q4M25, QD, RESCUED, S25, SKUS, SMO_TABLES,
-                   SQL_EASY, SQL_MED, TX_N, XL_D40, XL_SS, XL_TOPM, YEAR, Nb, Nm, I, N, P)
+                   N_LOSSSKU, NCV, NRAW2, NRISK, NSTORES, OCC, PROG, Q4M25, QD, RESCUED, S25, SKUS, SMO_TABLES,
+                   SQL_EASY, SQL_MED, TX_N, TX_TOT, XL_D40, XL_SS, XL_TOPM, YEAR, Nb, Nm, I, N, P)
 from w5_fx import C3, SM
 
 FREQ = C3.R["Q5_frequent_attenders"]
@@ -66,7 +66,7 @@ M_P8 = dict(
               ["Used Excel for analysis", f"Built a star-schema model over {I(LINES)} transactions, reconciling {Nm(S25)} with zero variance"],
               ["Found some problems", f"Diagnosed a {-DM:.1f}-point margin decline with rate/mix analysis; flagged {I(N_LOSSSKU)} loss-making SKUs"],
               ["Made a student report", f"Defined a progression measure for {I(NCV)} students and an at-risk list of {I(NRISK)} by trigger"],
-              ["Did some SQL", f"Caught a join error that inflated revenue to {Nb(BAD_TOT)} (true: {Nb(OK_TOT)})"]])),
+              ["Did some SQL", f"Caught a join error that inflated revenue to {Nb(BAD_TOT)} (true: {Nb(TX_TOT)})"]])),
 
         T("P.8.6", "Describing Tools Honestly",
           defn="List only tools you can demonstrate, describe the level honestly, and say how you used AI and how you checked "
@@ -163,8 +163,8 @@ M_P9 = dict(
               ["STAR", "Answer"],
               ["Situation", f"An AI-written zone query returned {Nb(BAD_TOT)} revenue ({I(BAD_N)} rows) from {I(TX_N)} transactions"],
               ["Task", "Verify it before it went into the deck"],
-              ["Action", f"Checked rows with a delivery ({I(OK_N)}) and their total ({Nb(OK_TOT)}); found a join on customer_id; "
-                         "rewrote it on delivery_id"],
+              ["Action", f"Checked the result against the ledger ({Nb(TX_TOT)}); found deliveries joined on customer_id; "
+                         "removed that join, which a revenue query does not need"],
               ["Result", "Correct figure published; a control-total check added to every SQL deliverable"]]),
           watch="Keep the Result about the outcome and what changed, not about you being clever."),
 

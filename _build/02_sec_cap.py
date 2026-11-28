@@ -15,6 +15,11 @@ from common import CORE, SEC, STAGE, W2D, W3D  # noqa: E402
 from wk_common import DATASETS_TEXT, L, lc_adm, sm_sales  # noqa: E402
 from xlhelp import Book  # noqa: E402
 
+with sqlite3.connect(W3D / "supermart_online.db") as _smo:
+    SMO_N, SMO_TOT = _smo.execute("SELECT COUNT(*), SUM(total_price) FROM transactions").fetchone()
+    SMO_BADN, SMO_BAD = _smo.execute("SELECT COUNT(*), SUM(t.total_price) FROM transactions t "
+                                     "JOIN deliveries d ON d.customer_id = t.customer_id").fetchone()
+
 OUT = SEC / "ETEH_Capstone_Section_Examples.xlsx"
 XL0 = pd.Timestamp("1899-12-30")
 
@@ -477,7 +482,7 @@ s.grid([[f"Built a star-schema Excel model over {len(sm):,} retail transactions 
         [f"Diagnosed a {-(m25 - m24) * 100:.1f}-point margin decline through rate/mix decomposition, identifying {int((pm.P < 0).sum())} loss-making SKUs for repricing."],
         [f"Defined and automated a progression measure for {len(cv):,} students, producing an adviser-ready at-risk list of {int((~prog).sum()):,} students by trigger."],
         [f"Measured bed occupancy from {len(census):,} daily census records and built a rule-based escalation flag applied consistently to every report."],
-        ["Wrote and verified SQL joins across a 5-table marketplace database (11,000 orders), catching a join error that inflated revenue about 5.5x (₦7.19bn vs ₦1.32bn)."]],
+        [f"Wrote and verified SQL joins across a 5-table marketplace database ({SMO_N:,} orders), catching a join error that inflated revenue {SMO_BAD / SMO_TOT:.1f}x (₦{SMO_BAD / 1e9:.2f}bn against the ledger's ₦{SMO_TOT / 1e9:.2f}bn)."]],
        header=["CV bullet (every number is defensible from the workbook)"])
 s.grid([["Excel", "Power Query, Data Model, DAX, PivotTables, dynamic arrays, what-if & Solver"], ["SQL", "SELECT to multi-table JOIN, aggregates, subqueries, window functions (SQLite)"],
         ["Statistics", "Descriptive statistics, correlation, regression, FORECAST.ETS"], ["AI", "Co-pilot use with verification against control totals"]],
@@ -514,8 +519,8 @@ with sqlite3.connect(db) as con:
         res = pd.read_sql_query(q, con)
         s.table(res, f"tSqlInt{i + 1}", fmts={c: ("naira" if "revenue" in c else "int") for c in res.columns if res[c].dtype != object})
 s.band("P.9.4-5", "Explaining your process and a STAR answer")
-s.grid([["Situation", "SuperMart Online SQL project: the AI-written zone query returned ₦7.19bn revenue (56,725 rows)"],
-        ["Task", "Verify before the number went into the deck"], ["Action", "Checked row count (should be 10,430 lines with a delivery record) and their control total ₦1.32bn; found the join on customer_id; rewrote on delivery_id"],
+s.grid([["Situation", f"SuperMart Online SQL project: the AI-written zone query returned ₦{SMO_BAD / 1e9:.2f}bn revenue ({SMO_BADN:,} rows) from {SMO_N:,} transactions"],
+        ["Task", "Verify before the number went into the deck"], ["Action", f"Checked the result against the ledger total (₦{SMO_TOT / 1e9:.2f}bn); found deliveries joined on customer_id; removed that join, which a revenue query does not need"],
         ["Result", "Correct figure published; added a control-total check to every SQL deliverable"]], header=["STAR", "Answer"], merge_last=True)
 s.band("P.9.6-8", "Roadmap: Power BI, SQL, Python")
 s.grid([["Power BI", "Rebuild Capstone 1 in Power BI Desktop: same star schema and DAX; learn the visual layer", "2-4 weeks"],

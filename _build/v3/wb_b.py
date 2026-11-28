@@ -141,7 +141,7 @@ def m14(b, D):
     ota, corp = hs.Cancel_Rate["Online Travel Agent"], hs.Cancel_Rate["Corporate"]
     m.worked([("Overall cancellation rate", "=SUM(tHotelSeg[Cancelled])/SUM(tHotelSeg[Bookings])", HSEG.Cancelled.sum() / HSEG.Bookings.sum(), "pct", ""),
               ("Online travel agent ÷ corporate rate", '=SUMIFS(tHotelSeg[Cancel_Rate],tHotelSeg[Sales_Channel],"Online Travel Agent")/SUMIFS(tHotelSeg[Cancel_Rate],tHotelSeg[Sales_Channel],"Corporate")',
-               ota / corp, "dec1", "About three times as likely to cancel.")])
+               ota / corp, "dec1", f"About {ota / corp:.0f} times as likely to cancel.")])
     m.turn()
     m.ex("How many Online Travel Agent bookings were cancelled?", '=SUMIFS(tHotelSeg[Cancelled],tHotelSeg[Sales_Channel],"Online Travel Agent")',
          int(hs.Cancelled["Online Travel Agent"]), "int", short="OTA cancellations")

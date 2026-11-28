@@ -144,7 +144,7 @@ M43 = dict(
 
         T("4.3.9", "Simpson's Paradox",
           defn="Simpson's paradox is when a trend that appears in every group reverses when the groups are combined.",
-          simple="It happens when the groups are of very different sizes; always check the split before the total.",
+          simple="It happens when one group is concentrated in the subgroup with the highest rate; always check the split before the total.",
           grid=dict(label="Atlantic Pearl cancellation rate: Deluxe vs Standard Twin (tHotel)", widths=[1.5, 1.2, 1.4], rows=[
               ["Arrivals", "Deluxe", "Standard Twin"],
               ["2023", P(SPY.loc[(2023, "Deluxe"), "mean"]), P(SPY.loc[(2023, "Standard Twin"), "mean"])],

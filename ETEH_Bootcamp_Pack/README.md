@@ -181,6 +181,13 @@ Rebuilt from scratch in the Week 1 format (`_build/02_sec_w4.py` with `_build/v3
 - **Checks:** `_build/rev/lint_v3.py 5` reports 0 issues (topic order and counts, footers, glyphs, formula spacing, workbook references). `_build/rev/check_facts.py` now also checks the Capstone deck: it recomputes the Kingsway and Mercyland headline facts straight from the CSVs, independently of the deck pipeline (20 facts, 0 missing).
 - **Wording fixes:** "days above 95%" (60) and Volume 1's "95% or higher" (63) are both correct; three 2023 days sit at exactly 95.0%. Kingsway's at-risk students are described by rate (Engineering 36.8%, the highest) instead of "most in Engineering", since Engineering holds only 28% of them.
 
+### Clarity pass (all files)
+- **Hotel channels (Vol1 1.3.8; Week 1 workbook 1.4):** "three times the corporate rate" was wrong. Online travel agents cancel 37.8% against Corporate's 4.5%, about **eight times**. The workbook note is now computed from the ratio.
+- **Wrong-join control total:** two correct totals were used without saying which. **₦1.32bn** is the 10,430 lines matched on the right key (`delivery_id`); **₦1.39bn** is the ledger revenue across all 11,000 orders. Week 3 compares the two keys, so Vol1 1.3.12 now says "the right key gives ₦1.32bn". The AI zone-query story (Vol4 4.11–4.12, Vol5 P.8–P.9, the Capstone workbook P.8–P.9, the Project 1 key) now uses ₦1.39bn and 5.2× throughout. The fix is the same everywhere: drop the deliveries join, which a revenue query does not need. Before, the Vol5 and Capstone STAR answers said it was "rewritten on delivery_id", which contradicted Vol4.
+- **Week 3 workbook 3.4.10:** the row was labelled "Join on order_id"; it now says "Left join on delivery_id". Its note no longer says "one delivery per order line", because the 570 cancelled lines have no delivery.
+- **Week 2 answer key 5.8:** the sample headline said all four wards admitted "similar volumes (about 2,600–2,800 each)". In fact Iroko admitted 4,062 and Mahogany 1,588. The headline is now computed from the data.
+- **Vol4 4.3.9:** Simpson's paradox is now explained as one group concentrated in the subgroup with the highest rate, not as "groups of very different sizes".
+
 ### Build
 ```
 python3 _build/07_v3_week1_deck.py --preview   # deck (+ PNG previews in _build/_stage/v3_preview)

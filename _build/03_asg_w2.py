@@ -267,6 +267,7 @@ def build(key: bool):
                "with formulas (and a live PivotTable) so the marker can check them.")
     wq = cl.groupby(["Ward", "Quarter"]).size()
     top_wq = wq.idxmax()
+    wt = cl.groupby("Ward").size().sort_values(ascending=False)
     hmo = cl.groupby("HMO").Bill_Amount_NGN.sum().sort_values(ascending=False)
     baobab = cl[cl.Ward == "Baobab Ward"]
     los_c = valid.groupby("Diagnosis_Group").LOS_Days.mean().sort_values(ascending=False)
@@ -287,7 +288,8 @@ def build(key: bool):
     A.q(s, "5.7", "Add a slicer on Admission_Route and select Elective. Total billing shown?", '=SUMIFS(tClean[Bill_Amount_NGN],tClean[Admission_Route],"Elective")',
         elect, "naira", 3)
     A.long(s, "5.8", "Insert a clustered-column PivotChart of admissions by Ward and Quarter. Write the one-sentence headline you would put above it.",
-           f"e.g. 'All four wards admitted similar volumes in 2023 (about 2,600-2,800 each); {top_wq[0]} peaked in {top_wq[1]} with {int(wq.max())} admissions.' "
+           f"e.g. '{wt.index[0]} admitted the most patients in 2023 ({int(wt.iloc[0]):,}), {wt.iloc[0] / wt.iloc[-1]:.1f} times {wt.index[-1]} ({int(wt.iloc[-1]):,}); "
+           f"the busiest ward-quarter was {top_wq[0]} {top_wq[1]} with {int(wq.max()):,} admissions.' "
            "A headline states the finding, not the chart type.", marks=3, guide="Chart present 1; headline is a finding with a number 2.", rows=3)
     A.q(s, "5.9", "The EMR team sends a corrected CSV. Which single command refreshes the query AND every pivot?", "Data > Refresh All", marks=2,
         choices=["Data > Refresh All", "PivotTable Analyze > Refresh", "Ctrl + S", "Close and Load"], header=True)
