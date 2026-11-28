@@ -174,12 +174,27 @@ Rebuilt from scratch in the Week 1 format (`_build/02_sec_w4.py` with `_build/v3
   - P.1–P.2: the project lifecycle and source governance, with each capstone's brief, data inventory and source register.
   - P.3 Capstone 1 SuperMart: FY2025 sales ₦733.2m (+20.4%) but margin 13.4% › 12.7%. Discount bands, a rate/mix margin bridge (rate −1.19 pts, mix +0.51 pts), the Q4 2025 margin of 9.8%, SKU and basket analysis, and the Furniture 20% discount cap (+₦17.7m–₦18.0m a year).
   - P.4 Capstone 2 Kingsway: 5,885 raw rows cleaned to 5,840 students; progression 72.8% against a 90% target; 1,591 at risk (27.2%) by trigger; at-risk rate by faculty and attendance band; the tutorial-programme estimate (80.7%, +462 students, R² 0.34, labelled as an estimate).
-  - P.5 Capstone 3 Mercyland FY2023: 12,626 admissions, bed-day occupancy 86.9% (June 98.1%; 60 days above 95%, 24 above 100%; about 5 extra beds for 85%); LOS mean 5.0, median 4 (8+ day stays are 18.2% of admissions but 42.2% of bed-days); readmission 8.7%; the Q4 escalation list.
+  - P.5 Capstone 3 Mercyland FY2023: 12,626 admissions, bed-day occupancy 86.9% (June 98.1%; 60 days above 95%, 24 above 100%; about 5 extra beds for 85%); LOS mean 5.0, median 4 (8+ day stays are 18.2% of admissions but 42.2% of bed-days); readmission 8.7%; the Q4 escalation list (444 of 3,125 Q4 admissions: 275 readmitted within 30 days, 119 stays of 14+ days, 50 aged 75+).
   - P.6 workbook QA, P.7 executive defence, P.8 portfolio and CV, P.9 interviews (live Excel and SQL tests on the pack's own data, STAR) and the roadmap to Power BI, SQL and Python.
 - **Charts:** 23 native charts on 17 slides: column, bar, line and combo charts, a margin-bridge waterfall, and a one-screen dashboard (KPI cards plus three charts) for each capstone.
 - **Data:** every figure is computed from the edition 3 datasets when the deck is built (`_build/v3/w5_fx.py` reuses the capstone builders `04_proj_i1.py`–`04_proj_i3.py`). The table names and columns quoted on the slides (tSM, tCV, tAtRiskTop20, tAdm23, tCensus, …) are the ones in `ETEH_Capstone_Section_Examples.xlsx`.
 - **Checks:** `_build/rev/lint_v3.py 5` reports 0 issues (topic order and counts, footers, glyphs, formula spacing, workbook references). `_build/rev/check_facts.py` now also checks the Capstone deck: it recomputes the Kingsway and Mercyland headline facts straight from the CSVs, independently of the deck pipeline (20 facts, 0 missing).
 - **Wording fixes:** "days above 95%" (60) and Volume 1's "95% or higher" (63) are both correct; three 2023 days sit at exactly 95.0%. Kingsway's at-risk students are described by rate (Engineering 36.8%, the highest) instead of "most in Engineering", since Engineering holds only 28% of them.
+
+### Data standards
+- **SuperMart Online `sellers.store_name` = the registered trading name.**
+  - Rules: unique across the marketplace, enforced by `UNIQUE` in `supermart_online.db` and its schema script; no numeric suffixes; any place in a name is the store's own city.
+  - Before: 200 sellers shared 86 names (e.g. 11 "Trade Fair Online", 8 "Alaba International Digital"). Many were named after cities they are not in, e.g. "Sokoto Suppliers" in Oshogbo.
+  - Names now follow common Nigerian SME patterns: "Yusuf Ventures", "Nnaji Stores", "Makurdi Trading Company". They are generated deterministically by `seller_trading_names()` in `_build/01_build_datasets.py`.
+  - Only the names changed: IDs, cities, sales and every total are as before.
+  - The core CSV, the database, the SQL scripts, the Week 2 JSON and the raw export were regenerated.
+  - **Effect on answers:** Project 1's "seller with the highest 2025 net revenue" was "Alaba International Digital", which in fact merged eight different sellers. The answer is now Kaduna Merchants (SELL0200), and the key groups by `seller_id, store_name`. The Capstone P.9 window-function query groups the same way.
+  - **Teaching notes:**
+    - Vol3 3.1.8 uses the new `UNIQUE` constraint as its example.
+    - The 3.4.10 warning now uses owner names, which still repeat (191 names for 200 sellers), to show why names make poor keys.
+    - 3.6.28 says to rank by `seller_id` because stores can be renamed.
+    - The 3.4.8 fuzzy-matching example now types 3 of 8 names in a different word form ("Yusuf Venture", "Trading Co."), so 5 of 8 match after ignoring case and spaces, and 3 need fuzzy matching.
+- **Capstone 3 escalation rule: long stay = 14+ days**, NHS England's long-stay measure (it tracks 14+ and 21+ day stays). The old 28-day cut-off flagged only 8 Q4 cases. The new one flags 119, a workable weekly review list. The rule order is unchanged: readmission first, then long stay, then age 75+. The cut-off is one constant (`ESC_LOS`) used by the Capstone workbook (P.5.7 conditional column, Power Query code and counts) and the Vol5 deck.
 
 ### Clarity pass (all files)
 - **Hotel channels (Vol1 1.3.8; Week 1 workbook 1.4):** "three times the corporate rate" was wrong. Online travel agents cancel 37.8% against Corporate's 4.5%, about **eight times**. The workbook note is now computed from the ratio.

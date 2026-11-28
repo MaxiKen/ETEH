@@ -38,7 +38,7 @@ CREATE TABLE customers (
 
 CREATE TABLE sellers (
     seller_id        TEXT PRIMARY KEY,
-    store_name       TEXT NOT NULL,
+    store_name       TEXT NOT NULL UNIQUE,
     owner_name       TEXT,
     email            TEXT,
     phone_number     TEXT,

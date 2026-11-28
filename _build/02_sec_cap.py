@@ -380,13 +380,15 @@ s.table(dp, "tReadmitDept", fmts={"Discharges": "int"}, widths={"Department": 24
 s.warn("Readmission is a safety measure: any department-level finding goes to the clinical lead for validation before it appears in a board pack.")
 s.band("P.5.7", "Escalation rule as a conditional column (Q4 2023 admissions)")
 q4 = lc[(lc.Admit_Date >= "2023-10-01") & (lc.Admit_Date <= "2023-12-31")][["Episode_ID", "Admit_Date", "Ward", "Department", "Admission_Route", "Age", "LOS_Days", "Readmitted_30d"]].reset_index(drop=True)
-reason = np.where(q4.Readmitted_30d == "Yes", "Readmitted within 30 days", np.where(q4.LOS_Days >= 28, "Stay of 28+ days", np.where(q4.Age >= 75, "Age 75+", "")))
+ESC_LOS = 14   # long stay = 14+ days: NHS England's long-stay measure (it tracks 14+ and 21+ day stays)
+LONG_LBL = f"Stay of {ESC_LOS}+ days"
+reason = np.where(q4.Readmitted_30d == "Yes", "Readmitted within 30 days", np.where(q4.LOS_Days >= ESC_LOS, LONG_LBL, np.where(q4.Age >= 75, "Age 75+", "")))
 s.calc([("Q4 2023 admissions", "=ROWS(tEscQ4)", len(q4), "int", ""),
         ("Escalations", '=SUMPRODUCT(--(tEscQ4[Escalation_reason]<>""))', int((reason != "").sum()), "int", "Every report applies the same rule"),
         ("…readmitted", '=COUNTIFS(tEscQ4[Escalation_reason],"Readmitted*")', int((reason == "Readmitted within 30 days").sum()), "int", "Rule order matters: first matching reason is recorded"),
-        ("…long stay", '=COUNTIFS(tEscQ4[Escalation_reason],"Stay*")', int((reason == "Stay of 28+ days").sum()), "int", ""),
+        ("…long stay", '=COUNTIFS(tEscQ4[Escalation_reason],"Stay*")', int((reason == LONG_LBL).sum()), "int", f"{ESC_LOS}+ days is NHS England's long-stay measure"),
         ("…age 75+", '=COUNTIFS(tEscQ4[Escalation_reason],"Age*")', int((reason == "Age 75+").sum()), "int", "")])
-s.code('// Power Query conditional column (same rule)\n= Table.AddColumn(Source, "Escalation_reason", each\n    if [Readmitted_30d] = "Yes" then "Readmitted within 30 days"\n    else if [LOS_Days] >= 28 then "Stay of 28+ days"\n    else if [Age] >= 75 then "Age 75+"\n    else "", type text)')
+s.code('// Power Query conditional column (same rule)\n= Table.AddColumn(Source, "Escalation_reason", each\n    if [Readmitted_30d] = "Yes" then "Readmitted within 30 days"\n    else if [LOS_Days] >= ' + str(ESC_LOS) + ' then "' + LONG_LBL + '"\n    else if [Age] >= 75 then "Age 75+"\n    else "", type text)')
 s.band("P.5.8-10", "Dashboard, board pack and verification")
 s.grid([["KPI cards", "Admissions, Occupancy %, Mean LOS, Readmission %"], ["Occupancy trend", "Quarterly line with 85% target band (above)"],
         ["Ward bars", "Admissions and P90 LOS by ward"], ["Board pack", "Summary, occupancy, LOS, readmission safety note, staffing recommendation, data-quality appendix, confidentiality statement"],
@@ -394,7 +396,7 @@ s.grid([["KPI cards", "Admissions, Occupancy %, Mean LOS, Readmission %"], ["Occ
        header=["Item", "Content"], merge_last=True)
 s.h2("Escalation list - Q4 2023 (Episode_ID only, no patient identifiers)")
 s.table(q4, "tEscQ4", fmts={"Admit_Date": "date", "Age": "int", "LOS_Days": "int"}, widths={"Department": 22},
-        calc={"Escalation_reason": ('=IF([@Readmitted_30d]="Yes","Readmitted within 30 days",IF([@LOS_Days]>=28,"Stay of 28+ days",IF([@Age]>=75,"Age 75+","")))', None, reason.tolist())})
+        calc={"Escalation_reason": ('=IF([@Readmitted_30d]="Yes","Readmitted within 30 days",IF([@LOS_Days]>=' + str(ESC_LOS) + ',"' + LONG_LBL + '",IF([@Age]>=75,"Age 75+","")))', None, reason.tolist())})
 
 # ======================================================================================
 # P.6 QA
@@ -511,7 +513,7 @@ sqls = [("Easy - filter and aggregate: delivered orders and revenue by payment m
         ("Medium - join with stated cardinality (many transactions → one product): top 5 brands by net revenue",
          "SELECT p.brand_name, COUNT(*) AS orders, SUM(t.total_price) AS net_revenue\nFROM transactions t\nJOIN products p ON p.product_id = t.product_id   -- many-to-one\nWHERE t.order_status IN ('Delivered','Completed')\nGROUP BY p.brand_name\nORDER BY net_revenue DESC\nLIMIT 5"),
         ("Hard - window function: best-selling seller in each zone",
-         "WITH s AS (\n  SELECT sl.store_zone, sl.store_name, SUM(t.total_price) AS revenue,\n         RANK() OVER (PARTITION BY sl.store_zone ORDER BY SUM(t.total_price) DESC) AS rnk\n  FROM transactions t JOIN sellers sl ON sl.seller_id = t.seller_id\n  WHERE t.order_status IN ('Delivered','Completed')\n  GROUP BY sl.store_zone, sl.store_name)\nSELECT store_zone, store_name, revenue FROM s WHERE rnk = 1 ORDER BY revenue DESC")]
+         "WITH s AS (\n  SELECT sl.store_zone, sl.store_name, SUM(t.total_price) AS revenue,\n         RANK() OVER (PARTITION BY sl.store_zone ORDER BY SUM(t.total_price) DESC) AS rnk\n  FROM transactions t JOIN sellers sl ON sl.seller_id = t.seller_id\n  WHERE t.order_status IN ('Delivered','Completed')\n  GROUP BY sl.store_zone, sl.seller_id, sl.store_name)\nSELECT store_zone, store_name, revenue FROM s WHERE rnk = 1 ORDER BY revenue DESC")]
 with sqlite3.connect(db) as con:
     for i, (title, q) in enumerate(sqls):
         s.h2(title)

@@ -2,7 +2,7 @@
 the reference analysis behind Capstone3_Mercyland_SOLUTION.xlsx (SQL extraction from mercyland_hospital.db)."""
 from slidekit import GREEN, NAVY, ORANGE, RED
 from v3kit import T
-from w5_fx import (ABOVE, ADM, ALOS, BEDS, BEDS_NEED, BELOW, BILL, BD_LONG, C3, CEN_DAYS, CTL, D95, D100, DEPT_CI, EP_ALL, ESC,
+from w5_fx import (ABOVE, ADM, ALOS, BEDS, BEDS_NEED, BELOW, BILL, BD_LONG, C3, CEN_DAYS, CTL, D95, D100, DEPT_CI, EP_ALL, ESC, ESC_LOS,
                    HMO, LONG, LOSB, LOSMAX, MEDLOS, MH_TABLES, MOCC, N_LONG, N_MOVER, NCONS, NQ4, NWARDS, OCC, PK_MON, RR,
                    SH_LONG, TYPE_LOS, WARD_LOS, WARD_P90, WARDS_CSV, YEAR, Nb, I, P)
 
@@ -98,9 +98,10 @@ M_P5 = dict(
 
         T("P.5.7", "Escalation Logic: One Rule for Every Report",
           defn="An escalation rule flags cases with one documented order of tests, applied identically in every report.",
+          simple=f"A long stay is {ESC_LOS}+ days, NHS England's long-stay measure.",
           code=["= Table.AddColumn(Source, \"Escalation_reason\", each",
                 "    if [Readmitted_30d] = \"Yes\" then \"Readmitted within 30 days\"",
-                "    else if [LOS_Days] >= 28 then \"Stay of 28+ days\"",
+                f"    else if [LOS_Days] >= {ESC_LOS} then \"Stay of {ESC_LOS}+ days\"",
                 "    else if [Age] >= 75 then \"Age 75+\"", "    else \"\", type text)"],
           code_label="POWER QUERY CONDITIONAL COLUMN", code_size=11,
           grid=dict(label=f"Q4 {YEAR}: {I(NQ4)} admissions", widths=[1.8, 1.0], size=12.5, rows=[

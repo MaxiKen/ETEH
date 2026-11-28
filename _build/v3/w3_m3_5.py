@@ -176,7 +176,19 @@ Z_FAIL2 = int((~ZRAW.str.strip().isin(Z4)).sum())
 
 # fuzzy example: eight seller names as a supplier typed them (built for the exercise; same table tFuzzy in the workbook)
 FZ = SE.head(8)[["seller_id", "store_name"]].copy()
-FZ["typed"] = [s.replace("Suppliers", "Supplier") if i % 3 == 0 else (s.upper() if i % 3 == 1 else s.replace(" ", "  ", 1))
+# every third name is typed with a different word form (only fuzzy matching finds it), the others in capitals or with a double space
+_FORMS = {"Trading Company": "Trading Co.", "Shopping Centre": "Shopping Center", "Global Concepts": "Global Concept",
+          "Superstore": "Super Store", "Online Shop": "Online Shopping", "Retail Hub": "Retail-Hub", "Enterprises": "Enterprise",
+          "Ventures": "Venture", "Stores": "Store", "Supplies": "Supply", "Merchants": "Merchant", "Emporium": "Emporium Ltd",
+          "Mart": "Mart Ltd", "Depot": "Depot Ltd", "Plaza": "Plaza Ltd"}
+
+
+def _variant(s):
+    k = next(k for k in _FORMS if s.endswith(k))
+    return s[: -len(k)] + _FORMS[k]
+
+
+FZ["typed"] = [_variant(s) if i % 3 == 0 else (s.upper() if i % 3 == 1 else s.replace(" ", "  ", 1))
                for i, s in enumerate(FZ.store_name)]
 FZ_EXACT = int((FZ.typed == FZ.store_name).sum())
 FZ_NORM = int((FZ.typed.str.lower().str.split().str.join(" ") == FZ.store_name.str.lower()).sum())
@@ -277,7 +289,7 @@ GROUP BY 1, 2;""", fmt={"value": "n"}, size=11.5, split=0.55),
           simple="Use it for hand-typed names when no ID exists. Every match is a suggestion to review.",
           grid=dict(label="A supplier's hand-typed list of 8 seller names", widths=[2, 1.2, 2.2], size=11.5, rows=[
               ["Method", "Matched", "Note"],
-              ["Exact match", f"{FZ_EXACT} of 8", "Capitals and double spaces fail"],
+              ["Exact match", f"{FZ_EXACT} of 8", "Capitals, spaces and word forms fail"],
               ["Ignore case and spaces", f"{FZ_NORM} of 8", "Missed: " + "; ".join(FZ_MISS)],
               ["Fuzzy, threshold 0.8", "Candidates for all", "Review each one"]]),
           **CODE("""
@@ -309,7 +321,8 @@ Table.FuzzyNestedJoin(Supplier, {"typed"},
               ["Join key", "Rows", "Value summed"],
               ["delivery_id (correct)", I(INNER.n), N(INNER.v)],
               ["customer_id (wrong)", I(CART.n), N(CART.v)]]),
-          watch=f"Store names repeat too: {SE.store_name.nunique()} names for {len(SE)} sellers. Join and group on seller_id, never on store_name."),
+          watch=f"Names make poor keys: {SE.owner_name.nunique()} owner names cover {len(SE)} sellers, so joining on owner_name multiplies rows too. "
+                "Join and group on seller_id."),
 
         T("3.4.11", "Appending Two Tables",
           defn="Append Queries stacks two tables, matching columns by name, not by position.",

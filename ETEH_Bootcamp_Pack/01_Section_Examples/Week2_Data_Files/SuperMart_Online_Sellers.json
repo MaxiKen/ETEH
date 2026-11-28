@@ -4,7 +4,7 @@
  "sellers": [
   {
    "seller_id": "SELL0001",
-   "store_name": "Sokoto Suppliers",
+   "store_name": "Yusuf Ventures",
    "owner_name": "Kelechi Yusuf",
    "email": "store12@business.ng",
    "phone_number": "07053939110",
@@ -20,7 +20,7 @@
   },
   {
    "seller_id": "SELL0002",
-   "store_name": "Sokoto Suppliers",
+   "store_name": "Ekwensi Emporium",
    "owner_name": "Usman Ekwensi",
    "email": "store244@business.ng",
    "phone_number": "09077134583",
@@ -36,7 +36,7 @@
   },
   {
    "seller_id": "SELL0003",
-   "store_name": "Eko Mall 3",
+   "store_name": "Bakare Shopping Centre",
    "owner_name": "Zainab Bakare",
    "email": "store324@business.ng",
    "phone_number": "07042378692",
@@ -52,7 +52,7 @@
   },
   {
    "seller_id": "SELL0004",
-   "store_name": "Victoria Island Mart",
+   "store_name": "Makurdi Trading Company",
    "owner_name": "Olumide Ogunlesi",
    "email": "store483@business.ng",
    "phone_number": "09037681339",
@@ -68,7 +68,7 @@
   },
   {
    "seller_id": "SELL0005",
-   "store_name": "Nigerian Pride Store",
+   "store_name": "Dauda Merchants",
    "owner_name": "Kelechi Dauda",
    "email": "store516@business.ng",
    "phone_number": "09059793666",
@@ -84,7 +84,7 @@
   },
   {
    "seller_id": "SELL0006",
-   "store_name": "Wuse Market Digital",
+   "store_name": "Suleiman Superstore",
    "owner_name": "Segun Suleiman",
    "email": "store637@business.ng",
    "phone_number": "08131154676",
@@ -100,7 +100,7 @@
   },
   {
    "seller_id": "SELL0007",
-   "store_name": "Abuja Mart",
+   "store_name": "Anyanwu Plaza",
    "owner_name": "Kelechi Anyanwu",
    "email": "store72@business.ng",
    "phone_number": "08014346230",
@@ -116,7 +116,7 @@
   },
   {
    "seller_id": "SELL0008",
-   "store_name": "Mama Nkechi Stores 8",
+   "store_name": "Lagos Mart",
    "owner_name": "Ngozi Adebayo",
    "email": "store824@business.ng",
    "phone_number": "09086321420",
@@ -132,7 +132,7 @@
   },
   {
    "seller_id": "SELL0009",
-   "store_name": "Ariaria Market Hub",
+   "store_name": "Danjuma Depot",
    "owner_name": "Fatima Danjuma",
    "email": "store960@business.ng",
    "phone_number": "07066680533",
@@ -148,7 +148,7 @@
   },
   {
    "seller_id": "SELL0010",
-   "store_name": "Computer Village Store",
+   "store_name": "Nnaji Stores",
    "owner_name": "Chioma Nnaji",
    "email": "store1088@business.ng",
    "phone_number": "09036040674",
@@ -164,7 +164,7 @@
   },
   {
    "seller_id": "SELL0011",
-   "store_name": "Sokoto Suppliers",
+   "store_name": "Yusuf Retail Hub",
    "owner_name": "Olumide Yusuf",
    "email": "store1136@business.ng",
    "phone_number": "08034796678",
@@ -180,7 +180,7 @@
   },
   {
    "seller_id": "SELL0012",
-   "store_name": "Sokoto Suppliers",
+   "store_name": "Ibadan Global Concepts",
    "owner_name": "Kelechi Obi",
    "email": "store1272@business.ng",
    "phone_number": "08085591614",
@@ -196,7 +196,7 @@
   },
   {
    "seller_id": "SELL0013",
-   "store_name": "Port Harcourt Depot",
+   "store_name": "Okafor Online Shop",
    "owner_name": "Halima Okafor",
    "email": "store1394@business.ng",
    "phone_number": "09053633699",
@@ -212,7 +212,7 @@
   },
   {
    "seller_id": "SELL0014",
-   "store_name": "Sokoto Suppliers",
+   "store_name": "Eze Enterprises",
    "owner_name": "Kehinde Eze",
    "email": "store1498@business.ng",
    "phone_number": "08091162973",
@@ -228,7 +228,7 @@
   },
   {
    "seller_id": "SELL0015",
-   "store_name": "Trade Fair Online",
+   "store_name": "Ojo Supplies",
    "owner_name": "Abubakar Ojo",
    "email": "store1599@business.ng",
    "phone_number": "07062025032",
@@ -244,7 +244,7 @@
   },
   {
    "seller_id": "SELL0016",
-   "store_name": "Zaria Emporium",
+   "store_name": "Port Harcourt Ventures",
    "owner_name": "Aisha Okafor",
    "email": "store1622@business.ng",
    "phone_number": "09070741910",
@@ -260,7 +260,7 @@
   },
   {
    "seller_id": "SELL0017",
-   "store_name": "Trade Fair Online",
+   "store_name": "Uche Emporium",
    "owner_name": "Gbenga Uche",
    "email": "store173@business.ng",
    "phone_number": "09045537497",
@@ -276,7 +276,7 @@
   },
   {
    "seller_id": "SELL0018",
-   "store_name": "Warri Connect 18",
+   "store_name": "Kalu Shopping Centre",
    "owner_name": "Okey Kalu",
    "email": "store1847@business.ng",
    "phone_number": "09050446864",
@@ -292,7 +292,7 @@
   },
   {
    "seller_id": "SELL0019",
-   "store_name": "Abuja Mart 19",
+   "store_name": "Eze Trading Company",
    "owner_name": "Rashida Eze",
    "email": "store1977@business.ng",
    "phone_number": "07099269195",
@@ -308,7 +308,7 @@
   },
   {
    "seller_id": "SELL0020",
-   "store_name": "Naija Best Deals",
+   "store_name": "Kano Merchants",
    "owner_name": "Zainab Ekong",
    "email": "store2074@business.ng",
    "phone_number": "08141970207",
@@ -324,7 +324,7 @@
   },
   {
    "seller_id": "SELL0021",
-   "store_name": "Port Harcourt Depot",
+   "store_name": "Eze Superstore",
    "owner_name": "Ade Eze",
    "email": "store2132@business.ng",
    "phone_number": "08135827317",
@@ -340,7 +340,7 @@
   },
   {
    "seller_id": "SELL0022",
-   "store_name": "Adebayo Electronics 22",
+   "store_name": "Okafor Plaza",
    "owner_name": "Ibrahim Okafor",
    "email": "store2294@business.ng",
    "phone_number": "08156177939",
@@ -356,7 +356,7 @@
   },
   {
    "seller_id": "SELL0023",
-   "store_name": "Sabo Mart 23",
+   "store_name": "Musa Mart",
    "owner_name": "Adaeze Musa",
    "email": "store2372@business.ng",
    "phone_number": "07040338081",
@@ -372,7 +372,7 @@
   },
   {
    "seller_id": "SELL0024",
-   "store_name": "Enugu Plaza",
+   "store_name": "Kaduna Depot",
    "owner_name": "Musa Eze",
    "email": "store2476@business.ng",
    "phone_number": "08031770277",
@@ -388,7 +388,7 @@
   },
   {
    "seller_id": "SELL0025",
-   "store_name": "Wuse Market Digital 25",
+   "store_name": "Lawal Stores",
    "owner_name": "Titilayo Lawal",
    "email": "store2516@business.ng",
    "phone_number": "08185743176",
@@ -404,7 +404,7 @@
   },
   {
    "seller_id": "SELL0026",
-   "store_name": "Computer Village Store",
+   "store_name": "Dauda Retail Hub",
    "owner_name": "Ifeanyi Dauda",
    "email": "store2651@business.ng",
    "phone_number": "08087817765",
@@ -420,7 +420,7 @@
   },
   {
    "seller_id": "SELL0027",
-   "store_name": "Nigerian Pride Store",
+   "store_name": "Abubakar Global Concepts",
    "owner_name": "Musa Abubakar",
    "email": "store2710@business.ng",
    "phone_number": "07025824860",
@@ -436,7 +436,7 @@
   },
   {
    "seller_id": "SELL0028",
-   "store_name": "Jos Premium 28",
+   "store_name": "Maiduguri Online Shop",
    "owner_name": "Olumide Dauda",
    "email": "store2835@business.ng",
    "phone_number": "08018800190",
@@ -452,7 +452,7 @@
   },
   {
    "seller_id": "SELL0029",
-   "store_name": "Abuja Mart 29",
+   "store_name": "Chukwu Enterprises",
    "owner_name": "Gbenga Chukwu",
    "email": "store2924@business.ng",
    "phone_number": "08193501427",
@@ -468,7 +468,7 @@
   },
   {
    "seller_id": "SELL0030",
-   "store_name": "Jos Premium",
+   "store_name": "Effiong Supplies",
    "owner_name": "Funmilayo Effiong",
    "email": "store3036@business.ng",
    "phone_number": "09059979600",
@@ -484,7 +484,7 @@
   },
   {
    "seller_id": "SELL0031",
-   "store_name": "Kurmi Market Online",
+   "store_name": "Jibril Ventures",
    "owner_name": "Chinedu Jibril",
    "email": "store314@business.ng",
    "phone_number": "09043806025",
@@ -500,7 +500,7 @@
   },
   {
    "seller_id": "SELL0032",
-   "store_name": "Port Harcourt Depot",
+   "store_name": "Ogbomoso Emporium",
    "owner_name": "Mustapha Buhari",
    "email": "store3269@business.ng",
    "phone_number": "07010605250",
@@ -516,7 +516,7 @@
   },
   {
    "seller_id": "SELL0033",
-   "store_name": "Abuja Mart",
+   "store_name": "Ajayi Shopping Centre",
    "owner_name": "Fatima Ajayi",
    "email": "store3389@business.ng",
    "phone_number": "07035642547",
@@ -532,7 +532,7 @@
   },
   {
    "seller_id": "SELL0034",
-   "store_name": "Computer Village Store",
+   "store_name": "Onuoha Trading Company",
    "owner_name": "Funmilayo Onuoha",
    "email": "store3475@business.ng",
    "phone_number": "07046360358",
@@ -548,7 +548,7 @@
   },
   {
    "seller_id": "SELL0035",
-   "store_name": "Sokoto Suppliers 35",
+   "store_name": "Chukwu Merchants",
    "owner_name": "Uche Chukwu",
    "email": "store3534@business.ng",
    "phone_number": "09075110960",
@@ -564,7 +564,7 @@
   },
   {
    "seller_id": "SELL0036",
-   "store_name": "Lagos Fashion Hub",
+   "store_name": "Bauchi Superstore",
    "owner_name": "Adaeze Ekong",
    "email": "store3631@business.ng",
    "phone_number": "08127621753",
@@ -580,7 +580,7 @@
   },
   {
    "seller_id": "SELL0037",
-   "store_name": "Sabo Mart 37",
+   "store_name": "Buhari Plaza",
    "owner_name": "Olumide Buhari",
    "email": "store371@business.ng",
    "phone_number": "08182437391",
@@ -596,7 +596,7 @@
   },
   {
    "seller_id": "SELL0038",
-   "store_name": "Onitsha Main Market",
+   "store_name": "Abubakar Mart",
    "owner_name": "Rashida Abubakar",
    "email": "store3827@business.ng",
    "phone_number": "09076130323",
@@ -612,7 +612,7 @@
   },
   {
    "seller_id": "SELL0039",
-   "store_name": "Ariaria Market Hub",
+   "store_name": "Nwosu Depot",
    "owner_name": "Abdul Nwosu",
    "email": "store3922@business.ng",
    "phone_number": "09057552019",
@@ -628,7 +628,7 @@
   },
   {
    "seller_id": "SELL0040",
-   "store_name": "Zaria Emporium 40",
+   "store_name": "Aba Stores",
    "owner_name": "Uche Attah",
    "email": "store4046@business.ng",
    "phone_number": "08117694709",
@@ -644,7 +644,7 @@
   },
   {
    "seller_id": "SELL0041",
-   "store_name": "Victoria Island Mart",
+   "store_name": "Chukwu Retail Hub",
    "owner_name": "Chidinma Chukwu",
    "email": "store4152@business.ng",
    "phone_number": "08053035439",
@@ -660,7 +660,7 @@
   },
   {
    "seller_id": "SELL0042",
-   "store_name": "Sabo Mart",
+   "store_name": "Uche Global Concepts",
    "owner_name": "Aisha Uche",
    "email": "store4240@business.ng",
    "phone_number": "09074727173",
@@ -676,7 +676,7 @@
   },
   {
    "seller_id": "SELL0043",
-   "store_name": "Port Harcourt Depot",
+   "store_name": "Ajayi Online Shop",
    "owner_name": "Olumide Ajayi",
    "email": "store432@business.ng",
    "phone_number": "09032652329",
@@ -692,7 +692,7 @@
   },
   {
    "seller_id": "SELL0044",
-   "store_name": "Obi Ventures 44",
+   "store_name": "Maiduguri Enterprises",
    "owner_name": "Hadiza Ogunlesi",
    "email": "store4471@business.ng",
    "phone_number": "09032548933",
@@ -708,7 +708,7 @@
   },
   {
    "seller_id": "SELL0045",
-   "store_name": "Port Harcourt Depot 45",
+   "store_name": "Obi Supplies",
    "owner_name": "Aisha Obi",
    "email": "store4536@business.ng",
    "phone_number": "07022165450",
@@ -724,7 +724,7 @@
   },
   {
    "seller_id": "SELL0046",
-   "store_name": "Trade Fair Online",
+   "store_name": "Okeke Ventures",
    "owner_name": "Tolulope Okeke",
    "email": "store4622@business.ng",
    "phone_number": "07011804521",
@@ -740,7 +740,7 @@
   },
   {
    "seller_id": "SELL0047",
-   "store_name": "Onitsha Main Market",
+   "store_name": "Nwosu Emporium",
    "owner_name": "Ifeanyi Nwosu",
    "email": "store4775@business.ng",
    "phone_number": "09010033114",
@@ -756,7 +756,7 @@
   },
   {
    "seller_id": "SELL0048",
-   "store_name": "Victoria Island Mart",
+   "store_name": "Kano Shopping Centre",
    "owner_name": "Amara Okafor",
    "email": "store4810@business.ng",
    "phone_number": "08196841005",
@@ -772,7 +772,7 @@
   },
   {
    "seller_id": "SELL0049",
-   "store_name": "Port Harcourt Depot",
+   "store_name": "Enugu Trading Company",
    "owner_name": "Funmilayo Eze",
    "email": "store4939@business.ng",
    "phone_number": "08136949872",
@@ -788,7 +788,7 @@
   },
   {
    "seller_id": "SELL0050",
-   "store_name": "Warri Connect",
+   "store_name": "Oladipo Merchants",
    "owner_name": "Oluwaseun Oladipo",
    "email": "store5019@business.ng",
    "phone_number": "09010776989",
@@ -804,7 +804,7 @@
   },
   {
    "seller_id": "SELL0051",
-   "store_name": "Ikeja City Mall Online 51",
+   "store_name": "Nwosu Superstore",
    "owner_name": "Tolulope Nwosu",
    "email": "store5161@business.ng",
    "phone_number": "09024884380",
@@ -820,7 +820,7 @@
   },
   {
    "seller_id": "SELL0052",
-   "store_name": "Zaria Emporium",
+   "store_name": "Aba Plaza",
    "owner_name": "Amara Okafor",
    "email": "store5223@business.ng",
    "phone_number": "08111385579",
@@ -836,7 +836,7 @@
   },
   {
    "seller_id": "SELL0053",
-   "store_name": "Ibadan Market Online",
+   "store_name": "Fashola Mart",
    "owner_name": "Chukwuemeka Fashola",
    "email": "store5315@business.ng",
    "phone_number": "08039921345",
@@ -852,7 +852,7 @@
   },
   {
    "seller_id": "SELL0054",
-   "store_name": "Ibadan Market Online",
+   "store_name": "Onuoha Depot",
    "owner_name": "Taiwo Onuoha",
    "email": "store5450@business.ng",
    "phone_number": "07068421330",
@@ -868,7 +868,7 @@
   },
   {
    "seller_id": "SELL0055",
-   "store_name": "Nigerian Pride Store",
+   "store_name": "Bello Stores",
    "owner_name": "Mustapha Bello",
    "email": "store5567@business.ng",
    "phone_number": "08071708841",
@@ -884,7 +884,7 @@
   },
   {
    "seller_id": "SELL0056",
-   "store_name": "Garki Stores 56",
+   "store_name": "Umuahia Retail Hub",
    "owner_name": "Folake Ogunlesi",
    "email": "store5680@business.ng",
    "phone_number": "09037974764",
@@ -900,7 +900,7 @@
   },
   {
    "seller_id": "SELL0057",
-   "store_name": "Abuja Mart 57",
+   "store_name": "Musa Global Concepts",
    "owner_name": "Adaeze Musa",
    "email": "store5757@business.ng",
    "phone_number": "09053995738",
@@ -916,7 +916,7 @@
   },
   {
    "seller_id": "SELL0058",
-   "store_name": "Port Harcourt Depot",
+   "store_name": "Eze Online Shop",
    "owner_name": "Chioma Eze",
    "email": "store5837@business.ng",
    "phone_number": "08033143904",
@@ -932,7 +932,7 @@
   },
   {
    "seller_id": "SELL0059",
-   "store_name": "Naija Best Deals",
+   "store_name": "Effiong Enterprises",
    "owner_name": "Halima Effiong",
    "email": "store5943@business.ng",
    "phone_number": "07076600213",
@@ -948,7 +948,7 @@
   },
   {
    "seller_id": "SELL0060",
-   "store_name": "Mama Nkechi Stores",
+   "store_name": "Zaria Supplies",
    "owner_name": "Aisha Ajayi",
    "email": "store6038@business.ng",
    "phone_number": "08170214805",
@@ -964,7 +964,7 @@
   },
   {
    "seller_id": "SELL0061",
-   "store_name": "Adebayo Electronics",
+   "store_name": "Enugu Ventures",
    "owner_name": "Obinna Jibril",
    "email": "store6160@business.ng",
    "phone_number": "08066105911",
@@ -980,7 +980,7 @@
   },
   {
    "seller_id": "SELL0062",
-   "store_name": "Mama Nkechi Stores",
+   "store_name": "Nnaji Emporium",
    "owner_name": "Oluchi Nnaji",
    "email": "store6230@business.ng",
    "phone_number": "08118485147",
@@ -996,7 +996,7 @@
   },
   {
    "seller_id": "SELL0063",
-   "store_name": "Jos Premium",
+   "store_name": "Adebayo Shopping Centre",
    "owner_name": "Amina Adebayo",
    "email": "store6331@business.ng",
    "phone_number": "09045959196",
@@ -1012,7 +1012,7 @@
   },
   {
    "seller_id": "SELL0064",
-   "store_name": "Naija Best Deals",
+   "store_name": "Lagos Trading Company",
    "owner_name": "Chiamaka Effiong",
    "email": "store647@business.ng",
    "phone_number": "08074015895",
@@ -1028,7 +1028,7 @@
   },
   {
    "seller_id": "SELL0065",
-   "store_name": "Eko Mall",
+   "store_name": "Adebayo Merchants",
    "owner_name": "Zainab Adebayo",
    "email": "store6528@business.ng",
    "phone_number": "08071151032",
@@ -1044,7 +1044,7 @@
   },
   {
    "seller_id": "SELL0066",
-   "store_name": "Calabar Shopping 66",
+   "store_name": "Yusuf Superstore",
    "owner_name": "Tolulope Yusuf",
    "email": "store6654@business.ng",
    "phone_number": "09097486496",
@@ -1060,7 +1060,7 @@
   },
   {
    "seller_id": "SELL0067",
-   "store_name": "Alaba International Digital",
+   "store_name": "Uche Plaza",
    "owner_name": "Fatima Uche",
    "email": "store6785@business.ng",
    "phone_number": "08064241700",
@@ -1076,7 +1076,7 @@
   },
   {
    "seller_id": "SELL0068",
-   "store_name": "Nigerian Pride Store",
+   "store_name": "Maiduguri Mart",
    "owner_name": "Kehinde Eze",
    "email": "store6874@business.ng",
    "phone_number": "07018027625",
@@ -1092,7 +1092,7 @@
   },
   {
    "seller_id": "SELL0069",
-   "store_name": "Trade Fair Online",
+   "store_name": "Bello Depot",
    "owner_name": "Tochukwu Bello",
    "email": "store693@business.ng",
    "phone_number": "08115504228",
@@ -1108,7 +1108,7 @@
   },
   {
    "seller_id": "SELL0070",
-   "store_name": "Enugu Plaza 70",
+   "store_name": "Obi Stores",
    "owner_name": "Taiwo Obi",
    "email": "store7057@business.ng",
    "phone_number": "07055293238",
@@ -1124,7 +1124,7 @@
   },
   {
    "seller_id": "SELL0071",
-   "store_name": "Trade Fair Online",
+   "store_name": "Ogundipe Retail Hub",
    "owner_name": "Hadiza Ogundipe",
    "email": "store7128@business.ng",
    "phone_number": "08013630559",
@@ -1140,7 +1140,7 @@
   },
   {
    "seller_id": "SELL0072",
-   "store_name": "Warri Connect 72",
+   "store_name": "Bauchi Global Concepts",
    "owner_name": "Tolulope Adesina",
    "email": "store7274@business.ng",
    "phone_number": "08034566728",
@@ -1156,7 +1156,7 @@
   },
   {
    "seller_id": "SELL0073",
-   "store_name": "Warri Connect",
+   "store_name": "Okonkwo Online Shop",
    "owner_name": "Ifeanyi Okonkwo",
    "email": "store7365@business.ng",
    "phone_number": "09078194047",
@@ -1172,7 +1172,7 @@
   },
   {
    "seller_id": "SELL0074",
-   "store_name": "Sabo Mart 74",
+   "store_name": "Okonkwo Enterprises",
    "owner_name": "Tolulope Okonkwo",
    "email": "store7439@business.ng",
    "phone_number": "09073180068",
@@ -1188,7 +1188,7 @@
   },
   {
    "seller_id": "SELL0075",
-   "store_name": "Ariaria Market Hub",
+   "store_name": "Shagari Supplies",
    "owner_name": "Blessing Shagari",
    "email": "store7542@business.ng",
    "phone_number": "09063660910",
@@ -1204,7 +1204,7 @@
   },
   {
    "seller_id": "SELL0076",
-   "store_name": "Trade Fair Online",
+   "store_name": "Effiong Ventures",
    "owner_name": "Tochukwu Effiong",
    "email": "store7698@business.ng",
    "phone_number": "07071124266",
@@ -1220,7 +1220,7 @@
   },
   {
    "seller_id": "SELL0077",
-   "store_name": "Ibadan Market Online",
+   "store_name": "Minna Emporium",
    "owner_name": "Olumide Nwosu",
    "email": "store7798@business.ng",
    "phone_number": "09013991574",
@@ -1236,7 +1236,7 @@
   },
   {
    "seller_id": "SELL0078",
-   "store_name": "Alaba International Digital",
+   "store_name": "Anyanwu Shopping Centre",
    "owner_name": "Gbenga Anyanwu",
    "email": "store7823@business.ng",
    "phone_number": "07073695246",
@@ -1252,7 +1252,7 @@
   },
   {
    "seller_id": "SELL0079",
-   "store_name": "Kano Traders",
+   "store_name": "Jibril Trading Company",
    "owner_name": "Tolulope Jibril",
    "email": "store7942@business.ng",
    "phone_number": "08075838904",
@@ -1268,7 +1268,7 @@
   },
   {
    "seller_id": "SELL0080",
-   "store_name": "Mama Nkechi Stores",
+   "store_name": "Ado Ekiti Merchants",
    "owner_name": "Safiya Effiong",
    "email": "store8040@business.ng",
    "phone_number": "09022138251",
@@ -1284,7 +1284,7 @@
   },
   {
    "seller_id": "SELL0081",
-   "store_name": "Victoria Island Mart",
+   "store_name": "Ekong Superstore",
    "owner_name": "Gbenga Ekong",
    "email": "store8188@business.ng",
    "phone_number": "08014054318",
@@ -1300,7 +1300,7 @@
   },
   {
    "seller_id": "SELL0082",
-   "store_name": "Trade Fair Online",
+   "store_name": "Jibril Plaza",
    "owner_name": "Oluchi Jibril",
    "email": "store823@business.ng",
    "phone_number": "08053867043",
@@ -1316,7 +1316,7 @@
   },
   {
    "seller_id": "SELL0083",
-   "store_name": "Jos Premium",
+   "store_name": "Ogunlesi Mart",
    "owner_name": "Oluchi Ogunlesi",
    "email": "store839@business.ng",
    "phone_number": "09070349814",
@@ -1332,7 +1332,7 @@
   },
   {
    "seller_id": "SELL0084",
-   "store_name": "Eko Mall 84",
+   "store_name": "Adebayo Depot",
    "owner_name": "Aisha Adebayo",
    "email": "store8430@business.ng",
    "phone_number": "08144690389",
@@ -1348,7 +1348,7 @@
   },
   {
    "seller_id": "SELL0085",
-   "store_name": "Alaba International Digital",
+   "store_name": "Azikiwe Stores",
    "owner_name": "Kehinde Azikiwe",
    "email": "store8595@business.ng",
    "phone_number": "08017288491",
@@ -1364,7 +1364,7 @@
   },
   {
    "seller_id": "SELL0086",
-   "store_name": "Trade Fair Online",
+   "store_name": "Jos Retail Hub",
    "owner_name": "Obinna Ogundipe",
    "email": "store8629@business.ng",
    "phone_number": "07061856982",
@@ -1380,7 +1380,7 @@
   },
   {
    "seller_id": "SELL0087",
-   "store_name": "Ariaria Market Hub",
+   "store_name": "Anyanwu Global Concepts",
    "owner_name": "Zainab Anyanwu",
    "email": "store8793@business.ng",
    "phone_number": "07023818540",
@@ -1396,7 +1396,7 @@
   },
   {
    "seller_id": "SELL0088",
-   "store_name": "Abuja Mart 88",
+   "store_name": "Ilorin Online Shop",
    "owner_name": "Chidinma Nwosu",
    "email": "store8877@business.ng",
    "phone_number": "08070232661",
@@ -1412,7 +1412,7 @@
   },
   {
    "seller_id": "SELL0089",
-   "store_name": "Eko Mall",
+   "store_name": "Ekong Enterprises",
    "owner_name": "Uche Ekong",
    "email": "store895@business.ng",
    "phone_number": "09016432263",
@@ -1428,7 +1428,7 @@
   },
   {
    "seller_id": "SELL0090",
-   "store_name": "Warri Connect",
+   "store_name": "Ogunlesi Supplies",
    "owner_name": "Tochukwu Ogunlesi",
    "email": "store9084@business.ng",
    "phone_number": "08080959857",
@@ -1444,7 +1444,7 @@
   },
   {
    "seller_id": "SELL0091",
-   "store_name": "Mama Nkechi Stores",
+   "store_name": "Bakare Ventures",
    "owner_name": "Babatunde Bakare",
    "email": "store9167@business.ng",
    "phone_number": "08114052129",
@@ -1460,7 +1460,7 @@
   },
   {
    "seller_id": "SELL0092",
-   "store_name": "Trade Fair Online",
+   "store_name": "Ilorin Emporium",
    "owner_name": "Obinna Adeleke",
    "email": "store9210@business.ng",
    "phone_number": "08096112206",
@@ -1476,7 +1476,7 @@
   },
   {
    "seller_id": "SELL0093",
-   "store_name": "Jos Premium 93",
+   "store_name": "Eze Shopping Centre",
    "owner_name": "Ibrahim Eze",
    "email": "store9361@business.ng",
    "phone_number": "07090509268",
@@ -1492,7 +1492,7 @@
   },
   {
    "seller_id": "SELL0094",
-   "store_name": "Abuja Mart",
+   "store_name": "Nwosu Trading Company",
    "owner_name": "Babatunde Nwosu",
    "email": "store9482@business.ng",
    "phone_number": "08012247218",
@@ -1508,7 +1508,7 @@
   },
   {
    "seller_id": "SELL0095",
-   "store_name": "Zaria Emporium",
+   "store_name": "Bello Merchants",
    "owner_name": "Oluchi Bello",
    "email": "store9581@business.ng",
    "phone_number": "08147662975",
@@ -1524,7 +1524,7 @@
   },
   {
    "seller_id": "SELL0096",
-   "store_name": "Mama Nkechi Stores",
+   "store_name": "Warri Superstore",
    "owner_name": "Okey Buhari",
    "email": "store9638@business.ng",
    "phone_number": "09010787815",
@@ -1540,7 +1540,7 @@
   },
   {
    "seller_id": "SELL0097",
-   "store_name": "Mama Nkechi Stores",
+   "store_name": "Adeleke Plaza",
    "owner_name": "Gbenga Adeleke",
    "email": "store9720@business.ng",
    "phone_number": "08138850050",
@@ -1556,7 +1556,7 @@
   },
   {
    "seller_id": "SELL0098",
-   "store_name": "Sabo Mart 98",
+   "store_name": "Okeke Mart",
    "owner_name": "Hadiza Okeke",
    "email": "store9891@business.ng",
    "phone_number": "08083996877",
@@ -1572,7 +1572,7 @@
   },
   {
    "seller_id": "SELL0099",
-   "store_name": "Obi Ventures 99",
+   "store_name": "Calabar Depot",
    "owner_name": "Tunde Bello",
    "email": "store9941@business.ng",
    "phone_number": "07027697837",
@@ -1588,7 +1588,7 @@
   },
   {
    "seller_id": "SELL0100",
-   "store_name": "Computer Village Store",
+   "store_name": "Maiduguri Stores",
    "owner_name": "Emmanuel Jibril",
    "email": "store10069@business.ng",
    "phone_number": "08067031028",
@@ -1604,7 +1604,7 @@
   },
   {
    "seller_id": "SELL0101",
-   "store_name": "Onitsha Main Market 101",
+   "store_name": "Adebayo Retail Hub",
    "owner_name": "Kehinde Adebayo",
    "email": "store10166@business.ng",
    "phone_number": "07042624513",
@@ -1620,7 +1620,7 @@
   },
   {
    "seller_id": "SELL0102",
-   "store_name": "Calabar Shopping",
+   "store_name": "Ekwensi Global Concepts",
    "owner_name": "Obinna Ekwensi",
    "email": "store10252@business.ng",
    "phone_number": "09076895856",
@@ -1636,7 +1636,7 @@
   },
   {
    "seller_id": "SELL0103",
-   "store_name": "Alaba International Digital",
+   "store_name": "Dauda Online Shop",
    "owner_name": "Babatunde Dauda",
    "email": "store10380@business.ng",
    "phone_number": "09015159379",
@@ -1652,7 +1652,7 @@
   },
   {
    "seller_id": "SELL0104",
-   "store_name": "Sabo Mart",
+   "store_name": "Oshogbo Enterprises",
    "owner_name": "Usman Ogundipe",
    "email": "store10423@business.ng",
    "phone_number": "08060040826",
@@ -1668,7 +1668,7 @@
   },
   {
    "seller_id": "SELL0105",
-   "store_name": "Warri Connect",
+   "store_name": "Okafor Supplies",
    "owner_name": "Rashida Okafor",
    "email": "store10517@business.ng",
    "phone_number": "09034765706",
@@ -1684,7 +1684,7 @@
   },
   {
    "seller_id": "SELL0106",
-   "store_name": "Calabar Shopping",
+   "store_name": "Okafor Ventures",
    "owner_name": "Nkiru Okafor",
    "email": "store10676@business.ng",
    "phone_number": "09033745896",
@@ -1700,7 +1700,7 @@
   },
   {
    "seller_id": "SELL0107",
-   "store_name": "Wuse Market Digital",
+   "store_name": "Adesina Emporium",
    "owner_name": "Okey Adesina",
    "email": "store10752@business.ng",
    "phone_number": "08038901941",
@@ -1716,7 +1716,7 @@
   },
   {
    "seller_id": "SELL0108",
-   "store_name": "Warri Connect 108",
+   "store_name": "Owerri Shopping Centre",
    "owner_name": "Ade Ojo",
    "email": "store10816@business.ng",
    "phone_number": "08059951669",
@@ -1732,7 +1732,7 @@
   },
   {
    "seller_id": "SELL0109",
-   "store_name": "Abuja Mart 109",
+   "store_name": "Abubakar Trading Company",
    "owner_name": "Blessing Abubakar",
    "email": "store10978@business.ng",
    "phone_number": "08191605547",
@@ -1748,7 +1748,7 @@
   },
   {
    "seller_id": "SELL0110",
-   "store_name": "Jos Premium 110",
+   "store_name": "Okafor Merchants",
    "owner_name": "Ade Okafor",
    "email": "store1101@business.ng",
    "phone_number": "07030771252",
@@ -1764,7 +1764,7 @@
   },
   {
    "seller_id": "SELL0111",
-   "store_name": "Garki Stores",
+   "store_name": "Buhari Superstore",
    "owner_name": "Amina Buhari",
    "email": "store1119@business.ng",
    "phone_number": "09063538936",
@@ -1780,7 +1780,7 @@
   },
   {
    "seller_id": "SELL0112",
-   "store_name": "Ikeja City Mall Online 112",
+   "store_name": "Calabar Plaza",
    "owner_name": "Rashida Balogun",
    "email": "store11228@business.ng",
    "phone_number": "08014530614",
@@ -1796,7 +1796,7 @@
   },
   {
    "seller_id": "SELL0113",
-   "store_name": "Trade Fair Online",
+   "store_name": "Adesina Mart",
    "owner_name": "Safiya Adesina",
    "email": "store11317@business.ng",
    "phone_number": "09053137197",
@@ -1812,7 +1812,7 @@
   },
   {
    "seller_id": "SELL0114",
-   "store_name": "Ikeja City Mall Online",
+   "store_name": "Jibril Depot",
    "owner_name": "Mustapha Jibril",
    "email": "store11418@business.ng",
    "phone_number": "08161505306",
@@ -1828,7 +1828,7 @@
   },
   {
    "seller_id": "SELL0115",
-   "store_name": "Enugu Plaza",
+   "store_name": "Akure Stores",
    "owner_name": "Ifeanyi Lawal",
    "email": "store1154@business.ng",
    "phone_number": "08017464009",
@@ -1844,7 +1844,7 @@
   },
   {
    "seller_id": "SELL0116",
-   "store_name": "Wuse Market Digital 116",
+   "store_name": "Okeke Retail Hub",
    "owner_name": "Abdul Okeke",
    "email": "store11617@business.ng",
    "phone_number": "07093535134",
@@ -1860,7 +1860,7 @@
   },
   {
    "seller_id": "SELL0117",
-   "store_name": "Calabar Shopping 117",
+   "store_name": "Ekong Global Concepts",
    "owner_name": "Musa Ekong",
    "email": "store11717@business.ng",
    "phone_number": "07097112002",
@@ -1876,7 +1876,7 @@
   },
   {
    "seller_id": "SELL0118",
-   "store_name": "Sokoto Suppliers 118",
+   "store_name": "Fashola Online Shop",
    "owner_name": "Abdul Fashola",
    "email": "store11853@business.ng",
    "phone_number": "08094281692",
@@ -1892,7 +1892,7 @@
   },
   {
    "seller_id": "SELL0119",
-   "store_name": "Trade Fair Online 119",
+   "store_name": "Nnamdi Enterprises",
    "owner_name": "Amina Nnamdi",
    "email": "store11999@business.ng",
    "phone_number": "09030526614",
@@ -1908,7 +1908,7 @@
   },
   {
    "seller_id": "SELL0120",
-   "store_name": "Port Harcourt Depot",
+   "store_name": "Enugu Supplies",
    "owner_name": "Blessing Lawal",
    "email": "store12010@business.ng",
    "phone_number": "09044578176",
@@ -1924,7 +1924,7 @@
   },
   {
    "seller_id": "SELL0121",
-   "store_name": "Nigerian Pride Store",
+   "store_name": "Kalu Ventures",
    "owner_name": "Usman Kalu",
    "email": "store12126@business.ng",
    "phone_number": "09023010145",
@@ -1940,7 +1940,7 @@
   },
   {
    "seller_id": "SELL0122",
-   "store_name": "Sabo Mart",
+   "store_name": "Ogunlesi Emporium",
    "owner_name": "Mustapha Ogunlesi",
    "email": "store1226@business.ng",
    "phone_number": "08066243095",
@@ -1956,7 +1956,7 @@
   },
   {
    "seller_id": "SELL0123",
-   "store_name": "Nigerian Pride Store",
+   "store_name": "Okonkwo Shopping Centre",
    "owner_name": "Chukwuemeka Okonkwo",
    "email": "store12359@business.ng",
    "phone_number": "07089293994",
@@ -1972,7 +1972,7 @@
   },
   {
    "seller_id": "SELL0124",
-   "store_name": "Obi Ventures 124",
+   "store_name": "Benin City Trading Company",
    "owner_name": "Tochukwu Dauda",
    "email": "store1241@business.ng",
    "phone_number": "08146918152",
@@ -1988,7 +1988,7 @@
   },
   {
    "seller_id": "SELL0125",
-   "store_name": "Zaria Emporium 125",
+   "store_name": "Adeyemi Merchants",
    "owner_name": "Fatima Adeyemi",
    "email": "store12589@business.ng",
    "phone_number": "09027269901",
@@ -2004,7 +2004,7 @@
   },
   {
    "seller_id": "SELL0126",
-   "store_name": "Victoria Island Mart",
+   "store_name": "Ajayi Superstore",
    "owner_name": "Tochukwu Ajayi",
    "email": "store12612@business.ng",
    "phone_number": "07073245675",
@@ -2020,7 +2020,7 @@
   },
   {
    "seller_id": "SELL0127",
-   "store_name": "Jos Premium",
+   "store_name": "Yusuf Plaza",
    "owner_name": "Chukwuemeka Yusuf",
    "email": "store1275@business.ng",
    "phone_number": "08120530320",
@@ -2036,7 +2036,7 @@
   },
   {
    "seller_id": "SELL0128",
-   "store_name": "Ikeja City Mall Online",
+   "store_name": "Ado Ekiti Mart",
    "owner_name": "Emmanuel Okoye",
    "email": "store12895@business.ng",
    "phone_number": "07056212929",
@@ -2052,7 +2052,7 @@
   },
   {
    "seller_id": "SELL0129",
-   "store_name": "Garki Stores 129",
+   "store_name": "Ogundipe Depot",
    "owner_name": "Musa Ogundipe",
    "email": "store12947@business.ng",
    "phone_number": "08146406358",
@@ -2068,7 +2068,7 @@
   },
   {
    "seller_id": "SELL0130",
-   "store_name": "Obi Ventures",
+   "store_name": "Anyanwu Stores",
    "owner_name": "Ade Anyanwu",
    "email": "store13032@business.ng",
    "phone_number": "09073457455",
@@ -2084,7 +2084,7 @@
   },
   {
    "seller_id": "SELL0131",
-   "store_name": "Mama Nkechi Stores",
+   "store_name": "Aba Retail Hub",
    "owner_name": "Tunde Dauda",
    "email": "store13192@business.ng",
    "phone_number": "08125734299",
@@ -2100,7 +2100,7 @@
   },
   {
    "seller_id": "SELL0132",
-   "store_name": "Jos Premium",
+   "store_name": "Ado Ekiti Global Concepts",
    "owner_name": "Aisha Buhari",
    "email": "store13294@business.ng",
    "phone_number": "07038052325",
@@ -2116,7 +2116,7 @@
   },
   {
    "seller_id": "SELL0133",
-   "store_name": "Victoria Island Mart",
+   "store_name": "Umuahia Online Shop",
    "owner_name": "Okey Okafor",
    "email": "store13385@business.ng",
    "phone_number": "09047406640",
@@ -2132,7 +2132,7 @@
   },
   {
    "seller_id": "SELL0134",
-   "store_name": "Zaria Emporium",
+   "store_name": "Bello Enterprises",
    "owner_name": "Emmanuel Bello",
    "email": "store13437@business.ng",
    "phone_number": "08131132291",
@@ -2148,7 +2148,7 @@
   },
   {
    "seller_id": "SELL0135",
-   "store_name": "Kano Traders 135",
+   "store_name": "Nwosu Supplies",
    "owner_name": "Chukwuemeka Nwosu",
    "email": "store13525@business.ng",
    "phone_number": "08055975718",
@@ -2164,7 +2164,7 @@
   },
   {
    "seller_id": "SELL0136",
-   "store_name": "Eko Mall",
+   "store_name": "Onitsha Ventures",
    "owner_name": "Amina Dauda",
    "email": "store13672@business.ng",
    "phone_number": "07067982400",
@@ -2180,7 +2180,7 @@
   },
   {
    "seller_id": "SELL0137",
-   "store_name": "Lagos Fashion Hub",
+   "store_name": "Okoye Emporium",
    "owner_name": "Safiya Okoye",
    "email": "store13789@business.ng",
    "phone_number": "07090461541",
@@ -2196,7 +2196,7 @@
   },
   {
    "seller_id": "SELL0138",
-   "store_name": "Kano Traders",
+   "store_name": "Bello Shopping Centre",
    "owner_name": "Nkiru Bello",
    "email": "store13813@business.ng",
    "phone_number": "07036802227",
@@ -2212,7 +2212,7 @@
   },
   {
    "seller_id": "SELL0139",
-   "store_name": "Jos Premium",
+   "store_name": "Ogunlesi Trading Company",
    "owner_name": "Tunde Ogunlesi",
    "email": "store13985@business.ng",
    "phone_number": "07056024631",
@@ -2228,7 +2228,7 @@
   },
   {
    "seller_id": "SELL0140",
-   "store_name": "Ajah Shopping 140",
+   "store_name": "Zaria Merchants",
    "owner_name": "Aisha Bakare",
    "email": "store1403@business.ng",
    "phone_number": "08171045153",
@@ -2244,7 +2244,7 @@
   },
   {
    "seller_id": "SELL0141",
-   "store_name": "Naija Best Deals",
+   "store_name": "Ekwensi Superstore",
    "owner_name": "Segun Ekwensi",
    "email": "store14136@business.ng",
    "phone_number": "07073894187",
@@ -2260,7 +2260,7 @@
   },
   {
    "seller_id": "SELL0142",
-   "store_name": "Lagos Fashion Hub 142",
+   "store_name": "Balogun Plaza",
    "owner_name": "Hadiza Balogun",
    "email": "store14238@business.ng",
    "phone_number": "08095976176",
@@ -2276,7 +2276,7 @@
   },
   {
    "seller_id": "SELL0143",
-   "store_name": "Warri Connect",
+   "store_name": "Bello Mart",
    "owner_name": "Usman Bello",
    "email": "store14353@business.ng",
    "phone_number": "08142733135",
@@ -2292,7 +2292,7 @@
   },
   {
    "seller_id": "SELL0144",
-   "store_name": "Mama Nkechi Stores",
+   "store_name": "Enugu Depot",
    "owner_name": "Funmilayo Buhari",
    "email": "store14450@business.ng",
    "phone_number": "09010372592",
@@ -2308,7 +2308,7 @@
   },
   {
    "seller_id": "SELL0145",
-   "store_name": "Sokoto Suppliers 145",
+   "store_name": "Okonkwo Stores",
    "owner_name": "Ade Okonkwo",
    "email": "store14550@business.ng",
    "phone_number": "08175251533",
@@ -2324,7 +2324,7 @@
   },
   {
    "seller_id": "SELL0146",
-   "store_name": "Jos Premium",
+   "store_name": "Effiong Retail Hub",
    "owner_name": "Tunde Effiong",
    "email": "store1462@business.ng",
    "phone_number": "09041743034",
@@ -2340,7 +2340,7 @@
   },
   {
    "seller_id": "SELL0147",
-   "store_name": "Naija Best Deals",
+   "store_name": "Okafor Global Concepts",
    "owner_name": "Ade Okafor",
    "email": "store14770@business.ng",
    "phone_number": "07096836098",
@@ -2356,7 +2356,7 @@
   },
   {
    "seller_id": "SELL0148",
-   "store_name": "Port Harcourt Depot",
+   "store_name": "Kaduna Online Shop",
    "owner_name": "Abubakar Buhari",
    "email": "store14831@business.ng",
    "phone_number": "07089505910",
@@ -2372,7 +2372,7 @@
   },
   {
    "seller_id": "SELL0149",
-   "store_name": "Ibadan Market Online",
+   "store_name": "Uche Enterprises",
    "owner_name": "Babatunde Uche",
    "email": "store14973@business.ng",
    "phone_number": "08155495302",
@@ -2388,7 +2388,7 @@
   },
   {
    "seller_id": "SELL0150",
-   "store_name": "Garki Stores",
+   "store_name": "Ekong Supplies",
    "owner_name": "Taiwo Ekong",
    "email": "store15056@business.ng",
    "phone_number": "08062670144",
@@ -2404,7 +2404,7 @@
   },
   {
    "seller_id": "SELL0151",
-   "store_name": "Alaba International Digital",
+   "store_name": "Shagari Ventures",
    "owner_name": "Obinna Shagari",
    "email": "store15176@business.ng",
    "phone_number": "08198796599",
@@ -2420,7 +2420,7 @@
   },
   {
    "seller_id": "SELL0152",
-   "store_name": "Enugu Plaza 152",
+   "store_name": "Aba Emporium",
    "owner_name": "Adaeze Adeleke",
    "email": "store15216@business.ng",
    "phone_number": "08148294101",
@@ -2436,7 +2436,7 @@
   },
   {
    "seller_id": "SELL0153",
-   "store_name": "Eko Mall",
+   "store_name": "Kanu Shopping Centre",
    "owner_name": "Yusuf Kanu",
    "email": "store15337@business.ng",
    "phone_number": "09056689082",
@@ -2452,7 +2452,7 @@
   },
   {
    "seller_id": "SELL0154",
-   "store_name": "Garki Stores",
+   "store_name": "Benin City Emporium",
    "owner_name": "Usman Nwosu",
    "email": "store15441@business.ng",
    "phone_number": "08130053210",
@@ -2468,7 +2468,7 @@
   },
   {
    "seller_id": "SELL0155",
-   "store_name": "Obi Ventures 155",
+   "store_name": "Effiong Merchants",
    "owner_name": "Safiya Effiong",
    "email": "store1554@business.ng",
    "phone_number": "07066371321",
@@ -2484,7 +2484,7 @@
   },
   {
    "seller_id": "SELL0156",
-   "store_name": "Jos Premium 156",
+   "store_name": "Minna Superstore",
    "owner_name": "Oluwaseun Chukwu",
    "email": "store15626@business.ng",
    "phone_number": "08066586109",
@@ -2500,7 +2500,7 @@
   },
   {
    "seller_id": "SELL0157",
-   "store_name": "Ibadan Market Online",
+   "store_name": "Adeyemi Plaza",
    "owner_name": "Chiamaka Adeyemi",
    "email": "store1579@business.ng",
    "phone_number": "07019530298",
@@ -2516,7 +2516,7 @@
   },
   {
    "seller_id": "SELL0158",
-   "store_name": "Eko Mall",
+   "store_name": "Bankole Mart",
    "owner_name": "Hadiza Bankole",
    "email": "store1588@business.ng",
    "phone_number": "08166807216",
@@ -2532,7 +2532,7 @@
   },
   {
    "seller_id": "SELL0159",
-   "store_name": "Obi Ventures",
+   "store_name": "Bankole Depot",
    "owner_name": "Hadiza Bankole",
    "email": "store15934@business.ng",
    "phone_number": "08042922931",
@@ -2548,7 +2548,7 @@
   },
   {
    "seller_id": "SELL0160",
-   "store_name": "Alaba International Digital",
+   "store_name": "Onitsha Stores",
    "owner_name": "Blessing Jibril",
    "email": "store16060@business.ng",
    "phone_number": "08138694966",
@@ -2564,7 +2564,7 @@
   },
   {
    "seller_id": "SELL0161",
-   "store_name": "Trade Fair Online 161",
+   "store_name": "Ekong Retail Hub",
    "owner_name": "Rashida Ekong",
    "email": "store16151@business.ng",
    "phone_number": "07096300090",
@@ -2580,7 +2580,7 @@
   },
   {
    "seller_id": "SELL0162",
-   "store_name": "Kurmi Market Online",
+   "store_name": "Musa Stores",
    "owner_name": "Ibrahim Musa",
    "email": "store16231@business.ng",
    "phone_number": "08067671370",
@@ -2596,7 +2596,7 @@
   },
   {
    "seller_id": "SELL0163",
-   "store_name": "Sokoto Suppliers",
+   "store_name": "Musa Online Shop",
    "owner_name": "Musa Musa",
    "email": "store1631@business.ng",
    "phone_number": "08194181529",
@@ -2612,7 +2612,7 @@
   },
   {
    "seller_id": "SELL0164",
-   "store_name": "Alaba International Digital 164",
+   "store_name": "Sokoto Enterprises",
    "owner_name": "Amina Adeleke",
    "email": "store16470@business.ng",
    "phone_number": "08074192137",
@@ -2628,7 +2628,7 @@
   },
   {
    "seller_id": "SELL0165",
-   "store_name": "Calabar Shopping",
+   "store_name": "Kalu Supplies",
    "owner_name": "Kelechi Kalu",
    "email": "store16531@business.ng",
    "phone_number": "08032003977",
@@ -2644,7 +2644,7 @@
   },
   {
    "seller_id": "SELL0166",
-   "store_name": "Kano Traders 166",
+   "store_name": "Bankole Ventures",
    "owner_name": "Yusuf Bankole",
    "email": "store16652@business.ng",
    "phone_number": "09038548302",
@@ -2660,7 +2660,7 @@
   },
   {
    "seller_id": "SELL0167",
-   "store_name": "Port Harcourt Depot",
+   "store_name": "Okafor Emporium",
    "owner_name": "Musa Okafor",
    "email": "store16749@business.ng",
    "phone_number": "08053239585",
@@ -2676,7 +2676,7 @@
   },
   {
    "seller_id": "SELL0168",
-   "store_name": "Enugu Plaza",
+   "store_name": "Benin City Shopping Centre",
    "owner_name": "Abdul Ekwensi",
    "email": "store16821@business.ng",
    "phone_number": "08068961318",
@@ -2692,7 +2692,7 @@
   },
   {
    "seller_id": "SELL0169",
-   "store_name": "Ajah Shopping",
+   "store_name": "Okafor Trading Company",
    "owner_name": "Olumide Okafor",
    "email": "store16974@business.ng",
    "phone_number": "08016272544",
@@ -2708,7 +2708,7 @@
   },
   {
    "seller_id": "SELL0170",
-   "store_name": "Port Harcourt Depot 170",
+   "store_name": "Jos Merchants",
    "owner_name": "Femi Adebayo",
    "email": "store17038@business.ng",
    "phone_number": "08040595359",
@@ -2724,7 +2724,7 @@
   },
   {
    "seller_id": "SELL0171",
-   "store_name": "Ajah Shopping",
+   "store_name": "Nnaji Superstore",
    "owner_name": "Chidinma Nnaji",
    "email": "store17142@business.ng",
    "phone_number": "08091618861",
@@ -2740,7 +2740,7 @@
   },
   {
    "seller_id": "SELL0172",
-   "store_name": "Adebayo Electronics 172",
+   "store_name": "Onitsha Plaza",
    "owner_name": "Hadiza Ibrahim",
    "email": "store17256@business.ng",
    "phone_number": "08127023871",
@@ -2756,7 +2756,7 @@
   },
   {
    "seller_id": "SELL0173",
-   "store_name": "Victoria Island Mart",
+   "store_name": "Kanu Mart",
    "owner_name": "Musa Kanu",
    "email": "store17332@business.ng",
    "phone_number": "08026685559",
@@ -2772,7 +2772,7 @@
   },
   {
    "seller_id": "SELL0174",
-   "store_name": "Sokoto Suppliers",
+   "store_name": "Okonkwo Depot",
    "owner_name": "Babatunde Okonkwo",
    "email": "store17427@business.ng",
    "phone_number": "08027217582",
@@ -2788,7 +2788,7 @@
   },
   {
    "seller_id": "SELL0175",
-   "store_name": "Obi Ventures",
+   "store_name": "Adesina Stores",
    "owner_name": "Amina Adesina",
    "email": "store1754@business.ng",
    "phone_number": "07063475800",
@@ -2804,7 +2804,7 @@
   },
   {
    "seller_id": "SELL0176",
-   "store_name": "Alaba International Digital",
+   "store_name": "Kaduna Retail Hub",
    "owner_name": "Chioma Nnaji",
    "email": "store17679@business.ng",
    "phone_number": "08117027633",
@@ -2820,7 +2820,7 @@
   },
   {
    "seller_id": "SELL0177",
-   "store_name": "Ikeja City Mall Online",
+   "store_name": "Shagari Global Concepts",
    "owner_name": "Chioma Shagari",
    "email": "store17761@business.ng",
    "phone_number": "08094580589",
@@ -2836,7 +2836,7 @@
   },
   {
    "seller_id": "SELL0178",
-   "store_name": "Ajah Shopping",
+   "store_name": "Effiong Online Shop",
    "owner_name": "Titilayo Effiong",
    "email": "store17861@business.ng",
    "phone_number": "08076579910",
@@ -2852,7 +2852,7 @@
   },
   {
    "seller_id": "SELL0179",
-   "store_name": "Sabo Mart",
+   "store_name": "Benin City Enterprises",
    "owner_name": "Ade Effiong",
    "email": "store17921@business.ng",
    "phone_number": "09066404731",
@@ -2868,7 +2868,7 @@
   },
   {
    "seller_id": "SELL0180",
-   "store_name": "Calabar Shopping",
+   "store_name": "Bauchi Supplies",
    "owner_name": "Uche Okeke",
    "email": "store18034@business.ng",
    "phone_number": "08078230475",
@@ -2884,7 +2884,7 @@
   },
   {
    "seller_id": "SELL0181",
-   "store_name": "Trade Fair Online",
+   "store_name": "Okonkwo Ventures",
    "owner_name": "Gbenga Okonkwo",
    "email": "store18114@business.ng",
    "phone_number": "08152286809",
@@ -2900,7 +2900,7 @@
   },
   {
    "seller_id": "SELL0182",
-   "store_name": "Victoria Island Mart 182",
+   "store_name": "Dauda Emporium",
    "owner_name": "Obinna Dauda",
    "email": "store18210@business.ng",
    "phone_number": "09087083309",
@@ -2916,7 +2916,7 @@
   },
   {
    "seller_id": "SELL0183",
-   "store_name": "Obi Ventures",
+   "store_name": "Jibril Shopping Centre",
    "owner_name": "Oluchi Jibril",
    "email": "store18385@business.ng",
    "phone_number": "08152088357",
@@ -2932,7 +2932,7 @@
   },
   {
    "seller_id": "SELL0184",
-   "store_name": "Ikeja City Mall Online",
+   "store_name": "Minna Trading Company",
    "owner_name": "Amara Anyanwu",
    "email": "store18433@business.ng",
    "phone_number": "08139055218",
@@ -2948,7 +2948,7 @@
   },
   {
    "seller_id": "SELL0185",
-   "store_name": "Abuja Mart 185",
+   "store_name": "Ibadan Merchants",
    "owner_name": "Ifeanyi Okafor",
    "email": "store18537@business.ng",
    "phone_number": "07098655223",
@@ -2964,7 +2964,7 @@
   },
   {
    "seller_id": "SELL0186",
-   "store_name": "Sokoto Suppliers",
+   "store_name": "Onitsha Superstore",
    "owner_name": "Kelechi Buhari",
    "email": "store18690@business.ng",
    "phone_number": "07019829329",
@@ -2980,7 +2980,7 @@
   },
   {
    "seller_id": "SELL0187",
-   "store_name": "Onitsha Main Market",
+   "store_name": "Eze Plaza",
    "owner_name": "Uche Eze",
    "email": "store18744@business.ng",
    "phone_number": "08176801198",
@@ -2996,7 +2996,7 @@
   },
   {
    "seller_id": "SELL0188",
-   "store_name": "Computer Village Store 188",
+   "store_name": "Warri Mart",
    "owner_name": "Adaeze Oladipo",
    "email": "store18819@business.ng",
    "phone_number": "09018618654",
@@ -3012,7 +3012,7 @@
   },
   {
    "seller_id": "SELL0189",
-   "store_name": "Wuse Market Digital",
+   "store_name": "Balogun Depot",
    "owner_name": "Folake Balogun",
    "email": "store18950@business.ng",
    "phone_number": "09017758935",
@@ -3028,7 +3028,7 @@
   },
   {
    "seller_id": "SELL0190",
-   "store_name": "Calabar Shopping",
+   "store_name": "Ojo Stores",
    "owner_name": "Musa Ojo",
    "email": "store19060@business.ng",
    "phone_number": "08044281600",
@@ -3044,7 +3044,7 @@
   },
   {
    "seller_id": "SELL0191",
-   "store_name": "Zaria Emporium 191",
+   "store_name": "Ikorodu Retail Hub",
    "owner_name": "Adaeze Effiong",
    "email": "store19188@business.ng",
    "phone_number": "09013288524",
@@ -3060,7 +3060,7 @@
   },
   {
    "seller_id": "SELL0192",
-   "store_name": "Mama Nkechi Stores",
+   "store_name": "Sokoto Global Concepts",
    "owner_name": "Abdul Danjuma",
    "email": "store19220@business.ng",
    "phone_number": "08082689185",
@@ -3076,7 +3076,7 @@
   },
   {
    "seller_id": "SELL0193",
-   "store_name": "Warri Connect 193",
+   "store_name": "Bello Online Shop",
    "owner_name": "Emmanuel Bello",
    "email": "store19352@business.ng",
    "phone_number": "07087031592",
@@ -3092,7 +3092,7 @@
   },
   {
    "seller_id": "SELL0194",
-   "store_name": "Warri Connect",
+   "store_name": "Nnaji Enterprises",
    "owner_name": "Obinna Nnaji",
    "email": "store19464@business.ng",
    "phone_number": "08170346785",
@@ -3108,7 +3108,7 @@
   },
   {
    "seller_id": "SELL0195",
-   "store_name": "Calabar Shopping 195",
+   "store_name": "Ogunlesi Online Shop",
    "owner_name": "Ngozi Ogunlesi",
    "email": "store19533@business.ng",
    "phone_number": "08158113555",
@@ -3124,7 +3124,7 @@
   },
   {
    "seller_id": "SELL0196",
-   "store_name": "Eko Mall",
+   "store_name": "Lagos Ventures",
    "owner_name": "Tolulope Oladipo",
    "email": "store19617@business.ng",
    "phone_number": "09080299876",
@@ -3140,7 +3140,7 @@
   },
   {
    "seller_id": "SELL0197",
-   "store_name": "Abuja Mart",
+   "store_name": "Kano Emporium",
    "owner_name": "Chinedu Ogunlesi",
    "email": "store19733@business.ng",
    "phone_number": "09057365466",
@@ -3156,7 +3156,7 @@
   },
   {
    "seller_id": "SELL0198",
-   "store_name": "Alaba International Digital",
+   "store_name": "Abubakar Shopping Centre",
    "owner_name": "Chukwuemeka Abubakar",
    "email": "store19868@business.ng",
    "phone_number": "09049742688",
@@ -3172,7 +3172,7 @@
   },
   {
    "seller_id": "SELL0199",
-   "store_name": "Ariaria Market Hub 199",
+   "store_name": "Okoye Trading Company",
    "owner_name": "Chioma Okoye",
    "email": "store1999@business.ng",
    "phone_number": "08052718471",
@@ -3188,7 +3188,7 @@
   },
   {
    "seller_id": "SELL0200",
-   "store_name": "Ibadan Market Online",
+   "store_name": "Kaduna Merchants",
    "owner_name": "Adaeze Nnamdi",
    "email": "store20053@business.ng",
    "phone_number": "08145940979",

@@ -175,8 +175,9 @@ CEN_DAYS = len(L("lc_census"))
 PK_MON = max(MOCC, key=MOCC.get)
 # escalation rule (capstone workbook P.5.7): first matching reason, Q4 of the year
 _lc = lc_adm()
+ESC_LOS = 14   # long stay = 14+ days: NHS England's long-stay measure (it tracks 14+ and 21+ day stays)
 Q4ADM = _lc[(_lc.Admit_Date >= f"{YEAR}-10-01") & (_lc.Admit_Date <= f"{YEAR}-12-31")]
-_reason = np.where(Q4ADM.Readmitted_30d == "Yes", "Readmitted", np.where(Q4ADM.LOS_Days >= 28, "Long stay",
+_reason = np.where(Q4ADM.Readmitted_30d == "Yes", "Readmitted within 30 days", np.where(Q4ADM.LOS_Days >= ESC_LOS, f"Stay of {ESC_LOS}+ days",
                                                                           np.where(Q4ADM.Age >= 75, "Age 75+", "")))
 ESC = pd.Series(_reason).value_counts().drop("", errors="ignore")
 NQ4 = len(Q4ADM)
@@ -213,7 +214,7 @@ SQL_MED = ("SELECT p.brand_name, COUNT(*) AS orders,\n       SUM(t.total_price) 
            "GROUP BY p.brand_name\nORDER BY net_revenue DESC\nLIMIT 5;")
 SQL_HARD = ("WITH s AS (\n  SELECT sl.store_zone, sl.store_name, SUM(t.total_price) AS revenue,\n"
             "         RANK() OVER (PARTITION BY sl.store_zone\n                      ORDER BY SUM(t.total_price) DESC) AS rnk\n"
-            "  FROM transactions t JOIN sellers sl ON sl.seller_id = t.seller_id\n  GROUP BY sl.store_zone, sl.store_name)\n"
+            "  FROM transactions t JOIN sellers sl ON sl.seller_id = t.seller_id\n  GROUP BY sl.store_zone, sl.seller_id, sl.store_name)\n"
             "SELECT store_zone, store_name, revenue FROM s WHERE rnk = 1;")
 with sqlite3.connect(DB) as _con:
     EASY = pd.read_sql_query(SQL_EASY, _con)

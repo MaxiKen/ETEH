@@ -159,7 +159,7 @@ WHERE s.zone <> c.zone;""", extra=[["States in the lookup: " + I(v("SELECT COUNT
         T("3.1.8", "Database Data Types",
           defn="A data type defines what values a column may hold (INTEGER, REAL, TEXT, DATE). Constraints such as "
                "NOT NULL, UNIQUE and CHECK add business rules.",
-          simple="transactions declares quantity INTEGER CHECK (quantity > 0). SQLite stores dates as text in yyyy-mm-dd form.",
+          simple="transactions declares quantity INTEGER CHECK (quantity > 0); sellers declares store_name UNIQUE, so no two stores share a name. SQLite stores dates as text.",
           **SQL("""
 SELECT typeof(quantity)    AS quantity,
        typeof(total_price) AS total_price,

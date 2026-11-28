@@ -521,6 +521,7 @@ def m34(b, D):
     FZ = M35.FZ.reset_index(drop=True)
     ci = int((FZ.typed.str.lower() == FZ.store_name.str.lower()).sum())
     tr = int((FZ.typed.str.split().str.join(" ").str.lower() == FZ.store_name.str.lower()).sum())
+    miss = FZ[FZ.typed.str.split().str.join(" ").str.lower() != FZ.store_name.str.lower()].typed.tolist()
 
     def fuzzy_table(mm):
         mm.h("tFuzzy: a supplier's hand-typed seller names")
@@ -531,11 +532,10 @@ def m34(b, D):
        [("Equal in Excel (= ignores case)", "=SUMPRODUCT(--(tFuzzy[typed]=tFuzzy[store_name]))", ci, "int",
          "Excel's = is not case-sensitive; Power Query's exact match is."),
         ("Equal after TRIM (case and spaces ignored)", "=SUMPRODUCT(--(TRIM(tFuzzy[typed])=tFuzzy[store_name]))", tr, "int",
-         "The slide's 'Ignore case and spaces': 7 of 8.")],
+         f"The slide's 'Ignore case and spaces': {tr} of {len(FZ)}.")],
        [("n", "How many typed names fail even after TRIM? (These need fuzzy matching or a person.)",
          "=ROWS(tFuzzy)-SUMPRODUCT(--(TRIM(tFuzzy[typed])=tFuzzy[store_name]))", len(FZ) - tr, "int", "Still unmatched"),
-        ("t", "Which typed name is still unmatched?", FZ[FZ.typed.str.split().str.join(" ").str.lower() != FZ.store_name.str.lower()].typed.iloc[0],
-         None, None, ())],
+        ("t", "Name one typed name that is still unmatched.", miss[0], None, None, tuple(miss[1:]))],
        steps=["Merge Queries › tick 'Use fuzzy matching to perform the merge'.", "Fuzzy options: Similarity threshold 0.8, Ignore case, Match by combining text parts.",
               "Review every fuzzy match before trusting it."], code=True, extra=fuzzy_table)
     lines = TX.groupby("customer_id").size()

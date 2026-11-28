@@ -262,6 +262,34 @@ def r50(x):
     return (np.round(np.asarray(x, dtype=float) / 50.0) * 50.0)
 
 
+STORE_TYPES = ["Ventures", "Enterprises", "Global Concepts", "Stores", "Mart", "Superstore", "Trading Company", "Emporium",
+               "Supplies", "Online Shop", "Retail Hub", "Depot", "Plaza", "Merchants", "Shopping Centre"]
+
+
+def seller_trading_names(s):
+    """Data standard for sellers.store_name: the seller's registered trading name.
+    Unique across the marketplace (UNIQUE in the database), no numeric suffixes, and any place in the
+    name is the store's own city. Most follow the common '<Surname> <business type>' pattern; every
+    fourth seller trades under its city. Deterministic: the same input always gives the same names."""
+    used, out = set(), []
+    for i, r in enumerate(s.itertuples(index=False)):
+        surname = str(r.owner_name).split()[-1]
+        stems = [r.store_city, surname] if i % 4 == 3 else [surname, r.store_city]
+        name = None
+        for k in range(len(STORE_TYPES)):
+            for stem in stems:
+                cand = f"{stem} {STORE_TYPES[(i * 7 + k) % len(STORE_TYPES)]}"
+                if cand not in used:
+                    name = cand
+                    break
+            if name:
+                break
+        assert name, r.seller_id
+        used.add(name)
+        out.append(name)
+    return out
+
+
 def build_supermart_online():
     x = pd.read_excel(RAW / "e-commerce.xlsx", sheet_name=None)
     t = x["Transactions"].dropna(subset=["transaction_id"]).copy()
@@ -306,6 +334,7 @@ def build_supermart_online():
     c["zone"] = c["state"].map(STATE_ZONE)
     d["zone"] = d["state"].map(STATE_ZONE)
     s["store_zone"] = s["store_state"].map(STATE_ZONE)
+    s["store_name"] = seller_trading_names(s)
 
     # ---- customers: gender consistent with first name, phone as text, recomputed totals
     c["gender"] = np.where(c.first_name.isin(FEMALE_SET), "Female", np.where(c.first_name.isin(MALE_SET), "Male", c.gender))
@@ -348,7 +377,7 @@ def build_supermart_online():
                     Built_From="e-commerce.xlsx (26,000 blank padding rows removed, delivery key repaired, city->state repaired, catalogue & ₦ prices standardised)"))
     for tname, cols_ in {
         "customers": "customer_id PK; names; email; phone (text, leading 0 kept); gender; date_of_birth; city/state/zone; membership_tier; loyalty_points; total_orders & total_spent (recomputed from transactions)",
-        "sellers": "seller_id PK; store_name; owner; contact; store_city/state/zone; rating; total_sales & total_revenue (recomputed); account_status",
+        "sellers": "seller_id PK; store_name (registered trading name, unique; any place in it is the store city); owner; contact; store_city/state/zone; rating; total_sales & total_revenue (recomputed); account_status",
         "products": "product_id PK; product_name; category; subcategory; brand_name; seller_id FK; price & discount_price (₦); commission_percentage; stock; weight (kg); total_sold; average_rating",
         "deliveries": "delivery_id PK; order_id (1:1 with transactions); customer_id FK; address; courier; tracking; delivery_status; shipped/delivered dates (blank while Pending)",
         "transactions": "transaction_id PK; order_id; customer_id FK; product_id FK; seller_id FK; delivery_id FK (NULL for cancelled orders); quantity; unit_price; total_price = qty x unit; commission; order/payment status; order_date",
@@ -411,7 +440,7 @@ CREATE TABLE customers (
 
 CREATE TABLE sellers (
     seller_id        TEXT PRIMARY KEY,
-    store_name       TEXT NOT NULL,
+    store_name       TEXT NOT NULL UNIQUE,
     owner_name       TEXT,
     email            TEXT,
     phone_number     TEXT,

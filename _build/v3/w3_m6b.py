@@ -140,7 +140,7 @@ RANKX ( ALL ( tSellers[seller_id] ),
               ["#", "Seller", "[Net Revenue]"]] + [
               [str(i), f"{s} {SNAME[s]}", N(x)] for i, (s, x) in enumerate(list(SELLER.items())[:4], 1)]),
           split=0.45,
-          watch="Rank sellers by seller_id: store names repeat, and ranking by name would merge different sellers."),
+          watch="Rank by seller_id and show store_name as the label: an ID never changes, but a store can be renamed."),
 
         T("3.6.29", "Handling BLANK and Zero",
           defn="BLANK is DAX's empty value, returned when there is no data; a PivotTable hides rows whose measures are all blank.",

@@ -51,12 +51,12 @@ GROUP BY p.category
 ORDER BY rev DESC
 LIMIT 1;
 
--- Q4. Seller (store_name) with the highest 2025 net revenue.  -> Alaba International Digital
+-- Q4. Seller (store_name) with the highest 2025 net revenue.  -> Kaduna Merchants
 SELECT s.store_name, SUM(t.total_price) AS rev
 FROM transactions t
 JOIN sellers s ON s.seller_id = t.seller_id
 WHERE strftime('%Y', t.order_date) = '2025' AND t.order_status IN ('Delivered','Completed')
-GROUP BY s.store_name
+GROUP BY s.seller_id, s.store_name
 ORDER BY rev DESC
 LIMIT 1;
 

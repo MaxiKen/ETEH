@@ -36,7 +36,7 @@ QS = [
     ("Category with the highest 2025 net revenue.",
      f"SELECT p.category, SUM(t.total_price) AS rev\nFROM transactions t\nJOIN products p ON p.product_id = t.product_id\nWHERE {Y25} AND t.{NET}\nGROUP BY p.category\nORDER BY rev DESC\nLIMIT 1;", "gen"),
     ("Seller (store_name) with the highest 2025 net revenue.",
-     f"SELECT s.store_name, SUM(t.total_price) AS rev\nFROM transactions t\nJOIN sellers s ON s.seller_id = t.seller_id\nWHERE {Y25} AND t.{NET}\nGROUP BY s.store_name\nORDER BY rev DESC\nLIMIT 1;", "gen"),
+     f"SELECT s.store_name, SUM(t.total_price) AS rev\nFROM transactions t\nJOIN sellers s ON s.seller_id = t.seller_id\nWHERE {Y25} AND t.{NET}\nGROUP BY s.seller_id, s.store_name\nORDER BY rev DESC\nLIMIT 1;", "gen"),
     ("Platform commission earned on 2025 net orders, ₦ (nearest naira).",
      f"SELECT ROUND(SUM(commission_amount), 0) AS commission\nFROM transactions t\nWHERE {Y25} AND t.{NET};", "naira"),
     ("2025 return rate = Returned ÷ (Delivered + Completed + Returned), 4 dp.",

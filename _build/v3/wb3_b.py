@@ -358,7 +358,7 @@ def m36b(b, D):
          int((ss > ss["SELL0170"]).sum() + 1), "int", "Rank SELL0170"),
         ("n", "What net revenue does the 10th seller have?", "=LARGE(" + per_seller() + ",10)", f(ss.iloc[9]), N, "10th seller")],
        steps=["RANKX ( ALL ( tSellers[seller_id] ), [Net Revenue], , DESC, DENSE ).", "ALL makes every seller compete, whatever is on rows.",
-              "Rank by seller_id: 86 store names repeat."], code=True)
+              "Rank by seller_id; show store_name only as the label."], code=True)
     tp(m, "3.6.29",
        [("Sellers with net sales (rows [Net Revenue] shows)", "=SUMPRODUCT(--((" + per_seller() + ")>0))", len(ss), "int", ""),
         ("Rows [Rev 0] shows", "=ROWS(tSellers)", len(D.SE), "int", "+ 0 turns BLANK into 0: every seller appears.")],
