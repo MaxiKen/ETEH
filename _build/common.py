@@ -22,10 +22,14 @@ SEC = PACK / "01_Section_Examples"
 ASG = PACK / "02_Assignments"
 IPR = PACK / "03_Instructor_Projects"
 SPR = PACK / "04_Student_Projects"
-CORE = SEC / "00_Core_Datasets"
-W2D = SEC / "Week2_Data_Files"
-W3D = SEC / "Week3_Data_Files"
 STAGE = ROOT / "_build" / "_stage"   # intermediate parquet/pickle cache (git-ignored)
+# Generated source files (CSV, TXT, JSON, PDF, SQLite ...) are written to a git-ignored source store by
+# 01_build_datasets.py. The learner pack holds copies placed next to the exercise that uses them
+# (see learn/place_files.py), so every week folder is self-contained.
+SRC = STAGE / "source"
+CORE = SRC / "00_Core_Datasets"
+W2D = SRC / "Week2_Data_Files"
+W3D = SRC / "Week3_Data_Files"
 
 for p in (PACK, SEC, ASG, IPR, SPR, CORE, W2D, W3D, STAGE):
     p.mkdir(parents=True, exist_ok=True)
