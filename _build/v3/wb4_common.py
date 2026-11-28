@@ -46,6 +46,12 @@ def data():
     d.MON = W.table("tMonthly")
     d.STO = W.table("tStores")
     d.ROOMS = W.ROOMS
+    net = d.O[d.O.order_status.isin(["Delivered", "Completed"])].groupby("customer_id").total_price.sum()
+    net = net.reset_index().sort_values(["total_price", "customer_id"], ascending=[False, True])
+    cr = pd.DataFrame({"Rank": range(1, len(net) + 1), "customer_id": net.customer_id.values, "Net_Revenue": net.total_price.values})
+    cr["Cum_Revenue"] = cr.Net_Revenue.cumsum()
+    cr["Cum_Share"] = cr.Cum_Revenue / cr.Net_Revenue.sum()
+    d.CR = cr
     return d
 
 
@@ -78,12 +84,36 @@ def data_sheets(b, D):
         ("Data_Monthly", "tMonthly", D.MON, "tMonthly: SuperMart Stores monthly sales, Jan 2022 - Dec 2025 (A1)",
          "48 months · Sales is column E, rows 2-49 · 4.5", {"Month": "mon", "Sales": N, "Year": "gen", "Month_No": "gen", "t": "gen"},
          {"Month": 10, "Sales": 15}),
+        ("Data_CustRev", "tCustRev", D.CR, "tCustRev: SuperMart Online net revenue per customer, largest first (A1)",
+         f"{len(D.CR):,} buyers · Delivered + Completed orders · a PivotTable of tOrders pasted as values, sorted · 4.2.4",
+         {"Rank": "int", "Net_Revenue": N, "Cum_Revenue": N, "Cum_Share": "pct"}, {"customer_id": 12, "Net_Revenue": 14, "Cum_Revenue": 15}),
         ("Data_Stores", "tStores", D.STO, "tStores: the 12 SuperMart stores with floor area and FY2025 target (A1)", "12 stores · 4.2, 4.7, 4.14",
          {"Annual_Target_2025": N, "Floor_Area_sqm": "int"}, {"Store_Name": 24, "Zone": 14, "Annual_Target_2025": 15}),
     ]
     out = {}
     for sheet, tname, df, title, sub, fmts, widths in specs:
-        out[tname] = DataSheet(b, sheet, title, sub).put(_obj(df), tname, fmts=fmts, widths=_w(df, widths))
+        ds = DataSheet(b, sheet, title, sub)
+        out[tname] = ds.put(_obj(df), tname, fmts=fmts, widths=_w(df, widths))
+        if tname == "tMonthly":
+            # column F, outside the table: one-step simple exponential smoothing (alpha 0.3), the F49 quoted in 4.5.5
+            ws = ds.ws
+            ws.set_column(5, 5, 16)
+            ws.write(0, 5, "SES_Forecast", b.F["hdr"])
+            fmt = b.nf(N)
+            v = ses_column(df.Sales)
+            ws.write_formula(1, 5, "=E2", fmt, v[0])
+            for i in range(1, len(df)):
+                ws.write_formula(i + 1, 5, f"=0.3*E{i + 1}+0.7*F{i + 1}", fmt, v[i])
+            ws.write(len(df) + 2, 5, "F = 0.3 x last month's sales + 0.7 x last month's forecast (4.5.5)", b.F["note"])
+    return out
+
+
+def ses_column(sales, alpha=0.3):
+    """One-step-ahead simple exponential smoothing: F2 = E2, F(r) = alpha*E(r-1) + (1-alpha)*F(r-1)."""
+    s = list(map(float, sales))
+    out = [s[0]]
+    for i in range(1, len(s)):
+        out.append(alpha * s[i - 1] + (1 - alpha) * out[-1])
     return out
 
 

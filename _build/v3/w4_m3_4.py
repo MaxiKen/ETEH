@@ -80,7 +80,7 @@ M43 = dict(
 
         T("4.3.2", "Pearson Correlation",
           defn="Pearson's r is the standard correlation coefficient for two numeric columns: CORREL(array1, array2) or PEARSON.",
-          simple="Square it to get the share of variation the two columns share: r = 0.58 means about a third.",
+          simple=f"Square it to get the share of variation the two columns share: attendance r = {R['Lecture_Attendance_Pct']:.2f}, so r squared = {R['Lecture_Attendance_Pct'] ** 2:.0%}.",
           fx=[("=CORREL(tCV[Lecture_Attendance_Pct],tCV[Final_Score])", f"{R['Lecture_Attendance_Pct']:.3f}", "Attendance and score"),
               ("=CORREL(tCV[Study_Hours_Wk],tCV[Final_Score])", f"{R['Study_Hours_Wk']:.3f}", "Study hours and score"),
               ("=CORREL(tCV[Sleep_Hrs_Night],tCV[Final_Score])", f"{R['Sleep_Hrs_Night']:.3f}", "Sleep and score")],

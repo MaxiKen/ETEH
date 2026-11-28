@@ -88,6 +88,14 @@ def translate(f, T, sheet, r, c):
             return m.group(0)
         return colrange(t, m.group(2))
 
+    def colspan(m):
+        t = T.get(m.group(1))
+        if not t or m.group(2) not in t["hdr"] or m.group(3) not in t["hdr"]:
+            return m.group(0)
+        a_, b_ = colrange(t, m.group(2)), colrange(t, m.group(3))
+        return a_.split(":")[0] + ":" + b_.split(":")[1].split("!")[-1]
+
+    f = re.sub(r"([A-Za-z_][\w.]*)\[\[([^\[\]]+)\]:\[([^\[\]]+)\]\]", colspan, f)   # tName[[ColA]:[ColB]]
     f = RE_COL.sub(col, f)
 
     def bare(m):

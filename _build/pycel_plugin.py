@@ -380,3 +380,18 @@ def linest(known_y, known_x, const=True, want_stats=False):
              (r2, float(np.sqrt(sse / df))) + (na,) * (k - 1), (float(r2 / k / ((1 - r2) / df)), float(df)) + (na,) * (k - 1),
              (sst - sse, sse) + (na,) * (k - 1)]
     return tuple(rows_)
+
+
+def mode_sngl(*args):
+    """MODE.SNGL: most frequent number; ties go to the value that appears first (Excel's rule)."""
+    v = _nums(args)
+    cnt = {}
+    for a in v:
+        cnt[a] = cnt.get(a, 0) + 1
+    top = max(cnt.values())
+    if top < 2:
+        return "#N/A"
+    return next(a for a in v if cnt[a] == top)
+
+
+mode = mode_sngl
