@@ -81,9 +81,10 @@ class Ref:
 
 class LBook:
     def __init__(self, path, filename, week_no, week_title, title_suffix="Section Examples", assignment=False,
-                 with_solutions=True, intro=None, week_label=None):
+                 with_solutions=True, intro=None, week_label=None, files_home=None):
         self.path, self.filename, self.week_no, self.week_title = path, filename, week_no, week_title
         self.week_label = week_label or f"Week {week_no}"
+        self.files_home = files_home        # answer keys point at the students' copy instead of copying the files again
         self.assignment = assignment
         self.with_solutions = with_solutions
         self.intro = intro
@@ -300,7 +301,7 @@ class LBook:
             r += 1
         r += 1
         ws.merge_range(r, 1, r, 5, "Sheets in teaching order (click a name to open it)", F["h2"]); r += 1
-        for j, h in enumerate(["Sheet", "Module", "Data this sheet uses (File › Sheet › Table)", "Questions",
+        for j, h in enumerate(["Sheet", "Task" if self.title_suffix.startswith("Assignment") else "Module", "Data this sheet uses (File › Sheet › Table)", "Questions",
                                "Question types"]):
             ws.write(r, 1 + j, h, F["hdr"])
         r += 1
@@ -377,7 +378,8 @@ class LSheet:
         ws.write_url("B1", "internal:'Start_Here'!A1", F["link"], "◄ Start_Here")
         if book.with_solutions:
             ws.write_url("E1", "internal:'Solutions'!A1", F["link"], "Solutions ►")
-        ws.write("B2", f"Module {code}  ·  {title}", F["title"])
+        kind = "Task" if book.title_suffix.startswith("Assignment") else "Module"
+        ws.write("B2", f"{kind} {code}  ·  {title}", F["title"])
         self.learned = learned
         self.r = 6          # rows 3-5 are written in finish(): You learned / Data to use / Files folder
 
@@ -385,10 +387,13 @@ class LSheet:
         """Copy external files next to the workbook in Ex<code>_Files and list them in the gold box.
         files: list of source paths (a folder is copied whole). Returns the folder name."""
         folder = folder or f"Ex{self.code}_Files"
-        self.b.copy_jobs.append((folder, [Path(f) for f in files]))
         names = ", ".join(Path(f).name + (" (a folder of files)" if Path(f).is_dir() else "") for f in files)
-        self.files_folder = (f"Folder {folder}, next to this workbook in the {Path(self.b.path).parent.name} folder. "
-                             f"It holds: {names}")
+        if self.b.files_home is None:
+            self.b.copy_jobs.append((folder, [Path(f) for f in files]))
+            where = f"next to this workbook in the {Path(self.b.path).parent.name} folder"
+        else:
+            where = f"in {self.b.files_home}"
+        self.files_folder = f"Folder {folder}, {where}. It holds: {names}"
         return folder
 
     def set_refs(self, refs, files_folder=None):
