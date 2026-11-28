@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 
 from v3kit import T
+from slidekit import ORANGE
 from w3_fx import CU, CV, DS, I, LC, LN, N, N_LINES, NT, Nm, P, S25, SM, SMONTH, TX, ZS, F1
 
 Z = ZS.index.tolist()                     # zones by FY2025 sales, largest first
@@ -214,8 +215,8 @@ M37 = dict(
         T("3.7.18", "Radar Chart",
           defn="A radar chart plots several measures on spokes from a centre, drawing one profile per item.",
           simple="Use it for a few items and a few measures on the same scale; here each is a share of the best zone.",
-          grid=dict(label="FY2025 zone profile (1.00 = best zone)", widths=[1.1] + [1] * 4, size=11.5, rows=[
-              ["Measure"] + Z] + [[m] + [f"{RAD.loc[z, m]:.2f}" for z in Z] for m in ("Sales", "Profit", "Orders", "Margin")]),
+          grid=dict(label="FY2025 zone profile (1.00 = best zone)", widths=[1.5] + [0.9] * 4, size=11.5, rows=[
+              ["Zone", "Sales", "Profit", "Orders", "Margin"]] + [[z] + [f"{RAD.loc[z, m]:.2f}" for m in ("Sales", "Profit", "Orders", "Margin")] for z in Z]),
           watch="Radar charts with many spokes or items become tangled; a small table often reads better."),
 
         T("3.7.19", "Combo Chart with Secondary Axis",
@@ -296,5 +297,81 @@ M37 = dict(
                "Comparison, time, part-whole, relationship, distribution: each has its chart.",
                "17 types, from column to sparkline; each has a trap."],
 )
+
+# ---------------------------------------------------------------- charts (edition 3): every series comes from the data above
+FM = '₦#,##0,,"m"'                         # millions, the Display units › Millions look
+MON3 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+ZM = S25.assign(M=S25.Order_Date.dt.month).pivot_table(index="M", columns="Zone", values="Sales", aggfunc="sum").reindex(range(1, 13)).fillna(0)
+SM_LAB = [p.strftime("%b %y") for p in SMONTH.index]
+PEAK_I = list(SMONTH.index).index(PEAK)
+BYYR = {y: [float(SMONTH.get(pd.Period(f"{y}-{m:02d}", "M"), 0)) for m in range(1, 13)] for y in YEARS.index}
+DEPT = CV.groupby("Department").agg(H=("Study_Hours_Wk", "mean"), S=("Final_Score", "mean"), n=("Final_Score", "size")).sort_values("n", ascending=False)
+
+
+def _whisk(d):
+    x = LC.loc[LC.Department == d, "LOS_Days"]
+    q1, q3 = x.quantile(.25), x.quantile(.75)
+    lo, hi = x[x >= q1 - 1.5 * (q3 - q1)].min(), x[x <= q3 + 1.5 * (q3 - q1)].max()
+    return d, float(lo), float(q1), float(x.median()), float(q3), float(hi)
+
+
+TOPSUB = list(SUB.items())[:11]
+OTHER = float(SUB.sum() - sum(v for _, v in TOPSUB))
+CHARTS = {
+    "3.7.1": dict(kind="column", cats=Z, series=[("Sales", ZS.Sales.tolist())], fmt=FM, labels=True, legend=False,
+                  title=f"South-West led FY2025 with {Nm(SW.Sales)}", label="AFTER: ONE COLOUR, FINDING IN THE TITLE"),
+    "3.7.2": dict(kind="column", cats=Z, series=[("Sales", ZS.Sales.tolist())], fmt=FM, labels=True, legend=True, y_title="₦m", x_title="Zone",
+                  title="Chart title: FY2025 sales by zone", label="EVERY PART SWITCHED ON"),
+    "3.7.4": dict(kind="column", cats=Z, series=[("Sales", ZS.Sales.tolist())], fmt=FM, legend=False, y_min=100e6, colors=["B42B1E"],
+                  title=f"Axis from ₦100m: South-West looks {RATIO100:.1f}× South-East", label="THE TRAP: TRUNCATED VALUE AXIS",
+                  note=f"The truth is {RATIO0:.1f}×. Set the axis minimum back to 0."),
+    "3.7.6": dict(kind="line", cats=MON3, series=[(z, ZM[z].tolist()) for z in Z], fmt=FM, legend=True, h=2.6,
+                  title="FY2025 monthly sales by zone: four series need a key"),
+    "3.7.7": dict(kind="column", cats=Z, series=[("Sales", ZS.Sales.tolist())], fmt=FM, label_fmt='₦#,##0.0,,"m"', labels=True, legend=False,
+                  title="Four points: label every one", h=2.5),
+    "3.7.8": dict(kind="line", cats=SM_LAB, series=[("Sales", SMONTH.tolist())], fmt=FM, label_fmt='₦#,##0.0,,"m"', labels=[PEAK_I], legend=False,
+                  title=f"Late-year peak; {ym(PEAK)} was the best month", h=2.6),
+    "3.7.10": dict(kind="column", cats=Z, series=[("Sales", ZS.Sales.tolist())], fmt=FM, labels=True, legend=False,
+                   title=f"South-West led FY2025 with {Nm(SW.Sales)}"),
+    "3.7.11": dict(kind="bar", cats=DSS.Store_Name.tolist(), series=[("Sales", DSS.Sales.tolist())], fmt=FM, legend=False, h=3.0,
+                   point_colors=[ORANGE] + [None] * (len(DSS) - 1), title=f"{DSS.iloc[0].Store_Name} sold most in FY2025"),
+    "3.7.12": dict(kind="line", cats=MON3, series=[(str(y), v) for y, v in BYYR.items()], fmt=FM, legend=True,
+                   title="Every year peaks late: one line per year"),
+    "3.7.13": dict(kind="area", cats=MON3, series=[(z, ZM[z].tolist()) for z in Z], fmt=FM, legend=True, stacked=True,
+                   title="FY2025 monthly sales, stacked by zone"),
+    "3.7.14": dict(kind="pie", cats=TIER.index.tolist(), series=[("Customers", TIER.tolist())], title="Customers by membership tier", legend=True),
+    "3.7.15": dict(kind="doughnut", cats=list(PAY.index[:4]) + ["Other"], series=[("Value", list(PAY.iloc[:4]) + [float(PAY.iloc[4:].sum())])],
+                   title="Order value by payment method"),
+    "3.7.16": dict(kind="scatter", points=[("Students", CV.Lecture_Attendance_Pct.tolist(), CV.Final_Score.tolist())], trend=True, marker=3,
+                   x_title="Lecture attendance %", y_title="Final score", x_min=float(np.floor(CV.Lecture_Attendance_Pct.min() / 10) * 10), x_max=100,
+                   title=f"Attendance and score: r = {R['Lecture_Attendance_Pct']:.2f}"),
+    "3.7.17": dict(kind="bubble", points=[("Departments", DEPT.H.tolist(), DEPT.S.tolist(), DEPT.n.tolist())], scale=35,
+                   x_title="Average study hours per week", y_title="Average final score", h=2.9,
+                   title="Kingsway departments: study, score and size"),
+    "3.7.18": dict(kind="radar", cats=["Sales", "Profit", "Orders", "Margin"], series=[(z, [float(RAD.loc[z, m]) for m in ("Sales", "Profit", "Orders", "Margin")]) for z in Z],
+                   fmt="0.00", legend=True, title="Zone profile (1.00 = best zone)", h=2.9),
+    "3.7.19": dict(kind="combo", cats=Z, series=[("Sales", ZS.Sales.tolist()), ("Margin", ZS.Margin.tolist())], fmt=FM, y2_fmt="0%",
+                   title="Sales (columns) and margin (line, right axis)"),
+    "3.7.20": dict(kind="waterfall", cats=["FY2024"] + [f"{c}" for c in P24.index] + ["FY2025"], start=float(P24.sum()),
+                   steps=[float(P25[c] - P24[c]) for c in P24.index], fmt=FM, label_fmt='₦#,##0.0,,"m"', title="Profit bridge, FY2024 to FY2025", h=2.7),
+    "3.7.21": dict(kind="funnel", cats=["Orders placed", "Shipped", "Delivered or completed"], values=[N_LINES, SHIPPED, NETL], label_fmt="#,##0",
+                   title="SuperMart Online order funnel (lines)", h=2.3),
+    "3.7.22": dict(kind="treemap", tree=[(sc, float(v)) for (c, sc), v in TOPSUB] + [("Other", OTHER)], title="Net revenue by subcategory", h=2.9),
+    "3.7.23": dict(kind="sunburst", rings=[(c, [(sc, float(v)) for (cc, sc), v in SUB.items() if cc == c]) for c in CATN.index],
+                   title="Category (inner) and subcategory (outer)", h=2.9),
+    "3.7.24": dict(kind="histogram", cats=[str(k) for k in BINS.index], series=[("Admissions", BINS.tolist())], fmt="#,##0", legend=False,
+                   x_title="Length of stay (days), bin width 5", title="Most stays are short; a long right tail"),
+    "3.7.25": dict(kind="box", box=[_whisk(d) for d in BOX.index], fmt="0", y_title="Days", title="Length of stay by department (whiskers: 1.5 × IQR)", h=2.8),
+    "3.7.26": dict(kind="sparklines", rows=[(s, SP.loc[s].tolist()) for s in DSS.Store_Name], ncol=2, label_w=1.95, h=3.0,
+                   title="FY2025 monthly sales, one sparkline per store (orange = high point)", label="SPARKLINES FROM OUR DATA"),
+}
+ORDER = {"3.7.10": ["chart", "steps"], "3.7.19": ["chart", "steps"], "3.7.26": ["chart", "steps"]}
+SPLIT = {"3.7.10": 0.58, "3.7.19": 0.58, "3.7.26": 0.62}
+for t in M37["topics"]:
+    if t["tag"] in CHARTS:
+        t["chart"] = CHARTS[t["tag"]]
+        if t["tag"] in ORDER:
+            t["order"] = ORDER[t["tag"]]
+            t["split"] = SPLIT[t["tag"]]
 
 MODULES = [M37]

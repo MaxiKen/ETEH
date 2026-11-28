@@ -254,6 +254,20 @@ SCALES = (1.25, 1.18, 1.1, 1.0, 0.94, 0.88)
 def layout_topic(cv, t, D, where):
     """Pick the largest body scale that fits, then draw."""
     keep = len(K.WARN)
+    c = t.get("chart")
+    if c is not None:
+        # a chart is the one elastic block: shrink it (not the fonts) until the slide fits, down to 1.9in
+        c.pop("_h", None)
+        h0 = c.get("h", 2.75)
+        hh = h0
+        while hh > 1.9:
+            c["_h"] = hh
+            if _layout(Dry(), t, D, where, 1.0) <= BOTTOM + 0.005:
+                break
+            hh = round(hh - 0.05, 2)
+        else:
+            c["_h"] = 1.9
+        del K.WARN[keep:]
     chosen = SCALES[-1]
     for k in SCALES:
         end = _layout(Dry(), t, D, where, k)

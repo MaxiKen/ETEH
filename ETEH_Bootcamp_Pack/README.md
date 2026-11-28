@@ -166,7 +166,7 @@ Rebuilt from scratch in the Week 1 format (`_build/02_sec_w4.py` with `_build/v3
   - **Task 5:** the Atlantic Pearl series now runs a full 18 months (July 2023 to December 2024). It peaks every December and has no opening ramp-up. Training is now July 2023 to June 2024, the test is July to December 2024, and the forecast is for January 2025 (Month_No 19). Q5.1 now asks about the December seasonal peak, replacing the old "incomplete first month" question.
   - **Claims that now come from the data:** the coefficient in Q4.6, the Q7.1 headline (Q4 room-nights fell 14% year on year), the Q7.5 model summary and the Task 9 AI claims. The Task 9 answers are now FALSE, TRUE, TRUE, FALSE.
 - The untaught-function scan now checks each assignment against the examples workbooks up to its own week. It reports functions taught only on an assignment's Function Guide separately: EDATE in Week 1, WEEKDAY in Week 2, none in Weeks 3–4.
-- VERIFY_A4
+- Both files pass `check_xml.py` and the `[@]` scan, and verify with 0 mismatches. The student file has 54 formulas (39 recalculated) and the key has 138 (123 recalculated). In each, the other 15 are 14 FORMULATEXT cells and one cell that uses a defined name pycel cannot read.
 
 ### Build
 ```

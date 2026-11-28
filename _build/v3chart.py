@@ -57,7 +57,7 @@ def _rgb(h):
 
 
 def height(spec):
-    return spec.get("h", 2.75)
+    return spec.get("_h", spec.get("h", 2.75))
 
 
 # ---------------------------------------------------------------- styling helpers
@@ -311,6 +311,9 @@ def draw(cv, x, y, w, h, spec):
     if kind == "sparklines":
         _sparklines(slide, x, y, w, h, spec, cv)
         return
+    if kind == "dashboard":
+        _dashboard(cv, x, y, w, h, spec)
+        return
     cols = spec.get("colors") or PALETTE
     fmt = spec.get("fmt")
     series = spec.get("series", [])
@@ -321,6 +324,8 @@ def draw(cv, x, y, w, h, spec):
         ct = {"column": XL_CHART_TYPE.COLUMN_CLUSTERED, "histogram": XL_CHART_TYPE.COLUMN_CLUSTERED, "combo": XL_CHART_TYPE.COLUMN_CLUSTERED,
               "stacked": XL_CHART_TYPE.COLUMN_STACKED, "bar": XL_CHART_TYPE.BAR_CLUSTERED, "line": XL_CHART_TYPE.LINE_MARKERS,
               "area": XL_CHART_TYPE.AREA, "radar": XL_CHART_TYPE.RADAR_MARKERS}[kind]
+        if kind == "area" and spec.get("stacked"):
+            ct = XL_CHART_TYPE.AREA_STACKED
         ch = slide.shapes.add_chart(ct, X, Y, CX, CY, _cat_data(spec["cats"], series, fmt)).chart
         _title(ch, spec.get("title"))
         ch.font.size = Pt(10)
@@ -440,6 +445,12 @@ def draw(cv, x, y, w, h, spec):
     if kind == "waterfall":
         cats, steps = spec["cats"], spec["steps"]          # steps: list of numbers; last category = total (computed)
         base, up, down, total, run = [], [], [], [], 0.0
+        if spec.get("start") is not None:                 # optional opening total (first category)
+            run = float(spec["start"])
+            base.append(0)
+            up.append(0)
+            down.append(0)
+            total.append(run)
         for v in steps:
             nxt = run + v
             base.append(min(run, nxt))
@@ -625,7 +636,7 @@ def _sparklines(slide, x, y, w, h, spec, cv):
     for i, (lab, vals) in enumerate(rows):
         c, r = i // nrow, i % nrow
         xx, yy = x + c * (cw + 0.2), ty + r * rh
-        cv.text(xx, yy + rh / 2 - 0.11, lab_w, 0.24, [lab], 10, INK)
+        cv.text(xx, yy + rh / 2 - 0.1, lab_w, 0.22, [lab], spec.get("label_size", 9), INK)
         cd = _cat_data([str(k + 1) for k in range(len(vals))], [(lab, vals)])
         ch = slide.shapes.add_chart(XL_CHART_TYPE.LINE, _e(xx + lab_w), _e(yy + 0.02), _e(cw - lab_w), _e(rh - 0.04), cd).chart
         ch.has_title = False
@@ -655,3 +666,53 @@ def _sparklines(slide, x, y, w, h, spec, cv):
         for old in list(lay):
             lay.remove(old)
         lay.append(ml)
+
+
+def _dashboard(cv, x, y, w, h, spec):
+    """A one-screen dashboard mock: a row of KPI cards, then charts side by side (spec['charts'], each a chart spec)."""
+    kpis, charts = spec.get("kpis", []), spec.get("charts", [])
+    yy = y
+    if spec.get("banner"):
+        cv.rect(x, yy, w, 0.36, NAVY, None)
+        cv.text(x + 0.15, yy + 0.07, w - 0.3, 0.26, [spec["banner"]], 12, WHITE, bold=True)
+        yy += 0.44
+    if kpis:
+        kh, gap = 0.82, 0.14
+        kw = (w - gap * (len(kpis) - 1)) / len(kpis)
+        for i, k in enumerate(kpis):
+            lab, val = k[0], k[1]
+            sub = k[2] if len(k) > 2 else ""
+            col = k[3] if len(k) > 3 else NAVY
+            kx = x + i * (kw + gap)
+            cv.rect(kx, yy, kw, kh, "F3F5F8", "D5DBE2")
+            cv.rect(kx, yy, 0.07, kh, col, None)
+            cv.text(kx + 0.18, yy + 0.07, kw - 0.25, 0.2, [lab.upper()], 9, GREY, bold=True)
+            cv.text(kx + 0.18, yy + 0.27, kw - 0.25, 0.32, [val], 17, col, bold=True)
+            if sub:
+                cv.text(kx + 0.18, yy + 0.58, kw - 0.25, 0.2, [sub], 9, GREY)
+        yy += kh + 0.16
+    if charts:
+        gap = 0.2
+        widths = spec.get("widths") or [1] * len(charts)
+        tot = sum(widths)
+        avail = w - gap * (len(charts) - 1)
+        cx = x
+        ch_h = y + h - yy
+        for c, k in zip(charts, widths):
+            cw = avail * k / tot
+            cv.rect(cx, yy, cw, ch_h, WHITE, "D5DBE2")
+            draw(_NoOps(cv), cx + 0.05, yy + 0.05, cw - 0.1, ch_h - 0.1, c)
+            cx += cw + gap
+
+
+class _NoOps:
+    """Pass-through canvas whose chart placeholders are still recorded for previews."""
+
+    def __init__(self, cv):
+        self.cv, self.slide, self.ops = cv, cv.slide, cv.ops
+
+    def rect(self, *a, **k):
+        return self.cv.rect(*a, **k)
+
+    def text(self, *a, **k):
+        return self.cv.text(*a, **k)
