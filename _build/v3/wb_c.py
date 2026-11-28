@@ -29,7 +29,7 @@ def m17(b, D):
                     "1.7.1 - 1.7.14")
     m.dataset([("tStores25", "Sheet Data_Stores25 (starts in A1)", "Row 2 = Lagos - Ikeja. Columns: E Sales, F Profit, G Orders, H Target, I Margin, J Attainment. "
                                                                     "From this sheet we refer to its cells as Data_Stores25!E2 (a reference to another sheet)."),
-               ("tStudents", "Sheet Data_Students (starts in A1)", "Crestview students, used in 1.7.14."),
+               ("tStudents", "Sheet Data_Students (starts in A1)", "Kingsway students, used in 1.7.14."),
                ("tPayMix, tDept23, tHotelSeg", "Sheet 1.4 Industry Applications", "Summary tables reused in 1.7.14."),
                ("Practice ranges", "On this sheet", "Small ranges for writing and copying your own formulas (white cells).")])
     ik, lk = ST.iloc[0], ST.iloc[1]
@@ -243,15 +243,15 @@ def m17(b, D):
     m.steps(["Retail margin: SUM(profit) ÷ SUM(sales).", "Rate: COUNTIF(column, \"Yes\") ÷ COUNTA(ID column).",
              "Average from a summary table: weight each group by its size (SUMPRODUCT, Week 2).", "Ratio of totals: total ÷ count."])
     m.worked([("Retail: FY2025 margin", "=SUM(tStores25[Profit])/SUM(tStores25[Sales])", ST.Profit.sum() / ST.Sales.sum(), "pct", ""),
-              ("University: at-risk rate", '=COUNTIF(tStudents[At_Risk],"Yes")/COUNTA(tStudents[Student_ID])', (STU.At_Risk == "Yes").mean(), "pct", ""),
+              ("University: at-risk rate", '=COUNTIF(tStudents[At_Risk],"Yes")/COUNTA(tStudents[Matric_No])', (STU.At_Risk == "Yes").mean(), "pct", ""),
               ("Hospital: average length of stay 2023, days", "=SUMPRODUCT(tDept23[Admissions],tDept23[Avg_LOS])/SUM(tDept23[Admissions])",
                float((dept.Admissions * dept.Avg_LOS).sum() / dept.Admissions.sum()), "dec1", ""),
               ("Hotel: cancellation rate 2023-2024", "=SUM(tHotelSeg[Cancelled])/SUM(tHotelSeg[Bookings])", D.HSEG.Cancelled.sum() / D.HSEG.Bookings.sum(), "pct", ""),
               ("E-commerce: average order value", "=SUM(tPayMix[Revenue])/SUM(tPayMix[Orders])", D.PAY.Revenue.sum() / D.PAY.Orders.sum(), N, "")])
     m.turn()
-    m.ex("What is the average exam score in tStudents?", "=AVERAGE(tStudents[Exam_Score])", float(STU.Exam_Score.mean()), "dec2", tol=0.006,
+    m.ex("What is the average exam score in tStudents?", "=AVERAGE(tStudents[Final_Score])", float(STU.Final_Score.mean()), "dec2", tol=0.006,
          short="Average exam score")
-    m.ex("What share of students got grade A?", '=COUNTIF(tStudents[Grade],"A")/COUNTA(tStudents[Student_ID])', (STU.Grade == "A").mean(), "pct",
+    m.ex("What share of students got grade A?", '=COUNTIF(tStudents[Grade],"A")/COUNTA(tStudents[Matric_No])', (STU.Grade == "A").mean(), "pct",
          short="Grade A share")
     m.finish()
 

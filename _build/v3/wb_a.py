@@ -85,15 +85,15 @@ def m11(b, D):
              "State the decision the measure supports (take the faster route)."], label="How to describe any analytics use")
     m.s.grid([["Bank app spending summary", "Your debit transactions by category", "Share of spending per category", "Cut the biggest category"],
               ["SuperMart Retail", "tStores25", "Attainment = Sales ÷ Target", "Support the stores below 100%"],
-              ["Crestview University", "tStudents", "At-risk rate by faculty", "Target tutoring at the highest rate"],
-              ["Eko Suites Hotel", "Bookings by market segment", "Cancellation rate", "Ask for deposits on high-cancellation bookings"]],
+              ["Kingsway University", "tStudents", "At-risk rate by faculty", "Target tutoring at the highest rate"],
+              ["Atlantic Pearl Hotel", "Bookings by market segment", "Cancellation rate", "Ask for deposits on high-cancellation bookings"]],
              header=["Situation / organisation", "Data", "Measure", "Decision it supports"])
     m.s.r += 1
     m.turn()
     m.ex_open("Describe one decision you made this week using data: the decision, the data and the measure.",
               "I chose between two data plans by comparing price per GB (data: the price list; measure: ₦ per GB; decision: the cheaper plan per GB).")
     m.ex_open("Pick one organisation in the table and write one question its managers could answer with its data.",
-              "Eko Suites Hotel: what share of online travel agent bookings were cancelled in 2023-2024, compared with corporate bookings?")
+              "Atlantic Pearl Hotel: what share of online travel agent bookings were cancelled in 2023-2024, compared with corporate bookings?")
 
     # ---------------------------------------------------------------- 1.1.8-9
     m.topic("1.1.8-9", "The data analyst's role, and how it differs from a data scientist and a business analyst",
@@ -160,7 +160,7 @@ def m11(b, D):
          '=SUMIFS(tCat25[Margin],tCat25[Category],"Office Supplies")-SUMIFS(tCat25[Margin_2024],tCat25[Category],"Office Supplies")',
          float(fch[CAT.Category == "Office Supplies"].iloc[0]), "pct", short="Office Supplies margin change")
     m.ex_open("Rewrite the vague question 'Is the hotel doing well?' as a sharp analytical question.",
-              "What was Eko Suites' cancellation rate by market segment in 2023-2024, and which segment was highest?")
+              "What was Atlantic Pearl' cancellation rate by market segment in 2023-2024, and which segment was highest?")
 
     # ---------------------------------------------------------------- 1.1.13
     bn, en = 4, 9   # row positions of Benin City and Enugu in tStores25
@@ -177,7 +177,7 @@ def m11(b, D):
     m.turn()
     m.ex("What was the margin of Enugu - Independence Layout (row 11 of Data_Stores25)?", "=Data_Stores25!I11", ST.Margin[en], "pct",
          short="Enugu margin")
-    m.ex_open("Lifecare's bed occupancy was 95% or higher on 44 days in 2023. What would a hospital manager's domain knowledge add?",
+    m.ex_open("Mercyland's bed occupancy was 95% or higher on 44 days in 2023. What would a hospital manager's domain knowledge add?",
               "Above roughly 85-90% occupancy a hospital struggles to admit emergencies quickly, so the manager would plan extra staffed beds and staff for the peak months.")
 
     # ---------------------------------------------------------------- 1.1.14
@@ -215,7 +215,7 @@ def m12(b, D):
                ("tDiscBand", "On this sheet, below", "FY2025 sales lines grouped by discount band: none, 1-20%, above 20%."),
                ("tQuarter25", "On this sheet, below", "FY2025 sales by quarter; Share is a calculated column."),
                ("tFurn25", "On this sheet, below", "FY2025 Furniture lines grouped by discount level, used to cost a discount cap."),
-               ("tStudents", "Sheet Data_Students (starts in A1)", "Crestview students; used in 1.2.6.")])
+               ("tStudents", "Sheet Data_Students (starts in A1)", "Kingsway students; used in 1.2.6.")])
     m.h("tYears")
     ty = m.s.table(Y[["Year", "Sales", "Profit", "Orders"]], "tYears", fmts={"Year": "gen", "Sales": N, "Profit": N, "Orders": "int"},
               calc={"Margin": ("=[@Profit]/[@Sales]", "pct", Y.Margin.tolist())})
@@ -327,19 +327,19 @@ def m12(b, D):
              "Answer it with the matching kind of work: a summary, a comparison, an estimate with assumptions, or options with results."],
             label="How to classify a question")
     m.worked([("Retail, descriptive: FY2025 margin", "=SUMIFS(tYears[Margin],tYears[Year],2025)", float(Y.set_index("Year").Margin[2025]), "pct", ""),
-              ("University, descriptive: at-risk rate", '=COUNTIF(tStudents[At_Risk],"Yes")/COUNTA(tStudents[Student_ID])',
+              ("University, descriptive: at-risk rate", '=COUNTIF(tStudents[At_Risk],"Yes")/COUNTA(tStudents[Matric_No])',
                (stu.At_Risk == "Yes").mean(), "pct", "Data_Students"),
               ("University, diagnostic: at-risk rate, attendance 70% or below",
-               '=COUNTIFS(tStudents[At_Risk],"Yes",tStudents[Attendance_Pct],"<=70")/COUNTIF(tStudents[Attendance_Pct],"<=70")',
-               ((stu.At_Risk == "Yes") & (stu.Attendance_Pct <= 70)).sum() / (stu.Attendance_Pct <= 70).sum(), "pct",
+               '=COUNTIFS(tStudents[At_Risk],"Yes",tStudents[Lecture_Attendance_Pct],"<=70")/COUNTIF(tStudents[Lecture_Attendance_Pct],"<=70")',
+               ((stu.At_Risk == "Yes") & (stu.Lecture_Attendance_Pct <= 70)).sum() / (stu.Lecture_Attendance_Pct <= 70).sum(), "pct",
                "Far higher than average: low attendance goes with risk.")])
     m.turn()
     for qq, ans in [("How many students are at risk this semester?", "Descriptive"),
-                    ("Why is Oncology's readmission rate the highest?", "Diagnostic"),
-                    ("How many beds will Lifecare need next June?", "Predictive"),
+                    ("Why is Surgery's readmission rate the highest?", "Diagnostic"),
+                    ("How many beds will Mercyland need next June?", "Predictive"),
                     ("Should SuperMart cap Furniture discounts at 20%?", "Prescriptive")]:
         m.ex_text(f"Which type? '{qq}'", ans)
-    m.ex("How many Crestview students are at risk?", '=COUNTIF(tStudents[At_Risk],"Yes")', int((stu.At_Risk == "Yes").sum()), "int",
+    m.ex("How many Kingsway students are at risk?", '=COUNTIF(tStudents[At_Risk],"Yes")', int((stu.At_Risk == "Yes").sum()), "int",
          short="Students at risk")
     m.finish()
 
@@ -376,7 +376,7 @@ def m13(b, D):
     m.ex("By how much did Owerri - New Owerri (row 13 of Data_Stores25) miss its target? (Target minus Sales.)", "=Data_Stores25!H13-Data_Stores25!E13",
          int(ST.Target[11] - ST.Sales[11]), N, short="Owerri shortfall")
     m.ex_open("Make this SMART: 'check how the hospital is doing'.",
-              "By the end of the month, report Lifecare's 2023 30-day readmission rate by department, highlighting departments above the hospital average, for the Medical Director.")
+              "By the end of the month, report Mercyland's 2023 30-day readmission rate by department, highlighting departments above the hospital average, for the Medical Director.")
 
     # ---------------------------------------------------------------- 1.3.2
     m.topic("1.3.2", "Data collection and sources",

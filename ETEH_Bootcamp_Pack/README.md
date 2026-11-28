@@ -101,7 +101,7 @@ Rebuilt from scratch in the Week 1 format.
 Rebuilt from scratch in the Week 1 format (`_build/02_sec_w3.py` with `_build/v3/wb3_a.py`, `wb3_b.py`, `wb3_c.py`).
 - **Sheets:**
   - one sheet per module: 3.1–3.5, 3.6A, 3.6B, 3.7–3.10;
-  - 14 data sheets, each with one table starting in A1: SuperMart Online (tTransactions, tLines, tProducts, tCustomers, tSellers, tDeliveries, tStates, tDimDate), SuperMart Stores FY2025 (tDash, tDashStores), Lifecare (tAdm23, tCensus, and tLcDirty, the raw 2023 extract as received) and Crestview (tCV).
+  - 14 data sheets, each with one table starting in A1: SuperMart Online (tTransactions, tLines, tProducts, tCustomers, tSellers, tDeliveries, tStates, tDimDate), SuperMart Stores FY2025 (tDash, tDashStores), Mercyland (tAdm23, tCensus, and tMsDirty, the raw 2023 extract as received) and Kingsway (tCV).
 - **All 158 mini-sections are covered** (the build asserts it). Each has Steps, a Worked solution with live formulas, and **243 "Your turn" exercises** in all, with live ✓/✗ checks and an answer key on every sheet.
 - **SQL:** every topic whose slide has a SQL panel (23 queries, mostly in 3.2–3.4 and 3.10) gives that query beside a worksheet formula twin, so the learner can check the number SQL returns. `Week3_Data_Files/ETEH_Week3_SQL_Examples.sql` is regenerated from the same queries.
 - **DAX topics (3.6A/3.6B):** each measure's result has a worksheet formula twin (mostly SUMIFS/COUNTIFS) that returns the same value for the stated filter. Small helper tables (tCat, tYear) play the part of a PivotTable's rows.
@@ -116,7 +116,7 @@ Rebuilt from scratch in the Week 1 format (`_build/02_sec_w3.py` with `_build/v3
 ### Week 3 assignment
 - The tasks and marks are unchanged.
 - A new **Function Guide** sheet shows the worksheet patterns the tasks use: an XLOOKUP calculated column, year-filtered COUNTIFS/AVERAGEIFS, a month count bounded by EOMONTH, and census rates. Each is a live example on the assignment's own tables that answers a different question from the tasks.
-- **Bug fixed in the key:** the Task 3 formula grid held two `=XLOOKUP([@ward_id],…)` formulas outside any table. Excel cannot resolve `[@…]` there, so it would repair the file on opening. They are now shown as text. A new scan (`_build/rev/scan_thisrow.py`) checks every pack workbook for this; no other file has it.
+- **Bug fixed in the key:** the Task 3 formula grid held two `=XLOOKUP([@ward_code],…)` formulas outside any table. Excel cannot resolve `[@…]` there, so it would repair the file on opening. They are now shown as text. A new scan (`_build/rev/scan_thisrow.py`) checks every pack workbook for this; no other file has it.
 - The reference dashboard in the key now counts months with EOMONTH, which Week 3 teaches, instead of EDATE, which no week teaches.
 - An untaught-function scan (`_build/rev/untaught_scan.py`) finds no function in the student file or the key that the Week 1–3 workbooks do not teach.
 - Both files verify with 0 mismatches. The student file has 24 formulas (17 recalculated, 7 FORMULATEXT). The key has 43,677 formulas (43,670 recalculated, 7 FORMULATEXT).
@@ -151,7 +151,7 @@ Every topic in all five volumes (663 topics) now has two slides.
    - **Remember**: one tip.
    - **Avoid**: the most common beginner mistake.
 2. **Worked-example slide**
-   - **The situation**: a real business question on the pack datasets (SuperMart, Crestview, Lifecare, EkoSuites, the Talent Survey or SuperMart Online).
+   - **The situation**: a real business question on the pack datasets (SuperMart, Kingsway, Mercyland, AtlanticPearl, the Talent Survey or SuperMart Online).
    - **Step by step**: three steps.
    - **What you should see**: a table of the exact results you should get.
    - **What this tells us**: the business meaning in one line.
@@ -205,14 +205,14 @@ Every topic in all five volumes (663 topics) now has two slides.
   - Week 3 keeps 3.6A and 3.6B.
 - External sources were removed: Wikipedia tables, CBN/NBS figures and "live source" links. The modules that depended on them now use files in the pack:
   - 2.4 · Web and PDF sources: the SuperMart store directory HTML page and the monthly sales bulletin PDF.
-  - 3.10 · File extracts into SQL, DAX and dashboards: the Lifecare 2023 dirty CSV and lifecare_hospital.db.
-  - 4.14 · Internal benchmarks, PDF checks and reconciliation: the SuperMart ledger and bulletin, and Lifecare readmission intervals.
+  - 3.10 · File extracts into SQL, DAX and dashboards: the Mercyland 2023 dirty CSV and mercyland_hospital.db.
+  - 4.14 · Internal benchmarks, PDF checks and reconciliation: the SuperMart ledger and bulletin, and Mercyland readmission intervals.
   - P.2 · Source governance: a register of the capstone sources.
 - The Capstone 1–3 modules (P.3–P.5) are rewritten around the instructor capstones. Every figure on those slides comes from the solution workbooks.
 - Headline worked examples elsewhere now quote real dataset figures, for example:
   - SuperMart FY2025: ₦733.2m sales, 12.7% margin, 3,312 lines.
-  - Crestview: 6,607 students, 86.4% progression, 901 at risk.
-  - Lifecare FY2023: 10,918 admissions, 89.5% occupancy.
+  - Kingsway: 6,607 students, 86.4% progression, 901 at risk.
+  - Mercyland FY2023: 10,918 admissions, 89.5% occupancy.
 - Week 1 dollar amounts were converted to naira. `$` signs inside cell references such as `$B$2` were kept.
 
 ## Folders
@@ -227,8 +227,8 @@ Every topic in all five volumes (663 topics) now has two slides.
    - Capstones 1–3, each with a solution workbook and an instructor brief PDF. Capstone 3 also has its extraction SQL.
 4. **04_Student_Projects**: four projects for students.
    - P1 SuperMart Online SQL (joins).
-   - P2 EkoSuites Hotel.
-   - P3 Lifecare Diabetes Screening.
+   - P2 AtlanticPearl Hotel.
+   - P3 Mercyland Diabetes Screening.
    - P4 Talent Salary Benchmark.
 
 All files are generated by the scripts in `_build/` at the repository root.

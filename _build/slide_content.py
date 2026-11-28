@@ -76,18 +76,18 @@ MODULES = {
     # ------------------------------------------------------------------ 3.10
     "3.10": dict(
         title="File Extracts into SQL, DAX and Dashboards",
-        sector="Lifecare Hospital",
-        desc="Profile Lifecare's 2023 admissions CSV, stage it in SQLite, expose exceptions with LEFT JOIN and UNION ALL, "
+        sector="Mercyland Hospital",
+        desc="Profile Mercyland's 2023 admissions CSV, stage it in SQLite, expose exceptions with LEFT JOIN and UNION ALL, "
              "define DAX measures and reconcile the dashboard to source.",
         topics=[
             dict(tag="3.10.1", title="Beginner: profile the extract before loading",
-                 key="Before loading Lifecare_Admissions_2023_DIRTY.csv, profile every column for rows, blanks and distinct values: 11,026 rows; "
+                 key="Before loading Mercyland_Episodes_2023_DIRTY.csv, profile every column for rows, blanks and distinct values: 11,026 rows; "
                      "Discharge_Date has 70 blanks, HMO 40, and Ward shows 16 spellings of 4 wards.",
                  before="an extract arrives with unknown blanks, codes and variants.",
                  after="a 15-column profile lists blanks and distinct counts before any SQL.",
                  best="Profile the whole file (Column profiling based on entire data set), not the first 1,000 rows.",
                  watch="Loading straight into production and finding the blanks after the dashboard is built.",
-                 example="The profile shows Gender with 6 distinct values (M, F, Male, female…) and Admission_Type with 6 spellings of "
+                 example="The profile shows Gender with 6 distinct values (M, F, Male, female…) and Admission_Route with 6 spellings of "
                          "3 real types. Each becomes a mapping rule before the data is loaded.",
                  table=[["Column", "Blank", "Distinct", "Action"], ["Discharge_Date", "70", "392", "Flag open stays"],
                         ["HMO", "40", "5", "Keep NULL, not 'Unknown'"], ["Ward", "0", "16", "Map to 4 wards"],
@@ -104,19 +104,19 @@ MODULES = {
                  table=[["Check", "Result"], ["CSV data rows", "11,026"], ["SELECT COUNT(*) on staging", "11,026"],
                         ["Status", "PASS – load accepted"]]),
             dict(tag="3.10.3", title="Intermediate: SQL joins and an exception report",
-                 key="LEFT JOIN admissions to doctors and keep WHERE d.doctor_id IS NULL to find orphans. Then build one UNION ALL report: "
+                 key="LEFT JOIN admissions to doctors and keep WHERE d.consultant_id IS NULL to find orphans. Then build one UNION ALL report: "
                      "discharge before admission, bill below zero, stay over 30 days, room outside ward range.",
                  before="an INNER JOIN silently hides admissions with no matching doctor.",
                  after="one exception table lists every rule with its count.",
-                 best="Check that doctor_id is unique first, then use LEFT JOIN to discover unmatched rows.",
+                 best="Check that consultant_id is unique first, then use LEFT JOIN to discover unmatched rows.",
                  watch="Using INNER JOIN for checks: unmatched rows vanish and the report looks perfect.",
-                 example="On lifecare_hospital.db the report returns 0 for all four rules and 0 orphan admissions. Run the same SQL "
+                 example="On mercyland_hospital.db the report returns 0 for all four rules and 0 orphan admissions. Run the same SQL "
                          "on stg_admissions_2023 to watch the dirty extract fail.",
-                 table=[["Rule (lifecare_hospital.db)", "Rows"], ["Orphan admissions (no doctor)", "0"], ["Discharge before admission", "0"],
+                 table=[["Rule (mercyland_hospital.db)", "Rows"], ["Orphan admissions (no doctor)", "0"], ["Discharge before admission", "0"],
                         ["Bill below zero", "0"], ["Stay over 30 days", "0"], ["Room outside ward range", "0"]]),
             dict(tag="3.10.4", title="Intermediate: DAX measures and filter context",
-                 key="Define explicit measures: Admissions = COUNTROWS(Admissions); ALOS = AVERAGE(Admissions[length_of_stay]); "
-                     "Readmission % = DIVIDE(CALCULATE([Admissions], Admissions[readmit_30d] = \"Yes\"), [Admissions]).",
+                 key="Define explicit measures: Admissions = COUNTROWS(Admissions); ALOS = AVERAGE(Admissions[los_days]); "
+                     "Readmission % = DIVIDE(CALCULATE([Admissions], Admissions[readmitted_30d] = \"Yes\"), [Admissions]).",
                  before="implicit sums and averages change meaning when slicers change.",
                  after="named measures with definitions answer consistently in every visual.",
                  best="Build ratios with DIVIDE and CALCULATE so they recalculate in each filter context.",
@@ -127,12 +127,12 @@ MODULES = {
                         ["Emergency readmission %", "13.7%"]]),
             dict(tag="3.10.5", title="Advanced practical: reconcile a governed dashboard",
                  key="Before publishing, compare three numbers under the same filters: rows and billing in the source CSV, COUNT(*) and "
-                     "SUM(billing_amount) in SQL, and the dashboard cards. Publish only when all three agree.",
+                     "SUM(bill_amount_ngn) in SQL, and the dashboard cards. Publish only when all three agree.",
                  before="dashboard totals may differ from source through joins or filters.",
                  after="source, SQL and dashboard agree and the check shows PASS.",
                  best="Reconcile SQL and dashboard measures under the same filters and date range.",
                  watch="Comparing a filtered dashboard total with an unfiltered SQL total.",
-                 example="Lifecare_Admissions_2019_2024.csv holds 54,860 rows and ₦70,206,080,066.78 of billing. SQL returns the same "
+                 example="Mercyland_Inpatient_Episodes_2019_2024.csv holds 54,860 rows and ₦70,206,080,066.78 of billing. SQL returns the same "
                          "count and the same sum to the kobo, so the reconciliation cell shows PASS.",
                  table=[["Control", "Source CSV", "SQL", "Result"], ["Admissions", "54,860", "54,860", "PASS"],
                         ["Billing (₦)", "70,206,080,066.78", "70,206,080,066.78", "PASS"]], widths=[1.6, 2.2, 2.2, 1]),
@@ -181,18 +181,18 @@ MODULES = {
                         ["SuperMart Apr 2024 – Mar 2025", "₦639.1m", "April year-end"],
                         ["Online gross bookings 2025", "₦432.0m", "All orders"], ["Online net revenue 2025", "₦386.7m", "Delivered + Completed"]],
                  widths=[2.6, 1.2, 2.4]),
-            dict(tag="4.14.4", title="Intermediate: uncertainty and missing data", sector="Lifecare Hospital",
+            dict(tag="4.14.4", title="Intermediate: uncertainty and missing data", sector="Mercyland Hospital",
                  key="Distinguish missing from zero: the Week 2 dirty extract has 46 lines with no Quantity, so report total units as a range "
                      "until stores confirm. For rates, show 95% confidence intervals before ranking anything.",
                  before="blanks treated as zero and small rate gaps presented as real.",
                  after="missing values disclosed; only non-overlapping intervals called different.",
                  best="Keep missing, not applicable and zero distinct; publish the interval with each rate.",
                  watch="Ranking departments on point estimates whose 95% intervals overlap.",
-                 example="Lifecare FY2023 readmission: Oncology 13.2% (11.7–14.8%) sits above Endocrinology, Orthopaedics & Rheumatology "
-                         "and Respiratory. Cardiology's 11.4% overlaps it, so the two are not ranked.",
-                 table=[["Department", "Rate", "95% CI"], ["Cardiology", "11.4%", "10.0% – 12.9%"], ["Endocrinology", "9.9%", "9.0% – 10.9%"],
-                        ["Oncology", "13.2%", "11.7% – 14.8%"], ["Orthopaedics & Rheumatology", "8.3%", "7.0% – 9.5%"],
-                        ["Respiratory", "9.2%", "7.9% – 10.6%"]], widths=[3, 1.2, 2]),
+                 example="Mercyland FY2023 readmission: Surgery 13.2% (11.7–14.8%) sits above Internal Medicine, Obstetrics & Gynaecology "
+                         "and Paediatrics. Cardiology's 11.4% overlaps it, so the two are not ranked.",
+                 table=[["Department", "Rate", "95% CI"], ["Cardiology", "11.4%", "10.0% – 12.9%"], ["Internal Medicine", "9.9%", "9.0% – 10.9%"],
+                        ["Surgery", "13.2%", "11.7% – 14.8%"], ["Obstetrics & Gynaecology", "8.3%", "7.0% – 9.5%"],
+                        ["Paediatrics", "9.2%", "7.9% – 10.6%"]], widths=[3, 1.2, 2]),
             dict(tag="4.14.5", title="Advanced practical: benchmark decision memo",
                  key="Write a one-page memo: decision needed, benchmark used, finding, uncertainty and recommendation. Keep observed fact "
                      "(sales per m²) separate from inference and from the action proposed.",
@@ -243,7 +243,7 @@ MODULES = {
             dict(tag="P.2.3", title="Intermediate: citation, licence and privacy",
                  key="Cite each dataset by name and origin (e.g. built from 'Sample - Superstore'). Remove names and IDs before anything "
                      "leaves the organisation, and keep sensitive files such as the wellbeing survey out of portfolios.",
-                 src=("RESTRICTED", "Crestview_Wellbeing_Survey_SENSITIVE.csv  ·  Capstone 2 at-risk list (student IDs)"),
+                 src=("RESTRICTED", "Kingsway_Student_Welfare_Survey_SENSITIVE.csv  ·  Capstone 2 at-risk list (student IDs)"),
                  before="reuse terms and privacy risks are overlooked.",
                  after="attribution and data protection are built into delivery.",
                  best="Drop direct identifiers and aggregate small groups before sharing outputs (NDPA 2023).",
@@ -251,8 +251,8 @@ MODULES = {
                  example="Capstone 1 drops Customer_Name before analysis; Capstone 3 never extracts patient names; Capstone 2's at-risk "
                          "list carries student IDs, so that workbook is marked restricted.",
                  table=[["Capstone", "Personal data", "Control"], ["1 SuperMart", "Customer names", "Dropped before analysis"],
-                        ["2 Crestview", "Student IDs on at-risk list", "Restricted distribution"],
-                        ["3 Lifecare", "Patient names", "Never extracted by the SQL"]]),
+                        ["2 Kingsway", "Student IDs on at-risk list", "Restricted distribution"],
+                        ["3 Mercyland", "Patient names", "Never extracted by the SQL"]]),
             dict(tag="P.2.4", title="Intermediate: reproducibility and review",
                  key="Name every transformation step, keep thresholds in input cells, test a refresh, reconcile key totals and ask "
                      "another person to follow the README unaided. Record exceptions and sign-off.",
@@ -261,7 +261,7 @@ MODULES = {
                  after="another analyst can refresh, audit and get the same totals.",
                  best="Keep rules such as 'exam below 62 or attendance below 65%' in input cells.",
                  watch="Hard-coding a threshold inside hundreds of formulas, so a policy change means a rebuild.",
-                 example="Change Crestview's attendance threshold from 65% to 70% in its input cell and the at-risk list, dashboard and "
+                 example="Change Kingsway's attendance threshold from 65% to 70% in its input cell and the at-risk list, dashboard and "
                          "senate figures all recalculate - no formula is edited.",
                  table=[["Check", "Evidence"], ["Named steps", "Applied Steps / formula map"], ["Inputs", "Yellow cells for every threshold"],
                         ["Control totals", "All OK on the reconcile sheet"], ["Peer refresh", "Colleague reproduces it unaided"]]),
@@ -355,16 +355,16 @@ CAPSTONE = {
                       "limitations.",
          "TextBox 25": "The handover pack records: 3,312 FY2025 lines; sales ₦733,215,255 = ledger; profit ₦93,439,242; margin "
                        "12.74%; limitation: profit is line-level, store overheads are not included."},
-    # ---------------------------------------------------------------- P.4 Crestview
+    # ---------------------------------------------------------------- P.4 Kingsway
     53: {"TextBox 5": "A complete higher-education build: registry export cleaning, cohort and progression rule, drivers, at-risk "
                       "list, intervention estimate and a senate paper."},
     54: {"TextBox 9": "The senate's target is 90% progression; in 2024/25 only 86.4% of 6,607 students met the rule (exam ≥ 62 and "
                       "attendance ≥ 65%). It asks which faculties are failing, what drives performance and who needs Week-5 support.",
-         "TextBox 13": "The brief fixes the cohort (one row per registered student after de-duplication, Student_ID as key) before "
+         "TextBox 13": "The brief fixes the cohort (one row per registered student after de-duplication, Matric_No as key) before "
                        "any data is touched, preventing progression measured on whoever happens to be present.",
          "Table 14": [["Brief Element", "Content", "Risk Controlled"], ["Cohort definition", "2024/25, de-duplicated", "Denominator drift"],
                       ["Deliverable", "Paper plus at-risk list", "Actionable output"]]},
-    55: {"TextBox 9": "One registry export, Crestview_Registry_Export_RAW.csv (6,652 rows), carries faculty, department, level, "
+    55: {"TextBox 9": "One registry export, Kingsway_Registry_Export_RAW.csv (6,652 rows), carries faculty, department, level, "
                       "attendance, study habits and exam score. The published cohort file (6,607 students) is the control total.",
          "TextBox 13": "The inventory records 6,652 raw rows, 14 departments in 4 faculties and 8 defect types, with the registry as "
                        "owner of the export and the examinations office as owner of the scores.",
@@ -424,15 +424,15 @@ CAPSTONE = {
                        "Unit. The list holds student IDs, so the workbook is restricted.",
          "Table 14": [["Verification", "Control Source", "Result"], ["Cohort count", "Published cohort file", "6,607 exact"],
                       ["At-risk count", "Rule in input cells", "901 exact"]]},
-    # ---------------------------------------------------------------- P.5 Lifecare
-    67: {"TextBox 5": "A complete healthcare build from lifecare_hospital.db: SQL extraction, occupancy, length of stay, readmission "
+    # ---------------------------------------------------------------- P.5 Mercyland
+    67: {"TextBox 5": "A complete healthcare build from mercyland_hospital.db: SQL extraction, occupancy, length of stay, readmission "
                       "safety with confidence intervals, payer mix and a board pack."},
     68: {"TextBox 9": "The board asks how full the hospital is, which patients stay longest, whether any department's readmission rate "
                       "is genuinely worse and whether the payer mix carries risk. Success: bed-day occupancy, intervals, no patient "
                       "identifiers.",
          "Table 14": [["Brief Element", "Content", "Constraint"], ["Question", "FY2023 capacity and safety", "Operational focus"],
                       ["Data scope", "Non-identifying columns only", "No PHI in outputs"]]},
-    69: {"TextBox 9": "One SQLite database, lifecare_hospital.db: admissions (54,860 rows, 2019–2024), patients (48,803), doctors (28), "
+    69: {"TextBox 9": "One SQLite database, mercyland_hospital.db: admissions (54,860 rows, 2019–2024), patients (48,803), doctors (28), "
                       "wards (4 × 130 beds) and bed_census (1,797 days). Five SQL queries extract only what the pack needs.",
          "TextBox 13": "The inventory notes 10,918 FY2023 admissions, 520 staffed beds and 365 census days, with the database owned "
                        "by the Data Office and the census by the Nursing Directorate.",
@@ -459,10 +459,10 @@ CAPSTONE = {
                       ["90th percentile", "28 days", "Discharge planning"], ["Stays of 22+ days", "3,319", "51% of bed-days"]]},
     74: {"TextBox 9": "A 30-day readmission rate of 10.3% is computed on 10,918 FY2023 admissions and broken down by department with "
                       "95% intervals. Readmission is a safety metric: findings need clinical validation before publication.",
-         "TextBox 25": "Only Oncology (13.2%, CI 11.7–14.8%) sits above the hospital rate; Orthopaedics & Rheumatology (8.3%) sits "
+         "TextBox 25": "Only Surgery (13.2%, CI 11.7–14.8%) sits above the hospital rate; Obstetrics & Gynaecology (8.3%) sits "
                        "below. Both go to the clinical governance committee before the pack is issued."},
     75: {"Table 9": [["Metric", "Value", "Route"], ["Readmission rate", "10.3%", "Clinical validation first"],
-                     ["Above hospital rate", "Oncology (13.2%)", "Governance review"]]},
+                     ["Above hospital rate", "Surgery (13.2%)", "Governance review"]]},
     76: {"TextBox 9": "Define escalation rules explicitly: stay of 22 days or more, readmission within 30 days, or age 75 and over. "
                       "Encode them as one conditional column so every report applies the same rule, with the trigger stated.",
          "TextBox 25": "In FY2023 the three triggers flag 5,099 admissions (47%): 3,319 long stays, 1,129 readmissions, 1,764 aged 75+ "
@@ -477,7 +477,7 @@ CAPSTONE = {
                       ["Middle", "Occupancy trend, ward bars", "Minimum group size applied"], ["Bottom", "LOS bands, payer mix", "No identifiers"]]},
     79: {"TextBox 9": "The pack: one-page summary, capacity, length of stay, a readmission safety note with intervals, payer mix "
                       "(five HMOs at about 20% each) and a data-quality appendix, with the confidentiality statement.",
-         "TextBox 13": "The pack recommends 28 staffed beds or a discharge team for 22+ day stays (owner: COO) and an Oncology "
+         "TextBox 13": "The pack recommends 28 staffed beds or a discharge team for 22+ day stays (owner: COO) and an Surgery "
                        "readmission review (owner: Medical Director), flagged as under clinical review.",
          "Table 14": [["Page", "Content", "Purpose"], ["1", "Summary and recommendations", "The decision"],
                       ["2–4", "Capacity, LOS, readmissions", "The evidence"], ["Appendix", "Data quality and SQL controls", "Honesty about limits"]]},
@@ -495,11 +495,11 @@ V1_FIXES = {
     "currency_unscaled": [85, 86],
     "slides": {
         29: {"Table 14": [["Source Category", "Bootcamp Example", "Strengths & Watch-outs"],
-                          ["Internal Operational (POS / EMR / SIS)", "SuperMart_Stores_Sales_2022_2025.csv , Lifecare_Admissions_2023_pipe.txt",
+                          ["Internal Operational (POS / EMR / SIS)", "SuperMart_Stores_Sales_2022_2025.csv , Mercyland_Episodes_2023_pipe.txt",
                            "Complete transaction coverage; may contain system codes & nulls."],
-                          ["Primary Survey / Field Log", "Crestview_Digital_Wellbeing_Survey.csv (self-rated scores)",
+                          ["Primary Survey / Field Log", "Kingsway_Digital_Habits_Survey.csv (self-rated scores)",
                            "Captures 'why' sentiment; watch out for small sample response bias."],
-                          ["Database / System Extract", "lifecare_hospital.db , supermart_online.db (SQLite)",
+                          ["Database / System Extract", "mercyland_hospital.db , supermart_online.db (SQLite)",
                            "Keyed, joinable tables; check row counts and keys before analysis."]]},
         31: {"Title 1": "Connecting to Files, Folders and Databases",
              "TextBox 9": "Rather than copying and pasting exports every Monday morning, Excel's Data > Get Data (Power Query, mastered "

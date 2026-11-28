@@ -78,11 +78,11 @@ def data_sheets(b, D):
     du.put(D.DIRTY, "tDirtySales", fmts={"Order_Date": "date", "Row_ID": "gen"},
            widths={"Row_ID": 8, "Order_ID": 16, "Order_Date": 12, "Store_Name": 26, "Zone": 16, "Category": 15,
                    "Sales": 12, "Discount": 9, "Profit": 10})
-    su = DataSheet(b, "Data_Students", "tStudents: Crestview University students, 2024/2025 first semester (A1)",
+    su = DataSheet(b, "Data_Students", "tStudents: Kingsway University students, 2024/2025 first semester (A1)",
                    f"{len(D.STU):,} rows · used in 1.2, 1.7")
     su.put(D.STU, "tStudents", fmts={"Level": "gen"},
-           widths={"Student_ID": 18, "Faculty": 17, "Department": 24, "Level": 7, "Gender": 8, "Attendance_Pct": 14,
-                   "Hours_Studied_Per_Week": 21, "Exam_Score": 11, "Grade": 7, "At_Risk": 8})
+           widths={"Matric_No": 18, "Faculty": 17, "Department": 24, "Level": 7, "Gender": 8, "Lecture_Attendance_Pct": 14,
+                   "Study_Hours_Wk": 21, "Final_Score": 11, "Grade": 7, "At_Risk": 8})
 
 
 def main():
@@ -114,9 +114,9 @@ def main():
          "result and read how it was worked out."],
         [("SuperMart Retail", "tStores25, tSales, tIkejaLines, tYears, tQuarter25, tDiscBand, tFurn25, tCat25 and tDirtySales: "
                               "12 Nigerian stores, 9,994 sales lines 2022-2025 and the raw FY2025 export (3,387 rows)."),
-         ("Crestview University", "tStudents and tFaculty: 6,607 students, 2024/2025 first semester."),
-         ("Lifecare General Hospital", "tDept23: 10,918 admissions in 2023, summarised by department."),
-         ("Eko Suites Hotel", "tHotelSeg: 36,275 bookings 2023-2024, summarised by market segment."),
+         ("Kingsway University", "tStudents and tFaculty: 6,607 students, 2024/2025 first semester."),
+         ("Mercyland Specialist Hospital", "tDept23: 10,918 admissions in 2023, summarised by department."),
+         ("Atlantic Pearl Hotel", "tHotelSeg: 36,275 bookings 2023-2024, summarised by market segment."),
          ("ETEH Talent Salary Survey", "tSeniority: 1,781 professionals, summarised by seniority."),
          ("SuperMart Online", "tPayMix and tCouriers: 11,000 orders and their deliveries, summarised."),
          ("Practice data", "A few small tables are marked 'illustrative practice data'; they are made up for a skill and "

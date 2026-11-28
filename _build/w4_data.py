@@ -7,10 +7,10 @@ the same tables on Data_ sheets, so a table name seen on a slide is the table th
 Sources (all inside the pack, via the _stage pickles of 01_build_datasets.py):
   tSal       ETEH Talent salary survey, cleaned in Week 2 (1,781 respondents) + 0/1 dummy columns for regression
   tOrders    SuperMart Online order lines (11,000) with product category
-  tCV        Crestview University student performance 2024/25 (6,607)
-  tLOS       Lifecare admissions 2023, minimised (no names or patient IDs)
-  tCensus23  Lifecare daily bed census 2023 (365 days, 520 staffed beds)
-  tHotel     Eko Suites bookings 2023-2024
+  tCV        Kingsway University student performance 2024/25 (6,607)
+  tLOS       Mercyland admissions 2023, minimised (no names or patient IDs)
+  tCensus23  Mercyland daily bed census 2023 (365 days, 520 staffed beds)
+  tHotel     Atlantic Pearl bookings 2023-2024
   tDash25    SuperMart Stores FY2025 sales lines (3,312)
   tMonthly   SuperMart Stores monthly sales Jan 2022 - Dec 2025 (48 months): the forecasting series
   tStores    the 12 SuperMart stores with floor area and FY2025 target
@@ -28,7 +28,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from wk_common import L, hotel, lc_adm, sm_sales, smo  # noqa: E402
 
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-ROOMS = 320            # Eko Suites modelled room count (peak nights in the data reach 307 rooms in use)
+ROOMS = 320            # Atlantic Pearl modelled room count (peak nights in the data reach 307 rooms in use)
 
 
 @lru_cache(None)
@@ -62,31 +62,31 @@ def _orders():
 @lru_cache(None)
 def _cv():
     c = L("cv_perf")
-    return c[["Student_ID", "Faculty", "Gender", "Hours_Studied_Per_Week", "Attendance_Pct", "Sleep_Hours", "Previous_Score",
-              "Tutoring_Sessions", "Physical_Activity_Hrs", "Exam_Score", "Grade", "At_Risk"]].reset_index(drop=True)
+    return c[["Matric_No", "Faculty", "Gender", "Study_Hours_Wk", "Lecture_Attendance_Pct", "Sleep_Hrs_Night", "Last_Sem_Score",
+              "Tutorials_Attended", "Exercise_Hrs_Wk", "Final_Score", "Grade", "At_Risk"]].reset_index(drop=True)
 
 
 @lru_cache(None)
 def _los():
     a = lc_adm()
-    a = a[a.Admission_Date.dt.year == 2023]
-    return a[["Admission_ID", "Admission_Date", "Department", "Admission_Type", "Age", "Gender", "Length_of_Stay", "Billing_Amount",
-              "HMO", "Readmit_30d"]].reset_index(drop=True)
+    a = a[a.Admit_Date.dt.year == 2023]
+    return a[["Episode_ID", "Admit_Date", "Department", "Admission_Route", "Age", "Gender", "LOS_Days", "Bill_Amount_NGN",
+              "HMO", "Readmitted_30d"]].reset_index(drop=True)
 
 
 @lru_cache(None)
 def _census23():
     c = L("lc_census").copy()
     c["Census_Date"] = pd.to_datetime(c.Census_Date)
-    return c[c.Census_Date.dt.year == 2023][["Census_Date", "Patients_In_House", "Occupancy_Pct"]].reset_index(drop=True)
+    return c[c.Census_Date.dt.year == 2023][["Census_Date", "Inpatients", "Occupancy_Pct"]].reset_index(drop=True)
 
 
 @lru_cache(None)
 def _hotel():
     h = hotel()
-    h["Arrival_Year"] = h.Arrival_Date.dt.year
-    return h[["Booking_ID", "Arrival_Date", "Arrival_Year", "Room_Type", "Market_Segment", "Lead_Time_Days", "Total_Nights",
-              "Special_Requests", "Repeat_Guest", "Avg_Room_Rate_NGN", "Booking_Status", "Booking_Value_NGN"]].reset_index(drop=True)
+    h["Check_In_Year"] = h.Check_In.dt.year
+    return h[["Reservation_ID", "Check_In", "Check_In_Year", "Room_Category", "Sales_Channel", "Days_Ahead", "Nights",
+              "Guest_Requests", "Returning_Guest", "Room_Rate_NGN", "Reservation_Status", "Reservation_Value_NGN"]].reset_index(drop=True)
 
 
 @lru_cache(None)
@@ -121,10 +121,10 @@ def table(name: str) -> pd.DataFrame:
     return TABLES[name]().copy()
 
 
-MONEY = {"total_price", "Sales", "Profit", "Billing_Amount", "Annual_Salary_NGN", "Avg_Room_Rate_NGN", "Booking_Value_NGN",
+MONEY = {"total_price", "Sales", "Profit", "Bill_Amount_NGN", "Annual_Salary_NGN", "Room_Rate_NGN", "Reservation_Value_NGN",
          "Annual_Target_2025"}
 PCT = {"Occupancy_Pct"}
-PLAIN = {"Year", "Month_No", "t", "Arrival_Year", "Age", "Is_Masters", "Is_PhD"}
+PLAIN = {"Year", "Month_No", "t", "Check_In_Year", "Age", "Is_Masters", "Is_PhD"}
 
 
 def fmt(col, x):

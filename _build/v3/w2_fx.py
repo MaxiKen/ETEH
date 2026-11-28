@@ -14,7 +14,7 @@ TS = D.table("tSales25")
 ST = D.table("tStores")
 A = D.table("tAdm23")
 DR = D.dirty_raw()                # SuperMart_Sales_2025_DIRTY.csv as text
-LC = D.lc_dirty_raw()             # Lifecare_Admissions_2023_DIRTY.csv as text
+LC = D.lc_dirty_raw()             # Mercyland_Episodes_2023_DIRTY.csv as text
 PERF = D.table("tStorePerf").set_index("Store_ID")
 
 
@@ -76,26 +76,26 @@ DF["x100"] = int(_x100.sum())
 DF["x100_rows"] = sorted(set(int(r) for r in _rid[_x100]))
 DF["top_sales"] = [int(v) for v in _sv.nlargest(3)]
 
-# ---------------------------------------------------------------- dirty Lifecare facts
-_bill = pd.to_numeric(LC.Billing_Amount.str.replace(",", ""), errors="coerce")
+# ---------------------------------------------------------------- dirty Mercyland facts
+_bill = pd.to_numeric(LC.Bill_Amount_NGN.str.replace(",", ""), errors="coerce")
 LF = dict(
-    rows=len(LC), cols=LC.shape[1], dups=int(LC.duplicated().sum()), bill_text=int(LC.Billing_Amount.str.contains(",").sum()),
+    rows=len(LC), cols=LC.shape[1], dups=int(LC.duplicated().sum()), bill_text=int(LC.Bill_Amount_NGN.str.contains(",").sum()),
     neg_bill=int((_bill < 0).sum()), age0=int((LC.Age == "0").sum()), age150=int((LC.Age == "150").sum()),
     dis_blank=int((LC.Discharge_Date == "").sum()), hmo_blank=int((LC.HMO == "").sum()),
-    dis_before=int((pd.to_datetime(LC.Discharge_Date.replace("", None)) < pd.to_datetime(LC.Admission_Date)).sum()),
-    gender=LC.Gender.value_counts().to_dict(), ward=LC.Ward.value_counts().to_dict(), atype=LC.Admission_Type.value_counts().to_dict(),
+    dis_before=int((pd.to_datetime(LC.Discharge_Date.replace("", None)) < pd.to_datetime(LC.Admit_Date)).sum()),
+    gender=LC.Gender.value_counts().to_dict(), ward=LC.Ward.value_counts().to_dict(), atype=LC.Admission_Route.value_counts().to_dict(),
 )
 
 
 def _std(d):
     d = d.copy()
     d["Patient_Name"] = d.Patient_Name.str.title()
-    wm = {"emerald": "Emerald Ward", "sapphire": "Sapphire Ward", "saphire": "Sapphire Ward", "ruby": "Ruby Ward", "topaz": "Topaz Ward"}
+    wm = {"iroko": "Iroko Ward", "mahogany": "Mahogany Ward", "mahogony": "Mahogany Ward", "obeche": "Obeche Ward", "baobab": "Baobab Ward"}
     d["Ward"] = d.Ward.map(lambda w: wm[w.strip().lower().split()[0]])
     d["Gender"] = d.Gender.str.strip().str.upper().str[0].map({"M": "Male", "F": "Female"})
-    d["Admission_Type"] = d.Admission_Type.str.strip().str.lower().map(
+    d["Admission_Route"] = d.Admission_Route.str.strip().str.lower().map(
         {"emerg": "Emergency", "emergency": "Emergency", "urgent": "Urgent", "elective": "Elective"})
-    d["Billing_Amount"] = pd.to_numeric(d.Billing_Amount.str.replace(",", ""))
+    d["Bill_Amount_NGN"] = pd.to_numeric(d.Bill_Amount_NGN.str.replace(",", ""))
     return d
 
 
@@ -103,11 +103,11 @@ LCS = _std(LC)
 LF["dups_std"] = int(LCS.duplicated().sum())
 LF["after_dedupe"] = len(LCS.drop_duplicates())
 LCC = LCS.drop_duplicates()
-LCC = LCC[LCC.Billing_Amount >= 0]
+LCC = LCC[LCC.Bill_Amount_NGN >= 0]
 LF["clean_rows"] = len(LCC)
-LF["ward_variants"] = int((~LC.Ward.isin(["Emerald Ward", "Sapphire Ward", "Ruby Ward", "Topaz Ward"])).sum())
+LF["ward_variants"] = int((~LC.Ward.isin(["Iroko Ward", "Mahogany Ward", "Obeche Ward", "Baobab Ward"])).sum())
 LF["gender_variants"] = int((~LC.Gender.isin(["Male", "Female"])).sum())
-LF["atype_variants"] = int((~LC.Admission_Type.isin(["Emergency", "Urgent", "Elective"])).sum())
+LF["atype_variants"] = int((~LC.Admission_Route.isin(["Emergency", "Urgent", "Elective"])).sum())
 
 CTRL = dict(rows=len(S), sales=int(S.Sales.sum()), profit=int(S.Profit.sum()), qty=int(S.Quantity.sum()),
             orders=S.Order_ID.nunique(), customers=D.sales()[D.sales().Year == 2025].Customer_ID.nunique())
@@ -143,45 +143,45 @@ F["first_rows"] = S.sort_values(["Order_Date", "Row_ID"]).head(3)[["Row_ID", "Or
 F["last_row"] = S.sort_values(["Order_Date", "Row_ID"]).iloc[-1][["Row_ID", "Order_Date"]].to_dict()
 
 
-# ---------------------------------------------------------------- module 2.9: the Lifecare cleaning query, replayed in pandas
+# ---------------------------------------------------------------- module 2.9: the Mercyland cleaning query, replayed in pandas
 def _lc_query():
     d = LC.drop_duplicates().copy()
     out = dict(dedup=len(d))
-    w = d.Ward.str.replace("  ", " ").str.replace("Saphire", "Sapphire").str.strip().str.lower()
-    d["Ward"] = np.select([w.str.startswith(k) for k in ("emerald", "sapphire", "ruby", "topaz")],
-                          ["Emerald Ward", "Sapphire Ward", "Ruby Ward", "Topaz Ward"], "CHECK")
+    w = d.Ward.str.replace("  ", " ").str.replace("Saphire", "Mahogany").str.strip().str.lower()
+    d["Ward"] = np.select([w.str.startswith(k) for k in ("iroko", "mahogany", "obeche", "baobab")],
+                          ["Iroko Ward", "Mahogany Ward", "Obeche Ward", "Baobab Ward"], "CHECK")
     d["Gender"] = np.where(d.Gender.str.lower().isin(["m", "male"]), "Male", "Female")
-    t = d.Admission_Type.str.strip().str.lower()
-    d["Admission_Type"] = np.where(t.str.startswith("emerg"), "Emergency", t.str.title())
-    d["Billing_Amount"] = pd.to_numeric(d.Billing_Amount.str.replace(",", ""))
+    t = d.Admission_Route.str.strip().str.lower()
+    d["Admission_Route"] = np.where(t.str.startswith("emerg"), "Emergency", t.str.title())
+    d["Bill_Amount_NGN"] = pd.to_numeric(d.Bill_Amount_NGN.str.replace(",", ""))
     d["Age"] = d.Age.astype(int)
-    ad = pd.to_datetime(d.Admission_Date)
+    ad = pd.to_datetime(d.Admit_Date)
     dd = pd.to_datetime(d.Discharge_Date.replace("", None))
     d["LOS"] = (dd - ad).dt.days
-    exc = np.select([d.Billing_Amount < 0, dd.isna(), d.LOS < 0, (d.Age == 0) | (d.Age > 120)],
+    exc = np.select([d.Bill_Amount_NGN < 0, dd.isna(), d.LOS < 0, (d.Age == 0) | (d.Age > 120)],
                     ["Negative bill", "No discharge date", "Discharge before admission", "Impossible age"], "")
     out["exceptions"] = pd.Series(exc[exc != ""]).value_counts().to_dict()
     out["clean"] = int((exc == "").sum())
     out["ward_check"] = int((d.Ward == "CHECK").sum())
-    out["ruby_raw"] = int((LC.drop_duplicates().Ward == "Ruby Ward").sum())
-    out["ruby_map"] = int((d.Ward == "Ruby Ward").sum())
+    out["ruby_raw"] = int((LC.drop_duplicates().Ward == "Obeche Ward").sum())
+    out["ruby_map"] = int((d.Ward == "Obeche Ward").sum())
     out["gender"] = d.Gender.value_counts().to_dict()
-    out["atype"] = d.Admission_Type.value_counts().to_dict()
+    out["atype"] = d.Admission_Route.value_counts().to_dict()
     out["ward_raw_n"] = LC.Ward.nunique()
     out["gender_raw_n"] = LC.Gender.nunique()
-    out["atype_raw_n"] = LC.Admission_Type.nunique()
+    out["atype_raw_n"] = LC.Admission_Route.nunique()
     nm = LC.Patient_Name[LC.Patient_Name.str.contains(r"[a-z][A-Z]")]
     out["name_example"] = nm.iloc[0] if len(nm) else None
-    out["bill_example"] = LC.Billing_Amount[LC.Billing_Amount.str.contains(",")].iloc[0]
+    out["bill_example"] = LC.Bill_Amount_NGN[LC.Bill_Amount_NGN.str.contains(",")].iloc[0]
     return out
 
 
 LQ = _lc_query()
 
 CV = pd.read_csv(os.path.join(os.path.dirname(D.__file__), "..", "ETEH_Bootcamp_Pack", "01_Section_Examples", "00_Core_Datasets",
-                              "Crestview_Student_Performance.csv"))
-CVF = dict(n=len(CV), bands=pd.cut(CV.Attendance_Pct, [-1, 74.999, 89.999, 1000], labels=["Below 75%", "75-89%", "90%+"])
-           .value_counts().to_dict(), mentor=int(((CV.Exam_Score < 60) & (CV.Attendance_Pct < 75)).sum()),
+                              "Kingsway_Student_Results.csv"))
+CVF = dict(n=len(CV), bands=pd.cut(CV.Lecture_Attendance_Pct, [-1, 74.999, 89.999, 1000], labels=["Below 75%", "75-89%", "90%+"])
+           .value_counts().to_dict(), mentor=int(((CV.Final_Score < 60) & (CV.Lecture_Attendance_Pct < 75)).sum()),
            grades=CV.Grade.value_counts(normalize=True).to_dict())
 
 # ---------------------------------------------------------------- modules 2.10-2.11: the full SuperMart table tSM

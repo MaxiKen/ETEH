@@ -49,8 +49,8 @@ def write_sql():
             continue
         db = t.get("code_db")
         where = (f"-- database: {W.DBNAME[db]}" if db else
-                 "-- database: a staging copy - load Lifecare_Admissions_2023_DIRTY.csv as stg_admissions_2023 (3.10.2), then\n"
-                 "--           ATTACH DATABASE 'lifecare_hospital.db' AS prod;")
+                 "-- database: a staging copy - load Mercyland_Episodes_2023_DIRTY.csv as stg_admissions_2023 (3.10.2), then\n"
+                 "--           ATTACH DATABASE 'mercyland_hospital.db' AS prod;")
         entries.append(f"-- {tag} {t['title']}\n{where}\n{t['code'].strip().rstrip(';')};\n")
     head = ("-- ETEH Week 3 - SQL examples (SQLite), edition 3: every query shown on the Week 3 slides.\n"
             "-- Run each against the database named above it (folder Week3_Data_Files) in DB Browser for SQLite or sqlite3.\n"
@@ -88,8 +88,8 @@ def main():
         [("SuperMart Online", "supermart_online.db: tTransactions (11,000 order lines 2020-2025), tProducts, tCustomers, tSellers, "
                               "tDeliveries, tStates, and tLines (the v_order_lines view). Used in 3.1 - 3.6."),
          ("SuperMart Stores", "tDash: 3,312 FY2025 sales lines and tDashStores (12 stores with targets), the dashboard data of 3.7 - 3.9."),
-         ("Lifecare General Hospital", "tAdm23 (10,918 admissions in 2023), tCensus (daily beds) and tLcDirty, the raw 2023 extract of 3.10."),
-         ("Crestview University", "tCV: 6,607 students, used in the KPI, chart and blueprint examples.")],
+         ("Mercyland Specialist Hospital", "tAdm23 (10,918 admissions in 2023), tCensus (daily beds) and tMsDirty, the raw 2023 extract of 3.10."),
+         ("Kingsway University", "tCV: 6,607 students, used in the KPI, chart and blueprint examples.")],
         extra_rows=[("Answer cells", "White cell with a gold border: type here. The check cell beside it updates as you type."),
                     ("Date table", "tDimDate on Data_DimDate is the marked date table for the time-intelligence measures."),
                     ("Assignment", "The Week 3 assignment is in 02_Assignments/ETEH_Week3_Assignment.xlsx.")])

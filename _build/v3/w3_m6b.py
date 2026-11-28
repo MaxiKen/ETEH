@@ -1,6 +1,6 @@
 """Week 3 edition-3 slide copy: Module 3.6B (DAX time intelligence, KPIs and performance).
 Every result is a pandas twin of the measure shown, on SuperMart Online (net revenue), SuperMart Stores FY2025,
-Lifecare and Crestview data (w3_fx)."""
+Mercyland and Kingsway data (w3_fx)."""
 import pandas as pd
 
 from v3kit import T
@@ -19,9 +19,9 @@ RET = LN.groupby("category").order_status.apply(lambda s: (s == "Returned").mean
 N_RET = int((TX.order_status == "Returned").sum())
 NO_SALE = sorted(set(SE.seller_id) - set(TX.seller_id))
 YOY25 = YEAR[2025] / YEAR[2024] - 1
-AR = int(((CV.Exam_Score < 62) | (CV.Attendance_Pct < 65)).sum())
-AR2 = int(((CV.Exam_Score < 60) | (CV.Attendance_Pct < 65)).sum())
-READMIT = (LC.Readmit_30d == "Yes").mean()
+AR = int(((CV.Final_Score < 62) | (CV.Lecture_Attendance_Pct < 65)).sum())
+AR2 = int(((CV.Final_Score < 60) | (CV.Lecture_Attendance_Pct < 65)).sum())
+READMIT = (LC.Readmitted_30d == "Yes").mean()
 
 MEASURES = ["Gross Bookings", "Orders", "Net Revenue", "Net Orders", "Net Rev Big Orders", "Cat Share", "Share of Zone",
             "Categories Sold", "Revenue X", "Avg Net Spend per Customer", "AOV", "Order Size", "Comm %", "Rev YTD", "Rev LY",
@@ -235,26 +235,26 @@ DIVIDE (
           defn="A hospital KPI set measures flow and quality: admissions, average and median length of stay, 30-day "
                "readmission rate, bed occupancy and cost per admission.",
           simple="Report the median with the average: a few very long stays pull the average up.",
-          grid=dict(label=f"Lifecare, {LC.Admission_Date.min():%b %Y} to {LC.Admission_Date.max():%b %Y}", widths=[2.4, 1.8], rows=[
+          grid=dict(label=f"Mercyland, {LC.Admit_Date.min():%b %Y} to {LC.Admit_Date.max():%b %Y}", widths=[2.4, 1.8], rows=[
               ["KPI", "Result"],
               ["Admissions", I(len(LC))],
-              ["ALOS / median LOS", f"{LC.Length_of_Stay.mean():.1f} / {LC.Length_of_Stay.median():.0f} days"],
+              ["ALOS / median LOS", f"{LC.LOS_Days.mean():.1f} / {LC.LOS_Days.median():.0f} days"],
               ["30-day readmission rate", P(READMIT)],
               ["Average occupancy", P(CEN.Occupancy_Pct.mean())],
               ["Days above 95% full", f"{I((CEN.Occupancy_Pct > 0.95).sum())} of {I(len(CEN))}"],
-              ["Cost per admission", N(LC.Billing_Amount.mean())]]),
+              ["Cost per admission", N(LC.Bill_Amount_NGN.mean())]]),
           watch="Occupancy comes from the daily bed census, not from admissions; the grains differ, so keep separate fact tables."),
 
         T("3.6.37", "University KPI Measures",
           defn="A university KPI set measures progression: enrolment, average exam score, grade A rate, attendance and the "
                "number of students at risk.",
           simple="Write each definition down. At risk here means exam score below 62 or attendance below 65%.",
-          grid=dict(label="Crestview University, 2024/25", widths=[2.2, 1.6], rows=[
+          grid=dict(label="Kingsway University, 2024/25", widths=[2.2, 1.6], rows=[
               ["KPI", "Result"],
               ["Enrolment", I(len(CV))],
-              ["Average exam score", f"{CV.Exam_Score.mean():.1f}"],
-              ["Grade A rate (70+)", P((CV.Exam_Score >= 70).mean())],
-              ["Average attendance", P(CV.Attendance_Pct.mean() / 100)],
+              ["Average exam score", f"{CV.Final_Score.mean():.1f}"],
+              ["Grade A rate (70+)", P((CV.Final_Score >= 70).mean())],
+              ["Average attendance", P(CV.Lecture_Attendance_Pct.mean() / 100)],
               ["At-risk students", f"{I(AR)} ({P(AR / len(CV))})"]]),
           watch=f"Definitions change results: with 'below 60' instead of 'below 62', {I(AR)} at risk becomes {I(AR2)}."),
 

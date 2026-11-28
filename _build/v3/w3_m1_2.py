@@ -1,5 +1,5 @@
 """Week 3 edition-3 slide copy: Modules 3.1 (database fundamentals) and 3.2 (SQL and SQLite).
-Every figure comes from running the SQL shown on supermart_online.db / lifecare_hospital.db (w3_fx.SQL, w3_fx.sandbox)."""
+Every figure comes from running the SQL shown on supermart_online.db / mercyland_hospital.db (w3_fx.SQL, w3_fx.sandbox)."""
 import sqlite3
 
 import w3_data as D
@@ -200,10 +200,10 @@ ORDER BY lines DESC;""", widths=[1.4, 0.9], split=0.55),
           simple="In SQLite the open file is the schema main. ATTACH adds another database under its own name, so one query "
                  "can read both.",
           like="Like surnames: two people called Ade are told apart as Ade Okafor and Ade Bello.",
-          grid=dict(label="ATTACH DATABASE 'lifecare_hospital.db' AS lh", widths=[1.6, 1.8, 1], rows=[
+          grid=dict(label="ATTACH DATABASE 'mercyland_hospital.db' AS lh", widths=[1.6, 1.8, 1], rows=[
               ["Reference", "Schema", "Rows"],
               ["main.transactions", "main (SuperMart Online)", I(ATT[0])],
-              ["lh.admissions", "lh (Lifecare)", I(ATT[1])]]),
+              ["lh.admissions", "lh (Mercyland)", I(ATT[1])]]),
           watch="With several schemas attached, qualify table names: an unqualified name may not mean the table you think."),
 
         T("3.1.12", "Transactions and ACID",
@@ -319,7 +319,7 @@ FROM transactions;""", fmt={"gross_value": "n"}, widths=[1, 1.4], split=0.55),
           grid=dict(label="The Week 3 databases (folder Week3_Data_Files)", widths=[1.8, 0.8, 2], rows=[
               ["File", "Size", "Largest table"],
               ["supermart_online.db", f"{SIZES['smo']:.1f} MB", f"transactions: {I(len(TX))} rows"],
-              ["lifecare_hospital.db", f"{SIZES['lc']:.1f} MB", f"admissions: {I(LC_ADM)} rows"]]),
+              ["mercyland_hospital.db", f"{SIZES['lc']:.1f} MB", f"admissions: {I(LC_ADM)} rows"]]),
           watch="SQLite has no user logins or permissions: anyone with the file can read all of it."),
 
         T("3.2.4", "Tools for Running SQLite Queries",

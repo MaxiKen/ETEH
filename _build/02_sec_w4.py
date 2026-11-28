@@ -48,22 +48,22 @@ sal["Is_PhD"] = (sal.Education_Level == "PhD").astype(int)
 sal = sal[["Respondent_ID", "Gender", "Education_Level", "Job_Title", "Job_Family", "Seniority", "Age", "Years_of_Experience",
            "Is_Masters", "Is_PhD", "Annual_Salary_NGN"]]
 cv = L("cv_perf")
-cvd = cv[["Student_ID", "Faculty", "Gender", "Hours_Studied_Per_Week", "Attendance_Pct", "Sleep_Hours", "Previous_Score",
-          "Tutoring_Sessions", "Physical_Activity_Hrs", "Exam_Score", "Grade", "At_Risk"]].copy()
+cvd = cv[["Matric_No", "Faculty", "Gender", "Study_Hours_Wk", "Lecture_Attendance_Pct", "Sleep_Hrs_Night", "Last_Sem_Score",
+          "Tutorials_Attended", "Exercise_Hrs_Wk", "Final_Score", "Grade", "At_Risk"]].copy()
 lc = lc_adm()
-los = lc[lc.Admission_Date.dt.year == 2023][["Admission_ID", "Admission_Date", "Department", "Admission_Type", "Age", "Gender",
-                                             "Length_of_Stay", "Billing_Amount", "HMO", "Readmit_30d"]].reset_index(drop=True)
+los = lc[lc.Admit_Date.dt.year == 2023][["Episode_ID", "Admit_Date", "Department", "Admission_Route", "Age", "Gender",
+                                             "LOS_Days", "Bill_Amount_NGN", "HMO", "Readmitted_30d"]].reset_index(drop=True)
 census = L("lc_census").copy()
 census["Census_Date"] = pd.to_datetime(census.Census_Date)
-c23 = census[census.Census_Date.dt.year == 2023][["Census_Date", "Patients_In_House", "Occupancy_Pct"]].reset_index(drop=True)
+c23 = census[census.Census_Date.dt.year == 2023][["Census_Date", "Inpatients", "Occupancy_Pct"]].reset_index(drop=True)
 o = smo()
 tx, pr, cu = o["transactions"], o["products"], o["customers"]
 orders = tx.merge(pr[["product_id", "category"]], on="product_id")[["order_id", "order_date", "customer_id", "category", "quantity",
                                                                      "total_price", "order_status"]]
 ho = hotel()
-ho["Arrival_Year"] = ho.Arrival_Date.dt.year
-hod = ho[["Booking_ID", "Arrival_Date", "Arrival_Year", "Room_Type", "Market_Segment", "Lead_Time_Days", "Total_Nights",
-          "Special_Requests", "Repeat_Guest", "Avg_Room_Rate_NGN", "Booking_Status", "Booking_Value_NGN"]].copy()
+ho["Check_In_Year"] = ho.Check_In.dt.year
+hod = ho[["Reservation_ID", "Check_In", "Check_In_Year", "Room_Category", "Sales_Channel", "Days_Ahead", "Nights",
+          "Guest_Requests", "Returning_Guest", "Room_Rate_NGN", "Reservation_Status", "Reservation_Value_NGN"]].copy()
 ROOMS = 320
 
 b = Book(str(OUT), "ETEH Week 4 - Section Examples", "Week 4 · Statistics, Forecasting, What-If, Communication, AI and Ethics")
@@ -99,8 +99,8 @@ s.calc([("Minimum", "=MIN(tSal[Annual_Salary_NGN])", y.min(), "naira", ""),
         ("Coefficient of variation", "=STDEV.S(tSal[Annual_Salary_NGN])/AVERAGE(tSal[Annual_Salary_NGN])", y.std() / y.mean(), "pct", "Lets you compare spread across measures")])
 s.h2("4.1.7  Which is more variable - salaries, order values or hospital stays? (CV removes the units)")
 cvt = pd.DataFrame({"Measure": ["Annual salary (₦)", "Online order value (₦)", "Length of stay 2023 (days)", "Exam score (points)"],
-                    "Column": ["tSal[Annual_Salary_NGN]", "tOrders[total_price]", "tLOS[Length_of_Stay]", "tCV[Exam_Score]"]})
-vals = [y, ov, los.Length_of_Stay, cvd.Exam_Score]
+                    "Column": ["tSal[Annual_Salary_NGN]", "tOrders[total_price]", "tLOS[LOS_Days]", "tCV[Final_Score]"]})
+vals = [y, ov, los.LOS_Days, cvd.Final_Score]
 s.table(cvt, "tCVcompare", widths={"Measure": 28, "Column": 26},
         calc={"Mean": ("=AVERAGE(INDIRECT([@Column]))", "dec1", [v.mean() for v in vals]),
               "Std_Dev": ("=STDEV.S(INDIRECT([@Column]))", "dec1", [v.std() for v in vals]),
@@ -109,9 +109,9 @@ s.para("INDIRECT turns the text in 'Column' into a live reference - handy for a 
 s.band("4.1.8-9", "Shape: skewness and kurtosis")
 s.calc([("Skewness - order value", "=SKEW(tOrders[total_price])", stats.skew(ov, bias=False), "dec2", "> 1 = strong right tail (few very large orders)"),
         ("Skewness - salary", "=SKEW(tSal[Annual_Salary_NGN])", stats.skew(y, bias=False), "dec2", "Near 0 = roughly symmetric"),
-        ("Skewness - exam score", "=SKEW(tCV[Exam_Score])", stats.skew(cvd.Exam_Score, bias=False), "dec2", "A handful of very high scores"),
+        ("Skewness - exam score", "=SKEW(tCV[Final_Score])", stats.skew(cvd.Final_Score, bias=False), "dec2", "A handful of very high scores"),
         ("Kurtosis - order value", "=KURT(tOrders[total_price])", stats.kurtosis(ov, bias=False), "dec2", "> 0 = heavier tails than normal"),
-        ("Kurtosis - exam score", "=KURT(tCV[Exam_Score])", stats.kurtosis(cvd.Exam_Score, bias=False), "dec2", "Very peaked: most students score 63-71")])
+        ("Kurtosis - exam score", "=KURT(tCV[Final_Score])", stats.kurtosis(cvd.Final_Score, bias=False), "dec2", "Very peaked: most students score 63-71")])
 s.band("4.1.10", "Percentiles and quartiles - salary bands for HR")
 pct_rows = [(f"P{p}", p / 100) for p in (10, 25, 50, 75, 90)]
 pt = pd.DataFrame({"Percentile": [a for a, _ in pct_rows], "k": [k for _, k in pct_rows]})
@@ -131,7 +131,7 @@ s.calc([("Orders above the upper fence", f'=COUNTIFS(tOrders[total_price],">"&{o
          ov[ov > up].sum() / ov.sum(), "pct", "Deleting 'outliers' here would delete a big part of the business")], header=None)
 s.band("4.1.12-13", "Analysis ToolPak replica - Data > Data Analysis > Descriptive Statistics (with Summary statistics ticked)")
 s.para("The ToolPak pastes static numbers. This replica uses live formulas so you can see exactly what each line means.", "note")
-cols = {"Annual salary": ("tSal[Annual_Salary_NGN]", y), "Exam score": ("tCV[Exam_Score]", cvd.Exam_Score), "Length of stay 2023": ("tLOS[Length_of_Stay]", los.Length_of_Stay)}
+cols = {"Annual salary": ("tSal[Annual_Salary_NGN]", y), "Exam score": ("tCV[Final_Score]", cvd.Final_Score), "Length of stay 2023": ("tLOS[LOS_Days]", los.LOS_Days)}
 tp_rows = [("Mean", "AVERAGE({c})", lambda v: v.mean()), ("Standard Error", "STDEV.S({c})/SQRT(COUNT({c}))", lambda v: v.std() / np.sqrt(len(v))),
            ("Median", "MEDIAN({c})", lambda v: v.median()), ("Mode", "MODE.SNGL({c})", lambda v: float(v.mode().iloc[0])),
            ("Standard Deviation", "STDEV.S({c})", lambda v: v.std()), ("Sample Variance", "VAR.S({c})", lambda v: v.var()),
@@ -159,17 +159,17 @@ s.grid([["Skewed money values", "'Typical online order is ₦" + f"{ov.median():
 SH = "4.2 Distributions & Z"
 s = b.sheet(SH, "4.2  Distributions, Pareto, Percentiles and Z-Scores",
             "Histogram vs normal curve, 80/20 customers, percentile bands, store z-scores and occupancy anomalies", "4.2.1 - 4.2.9")
-s.band("4.2.1-3", "Distribution of Crestview exam scores vs the normal curve")
-mu, sd = cvd.Exam_Score.mean(), cvd.Exam_Score.std()
+s.band("4.2.1-3", "Distribution of Kingsway exam scores vs the normal curve")
+mu, sd = cvd.Final_Score.mean(), cvd.Final_Score.std()
 edges = list(range(55, 80, 2)) + [101]
 hb = pd.DataFrame({"From": edges[:-1], "To_below": edges[1:]})
 hb["Bin"] = [f"{a}-{b_ - 1}" if b_ < 101 else f"{a}+" for a, b_ in zip(hb.From, hb.To_below)]
 hb = hb[["Bin", "From", "To_below"]]
-obs = [int(((cvd.Exam_Score >= a) & (cvd.Exam_Score < b_)).sum()) for a, b_ in zip(hb.From, hb.To_below)]
+obs = [int(((cvd.Final_Score >= a) & (cvd.Final_Score < b_)).sum()) for a, b_ in zip(hb.From, hb.To_below)]
 expn = [len(cvd) * (stats.norm.cdf(b_ - .5, mu, sd) - stats.norm.cdf(a - .5, mu, sd)) for a, b_ in zip(hb.From, hb.To_below)]
-th = s.table(hb, "tHist", calc={"Students": ('=COUNTIFS(tCV[Exam_Score],">="&[@From],tCV[Exam_Score],"<"&[@To_below])', "int", obs),
-                                "Normal_expected": ("=COUNT(tCV[Exam_Score])*(NORM.DIST([@To_below]-0.5,AVERAGE(tCV[Exam_Score]),STDEV.S(tCV[Exam_Score]),TRUE)"
-                                                    "-NORM.DIST([@From]-0.5,AVERAGE(tCV[Exam_Score]),STDEV.S(tCV[Exam_Score]),TRUE))", "dec1", expn)})
+th = s.table(hb, "tHist", calc={"Students": ('=COUNTIFS(tCV[Final_Score],">="&[@From],tCV[Final_Score],"<"&[@To_below])', "int", obs),
+                                "Normal_expected": ("=COUNT(tCV[Final_Score])*(NORM.DIST([@To_below]-0.5,AVERAGE(tCV[Final_Score]),STDEV.S(tCV[Final_Score]),TRUE)"
+                                                    "-NORM.DIST([@From]-0.5,AVERAGE(tCV[Final_Score]),STDEV.S(tCV[Final_Score]),TRUE))", "dec1", expn)})
 s.chart("column", [{"name": "Students", "categories": th.ref("Bin"), "values": th.ref("Students"), "gap": 10}], "Exam scores: observed vs normal curve",
         secondary={"type": "line", "name": "Normal expected", "categories": th.ref("Bin"), "values": th.ref("Normal_expected"), "y2_fmt": "#,##0"}, rows=17)
 s.insight("Scores are tightly peaked around 67 with a thin right tail up to 100 - the normal curve under-predicts the centre and the top bin. "
@@ -224,7 +224,7 @@ _rk = dict(zip(st.Store_Name, crank))
 s.insight(f"{best} ranks first on the composite z-score (equal weight on size, margin and target attainment), but the ranking reshuffles below it: "
           f"{_last_sales} is last on sales yet ranks {_rk[_last_sales]} overall thanks to its margin. "
           "Z-scores put ₦, % and % on one scale - always state the weights you chose.")
-s.band("4.2.8", "Detecting anomalies systematically - Lifecare daily bed occupancy, 2023")
+s.band("4.2.8", "Detecting anomalies systematically - Mercyland daily bed occupancy, 2023")
 zc = ((c23.Occupancy_Pct - c23.Occupancy_Pct.mean()) / c23.Occupancy_Pct.std())
 flag = np.where(zc.abs() > 2, "Anomaly", "")
 s.calc([("Days in 2023 census", "=ROWS(tCensus23)", len(c23), "int", ""),
@@ -232,13 +232,13 @@ s.calc([("Days in 2023 census", "=ROWS(tCensus23)", len(c23), "int", ""),
         ("Days with |z| > 2", '=COUNTIFS(tCensus23[Flag],"Anomaly")', int((zc.abs() > 2).sum()), "int", "Expect ~5% of days if roughly normal"),
         ("Highest occupancy day", "=INDEX(tCensus23[Census_Date],MATCH(MAX(tCensus23[Occupancy_Pct]),tCensus23[Occupancy_Pct],0))",
          serial(c23.Census_Date[c23.Occupancy_Pct.idxmax()]), "date", "Check: staffing roster, an outbreak, or a data-entry error?")])
-tc = s.table(c23, "tCensus23", fmts={"Census_Date": "date", "Patients_In_House": "int", "Occupancy_Pct": "pct"},
+tc = s.table(c23, "tCensus23", fmts={"Census_Date": "date", "Inpatients": "int", "Occupancy_Pct": "pct"},
              calc={"z": ("=STANDARDIZE([@Occupancy_Pct],AVERAGE([Occupancy_Pct]),STDEV.S([Occupancy_Pct]))", "dec2", zc.tolist()),
                    "Flag": ('=IF(ABS([@z])>2,"Anomaly","")', None, flag.tolist())})
 s.ws.conditional_format(tc.r0 + 1, tc.ci("Flag"), tc.r0 + len(c23), tc.ci("Flag"),
                         {"type": "cell", "criteria": "==", "value": '"Anomaly"', "format": b.wb.add_format({"bg_color": "#F8D7DA", "font_color": "#7B1F28"})})
 s.band("4.2.9", "Choosing the right distribution summary")
-s.grid([["Symmetric, no outliers", "Crestview attendance %", "Mean ± SD"],
+s.grid([["Symmetric, no outliers", "Kingsway attendance %", "Mean ± SD"],
         ["Skewed money values", "Online order value, hospital bills", "Median + IQR (or P10-P90)"],
         ["Ranking / league table", "12 stores", "Percentile rank or bands"],
         ["Comparing different units", "Sales ₦, margin %, attainment %", "Z-scores (composite)"],
@@ -251,42 +251,42 @@ s.grid([["Symmetric, no outliers", "Crestview attendance %", "Mean ± SD"],
 SH = "4.3 Correlation"
 s = b.sheet(SH, "4.3  Correlation Analysis",
             "Pearson, Spearman, a correlation matrix, scatterplots, confounding and a real Simpson's paradox", "4.3.1 - 4.3.10")
-s.band("4.3.1-2", "Pearson correlation: what is linked to Crestview exam scores?")
-vars_ = ["Hours_Studied_Per_Week", "Attendance_Pct", "Previous_Score", "Tutoring_Sessions", "Sleep_Hours", "Physical_Activity_Hrs"]
-s.calc([(f"r( {v} , Exam_Score )", f"=CORREL(tCV[{v}],tCV[Exam_Score])", cvd[v].corr(cvd.Exam_Score), "dec3",
-         {"Attendance_Pct": "Strongest link", "Hours_Studied_Per_Week": "Moderate positive", "Sleep_Hours": "≈ 0: no linear link"}.get(v, ""))
+s.band("4.3.1-2", "Pearson correlation: what is linked to Kingsway exam scores?")
+vars_ = ["Study_Hours_Wk", "Lecture_Attendance_Pct", "Last_Sem_Score", "Tutorials_Attended", "Sleep_Hrs_Night", "Exercise_Hrs_Wk"]
+s.calc([(f"r( {v} , Final_Score )", f"=CORREL(tCV[{v}],tCV[Final_Score])", cvd[v].corr(cvd.Final_Score), "dec3",
+         {"Lecture_Attendance_Pct": "Strongest link", "Study_Hours_Wk": "Moderate positive", "Sleep_Hrs_Night": "≈ 0: no linear link"}.get(v, ""))
         for v in vars_])
 s.band("4.3.4-5", "Correlation matrix - CORREL in every cell (Data Analysis > Correlation gives the same numbers, static)")
-mv = vars_[:4] + ["Exam_Score"]
+mv = vars_[:4] + ["Final_Score"]
 md = pd.DataFrame({"Variable": mv, **{v: 0.0 for v in mv}})
 fxm = {(i, cj): (f"=CORREL(tCV[{ri}],tCV[{cj}])", float(cvd[ri].corr(cvd[cj]))) for i, ri in enumerate(mv) for cj in mv}
 top = s.frame(md, fmts={v: "0.00" for v in mv}, formulas=fxm)
 s.ws.conditional_format(top, 2, top + len(mv) - 1, 1 + len(mv), {"type": "3_color_scale", "min_color": "#F8D7DA", "mid_color": "#FFFFFF", "max_color": "#BFE3DA",
                                                                  "min_type": "num", "min_value": -1, "mid_type": "num", "mid_value": 0, "max_type": "num", "max_value": 1})
 s.band("4.3.3 / 4.3.6", "Spearman rank correlation and the scatterplot (300 sampled students)")
-smp = cvd.sample(300, random_state=7)[["Student_ID", "Hours_Studied_Per_Week", "Exam_Score"]].reset_index(drop=True)
-rk_h = smp.Hours_Studied_Per_Week.rank(ascending=False, method="average").tolist()
-rk_e = smp.Exam_Score.rank(ascending=False, method="average").tolist()
-s.calc([("Pearson r (sample)", "=CORREL(tSpear[Hours_Studied_Per_Week],tSpear[Exam_Score])", smp.Hours_Studied_Per_Week.corr(smp.Exam_Score), "dec3", ""),
+smp = cvd.sample(300, random_state=7)[["Matric_No", "Study_Hours_Wk", "Final_Score"]].reset_index(drop=True)
+rk_h = smp.Study_Hours_Wk.rank(ascending=False, method="average").tolist()
+rk_e = smp.Final_Score.rank(ascending=False, method="average").tolist()
+s.calc([("Pearson r (sample)", "=CORREL(tSpear[Study_Hours_Wk],tSpear[Final_Score])", smp.Study_Hours_Wk.corr(smp.Final_Score), "dec3", ""),
         ("Spearman ρ = CORREL of ranks", "=CORREL(tSpear[Rank_Hours],tSpear[Rank_Score])", float(np.corrcoef(rk_h, rk_e)[0, 1]), "dec3",
          "Close to Pearson → relationship is monotonic and roughly linear")])
-tsp = s.table(smp, "tSpear", fmts={"Hours_Studied_Per_Week": "int", "Exam_Score": "int"},
-              calc={"Rank_Hours": ("=RANK.AVG([@Hours_Studied_Per_Week],[Hours_Studied_Per_Week])", "dec1", rk_h),
-                    "Rank_Score": ("=RANK.AVG([@Exam_Score],[Exam_Score])", "dec1", rk_e)})
-s.chart("scatter", [{"name": "Students", "categories": tsp.ref("Hours_Studied_Per_Week"), "values": tsp.ref("Exam_Score"),
+tsp = s.table(smp, "tSpear", fmts={"Study_Hours_Wk": "int", "Final_Score": "int"},
+              calc={"Rank_Hours": ("=RANK.AVG([@Study_Hours_Wk],[Study_Hours_Wk])", "dec1", rk_h),
+                    "Rank_Score": ("=RANK.AVG([@Final_Score],[Final_Score])", "dec1", rk_e)})
+s.chart("scatter", [{"name": "Students", "categories": tsp.ref("Study_Hours_Wk"), "values": tsp.ref("Final_Score"),
                      "trendline": {"type": "linear", "display_r_squared": True}}], "Hours studied vs exam score - look before you trust r",
         x_title="Hours studied per week", y_title="Exam score", legend=False, rows=17)
-s.band("4.3.7", "Correlation is not causation - Eko Suites cancellations")
-s.calc([("r( Lead time , Cancelled )", "=CORREL(tHotel[Lead_Time_Days],--(tHotel[Booking_Status]=\"Cancelled\"))",
-         float(np.corrcoef(hod.Lead_Time_Days, hod.Booking_Status == "Cancelled")[0, 1]), "dec3", "Long lead times go with cancellations…"),
-        ("r( Special requests , Cancelled )", "=CORREL(tHotel[Special_Requests],--(tHotel[Booking_Status]=\"Cancelled\"))",
-         float(np.corrcoef(hod.Special_Requests, hod.Booking_Status == "Cancelled")[0, 1]), "dec3",
+s.band("4.3.7", "Correlation is not causation - Atlantic Pearl cancellations")
+s.calc([("r( Lead time , Cancelled )", "=CORREL(tHotel[Days_Ahead],--(tHotel[Reservation_Status]=\"Cancelled\"))",
+         float(np.corrcoef(hod.Days_Ahead, hod.Reservation_Status == "Cancelled")[0, 1]), "dec3", "Long lead times go with cancellations…"),
+        ("r( Special requests , Cancelled )", "=CORREL(tHotel[Guest_Requests],--(tHotel[Reservation_Status]=\"Cancelled\"))",
+         float(np.corrcoef(hod.Guest_Requests, hod.Reservation_Status == "Cancelled")[0, 1]), "dec3",
          "…but forcing guests to make requests will not stop cancellations: committed guests make requests")])
 lb = pd.DataFrame({"Lead_band": ["0-7 days", "8-30 days", "31-90 days", "91-180 days", "180+ days"], "From": [0, 8, 31, 91, 181], "To": [7, 30, 90, 180, 9999]})
-cnt = [int(((hod.Lead_Time_Days >= a) & (hod.Lead_Time_Days <= b_)).sum()) for a, b_ in zip(lb.From, lb.To)]
-can = [int(((hod.Lead_Time_Days >= a) & (hod.Lead_Time_Days <= b_) & (hod.Booking_Status == "Cancelled")).sum()) for a, b_ in zip(lb.From, lb.To)]
-tlb = s.table(lb, "tLeadBand", calc={"Bookings": ('=COUNTIFS(tHotel[Lead_Time_Days],">="&[@From],tHotel[Lead_Time_Days],"<="&[@To])', "int", cnt),
-                                     "Cancelled": ('=COUNTIFS(tHotel[Lead_Time_Days],">="&[@From],tHotel[Lead_Time_Days],"<="&[@To],tHotel[Booking_Status],"Cancelled")', "int", can),
+cnt = [int(((hod.Days_Ahead >= a) & (hod.Days_Ahead <= b_)).sum()) for a, b_ in zip(lb.From, lb.To)]
+can = [int(((hod.Days_Ahead >= a) & (hod.Days_Ahead <= b_) & (hod.Reservation_Status == "Cancelled")).sum()) for a, b_ in zip(lb.From, lb.To)]
+tlb = s.table(lb, "tLeadBand", calc={"Bookings": ('=COUNTIFS(tHotel[Days_Ahead],">="&[@From],tHotel[Days_Ahead],"<="&[@To])', "int", cnt),
+                                     "Cancelled": ('=COUNTIFS(tHotel[Days_Ahead],">="&[@From],tHotel[Days_Ahead],"<="&[@To],tHotel[Reservation_Status],"Cancelled")', "int", can),
                                      "Cancel_rate": ("=[@Cancelled]/[@Bookings]", "pct", [c_ / n for c_, n in zip(can, cnt)])})
 s.chart("column", [{"name": "Cancel rate", "categories": tlb.ref("Lead_band"), "values": tlb.ref("Cancel_rate"), "labels": True, "label_fmt": "0%"}],
         "Cancellation rate rises with booking lead time", legend=False, y_fmt="0%", rows=14, size=(600, 260))
@@ -328,21 +328,21 @@ s.calc([("Raw gap (all women vs all men)", "=1-AVERAGEIFS(tSal[Annual_Salary_NGN
              _adj_x, "pct", "About half the raw gap is explained by experience")])
 s.insight(f"Years of experience IS a confounder: it is linked to both gender (women average {g[g.Gender=='Female'].Years_of_Experience.mean():.1f} years, men {g[g.Gender=='Male'].Years_of_Experience.mean():.1f}) "
           f"and salary. Holding it constant cuts the gap from {1 - fem[4] / mal[4]:.1%} to {_adj_x:.1%}. Report both numbers - the remaining gap is still real.")
-s.band("4.3.9", "Simpson's paradox in Eko Suites bookings: Deluxe vs Standard Twin")
+s.band("4.3.9", "Simpson's paradox in Atlantic Pearl bookings: Deluxe vs Standard Twin")
 sp_rows = []
 for yr in ["2023", "2024", "All years"]:
     for rt in ["Deluxe", "Standard Twin"]:
-        sub = hod[(hod.Room_Type == rt) & ((hod.Arrival_Year == int(yr)) if yr != "All years" else True)]
-        sp_rows.append([yr, rt, len(sub), int((sub.Booking_Status == "Cancelled").sum())])
+        sub = hod[(hod.Room_Category == rt) & ((hod.Check_In_Year == int(yr)) if yr != "All years" else True)]
+        sp_rows.append([yr, rt, len(sub), int((sub.Reservation_Status == "Cancelled").sum())])
 spd = pd.DataFrame(sp_rows, columns=["Arrival_year", "Room_type", "b", "c"])[["Arrival_year", "Room_type"]]
 s.table(spd, "tSimpson", widths={"Arrival_year": 12, "Room_type": 16},
-        calc={"Bookings": ('=IF([@Arrival_year]="All years",COUNTIFS(tHotel[Room_Type],[@Room_type]),COUNTIFS(tHotel[Room_Type],[@Room_type],tHotel[Arrival_Year],VALUE([@Arrival_year])))', "int", [r[2] for r in sp_rows]),
-              "Cancelled": ('=IF([@Arrival_year]="All years",COUNTIFS(tHotel[Room_Type],[@Room_type],tHotel[Booking_Status],"Cancelled"),COUNTIFS(tHotel[Room_Type],[@Room_type],tHotel[Arrival_Year],VALUE([@Arrival_year]),tHotel[Booking_Status],"Cancelled"))', "int", [r[3] for r in sp_rows]),
+        calc={"Bookings": ('=IF([@Arrival_year]="All years",COUNTIFS(tHotel[Room_Category],[@Room_type]),COUNTIFS(tHotel[Room_Category],[@Room_type],tHotel[Check_In_Year],VALUE([@Arrival_year])))', "int", [r[2] for r in sp_rows]),
+              "Cancelled": ('=IF([@Arrival_year]="All years",COUNTIFS(tHotel[Room_Category],[@Room_type],tHotel[Reservation_Status],"Cancelled"),COUNTIFS(tHotel[Room_Category],[@Room_type],tHotel[Check_In_Year],VALUE([@Arrival_year]),tHotel[Reservation_Status],"Cancelled"))', "int", [r[3] for r in sp_rows]),
               "Cancel_rate": ("=[@Cancelled]/[@Bookings]", "pct", [r[3] / r[2] for r in sp_rows])})
 s.warn("Deluxe cancels LESS than Standard Twin in 2023 and in 2024, yet MORE overall. Why? 91% of Deluxe bookings fall in 2024 (a high-cancellation year) "
        "versus 79% of Standard Twin. Always check whether a hidden grouping variable is driving an overall comparison.")
 s.band("4.3.10", "Reporting correlation responsibly")
-s.grid([["Give r, n and the scatter", f"'r = {cvd.Attendance_Pct.corr(cvd.Exam_Score):.2f} between attendance and exam score (n = {len(cvd):,})' + chart"],
+s.grid([["Give r, n and the scatter", f"'r = {cvd.Lecture_Attendance_Pct.corr(cvd.Final_Score):.2f} between attendance and exam score (n = {len(cvd):,})' + chart"],
         ["Describe strength in words", "|r| < 0.3 weak, 0.3-0.7 moderate, > 0.7 strong - and say 'linear'"],
         ["Say 'associated with', not 'causes'", "'Longer lead times are associated with more cancellations'"],
         ["Name possible confounders", "Seniority in the salary gap; arrival year in the room-type comparison"],
@@ -590,19 +590,19 @@ s.grid([["Seasonal naive", "Very short history, quick sanity check", "Ignores gr
 # 4.6 What-if
 # ======================================================================================
 SH = "4.6 What-If & Solver"
-s = b.sheet(SH, "4.6  Goal Seek, Data Tables, Scenarios and Solver - Eko Suites revenue plan",
+s = b.sheet(SH, "4.6  Goal Seek, Data Tables, Scenarios and Solver - Atlantic Pearl revenue plan",
             "A small, transparent model built from 2024 bookings, then every what-if tool applied to it", "4.6.1 - 4.6.12")
-h24 = hod[(hod.Arrival_Year == 2024) & (hod.Booking_Status == "Honoured")]
-rn24 = int(h24.Total_Nights.sum())
-rev24 = float(h24.Booking_Value_NGN.sum())
+h24 = hod[(hod.Check_In_Year == 2024) & (hod.Reservation_Status == "Stayed")]
+rn24 = int(h24.Nights.sum())
+rev24 = float(h24.Reservation_Value_NGN.sum())
 s.band("4.6.1", "The model - inputs (yellow) from the 2024 data, outputs (green) are formulas")
-s.scenario(f"Eko Suites, Victoria Island: modelled as a {ROOMS}-room hotel (peak nights in the data reach 307 rooms in use). "
-           "2024 honoured stays give the base occupancy and average daily rate (ADR).")
-base = s.calc([("2024 room-nights sold", '=SUMIFS(tHotel[Total_Nights],tHotel[Arrival_Year],2024,tHotel[Booking_Status],"Honoured")', rn24, "int", "Honoured bookings only"),
-               ("2024 room revenue", '=SUMIFS(tHotel[Booking_Value_NGN],tHotel[Arrival_Year],2024,tHotel[Booking_Status],"Honoured")', rev24, "naira", ""),
-               ("2024 ADR", '=SUMIFS(tHotel[Booking_Value_NGN],tHotel[Arrival_Year],2024,tHotel[Booking_Status],"Honoured")/SUMIFS(tHotel[Total_Nights],tHotel[Arrival_Year],2024,tHotel[Booking_Status],"Honoured")',
+s.scenario(f"Atlantic Pearl, Lekki: modelled as a {ROOMS}-room hotel (peak nights in the data reach 307 rooms in use). "
+           "2024 stayed stays give the base occupancy and average daily rate (ADR).")
+base = s.calc([("2024 room-nights sold", '=SUMIFS(tHotel[Nights],tHotel[Check_In_Year],2024,tHotel[Reservation_Status],"Stayed")', rn24, "int", "Stayed bookings only"),
+               ("2024 room revenue", '=SUMIFS(tHotel[Reservation_Value_NGN],tHotel[Check_In_Year],2024,tHotel[Reservation_Status],"Stayed")', rev24, "naira", ""),
+               ("2024 ADR", '=SUMIFS(tHotel[Reservation_Value_NGN],tHotel[Check_In_Year],2024,tHotel[Reservation_Status],"Stayed")/SUMIFS(tHotel[Nights],tHotel[Check_In_Year],2024,tHotel[Reservation_Status],"Stayed")',
                 rev24 / rn24, "naira", "Average daily rate per occupied room"),
-               ("2024 occupancy", f'=SUMIFS(tHotel[Total_Nights],tHotel[Arrival_Year],2024,tHotel[Booking_Status],"Honoured")/({ROOMS}*366)', rn24 / (ROOMS * 366), "pct", "2024 had 366 days")])
+               ("2024 occupancy", f'=SUMIFS(tHotel[Nights],tHotel[Check_In_Year],2024,tHotel[Reservation_Status],"Stayed")/({ROOMS}*366)', rn24 / (ROOMS * 366), "pct", "2024 had 366 days")])
 occ0, adr0 = round(rn24 / (ROOMS * 366), 3), round(rev24 / rn24, -2)
 cost_per = 28000.0
 fixed = 3_600_000_000.0
@@ -654,32 +654,32 @@ s.ws.data_validation(pick.replace("$", ""), {"validate": "list", "source": ["Pes
 s.calc([("Profit - selected scenario", f"=INDEX(tScen[Profit],MATCH({pick},tScen[Scenario],0))", sc_prof[1], "naira", "Scenario summary report = this table"),
         ("Spread (optimistic - pessimistic)", "=MAX(tScen[Profit])-MIN(tScen[Profit])", max(sc_prof) - min(sc_prof), "naira", "The range management must plan for")])
 s.band("4.6.9-11", "Solver: how should rooms be allocated across market segments each night?")
-seg = ho[ho.Arrival_Year == 2024].groupby("Market_Segment").agg(ADR=("Avg_Room_Rate_NGN", "mean"), Cancel_rate=("Booking_Status", lambda v: (v == "Cancelled").mean())).reset_index()
-seg = seg[seg.Market_Segment != "Complimentary"].reset_index(drop=True)
+seg = ho[ho.Check_In_Year == 2024].groupby("Sales_Channel").agg(ADR=("Room_Rate_NGN", "mean"), Cancel_rate=("Reservation_Status", lambda v: (v == "Cancelled").mean())).reset_index()
+seg = seg[seg.Sales_Channel != "Complimentary"].reset_index(drop=True)
 comm = {"Online Travel Agent": 0.18, "Walk-in / Travel Agent": 0.08, "Corporate": 0.0, "Airline Crew": 0.0}
 mins = {"Online Travel Agent": 0, "Walk-in / Travel Agent": 0, "Corporate": 40, "Airline Crew": 10}
 caps = {"Online Travel Agent": 220, "Walk-in / Travel Agent": 110, "Corporate": 70, "Airline Crew": 10}
-seg["Commission"] = seg.Market_Segment.map(comm)
-seg["Min_rooms"] = seg.Market_Segment.map(mins)
-seg["Max_demand"] = seg.Market_Segment.map(caps)
+seg["Commission"] = seg.Sales_Channel.map(comm)
+seg["Min_rooms"] = seg.Sales_Channel.map(mins)
+seg["Max_demand"] = seg.Sales_Channel.map(caps)
 val = (seg.ADR * (1 - seg.Cancel_rate) * (1 - seg.Commission)).values
-lp = optimize.linprog(-val, A_ub=[np.ones(len(seg)), (seg.Market_Segment == "Online Travel Agent").astype(float).values],
+lp = optimize.linprog(-val, A_ub=[np.ones(len(seg)), (seg.Sales_Channel == "Online Travel Agent").astype(float).values],
                       b_ub=[ROOMS, 0.5 * ROOMS], bounds=list(zip(seg.Min_rooms, seg.Max_demand)), method="highs")
 sol = np.round(lp.x).astype(int)
 seg["Rooms_allocated"] = sol
-segd = seg[["Market_Segment", "ADR", "Cancel_rate", "Commission", "Min_rooms", "Max_demand", "Rooms_allocated"]]
+segd = seg[["Sales_Channel", "ADR", "Cancel_rate", "Commission", "Min_rooms", "Max_demand", "Rooms_allocated"]]
 tsg = s.table(segd, "tSegments", fmts={"ADR": "naira", "Cancel_rate": "pct", "Commission": "pct0", "Min_rooms": "int", "Max_demand": "int", "Rooms_allocated": "int"},
-              widths={"Market_Segment": 22},
+              widths={"Sales_Channel": 22},
               calc={"Net_value_per_room": ("=[@ADR]*(1-[@Cancel_rate])*(1-[@Commission])", "naira", val.tolist()),
                     "Nightly_value": ("=[@Rooms_allocated]*[@Net_value_per_room]", "naira", (sol * val).tolist()),
                     "Within_limits": ("=AND([@Rooms_allocated]>=[@Min_rooms],[@Rooms_allocated]<=[@Max_demand])", None, [True] * len(seg))},
-              total={"Market_Segment": "Total", "Rooms_allocated": "sum", "Nightly_value": "sum"})
+              total={"Sales_Channel": "Total", "Rooms_allocated": "sum", "Nightly_value": "sum"})
 s.ws.conditional_format(tsg.r0 + 1, tsg.ci("Rooms_allocated"), tsg.r0 + len(segd), tsg.ci("Rooms_allocated"),
                         {"type": "no_errors", "format": b.wb.add_format({"bg_color": "#FFF4CC", "border": 1, "border_color": "#E0A526"})})
 s.calc([("Objective: expected net value per night", "=SUM(tSegments[Nightly_value])", float((sol * val).sum()), "naira", "Solver: Set Objective → Max"),
         ("Constraint: total rooms ≤ capacity", f"=SUM(tSegments[Rooms_allocated])<={R_}", bool(sol.sum() <= ROOMS), None, f"Uses {int(sol.sum())} of {ROOMS}"),
-        ("Constraint: OTA ≤ 50% of rooms", f'=SUMIFS(tSegments[Rooms_allocated],tSegments[Market_Segment],"Online Travel Agent")<=0.5*{R_}',
-         bool(sol[seg.Market_Segment == "Online Travel Agent"].sum() <= .5 * ROOMS), None, "Rate-parity / dependency policy")])
+        ("Constraint: OTA ≤ 50% of rooms", f'=SUMIFS(tSegments[Rooms_allocated],tSegments[Sales_Channel],"Online Travel Agent")<=0.5*{R_}',
+         bool(sol[seg.Sales_Channel == "Online Travel Agent"].sum() <= .5 * ROOMS), None, "Rate-parity / dependency policy")])
 s.grid([["Objective", "Maximise SUM(tSegments[Nightly_value])"],
         ["By changing", "tSegments[Rooms_allocated] (yellow column)"],
         ["Subject to", "Rooms_allocated ≥ Min_rooms; Rooms_allocated ≤ Max_demand; integer; SUM ≤ Rooms; OTA ≤ 50% of Rooms"],
@@ -745,46 +745,46 @@ s.grid([["1. Headline", head], ["2. Why it matters", "Missed stores represent �
 # 4.8 Report writing
 # ======================================================================================
 SH = "4.8 Report Writing"
-s = b.sheet(SH, "4.8  Report Writing and PDF Production - Lifecare 2023 Operations Report",
+s = b.sheet(SH, "4.8  Report Writing and PDF Production - Mercyland 2023 Operations Report",
             "An executive summary written from live numbers; this sheet is set up to print as a clean A4 PDF", "4.8.1 - 4.8.10")
 adm23 = len(los)
-alos23 = los.Length_of_Stay.mean()
-rr23 = (los.Readmit_30d == "Yes").mean()
+alos23 = los.LOS_Days.mean()
+rr23 = (los.Readmitted_30d == "Yes").mean()
 occ23 = c23.Occupancy_Pct.mean()
 d95 = int((c23.Occupancy_Pct > .95).sum())
 top_dep = los.groupby("Department").size().idxmax()
 s.band("4.8.1", "Report structure")
-s.grid([["1", "Title page", "Lifecare General Hospital - 2023 Operations Report; version, date, author, classification"],
+s.grid([["1", "Title page", "Mercyland Specialist Hospital - 2023 Operations Report; version, date, author, classification"],
         ["2", "Executive summary", "One page: findings, implications, recommendations (below)"],
         ["3", "Method & data", "Source extracts, period, exclusions, definitions (ALOS, readmission)"],
         ["4", "Findings", "Admissions, bed occupancy, length of stay, readmissions, billing"],
         ["5", "Recommendations", "Numbered, owned, dated"],
-        ["6", "Appendix", "Full tables, data dictionary, reconciliation"]], header=["#", "Section", "Lifecare 2023 content"])
+        ["6", "Appendix", "Full tables, data dictionary, reconciliation"]], header=["#", "Section", "Mercyland 2023 content"])
 s.band("4.8.2", "Executive summary - every number is a formula over tLOS / tCensus23")
-s.calc([("Finding 1", f'="Lifecare admitted "&TEXT(ROWS(tLOS),"#,##0")&" patients in 2023; "&INDEX(tLOSdep[Department],MATCH(MAX(tLOSdep[Admissions]),tLOSdep[Admissions],0))&" was the busiest department."',
-         f"Lifecare admitted {adm23:,} patients in 2023; {top_dep} was the busiest department.", None, ""),
+s.calc([("Finding 1", f'="Mercyland admitted "&TEXT(ROWS(tLOS),"#,##0")&" patients in 2023; "&INDEX(tLOSdep[Department],MATCH(MAX(tLOSdep[Admissions]),tLOSdep[Admissions],0))&" was the busiest department."',
+         f"Mercyland admitted {adm23:,} patients in 2023; {top_dep} was the busiest department.", None, ""),
         ("Finding 2", f'="Average bed occupancy was "&TEXT(AVERAGE(tCensus23[Occupancy_Pct]),"0.0%")&", above the 85% safe level, with "&COUNTIFS(tCensus23[Occupancy_Pct],">0.95")&" days above 95%."',
          f"Average bed occupancy was {occ23:.1%}, above the 85% safe level, with {d95} days above 95%.", None, ""),
-        ("Finding 3", f'="Average length of stay was "&TEXT(AVERAGE(tLOS[Length_of_Stay]),"0.0")&" days and the 30-day readmission rate "&TEXT(COUNTIFS(tLOS[Readmit_30d],"Yes")/ROWS(tLOS),"0.0%")&"."',
+        ("Finding 3", f'="Average length of stay was "&TEXT(AVERAGE(tLOS[LOS_Days]),"0.0")&" days and the 30-day readmission rate "&TEXT(COUNTIFS(tLOS[Readmitted_30d],"Yes")/ROWS(tLOS),"0.0%")&"."',
          f"Average length of stay was {alos23:.1f} days and the 30-day readmission rate {rr23:.1%}.", None, ""),
-        ("Recommendation", "Plan surge capacity for Q2 (27 of the 43 days above 95% fell in April-June) and pilot a discharge-planning nurse in Oncology, the highest-readmission department.",
-         "Plan surge capacity for Q2 (27 of the 43 days above 95% fell in April-June) and pilot a discharge-planning nurse in Oncology, the highest-readmission department.", None, "Recommendations are typed - judgement, not formula")])
+        ("Recommendation", "Plan surge capacity for Q2 (27 of the 43 days above 95% fell in April-June) and pilot a discharge-planning nurse in Surgery, the highest-readmission department.",
+         "Plan surge capacity for Q2 (27 of the 43 days above 95% fell in April-June) and pilot a discharge-planning nurse in Surgery, the highest-readmission department.", None, "Recommendations are typed - judgement, not formula")])
 s.band("4.8.4", "Table design for reports - department summary")
-dep = los.groupby("Department").agg(Admissions=("Admission_ID", "count")).reset_index().sort_values("Admissions", ascending=False)
-alos_d = [los[los.Department == d].Length_of_Stay.mean() for d in dep.Department]
-rr_d = [(los[los.Department == d].Readmit_30d == "Yes").mean() for d in dep.Department]
-bill_d = [los[los.Department == d].Billing_Amount.mean() for d in dep.Department]
+dep = los.groupby("Department").agg(Admissions=("Episode_ID", "count")).reset_index().sort_values("Admissions", ascending=False)
+alos_d = [los[los.Department == d].LOS_Days.mean() for d in dep.Department]
+rr_d = [(los[los.Department == d].Readmitted_30d == "Yes").mean() for d in dep.Department]
+bill_d = [los[los.Department == d].Bill_Amount_NGN.mean() for d in dep.Department]
 s.table(dep, "tLOSdep", fmts={"Admissions": "int"}, widths={"Department": 26},
-        calc={"ALOS_days": ("=AVERAGEIFS(tLOS[Length_of_Stay],tLOS[Department],[@Department])", "dec1", alos_d),
-              "Readmit_rate": ('=COUNTIFS(tLOS[Department],[@Department],tLOS[Readmit_30d],"Yes")/[@Admissions]', "pct", rr_d),
-              "Avg_bill": ("=AVERAGEIFS(tLOS[Billing_Amount],tLOS[Department],[@Department])", "naira", bill_d)},
+        calc={"ALOS_days": ("=AVERAGEIFS(tLOS[LOS_Days],tLOS[Department],[@Department])", "dec1", alos_d),
+              "Readmit_rate": ('=COUNTIFS(tLOS[Department],[@Department],tLOS[Readmitted_30d],"Yes")/[@Admissions]', "pct", rr_d),
+              "Avg_bill": ("=AVERAGEIFS(tLOS[Bill_Amount_NGN],tLOS[Department],[@Department])", "naira", bill_d)},
         total={"Department": "Total", "Admissions": "sum"})
 s.grid([["Right-align numbers, left-align text", "Consistent decimals per column (1 for ALOS, 1 for %)"],
         ["Units in headers, not in cells", "'ALOS (days)', 'Avg bill (₦)'"], ["Sort by the measure that matters", "Busiest department first"],
         ["Light gridlines, bold totals", "Table Style Medium 2 + total row"]], header=["Rule", "Applied above"])
 s.band("4.8.5-8", "Page setup, PDF export, fonts and metadata (applied to THIS sheet - try File > Print preview)")
 s.grid([["Orientation / size", "Landscape A4, fit to 1 page wide"], ["Print titles", "Rows 1-3 repeat on every page"],
-        ["Header / footer", "Header: report title. Footer: 'Confidential - Lifecare internal' | page X of Y | file name"],
+        ["Header / footer", "Header: report title. Footer: 'Confidential - Mercyland internal' | page X of Y | file name"],
         ["Export", "File > Export > Create PDF/XPS > Options: 'Active sheet' or 'Entire workbook'; Standard quality"],
         ["Fonts", "Calibri / Arial embed everywhere; the ₦ symbol needs a font that contains it (Calibri does)"],
         ["Metadata", "File > Info > Properties: Title, Author, Company, Tags - this workbook already has them set"]], header=["Setting", "Value"])
@@ -792,8 +792,8 @@ s.ws.set_landscape()
 s.ws.set_paper(9)
 s.ws.fit_to_pages(1, 0)
 s.ws.repeat_rows(0, 2)
-s.ws.set_header("&L&\"Calibri,Bold\"Lifecare General Hospital - 2023 Operations Report&RETEH Week 4")
-s.ws.set_footer("&LConfidential - Lifecare internal&CPage &P of &N&R&F")
+s.ws.set_header("&L&\"Calibri,Bold\"Mercyland Specialist Hospital - 2023 Operations Report&RETEH Week 4")
+s.ws.set_footer("&LConfidential - Mercyland internal&CPage &P of &N&R&F")
 s.band("4.8.9-10", "Version control and the review checklist")
 s.grid([["v0.1", "2024-01-08", "Analyst", "First draft from extract LC_2023_v1"], ["v0.2", "2024-01-10", "Analyst", "Added readmission by department after QA comment"],
         ["v1.0", "2024-01-12", "Head of Quality", "Approved for board pack"]], header=["Version", "Date", "By", "Change"])
@@ -805,24 +805,24 @@ s.grid([["Numbers reconcile to source (admissions count = extract rows)", "☐"]
 # 4.9 Slide presentations
 # ======================================================================================
 SH = "4.9 Slide Presentations"
-s = b.sheet(SH, "4.9  Slide Presentations - a 10-slide storyboard on Eko Suites cancellations",
+s = b.sheet(SH, "4.9  Slide Presentations - a 10-slide storyboard on Atlantic Pearl cancellations",
             "One message per slide, each with the number that proves it; title word counts and timing", "4.9.1 - 4.9.10")
 hc = hod.copy()
-hc["c"] = hc.Booking_Status == "Cancelled"
+hc["c"] = hc.Reservation_Status == "Cancelled"
 cr_all = hc.c.mean()
-cr_ota = hc[hc.Market_Segment == "Online Travel Agent"].c.mean()
-cr_rep = hc[hc.Repeat_Guest == "Yes"].c.mean()
-lost = hc[hc.c].Booking_Value_NGN.sum()
-sb = [["1", "Title", "Cancellations cost Eko Suites ₦" + f"{lost / 1e9:,.2f}" + "bn of bookings in 2023-24", '=SUMIFS(tHotel[Booking_Value_NGN],tHotel[Booking_Status],"Cancelled")', lost, "naira", 0.5],
-      ["2", "Situation", f"One booking in three is cancelled ({cr_all:.0%})", '=COUNTIFS(tHotel[Booking_Status],"Cancelled")/ROWS(tHotel)', cr_all, "pct", 1],
-      ["3", "Where", f"OTA bookings cancel most ({cr_ota:.0%})", '=COUNTIFS(tHotel[Market_Segment],"Online Travel Agent",tHotel[Booking_Status],"Cancelled")/COUNTIFS(tHotel[Market_Segment],"Online Travel Agent")', cr_ota, "pct", 1.5],
-      ["4", "When", "Bookings made 6+ months ahead cancel three times in four", '=COUNTIFS(tHotel[Lead_Time_Days],">180",tHotel[Booking_Status],"Cancelled")/COUNTIFS(tHotel[Lead_Time_Days],">180")',
-       ((hc.Lead_Time_Days > 180) & hc.c).sum() / (hc.Lead_Time_Days > 180).sum(), "pct", 1.5],
-      ["5", "Who", f"Repeat guests almost never cancel ({cr_rep:.1%})", '=COUNTIFS(tHotel[Repeat_Guest],"Yes",tHotel[Booking_Status],"Cancelled")/COUNTIFS(tHotel[Repeat_Guest],"Yes")', cr_rep, "pct2", 1],
-      ["6", "Signal", "Guests who make special requests cancel less", '=COUNTIFS(tHotel[Special_Requests],">0",tHotel[Booking_Status],"Cancelled")/COUNTIFS(tHotel[Special_Requests],">0")',
-       ((hc.Special_Requests > 0) & hc.c).sum() / (hc.Special_Requests > 0).sum(), "pct", 1],
-      ["7", "Option A", "Deposit for bookings > 90 days ahead", '=COUNTIFS(tHotel[Lead_Time_Days],">90")', int((hc.Lead_Time_Days > 90).sum()), "int", 1.5],
-      ["8", "Option B", "Loyalty offer to convert first-time guests", '=COUNTIFS(tHotel[Repeat_Guest],"No")', int((hc.Repeat_Guest == "No").sum()), "int", 1],
+cr_ota = hc[hc.Sales_Channel == "Online Travel Agent"].c.mean()
+cr_rep = hc[hc.Returning_Guest == "Yes"].c.mean()
+lost = hc[hc.c].Reservation_Value_NGN.sum()
+sb = [["1", "Title", "Cancellations cost Atlantic Pearl ₦" + f"{lost / 1e9:,.2f}" + "bn of bookings in 2023-24", '=SUMIFS(tHotel[Reservation_Value_NGN],tHotel[Reservation_Status],"Cancelled")', lost, "naira", 0.5],
+      ["2", "Situation", f"One booking in three is cancelled ({cr_all:.0%})", '=COUNTIFS(tHotel[Reservation_Status],"Cancelled")/ROWS(tHotel)', cr_all, "pct", 1],
+      ["3", "Where", f"OTA bookings cancel most ({cr_ota:.0%})", '=COUNTIFS(tHotel[Sales_Channel],"Online Travel Agent",tHotel[Reservation_Status],"Cancelled")/COUNTIFS(tHotel[Sales_Channel],"Online Travel Agent")', cr_ota, "pct", 1.5],
+      ["4", "When", "Bookings made 6+ months ahead cancel three times in four", '=COUNTIFS(tHotel[Days_Ahead],">180",tHotel[Reservation_Status],"Cancelled")/COUNTIFS(tHotel[Days_Ahead],">180")',
+       ((hc.Days_Ahead > 180) & hc.c).sum() / (hc.Days_Ahead > 180).sum(), "pct", 1.5],
+      ["5", "Who", f"Repeat guests almost never cancel ({cr_rep:.1%})", '=COUNTIFS(tHotel[Returning_Guest],"Yes",tHotel[Reservation_Status],"Cancelled")/COUNTIFS(tHotel[Returning_Guest],"Yes")', cr_rep, "pct2", 1],
+      ["6", "Signal", "Guests who make special requests cancel less", '=COUNTIFS(tHotel[Guest_Requests],">0",tHotel[Reservation_Status],"Cancelled")/COUNTIFS(tHotel[Guest_Requests],">0")',
+       ((hc.Guest_Requests > 0) & hc.c).sum() / (hc.Guest_Requests > 0).sum(), "pct", 1],
+      ["7", "Option A", "Deposit for bookings > 90 days ahead", '=COUNTIFS(tHotel[Days_Ahead],">90")', int((hc.Days_Ahead > 90).sum()), "int", 1.5],
+      ["8", "Option B", "Loyalty offer to convert first-time guests", '=COUNTIFS(tHotel[Returning_Guest],"No")', int((hc.Returning_Guest == "No").sum()), "int", 1],
       ["9", "Recommendation", "Pilot deposits on OTA bookings > 90 days from Q1", "", "", None, 1.5],
       ["10", "Next steps", "Owner, date, and the KPI we will track: cancellation rate", "", "", None, 0.5]]
 sbd = pd.DataFrame([[a, b_, c] for a, b_, c, *_ in sb], columns=["Slide", "Role", "Title (one message)"])
@@ -913,7 +913,7 @@ function main(workbook: ExcelScript.Workbook) {
   att.forEach(r => { if ((r[0] as number) < 1) missed++; });
   console.log(`Stores below target: ${missed}`);   // run from Power Automate on a schedule
 }''')
-s.grid([["Name", "Refresh_And_Export_Report"], ["Purpose", "Monthly refresh + PDF of the Lifecare report"], ["Trigger", "Manual button / first working day"],
+s.grid([["Name", "Refresh_And_Export_Report"], ["Purpose", "Monthly refresh + PDF of the Mercyland report"], ["Trigger", "Manual button / first working day"],
         ["Inputs / outputs", "Power Query connections → PDF in the workbook folder"], ["Owner / last tested", "Analyst / 2024-01-12"],
         ["Save as", ".xlsm (macro-enabled); Office Scripts live in OneDrive"]], header=["Automation log", "Entry"], merge_last=True)
 
@@ -959,7 +959,7 @@ s.warn(f"The AI query returns ₦{bad.revenue.sum() / 1e9:,.2f}bn - about {bad.r
 s.band("4.11.6-10", "Explaining, narrative, prohibited data, limitations and workflow")
 s.grid([["Explain", "Paste a formula (not data): 'Explain =INDEX(tStory[Store_Name],MATCH(MIN(...),...,0)) step by step'"],
         ["Narrative", "Give the AI the aggregated table (12 store totals) and ask for a 3-sentence summary; then check every number"],
-        ["Never paste", "Patient names, Patient_ID, phone, email, date of birth, Suicidal_Thoughts_Ever, salaries with names - into any public AI tool"],
+        ["Never paste", "Patient names, Patient_No, phone, email, date of birth, Self_Harm_Thoughts, salaries with names - into any public AI tool"],
         ["Limitations", "No access to your file unless you share it; can invent column names, functions (e.g. 'SUMIFSX') and statistics"],
         ["Workflow", "1 schema prompt → 2 ask → 3 run on a copy → 4 verify against a control total → 5 log prompt + check in the provenance log (4.12)"]],
        header=["Use", "Practice"], merge_last=True)
@@ -976,9 +976,9 @@ claims = [
     ("Lagos stores (Ikeja + Lekki) made 30% of FY2025 sales", 0.30, '=(SUMIFS(tDash25[Sales],tDash25[Store_ID],"ST01")+SUMIFS(tDash25[Sales],tDash25[Store_ID],"ST02"))/SUM(tDash25[Sales])',
      s25[s25.Store_ID.isin(["ST01", "ST02"])].Sales.sum() / s25.Sales.sum(), "pct", 0.005),
     ("Median salary in the survey is ₦12.5m", 12.5e6, "=MEDIAN(tSal[Annual_Salary_NGN])", sal.Annual_Salary_NGN.median(), "naira", 0.001),
-    ("Lifecare 2023 readmission rate was 10.3%", 0.103, '=COUNTIFS(tLOS[Readmit_30d],"Yes")/ROWS(tLOS)', rr23, "pct", 0.0005),
-    ("Eko Suites cancellation rate is 22%", 0.22, '=COUNTIFS(tHotel[Booking_Status],"Cancelled")/ROWS(tHotel)', cr_all, "pct", 0.005),
-    ("Correlation of attendance with exam score is 0.81", 0.81, "=CORREL(tCV[Attendance_Pct],tCV[Exam_Score])", cvd.Attendance_Pct.corr(cvd.Exam_Score), "dec3", 0.005)]
+    ("Mercyland 2023 readmission rate was 10.3%", 0.103, '=COUNTIFS(tLOS[Readmitted_30d],"Yes")/ROWS(tLOS)', rr23, "pct", 0.0005),
+    ("Atlantic Pearl cancellation rate is 22%", 0.22, '=COUNTIFS(tHotel[Reservation_Status],"Cancelled")/ROWS(tHotel)', cr_all, "pct", 0.005),
+    ("Correlation of attendance with exam score is 0.81", 0.81, "=CORREL(tCV[Lecture_Attendance_Pct],tCV[Final_Score])", cvd.Lecture_Attendance_Pct.corr(cvd.Final_Score), "dec3", 0.005)]
 cl = pd.DataFrame([[c[0], c[1], float(c[3]), c[5]] for c in claims], columns=["AI claim", "Claimed_value", "Verified_value", "Tolerance"])
 tcl = s.table(cl, "tClaims", widths={"AI claim": 50, "Claimed_value": 15},
               calc={"Verdict": ('=IF(ABS([@Verified_value]-[@Claimed_value])<=[@Tolerance]*IF(ABS([@Claimed_value])>1,ABS([@Claimed_value]),1),"VERIFIED","WRONG - do not use")', None,
@@ -1013,21 +1013,21 @@ s = b.sheet(SH, "4.13  Data Ethics, PII and PHI",
 s.band("4.13.2-3", "Inventory: personal (PII) and health (PHI) data in the bootcamp datasets")
 pii = [["SuperMart Online customers", "first_name, last_name, email, phone_number", "Direct identifier (PII)", "Never leave the database; analyse by customer_id only"],
        ["SuperMart Online customers", "date_of_birth, city", "Quasi-identifier", "Band age (18-24, 25-34…); use state/zone, not city, for small groups"],
-       ["Lifecare patients / admissions", "Patient_Name, Patient_ID", "Direct identifier (PHI)", "Remove before any extract leaves the hospital"],
-       ["Lifecare admissions", "Medical_Condition, Medication, Test_Result", "Health data (PHI, special category)", "Aggregate only; minimum 5 per cell"],
-       ["Lifecare screening", "HbA1c_Level, Blood_Glucose_mg_dL, Diabetes", "Health data (PHI)", "Pseudonymised Screening_ID only"],
-       ["Crestview wellbeing survey", "Suicidal_Thoughts_Ever, Depression_Screen_Positive", "Highly sensitive", "Restricted file; aggregate tables with suppression only"],
+       ["Mercyland patients / admissions", "Patient_Name, Patient_No", "Direct identifier (PHI)", "Remove before any extract leaves the hospital"],
+       ["Mercyland admissions", "Diagnosis_Group, Medication, Lab_Result", "Health data (PHI, special category)", "Aggregate only; minimum 5 per cell"],
+       ["Mercyland screening", "HbA1c_Pct, Glucose_mg_dL, Diabetes", "Health data (PHI)", "Pseudonymised Screen_ID only"],
+       ["Kingsway wellbeing survey", "Self_Harm_Thoughts, PHQ9_Positive", "Highly sensitive", "Restricted file; aggregate tables with suppression only"],
        ["ETEH salary survey", "Annual_Salary_NGN + Job_Title + Age", "Quasi-identifiers in combination", "Publish bands, not exact salaries, for rare job titles"]]
 s.table(pd.DataFrame(pii, columns=["Dataset", "Columns", "Classification", "Handling rule"]), "tPII",
         widths={"Dataset": 26, "Columns": 40, "Classification": 26, "Handling rule": 50})
 s.band("4.13.4", "Data minimisation - question: 'Which departments have the highest readmission rate?'")
-needed = ["Department", "Readmit_30d", "Admission_Date (year only)"]
+needed = ["Department", "Readmitted_30d", "Admit_Date (year only)"]
 s.calc([("Columns available in the admissions extract", len(lc.columns), len(lc.columns), "int", ", ".join(lc.columns[:8]) + " …"),
         ("Columns actually needed", len(needed), len(needed), "int", ", ".join(needed)),
-        ("Columns to drop before analysis", f"={len(lc.columns)}-{len(needed)}", len(lc.columns) - len(needed), "int", "Including Patient_Name, Doctor_Name, Billing_Amount")])
+        ("Columns to drop before analysis", f"={len(lc.columns)}-{len(needed)}", len(lc.columns) - len(needed), "int", "Including Patient_Name, Consultant_Name, Bill_Amount_NGN")])
 s.band("4.13.5", "Anonymisation and aggregation: wellbeing survey with small-cell suppression (n < 5 → '<5')")
 wb_ = L("cv_wellbeing")
-agg = wb_.groupby("Programme").agg(Respondents=("Respondent_ID", "count"), Screen_positive=("Depression_Screen_Positive", lambda v: (v == "Yes").sum())).reset_index()
+agg = wb_.groupby("Programme").agg(Respondents=("Respondent_ID", "count"), Screen_positive=("PHQ9_Positive", lambda v: (v == "Yes").sum())).reset_index()
 agg = agg.sort_values("Respondents", ascending=False).reset_index(drop=True)
 s.table(agg, "tSuppress", fmts={"Respondents": "int", "Screen_positive": "int"}, widths={"Programme": 18},
         calc={"Publishable_count": ('=IF([@Screen_positive]<5,"<5",[@Screen_positive])', None, ["<5" if v < 5 else int(v) for v in agg.Screen_positive]),
@@ -1042,7 +1042,7 @@ s.grid([["Raw gap (all levels)", f"{1 - fem[-1] / mal[-1]:.1%}", "What a headlin
         ["Largest within-level gap", f"{max(1 - f_ / m_ for f_, m_ in zip(fem[:-1], mal[:-1])):.1%}", "The fairness issue to investigate"],
         ["'Other' gender respondents", f"{int((sal.Gender == 'Other').sum())}", "Too few to report - suppress, do not drop silently"]], header=["Measure", "Value", "Interpretation"])
 s.band("4.13.6 / 4.13.8-9", "Legal basis, retention and governance (Nigeria Data Protection Act 2023)")
-s.grid([["Purpose & legal basis", "Lifecare: provision of care / public interest in health; SuperMart: contract + legitimate interest; survey: consent"],
+s.grid([["Purpose & legal basis", "Mercyland: provision of care / public interest in health; SuperMart: contract + legitimate interest; survey: consent"],
         ["Retention", "Training extracts deleted at the end of the bootcamp; production data per organisation policy"],
         ["Secure handling", "Encrypted laptops, no personal data in email or public AI tools, shared links restricted"],
         ["Accountability", "Data owner approves extracts; analyst documents minimisation; DPO reviews new uses"]], header=["Principle", "In practice"], merge_last=True)
@@ -1095,7 +1095,7 @@ s.band("4.14.4", "Intermediate: uncertainty and missing data")
 dsm = L("dirty_sm")
 qmiss = int(pd.to_numeric(dsm.Quantity, errors="coerce").isna().sum())
 s.para(f"Missing data: the Week 2 dirty extract has {qmiss} lines with no Quantity. Report the total units as a range, not a single number, until the store confirms the values.", "plain")
-dep_ci = los.groupby("Department").agg(n=("Admission_ID", "count"), k=("Readmit_30d", lambda v: (v == "Yes").sum())).reset_index()
+dep_ci = los.groupby("Department").agg(n=("Episode_ID", "count"), k=("Readmitted_30d", lambda v: (v == "Yes").sum())).reset_index()
 dep_ci["p"] = dep_ci.k / dep_ci.n
 moe = 1.96 * np.sqrt(dep_ci.p * (1 - dep_ci.p) / dep_ci.n)
 s.table(dep_ci[["Department", "n", "k"]].rename(columns={"n": "Admissions", "k": "Readmitted"}), "tReadmitCI", fmts={"Admissions": "int", "Readmitted": "int"}, widths={"Department": 26},
@@ -1120,10 +1120,10 @@ s.grid([["Decision needed", "Which stores get the FY2026 refurbishment budget?"]
 # ---------------------------------------------------------------------- data sheets
 b.data_sheet("D_Salary", sal, "tSal", fmts={"Annual_Salary_NGN": "naira", "Age": "int", "Years_of_Experience": "dec1", "Is_Masters": "int", "Is_PhD": "int"},
              title="ETEH Talent Salary Survey (1,781) + 0/1 dummy columns for regression", note="Is_Masters / Is_PhD = 1 when Education_Level is Master's / PhD")
-b.data_sheet("D_Students", cvd, "tCV", title="Crestview University - student performance 2024/25 (6,607)")
+b.data_sheet("D_Students", cvd, "tCV", title="Kingsway University - student performance 2024/25 (6,607)")
 b.data_sheet("D_Orders", orders, "tOrders", fmts={"order_date": "date", "total_price": "naira"}, title="SuperMart Online orders (11,000) with product category")
-b.data_sheet("D_LOS_2023", los, "tLOS", fmts={"Admission_Date": "date", "Billing_Amount": "naira"}, title="Lifecare admissions 2023 (no patient names or IDs - minimised extract)")
-b.data_sheet("D_Hotel", hod, "tHotel", fmts={"Arrival_Date": "date", "Avg_Room_Rate_NGN": "naira", "Booking_Value_NGN": "naira"}, title="Eko Suites bookings 2023-2024 (36,275)")
+b.data_sheet("D_LOS_2023", los, "tLOS", fmts={"Admit_Date": "date", "Bill_Amount_NGN": "naira"}, title="Mercyland admissions 2023 (no patient names or IDs - minimised extract)")
+b.data_sheet("D_Hotel", hod, "tHotel", fmts={"Check_In": "date", "Room_Rate_NGN": "naira", "Reservation_Value_NGN": "naira"}, title="Atlantic Pearl bookings 2023-2024 (36,275)")
 b.data_sheet("D_Pareto_FY25", cust.assign(Cum_Share=cum), "tPareto", fmts={"Sales": "naira", "Cum_Share": "pct", "Rank": "int"},
              title="SuperMart FY2025 customers ranked by sales (Cum_Share = share of sales from customers at least this large)")
 dash = s25[["Order_ID", "Order_Date", "Store_ID", "Store_Name", "Zone", "Category", "Sales", "Profit"]]
@@ -1131,10 +1131,10 @@ b.data_sheet("D_Sales_2025", dash, "tDash25", fmts={"Order_Date": "date", "Sales
 
 b.cover("Week 4 Section Examples - Statistics, Forecasting, What-If, Communication, AI and Ethics",
         ["One worksheet per module (4.1 - 4.14). Every statistic is a live formula over the D_ tables; yellow cells are inputs you can change.",
-         "4.5 forecasts SuperMart's monthly sales with FORECAST.ETS and backtests it on 2025; 4.6 is a full Eko Suites revenue model with Goal Seek, "
+         "4.5 forecasts SuperMart's monthly sales with FORECAST.ETS and backtests it on 2025; 4.6 is a full Atlantic Pearl revenue model with Goal Seek, "
          "a sensitivity grid, scenarios and a Solver allocation.",
          "4.10 is a protected sheet (no password) with three planted formula errors to find. 4.14 uses internal benchmarks and the Week 2 PDF bulletin only.",
          "Sensitive data: only minimised or aggregated extracts appear here - no patient names, contact details or respondent-level wellbeing answers."],
-        [(k, DATASETS_TEXT[k]) for k in ["Salary Survey", "Crestview", "SuperMart Stores", "SuperMart Online", "Lifecare", "Eko Suites", "Crestview Wellbeing"]])
+        [(k, DATASETS_TEXT[k]) for k in ["Salary Survey", "Kingsway", "SuperMart Stores", "SuperMart Online", "Mercyland", "Atlantic Pearl", "Kingsway Welfare"]])
 b.close()
 print("Week 4 ->", OUT)

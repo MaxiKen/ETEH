@@ -1,0 +1,641 @@
+Matric_No,Age,Gender,Academic_Level,Country,Daily_Screen_Hrs,Top_App,Hurts_Studies,Sleep_Hrs,Wellbeing_Score,Relationship_Status,Phone_Conflicts,Dependence_Score
+KDH-0001,28,Male,Pre-degree,Nigeria,3.4,WhatsApp,Yes,7.5,7,Single,2,4
+KDH-0002,19,Female,Undergraduate,Nigeria,5.8,YouTube,No,5.3,5,In Relationship,4,8
+KDH-0003,17,Female,Pre-degree,Nigeria,4.6,TikTok,No,6.3,5,In Relationship,2,5
+KDH-0004,20,Female,Pre-degree,Nigeria,4.2,Instagram,Yes,6.3,6,In Relationship,3,4
+KDH-0005,19,Female,Undergraduate,Nigeria,2.4,Instagram,No,7.1,9,In Relationship,2,4
+KDH-0006,17,Male,Pre-degree,Nigeria,2.2,WhatsApp,No,8.1,8,Single,0,2
+KDH-0007,22,Male,Undergraduate,Nigeria,1.6,X,No,7.8,8,In Relationship,3,3
+KDH-0008,28,Female,Undergraduate,Nigeria,4.2,Snapchat,Yes,6.3,6,Single,2,7
+KDH-0009,18,Female,Undergraduate,Nigeria,4.9,TikTok,Yes,6.6,5,Single,2,6
+KDH-0010,27,Female,Undergraduate,Nigeria,6.1,TikTok,Yes,5.5,5,Single,4,8
+KDH-0011,22,Female,Undergraduate,Ghana,5.5,Snapchat,Yes,5.7,6,Single,3,7
+KDH-0012,25,Male,Undergraduate,Nigeria,3.5,WhatsApp,No,6.5,5,Complicated,2,5
+KDH-0013,27,Male,Undergraduate,Nigeria,8.2,TikTok,Yes,4.2,4,Single,5,9
+KDH-0014,27,Female,Undergraduate,Cameroon,5.0,TikTok,No,6.5,5,Single,4,6
+KDH-0015,18,Male,Undergraduate,Nigeria,2.1,WhatsApp,No,7.6,7,In Relationship,0,3
+KDH-0016,17,Female,Undergraduate,Nigeria,3.2,Instagram,No,6.8,7,In Relationship,3,5
+KDH-0017,19,Female,Postgraduate,Nigeria,4.4,WhatsApp,No,7.1,7,Single,4,6
+KDH-0018,28,Female,Postgraduate,Nigeria,3.9,TikTok,No,6.0,6,Single,3,5
+KDH-0019,21,Female,Undergraduate,Nigeria,4.3,WhatsApp,No,6.5,7,Single,2,6
+KDH-0020,23,Female,Undergraduate,Nigeria,4.6,Instagram,Yes,6.8,6,In Relationship,4,6
+KDH-0021,20,Female,Undergraduate,Nigeria,1.6,WhatsApp,No,8.9,8,Single,0,2
+KDH-0022,23,Male,Undergraduate,Nigeria,2.8,WhatsApp,No,7.3,6,Complicated,1,5
+KDH-0023,25,Female,Undergraduate,Benin,3.7,WhatsApp,No,6.6,6,In Relationship,1,5
+KDH-0024,21,Male,Undergraduate,Nigeria,5.5,WhatsApp,Yes,6.1,6,In Relationship,3,8
+KDH-0025,27,Male,Undergraduate,Nigeria,3.9,WhatsApp,No,7.4,7,In Relationship,1,6
+KDH-0026,17,Male,Undergraduate,Ghana,6.8,TikTok,No,3.9,6,Single,4,9
+KDH-0027,26,Female,Undergraduate,Nigeria,3.7,X,No,7.7,8,Complicated,1,4
+KDH-0028,17,Female,Undergraduate,Nigeria,3.3,WhatsApp,No,7.8,6,Single,1,5
+KDH-0029,22,Female,Undergraduate,Nigeria,1.6,WhatsApp,No,8.8,9,Complicated,0,4
+KDH-0030,25,Female,Undergraduate,Nigeria,7.4,TikTok,Yes,4.9,4,In Relationship,5,9
+KDH-0031,27,Male,Pre-degree,Nigeria,5.6,TikTok,No,5.1,5,Single,4,8
+KDH-0032,28,Male,Undergraduate,Nigeria,2.3,WhatsApp,No,7.2,9,Single,2,5
+KDH-0033,20,Female,Undergraduate,Nigeria,3.6,Facebook,No,6.7,8,In Relationship,3,6
+KDH-0034,28,Female,Undergraduate,Nigeria,5.0,X,No,5.5,6,In Relationship,2,7
+KDH-0035,17,Female,Postgraduate,Nigeria,2.2,YouTube,No,7.5,8,In Relationship,0,4
+KDH-0036,19,Female,Undergraduate,Nigeria,3.6,Instagram,No,6.7,7,Single,1,5
+KDH-0037,21,Female,Undergraduate,Nigeria,5.6,TikTok,Yes,5.9,6,In Relationship,2,7
+KDH-0038,25,Male,Undergraduate,Nigeria,6.4,TikTok,Yes,4.9,5,Single,2,8
+KDH-0039,20,Male,Undergraduate,Nigeria,5.9,WhatsApp,Yes,4.8,5,Single,3,8
+KDH-0040,23,Female,Undergraduate,Nigeria,2.9,YouTube,No,8.4,8,In Relationship,1,4
+KDH-0041,17,Male,Undergraduate,Nigeria,5.9,Facebook,Yes,5.6,6,Single,3,9
+KDH-0042,23,Female,Undergraduate,Nigeria,5.5,WhatsApp,Yes,5.2,6,Single,3,7
+KDH-0043,21,Female,Undergraduate,Nigeria,6.0,YouTube,Yes,5.5,5,Single,3,9
+KDH-0044,28,Female,Undergraduate,Nigeria,5.3,WhatsApp,Yes,6.6,5,Single,3,8
+KDH-0045,27,Male,Undergraduate,Nigeria,5.8,YouTube,Yes,6.3,5,Single,3,8
+KDH-0046,22,Male,Undergraduate,Nigeria,3.8,X,No,7.4,7,In Relationship,4,5
+KDH-0047,27,Female,Undergraduate,Ghana,5.3,WhatsApp,No,5.7,5,Single,4,7
+KDH-0048,25,Male,Undergraduate,Benin,3.7,X,No,7.6,7,Single,1,5
+KDH-0049,17,Male,Postgraduate,Nigeria,4.4,Snapchat,No,6.9,7,In Relationship,2,7
+KDH-0050,27,Female,Undergraduate,Nigeria,4.0,WhatsApp,Yes,6.4,8,Complicated,3,5
+KDH-0051,23,Female,Undergraduate,Nigeria,6.0,X,Yes,6.6,5,In Relationship,4,8
+KDH-0052,23,Female,Postgraduate,Nigeria,3.7,X,No,6.7,8,Single,1,4
+KDH-0053,19,Male,Undergraduate,Nigeria,5.0,TikTok,Yes,6.4,5,In Relationship,3,7
+KDH-0054,27,Female,Undergraduate,Nigeria,3.5,Instagram,No,7.4,8,In Relationship,3,6
+KDH-0055,20,Male,Undergraduate,Nigeria,3.4,YouTube,Yes,8.3,6,In Relationship,1,4
+KDH-0056,28,Female,Undergraduate,Nigeria,4.5,TikTok,No,7.6,6,Single,3,7
+KDH-0057,20,Male,Undergraduate,Nigeria,5.8,X,Yes,5.7,6,Single,2,7
+KDH-0058,18,Female,Undergraduate,Nigeria,7.0,TikTok,Yes,5.1,4,Complicated,5,9
+KDH-0059,26,Female,Undergraduate,Nigeria,5.6,Instagram,Yes,5.2,5,Single,4,7
+KDH-0060,23,Female,Postgraduate,Nigeria,3.1,TikTok,No,7.2,6,Single,1,6
+KDH-0061,22,Female,Undergraduate,Nigeria,5.3,WhatsApp,Yes,7.0,5,Single,4,6
+KDH-0062,25,Female,Undergraduate,Benin,7.7,X,Yes,4.3,4,Single,4,9
+KDH-0063,21,Female,Pre-degree,Nigeria,4.8,TikTok,Yes,6.8,7,In Relationship,3,7
+KDH-0064,27,Female,Postgraduate,Ghana,2.8,WhatsApp,No,6.8,6,Single,2,5
+KDH-0065,28,Female,Undergraduate,Nigeria,6.1,Facebook,Yes,5.9,5,In Relationship,3,9
+KDH-0066,22,Female,Pre-degree,Nigeria,4.7,WhatsApp,Yes,6.2,6,Single,3,7
+KDH-0067,28,Female,Undergraduate,Nigeria,6.1,Instagram,No,5.7,5,Complicated,3,9
+KDH-0068,22,Female,Postgraduate,Nigeria,5.2,YouTube,No,6.2,5,In Relationship,3,6
+KDH-0069,20,Male,Undergraduate,Nigeria,3.0,TikTok,No,7.1,7,In Relationship,2,5
+KDH-0070,25,Male,Undergraduate,Nigeria,1.0,WhatsApp,No,8.6,9,Single,0,2
+KDH-0071,18,Male,Undergraduate,Nigeria,3.7,Facebook,No,7.1,7,In Relationship,3,6
+KDH-0072,17,Female,Postgraduate,Nigeria,3.7,TikTok,No,7.7,6,Complicated,2,5
+KDH-0073,28,Female,Undergraduate,Ghana,4.4,Instagram,No,6.9,6,In Relationship,3,6
+KDH-0074,21,Male,Undergraduate,Nigeria,3.0,WhatsApp,No,6.7,7,In Relationship,2,5
+KDH-0075,25,Male,Undergraduate,Nigeria,2.9,WhatsApp,No,6.9,7,In Relationship,2,3
+KDH-0076,19,Male,Undergraduate,Nigeria,6.3,Instagram,Yes,5.2,6,Single,5,9
+KDH-0077,23,Female,Undergraduate,Nigeria,6.5,WhatsApp,Yes,6.1,3,In Relationship,3,8
+KDH-0078,22,Female,Postgraduate,Togo,4.4,Instagram,Yes,7.0,6,In Relationship,3,5
+KDH-0079,23,Male,Undergraduate,Nigeria,7.3,Facebook,Yes,4.3,4,In Relationship,5,9
+KDH-0080,21,Female,Undergraduate,Nigeria,4.3,YouTube,Yes,6.6,6,In Relationship,3,6
+KDH-0081,17,Female,Undergraduate,Nigeria,5.9,WhatsApp,Yes,5.1,4,Single,3,7
+KDH-0082,26,Male,Undergraduate,Nigeria,6.0,WhatsApp,Yes,5.8,6,In Relationship,4,8
+KDH-0083,26,Male,Pre-degree,Nigeria,4.2,Snapchat,No,7.0,6,In Relationship,3,6
+KDH-0084,25,Female,Pre-degree,Nigeria,4.8,Instagram,Yes,5.9,7,Single,3,7
+KDH-0085,19,Male,Pre-degree,Nigeria,2.4,YouTube,No,8.9,8,In Relationship,1,3
+KDH-0086,28,Female,Undergraduate,Ghana,6.4,X,Yes,4.9,7,In Relationship,4,8
+KDH-0087,25,Female,Undergraduate,Nigeria,5.6,WhatsApp,Yes,5.7,6,Single,3,7
+KDH-0088,28,Male,Undergraduate,Ghana,3.8,Instagram,No,6.6,7,In Relationship,1,6
+KDH-0089,18,Male,Pre-degree,Nigeria,6.0,Instagram,Yes,6.4,4,In Relationship,3,8
+KDH-0090,20,Male,Undergraduate,Nigeria,6.7,Facebook,Yes,5.7,5,Single,3,7
+KDH-0091,28,Female,Postgraduate,Nigeria,4.6,YouTube,No,5.5,5,Single,2,7
+KDH-0092,17,Male,Undergraduate,Nigeria,5.4,X,Yes,5.2,5,Single,2,7
+KDH-0093,21,Female,Undergraduate,Nigeria,3.8,TikTok,No,7.0,6,Single,1,5
+KDH-0094,23,Male,Pre-degree,Nigeria,3.6,TikTok,No,7.6,7,In Relationship,3,5
+KDH-0095,27,Male,Undergraduate,Nigeria,3.2,WhatsApp,No,7.9,8,In Relationship,1,5
+KDH-0096,23,Female,Pre-degree,Nigeria,7.4,YouTube,Yes,3.5,3,In Relationship,5,9
+KDH-0097,25,Male,Postgraduate,Nigeria,5.2,Instagram,No,6.1,6,Single,3,6
+KDH-0098,25,Male,Undergraduate,Nigeria,6.3,WhatsApp,Yes,5.1,4,Single,3,8
+KDH-0099,23,Female,Undergraduate,Nigeria,4.5,Instagram,No,7.2,7,In Relationship,2,7
+KDH-0100,22,Female,Undergraduate,Nigeria,4.4,Snapchat,No,5.9,7,In Relationship,4,7
+KDH-0101,19,Female,Undergraduate,Nigeria,5.4,Facebook,Yes,5.9,5,Complicated,3,7
+KDH-0102,27,Female,Undergraduate,Nigeria,5.1,WhatsApp,No,6.3,6,Single,3,7
+KDH-0103,18,Male,Undergraduate,Nigeria,4.1,WhatsApp,No,6.6,6,Single,1,5
+KDH-0104,25,Male,Pre-degree,Cameroon,3.2,TikTok,No,6.8,7,Single,2,5
+KDH-0105,27,Female,Postgraduate,Nigeria,6.9,Instagram,Yes,5.3,5,In Relationship,3,8
+KDH-0106,22,Female,Undergraduate,Nigeria,7.0,WhatsApp,Yes,6.1,3,Single,4,9
+KDH-0107,23,Male,Postgraduate,Nigeria,3.1,WhatsApp,No,7.1,6,Single,2,4
+KDH-0108,19,Female,Undergraduate,Nigeria,4.6,WhatsApp,No,6.2,6,Single,4,6
+KDH-0109,22,Male,Postgraduate,Nigeria,1.3,YouTube,No,7.2,8,In Relationship,1,2
+KDH-0110,27,Male,Pre-degree,Nigeria,5.8,WhatsApp,Yes,5.3,5,Single,4,7
+KDH-0111,21,Male,Undergraduate,Nigeria,6.0,WhatsApp,Yes,6.1,6,Single,1,7
+KDH-0112,19,Male,Postgraduate,Nigeria,3.0,YouTube,No,7.1,8,Single,1,5
+KDH-0113,22,Male,Undergraduate,Cameroon,6.8,TikTok,Yes,4.9,5,In Relationship,3,9
+KDH-0114,19,Female,Undergraduate,Nigeria,5.8,X,Yes,5.9,5,In Relationship,3,8
+KDH-0115,19,Female,Postgraduate,Nigeria,2.1,TikTok,No,7.4,8,Single,1,2
+KDH-0116,19,Female,Undergraduate,Nigeria,4.2,WhatsApp,No,6.2,6,In Relationship,3,6
+KDH-0117,17,Male,Postgraduate,Nigeria,5.5,TikTok,No,5.7,7,Single,3,7
+KDH-0118,27,Male,Undergraduate,Nigeria,3.9,Instagram,Yes,6.0,7,Complicated,0,5
+KDH-0119,27,Male,Undergraduate,Nigeria,5.3,X,Yes,5.0,6,In Relationship,2,7
+KDH-0120,25,Female,Undergraduate,Nigeria,5.6,Facebook,Yes,6.4,6,Single,5,7
+KDH-0121,25,Male,Undergraduate,Ghana,7.3,YouTube,Yes,5.6,4,Single,4,9
+KDH-0122,17,Female,Pre-degree,Nigeria,3.1,TikTok,No,8.0,8,In Relationship,1,4
+KDH-0123,26,Male,Undergraduate,Nigeria,5.8,TikTok,Yes,5.1,4,Single,3,8
+KDH-0124,24,Female,Undergraduate,Nigeria,5.2,TikTok,No,6.4,8,In Relationship,2,6
+KDH-0125,17,Female,Postgraduate,Nigeria,3.6,WhatsApp,No,6.9,6,In Relationship,1,5
+KDH-0126,20,Male,Pre-degree,Nigeria,5.5,X,Yes,6.7,5,Single,2,7
+KDH-0127,24,Male,Undergraduate,Nigeria,5.9,WhatsApp,Yes,5.5,5,Single,4,6
+KDH-0128,28,Female,Undergraduate,Nigeria,1.0,TikTok,No,8.2,9,Single,1,2
+KDH-0129,20,Female,Undergraduate,Nigeria,5.7,Instagram,Yes,5.7,5,Single,2,7
+KDH-0130,19,Female,Undergraduate,Nigeria,4.5,WhatsApp,Yes,6.8,5,Single,2,7
+KDH-0131,17,Male,Undergraduate,Nigeria,4.3,TikTok,Yes,6.6,7,Complicated,3,6
+KDH-0132,27,Male,Pre-degree,Nigeria,5.9,TikTok,No,5.4,5,In Relationship,3,7
+KDH-0133,17,Male,Undergraduate,Nigeria,4.3,YouTube,Yes,7.4,6,Single,1,7
+KDH-0134,22,Male,Undergraduate,Nigeria,5.1,WhatsApp,No,6.4,4,Single,3,7
+KDH-0135,25,Female,Postgraduate,Nigeria,3.4,TikTok,Yes,6.8,7,Single,2,4
+KDH-0136,28,Male,Pre-degree,Benin,4.4,Instagram,No,6.7,6,Single,1,7
+KDH-0137,24,Male,Postgraduate,Nigeria,4.1,X,No,5.9,8,Single,3,5
+KDH-0138,19,Female,Undergraduate,Nigeria,3.4,WhatsApp,No,7.1,9,In Relationship,1,4
+KDH-0139,25,Female,Undergraduate,Nigeria,7.5,TikTok,Yes,5.5,3,Single,4,9
+KDH-0140,27,Female,Undergraduate,Nigeria,5.4,TikTok,Yes,6.5,6,In Relationship,3,7
+KDH-0141,21,Female,Postgraduate,Nigeria,4.1,WhatsApp,Yes,6.5,6,In Relationship,2,6
+KDH-0142,25,Male,Undergraduate,Nigeria,6.2,Snapchat,Yes,5.6,5,Single,4,9
+KDH-0143,20,Male,Undergraduate,Nigeria,2.0,WhatsApp,No,8.0,8,In Relationship,1,4
+KDH-0144,17,Female,Postgraduate,Nigeria,4.3,WhatsApp,No,6.6,7,Single,3,6
+KDH-0145,27,Female,Pre-degree,Nigeria,2.1,Facebook,No,6.9,7,Single,1,4
+KDH-0146,18,Male,Undergraduate,Nigeria,5.4,TikTok,Yes,5.7,6,Single,3,8
+KDH-0147,25,Female,Undergraduate,Nigeria,4.1,Facebook,No,7.3,8,In Relationship,3,5
+KDH-0148,19,Female,Pre-degree,Ghana,3.1,WhatsApp,No,7.4,7,In Relationship,1,5
+KDH-0149,27,Male,Undergraduate,Cameroon,5.7,YouTube,Yes,5.0,6,In Relationship,4,7
+KDH-0150,21,Male,Undergraduate,Nigeria,2.5,TikTok,No,7.7,8,In Relationship,1,3
+KDH-0151,27,Male,Undergraduate,Nigeria,7.2,TikTok,Yes,5.2,4,Single,5,9
+KDH-0152,17,Female,Undergraduate,Nigeria,5.8,Instagram,Yes,6.5,6,In Relationship,5,9
+KDH-0153,19,Male,Postgraduate,Nigeria,4.7,WhatsApp,No,6.3,7,Complicated,1,7
+KDH-0154,26,Female,Undergraduate,Nigeria,2.8,Instagram,No,6.9,8,In Relationship,0,5
+KDH-0155,18,Female,Pre-degree,Nigeria,5.9,Snapchat,Yes,5.4,7,Single,3,7
+KDH-0156,23,Male,Undergraduate,Nigeria,6.3,TikTok,Yes,4.7,4,Single,2,9
+KDH-0157,27,Female,Postgraduate,Nigeria,3.5,Instagram,No,5.7,6,Single,2,5
+KDH-0158,21,Male,Undergraduate,Nigeria,5.5,YouTube,Yes,5.6,5,In Relationship,3,7
+KDH-0159,27,Female,Undergraduate,Nigeria,4.3,Snapchat,Yes,6.4,8,Single,3,6
+KDH-0160,19,Female,Undergraduate,Nigeria,4.0,Instagram,No,7.5,7,Single,2,5
+KDH-0161,22,Male,Undergraduate,Nigeria,5.6,TikTok,No,6.8,5,In Relationship,3,7
+KDH-0162,23,Male,Postgraduate,Nigeria,2.6,YouTube,No,7.3,7,Complicated,1,6
+KDH-0163,27,Female,Undergraduate,Nigeria,5.0,Instagram,No,6.5,5,Single,1,7
+KDH-0164,18,Male,Undergraduate,Nigeria,4.3,WhatsApp,No,6.4,5,In Relationship,2,7
+KDH-0165,21,Female,Undergraduate,Nigeria,2.9,WhatsApp,No,7.5,9,In Relationship,1,3
+KDH-0166,23,Female,Postgraduate,Nigeria,3.6,TikTok,Yes,7.1,6,Single,2,5
+KDH-0167,20,Male,Postgraduate,Nigeria,5.4,Instagram,Yes,5.6,6,In Relationship,4,7
+KDH-0168,22,Female,Undergraduate,Nigeria,3.0,X,No,7.2,8,In Relationship,1,4
+KDH-0169,20,Female,Postgraduate,Nigeria,4.9,WhatsApp,Yes,5.9,6,Single,4,7
+KDH-0170,17,Female,Undergraduate,Nigeria,3.5,WhatsApp,No,7.0,7,In Relationship,2,5
+KDH-0171,23,Male,Undergraduate,Nigeria,4.2,WhatsApp,Yes,6.5,5,Single,3,5
+KDH-0172,26,Female,Undergraduate,Ghana,4.8,WhatsApp,No,5.9,6,In Relationship,3,6
+KDH-0173,19,Male,Undergraduate,Nigeria,5.6,WhatsApp,Yes,6.0,7,Single,3,8
+KDH-0174,22,Male,Undergraduate,Nigeria,6.8,WhatsApp,Yes,4.8,4,Single,3,9
+KDH-0175,18,Male,Undergraduate,Nigeria,4.9,Facebook,No,6.6,7,Single,4,6
+KDH-0176,17,Female,Postgraduate,Nigeria,3.6,WhatsApp,No,6.8,7,In Relationship,2,6
+KDH-0177,28,Female,Pre-degree,Benin,7.3,TikTok,Yes,4.4,5,Single,4,9
+KDH-0178,18,Male,Undergraduate,Nigeria,2.8,TikTok,No,8.1,8,Single,1,4
+KDH-0179,26,Male,Undergraduate,Nigeria,4.8,Snapchat,Yes,5.9,7,Single,2,8
+KDH-0180,28,Female,Undergraduate,Nigeria,1.2,Instagram,No,9.2,8,Single,1,2
+KDH-0181,21,Female,Postgraduate,Togo,5.3,Instagram,Yes,5.3,5,Single,4,7
+KDH-0182,27,Female,Undergraduate,Nigeria,1.7,WhatsApp,No,7.7,8,Single,0,3
+KDH-0183,26,Male,Undergraduate,Nigeria,4.9,Instagram,Yes,6.1,7,In Relationship,4,6
+KDH-0184,26,Male,Undergraduate,Nigeria,3.8,Instagram,No,7.1,7,Single,2,5
+KDH-0185,17,Male,Undergraduate,Ghana,5.1,YouTube,No,6.0,5,In Relationship,4,7
+KDH-0186,26,Male,Undergraduate,Nigeria,4.3,YouTube,Yes,5.3,7,Single,2,6
+KDH-0187,23,Male,Undergraduate,Nigeria,3.5,WhatsApp,No,7.1,6,Single,1,5
+KDH-0188,18,Male,Undergraduate,Nigeria,4.2,Instagram,No,7.5,7,In Relationship,3,5
+KDH-0189,21,Male,Postgraduate,Nigeria,7.3,YouTube,Yes,3.6,3,Single,5,9
+KDH-0190,17,Male,Undergraduate,Nigeria,2.7,Snapchat,Yes,7.9,8,In Relationship,2,5
+KDH-0191,23,Female,Undergraduate,Nigeria,5.1,WhatsApp,No,5.8,6,Single,3,7
+KDH-0192,27,Female,Undergraduate,Nigeria,3.5,Instagram,No,7.1,7,Single,2,4
+KDH-0193,26,Female,Undergraduate,Nigeria,2.6,Snapchat,No,7.8,8,Single,2,4
+KDH-0194,19,Female,Undergraduate,Ghana,5.7,Instagram,Yes,6.4,5,In Relationship,3,7
+KDH-0195,27,Female,Pre-degree,Nigeria,5.3,WhatsApp,Yes,5.7,5,In Relationship,4,8
+KDH-0196,28,Male,Undergraduate,Nigeria,5.0,Instagram,Yes,7.2,6,In Relationship,2,9
+KDH-0197,21,Female,Undergraduate,Nigeria,5.5,TikTok,Yes,6.0,6,Single,3,6
+KDH-0198,27,Male,Undergraduate,Nigeria,4.6,TikTok,Yes,6.5,6,In Relationship,2,6
+KDH-0199,28,Male,Undergraduate,Togo,1.8,TikTok,No,7.7,8,Single,0,3
+KDH-0200,27,Male,Undergraduate,Nigeria,2.6,Instagram,No,7.7,8,In Relationship,1,4
+KDH-0201,22,Male,Postgraduate,Ghana,3.4,WhatsApp,No,7.5,7,Single,2,5
+KDH-0202,19,Female,Undergraduate,Nigeria,5.8,WhatsApp,Yes,5.5,4,Single,3,7
+KDH-0203,22,Female,Undergraduate,Nigeria,6.7,Instagram,Yes,4.6,4,Single,4,8
+KDH-0204,23,Male,Undergraduate,Nigeria,4.4,TikTok,Yes,6.8,7,In Relationship,2,6
+KDH-0205,26,Female,Undergraduate,Nigeria,4.5,WhatsApp,Yes,6.3,5,Single,2,6
+KDH-0206,17,Female,Undergraduate,Nigeria,5.6,Instagram,Yes,5.9,6,Single,3,6
+KDH-0207,22,Male,Undergraduate,Nigeria,2.7,TikTok,No,7.3,8,In Relationship,2,4
+KDH-0208,24,Male,Undergraduate,Nigeria,2.6,X,No,7.5,6,In Relationship,2,6
+KDH-0209,26,Female,Undergraduate,Nigeria,3.2,YouTube,No,7.2,8,In Relationship,2,7
+KDH-0210,22,Female,Undergraduate,Nigeria,4.4,X,No,6.5,7,In Relationship,2,7
+KDH-0211,23,Female,Undergraduate,Nigeria,3.0,Facebook,No,6.8,8,Single,2,4
+KDH-0212,20,Female,Undergraduate,Nigeria,4.4,TikTok,No,7.1,5,Single,3,6
+KDH-0213,24,Male,Pre-degree,Nigeria,3.4,Snapchat,No,8.4,6,In Relationship,1,4
+KDH-0214,25,Female,Undergraduate,Nigeria,7.1,X,Yes,4.4,4,Single,5,9
+KDH-0215,17,Male,Undergraduate,Nigeria,3.7,TikTok,No,6.7,6,Single,1,6
+KDH-0216,17,Female,Undergraduate,Nigeria,7.9,WhatsApp,Yes,4.3,4,Single,4,9
+KDH-0217,20,Female,Postgraduate,Nigeria,3.6,WhatsApp,No,7.4,6,Single,3,5
+KDH-0218,21,Male,Undergraduate,Nigeria,4.3,WhatsApp,No,6.3,6,In Relationship,1,5
+KDH-0219,23,Male,Undergraduate,Nigeria,3.2,WhatsApp,No,7.1,7,In Relationship,1,5
+KDH-0220,23,Male,Postgraduate,Nigeria,4.9,Instagram,No,6.4,5,Complicated,5,6
+KDH-0221,23,Male,Undergraduate,Nigeria,7.3,WhatsApp,Yes,4.7,4,In Relationship,4,8
+KDH-0222,26,Male,Undergraduate,Nigeria,5.1,Instagram,Yes,5.7,5,In Relationship,3,6
+KDH-0223,23,Male,Undergraduate,Nigeria,5.1,TikTok,No,7.2,6,Single,4,7
+KDH-0224,28,Female,Postgraduate,Nigeria,3.1,Instagram,No,7.5,6,Single,2,4
+KDH-0225,23,Female,Postgraduate,Nigeria,2.8,WhatsApp,No,7.1,9,Single,1,4
+KDH-0226,26,Female,Undergraduate,Benin,2.6,X,No,8.5,6,In Relationship,1,4
+KDH-0227,20,Male,Postgraduate,Nigeria,4.3,YouTube,No,5.7,6,Complicated,2,5
+KDH-0228,23,Male,Undergraduate,Nigeria,2.8,WhatsApp,No,7.2,8,In Relationship,0,4
+KDH-0229,27,Female,Undergraduate,Nigeria,4.3,YouTube,No,6.2,7,Single,1,7
+KDH-0230,28,Male,Undergraduate,Nigeria,4.7,TikTok,No,5.8,7,Single,2,7
+KDH-0231,25,Male,Pre-degree,Nigeria,6.6,YouTube,Yes,6.4,5,Single,5,9
+KDH-0232,20,Male,Undergraduate,Nigeria,4.5,WhatsApp,No,6.4,4,In Relationship,4,6
+KDH-0233,26,Female,Postgraduate,Nigeria,5.8,TikTok,Yes,6.3,4,Single,3,7
+KDH-0234,19,Female,Postgraduate,Nigeria,5.1,Instagram,No,5.4,6,In Relationship,3,8
+KDH-0235,18,Male,Undergraduate,Nigeria,3.0,TikTok,No,5.7,8,Single,2,4
+KDH-0236,26,Female,Undergraduate,Nigeria,5.7,WhatsApp,No,6.1,4,Single,4,7
+KDH-0237,28,Male,Undergraduate,Nigeria,5.1,WhatsApp,Yes,6.3,6,In Relationship,3,7
+KDH-0238,22,Male,Undergraduate,Benin,1.9,Instagram,No,7.6,7,In Relationship,0,4
+KDH-0239,26,Male,Undergraduate,Nigeria,2.4,WhatsApp,No,7.3,7,In Relationship,2,4
+KDH-0240,19,Female,Undergraduate,Cameroon,3.2,YouTube,No,7.8,7,Single,2,5
+KDH-0241,19,Female,Postgraduate,Nigeria,8.7,WhatsApp,Yes,4.2,4,Single,5,9
+KDH-0242,24,Female,Pre-degree,Nigeria,4.1,X,No,7.7,8,In Relationship,2,5
+KDH-0243,20,Male,Postgraduate,Nigeria,4.7,TikTok,Yes,5.7,6,In Relationship,4,6
+KDH-0244,17,Female,Postgraduate,Nigeria,4.9,Snapchat,Yes,5.6,4,Single,3,6
+KDH-0245,19,Male,Undergraduate,Ghana,4.5,Snapchat,Yes,6.5,6,Single,2,7
+KDH-0246,24,Female,Undergraduate,Nigeria,4.5,WhatsApp,No,6.9,6,Single,3,7
+KDH-0247,18,Male,Undergraduate,Nigeria,8.0,Facebook,Yes,5.8,4,Complicated,5,9
+KDH-0248,27,Male,Postgraduate,Nigeria,5.7,TikTok,Yes,5.9,5,Single,5,7
+KDH-0249,21,Female,Undergraduate,Nigeria,5.0,TikTok,Yes,6.8,5,Single,2,6
+KDH-0250,24,Female,Undergraduate,Nigeria,5.2,YouTube,Yes,6.1,6,Single,2,7
+KDH-0251,24,Male,Undergraduate,Nigeria,7.0,X,Yes,4.6,4,Single,5,9
+KDH-0252,26,Female,Undergraduate,Nigeria,3.0,TikTok,No,7.2,8,In Relationship,1,5
+KDH-0253,19,Male,Pre-degree,Nigeria,4.3,Instagram,No,6.8,6,Single,3,6
+KDH-0254,22,Male,Postgraduate,Benin,3.1,WhatsApp,No,7.5,9,Single,2,5
+KDH-0255,20,Female,Postgraduate,Nigeria,3.7,Instagram,No,7.3,8,In Relationship,1,5
+KDH-0256,28,Male,Undergraduate,Nigeria,5.6,YouTube,Yes,5.3,4,Single,4,6
+KDH-0257,22,Female,Pre-degree,Nigeria,4.6,WhatsApp,Yes,6.7,7,Single,3,6
+KDH-0258,17,Male,Undergraduate,Nigeria,4.2,WhatsApp,No,6.0,7,Single,3,5
+KDH-0259,23,Female,Pre-degree,Cameroon,7.8,X,Yes,4.6,3,Single,4,9
+KDH-0260,18,Male,Undergraduate,Nigeria,4.1,YouTube,Yes,7.1,7,In Relationship,0,6
+KDH-0261,23,Male,Undergraduate,Nigeria,3.6,TikTok,No,6.5,8,In Relationship,1,5
+KDH-0262,20,Male,Undergraduate,Cameroon,6.3,WhatsApp,Yes,6.1,6,In Relationship,4,9
+KDH-0263,25,Male,Undergraduate,Nigeria,5.8,WhatsApp,Yes,6.1,4,Single,3,7
+KDH-0264,21,Male,Postgraduate,Nigeria,4.9,WhatsApp,No,5.5,7,Single,2,6
+KDH-0265,25,Female,Undergraduate,Nigeria,1.0,TikTok,No,8.9,9,Single,0,3
+KDH-0266,28,Male,Pre-degree,Nigeria,3.6,TikTok,No,6.7,8,In Relationship,3,5
+KDH-0267,26,Male,Undergraduate,Nigeria,3.7,X,No,6.4,7,Complicated,2,6
+KDH-0268,22,Male,Pre-degree,Nigeria,4.0,YouTube,No,8.3,7,In Relationship,3,5
+KDH-0269,20,Female,Undergraduate,Nigeria,4.0,WhatsApp,Yes,6.5,6,Single,2,6
+KDH-0270,26,Male,Postgraduate,Nigeria,6.1,Instagram,No,4.7,5,Single,3,8
+KDH-0271,19,Male,Undergraduate,Nigeria,5.4,X,No,5.8,5,In Relationship,4,8
+KDH-0272,28,Female,Undergraduate,Nigeria,3.9,Facebook,No,6.4,6,In Relationship,4,5
+KDH-0273,28,Male,Undergraduate,Nigeria,4.0,WhatsApp,No,7.4,7,Single,3,6
+KDH-0274,21,Male,Undergraduate,Nigeria,3.3,YouTube,No,6.8,8,Single,1,6
+KDH-0275,26,Female,Undergraduate,Benin,4.2,Instagram,No,6.9,6,In Relationship,3,6
+KDH-0276,18,Male,Undergraduate,Nigeria,3.9,WhatsApp,No,6.2,7,Complicated,2,6
+KDH-0277,27,Female,Undergraduate,Nigeria,4.7,X,Yes,6.3,6,Single,1,6
+KDH-0278,25,Female,Undergraduate,Nigeria,5.9,YouTube,Yes,7.1,5,In Relationship,4,9
+KDH-0279,21,Female,Undergraduate,Nigeria,2.1,Snapchat,No,7.3,8,Single,2,3
+KDH-0280,22,Male,Postgraduate,Nigeria,4.2,YouTube,No,6.3,6,Single,3,5
+KDH-0281,20,Male,Undergraduate,Togo,4.0,WhatsApp,No,7.1,7,Single,2,6
+KDH-0282,19,Male,Undergraduate,Nigeria,4.2,TikTok,No,5.6,6,Single,1,6
+KDH-0283,28,Female,Pre-degree,Nigeria,4.8,Instagram,No,5.1,7,In Relationship,2,6
+KDH-0284,23,Female,Undergraduate,Nigeria,6.2,YouTube,Yes,4.9,4,In Relationship,4,7
+KDH-0285,20,Female,Postgraduate,Nigeria,5.8,WhatsApp,Yes,7.2,4,Single,2,7
+KDH-0286,17,Female,Undergraduate,Nigeria,4.8,Snapchat,Yes,6.4,6,In Relationship,3,6
+KDH-0287,20,Male,Postgraduate,Nigeria,8.5,TikTok,Yes,3.6,3,Single,4,9
+KDH-0288,18,Male,Undergraduate,Nigeria,6.5,Facebook,Yes,4.7,5,Single,5,9
+KDH-0289,22,Male,Undergraduate,Nigeria,4.7,Instagram,Yes,6.4,7,In Relationship,2,6
+KDH-0290,24,Female,Undergraduate,Nigeria,4.5,Facebook,Yes,5.8,7,Single,2,7
+KDH-0291,21,Female,Postgraduate,Nigeria,6.4,TikTok,Yes,5.8,4,In Relationship,4,9
+KDH-0292,17,Female,Undergraduate,Nigeria,4.8,WhatsApp,No,6.4,6,Single,1,6
+KDH-0293,21,Male,Postgraduate,Nigeria,4.7,TikTok,No,5.9,6,In Relationship,2,6
+KDH-0294,17,Male,Undergraduate,Nigeria,2.7,Snapchat,No,8.2,9,In Relationship,3,5
+KDH-0295,19,Female,Postgraduate,Nigeria,1.5,WhatsApp,No,8.8,8,In Relationship,2,4
+KDH-0296,26,Female,Undergraduate,Nigeria,3.4,Instagram,No,7.7,7,In Relationship,1,5
+KDH-0297,22,Male,Undergraduate,Nigeria,2.8,YouTube,No,6.2,8,In Relationship,3,4
+KDH-0298,28,Male,Pre-degree,Nigeria,2.0,WhatsApp,No,6.8,8,Single,1,3
+KDH-0299,17,Female,Undergraduate,Nigeria,5.8,WhatsApp,Yes,5.5,6,In Relationship,2,8
+KDH-0300,27,Male,Undergraduate,Nigeria,4.0,WhatsApp,No,7.4,5,Single,3,6
+KDH-0301,26,Female,Pre-degree,Nigeria,1.8,X,No,7.8,8,Single,0,3
+KDH-0302,20,Female,Undergraduate,Benin,3.0,Instagram,No,7.5,8,Single,0,4
+KDH-0303,19,Female,Postgraduate,Nigeria,4.1,Snapchat,No,7.1,6,Single,3,5
+KDH-0304,21,Female,Pre-degree,Nigeria,6.1,WhatsApp,No,5.4,7,Single,3,8
+KDH-0305,25,Female,Postgraduate,Nigeria,3.1,YouTube,No,7.6,7,In Relationship,1,4
+KDH-0306,17,Male,Undergraduate,Ghana,4.3,Facebook,Yes,6.1,6,Single,2,6
+KDH-0307,23,Female,Undergraduate,Nigeria,6.0,X,No,4.6,4,In Relationship,4,8
+KDH-0308,22,Female,Undergraduate,Nigeria,4.2,TikTok,No,7.0,6,In Relationship,2,6
+KDH-0309,26,Male,Undergraduate,Nigeria,2.3,WhatsApp,No,6.8,9,Complicated,0,3
+KDH-0310,27,Male,Postgraduate,Nigeria,5.6,TikTok,Yes,7.0,6,In Relationship,2,7
+KDH-0311,19,Female,Undergraduate,Nigeria,5.9,TikTok,Yes,5.9,6,Single,2,9
+KDH-0312,22,Male,Pre-degree,Nigeria,3.7,TikTok,No,7.2,7,In Relationship,0,4
+KDH-0313,21,Female,Undergraduate,Nigeria,4.3,WhatsApp,Yes,6.5,6,In Relationship,2,5
+KDH-0314,23,Female,Undergraduate,Nigeria,7.5,TikTok,Yes,4.7,3,Complicated,5,9
+KDH-0315,24,Female,Undergraduate,Nigeria,4.5,Instagram,No,6.0,6,Single,1,4
+KDH-0316,20,Female,Pre-degree,Nigeria,3.4,Facebook,No,6.5,7,Single,3,6
+KDH-0317,19,Female,Postgraduate,Nigeria,5.0,TikTok,Yes,6.3,5,In Relationship,3,7
+KDH-0318,23,Male,Postgraduate,Nigeria,3.5,WhatsApp,No,7.8,7,Single,3,4
+KDH-0319,28,Female,Undergraduate,Nigeria,3.5,Snapchat,No,7.2,7,In Relationship,1,5
+KDH-0320,28,Male,Undergraduate,Nigeria,5.9,WhatsApp,Yes,5.8,5,Single,2,9
+KDH-0321,23,Male,Undergraduate,Nigeria,5.5,WhatsApp,No,5.8,6,In Relationship,3,8
+KDH-0322,20,Male,Undergraduate,Nigeria,7.3,YouTube,Yes,4.7,4,In Relationship,5,9
+KDH-0323,27,Female,Undergraduate,Nigeria,4.5,Instagram,No,7.0,6,In Relationship,4,7
+KDH-0324,22,Male,Undergraduate,Nigeria,5.3,WhatsApp,Yes,6.1,5,Single,1,7
+KDH-0325,21,Female,Undergraduate,Nigeria,3.1,WhatsApp,Yes,7.3,8,Single,1,5
+KDH-0326,19,Male,Undergraduate,Nigeria,3.6,Instagram,No,6.6,7,Single,2,5
+KDH-0327,18,Male,Undergraduate,Nigeria,6.2,Facebook,Yes,5.5,5,Single,4,9
+KDH-0328,17,Female,Undergraduate,Nigeria,5.0,TikTok,Yes,5.5,5,In Relationship,4,6
+KDH-0329,23,Female,Undergraduate,Nigeria,4.3,WhatsApp,No,6.4,6,Single,2,5
+KDH-0330,28,Female,Undergraduate,Nigeria,6.7,TikTok,Yes,5.2,4,Single,3,9
+KDH-0331,17,Male,Undergraduate,Nigeria,5.7,YouTube,Yes,5.3,5,Single,5,7
+KDH-0332,24,Male,Undergraduate,Nigeria,5.2,TikTok,No,5.7,7,Single,2,5
+KDH-0333,28,Male,Postgraduate,Nigeria,5.6,Facebook,No,5.6,6,Single,2,7
+KDH-0334,24,Male,Undergraduate,Nigeria,6.3,Snapchat,Yes,5.2,5,In Relationship,4,9
+KDH-0335,22,Male,Undergraduate,Nigeria,4.9,WhatsApp,Yes,7.5,5,In Relationship,2,6
+KDH-0336,28,Male,Postgraduate,Nigeria,5.3,TikTok,Yes,6.3,5,Single,4,8
+KDH-0337,18,Female,Undergraduate,Nigeria,4.1,TikTok,Yes,5.8,5,Single,3,5
+KDH-0338,25,Male,Undergraduate,Nigeria,5.0,TikTok,Yes,6.4,7,In Relationship,2,8
+KDH-0339,27,Male,Undergraduate,Nigeria,5.7,TikTok,Yes,5.6,4,Single,4,8
+KDH-0340,24,Male,Undergraduate,Nigeria,3.8,TikTok,No,6.2,6,In Relationship,3,4
+KDH-0341,20,Female,Undergraduate,Nigeria,5.3,Facebook,Yes,6.0,7,In Relationship,2,6
+KDH-0342,27,Male,Undergraduate,Togo,6.3,WhatsApp,Yes,5.3,6,Single,4,8
+KDH-0343,28,Female,Undergraduate,Nigeria,4.2,Facebook,No,8.0,7,Complicated,2,6
+KDH-0344,17,Female,Undergraduate,Ghana,7.4,TikTok,Yes,5.1,4,Single,4,9
+KDH-0345,22,Female,Undergraduate,Nigeria,5.1,TikTok,Yes,6.0,5,In Relationship,4,6
+KDH-0346,21,Male,Undergraduate,Nigeria,3.9,Instagram,Yes,6.5,8,Single,1,6
+KDH-0347,19,Male,Undergraduate,Nigeria,4.8,X,Yes,5.4,6,Single,2,5
+KDH-0348,17,Female,Undergraduate,Cameroon,5.3,TikTok,No,6.3,6,In Relationship,2,7
+KDH-0349,26,Female,Undergraduate,Nigeria,5.7,TikTok,Yes,6.4,5,In Relationship,4,7
+KDH-0350,21,Female,Undergraduate,Ghana,5.3,X,Yes,6.8,5,In Relationship,4,6
+KDH-0351,26,Female,Postgraduate,Nigeria,3.3,WhatsApp,No,7.6,7,Complicated,1,4
+KDH-0352,19,Male,Undergraduate,Nigeria,4.1,Facebook,No,7.4,7,Single,0,5
+KDH-0353,22,Male,Undergraduate,Nigeria,5.1,YouTube,Yes,6.5,7,Single,3,8
+KDH-0354,24,Female,Undergraduate,Nigeria,4.0,TikTok,No,6.7,7,Single,3,5
+KDH-0355,23,Female,Undergraduate,Nigeria,7.6,X,Yes,4.8,3,In Relationship,5,9
+KDH-0356,23,Female,Postgraduate,Nigeria,4.2,TikTok,Yes,7.2,7,Single,2,5
+KDH-0357,25,Female,Undergraduate,Nigeria,4.6,Snapchat,No,6.7,6,In Relationship,3,6
+KDH-0358,19,Male,Undergraduate,Nigeria,7.1,WhatsApp,Yes,5.7,6,Single,5,8
+KDH-0359,23,Male,Postgraduate,Nigeria,6.4,TikTok,No,5.4,4,Single,3,7
+KDH-0360,23,Male,Pre-degree,Nigeria,3.5,Instagram,No,7.5,9,In Relationship,2,6
+KDH-0361,28,Female,Undergraduate,Nigeria,6.6,X,Yes,4.9,4,Single,5,8
+KDH-0362,19,Female,Pre-degree,Nigeria,4.6,TikTok,Yes,7.5,6,Single,4,6
+KDH-0363,17,Male,Undergraduate,Benin,5.5,WhatsApp,Yes,5.5,5,Single,3,8
+KDH-0364,24,Male,Undergraduate,Nigeria,3.6,WhatsApp,No,7.0,5,In Relationship,2,4
+KDH-0365,18,Male,Undergraduate,Nigeria,5.9,X,Yes,6.2,4,Single,3,8
+KDH-0366,25,Female,Undergraduate,Nigeria,5.1,Instagram,No,5.8,5,Single,3,6
+KDH-0367,23,Female,Undergraduate,Nigeria,3.7,YouTube,No,6.9,8,Single,2,7
+KDH-0368,19,Male,Pre-degree,Nigeria,4.3,TikTok,Yes,7.4,6,Complicated,3,5
+KDH-0369,17,Female,Undergraduate,Nigeria,7.0,TikTok,Yes,3.9,4,Single,4,9
+KDH-0370,18,Male,Undergraduate,Cameroon,6.6,TikTok,Yes,5.2,5,In Relationship,4,8
+KDH-0371,26,Male,Undergraduate,Nigeria,5.1,Instagram,No,6.0,7,Single,3,7
+KDH-0372,27,Female,Undergraduate,Nigeria,4.2,YouTube,No,6.9,6,Single,2,5
+KDH-0373,20,Female,Postgraduate,Nigeria,4.5,Instagram,No,6.5,6,Single,2,7
+KDH-0374,24,Female,Undergraduate,Nigeria,3.9,TikTok,No,6.8,6,In Relationship,1,5
+KDH-0375,18,Female,Undergraduate,Nigeria,3.5,TikTok,No,6.9,7,Single,1,5
+KDH-0376,27,Male,Undergraduate,Nigeria,7.6,WhatsApp,Yes,4.3,5,Single,4,9
+KDH-0377,24,Female,Undergraduate,Nigeria,2.1,TikTok,No,8.2,8,Single,0,3
+KDH-0378,19,Male,Pre-degree,Nigeria,5.4,WhatsApp,Yes,5.4,5,In Relationship,2,8
+KDH-0379,22,Female,Undergraduate,Nigeria,5.0,X,No,5.9,7,In Relationship,4,6
+KDH-0380,20,Female,Undergraduate,Benin,1.0,Instagram,Yes,9.2,9,Single,0,3
+KDH-0381,18,Male,Pre-degree,Nigeria,5.1,Instagram,Yes,6.4,6,Single,3,7
+KDH-0382,28,Female,Postgraduate,Nigeria,6.1,Instagram,Yes,5.9,5,In Relationship,4,8
+KDH-0383,17,Female,Postgraduate,Nigeria,2.6,YouTube,No,7.3,8,In Relationship,0,5
+KDH-0384,23,Female,Undergraduate,Nigeria,3.8,Instagram,No,6.9,7,Single,3,5
+KDH-0385,23,Female,Undergraduate,Nigeria,2.2,Instagram,No,7.7,8,Single,1,4
+KDH-0386,18,Male,Undergraduate,Nigeria,5.9,WhatsApp,No,5.5,6,In Relationship,4,7
+KDH-0387,21,Female,Pre-degree,Nigeria,2.2,YouTube,No,7.8,8,In Relationship,0,4
+KDH-0388,27,Female,Postgraduate,Nigeria,2.3,X,No,8.1,7,In Relationship,2,4
+KDH-0389,18,Female,Postgraduate,Nigeria,4.5,WhatsApp,No,7.2,7,Single,2,5
+KDH-0390,19,Male,Undergraduate,Nigeria,3.1,Instagram,No,7.9,8,Single,0,4
+KDH-0391,28,Male,Pre-degree,Nigeria,1.7,WhatsApp,No,7.9,8,Single,0,3
+KDH-0392,17,Female,Postgraduate,Nigeria,5.6,TikTok,Yes,6.1,7,Single,3,6
+KDH-0393,24,Female,Undergraduate,Nigeria,4.9,Instagram,Yes,5.8,5,In Relationship,4,8
+KDH-0394,24,Male,Undergraduate,Ghana,3.3,WhatsApp,No,7.8,6,In Relationship,2,4
+KDH-0395,25,Female,Undergraduate,Nigeria,2.1,TikTok,No,8.2,8,In Relationship,0,3
+KDH-0396,24,Male,Pre-degree,Nigeria,5.7,TikTok,No,6.3,6,Single,3,8
+KDH-0397,19,Female,Postgraduate,Nigeria,4.0,WhatsApp,No,7.1,7,Single,2,5
+KDH-0398,25,Male,Postgraduate,Nigeria,4.4,Snapchat,No,7.2,6,Complicated,0,6
+KDH-0399,25,Female,Postgraduate,Togo,4.5,X,No,5.9,6,In Relationship,3,5
+KDH-0400,28,Male,Undergraduate,Nigeria,3.1,TikTok,No,7.8,8,Single,1,5
+KDH-0401,23,Female,Undergraduate,Nigeria,4.5,YouTube,Yes,7.1,6,In Relationship,2,6
+KDH-0402,19,Female,Pre-degree,Nigeria,3.7,TikTok,Yes,7.0,7,In Relationship,2,5
+KDH-0403,17,Male,Pre-degree,Nigeria,4.0,WhatsApp,No,6.6,5,In Relationship,3,5
+KDH-0404,28,Female,Undergraduate,Nigeria,3.5,Facebook,No,7.4,8,Single,2,7
+KDH-0405,27,Male,Postgraduate,Nigeria,5.0,YouTube,Yes,5.4,6,In Relationship,4,7
+KDH-0406,18,Male,Undergraduate,Nigeria,6.1,Instagram,Yes,5.6,5,Single,4,8
+KDH-0407,25,Female,Undergraduate,Nigeria,4.1,Instagram,No,6.8,6,In Relationship,2,6
+KDH-0408,24,Female,Pre-degree,Nigeria,4.9,X,Yes,7.3,5,In Relationship,2,7
+KDH-0409,26,Male,Undergraduate,Nigeria,6.3,X,Yes,5.3,5,Single,3,6
+KDH-0410,21,Female,Undergraduate,Nigeria,5.5,X,Yes,5.3,5,In Relationship,4,7
+KDH-0411,24,Female,Undergraduate,Nigeria,5.4,WhatsApp,Yes,5.4,6,Single,3,7
+KDH-0412,22,Male,Undergraduate,Nigeria,6.2,Snapchat,Yes,5.7,6,Single,4,7
+KDH-0413,22,Female,Undergraduate,Cameroon,3.1,TikTok,Yes,5.8,7,Single,2,4
+KDH-0414,18,Female,Undergraduate,Cameroon,4.9,WhatsApp,Yes,6.1,5,Single,4,6
+KDH-0415,21,Male,Undergraduate,Ghana,2.1,Snapchat,No,7.7,7,Single,1,4
+KDH-0416,17,Female,Undergraduate,Togo,5.3,YouTube,Yes,5.9,6,In Relationship,1,6
+KDH-0417,18,Female,Undergraduate,Nigeria,4.5,WhatsApp,Yes,6.2,7,In Relationship,2,6
+KDH-0418,18,Female,Undergraduate,Nigeria,4.4,Instagram,No,6.0,7,In Relationship,2,7
+KDH-0419,20,Male,Undergraduate,Nigeria,3.5,WhatsApp,No,7.9,7,In Relationship,2,6
+KDH-0420,25,Male,Postgraduate,Nigeria,5.1,Facebook,Yes,5.7,6,Single,2,7
+KDH-0421,28,Female,Postgraduate,Nigeria,4.8,X,No,6.7,6,Single,3,6
+KDH-0422,19,Female,Undergraduate,Nigeria,1.7,Instagram,No,8.1,9,Single,3,4
+KDH-0423,24,Male,Postgraduate,Nigeria,4.3,WhatsApp,Yes,6.0,7,In Relationship,3,6
+KDH-0424,23,Female,Undergraduate,Nigeria,2.2,Instagram,No,7.2,7,Single,3,4
+KDH-0425,19,Female,Postgraduate,Nigeria,2.3,TikTok,No,7.7,7,In Relationship,2,3
+KDH-0426,19,Female,Undergraduate,Benin,1.8,X,No,8.4,8,In Relationship,1,3
+KDH-0427,26,Female,Postgraduate,Nigeria,3.6,YouTube,No,7.3,7,In Relationship,3,4
+KDH-0428,28,Male,Undergraduate,Nigeria,6.2,WhatsApp,Yes,5.6,5,In Relationship,4,7
+KDH-0429,17,Female,Undergraduate,Nigeria,5.3,X,Yes,4.9,5,In Relationship,3,7
+KDH-0430,23,Female,Undergraduate,Nigeria,4.5,TikTok,Yes,7.0,7,In Relationship,4,6
+KDH-0431,25,Female,Undergraduate,Nigeria,5.2,X,Yes,6.5,4,In Relationship,3,6
+KDH-0432,19,Female,Undergraduate,Nigeria,4.2,TikTok,No,7.8,7,Single,1,6
+KDH-0433,24,Male,Undergraduate,Benin,7.9,X,Yes,5.3,5,Single,4,9
+KDH-0434,26,Female,Undergraduate,Nigeria,6.0,WhatsApp,Yes,5.9,4,In Relationship,3,8
+KDH-0435,23,Female,Undergraduate,Nigeria,6.4,WhatsApp,Yes,5.4,5,In Relationship,3,8
+KDH-0436,28,Female,Undergraduate,Cameroon,3.8,TikTok,No,6.7,6,Single,2,6
+KDH-0437,17,Female,Undergraduate,Nigeria,5.1,TikTok,Yes,6.2,5,Single,3,7
+KDH-0438,22,Female,Undergraduate,Benin,5.1,TikTok,Yes,6.4,6,In Relationship,2,7
+KDH-0439,17,Female,Undergraduate,Nigeria,4.6,TikTok,Yes,5.6,6,In Relationship,2,7
+KDH-0440,22,Female,Pre-degree,Nigeria,4.3,X,No,6.5,7,Single,2,6
+KDH-0441,17,Female,Pre-degree,Nigeria,2.8,Instagram,No,8.4,8,In Relationship,2,5
+KDH-0442,23,Female,Undergraduate,Nigeria,5.5,TikTok,No,5.8,5,Single,2,7
+KDH-0443,20,Male,Undergraduate,Cameroon,6.4,X,Yes,6.0,4,Complicated,5,7
+KDH-0444,22,Male,Undergraduate,Nigeria,3.4,WhatsApp,No,7.5,7,In Relationship,1,5
+KDH-0445,23,Female,Pre-degree,Nigeria,2.5,Facebook,Yes,7.9,7,Single,1,4
+KDH-0446,28,Male,Postgraduate,Nigeria,5.4,TikTok,Yes,4.7,5,In Relationship,3,8
+KDH-0447,28,Male,Undergraduate,Nigeria,6.4,TikTok,Yes,4.9,5,In Relationship,3,9
+KDH-0448,27,Female,Undergraduate,Nigeria,5.0,Snapchat,Yes,7.5,8,Single,2,7
+KDH-0449,25,Female,Undergraduate,Nigeria,5.8,Facebook,No,5.8,5,In Relationship,4,7
+KDH-0450,26,Female,Pre-degree,Nigeria,4.1,WhatsApp,No,6.3,7,Single,2,6
+KDH-0451,24,Female,Undergraduate,Nigeria,6.0,WhatsApp,Yes,4.7,4,Single,3,8
+KDH-0452,24,Male,Pre-degree,Nigeria,4.8,Snapchat,No,6.9,6,Single,4,7
+KDH-0453,28,Female,Undergraduate,Nigeria,3.3,TikTok,No,8.9,5,Single,1,5
+KDH-0454,24,Male,Undergraduate,Nigeria,5.2,X,Yes,5.9,6,Single,2,7
+KDH-0455,28,Female,Undergraduate,Cameroon,6.5,YouTube,Yes,5.6,5,In Relationship,4,8
+KDH-0456,26,Male,Undergraduate,Nigeria,4.6,WhatsApp,No,6.6,6,Single,2,6
+KDH-0457,23,Male,Pre-degree,Nigeria,6.3,Instagram,Yes,4.8,4,In Relationship,3,9
+KDH-0458,19,Male,Undergraduate,Nigeria,5.7,X,Yes,4.4,5,In Relationship,4,8
+KDH-0459,20,Male,Postgraduate,Nigeria,4.5,Snapchat,Yes,6.7,7,Single,3,7
+KDH-0460,25,Male,Undergraduate,Nigeria,6.0,WhatsApp,Yes,5.0,4,In Relationship,3,8
+KDH-0461,20,Male,Pre-degree,Nigeria,2.7,TikTok,No,6.8,8,Single,1,3
+KDH-0462,21,Female,Postgraduate,Nigeria,5.5,WhatsApp,Yes,6.6,6,Single,4,7
+KDH-0463,17,Male,Undergraduate,Cameroon,2.7,X,No,7.2,8,In Relationship,1,5
+KDH-0464,23,Male,Postgraduate,Nigeria,4.8,X,Yes,6.2,6,Single,3,5
+KDH-0465,20,Female,Undergraduate,Nigeria,3.9,WhatsApp,Yes,7.1,8,Single,3,6
+KDH-0466,19,Female,Undergraduate,Nigeria,6.9,WhatsApp,Yes,5.3,4,Single,4,8
+KDH-0467,27,Male,Undergraduate,Nigeria,1.6,WhatsApp,No,8.3,8,In Relationship,0,4
+KDH-0468,26,Male,Undergraduate,Nigeria,5.0,Snapchat,No,5.9,6,Single,3,5
+KDH-0469,22,Female,Pre-degree,Nigeria,2.2,Snapchat,No,7.8,9,Single,1,3
+KDH-0470,23,Male,Undergraduate,Nigeria,5.9,WhatsApp,Yes,5.4,4,In Relationship,5,8
+KDH-0471,27,Female,Undergraduate,Benin,3.8,TikTok,No,7.0,7,In Relationship,2,7
+KDH-0472,17,Female,Pre-degree,Nigeria,2.6,WhatsApp,No,7.8,8,In Relationship,1,3
+KDH-0473,27,Female,Undergraduate,Nigeria,6.2,WhatsApp,Yes,5.3,4,In Relationship,4,8
+KDH-0474,23,Male,Undergraduate,Nigeria,4.2,TikTok,No,6.6,6,Single,2,6
+KDH-0475,27,Male,Undergraduate,Nigeria,3.5,YouTube,No,7.4,7,Complicated,1,4
+KDH-0476,26,Female,Undergraduate,Ghana,4.6,TikTok,No,6.6,6,Single,3,6
+KDH-0477,28,Female,Undergraduate,Ghana,2.8,X,No,7.6,8,In Relationship,2,4
+KDH-0478,24,Male,Undergraduate,Ghana,1.4,TikTok,No,8.5,9,Single,1,2
+KDH-0479,23,Male,Undergraduate,Nigeria,6.7,WhatsApp,Yes,5.3,5,In Relationship,4,8
+KDH-0480,22,Female,Pre-degree,Ghana,6.4,WhatsApp,Yes,5.8,6,In Relationship,4,8
+KDH-0481,26,Male,Postgraduate,Togo,4.3,WhatsApp,No,5.6,6,In Relationship,3,5
+KDH-0482,19,Male,Undergraduate,Nigeria,5.9,YouTube,Yes,5.9,4,Single,3,8
+KDH-0483,23,Male,Undergraduate,Nigeria,4.2,Instagram,No,6.4,6,In Relationship,3,6
+KDH-0484,22,Female,Undergraduate,Nigeria,4.8,TikTok,No,6.8,6,Single,3,5
+KDH-0485,23,Male,Undergraduate,Nigeria,2.2,TikTok,No,7.0,9,In Relationship,0,3
+KDH-0486,17,Male,Undergraduate,Togo,5.4,Instagram,No,6.0,7,Single,2,7
+KDH-0487,27,Female,Postgraduate,Nigeria,3.4,Instagram,No,7.3,8,Single,1,5
+KDH-0488,25,Female,Undergraduate,Nigeria,6.0,Snapchat,Yes,5.4,3,Single,2,8
+KDH-0489,19,Male,Undergraduate,Nigeria,4.8,WhatsApp,No,5.9,6,In Relationship,2,6
+KDH-0490,19,Male,Pre-degree,Nigeria,5.4,WhatsApp,No,6.5,6,Single,3,7
+KDH-0491,21,Female,Undergraduate,Ghana,3.2,Instagram,No,7.2,8,Single,1,6
+KDH-0492,28,Female,Postgraduate,Nigeria,4.1,TikTok,Yes,7.0,7,Single,3,4
+KDH-0493,25,Female,Postgraduate,Nigeria,3.8,Snapchat,No,7.0,7,In Relationship,3,5
+KDH-0494,20,Female,Undergraduate,Nigeria,6.6,Facebook,Yes,4.4,5,Single,3,8
+KDH-0495,20,Female,Undergraduate,Nigeria,7.6,Facebook,Yes,4.5,6,Single,5,9
+KDH-0496,24,Female,Undergraduate,Nigeria,7.3,Instagram,Yes,4.7,4,In Relationship,4,8
+KDH-0497,22,Male,Pre-degree,Nigeria,6.2,TikTok,No,6.2,4,Single,4,7
+KDH-0498,18,Female,Undergraduate,Nigeria,3.2,Instagram,Yes,7.0,6,In Relationship,1,4
+KDH-0499,28,Female,Undergraduate,Nigeria,4.7,WhatsApp,No,6.2,6,Single,2,6
+KDH-0500,17,Male,Pre-degree,Nigeria,2.8,WhatsApp,No,7.6,6,In Relationship,1,3
+KDH-0501,17,Male,Undergraduate,Nigeria,3.2,WhatsApp,No,7.0,9,Single,2,5
+KDH-0502,26,Female,Undergraduate,Nigeria,2.1,X,No,7.8,9,Single,0,4
+KDH-0503,17,Male,Postgraduate,Nigeria,4.6,WhatsApp,Yes,5.9,7,Single,3,7
+KDH-0504,22,Female,Undergraduate,Nigeria,4.9,WhatsApp,No,6.5,6,Single,2,5
+KDH-0505,20,Male,Undergraduate,Nigeria,6.6,TikTok,Yes,5.0,6,In Relationship,5,8
+KDH-0506,22,Male,Undergraduate,Nigeria,6.9,Instagram,Yes,3.6,6,Complicated,5,9
+KDH-0507,21,Female,Pre-degree,Nigeria,4.2,TikTok,No,7.7,6,Single,2,6
+KDH-0508,23,Female,Pre-degree,Nigeria,6.2,Instagram,Yes,4.6,4,Single,3,6
+KDH-0509,17,Male,Undergraduate,Nigeria,6.7,YouTube,Yes,4.2,5,Single,4,8
+KDH-0510,19,Male,Postgraduate,Nigeria,5.2,WhatsApp,Yes,5.3,6,In Relationship,1,7
+KDH-0511,20,Male,Undergraduate,Nigeria,6.7,Facebook,Yes,5.7,5,In Relationship,3,9
+KDH-0512,26,Female,Undergraduate,Nigeria,4.1,TikTok,No,6.0,7,Single,2,8
+KDH-0513,22,Male,Undergraduate,Nigeria,7.7,TikTok,Yes,4.5,4,In Relationship,4,9
+KDH-0514,28,Male,Undergraduate,Nigeria,5.2,Facebook,Yes,6.2,6,Single,2,7
+KDH-0515,19,Male,Undergraduate,Nigeria,2.8,X,No,7.3,8,In Relationship,2,4
+KDH-0516,27,Female,Undergraduate,Nigeria,4.6,TikTok,Yes,5.2,6,Complicated,3,6
+KDH-0517,24,Male,Undergraduate,Nigeria,7.8,Instagram,Yes,4.8,4,Complicated,5,9
+KDH-0518,23,Female,Undergraduate,Nigeria,5.2,TikTok,No,6.0,7,In Relationship,3,6
+KDH-0519,25,Female,Undergraduate,Nigeria,5.3,Instagram,Yes,5.5,6,Single,3,8
+KDH-0520,18,Female,Undergraduate,Nigeria,5.3,Instagram,No,6.9,6,Single,3,7
+KDH-0521,25,Female,Postgraduate,Nigeria,3.2,WhatsApp,Yes,7.0,8,Single,3,5
+KDH-0522,25,Male,Postgraduate,Nigeria,6.4,WhatsApp,Yes,5.0,5,Single,3,8
+KDH-0523,27,Male,Postgraduate,Nigeria,3.5,TikTok,No,6.3,7,Single,1,4
+KDH-0524,21,Female,Undergraduate,Nigeria,5.4,Snapchat,Yes,6.0,6,Single,3,7
+KDH-0525,21,Female,Pre-degree,Nigeria,5.2,WhatsApp,Yes,5.7,6,In Relationship,3,8
+KDH-0526,26,Female,Postgraduate,Nigeria,4.2,WhatsApp,Yes,5.8,7,Single,1,6
+KDH-0527,25,Male,Postgraduate,Nigeria,3.7,Facebook,No,5.8,8,Single,2,4
+KDH-0528,27,Male,Undergraduate,Nigeria,4.2,Instagram,Yes,6.6,6,In Relationship,3,7
+KDH-0529,23,Male,Pre-degree,Nigeria,3.9,TikTok,No,8.1,7,In Relationship,3,6
+KDH-0530,24,Female,Undergraduate,Nigeria,5.0,WhatsApp,Yes,7.3,5,Single,3,7
+KDH-0531,25,Male,Undergraduate,Nigeria,6.3,Instagram,No,4.4,6,In Relationship,4,8
+KDH-0532,23,Male,Undergraduate,Nigeria,1.3,Instagram,No,8.8,8,Complicated,1,3
+KDH-0533,22,Male,Undergraduate,Benin,6.2,X,Yes,6.0,5,Single,3,8
+KDH-0534,19,Female,Undergraduate,Nigeria,4.2,WhatsApp,No,6.9,8,Single,3,5
+KDH-0535,27,Male,Undergraduate,Nigeria,5.3,TikTok,No,6.6,5,Single,3,7
+KDH-0536,22,Male,Undergraduate,Nigeria,5.1,TikTok,Yes,5.0,5,In Relationship,2,7
+KDH-0537,23,Female,Undergraduate,Nigeria,4.8,Instagram,No,5.5,6,Single,3,8
+KDH-0538,22,Female,Undergraduate,Nigeria,7.3,WhatsApp,Yes,5.1,4,In Relationship,5,9
+KDH-0539,19,Male,Pre-degree,Nigeria,4.1,TikTok,No,6.0,7,In Relationship,3,7
+KDH-0540,18,Female,Undergraduate,Nigeria,1.7,X,No,8.0,9,In Relationship,1,4
+KDH-0541,28,Female,Undergraduate,Benin,3.8,TikTok,No,6.9,6,In Relationship,3,6
+KDH-0542,17,Female,Undergraduate,Nigeria,5.9,TikTok,Yes,5.1,4,Single,3,8
+KDH-0543,28,Male,Postgraduate,Nigeria,3.0,TikTok,No,8.0,7,In Relationship,2,4
+KDH-0544,24,Female,Pre-degree,Nigeria,7.6,TikTok,Yes,4.5,4,Single,4,9
+KDH-0545,19,Male,Undergraduate,Nigeria,1.9,WhatsApp,No,9.4,8,In Relationship,1,3
+KDH-0546,18,Male,Postgraduate,Benin,5.4,Snapchat,Yes,5.8,5,Single,3,7
+KDH-0547,28,Female,Postgraduate,Nigeria,5.2,YouTube,Yes,5.3,6,Complicated,4,6
+KDH-0548,20,Female,Pre-degree,Cameroon,8.1,YouTube,Yes,4.3,4,In Relationship,4,9
+KDH-0549,22,Male,Postgraduate,Nigeria,4.2,TikTok,No,7.0,8,Single,2,6
+KDH-0550,19,Male,Undergraduate,Nigeria,2.1,YouTube,Yes,7.4,8,Single,0,4
+KDH-0551,23,Female,Postgraduate,Nigeria,5.1,WhatsApp,Yes,5.3,5,Single,4,7
+KDH-0552,17,Female,Undergraduate,Nigeria,3.7,TikTok,Yes,6.6,8,In Relationship,3,6
+KDH-0553,17,Female,Postgraduate,Nigeria,2.9,Instagram,No,8.6,6,In Relationship,3,4
+KDH-0554,17,Female,Undergraduate,Nigeria,5.3,TikTok,Yes,5.7,4,Single,4,7
+KDH-0555,23,Female,Undergraduate,Nigeria,3.2,TikTok,No,7.6,8,Single,0,4
+KDH-0556,24,Female,Undergraduate,Nigeria,3.0,WhatsApp,No,7.0,7,Single,1,5
+KDH-0557,28,Female,Undergraduate,Nigeria,2.3,WhatsApp,No,8.2,7,Single,1,4
+KDH-0558,18,Female,Undergraduate,Nigeria,4.7,Facebook,Yes,7.9,6,In Relationship,3,7
+KDH-0559,20,Female,Undergraduate,Nigeria,4.5,WhatsApp,No,7.0,6,Single,4,5
+KDH-0560,25,Male,Pre-degree,Nigeria,4.1,WhatsApp,No,6.5,6,Single,2,8
+KDH-0561,19,Male,Undergraduate,Nigeria,6.4,Instagram,Yes,5.0,5,Single,4,8
+KDH-0562,24,Female,Undergraduate,Nigeria,3.8,WhatsApp,No,6.6,7,In Relationship,1,6
+KDH-0563,28,Female,Undergraduate,Nigeria,6.0,Facebook,Yes,4.7,6,In Relationship,3,8
+KDH-0564,20,Female,Postgraduate,Nigeria,5.9,YouTube,Yes,5.3,6,In Relationship,2,7
+KDH-0565,19,Male,Pre-degree,Nigeria,6.4,WhatsApp,Yes,5.6,5,In Relationship,4,9
+KDH-0566,26,Female,Undergraduate,Nigeria,3.8,YouTube,No,6.9,6,Single,1,5
+KDH-0567,26,Female,Pre-degree,Nigeria,5.9,WhatsApp,Yes,5.3,4,Single,4,8
+KDH-0568,18,Female,Postgraduate,Nigeria,5.0,WhatsApp,Yes,6.9,5,Single,3,6
+KDH-0569,28,Female,Undergraduate,Nigeria,6.5,WhatsApp,Yes,4.6,4,In Relationship,3,9
+KDH-0570,19,Male,Postgraduate,Nigeria,5.1,WhatsApp,No,6.1,6,In Relationship,3,7
+KDH-0571,21,Female,Undergraduate,Benin,3.8,WhatsApp,No,7.2,7,In Relationship,2,5
+KDH-0572,17,Male,Undergraduate,Nigeria,2.2,WhatsApp,No,7.5,7,Single,0,4
+KDH-0573,18,Male,Undergraduate,Nigeria,5.4,Instagram,Yes,6.7,5,Complicated,4,9
+KDH-0574,22,Male,Undergraduate,Nigeria,5.9,X,Yes,5.6,6,Single,3,8
+KDH-0575,20,Male,Undergraduate,Nigeria,1.9,WhatsApp,No,8.5,9,In Relationship,1,2
+KDH-0576,26,Female,Postgraduate,Nigeria,3.3,YouTube,No,8.0,8,Single,2,5
+KDH-0577,19,Female,Undergraduate,Nigeria,4.2,Snapchat,Yes,6.4,5,Single,3,6
+KDH-0578,23,Female,Undergraduate,Nigeria,3.6,Instagram,No,7.8,7,In Relationship,3,6
+KDH-0579,23,Female,Postgraduate,Nigeria,2.6,WhatsApp,No,8.1,7,In Relationship,1,4
+KDH-0580,27,Female,Undergraduate,Nigeria,5.9,WhatsApp,Yes,5.2,4,In Relationship,3,7
+KDH-0581,21,Male,Undergraduate,Nigeria,4.9,WhatsApp,No,5.9,7,Single,3,7
+KDH-0582,19,Female,Undergraduate,Nigeria,2.9,Instagram,No,7.4,6,In Relationship,0,4
+KDH-0583,26,Male,Undergraduate,Benin,5.0,WhatsApp,No,6.4,5,Single,2,7
+KDH-0584,19,Male,Undergraduate,Nigeria,6.1,WhatsApp,Yes,5.4,5,In Relationship,3,8
+KDH-0585,26,Male,Pre-degree,Benin,4.5,YouTube,No,6.0,5,Single,3,5
+KDH-0586,22,Male,Undergraduate,Nigeria,2.3,X,No,7.2,9,Single,0,3
+KDH-0587,27,Male,Undergraduate,Ghana,1.9,WhatsApp,No,7.7,9,Single,2,2
+KDH-0588,19,Male,Undergraduate,Nigeria,5.9,WhatsApp,Yes,5.2,5,Single,3,7
+KDH-0589,17,Female,Undergraduate,Nigeria,5.3,WhatsApp,Yes,5.6,5,In Relationship,4,7
+KDH-0590,20,Male,Undergraduate,Benin,4.5,TikTok,Yes,6.6,6,In Relationship,2,7
+KDH-0591,25,Female,Undergraduate,Nigeria,5.6,Facebook,Yes,5.2,5,Single,4,7
+KDH-0592,22,Female,Undergraduate,Nigeria,6.5,YouTube,Yes,5.4,5,Single,4,7
+KDH-0593,19,Female,Undergraduate,Nigeria,4.1,TikTok,Yes,7.0,6,Single,2,5
+KDH-0594,19,Female,Pre-degree,Benin,6.3,WhatsApp,Yes,5.4,4,Single,2,9
+KDH-0595,23,Female,Undergraduate,Nigeria,3.4,WhatsApp,No,7.3,7,Single,2,6
+KDH-0596,18,Female,Undergraduate,Ghana,6.1,WhatsApp,No,5.8,4,Complicated,5,8
+KDH-0597,26,Male,Undergraduate,Nigeria,5.4,WhatsApp,Yes,5.9,6,In Relationship,3,8
+KDH-0598,22,Male,Undergraduate,Nigeria,3.6,WhatsApp,Yes,6.4,5,Single,1,5
+KDH-0599,25,Male,Undergraduate,Nigeria,1.9,WhatsApp,No,8.2,9,Complicated,2,3
+KDH-0600,23,Female,Undergraduate,Cameroon,1.8,WhatsApp,No,8.3,8,Complicated,1,4
+KDH-0601,19,Male,Postgraduate,Nigeria,4.1,TikTok,No,6.8,5,In Relationship,3,7
+KDH-0602,28,Male,Undergraduate,Nigeria,2.4,TikTok,No,7.5,9,In Relationship,1,5
+KDH-0603,17,Male,Undergraduate,Benin,2.8,X,No,7.3,5,Single,2,5
+KDH-0604,23,Male,Undergraduate,Nigeria,4.0,WhatsApp,Yes,6.2,7,In Relationship,3,6
+KDH-0605,23,Female,Undergraduate,Nigeria,4.0,TikTok,Yes,6.6,7,Single,2,6
+KDH-0606,18,Male,Undergraduate,Nigeria,5.9,Facebook,Yes,4.9,6,Single,3,7
+KDH-0607,20,Female,Undergraduate,Nigeria,4.3,TikTok,No,6.6,6,In Relationship,3,5
+KDH-0608,24,Female,Undergraduate,Nigeria,5.8,WhatsApp,No,5.5,5,Single,4,7
+KDH-0609,24,Female,Undergraduate,Nigeria,7.5,TikTok,Yes,4.1,5,In Relationship,4,9
+KDH-0610,21,Female,Undergraduate,Nigeria,4.2,WhatsApp,Yes,6.7,7,Single,3,6
+KDH-0611,27,Female,Undergraduate,Nigeria,4.7,TikTok,Yes,7.1,6,In Relationship,2,6
+KDH-0612,24,Male,Undergraduate,Nigeria,5.4,YouTube,Yes,6.4,6,Single,2,7
+KDH-0613,18,Female,Postgraduate,Benin,2.7,Instagram,No,6.6,7,In Relationship,2,4
+KDH-0614,17,Female,Pre-degree,Nigeria,4.0,Instagram,No,6.5,6,Single,2,6
+KDH-0615,18,Female,Postgraduate,Nigeria,2.6,TikTok,No,7.4,7,Complicated,2,6
+KDH-0616,20,Male,Postgraduate,Nigeria,2.3,TikTok,No,6.8,8,Single,0,3
+KDH-0617,17,Male,Undergraduate,Nigeria,7.1,Instagram,Yes,4.2,4,Single,4,9
+KDH-0618,24,Male,Postgraduate,Nigeria,6.1,Instagram,Yes,5.2,5,Single,4,7
+KDH-0619,19,Female,Postgraduate,Nigeria,4.8,Instagram,Yes,5.6,7,In Relationship,3,5
+KDH-0620,26,Female,Undergraduate,Nigeria,4.9,WhatsApp,No,6.9,6,Single,3,7
+KDH-0621,22,Female,Undergraduate,Nigeria,4.8,Instagram,Yes,6.1,5,Single,3,6
+KDH-0622,25,Male,Postgraduate,Benin,5.8,Snapchat,Yes,5.2,4,In Relationship,4,7
+KDH-0623,26,Male,Postgraduate,Nigeria,1.7,TikTok,No,8.6,9,In Relationship,0,3
+KDH-0624,27,Female,Undergraduate,Nigeria,4.1,Snapchat,No,7.1,7,Single,2,5
+KDH-0625,20,Female,Postgraduate,Nigeria,7.1,Snapchat,Yes,5.7,3,In Relationship,4,8
+KDH-0626,23,Female,Pre-degree,Nigeria,3.7,TikTok,No,7.2,9,Single,2,5
+KDH-0627,17,Female,Postgraduate,Nigeria,2.2,Instagram,No,7.9,8,Single,0,5
+KDH-0628,28,Female,Undergraduate,Nigeria,4.6,Instagram,Yes,6.9,8,Single,2,6
+KDH-0629,22,Male,Undergraduate,Nigeria,4.9,TikTok,Yes,6.1,5,In Relationship,4,6
+KDH-0630,19,Male,Postgraduate,Nigeria,6.1,WhatsApp,Yes,5.1,5,In Relationship,3,8
+KDH-0631,22,Female,Postgraduate,Nigeria,4.1,TikTok,No,5.9,5,Single,2,5
+KDH-0632,21,Female,Undergraduate,Ghana,5.3,X,No,5.5,6,In Relationship,2,7
+KDH-0633,25,Male,Undergraduate,Nigeria,5.9,TikTok,Yes,6.3,4,In Relationship,3,8
+KDH-0634,17,Male,Pre-degree,Nigeria,4.7,TikTok,Yes,6.8,5,Single,2,6
+KDH-0635,21,Male,Undergraduate,Nigeria,4.9,WhatsApp,Yes,5.7,6,Single,4,6
+KDH-0636,23,Female,Undergraduate,Nigeria,4.2,Instagram,Yes,6.0,7,Single,2,7
+KDH-0637,21,Female,Undergraduate,Nigeria,6.7,TikTok,Yes,5.0,5,Complicated,4,8
+KDH-0638,26,Female,Undergraduate,Nigeria,4.2,Snapchat,Yes,6.6,8,In Relationship,1,5
+KDH-0639,28,Female,Postgraduate,Nigeria,4.7,TikTok,Yes,6.9,5,Single,4,5
+KDH-0640,19,Male,Postgraduate,Togo,5.1,X,Yes,7.0,7,Single,3,8

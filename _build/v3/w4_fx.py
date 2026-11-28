@@ -58,8 +58,8 @@ STO = D.table("tStores")
 
 Y = SAL.Annual_Salary_NGN
 OV = ORD.total_price
-EX = CV.Exam_Score
-LS = LOS.Length_of_Stay
+EX = CV.Final_Score
+LS = LOS.LOS_Days
 
 
 # ---------------------------------------------------------------- Excel-matching statistics

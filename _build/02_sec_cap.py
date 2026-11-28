@@ -100,11 +100,11 @@ s = b.sheet("P.2 Source Register", "P.2  Source Register, Before/After Evidence 
 s.band("P.2.1", "Beginner: source register essentials")
 cat = pd.read_csv(STAGE / "catalogue.csv")
 files = {"SuperMart_Stores_Sales_2022_2025.csv": "Finance - Revenue Assurance", "SuperMart_Stores_Directory.csv": "Operations",
-         "SuperMart_Online_transactions.csv": "SuperMart Online - Data Engineering", "Lifecare_Admissions_2019_2024.csv": "Lifecare - Health Records",
-         "Lifecare_Daily_Bed_Census.csv": "Lifecare - Bed Management", "Lifecare_Diabetes_Screening.csv": "Lifecare - Screening Clinic",
-         "Crestview_Student_Performance.csv": "Crestview - Registry", "Crestview_Wellbeing_Survey_SENSITIVE.csv": "Crestview - Student Affairs (restricted)",
-         "Crestview_Digital_Wellbeing_Survey.csv": "Crestview - Student Affairs", "ETEH_Talent_Salary_Survey.csv": "ETEH Talent - Research",
-         "EkoSuites_Hotel_Bookings_2023_2024.csv": "Eko Suites - Revenue Management"}
+         "SuperMart_Online_transactions.csv": "SuperMart Online - Data Engineering", "Mercyland_Inpatient_Episodes_2019_2024.csv": "Mercyland - Health Records",
+         "Mercyland_Daily_Bed_Census.csv": "Mercyland - Bed Management", "Mercyland_Diabetes_Screening.csv": "Mercyland - Screening Clinic",
+         "Kingsway_Student_Results.csv": "Kingsway - Registry", "Kingsway_Student_Welfare_Survey_SENSITIVE.csv": "Kingsway - Student Affairs (restricted)",
+         "Kingsway_Digital_Habits_Survey.csv": "Kingsway - Student Affairs", "ETEH_Talent_Salary_Survey.csv": "ETEH Talent - Research",
+         "AtlanticPearl_Reservations_2023_2024.csv": "Atlantic Pearl - Revenue Management"}
 reg = []
 for fn, owner in files.items():
     p = CORE / fn
@@ -141,7 +141,7 @@ s.band("P.2.3", "Intermediate: citation, licence and privacy")
 s.grid([["Cite internal sources precisely", "'SuperMart POS ledger export, SuperMart_Stores_Sales_2022_2025.csv, extracted 05-Jan-2026, Finance'"],
         ["Licence / permitted use", "Training copies are for the bootcamp only; ask the data owner before reusing any file in a public portfolio"],
         ["Privacy", "Customer, patient and respondent names are fictional, but treat them as real: never publish row-level data"],
-        ["Sensitive files", "Crestview_Wellbeing_Survey_SENSITIVE.csv: aggregate tables only, minimum cell size 5"]], header=["Rule", "Applied to the bootcamp data"], merge_last=True)
+        ["Sensitive files", "Kingsway_Student_Welfare_Survey_SENSITIVE.csv: aggregate tables only, minimum cell size 5"]], header=["Rule", "Applied to the bootcamp data"], merge_last=True)
 s.band("P.2.4-5", "Reproducibility, review and the evidence-to-decision handoff")
 s.grid([["Named steps", "Every Power Query step renamed (e.g. 'Removed spacer rows', 'Fixed ₦ text')"],
         ["Assumptions stored", "Assumptions sheet: FY = calendar year; net sales after discount excl. VAT"],
@@ -265,59 +265,59 @@ s.grid([["Revenue reconciles to POS ledger", f"₦{b25.Sales.sum():,.0f}", "✔"
         ["Second-machine render", "Opened on a colleague's laptop; charts and ₦ symbol intact", "✔"]], header=["Verification check", "Evidence", "Status"])
 
 # ======================================================================================
-# P.4 Capstone 2 Crestview
+# P.4 Capstone 2 Kingsway
 # ======================================================================================
-s = b.sheet("P.4 Capstone2 Crestview", "P.4  Capstone 2 - Crestview University: progression and the at-risk list",
+s = b.sheet("P.4 Capstone2 Kingsway", "P.4  Capstone 2 - Kingsway University: progression and the at-risk list",
             "Fixed cohort, documented progression definition, attrition by faculty, an actionable at-risk list and a quantified intervention", "P.4.1 - P.4.10")
 s.band("P.4.1 / P.4.4", "Cohort and the progression definition - fixed BEFORE calculating")
-s.grid([["Cohort", "All students on the 2024/25 first-semester registry extract (Crestview_Student_Performance.csv)"],
-        ["Progressed", "Exam_Score ≥ 62 AND Attendance_Pct ≥ 65 (the Senate's 'good standing' rule)"],
-        ["At risk", "Exam_Score < 62 OR Attendance_Pct < 65 - the complement of 'progressed'"],
+s.grid([["Cohort", "All students on the 2024/25 first-semester registry extract (Kingsway_Student_Results.csv)"],
+        ["Progressed", "Final_Score ≥ 62 AND Lecture_Attendance_Pct ≥ 65 (the Senate's 'good standing' rule)"],
+        ["At risk", "Final_Score < 62 OR Lecture_Attendance_Pct < 65 - the complement of 'progressed'"],
         ["Target", "90% of the cohort in good standing"]], header=["Definition", "Rule"], merge_last=True)
-prog = ((cv.Exam_Score >= 62) & (cv.Attendance_Pct >= 65))
+prog = ((cv.Final_Score >= 62) & (cv.Lecture_Attendance_Pct >= 65))
 tin = s.inputs([("Score threshold", 62, "int", "Senate rule"), ("Attendance threshold (%)", 65, "int", ""), ("Target progression", 0.90, "pct0", "")])
 ST, AT, TG = tin["Score threshold"], tin["Attendance threshold (%)"], tin["Target progression"]
 s.calc([("Cohort students", "=ROWS(tCV)", len(cv), "int", "Registry control figure: 6,607"),
-        ("Progressed", f'=COUNTIFS(tCV[Exam_Score],">="&{ST},tCV[Attendance_Pct],">="&{AT})', int(prog.sum()), "int", ""),
-        ("Progression %", f'=COUNTIFS(tCV[Exam_Score],">="&{ST},tCV[Attendance_Pct],">="&{AT})/ROWS(tCV)', prog.mean(), "pct", ""),
-        ("Gap to target (points)", f'=(COUNTIFS(tCV[Exam_Score],">="&{ST},tCV[Attendance_Pct],">="&{AT})/ROWS(tCV)-{TG})*100', (prog.mean() - .9) * 100, "dec1", "Negative = below target")])
+        ("Progressed", f'=COUNTIFS(tCV[Final_Score],">="&{ST},tCV[Lecture_Attendance_Pct],">="&{AT})', int(prog.sum()), "int", ""),
+        ("Progression %", f'=COUNTIFS(tCV[Final_Score],">="&{ST},tCV[Lecture_Attendance_Pct],">="&{AT})/ROWS(tCV)', prog.mean(), "pct", ""),
+        ("Gap to target (points)", f'=(COUNTIFS(tCV[Final_Score],">="&{ST},tCV[Lecture_Attendance_Pct],">="&{AT})/ROWS(tCV)-{TG})*100', (prog.mean() - .9) * 100, "dec1", "Negative = below target")])
 s.band("P.4.2-3", "Data inventory and cleaning (registry extract)")
-s.grid([["Student_ID", "Text with prefix (CVU-…) - keep as text so leading characters survive"], ["Exam_Score", "1 score of 101 capped at 100 (documented)"],
-        ["Teacher_Quality, Parental_Education, Distance_from_Home", "Blanks labelled 'Not Recorded' rather than deleted"],
+s.grid([["Matric_No", "Text with prefix (CVU-…) - keep as text so leading characters survive"], ["Final_Score", "1 score of 101 capped at 100 (documented)"],
+        ["Lecturer_Rating, Guardian_Education, Commute_Band", "Blanks labelled 'Not Recorded' rather than deleted"],
         ["Faculty / Level", "Mapped from department; 4 faculties, levels 100-400"]], header=["Field", "Cleaning applied"], merge_last=True)
 s.band("P.4.5", "Attrition risk by faculty and level")
 fac = cv.groupby("Faculty").size().reset_index(name="Students").sort_values("Students", ascending=False)
-fac_r = [(cv[cv.Faculty == f_].pipe(lambda d: ~((d.Exam_Score >= 62) & (d.Attendance_Pct >= 65)))).mean() for f_ in fac.Faculty]
+fac_r = [(cv[cv.Faculty == f_].pipe(lambda d: ~((d.Final_Score >= 62) & (d.Lecture_Attendance_Pct >= 65)))).mean() for f_ in fac.Faculty]
 s.table(fac, "tFacultyRisk", fmts={"Students": "int"}, widths={"Faculty": 20},
-        calc={"At_risk": (f'=[@Students]-COUNTIFS(tCV[Faculty],[@Faculty],tCV[Exam_Score],">="&{ST},tCV[Attendance_Pct],">="&{AT})', "int",
+        calc={"At_risk": (f'=[@Students]-COUNTIFS(tCV[Faculty],[@Faculty],tCV[Final_Score],">="&{ST},tCV[Lecture_Attendance_Pct],">="&{AT})', "int",
                           [int(r * n) for r, n in zip(fac_r, fac.Students)]),
               "At_risk_rate": ("=[@At_risk]/[@Students]", "pct", fac_r)},
         total={"Faculty": "Total", "Students": "sum", "At_risk": "sum"})
 lev = cv.groupby("Level").size().reset_index(name="Students")
-lev_r = [(cv[cv.Level == l_].pipe(lambda d: ~((d.Exam_Score >= 62) & (d.Attendance_Pct >= 65)))).mean() for l_ in lev.Level]
+lev_r = [(cv[cv.Level == l_].pipe(lambda d: ~((d.Final_Score >= 62) & (d.Lecture_Attendance_Pct >= 65)))).mean() for l_ in lev.Level]
 s.table(lev, "tLevelRisk", fmts={"Students": "int", "Level": "gen"},
-        calc={"At_risk_rate": (f'=1-COUNTIFS(tCV[Level],[@Level],tCV[Exam_Score],">="&{ST},tCV[Attendance_Pct],">="&{AT})/[@Students]', "pct", lev_r)})
+        calc={"At_risk_rate": (f'=1-COUNTIFS(tCV[Level],[@Level],tCV[Final_Score],">="&{ST},tCV[Lecture_Attendance_Pct],">="&{AT})/[@Students]', "pct", lev_r)})
 s.band("P.4.6", "The at-risk list - actionable: who, why, and what support")
 risk = cv[~prog].copy()
-risk["Trigger"] = np.where((risk.Exam_Score < 62) & (risk.Attendance_Pct < 65), "Score and attendance",
-                           np.where(risk.Exam_Score < 62, "Low score", "Low attendance"))
-s.calc([("At-risk students", f"=ROWS(tCV)-COUNTIFS(tCV[Exam_Score],\">=\"&{ST},tCV[Attendance_Pct],\">=\"&{AT})", int((~prog).sum()), "int", ""),
-        ("…triggered by attendance only", f'=COUNTIFS(tCV[Exam_Score],">="&{ST},tCV[Attendance_Pct],"<"&{AT})', int((risk.Trigger == "Low attendance").sum()), "int", "Pastoral follow-up"),
-        ("…by score only", f'=COUNTIFS(tCV[Exam_Score],"<"&{ST},tCV[Attendance_Pct],">="&{AT})', int((risk.Trigger == "Low score").sum()), "int", "Academic tutoring"),
-        ("…by both", f'=COUNTIFS(tCV[Exam_Score],"<"&{ST},tCV[Attendance_Pct],"<"&{AT})', int((risk.Trigger == "Score and attendance").sum()), "int", "Highest priority: adviser meeting in Week 5")])
-rl = risk.sort_values(["Exam_Score", "Attendance_Pct"]).head(20)[["Student_ID", "Faculty", "Department", "Level", "Exam_Score", "Attendance_Pct", "Trigger"]]
+risk["Trigger"] = np.where((risk.Final_Score < 62) & (risk.Lecture_Attendance_Pct < 65), "Score and attendance",
+                           np.where(risk.Final_Score < 62, "Low score", "Low attendance"))
+s.calc([("At-risk students", f"=ROWS(tCV)-COUNTIFS(tCV[Final_Score],\">=\"&{ST},tCV[Lecture_Attendance_Pct],\">=\"&{AT})", int((~prog).sum()), "int", ""),
+        ("…triggered by attendance only", f'=COUNTIFS(tCV[Final_Score],">="&{ST},tCV[Lecture_Attendance_Pct],"<"&{AT})', int((risk.Trigger == "Low attendance").sum()), "int", "Pastoral follow-up"),
+        ("…by score only", f'=COUNTIFS(tCV[Final_Score],"<"&{ST},tCV[Lecture_Attendance_Pct],">="&{AT})', int((risk.Trigger == "Low score").sum()), "int", "Academic tutoring"),
+        ("…by both", f'=COUNTIFS(tCV[Final_Score],"<"&{ST},tCV[Lecture_Attendance_Pct],"<"&{AT})', int((risk.Trigger == "Score and attendance").sum()), "int", "Highest priority: adviser meeting in Week 5")])
+rl = risk.sort_values(["Final_Score", "Lecture_Attendance_Pct"]).head(20)[["Matric_No", "Faculty", "Department", "Level", "Final_Score", "Lecture_Attendance_Pct", "Trigger"]]
 rl["Recommended_support"] = rl.Trigger.map({"Score and attendance": "Adviser meeting + tutorial programme", "Low score": "Week-5 tutorial programme", "Low attendance": "Pastoral call + attendance contract"})
-s.table(rl, "tAtRiskTop20", fmts={"Level": "gen", "Exam_Score": "int", "Attendance_Pct": "int"}, widths={"Department": 22, "Trigger": 20, "Recommended_support": 34})
-s.para("Top 20 by lowest score shown; in the real build use =SORTBY(FILTER(tCV, (tCV[Exam_Score]<62)+(tCV[Attendance_Pct]<65)), …) so the list refreshes. "
+s.table(rl, "tAtRiskTop20", fmts={"Level": "gen", "Final_Score": "int", "Lecture_Attendance_Pct": "int"}, widths={"Department": 22, "Trigger": 20, "Recommended_support": 34})
+s.para("Top 20 by lowest score shown; in the real build use =SORTBY(FILTER(tCV, (tCV[Final_Score]<62)+(tCV[Lecture_Attendance_Pct]<65)), …) so the list refreshes. "
        "Restricted distribution: named lists go to advisers only.", "note")
 s.band("P.4.7", "Quantifying the intervention - state the assumption and a range")
-slope = np.polyfit(cv.Attendance_Pct, cv.Exam_Score, 1)[0]
-low_att = cv[(cv.Attendance_Pct < 65)]
+slope = np.polyfit(cv.Lecture_Attendance_Pct, cv.Final_Score, 1)[0]
+low_att = cv[(cv.Lecture_Attendance_Pct < 65)]
 lift = s.inputs([("Attendance lift for low-attendance students (points)", 10, "int", "Tutorial programme assumption: +10 points attendance")])["Attendance lift for low-attendance students (points)"]
-newp = ((cv.Exam_Score + np.where(cv.Attendance_Pct < 65, slope * 10, 0) >= 62) & (np.where(cv.Attendance_Pct < 65, cv.Attendance_Pct + 10, cv.Attendance_Pct) >= 65)).mean()
-s.calc([("Exam points per attendance point (slope)", "=SLOPE(tCV[Exam_Score],tCV[Attendance_Pct])", slope, "dec3", "Observed association, not proven cause"),
-        ("Expected score gain for a lifted student", f"=SLOPE(tCV[Exam_Score],tCV[Attendance_Pct])*{lift}", slope * 10, "dec1", ""),
-        ("Low-attendance students reachable", f'=COUNTIFS(tCV[Attendance_Pct],"<"&{AT})', len(low_att), "int", ""),
+newp = ((cv.Final_Score + np.where(cv.Lecture_Attendance_Pct < 65, slope * 10, 0) >= 62) & (np.where(cv.Lecture_Attendance_Pct < 65, cv.Lecture_Attendance_Pct + 10, cv.Lecture_Attendance_Pct) >= 65)).mean()
+s.calc([("Exam points per attendance point (slope)", "=SLOPE(tCV[Final_Score],tCV[Lecture_Attendance_Pct])", slope, "dec3", "Observed association, not proven cause"),
+        ("Expected score gain for a lifted student", f"=SLOPE(tCV[Final_Score],tCV[Lecture_Attendance_Pct])*{lift}", slope * 10, "dec1", ""),
+        ("Low-attendance students reachable", f'=COUNTIFS(tCV[Lecture_Attendance_Pct],"<"&{AT})', len(low_att), "int", ""),
         ("Progression % if the lift is achieved (estimate)", newp, newp, "pct", "Computed by re-applying the rule to the lifted cohort; report as a range, e.g. ± half the effect")])
 s.band("P.4.8-10", "Dashboard, senate paper and verification")
 s.grid([["KPI cards", "Cohort, Progression %, At-risk count, Average attendance"], ["Faculty bar (sorted)", "At-risk rate by faculty (above)"],
@@ -327,9 +327,9 @@ s.grid([["KPI cards", "Cohort, Progression %, At-risk count, Average attendance"
        header=["Item", "Content"], merge_last=True)
 
 # ======================================================================================
-# P.5 Capstone 3 Lifecare
+# P.5 Capstone 3 Mercyland
 # ======================================================================================
-s = b.sheet("P.5 Capstone3 Lifecare", "P.5  Capstone 3 - Lifecare Hospital: occupancy, length of stay and readmission safety",
+s = b.sheet("P.5 Capstone3 Mercyland", "P.5  Capstone 3 - Mercyland Hospital: occupancy, length of stay and readmission safety",
             "Bed-day occupancy from the census, LOS distribution, readmission by ward, escalation rule - no patient identifiers", "P.5.1 - P.5.10")
 qocc = census.groupby("Quarter").Occupancy_Pct.mean()
 pk_q = qocc.idxmax()
@@ -339,50 +339,50 @@ s.calc([("Peak quarterly average occupancy", "=MAX(tOccQ[Occupancy])", float(qoc
         ("Days above 100% (patients on trolleys)", '=COUNTIFS(tCensus[Occupancy_Pct],">1")', int((census.Occupancy_Pct > 1).sum()), "int", "")])
 s.band("P.5.2-3", "Data inventory and cleaning disclosures")
 dl = L("dirty_lc_log")
-s.grid([["Admissions", "Lifecare_Admissions_2019_2024.csv / lifecare_hospital.db", f"{len(lc):,} admissions, {lc.Admission_Date.min():%d-%b-%Y} to {lc.Admission_Date.max():%d-%b-%Y}"],
-        ["Wards", "Lifecare_Wards.csv", "4 wards × 130 staffed beds = 520"], ["Bed census", "Lifecare_Daily_Bed_Census.csv", f"{len(census):,} days"],
-        ["Doctors", "Lifecare_Doctors.csv", "28 doctors across departments"]], header=["Source", "File", "Scale"])
+s.grid([["Admissions", "Mercyland_Inpatient_Episodes_2019_2024.csv / mercyland_hospital.db", f"{len(lc):,} admissions, {lc.Admit_Date.min():%d-%b-%Y} to {lc.Admit_Date.max():%d-%b-%Y}"],
+        ["Wards", "Mercyland_Wards.csv", "4 wards × 130 staffed beds = 520"], ["Bed census", "Mercyland_Daily_Bed_Census.csv", f"{len(census):,} days"],
+        ["Doctors", "Mercyland_Consultants.csv", "28 doctors across departments"]], header=["Source", "File", "Scale"])
 s.table(dl.head(10), "tLcCleanLog", widths={dl.columns[0]: 24, dl.columns[1]: 44, dl.columns[-1]: 40})
 s.band("P.5.4", "Measuring occupancy properly: occupied bed-days ÷ available bed-days, by quarter")
 oq = census.groupby("Quarter").agg(Days=("Census_Date", "count")).reset_index()
 s.para("Part quarters at the start (2019-Q2) and end (2024-Q2) of the census are included but flagged by their day count.", "note")
 toq = s.table(oq, "tOccQ", fmts={"Days": "int"},
-              calc={"Occupied_bed_days": ("=SUMIFS(tCensus[Patients_In_House],tCensus[Quarter],[@Quarter])", "int", [int(census[census.Quarter == q].Patients_In_House.sum()) for q in oq.Quarter]),
-                    "Available_bed_days": ("=SUMIFS(tCensus[Staffed_Beds],tCensus[Quarter],[@Quarter])", "int", [int(census[census.Quarter == q].Staffed_Beds.sum()) for q in oq.Quarter]),
-                    "Occupancy": ("=[@Occupied_bed_days]/[@Available_bed_days]", "pct", [census[census.Quarter == q].Patients_In_House.sum() / census[census.Quarter == q].Staffed_Beds.sum() for q in oq.Quarter])})
+              calc={"Occupied_bed_days": ("=SUMIFS(tCensus[Inpatients],tCensus[Quarter],[@Quarter])", "int", [int(census[census.Quarter == q].Inpatients.sum()) for q in oq.Quarter]),
+                    "Available_bed_days": ("=SUMIFS(tCensus[Open_Beds],tCensus[Quarter],[@Quarter])", "int", [int(census[census.Quarter == q].Open_Beds.sum()) for q in oq.Quarter]),
+                    "Occupancy": ("=[@Occupied_bed_days]/[@Available_bed_days]", "pct", [census[census.Quarter == q].Inpatients.sum() / census[census.Quarter == q].Open_Beds.sum() for q in oq.Quarter])})
 s.chart("line", [{"name": "Occupancy", "categories": toq.ref("Quarter"), "values": toq.ref("Occupancy")}], f"Quarterly bed occupancy - peak {qocc.max():.1%} in {pk_q}",
         y_fmt="0%", legend=False, rows=16, size=(760, 280))
 s.band("P.5.5", "Length of stay: mean, median, 90th percentile by ward (2023 admissions)")
-l23 = lc[lc.Admission_Date.dt.year == 2023]
+l23 = lc[lc.Admit_Date.dt.year == 2023]
 wd = l23.groupby("Ward").size().reset_index(name="Admissions")
 s.table(wd, "tLOSWard", fmts={"Admissions": "int"}, widths={"Ward": 16},
-        calc={"Mean_LOS": ("=AVERAGEIFS(tAdm23[Length_of_Stay],tAdm23[Ward],[@Ward])", "dec1", [l23[l23.Ward == w].Length_of_Stay.mean() for w in wd.Ward]),
-              "Median_LOS": ("=AGGREGATE(17,6,tAdm23[Length_of_Stay]/(tAdm23[Ward]=[@Ward]),2)", "dec1", [l23[l23.Ward == w].Length_of_Stay.median() for w in wd.Ward]),
-              "P90_LOS": ("=AGGREGATE(16,6,tAdm23[Length_of_Stay]/(tAdm23[Ward]=[@Ward]),0.9)", "dec1", [l23[l23.Ward == w].Length_of_Stay.quantile(.9) for w in wd.Ward])})
-s.para("Lifecare's stays are spread evenly from 1 to 30 days, so mean ≈ median here. Report both anyway: the P90 (28 days) is what discharge planning needs.", "note")
+        calc={"Mean_LOS": ("=AVERAGEIFS(tAdm23[LOS_Days],tAdm23[Ward],[@Ward])", "dec1", [l23[l23.Ward == w].LOS_Days.mean() for w in wd.Ward]),
+              "Median_LOS": ("=AGGREGATE(17,6,tAdm23[LOS_Days]/(tAdm23[Ward]=[@Ward]),2)", "dec1", [l23[l23.Ward == w].LOS_Days.median() for w in wd.Ward]),
+              "P90_LOS": ("=AGGREGATE(16,6,tAdm23[LOS_Days]/(tAdm23[Ward]=[@Ward]),0.9)", "dec1", [l23[l23.Ward == w].LOS_Days.quantile(.9) for w in wd.Ward])})
+s.para("Mercyland's stays are spread evenly from 1 to 30 days, so mean ≈ median here. Report both anyway: the P90 (28 days) is what discharge planning needs.", "note")
 s.band("P.5.6", "Readmission safety by department (2023)")
 dp = l23.groupby("Department").size().reset_index(name="Discharges")
 s.table(dp, "tReadmitDept", fmts={"Discharges": "int"}, widths={"Department": 24},
-        calc={"Readmitted": ('=COUNTIFS(tAdm23[Department],[@Department],tAdm23[Readmit_30d],"Yes")', "int", [int((l23[l23.Department == d].Readmit_30d == "Yes").sum()) for d in dp.Department]),
-              "Rate": ("=[@Readmitted]/[@Discharges]", "pct", [(l23[l23.Department == d].Readmit_30d == "Yes").mean() for d in dp.Department])})
+        calc={"Readmitted": ('=COUNTIFS(tAdm23[Department],[@Department],tAdm23[Readmitted_30d],"Yes")', "int", [int((l23[l23.Department == d].Readmitted_30d == "Yes").sum()) for d in dp.Department]),
+              "Rate": ("=[@Readmitted]/[@Discharges]", "pct", [(l23[l23.Department == d].Readmitted_30d == "Yes").mean() for d in dp.Department])})
 s.warn("Readmission is a safety measure: any department-level finding goes to the clinical lead for validation before it appears in a board pack.")
 s.band("P.5.7", "Escalation rule as a conditional column (Q4 2023 admissions)")
-q4 = lc[(lc.Admission_Date >= "2023-10-01") & (lc.Admission_Date <= "2023-12-31")][["Admission_ID", "Admission_Date", "Ward", "Department", "Admission_Type", "Age", "Length_of_Stay", "Readmit_30d"]].reset_index(drop=True)
-reason = np.where(q4.Readmit_30d == "Yes", "Readmitted within 30 days", np.where(q4.Length_of_Stay >= 28, "Stay of 28+ days", np.where(q4.Age >= 75, "Age 75+", "")))
+q4 = lc[(lc.Admit_Date >= "2023-10-01") & (lc.Admit_Date <= "2023-12-31")][["Episode_ID", "Admit_Date", "Ward", "Department", "Admission_Route", "Age", "LOS_Days", "Readmitted_30d"]].reset_index(drop=True)
+reason = np.where(q4.Readmitted_30d == "Yes", "Readmitted within 30 days", np.where(q4.LOS_Days >= 28, "Stay of 28+ days", np.where(q4.Age >= 75, "Age 75+", "")))
 s.calc([("Q4 2023 admissions", "=ROWS(tEscQ4)", len(q4), "int", ""),
         ("Escalations", '=SUMPRODUCT(--(tEscQ4[Escalation_reason]<>""))', int((reason != "").sum()), "int", "Every report applies the same rule"),
         ("…readmitted", '=COUNTIFS(tEscQ4[Escalation_reason],"Readmitted*")', int((reason == "Readmitted within 30 days").sum()), "int", "Rule order matters: first matching reason is recorded"),
         ("…long stay", '=COUNTIFS(tEscQ4[Escalation_reason],"Stay*")', int((reason == "Stay of 28+ days").sum()), "int", ""),
         ("…age 75+", '=COUNTIFS(tEscQ4[Escalation_reason],"Age*")', int((reason == "Age 75+").sum()), "int", "")])
-s.code('// Power Query conditional column (same rule)\n= Table.AddColumn(Source, "Escalation_reason", each\n    if [Readmit_30d] = "Yes" then "Readmitted within 30 days"\n    else if [Length_of_Stay] >= 28 then "Stay of 28+ days"\n    else if [Age] >= 75 then "Age 75+"\n    else "", type text)')
+s.code('// Power Query conditional column (same rule)\n= Table.AddColumn(Source, "Escalation_reason", each\n    if [Readmitted_30d] = "Yes" then "Readmitted within 30 days"\n    else if [LOS_Days] >= 28 then "Stay of 28+ days"\n    else if [Age] >= 75 then "Age 75+"\n    else "", type text)')
 s.band("P.5.8-10", "Dashboard, board pack and verification")
 s.grid([["KPI cards", "Admissions, Occupancy %, Mean LOS, Readmission %"], ["Occupancy trend", "Quarterly line with 85% target band (above)"],
         ["Ward bars", "Admissions and P90 LOS by ward"], ["Board pack", "Summary, occupancy, LOS, readmission safety note, staffing recommendation, data-quality appendix, confidentiality statement"],
-        ["Verification", f"Admissions {len(lc):,} = Health Records; billing ₦{lc.Billing_Amount.sum():,.0f} = finance ledger; occupancy = bed census; no names or Patient_IDs in any output"]],
+        ["Verification", f"Admissions {len(lc):,} = Health Records; billing ₦{lc.Bill_Amount_NGN.sum():,.0f} = finance ledger; occupancy = bed census; no names or Patient_IDs in any output"]],
        header=["Item", "Content"], merge_last=True)
-s.h2("Escalation list - Q4 2023 (Admission_ID only, no patient identifiers)")
-s.table(q4, "tEscQ4", fmts={"Admission_Date": "date", "Age": "int", "Length_of_Stay": "int"}, widths={"Department": 22},
-        calc={"Escalation_reason": ('=IF([@Readmit_30d]="Yes","Readmitted within 30 days",IF([@Length_of_Stay]>=28,"Stay of 28+ days",IF([@Age]>=75,"Age 75+","")))', None, reason.tolist())})
+s.h2("Escalation list - Q4 2023 (Episode_ID only, no patient identifiers)")
+s.table(q4, "tEscQ4", fmts={"Admit_Date": "date", "Age": "int", "LOS_Days": "int"}, widths={"Department": 22},
+        calc={"Escalation_reason": ('=IF([@Readmitted_30d]="Yes","Readmitted within 30 days",IF([@LOS_Days]>=28,"Stay of 28+ days",IF([@Age]>=75,"Age 75+","")))', None, reason.tolist())})
 
 # ======================================================================================
 # P.6 QA
@@ -400,7 +400,7 @@ s.band("P.6.3", "Reconciliation testing - every test is a live formula; differen
 tests = [("SuperMart lines (all years)", "=ROWS(tSM)", len(sm), 9994), ("SuperMart FY2025 sales", "=SUMIFS(tSM[Sales],tSM[Year],2025)", b25.Sales.sum(), int(ctrl["Total Sales (₦)"])),
          ("SuperMart FY2025 profit", "=SUMIFS(tSM[Profit],tSM[Year],2025)", b25.Profit.sum(), int(ctrl["Total Profit (₦)"])),
          ("SuperMart FY2025 quantity", "=SUMIFS(tSM[Quantity],tSM[Year],2025)", int(b25.Quantity.sum()), int(ctrl["Total Quantity"])),
-         ("Crestview cohort", "=ROWS(tCV)", len(cv), 6607), ("Lifecare 2023 admissions", "=ROWS(tAdm23)", len(l23), int((lc.Admission_Date.dt.year == 2023).sum())),
+         ("Kingsway cohort", "=ROWS(tCV)", len(cv), 6607), ("Mercyland 2023 admissions", "=ROWS(tAdm23)", len(l23), int((lc.Admit_Date.dt.year == 2023).sum())),
          ("Bed census days", "=ROWS(tCensus)", len(census), 1797)]
 td = pd.DataFrame([[t[0], t[3], float(t[2])] for t in tests], columns=["Test", "Control_total", "Workbook_value"])
 tt = s.table(td, "tRecon", fmts={"Control_total": "#,##0"}, widths={"Test": 32},
@@ -512,7 +512,7 @@ s.grid([["Situation", "SuperMart Online SQL project: the AI-written zone query r
         ["Result", "Correct figure published; added a control-total check to every SQL deliverable"]], header=["STAR", "Answer"], merge_last=True)
 s.band("P.9.6-8", "Roadmap: Power BI, SQL, Python")
 s.grid([["Power BI", "Rebuild Capstone 1 in Power BI Desktop: same star schema and DAX; learn the visual layer", "2-4 weeks"],
-        ["SQL", "Window functions, CTEs, indexes on supermart_online.db and lifecare_hospital.db; then PostgreSQL", "4-6 weeks"],
+        ["SQL", "Window functions, CTEs, indexes on supermart_online.db and mercyland_hospital.db; then PostgreSQL", "4-6 weeks"],
         ["Python", "pandas to re-create the cleaning log for SuperMart_Sales_2025_DIRTY.csv; matplotlib for the margin chart", "6-8 weeks"]],
        header=["Next tool", "First project", "Time"])
 
@@ -530,12 +530,12 @@ for y in (2024, 2025):
 sku["Margin_2025"] = np.where(sku.Sales_2025 > 0, sku.Profit_2025 / sku.Sales_2025.replace(0, np.nan), np.nan)
 b.data_sheet("D_SKU", sku, "tSKU", fmts={"Sales_2024": "naira", "Profit_2024": "naira", "Sales_2025": "naira", "Profit_2025": "naira", "Margin_2025": "pct"},
              title="SKU summary (1,862 products): FY2024 and FY2025 sales and profit (values aggregated from tSM)")
-b.data_sheet("D_Students", cv[["Student_ID", "Faculty", "Department", "Level", "Gender", "Hours_Studied_Per_Week", "Attendance_Pct", "Previous_Score", "Exam_Score", "Grade"]], "tCV",
-             fmts={"Level": "gen"}, title="Crestview cohort 2024/25 (6,607)")
-b.data_sheet("D_Adm_2023", l23[["Admission_ID", "Admission_Date", "Ward", "Department", "Admission_Type", "Age", "Length_of_Stay", "Readmit_30d"]].reset_index(drop=True), "tAdm23",
-             fmts={"Admission_Date": "date"}, title="Lifecare 2023 admissions - minimised (no names, no Patient_ID)")
-b.data_sheet("D_Census", census[["Census_Date", "Quarter", "Patients_In_House", "Staffed_Beds", "Occupancy_Pct"]], "tCensus",
-             fmts={"Census_Date": "date", "Occupancy_Pct": "pct"}, title="Lifecare daily bed census")
+b.data_sheet("D_Students", cv[["Matric_No", "Faculty", "Department", "Level", "Gender", "Study_Hours_Wk", "Lecture_Attendance_Pct", "Last_Sem_Score", "Final_Score", "Grade"]], "tCV",
+             fmts={"Level": "gen"}, title="Kingsway cohort 2024/25 (6,607)")
+b.data_sheet("D_Adm_2023", l23[["Episode_ID", "Admit_Date", "Ward", "Department", "Admission_Route", "Age", "LOS_Days", "Readmitted_30d"]].reset_index(drop=True), "tAdm23",
+             fmts={"Admit_Date": "date"}, title="Mercyland 2023 admissions - minimised (no names, no Patient_No)")
+b.data_sheet("D_Census", census[["Census_Date", "Quarter", "Inpatients", "Open_Beds", "Occupancy_Pct"]], "tCensus",
+             fmts={"Census_Date": "date", "Occupancy_Pct": "pct"}, title="Mercyland daily bed census")
 
 b.cover("Capstone Section Examples - Lifecycle, Source Register, Three Capstones, QA, Defence and Career",
         ["One worksheet per module (P.1 - P.9). P.3, P.4 and P.5 are worked versions of the three capstones using the real bootcamp data, "
@@ -543,6 +543,6 @@ b.cover("Capstone Section Examples - Lifecycle, Source Register, Three Capstones
          "P.2 is an internal source register: every bootcamp file with its owner, rows and SHA-256 fingerprint, plus before/after evidence from the dirty extract.",
          "P.6 holds a live reconciliation table - all tests must show PASS.",
          "Health and student data appear only as minimised extracts (no names or patient IDs)."],
-        [(k, DATASETS_TEXT[k]) for k in ["SuperMart Stores", "SuperMart Online", "Crestview", "Lifecare"]])
+        [(k, DATASETS_TEXT[k]) for k in ["SuperMart Stores", "SuperMart Online", "Kingsway", "Mercyland"]])
 b.close()
 print("Capstone ->", OUT)

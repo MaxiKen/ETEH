@@ -23,9 +23,9 @@ def m14(b, D):
                     "Tutor walk-through after Module 1.4: the key measure of each industry, worked on real summary tables",
                     "1.4.1 - 1.4.10")
     m.dataset([("tPayMix", "Below", "SuperMart Online: orders and revenue by payment method (11,000 orders)."),
-               ("tFaculty", "Below", "Crestview University: students, average score and at-risk students by faculty."),
-               ("tDept23", "Below", "Lifecare General Hospital 2023: admissions, average stay and 30-day readmissions by department."),
-               ("tHotelSeg", "Below", "Eko Suites Hotel 2023-2024: bookings and cancellations by market segment."),
+               ("tFaculty", "Below", "Kingsway University: students, average score and at-risk students by faculty."),
+               ("tDept23", "Below", "Mercyland Specialist Hospital 2023: admissions, average stay and 30-day readmissions by department."),
+               ("tHotelSeg", "Below", "Atlantic Pearl Hotel 2023-2024: bookings and cancellations by market segment."),
                ("tSeniority", "Below", "ETEH Talent Salary Survey: people, median salary and average experience by seniority."),
                ("tCouriers", "Below", "SuperMart Online: deliveries and delivered parcels by courier."),
                ("tCardTxn, tOreDaily", "Below", "Illustrative practice data (made up for the skill; not a bootcamp dataset).")])
@@ -39,8 +39,8 @@ def m14(b, D):
     m.s.table(DEPT[["Department", "Admissions", "Avg_LOS", "Readmitted"]], "tDept23", fmts={"Admissions": "int", "Avg_LOS": "dec1", "Readmitted": "int"},
               calc={"Readmission_Rate": ("=[@Readmitted]/[@Admissions]", "pct", DEPT.Readmission_Rate.tolist())}, widths={"Department": 26})
     m.h("tHotelSeg")
-    m.s.table(HSEG[["Market_Segment", "Bookings", "Cancelled"]], "tHotelSeg", fmts={"Bookings": "int", "Cancelled": "int"},
-              calc={"Cancel_Rate": ("=[@Cancelled]/[@Bookings]", "pct", HSEG.Cancel_Rate.tolist())}, widths={"Market_Segment": 20})
+    m.s.table(HSEG[["Sales_Channel", "Bookings", "Cancelled"]], "tHotelSeg", fmts={"Bookings": "int", "Cancelled": "int"},
+              calc={"Cancel_Rate": ("=[@Cancelled]/[@Bookings]", "pct", HSEG.Cancel_Rate.tolist())}, widths={"Sales_Channel": 20})
     m.h("tSeniority")
     m.s.table(SEN, "tSeniority", fmts={"People": "int", "Median_Salary": N, "Avg_Experience": "dec1"})
     m.h("tCouriers")
@@ -91,8 +91,8 @@ def m14(b, D):
     m.turn()
     m.ex("How many departments have a readmission rate above the hospital rate?", '=COUNTIF(tDept23[Readmission_Rate],">"&SUM(tDept23[Readmitted])/SUM(tDept23[Admissions]))',
          int((DEPT.Readmission_Rate > overall).sum()), "int", short="Departments above the hospital rate")
-    m.ex("How many admissions did Oncology have in 2023?", '=SUMIFS(tDept23[Admissions],tDept23[Department],"Oncology")',
-         int(DEPT.set_index("Department").Admissions["Oncology"]), "int", short="Oncology admissions")
+    m.ex("How many admissions did Surgery have in 2023?", '=SUMIFS(tDept23[Admissions],tDept23[Department],"Surgery")',
+         int(DEPT.set_index("Department").Admissions["Surgery"]), "int", short="Surgery admissions")
 
     # ---------------------------------------------------------------- 1.4.4
     usual = 45000
@@ -124,15 +124,15 @@ def m14(b, D):
              "Publish groups, never individuals."])
     inp = m.s.inputs([("Population served (illustrative assumption)", 1200000, "int", "Not from a dataset: an assumption for practice.")])
     P = inp["Population served (illustrative assumption)"]
-    m.worked([("Lifecare admissions per 1,000 people, 2023", f"=SUM(tDept23[Admissions])/({P}/1000)", DEPT.Admissions.sum() / 1200, "dec1", "")])
+    m.worked([("Mercyland admissions per 1,000 people, 2023", f"=SUM(tDept23[Admissions])/({P}/1000)", DEPT.Admissions.sum() / 1200, "dec1", "")])
     m.turn()
     m.ex("With a population of 1,500,000, how many admissions per 1,000 people is that?", "=SUM(tDept23[Admissions])/(1500000/1000)",
          DEPT.Admissions.sum() / 1500, "dec1", tol=0.051, short="Admissions per 1,000 (1.5m people)")
-    m.ex_text("The Lifecare admissions table has Admission_ID, Patient_Name, Age, Department and Billing_Amount. Which column must be removed before publishing?",
+    m.ex_text("The Mercyland admissions table has Episode_ID, Patient_Name, Age, Department and Bill_Amount_NGN. Which column must be removed before publishing?",
               "Patient_Name", alts=("patient name",))
 
     # ---------------------------------------------------------------- 1.4.6
-    hs = HSEG.set_index("Market_Segment")
+    hs = HSEG.set_index("Sales_Channel")
     m.topic("1.4.6", "Marketing and customer management",
             "Marketing analytics finds which customers and channels bring the most value, and which cost more than they return.")
     m.steps(["Cancellation rate = cancelled ÷ bookings, for each segment.",
@@ -140,12 +140,12 @@ def m14(b, D):
              "Compare channels as a ratio: how many times higher is one rate than another?"])
     ota, corp = hs.Cancel_Rate["Online Travel Agent"], hs.Cancel_Rate["Corporate"]
     m.worked([("Overall cancellation rate", "=SUM(tHotelSeg[Cancelled])/SUM(tHotelSeg[Bookings])", HSEG.Cancelled.sum() / HSEG.Bookings.sum(), "pct", ""),
-              ("Online travel agent ÷ corporate rate", '=SUMIFS(tHotelSeg[Cancel_Rate],tHotelSeg[Market_Segment],"Online Travel Agent")/SUMIFS(tHotelSeg[Cancel_Rate],tHotelSeg[Market_Segment],"Corporate")',
+              ("Online travel agent ÷ corporate rate", '=SUMIFS(tHotelSeg[Cancel_Rate],tHotelSeg[Sales_Channel],"Online Travel Agent")/SUMIFS(tHotelSeg[Cancel_Rate],tHotelSeg[Sales_Channel],"Corporate")',
                ota / corp, "dec1", "About three times as likely to cancel.")])
     m.turn()
-    m.ex("How many Online Travel Agent bookings were cancelled?", '=SUMIFS(tHotelSeg[Cancelled],tHotelSeg[Market_Segment],"Online Travel Agent")',
+    m.ex("How many Online Travel Agent bookings were cancelled?", '=SUMIFS(tHotelSeg[Cancelled],tHotelSeg[Sales_Channel],"Online Travel Agent")',
          int(hs.Cancelled["Online Travel Agent"]), "int", short="OTA cancellations")
-    m.ex("What share of all bookings came through Online Travel Agents?", '=SUMIFS(tHotelSeg[Bookings],tHotelSeg[Market_Segment],"Online Travel Agent")/SUM(tHotelSeg[Bookings])',
+    m.ex("What share of all bookings came through Online Travel Agents?", '=SUMIFS(tHotelSeg[Bookings],tHotelSeg[Sales_Channel],"Online Travel Agent")/SUM(tHotelSeg[Bookings])',
          hs.Bookings["Online Travel Agent"] / HSEG.Bookings.sum(), "pct", short="OTA share of bookings")
 
     # ---------------------------------------------------------------- 1.4.7
@@ -204,14 +204,14 @@ def m14(b, D):
     m.steps(["State the evidence as a number (live formula).",
              "State the decision it supports.",
              "Say what you would measure next to check the decision worked."])
-    m.worked([("Eko Suites: online travel agent cancellation rate", '=SUMIFS(tHotelSeg[Cancel_Rate],tHotelSeg[Market_Segment],"Online Travel Agent")', ota, "pct",
+    m.worked([("Atlantic Pearl: online travel agent cancellation rate", '=SUMIFS(tHotelSeg[Cancel_Rate],tHotelSeg[Sales_Channel],"Online Travel Agent")', ota, "pct",
                "Decision: ask for deposits on agency bookings."),
-              ("Crestview: students at risk", "=SUM(tFaculty[At_Risk])", int(FAC.At_Risk.sum()), "int", "Decision: target tutoring at flagged students."),
+              ("Kingsway: students at risk", "=SUM(tFaculty[At_Risk])", int(FAC.At_Risk.sum()), "int", "Decision: target tutoring at flagged students."),
               ("SuperMart Online: Paystack + Flutterwave share", '=SUMIFS(tPayMix[Share],tPayMix[Payment_Method],"Paystack")+SUMIFS(tPayMix[Share],tPayMix[Payment_Method],"Flutterwave")',
                pm.Share["Paystack"] + pm.Share["Flutterwave"], "pct", "Decision: keep both gateways reliable at checkout.")])
     m.turn()
-    m.ex_open("Using tDept23, write one evidence → decision pair for Lifecare.",
-              f"Evidence: Oncology had the highest 30-day readmission rate in 2023 ({DEPT.Readmission_Rate.max():.1%}). Decision: phone every Oncology patient within 7 days of discharge and track the rate monthly.")
+    m.ex_open("Using tDept23, write one evidence → decision pair for Mercyland.",
+              f"Evidence: Surgery had the highest 30-day readmission rate in 2023 ({DEPT.Readmission_Rate.max():.1%}). Decision: phone every Surgery patient within 7 days of discharge and track the rate monthly.")
     m.finish()
 
 

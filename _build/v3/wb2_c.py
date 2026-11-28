@@ -62,7 +62,7 @@ def m28a(b, D):
     m.dataset([("tSales25", "Sheet Data_Sales25 (starts in A1)", "3,312 clean FY2025 sales lines. Most examples use it."),
                ("tStores", "Sheet Data_Stores (starts in A1)", "12 stores with Target_2025 and Sales_2025."),
                ("tDirty25", "Sheet Data_Dirty25 (starts in A1)", "The raw file, used where a function measures a data problem."),
-               ("tAdm23", "Sheet Data_Adm23 (starts in A1)", "Lifecare 2023 admissions, for a second dataset.")])
+               ("tAdm23", "Sheet Data_Adm23 (starts in A1)", "Mercyland 2023 admissions, for a second dataset.")])
     TOT = int(S.Sales.sum())
     num = [v for v in DR.Sales if isinstance(v, (int, float)) and v == v]
     zsum = lambda z: int(S[S.Zone == z].Sales.sum())  # noqa: E731
@@ -137,10 +137,10 @@ def m28a(b, D):
                      ("Mean line", "=AVERAGE(tSales25[Sales])", float(S.Sales.mean()), N, "Mean far above median: skewed.")],
        [("n", "What is the median profit per line?", "=MEDIAN(tSales25[Profit])", float(S.Profit.median()), N, "Median profit")])
     mode = S.Quantity.value_counts()
-    los = A.Length_of_Stay.value_counts()
+    los = A.LOS_Days.value_counts()
     fn(m, "2.8.14", [("Most common quantity", "=MODE.SNGL(tSales25[Quantity])", int(mode.index[0]), "int", ""),
                      ("Lines with that quantity", f"=COUNTIF(tSales25[Quantity],{int(mode.index[0])})", int(mode.iloc[0]), "int", "")],
-       [("n", "What is the most common length of stay in tAdm23 (days)?", "=MODE.SNGL(tAdm23[Length_of_Stay])", int(los.index[0]), "int",
+       [("n", "What is the most common length of stay in tAdm23 (days)?", "=MODE.SNGL(tAdm23[LOS_Days])", int(los.index[0]), "int",
          "Most common length of stay")])
     mx = S.loc[S.Sales.idxmax()]
     fn(m, "2.8.15", [("Largest line", "=MAX(tSales25[Sales])", int(mx.Sales), N, f"{mx.Product_Name}, {mx.Store_Name}."),
@@ -350,12 +350,12 @@ def m28b(b, D):
        [("n", "What does =DATE(2025,2,29) return? Format it as a date and type the day number of the result.", "=DAY(DATE(2025,2,29))", 1, "int",
          "Day of DATE(2025,2,29)")])
     a0, a1 = A.iloc[0], A.iloc[1]
-    los = float((A.Discharge_Date - A.Admission_Date).dt.days.mean())
-    dd_ = lambda i: f'DATEDIF(INDEX(tAdm23[Admission_Date],{i}),INDEX(tAdm23[Discharge_Date],{i}),"d")'  # noqa: E731
-    fn(m, "2.8.53", [(f"Stay of {a0.Admission_ID}", "=" + dd_(1), (a0.Discharge_Date - a0.Admission_Date).days, "int", ""),
-                     ("Average stay, all of tAdm23", "=AVERAGE(tAdm23[Discharge_Date]-tAdm23[Admission_Date])", los, "dec2", "Days.")],
-       [("n", f"How long was the stay of {a1.Admission_ID} (row 2 of tAdm23)?", "=" + dd_(2), (a1.Discharge_Date - a1.Admission_Date).days, "int",
-         f"Stay of {a1.Admission_ID}")])
+    los = float((A.Discharge_Date - A.Admit_Date).dt.days.mean())
+    dd_ = lambda i: f'DATEDIF(INDEX(tAdm23[Admit_Date],{i}),INDEX(tAdm23[Discharge_Date],{i}),"d")'  # noqa: E731
+    fn(m, "2.8.53", [(f"Stay of {a0.Episode_ID}", "=" + dd_(1), (a0.Discharge_Date - a0.Admit_Date).days, "int", ""),
+                     ("Average stay, all of tAdm23", "=AVERAGE(tAdm23[Discharge_Date]-tAdm23[Admit_Date])", los, "dec2", "Days.")],
+       [("n", f"How long was the stay of {a1.Episode_ID} (row 2 of tAdm23)?", "=" + dd_(2), (a1.Discharge_Date - a1.Admit_Date).days, "int",
+         f"Stay of {a1.Episode_ID}")])
     dis = a0.Discharge_Date
     fn(m, "2.8.54", [("End of the discharge month", "=EOMONTH(INDEX(tAdm23[Discharge_Date],1),0)", serial(dis + pd.offsets.MonthEnd(0)), "date", ""),
                      ("End of next month", "=EOMONTH(INDEX(tAdm23[Discharge_Date],1),1)", serial(dis + pd.offsets.MonthEnd(0) + pd.offsets.MonthEnd(1)), "date", ""),

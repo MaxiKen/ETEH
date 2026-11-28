@@ -1,6 +1,6 @@
 """Week 4 edition-3 slide copy: Modules 4.7 (storytelling), 4.8 (report writing and PDF), 4.9 (slide presentations) and
 4.10 (formula auditing, protection and light automation).
-Data: tDash25 + tStores (SuperMart FY2025), tMonthly, tLOS + tCensus23 (Lifecare 2023), tHotel (Eko Suites). Every number is
+Data: tDash25 + tStores (SuperMart FY2025), tMonthly, tLOS + tCensus23 (Mercyland 2023), tHotel (Atlantic Pearl). Every number is
 computed here."""
 import pandas as pd
 
@@ -25,10 +25,10 @@ AX = 120e6
 HEADLINE = (f"FY2025 sales grew {P(GROW, 0)} to {Nm(TOT25, 0)}, but {NBEL} of {len(ST)} stores missed target; "
             f"{WORST.Store_Name} has the largest gap ({Nm(WORST.gap)}).")
 
-# ---------------------------------------------------------------- Lifecare 2023
-DEP = (LOS.groupby("Department").agg(n=("Admission_ID", "size"), alos=("Length_of_Stay", "mean"),
-                                    re=("Readmit_30d", lambda x: (x == "Yes").mean())).sort_values("n", ascending=False))
-RE_ALL = (LOS.Readmit_30d == "Yes").mean()
+# ---------------------------------------------------------------- Mercyland 2023
+DEP = (LOS.groupby("Department").agg(n=("Episode_ID", "size"), alos=("LOS_Days", "mean"),
+                                    re=("Readmitted_30d", lambda x: (x == "Yes").mean())).sort_values("n", ascending=False))
+RE_ALL = (LOS.Readmitted_30d == "Yes").mean()
 OCC = C23.Occupancy_Pct
 HI95 = int((OCC > 0.95).sum())
 C23M = pd.to_datetime(C23.Census_Date).dt.month
@@ -36,12 +36,12 @@ HI95_Q2 = int(((OCC > 0.95) & C23M.between(4, 6)).sum())
 PEAK = C23.loc[OCC.idxmax()]
 TOPRE = DEP.re.idxmax()
 
-# ---------------------------------------------------------------- Eko Suites cancellations
-H = HOT.assign(C=(HOT.Booking_Status == "Cancelled").astype(int))
-CANV = H.loc[H.C == 1, "Booking_Value_NGN"].sum()
+# ---------------------------------------------------------------- Atlantic Pearl cancellations
+H = HOT.assign(C=(HOT.Reservation_Status == "Cancelled").astype(int))
+CANV = H.loc[H.C == 1, "Reservation_Value_NGN"].sum()
 CR = H.C.mean()
-SEG = H.groupby("Market_Segment").agg(n=("C", "size"), r=("C", "mean")).sort_values("n", ascending=False)
-LB = pd.cut(H.Lead_Time_Days, [-1, 7, 30, 90, 180, 10_000], labels=["0-7 days", "8-30 days", "31-90 days", "91-180 days", "181+ days"])
+SEG = H.groupby("Sales_Channel").agg(n=("C", "size"), r=("C", "mean")).sort_values("n", ascending=False)
+LB = pd.cut(H.Days_Ahead, [-1, 7, 30, 90, 180, 10_000], labels=["0-7 days", "8-30 days", "31-90 days", "91-180 days", "181+ days"])
 LEAD = H.groupby(LB, observed=True).C.mean()
 T4 = f"Bookings made 6+ months ahead cancel {LEAD.iloc[-1]:.0%} of the time"
 
@@ -179,7 +179,7 @@ M48 = dict(
           defn="A standard report has a title page, executive summary, introduction and method, findings, recommendations and "
                "appendices.",
           simple="Readers jump: the structure lets each find their part.",
-          grid=dict(label="Lifecare 2023 Operations Report", widths=[1.6, 3.2], rows=[
+          grid=dict(label="Mercyland 2023 Operations Report", widths=[1.6, 3.2], rows=[
               ["Section", "Content"],
               ["Title page", "Title, version, date, author, classification"],
               ["Executive summary", "Findings and the ask, on one page"],
@@ -191,7 +191,7 @@ M48 = dict(
           defn="The executive summary states the purpose, the three or four key findings with numbers, and the recommendation, "
                "on one page.",
           simple="Write it last; put it first.",
-          grid=dict(label="Lifecare 2023 executive summary (tLOS, tCensus23)", widths=[1.2, 3.6], size=11.5, rows=[
+          grid=dict(label="Mercyland 2023 executive summary (tLOS, tCensus23)", widths=[1.2, 3.6], size=11.5, rows=[
               ["Part", "Text"],
               ["Finding 1", f"{I(len(LOS))} admissions; {DEP.index[0]} was busiest ({I(DEP.n.iloc[0])})"],
               ["Finding 2", f"Average occupancy {P(OCC.mean())}; above 95% on {HI95} days, {HI95_Q2} of them in April-June"],
@@ -266,7 +266,7 @@ M48 = dict(
         T("4.8.9", "Version Control for Reports",
           defn="Version control records each version of a report with its number, date, author and what changed.",
           simple="A change log sheet and a clear file name: Report_v1.2_2024-01-15.",
-          grid=dict(label="Change log, Lifecare 2023 report", widths=[0.8, 1.3, 2.7], rows=[
+          grid=dict(label="Change log, Mercyland 2023 report", widths=[0.8, 1.3, 2.7], rows=[
               ["Version", "Date", "Change"],
               ["v0.1", "2024-01-08", "First draft from the 2023 extract"],
               ["v0.2", "2024-01-11", "Readmission definition corrected"],
@@ -276,7 +276,7 @@ M48 = dict(
         T("4.8.10", "Review Checklist for Reports",
           defn="A review checklist lists the checks every report passes before release: numbers, text, format, file and approval.",
           simple="A second person ticks it, not the author.",
-          grid=dict(label="Final check of the Lifecare report", widths=[1.7, 3.1], rows=[
+          grid=dict(label="Final check of the Mercyland report", widths=[1.7, 3.1], rows=[
               ["Check", "Pass condition"],
               ["Numbers reconcile", f"Admissions = {I(len(LOS))} = extract rows"],
               ["Text matches tables", "Every number in the summary is in a table"],
@@ -305,7 +305,7 @@ M49 = dict(
         T("4.9.1", "Presentation Structure",
           defn="A presentation structure is the storyboard: the order of slides, the role of each, and the minutes each gets.",
           simple="Opening headline, evidence, implication, ask.",
-          grid=dict(label=f"10-slide talk on Eko Suites cancellations (tHotel, {I(len(H))} bookings)", widths=[0.8, 3.2, 0.9],
+          grid=dict(label=f"10-slide talk on Atlantic Pearl cancellations (tHotel, {I(len(H))} bookings)", widths=[0.8, 3.2, 0.9],
                     size=11.5, rows=[
               ["Slides", "Role", "Minutes"],
               ["1", f"Headline: cancellations cost {Nm(CANV / 1e3, 2).replace('m', 'bn')} of bookings", "0.5"],
@@ -394,7 +394,7 @@ M49 = dict(
         T("4.9.10", "Delivering the Analysis",
           defn="Delivery is how you open, move through and close the talk: headline first, evidence next, ask last.",
           simple="Open with the finding; close with the decision you need.",
-          grid=dict(label="Open and close the Eko Suites talk", widths=[1, 3.8], size=11.5, rows=[
+          grid=dict(label="Open and close the Atlantic Pearl talk", widths=[1, 3.8], size=11.5, rows=[
               ["Moment", "What to say"],
               ["Open", f"Cancellations cost {Nm(CANV / 1e3, 2).replace('m', 'bn')} of bookings in 2023-24."],
               ["Close", "We ask the board to approve a deposit policy for bookings made 91+ days ahead."]]),
@@ -496,7 +496,7 @@ M410 = dict(
           grid=dict(label="Log for the refresh-and-export macro", widths=[1.3, 3.5], rows=[
               ["Field", "Entry"],
               ["Name", "Refresh_And_Export_Report"],
-              ["Purpose", "Monthly refresh and PDF of the Lifecare report"],
+              ["Purpose", "Monthly refresh and PDF of the Mercyland report"],
               ["Owner / tested", "Reporting analyst / 2024-01-15"]]),
           watch="An undocumented macro becomes an unmaintainable black box when its author leaves."),
     ],

@@ -7,9 +7,9 @@ small excerpts of these tables and runs the SQL it shows against the real SQLite
 Sources (all inside the pack):
   Week3_Data_Files/supermart_online.db   SuperMart Online marketplace: transactions, deliveries, customers, products,
                                           sellers, nigeria_states, view v_order_lines
-  Week3_Data_Files/lifecare_hospital.db  Lifecare Hospital: admissions, patients, doctors, wards, bed_census
-  _stage pickles from 01_build_datasets.py: SuperMart Stores POS lines (sm_sales), stores, Crestview students (cv_perf),
-                                          Lifecare_Admissions_2023_DIRTY.csv (dirty_lc)
+  Week3_Data_Files/mercyland_hospital.db  Mercyland Hospital: admissions, patients, doctors, wards, bed_census
+  _stage pickles from 01_build_datasets.py: SuperMart Stores POS lines (sm_sales), stores, Kingsway students (cv_perf),
+                                          Mercyland_Episodes_2023_DIRTY.csv (dirty_lc)
 """
 from __future__ import annotations
 
@@ -25,8 +25,8 @@ sys.path.insert(0, os.path.dirname(__file__))
 from common import W3D  # noqa: E402
 from wk_common import L, lc_adm, sm_sales  # noqa: E402
 
-DBS = {"smo": W3D / "supermart_online.db", "lc": W3D / "lifecare_hospital.db"}
-DBNAME = {"smo": "supermart_online.db", "lc": "lifecare_hospital.db"}
+DBS = {"smo": W3D / "supermart_online.db", "lc": W3D / "mercyland_hospital.db"}
+DBNAME = {"smo": "supermart_online.db", "lc": "mercyland_hospital.db"}
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 NET = ("Delivered", "Completed")          # Net Revenue = order lines that were delivered or completed (not cancelled/returned)
 SQL_LOG: list[str] = []                   # every query shown on a slide or in the workbook, written to ETEH_Week3_SQL_Examples.sql
@@ -163,7 +163,7 @@ def dash_stores() -> pd.DataFrame:
     return s
 
 
-# ---------------------------------------------------------------- Lifecare / Crestview
+# ---------------------------------------------------------------- Mercyland / Kingsway
 @lru_cache(None)
 def lc() -> pd.DataFrame:
     return lc_adm()
@@ -203,15 +203,15 @@ def _dash_stores():
 
 def _adm23():
     a = lc()
-    a = a[a.Admission_Date.dt.year == 2023]
-    cols = ["Admission_ID", "Patient_ID", "Age", "Gender", "Department", "Admission_Type", "Admission_Date", "Discharge_Date",
-            "Length_of_Stay", "Ward", "Doctor_Name", "HMO", "Billing_Amount", "Readmit_30d"]
+    a = a[a.Admit_Date.dt.year == 2023]
+    cols = ["Episode_ID", "Patient_No", "Age", "Gender", "Department", "Admission_Route", "Admit_Date", "Discharge_Date",
+            "LOS_Days", "Ward", "Consultant_Name", "HMO", "Bill_Amount_NGN", "Readmitted_30d"]
     return a[cols].reset_index(drop=True)
 
 
 def _cv():
-    cols = ["Student_ID", "Faculty", "Department", "Level", "Gender", "Hours_Studied_Per_Week", "Attendance_Pct", "Sleep_Hours",
-            "Exam_Score", "Grade", "At_Risk"]
+    cols = ["Matric_No", "Faculty", "Department", "Level", "Gender", "Study_Hours_Wk", "Lecture_Attendance_Pct", "Sleep_Hrs_Night",
+            "Final_Score", "Grade", "At_Risk"]
     return cv()[cols].copy()
 
 
@@ -219,7 +219,7 @@ TABLES = {
     "tTransactions": _tx, "tDeliveries": lambda: smo("deliveries"), "tCustomers": lambda: smo("customers"),
     "tProducts": lambda: smo("products"), "tSellers": lambda: smo("sellers"), "tStates": lambda: smo("nigeria_states"),
     "tDimDate": dimdate, "tDash": _dash, "tDashStores": _dash_stores, "tAdm23": _adm23, "tCensus": census, "tCV": _cv,
-    "tLcDirty": dirty_lc,
+    "tMsDirty": dirty_lc,
 }
 
 
@@ -233,9 +233,9 @@ def table(name: str) -> pd.DataFrame:
 
 
 MONEY = {"total_price", "unit_price", "commission_amount", "price", "discount_price", "total_spent", "total_revenue", "Sales",
-         "Profit", "Target", "Billing_Amount"}
+         "Profit", "Target", "Bill_Amount_NGN"}
 PCT = {"Attainment", "Occupancy_Pct"}
-PLAIN = {"Year", "Month_No", "Level", "year", "month", "Row_ID", "Room_Number", "yr", "order_year", "adm_year"}
+PLAIN = {"Year", "Month_No", "Level", "year", "month", "Row_ID", "Bed_No", "yr", "order_year", "adm_year"}
 
 
 def fmt(col, x):

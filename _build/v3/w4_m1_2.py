@@ -1,5 +1,5 @@
 """Week 4 edition-3 slide copy: Modules 4.1 (descriptive statistics, Analysis ToolPak) and 4.2 (distributions, Pareto, percentiles,
-z-scores). Data: tSal (salary survey), tOrders (SuperMart Online), tCV (Crestview), tLOS / tCensus23 (Lifecare 2023), tDash25 +
+z-scores). Data: tSal (salary survey), tOrders (SuperMart Online), tCV (Kingsway), tLOS / tCensus23 (Mercyland 2023), tDash25 +
 tStores (SuperMart FY2025). Every number is computed here from w4_data."""
 import numpy as np
 import pandas as pd
@@ -248,7 +248,7 @@ M42 = dict(
         T("4.2.1", "What a Distribution Is",
           defn="A distribution shows how often each value, or range of values, occurs in a column.",
           simple="Count the values in each range; the counts show where most values sit and how far they spread.",
-          grid=dict(label=f"Crestview exam scores (tCV, {I(len(EX))} students)", widths=[1.3, 1.2, 1.2], rows=[
+          grid=dict(label=f"Kingsway exam scores (tCV, {I(len(EX))} students)", widths=[1.3, 1.2, 1.2], rows=[
               ["Score", "Students", "Share"]] + [[k, I(v), P(v / len(EX))] for k, v in EBINS.items()]),
           watch="A single average hides the shape; two very different distributions can share the same mean."),
 
@@ -261,7 +261,7 @@ M42 = dict(
               ["Normal curve", "68.3%", "95.4%"],
               ["Exam score (tCV)", P(W1), P(W2)],
               ["Salary (tSal)", P(SW1), P(((Y - YM).abs() <= 2 * YSD).mean())]]),
-          fx=[("=NORM.DIST(75,AVERAGE(tCV[Exam_Score]),STDEV.S(tCV[Exam_Score]),TRUE)", P(norm.cdf(75, EM, ESD)),
+          fx=[("=NORM.DIST(75,AVERAGE(tCV[Final_Score]),STDEV.S(tCV[Final_Score]),TRUE)", P(norm.cdf(75, EM, ESD)),
                "Normal share below 75")], fx_widths=[3.6, 0.9, 1.4],
           watch="Exam scores are more peaked than normal (75% within 1 SD): normal-curve shares would mislead."),
 
@@ -273,7 +273,7 @@ M42 = dict(
               ["2 points", str(int(np.ceil((EX.max() - EX.min() + 1) / 2))), "Spiky columns: noise"],
               ["5 points", str(len(EBINS)), f"Peak at 65-69 ({P(EBINS['65-69'] / len(EX), 0)}), long right tail"],
               ["20 points", "3", "Almost one block: shape hidden"]]),
-          steps=["Select tCV[Exam_Score]", "Insert › Statistic Chart › Histogram",
+          steps=["Select tCV[Final_Score]", "Insert › Statistic Chart › Histogram",
                  "Format the horizontal axis › Bin width: 5", "Title the finding, not the variable"],
           split=0.55,
           watch="Very wide bins hide the shape and very narrow ones show noise; try two widths before choosing."),
@@ -322,7 +322,7 @@ M42 = dict(
         T("4.2.8", "Detecting Anomalies Systematically",
           defn="Systematic anomaly detection applies one written rule, such as |z| > 2 or the 1.5 x IQR fences, to every row.",
           simple="The rule finds candidates; a person then checks each one against what happened.",
-          grid=dict(label="Lifecare daily bed occupancy 2023 (tCensus23), rule |z| > 2", widths=[2.6, 1.8], rows=[
+          grid=dict(label="Mercyland daily bed occupancy 2023 (tCensus23), rule |z| > 2", widths=[2.6, 1.8], rows=[
               ["Measure", "Value"],
               ["Mean / SD occupancy", f"{P(OCC.mean())} / {P(OCC.std())}"],
               ["Days flagged", f"{len(ANOM)} of 365, all unusually low"],

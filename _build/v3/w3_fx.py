@@ -78,7 +78,7 @@ ZT = DS.groupby("Zone").agg(Sales=("Sales", "sum"), Target=("Target", "sum"))
 ZS["Attainment"] = ZT.Sales / ZT.Target
 SMONTH = SM.assign(YM=SM.Order_Date.dt.to_period("M")).groupby("YM").Sales.sum()
 
-# ---------------------------------------------------------------- Lifecare / Crestview
+# ---------------------------------------------------------------- Mercyland / Kingsway
 LC = D.lc()
 CEN = D.census()
 CV = D.cv()

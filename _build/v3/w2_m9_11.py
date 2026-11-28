@@ -1,5 +1,5 @@
 """Week 2 edition-3 slide copy: Modules 2.9 (M language), 2.10 (PivotTables), 2.11 (PivotCharts).
-Figures from w2_fx (LQ = the Lifecare cleaning query replayed; SMF = the full SuperMart table tSM; CVF = Crestview)."""
+Figures from w2_fx (LQ = the Mercyland cleaning query replayed; SMF = the full SuperMart table tSM; CVF = Kingsway)."""
 from v3kit import T
 from w2_fx import LF, LQ, CVF, SMF, CTRL, N, I, P, Nm, S
 import w2_data as D
@@ -28,7 +28,7 @@ M29 = dict(
         T("2.9.1", "What Is the M Language?",
           defn="M (the Power Query Formula Language) is the functional language in which every Power Query step is written.",
           simple="Each click in the editor writes one line of M. You can read it, change it, or type steps yourself.",
-          grid=dict(label="A first query on Lifecare_Admissions_2023_DIRTY.csv", widths=[1.6, 3], size=12, rows=[
+          grid=dict(label="A first query on Mercyland_Episodes_2023_DIRTY.csv", widths=[1.6, 3], size=12, rows=[
               ["Applied step", "The M behind it"], ["Source", "Csv.Document(File.Contents(…))"],
               ["Promoted Headers", "Table.PromoteHeaders(Source, …)"],
               ["Proper Names", "Table.TransformColumns(…, {{\"Patient_Name\", Text.Proper}})"],
@@ -39,17 +39,17 @@ M29 = dict(
                  "names, functions and text comparisons must match exactly.",
           grid=dict(label=f"After removing duplicates ({LQ['dedup']:,} rows)", widths=[2.8, 1.6], size=12, rows=[
               ["Test", "Result"], ["Ward spellings in the raw file", str(LQ["ward_raw_n"])],
-              ["Rows exactly \"Ruby Ward\" (raw)", I(LQ["ruby_raw"])], ["Ruby Ward rows after the ward mapping", I(LQ["ruby_map"])],
+              ["Rows exactly \"Obeche Ward\" (raw)", I(LQ["ruby_raw"])], ["Obeche Ward rows after the ward mapping", I(LQ["ruby_map"])],
               ["text.proper instead of Text.Proper", "Error: name not recognised"]]),
-          watch="\"ruby ward\" = \"Ruby Ward\" is false in M. Lower-case both sides (Text.Lower) before comparing text."),
+          watch="\"obeche ward\" = \"Obeche Ward\" is false in M. Lower-case both sides (Text.Lower) before comparing text."),
 
         T("2.9.3", "Introduction to M Syntax",
           simple="A query is let, a list of named steps separated by commas, then in and the step to return.",
-          grid=dict(label="Crestview: attendance band as a custom column", widths=[1], size=11.5, rows=[
+          grid=dict(label="Kingsway: attendance band as a custom column", widths=[1], size=11.5, rows=[
               ["M code"],
               ["Band = Table.AddColumn(Typed, \"Attendance_Band2\", each"],
-              ["    if [Attendance_Pct] >= 90 then \"90%+\""],
-              ["    else if [Attendance_Pct] >= 75 then \"75-89%\" else \"Below 75%\", type text)"]]),
+              ["    if [Lecture_Attendance_Pct] >= 90 then \"90%+\""],
+              ["    else if [Lecture_Attendance_Pct] >= 75 then \"75-89%\" else \"Below 75%\", type text)"]]),
           points=[f"90%+: {CVF['bands']['90%+']:,} students", f"75-89%: {CVF['bands']['75-89%']:,}",
                   f"Below 75%: {CVF['bands']['Below 75%']:,}", f"Total: {CVF['n']:,}"],
           points_label="RESULT", order=["grid", "points"], split=0.7,
@@ -58,16 +58,16 @@ M29 = dict(
         T("2.9.4", "M Data Types",
           defn="A type tells M what kind of value a column holds: type text, type number, Int64.Type, type date, type logical, "
                "Currency.Type, and so on. null means no value.",
-          grid=dict(label="Types on the dirty Lifecare file", widths=[1.4, 1.8, 2.2], size=12, rows=[
+          grid=dict(label="Types on the dirty Mercyland file", widths=[1.4, 1.8, 2.2], size=12, rows=[
               ["Column", "M type", "Result"],
-              ["Billing_Amount", "type number, locale en-US", f"{LF['bill_text']} values like '{LQ['bill_example']}' parsed"],
-              ["Admission_Date", "type date", "All valid"], ["Discharge_Date", "type date", f"{LF['dis_blank']} null"],
+              ["Bill_Amount_NGN", "type number, locale en-US", f"{LF['bill_text']} values like '{LQ['bill_example']}' parsed"],
+              ["Admit_Date", "type date", "All valid"], ["Discharge_Date", "type date", f"{LF['dis_blank']} null"],
               ["Age", "Int64.Type", "All whole numbers"]]),
           watch="null is not 0 and not \"\". null + 1 is null; use List.Sum, which skips nulls, for totals."),
 
         T("2.9.5", "let Expressions and the Step Chain",
           simple="Each step names the step before it. That chain is what Applied Steps shows. Break a link and every later step fails.",
-          grid=dict(label="The Lifecare cleaning query", widths=[2.2, 1.4, 1], size=12, rows=[
+          grid=dict(label="The Mercyland cleaning query", widths=[2.2, 1.4, 1], size=12, rows=[
               ["Step", "Uses", "Rows after"], ["Promoted", "Source", I(LF["rows"])], ["Dedup", "Promoted", I(LQ["dedup"])],
               ["Clean (exceptions removed)", "Exception", I(LQ["clean"])], ["Names, if Dedup is deleted", "Dedup (gone)", "Error"]]),
           points=["Steps run in the order they refer to each other", "The value after in is what loads",
@@ -89,7 +89,7 @@ M29 = dict(
         T("2.9.7", "The Advanced Editor",
           simple="Home › Advanced Editor shows the whole query as one script. Copy it to share or document a query; paste one in "
                  "to reuse it.",
-          grid=dict(label="The complete Lifecare cleaning query, pasted in", widths=[2.4, 1.1], size=12.5, rows=[
+          grid=dict(label="The complete Mercyland cleaning query, pasted in", widths=[2.4, 1.1], size=12.5, rows=[
               ["Check", "Result"], ["Steps in the script", "12"], ["Duplicates removed", I(LF["dups"])],
               ["Exception rows removed", I(sum(LQ["exceptions"].values()))], ["Clean rows", I(LQ["clean"])]]),
           points=["Display Options › line numbers and word wrap", "Comments: // to end of line",
@@ -111,13 +111,13 @@ M29 = dict(
           simple="Most cleaning is Text functions applied with Table.TransformColumns.",
           fx=[["each if List.Contains({\"m\", \"male\"}, Text.Lower(_)) then \"Male\" else \"Female\"", "Gender"],
               ["each let t = Text.Lower(Text.Trim(_)) in if Text.StartsWith(t, \"emerg\") then \"Emergency\" else Text.Proper(t)",
-               "Admission_Type"],
-              ["Duration.Days([Discharge_Date] - [Admission_Date])", "Length_of_Stay"]],
+               "Admission_Route"],
+              ["Duration.Days([Discharge_Date] - [Admit_Date])", "LOS_Days"]],
           fx_head=["M expression", "Column"], fx_widths=[4.6, 1.2],
           grid=dict(label=f"After de-duplication ({LQ['dedup']:,} rows)", widths=[1.4, 1, 2.6], size=12, rows=[
               ["Column", "Before", "After"],
               ["Gender", f"{LQ['gender_raw_n']} spellings", " / ".join(f"{k} {v:,}" for k, v in LQ["gender"].items())],
-              ["Admission_Type", f"{LQ['atype_raw_n']} spellings", " / ".join(f"{k} {v:,}" for k, v in LQ["atype"].items())]]),
+              ["Admission_Route", f"{LQ['atype_raw_n']} spellings", " / ".join(f"{k} {v:,}" for k, v in LQ["atype"].items())]]),
           order=["fx", "grid"], stack=True),
 
         T("2.9.10", "Table Functions in M",
@@ -137,11 +137,11 @@ M29 = dict(
           simple="The same pattern on three datasets: source, clean, add logic, return one tidy table.",
           grid=dict(label="One query per dataset", widths=[1.1, 2.6, 1.8], size=12, rows=[
               ["Dataset", "Rule in M", "Result"],
-              ["Lifecare", "Remove duplicates and exception rows", f"{LF['rows']:,} → {LQ['clean']:,} rows"],
-              ["Crestview", "Exam_Score < 60 and Attendance_Pct < 75", f"{CVF['mentor']} students need a mentor"],
+              ["Mercyland", "Remove duplicates and exception rows", f"{LF['rows']:,} → {LQ['clean']:,} rows"],
+              ["Kingsway", "Final_Score < 60 and Lecture_Attendance_Pct < 75", f"{CVF['mentor']} students need a mentor"],
               ["SuperMart", "Group by store and month", f"{len(SMM)} rows"]]),
           points=[f"{k}: {v}" for k, v in LQ["exceptions"].items()],
-          points_label="LIFECARE EXCEPTION ROWS", order=["grid", "points"], split=0.62),
+          points_label="MERCYLAND EXCEPTION ROWS", order=["grid", "points"], split=0.62),
     ],
     takeaways=["Every applied step is a line of M; you can read and edit it.",
                "M is case-sensitive: Text.Proper, not text.proper; compare text after Text.Lower.",
@@ -421,8 +421,8 @@ M211 = dict(
           grid=dict(label="Three charts", widths=[1.1, 0.9, 3.4], size=12, rows=[
               ["Dataset", "Chart", "What it shows"],
               ["SuperMart", "Column", f"South-West grew from {m(ZY.loc['South-West', 2022])} (2022) to {m(ZY.loc['South-West', 2025])} (2025)"],
-              ["Lifecare", "Bar", f"{DEPT.iloc[0].Department}: {DEPT.iloc[0].Admissions:,} admissions in 2023, about twice any other department"],
-              ["Crestview", "Pie", " · ".join(f"{g} {v:.1%}" for g, v in CVF["grades"].items())]])),
+              ["Mercyland", "Bar", f"{DEPT.iloc[0].Department}: {DEPT.iloc[0].Admissions:,} admissions in 2023, about twice any other department"],
+              ["Kingsway", "Pie", " · ".join(f"{g} {v:.1%}" for g, v in CVF["grades"].items())]])),
     ],
     takeaways=["A PivotChart is drawn from a pivot and stays in sync with it.",
                "It follows new data and filters; a normal chart does not.",

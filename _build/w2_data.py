@@ -23,7 +23,7 @@ from common import W2D  # noqa: E402
 from wk_common import L, lc_adm, sm_sales  # noqa: E402
 
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-MONEY = {"Sales", "Profit", "Target_2025", "Sales_2025", "Billing_Amount", "Revenue", "total_revenue", "Avg_Bill", "Avg_Sale", "Loss",
+MONEY = {"Sales", "Profit", "Target_2025", "Sales_2025", "Bill_Amount_NGN", "Revenue", "total_revenue", "Avg_Bill", "Avg_Sale", "Loss",
          "Furniture", "Office Supplies", "Technology", "Grand Total", "Total_Sales", "Total_Profit", "Sales_Total"}
 PCT = {"Margin", "Discount", "Share", "Readmit_Rate", "Attainment", "Pct_of_Total"}
 W2 = Path(W2D)
@@ -50,7 +50,7 @@ def stores():
 
 @lru_cache(None)
 def adm23():
-    a = pd.read_csv(W2 / "Lifecare_Admissions_2023_pipe.txt", sep="|", parse_dates=["Admission_Date", "Discharge_Date"])
+    a = pd.read_csv(W2 / "Mercyland_Episodes_2023_pipe.txt", sep="|", parse_dates=["Admit_Date", "Discharge_Date"])
     return a
 
 
@@ -62,7 +62,7 @@ def dirty_raw():
 
 @lru_cache(None)
 def lc_dirty_raw():
-    return pd.read_csv(W2 / "Lifecare_Admissions_2023_DIRTY.csv", dtype=str, keep_default_na=False)
+    return pd.read_csv(W2 / "Mercyland_Episodes_2023_DIRTY.csv", dtype=str, keep_default_na=False)
 
 
 # ---------------------------------------------------------------- named tables
@@ -74,8 +74,8 @@ def table(name: str) -> pd.DataFrame:
 def _files():
     rows = [
         ("SuperMart_Sales_2025_DIRTY.csv", "CSV (comma)", "UTF-8 with BOM", len(dirty_raw()), "Raw FY2025 sales export with deliberate defects"),
-        ("Lifecare_Admissions_2023_pipe.txt", "TXT (pipe |)", "UTF-8", len(adm23()), "Clean 2023 hospital admissions"),
-        ("Lifecare_Admissions_2023_DIRTY.csv", "CSV (comma)", "UTF-8", len(lc_dirty_raw()), "Raw 2023 admissions from the old EMR"),
+        ("Mercyland_Episodes_2023_pipe.txt", "TXT (pipe |)", "UTF-8", len(adm23()), "Clean 2023 hospital admissions"),
+        ("Mercyland_Episodes_2023_DIRTY.csv", "CSV (comma)", "UTF-8", len(lc_dirty_raw()), "Raw 2023 admissions from the old EMR"),
         ("SuperMart_Store_Targets_EU_semicolon.csv", "CSV (semicolon)", "Windows-1252", 12, "Store targets in European number format"),
         ("SuperMart_Monthly_Sales_2025 (folder)", "12 CSV files", "UTF-8", sum(r for _, r, _ in _month_counts()), "One file per month of FY2025"),
         ("SuperMart_Online_RAW_Export.xlsx", "Workbook (5 sheets)", "n/a", 11000, "Online orders, sellers, products, deliveries, customers"),
@@ -115,8 +115,8 @@ def _stores():
 
 def _adm23():
     a = adm23()
-    return a[["Admission_ID", "Patient_Name", "Age", "Gender", "Department", "Admission_Type", "Admission_Date", "Discharge_Date",
-              "Length_of_Stay", "Ward", "Doctor_Name", "HMO", "Billing_Amount", "Readmit_30d"]]
+    return a[["Episode_ID", "Patient_Name", "Age", "Gender", "Department", "Admission_Route", "Admit_Date", "Discharge_Date",
+              "LOS_Days", "Ward", "Consultant_Name", "HMO", "Bill_Amount_NGN", "Readmitted_30d"]]
 
 
 def _dirty25():
@@ -190,9 +190,9 @@ def _sellers():
 
 def _dept23():
     a = adm23()
-    g = a.groupby("Department").agg(Admissions=("Admission_ID", "count"), Avg_LOS=("Length_of_Stay", "mean"),
-                                    Readmitted=("Readmit_30d", lambda v: int((v == "Yes").sum())),
-                                    Avg_Bill=("Billing_Amount", "mean")).reset_index()
+    g = a.groupby("Department").agg(Admissions=("Episode_ID", "count"), Avg_LOS=("LOS_Days", "mean"),
+                                    Readmitted=("Readmitted_30d", lambda v: int((v == "Yes").sum())),
+                                    Avg_Bill=("Bill_Amount_NGN", "mean")).reset_index()
     g["Readmit_Rate"] = g.Readmitted / g.Admissions
     return g.sort_values("Admissions", ascending=False)
 

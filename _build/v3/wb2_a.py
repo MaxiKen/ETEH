@@ -20,7 +20,7 @@ def m21(b, D):
                                                   "The files themselves are in " + DATA),
                ("tDirty25", "Sheet Data_Dirty25 (starts in A1)", "SuperMart_Sales_2025_DIRTY.csv as Excel opens it: 3,387 rows, 21 columns, "
                                                                  "defects left in on purpose."),
-               ("tAdm23", "Sheet Data_Adm23 (starts in A1)", "Lifecare_Admissions_2023_pipe.txt imported: 10,918 admissions (14 of the 22 columns).")])
+               ("tAdm23", "Sheet Data_Adm23 (starts in A1)", "Mercyland_Episodes_2023_pipe.txt imported: 10,918 admissions (14 of the 22 columns).")])
     m.h("tFiles")
     m.s.table(FILES, "tFiles", fmts={"Rows": "int"}, widths={"File": 40, "Format": 18, "Encoding": 15, "What it holds": 44})
 
@@ -40,9 +40,9 @@ def m21(b, D):
               ("Which file is it?", "=INDEX(tFiles[File],MATCH(MAX(tFiles[Rows]),tFiles[Rows],0))",
                FILES.loc[FILES.Rows.idxmax(), "File"], None, "INDEX-MATCH returns the name of the largest file.")])
     m.turn()
-    m.ex("How many data rows are in the two Lifecare files together? (Hint: SUMIFS with \"Lifecare*\".)",
-         '=SUMIFS(tFiles[Rows],tFiles[File],"Lifecare*")', int(FILES[FILES.File.str.startswith("Lifecare")].Rows.sum()), "int",
-         short="Rows in the Lifecare files")
+    m.ex("How many data rows are in the two Mercyland files together? (Hint: SUMIFS with \"Mercyland*\".)",
+         '=SUMIFS(tFiles[Rows],tFiles[File],"Mercyland*")', int(FILES[FILES.File.str.startswith("Mercyland")].Rows.sum()), "int",
+         short="Rows in the Mercyland files")
     m.ex_text("Which format stores data as plain text with one record per line and commas between fields?", "CSV", alts=(".csv",))
     m.ex_text("Which format can hold several sheets, data types and formulas?", "xlsx", alts=(".xlsx", "Excel workbook", "workbook"))
 
@@ -84,18 +84,18 @@ def m21(b, D):
     m.topic("2.1.5", "Importing from TXT files",
             "A .txt file is read the same way as a CSV, but its delimiter is often something else: a pipe |, a tab or a semicolon. "
             "Choose Delimiter › Custom and type the character.")
-    m.steps(["Data › From Text/CSV › Lifecare_Admissions_2023_pipe.txt.",
+    m.steps(["Data › From Text/CSV › Mercyland_Episodes_2023_pipe.txt.",
              "Delimiter › --Custom-- › type | (Shift + the key above Enter).",
              "Check the preview: 22 columns, one admission per row.",
              "Transform Data, keep the 14 columns used on Data_Adm23, then Close & Load."])
     m.worked([("Admissions imported", "=ROWS(tAdm23)", len(A), "int", "Matches the 10,918 records in the file."),
               ("Columns kept on Data_Adm23", "=COLUMNS(tAdm23)", A.shape[1], "int", "8 of the 22 were not needed for Week 2."),
-              ("Admissions in Endocrinology", '=COUNTIF(tAdm23[Department],"Endocrinology")',
-               int((A.Department == "Endocrinology").sum()), "int", "A first question answered from the imported file.")])
+              ("Admissions in Internal Medicine", '=COUNTIF(tAdm23[Department],"Internal Medicine")',
+               int((A.Department == "Internal Medicine").sum()), "int", "A first question answered from the imported file.")])
     m.turn()
-    m.ex("How many 2023 admissions were Emergency admissions?", '=COUNTIF(tAdm23[Admission_Type],"Emergency")',
-         int((A.Admission_Type == "Emergency").sum()), "int", short="Emergency admissions 2023")
-    m.ex_text("Which character separates the fields in Lifecare_Admissions_2023_pipe.txt?", "|", alts=("pipe",))
+    m.ex("How many 2023 admissions were Emergency admissions?", '=COUNTIF(tAdm23[Admission_Route],"Emergency")',
+         int((A.Admission_Route == "Emergency").sum()), "int", short="Emergency admissions 2023")
+    m.ex_text("Which character separates the fields in Mercyland_Episodes_2023_pipe.txt?", "|", alts=("pipe",))
 
     # ---------------------------------------------------------------- 2.1.6
     line = ('6683,SM-2025-107503,2025-01-01,2025-01-06,Standard Class,SMC-0294,Chijioke Obasi,Consumer,ST06,Uyo - Ewet,Uyo,'
@@ -283,7 +283,7 @@ def m23(b, D):
     m.dataset([("tMonthFiles", "On this sheet, below", "The 12 monthly files in SuperMart_Monthly_Sales_2025: rows and sales in each. "
                                                        "Your combined query must reproduce these."),
                ("tSales25", "Sheet Data_Sales25 (starts in A1)", "The clean FY2025 lines: the combined monthly files must add up to it."),
-               ("tAdm23", "Sheet Data_Adm23 (starts in A1)", "The Lifecare pipe file, connected in 2.3.3.")])
+               ("tAdm23", "Sheet Data_Adm23 (starts in A1)", "The Mercyland pipe file, connected in 2.3.3.")])
     m.h("tMonthFiles")
     m.s.table(MF, "tMonthFiles", fmts={"Rows": "int", "Sales": N}, widths={"File": 30, "Sales": 15})
     m.h("Folder path used by the M code on this sheet (change it to where you saved the pack)")
@@ -329,18 +329,18 @@ in
             "Text files use the same Csv.Document function with a different delimiter. Fixed-width files have no delimiter: split them "
             "at character positions.")
     code(m, '''let
-    Source   = Csv.Document(File.Contents(DataFolder & "Lifecare_Admissions_2023_pipe.txt"), [Delimiter = "|", Columns = 22, Encoding = 65001]),
+    Source   = Csv.Document(File.Contents(DataFolder & "Mercyland_Episodes_2023_pipe.txt"), [Delimiter = "|", Columns = 22, Encoding = 65001]),
     Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
-    Typed    = Table.TransformColumnTypes(Promoted, {{"Admission_Date", type date}, {"Discharge_Date", type date},
-                   {"Age", Int64.Type}, {"Billing_Amount", type number}})
+    Typed    = Table.TransformColumnTypes(Promoted, {{"Admit_Date", type date}, {"Discharge_Date", type date},
+                   {"Age", Int64.Type}, {"Bill_Amount_NGN", type number}})
 in
-    Typed''', "Connect to the Lifecare pipe file")
+    Typed''', "Connect to the Mercyland pipe file")
     m.worked([("Admissions loaded", "=ROWS(tAdm23)", len(A), "int", ""),
-              ("Total billed in 2023", "=SUM(tAdm23[Billing_Amount])", float(A.Billing_Amount.sum()), N, "Only correct once Billing_Amount is a number."),
-              ("Average length of stay (days)", "=AVERAGE(tAdm23[Length_of_Stay])", float(A.Length_of_Stay.mean()), "dec2", "")])
+              ("Total billed in 2023", "=SUM(tAdm23[Bill_Amount_NGN])", float(A.Bill_Amount_NGN.sum()), N, "Only correct once Bill_Amount_NGN is a number."),
+              ("Average length of stay (days)", "=AVERAGE(tAdm23[LOS_Days])", float(A.LOS_Days.mean()), "dec2", "")])
     m.turn()
-    m.ex("How many 2023 admissions were readmitted within 30 days (Readmit_30d = Yes)?", '=COUNTIF(tAdm23[Readmit_30d],"Yes")',
-         int((A.Readmit_30d == "Yes").sum()), "int", short="Readmissions 2023")
+    m.ex("How many 2023 admissions were readmitted within 30 days (Readmitted_30d = Yes)?", '=COUNTIF(tAdm23[Readmitted_30d],"Yes")',
+         int((A.Readmitted_30d == "Yes").sum()), "int", short="Readmissions 2023")
     m.ex_text("What Delimiter value goes in Csv.Document for this file?", "|", alts=('"|"', "pipe"))
 
     # ---------------------------------------------------------------- 2.3.4

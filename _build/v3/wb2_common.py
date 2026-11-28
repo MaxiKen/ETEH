@@ -134,34 +134,34 @@ in
     NoNA'''
 
 M_LIFECARE = '''let
-    Source    = Csv.Document(File.Contents(DataFolder & "Lifecare_Admissions_2023_DIRTY.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+    Source    = Csv.Document(File.Contents(DataFolder & "Mercyland_Episodes_2023_DIRTY.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
     Promoted  = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
     Dedup     = Table.Distinct(Promoted),
     Names     = Table.TransformColumns(Dedup, {{"Patient_Name", each Text.Proper(Text.Trim(_)), type text}}),
     WardMap   = Table.TransformColumns(Names, {{"Ward", each
-                    let w = Text.Lower(Text.Trim(Text.Replace(Text.Replace(_, "  ", " "), "Saphire", "Sapphire"))) in
-                    if Text.StartsWith(w, "emerald") then "Emerald Ward" else if Text.StartsWith(w, "sapphire") then "Sapphire Ward"
-                    else if Text.StartsWith(w, "ruby") then "Ruby Ward" else if Text.StartsWith(w, "topaz") then "Topaz Ward" else "CHECK", type text}}),
+                    let w = Text.Lower(Text.Trim(Text.Replace(Text.Replace(_, "  ", " "), "Saphire", "Mahogany"))) in
+                    if Text.StartsWith(w, "iroko") then "Iroko Ward" else if Text.StartsWith(w, "mahogany") then "Mahogany Ward"
+                    else if Text.StartsWith(w, "obeche") then "Obeche Ward" else if Text.StartsWith(w, "baobab") then "Baobab Ward" else "CHECK", type text}}),
     Gender    = Table.TransformColumns(WardMap, {{"Gender", each if List.Contains({"m", "male"}, Text.Lower(_)) then "Male" else "Female", type text}}),
-    AdmType   = Table.TransformColumns(Gender, {{"Admission_Type", each
+    AdmType   = Table.TransformColumns(Gender, {{"Admission_Route", each
                     let t = Text.Lower(Text.Trim(_)) in if Text.StartsWith(t, "emerg") then "Emergency" else Text.Proper(t), type text}}),
-    Bill      = Table.TransformColumnTypes(AdmType, {{"Billing_Amount", type number}}, "en-US"),   // '2,507,101.35' parses with en-US
-    Dates     = Table.TransformColumnTypes(Bill, {{"Admission_Date", type date}, {"Discharge_Date", type date}, {"Age", Int64.Type}}),
-    LOS       = Table.AddColumn(Dates, "Length_of_Stay", each if [Discharge_Date] = null then null else Duration.Days([Discharge_Date] - [Admission_Date]), Int64.Type),
+    Bill      = Table.TransformColumnTypes(AdmType, {{"Bill_Amount_NGN", type number}}, "en-US"),   // '2,507,101.35' parses with en-US
+    Dates     = Table.TransformColumnTypes(Bill, {{"Admit_Date", type date}, {"Discharge_Date", type date}, {"Age", Int64.Type}}),
+    LOS       = Table.AddColumn(Dates, "LOS_Days", each if [Discharge_Date] = null then null else Duration.Days([Discharge_Date] - [Admit_Date]), Int64.Type),
     Exception = Table.AddColumn(LOS, "Exception", each
-                    if [Billing_Amount] < 0 then "Negative bill" else if [Discharge_Date] = null then "No discharge date"
-                    else if [Length_of_Stay] < 0 then "Discharge before admission" else if [Age] = 0 or [Age] > 120 then "Impossible age" else null, type text),
+                    if [Bill_Amount_NGN] < 0 then "Negative bill" else if [Discharge_Date] = null then "No discharge date"
+                    else if [LOS_Days] < 0 then "Discharge before admission" else if [Age] = 0 or [Age] > 120 then "Impossible age" else null, type text),
     Clean     = Table.SelectRows(Exception, each [Exception] = null)
 in
     Clean'''
 
 M_CRESTVIEW = '''let
-    Source  = Csv.Document(File.Contents(CoreFolder & "Crestview_Student_Performance.csv"), [Delimiter = ",", Encoding = 65001]),
+    Source  = Csv.Document(File.Contents(CoreFolder & "Kingsway_Student_Results.csv"), [Delimiter = ",", Encoding = 65001]),
     Promote = Table.PromoteHeaders(Source),
-    Typed   = Table.TransformColumnTypes(Promote, {{"Attendance_Pct", type number}, {"Exam_Score", Int64.Type}, {"Hours_Studied_Per_Week", Int64.Type}}),
+    Typed   = Table.TransformColumnTypes(Promote, {{"Lecture_Attendance_Pct", type number}, {"Final_Score", Int64.Type}, {"Study_Hours_Wk", Int64.Type}}),
     Band    = Table.AddColumn(Typed, "Attendance_Band2", each
-                if [Attendance_Pct] >= 90 then "90%+" else if [Attendance_Pct] >= 75 then "75-89%" else "Below 75%", type text),
-    Risk    = Table.AddColumn(Band, "Needs_Mentor", each [Exam_Score] < 60 and [Attendance_Pct] < 75, type logical)
+                if [Lecture_Attendance_Pct] >= 90 then "90%+" else if [Lecture_Attendance_Pct] >= 75 then "75-89%" else "Below 75%", type text),
+    Risk    = Table.AddColumn(Band, "Needs_Mentor", each [Final_Score] < 60 and [Lecture_Attendance_Pct] < 75, type logical)
 in
     Risk'''
 

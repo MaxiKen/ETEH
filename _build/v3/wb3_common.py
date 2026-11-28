@@ -1,7 +1,7 @@
 """Shared data and helpers for the Week 3 edition-3 workbook (02_sec_w3.py).
 
 Table names match the slides (w3_data.TABLES): tTransactions, tProducts, tCustomers, tSellers, tDeliveries, tStates, tDimDate,
-tDash, tDashStores, tAdm23, tCensus, tCV and tLcDirty each sit on a Data_ sheet starting in A1. One extra table, tLines, is the
+tDash, tDashStores, tAdm23, tCensus, tCV and tMsDirty each sit on a Data_ sheet starting in A1. One extra table, tLines, is the
 database view v_order_lines imported through ODBC (3.3.6): the order lines with category, customer zone and courier already
 joined in SQL, so worksheet formulas (SUMIFS, COUNTIFS) can answer the same questions the SQL and DAX on the slides answer.
 Every cached value is worked out in pandas; verify_xlsx.py recomputes every formula independently.
@@ -63,7 +63,7 @@ def data():
     d.CEN = W.table("tCensus")
     d.CV = W.table("tCV")
     from common import W2D
-    d.LD = pd.read_csv(W2D / "Lifecare_Admissions_2023_DIRTY.csv", dtype=str, keep_default_na=False, encoding="utf-8-sig")  # as received
+    d.LD = pd.read_csv(W2D / "Mercyland_Episodes_2023_DIRTY.csv", dtype=str, keep_default_na=False, encoding="utf-8-sig")  # as received
     d.NT = li[li.order_status.isin(NETS)]
     return d
 
@@ -103,17 +103,17 @@ def data_sheets(b, D):
                                                                           "Category": 15}),
         ("Data_DashStores", "tDashStores", D.DSS, "tDashStores: the 12 stores with FY2025 sales, profit and target (A1)", "12 stores",
          {"Sales": N, "Profit": N, "Target": N, "Attainment": "pct"}, {"Store_Name": 26, "Zone": 14, "Sales": 14, "Target": 14}),
-        ("Data_Adm23", "tAdm23", D.A, "tAdm23: Lifecare admissions 2023 (A1)", f"{len(D.A):,} admissions · used in 3.6B, 3.9",
-         {"Admission_Date": "date", "Discharge_Date": "date", "Billing_Amount": N, "Age": "gen", "Length_of_Stay": "gen"},
-         {"Admission_ID": 15, "Department": 20, "Admission_Type": 13, "Admission_Date": 12, "Discharge_Date": 12, "Ward": 14,
-          "Doctor_Name": 20, "HMO": 16, "Billing_Amount": 14}),
-        ("Data_Census", "tCensus", D.CEN, "tCensus: Lifecare daily bed census (A1)", f"{len(D.CEN):,} days",
+        ("Data_Adm23", "tAdm23", D.A, "tAdm23: Mercyland admissions 2023 (A1)", f"{len(D.A):,} admissions · used in 3.6B, 3.9",
+         {"Admit_Date": "date", "Discharge_Date": "date", "Bill_Amount_NGN": N, "Age": "gen", "LOS_Days": "gen"},
+         {"Episode_ID": 15, "Department": 20, "Admission_Route": 13, "Admit_Date": 12, "Discharge_Date": 12, "Ward": 14,
+          "Consultant_Name": 20, "HMO": 16, "Bill_Amount_NGN": 14}),
+        ("Data_Census", "tCensus", D.CEN, "tCensus: Mercyland daily bed census (A1)", f"{len(D.CEN):,} days",
          {"Census_Date": "date", "Occupancy_Pct": "pct"}, {"Census_Date": 12}),
-        ("Data_CV", "tCV", D.CV, "tCV: Crestview University student performance 2024/25 (A1)", f"{len(D.CV):,} students",
-         {"Level": "gen"}, {"Student_ID": 11, "Faculty": 16, "Department": 22}),
-        ("Data_LcDirty", "tLcDirty", D.LD, "tLcDirty: Lifecare_Admissions_2023_DIRTY.csv exactly as received, every column text (A1)",
+        ("Data_CV", "tCV", D.CV, "tCV: Kingsway University student performance 2024/25 (A1)", f"{len(D.CV):,} students",
+         {"Level": "gen"}, {"Matric_No": 11, "Faculty": 16, "Department": 22}),
+        ("Data_LcDirty", "tMsDirty", D.LD, "tMsDirty: Mercyland_Episodes_2023_DIRTY.csv exactly as received, every column text (A1)",
          f"{len(D.LD):,} rows · the staging data of 3.10 · do not clean here", {k: "text" for k in D.LD.columns},
-         {"Patient_Name": 22, "Medical_Condition": 16, "Admission_Date": 12, "Discharge_Date": 12, "Doctor_Name": 20, "Ward": 14}),
+         {"Patient_Name": 22, "Diagnosis_Group": 16, "Admit_Date": 12, "Discharge_Date": 12, "Consultant_Name": 20, "Ward": 14}),
     ]
     for sheet, tname, df, title, sub, fmts, widths in specs:
         out[tname] = DataSheet(b, sheet, title, sub).put(_obj(df), tname, fmts=fmts, widths=_w(df, widths))

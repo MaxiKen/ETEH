@@ -91,9 +91,9 @@ M11 = dict(
               ["Organisation", "Typical question", "Data"],
               ["SuperMart Retail (12 stores)", "Which stores missed their sales target?", "9,994 sales lines, 2022-2025"],
               ["SuperMart Online marketplace", "Which payment methods do buyers prefer?", "11,000 orders, 5 linked tables"],
-              ["Crestview University", "Which students are at risk of failing?", "6,607 student records"],
-              ["Lifecare General Hospital", "Which departments have most readmissions?", "54,860 admissions, 2019-2024"],
-              ["Eko Suites Hotel, Victoria Island", "Which booking channels cancel most?", "36,275 bookings, 2023-2024"]])),
+              ["Kingsway University", "Which students are at risk of failing?", "6,607 student records"],
+              ["Mercyland Specialist Hospital", "Which departments have most readmissions?", "54,860 admissions, 2019-2024"],
+              ["Atlantic Pearl Hotel, Lekki", "Which booking channels cancel most?", "36,275 bookings, 2023-2024"]])),
 
         T("1.1.8", "The Role of a Data Analyst",
           defn="A data analyst collects, cleans, analyses and interprets data to answer business questions, and "
@@ -265,9 +265,9 @@ M12 = dict(
         T("1.2.6", "Applying the Four Types to Retail, University and Hospital Datasets",
           simple="The same four questions work in any sector. These are real results from our three main datasets.",
           grid=dict(label="Four types × three datasets", widths=[1.2, 2.2, 2.2, 2.2], size=11.5, rows=[
-              ["", "SuperMart Retail", "Crestview University", "Lifecare Hospital (2023)"],
+              ["", "SuperMart Retail", "Kingsway University", "Mercyland Hospital (2023)"],
               ["Descriptive", "FY2025 sales ₦733.2m; margin 12.7%", "6,607 students; 901 at risk", "10,918 admissions; readmission 10.3%"],
-              ["Diagnostic", "Discounts above 20% lost ₦47.6m", "At-risk share highest in Arts & Education (14.6%)", "Oncology has the highest readmission rate (13.2%)"],
+              ["Diagnostic", "Discounts above 20% lost ₦47.6m", "At-risk share highest in Arts & Education (14.6%)", "Surgery has the highest readmission rate (13.2%)"],
               ["Predictive", "Q4 brings 38% of the year's sales", "Low attendance flags likely failure early", "Occupancy peaks mid-year (June 95.2%)"],
               ["Prescriptive", "Cap Furniture discounts at 20%: about +₦17.9m", "Offer tutoring to flagged students first", "Plan extra staffed beds before peak months"]])),
     ],
@@ -307,9 +307,9 @@ M13 = dict(
           grid=dict(label="Where our datasets come from", widths=[1.8, 2.4, 1.3], size=12, rows=[
               ["Source", "Example in this bootcamp", "Type"],
               ["Till / point-of-sale system", "SuperMart sales lines (tSales)", "Internal"],
-              ["Student records system", "Crestview student records (tStudents)", "Internal"],
-              ["Hospital admissions system", "Lifecare admissions (tAdmissions23)", "Internal"],
-              ["Online booking engine", "Eko Suites bookings (tBookings)", "Internal"],
+              ["Student records system", "Kingsway student records (tStudents)", "Internal"],
+              ["Hospital admissions system", "Mercyland admissions (tAdmissions23)", "Internal"],
+              ["Online booking engine", "Atlantic Pearl bookings (tBookings)", "Internal"],
               ["Survey", "ETEH Talent Salary Survey (tSalary)", "Primary"],
               ["Published statistics", "Inflation or population figures", "External, secondary"]])),
 
@@ -383,7 +383,7 @@ M13 = dict(
                "bad, why they matter and what they suggest.",
           simple="A number is not a finding. '36.5%' becomes a finding when you say 'more than one in three online "
                  "travel agent bookings is cancelled, three times the corporate rate'.",
-          ex=dict(t="tHotelSeg", cols=["Market_Segment", "Bookings", "Cancelled", "Cancel_Rate"], n=5),
+          ex=dict(t="tHotelSeg", cols=["Sales_Channel", "Bookings", "Cancelled", "Cancel_Rate"], n=5),
           points=["Compare with something: a target, last year, another group", "Say what it means for the business",
                   "Note limits: small groups (Airline Crew has only 125 bookings) are less reliable"],
           points_label="HOW TO INTERPRET", order=["ex", "points"], split=0.55),
@@ -468,7 +468,7 @@ M14 = dict(
                   "Course and lecturer evaluations"],
           points_label="KEY MEASURES",
           ex=dict(t="tFaculty", cols=["Faculty", "Students", "Avg_Score", "At_Risk", "At_Risk_Rate"], n=4,
-                  note="Crestview University, 2024/2025 first semester: 901 of 6,607 students are flagged at risk."),
+                  note="Kingsway University, 2024/2025 first semester: 901 of 6,607 students are flagged at risk."),
           order=["points", "ex"], split=0.36),
 
         T("1.4.3", "Healthcare and Hospitals",
@@ -478,7 +478,7 @@ M14 = dict(
                   "Billing and HMO claims"],
           points_label="KEY MEASURES",
           ex=dict(t="tDept23", cols=["Department", "Admissions", "Avg_LOS", "Readmission_Rate"], n=5,
-                  note="Lifecare General Hospital, 2023: 10,918 admissions; overall 30-day readmission 10.3%."),
+                  note="Mercyland Specialist Hospital, 2023: 10,918 admissions; overall 30-day readmission 10.3%."),
           order=["points", "ex"], split=0.34),
 
         T("1.4.4", "Banking and Finance",
@@ -509,8 +509,8 @@ M14 = dict(
           points=["Customer segments", "Conversion and cancellation rates by channel", "Campaign return",
                   "Repeat customers and loyalty"],
           points_label="KEY MEASURES",
-          ex=dict(t="tHotelSeg", cols=["Market_Segment", "Bookings", "Cancel_Rate"], n=5,
-                  note="Eko Suites Hotel, 2023-2024: corporate bookings cancel far less often than online agency bookings."),
+          ex=dict(t="tHotelSeg", cols=["Sales_Channel", "Bookings", "Cancel_Rate"], n=5,
+                  note="Atlantic Pearl Hotel, 2023-2024: corporate bookings cancel far less often than online agency bookings."),
           order=["points", "ex"], split=0.40),
 
         T("1.4.7", "Human Resources (People Analytics)",
@@ -549,9 +549,9 @@ M14 = dict(
           grid=dict(label="From our datasets: evidence → decision", widths=[1.6, 2.6, 2.4], size=12, rows=[
               ["Organisation", "Evidence", "Decision"],
               ["SuperMart Retail", "Lines discounted above 20% lost ₦47.6m in FY2025", "Cap Furniture discounts at 20%"],
-              ["Crestview University", "901 students flagged at risk", "Target tutoring at flagged students"],
-              ["Lifecare Hospital", "Occupancy 95% or more on 44 days in 2023", "Plan surge staffing for peak months"],
-              ["Eko Suites Hotel", "36.5% of online agency bookings cancelled", "Require deposits on agency bookings"],
+              ["Kingsway University", "901 students flagged at risk", "Target tutoring at flagged students"],
+              ["Mercyland Hospital", "Occupancy 95% or more on 44 days in 2023", "Plan surge staffing for peak months"],
+              ["Atlantic Pearl Hotel", "36.5% of online agency bookings cancelled", "Require deposits on agency bookings"],
               ["SuperMart Online", "Paystack and Flutterwave: 52.5% of orders", "Keep both gateways reliable at checkout"]])),
     ],
     takeaways=["Every industry asks the same kinds of questions about performance, causes, forecasts and actions.",

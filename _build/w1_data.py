@@ -17,8 +17,8 @@ import pandas as pd
 sys.path.insert(0, os.path.dirname(__file__))
 from wk_common import L, hotel, lc_adm, sm_sales, smo  # noqa: E402
 
-MONEY = {"Sales", "Profit", "Target", "Billing_Amount", "Annual_Salary_NGN", "Avg_Order_Value", "Unit_Price", "Cost",
-         "Booking_Value_NGN", "Avg_Room_Rate_NGN", "total_price", "unit_price", "Annual_Target_2025", "Sales_2024",
+MONEY = {"Sales", "Profit", "Target", "Bill_Amount_NGN", "Annual_Salary_NGN", "Avg_Order_Value", "Unit_Price", "Cost",
+         "Reservation_Value_NGN", "Room_Rate_NGN", "total_price", "unit_price", "Annual_Target_2025", "Sales_2024",
          "Sales_2025", "Loss", "Average_Bill", "Revenue", "Amount", "Price", "VAT", "Total"}
 PCT = {"Margin", "Discount", "Attainment", "Occupancy_Pct", "Share", "Growth", "Cancel_Rate", "Readmission_Rate",
        "Pass_Rate", "At_Risk_Rate", "Margin_2024", "Margin_2025"}
@@ -99,13 +99,13 @@ def _cat25():
 
 def _students():
     cv = L("cv_perf")
-    return cv[["Student_ID", "Faculty", "Department", "Level", "Gender", "Attendance_Pct", "Hours_Studied_Per_Week",
-               "Exam_Score", "Grade", "At_Risk"]]
+    return cv[["Matric_No", "Faculty", "Department", "Level", "Gender", "Lecture_Attendance_Pct", "Study_Hours_Wk",
+               "Final_Score", "Grade", "At_Risk"]]
 
 
 def _faculty():
     cv = L("cv_perf")
-    g = cv.groupby("Faculty").agg(Students=("Student_ID", "count"), Avg_Score=("Exam_Score", "mean"),
+    g = cv.groupby("Faculty").agg(Students=("Matric_No", "count"), Avg_Score=("Final_Score", "mean"),
                                   At_Risk=("At_Risk", lambda v: (v == "Yes").sum())).reset_index()
     g["At_Risk_Rate"] = g.At_Risk / g.Students
     return g
@@ -113,15 +113,15 @@ def _faculty():
 
 def _admissions23():
     a = lc_adm()
-    a = a[a.Admission_Date.dt.year == 2023]
-    return a[["Admission_ID", "Patient_Name", "Age", "Department", "Ward", "Admission_Type", "Admission_Date",
-              "Discharge_Date", "Length_of_Stay", "HMO", "Billing_Amount", "Readmit_30d"]]
+    a = a[a.Admit_Date.dt.year == 2023]
+    return a[["Episode_ID", "Patient_Name", "Age", "Department", "Ward", "Admission_Route", "Admit_Date",
+              "Discharge_Date", "LOS_Days", "HMO", "Bill_Amount_NGN", "Readmitted_30d"]]
 
 
 def _dept23():
     a = _admissions23()
-    g = a.groupby("Department").agg(Admissions=("Admission_ID", "count"), Avg_LOS=("Length_of_Stay", "mean"),
-                                    Readmitted=("Readmit_30d", lambda v: (v == "Yes").sum())).reset_index()
+    g = a.groupby("Department").agg(Admissions=("Episode_ID", "count"), Avg_LOS=("LOS_Days", "mean"),
+                                    Readmitted=("Readmitted_30d", lambda v: (v == "Yes").sum())).reset_index()
     g["Readmission_Rate"] = g.Readmitted / g.Admissions
     return g.sort_values("Readmission_Rate", ascending=False)
 
@@ -134,14 +134,14 @@ def _census23():
 
 def _bookings():
     h = hotel()
-    return h[["Booking_ID", "Arrival_Date", "Room_Type", "Market_Segment", "Lead_Time_Days", "Total_Nights",
-              "Avg_Room_Rate_NGN", "Booking_Status"]]
+    return h[["Reservation_ID", "Check_In", "Room_Category", "Sales_Channel", "Days_Ahead", "Nights",
+              "Room_Rate_NGN", "Reservation_Status"]]
 
 
 def _hotel_seg():
     h = hotel()
-    g = h.groupby("Market_Segment").agg(Bookings=("Booking_ID", "count"),
-                                        Cancelled=("Booking_Status", lambda v: (v == "Cancelled").sum())).reset_index()
+    g = h.groupby("Sales_Channel").agg(Bookings=("Reservation_ID", "count"),
+                                        Cancelled=("Reservation_Status", lambda v: (v == "Cancelled").sum())).reset_index()
     g["Cancel_Rate"] = g.Cancelled / g.Bookings
     return g.sort_values("Bookings", ascending=False)
 

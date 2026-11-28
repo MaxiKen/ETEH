@@ -77,12 +77,12 @@ def build(key: bool):
     types = "Descriptive,Diagnostic,Predictive,Prescriptive"
     qs = [("What were SuperMart's total Q1 2025 sales for each of its 12 stores?", "Descriptive", "Reports what happened."),
           ("Abuja - Wuse had the 4th-highest Q1 2025 sales of the 12 stores but made a loss. Why?", "Diagnostic", "Explains WHY something happened."),
-          ("How many patients will Lifecare General Hospital admit next December?", "Predictive", "Estimates a future value."),
+          ("How many patients will Mercyland Specialist Hospital admit next December?", "Predictive", "Estimates a future value."),
           ("At what discount level should SuperMart cap promotions to protect a 12% margin?", "Prescriptive", "Recommends an action / optimum."),
-          ("Which Crestview University faculty had the highest at-risk rate last semester?", "Descriptive", "A past fact, sliced by a category."),
-          ("Why are Online Travel Agent bookings at Eko Suites cancelled more often than corporate bookings?", "Diagnostic", "Cause behind an observed gap."),
+          ("Which Kingsway University faculty had the highest at-risk rate last semester?", "Descriptive", "A past fact, sliced by a category."),
+          ("Why are Online Travel Agent bookings at Atlantic Pearl cancelled more often than corporate bookings?", "Diagnostic", "Cause behind an observed gap."),
           ("What salary should a data analyst with 5 years' experience expect, based on the ETEH Talent Salary Survey?", "Predictive", "Model-based estimate (regression, Week 4)."),
-          ("How many nurses should each Lifecare ward roster next week, given the expected bed census?", "Prescriptive", "Turns a forecast into a decision.")]
+          ("How many nurses should each Mercyland ward roster next week, given the expected bed census?", "Prescriptive", "Turns a forecast into a decision.")]
     for i, (t, a, gd) in enumerate(qs, 1):
         A.q(s, f"1.{i}", t, a, kind="gen", marks=1, guide=gd, choices=types.split(","), header=(i == 1))
     s.gap()
@@ -98,10 +98,10 @@ def build(key: bool):
         A.q(s, chr(97 + i), t, v, kind="int", marks=1, choices=["1", "2", "3", "4", "5", "6"], header=(i == 0),
             guide="Ask → Collect → Clean → Analyse → Visualise → Act/Share" if i == 0 else "")
     s.band("1.4", "Analytics in industry")
-    A.long(s, "1.9", "For EACH of Lifecare General Hospital, Crestview University and Eko Suites Hotel: name ONE key metric (KPI) and ONE decision that metric supports.",
-           "Lifecare: bed occupancy % (or average length of stay / 30-day readmission rate) → how many nurses to roster per ward; when to open overflow beds.\n"
-           "Crestview: progression rate / % of students at risk → which students get tutoring; which courses need extra support.\n"
-           "Eko Suites: cancellation rate by channel (or occupancy, ADR, RevPAR) → overbooking level, deposit policy for OTA bookings, room pricing.",
+    A.long(s, "1.9", "For EACH of Mercyland Specialist Hospital, Kingsway University and Atlantic Pearl Hotel: name ONE key metric (KPI) and ONE decision that metric supports.",
+           "Mercyland: bed occupancy % (or average length of stay / 30-day readmission rate) → how many nurses to roster per ward; when to open overflow beds.\n"
+           "Kingsway: progression rate / % of students at risk → which students get tutoring; which courses need extra support.\n"
+           "Atlantic Pearl: cancellation rate by channel (or occupancy, ADR, RevPAR) → overbooking level, deposit policy for OTA bookings, room pricing.",
            marks=6, guide="1 mark per sensible KPI, 1 per linked decision (3 × 2). Accept any defensible metric with the decision it drives.")
     A.end_task(s)
 

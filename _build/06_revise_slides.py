@@ -309,8 +309,8 @@ def build_guide(prs, tmpl, week, footer, companion):
     cv.check(lx + 0.20, y + 0.17, 0.20, 0.18)
     cv.text(lx + 0.50, y + 0.135, 2.0, 0.26, ["WORKED EXAMPLE"], 13, K.WHITE, bold=True)
     cv.text(lx + 2.75, y + 0.02, lw - 2.75, 0.50, ["This badge marks the last slide of every topic: the worked example."], 11.5, K.INK)
-    data = ("**Data used in every example:** SuperMart Retail (12 stores), SuperMart Online, Crestview University, "
-            "Lifecare General Hospital, EkoSuites Hotel and the ETEH Talent Salary Survey, all in "
+    data = ("**Data used in every example:** SuperMart Retail (12 stores), SuperMart Online, Kingsway University, "
+            "Mercyland Specialist Hospital, AtlanticPearl Hotel and the ETEH Talent Salary Survey, all in "
             "01_Section_Examples/00_Core_Datasets. " + companion)
     dy = 1.72 + h + 0.20
     hh, _ = K.measure([data], 12.5, 5.70)

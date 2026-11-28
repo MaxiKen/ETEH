@@ -4,7 +4,7 @@ dashboard blueprints, and file extracts into SQL, DAX and dashboards.
 3.7 builds small summary tables with live formulas (tZoneSum, tMonth, tTier, tPay, tDept, tBins, tStoreMonth) and draws real
 Excel charts from them for the nine types an .xlsx written by XlsxWriter can carry (column, bar, line, area, pie, doughnut,
 scatter, radar, combo) plus sparklines; bubble and the Excel 2016 types (waterfall, funnel, treemap, sunburst, histogram, box) are
-built by the learner from the prepared data (a column chart of tBins stands in for the histogram). 3.8 has a small dashboard driven by a zone selector cell. 3.10 profiles tLcDirty, the raw extract.
+built by the learner from the prepared data (a column chart of tBins stands in for the histogram). 3.8 has a small dashboard driven by a zone selector cell. 3.10 profiles tMsDirty, the raw extract.
 """
 from __future__ import annotations
 
@@ -217,7 +217,7 @@ def m37(b, D):
          "Bank Transfer share")],
        steps=["Select tPay[Method] and tPay[Value].", "Insert › Pie › Doughnut.", "Put the total in the hole with a text box linked to a cell (=cell)."],
        extra=pay_table)
-    r_att = CV.Exam_Score.corr(CV.Attendance_Pct)
+    r_att = CV.Final_Score.corr(CV.Lecture_Attendance_Pct)
 
     def ch_scatter(mm):
         mm.s.chart("scatter", [{"name": "Students", "categories": ["Data_CV", 1, 6, len(CV), 6], "values": ["Data_CV", 1, 8, len(CV), 8]}],
@@ -225,18 +225,18 @@ def m37(b, D):
                    extra=lambda ch: ch.set_x_axis({"name": "Attendance %", "min": 40, "max": 100}))
 
     tp(m, "3.7.16",
-       [("Correlation: score vs attendance", "=CORREL(tCV[Exam_Score],tCV[Attendance_Pct])", f(r_att), "dec2", ""),
-        ("Correlation: score vs sleep", "=CORREL(tCV[Exam_Score],tCV[Sleep_Hours])", f(CV.Exam_Score.corr(CV.Sleep_Hours)), "dec2", "About zero.")],
-       [("n", "Correlation between exam score and hours studied per week? (2 decimals)", "=CORREL(tCV[Exam_Score],tCV[Hours_Studied_Per_Week])",
-         f(CV.Exam_Score.corr(CV.Hours_Studied_Per_Week)), "dec2", "r score-hours")],
-       steps=["Select Attendance_Pct then Exam_Score (x first).", "Insert › Scatter.", "Add a trendline: Chart Elements › Trendline."], extra=ch_scatter)
-    dep = CV.groupby("Department").agg(H=("Hours_Studied_Per_Week", "mean"), S=("Exam_Score", "mean"), n=("Exam_Score", "size"))
+       [("Correlation: score vs attendance", "=CORREL(tCV[Final_Score],tCV[Lecture_Attendance_Pct])", f(r_att), "dec2", ""),
+        ("Correlation: score vs sleep", "=CORREL(tCV[Final_Score],tCV[Sleep_Hrs_Night])", f(CV.Final_Score.corr(CV.Sleep_Hrs_Night)), "dec2", "About zero.")],
+       [("n", "Correlation between exam score and hours studied per week? (2 decimals)", "=CORREL(tCV[Final_Score],tCV[Study_Hours_Wk])",
+         f(CV.Final_Score.corr(CV.Study_Hours_Wk)), "dec2", "r score-hours")],
+       steps=["Select Lecture_Attendance_Pct then Final_Score (x first).", "Insert › Scatter.", "Add a trendline: Chart Elements › Trendline."], extra=ch_scatter)
+    dep = CV.groupby("Department").agg(H=("Study_Hours_Wk", "mean"), S=("Final_Score", "mean"), n=("Final_Score", "size"))
     deps = list(dep.index)
 
     def dept_table(mm):
         df = pd.DataFrame({"Department": deps})
-        calc = {"Hours": ("AVERAGEIF(tCV[Department],[@Department],tCV[Hours_Studied_Per_Week])", "dec1", [f(x) for x in dep.H]),
-                "Score": ("AVERAGEIF(tCV[Department],[@Department],tCV[Exam_Score])", "dec1", [f(x) for x in dep.S]),
+        calc = {"Hours": ("AVERAGEIF(tCV[Department],[@Department],tCV[Study_Hours_Wk])", "dec1", [f(x) for x in dep.H]),
+                "Score": ("AVERAGEIF(tCV[Department],[@Department],tCV[Final_Score])", "dec1", [f(x) for x in dep.S]),
                 "Students": ("COUNTIF(tCV[Department],[@Department])", "int", [int(x) for x in dep.n])}
         mm.h("tDept: one row per department (bubble chart source)")
         T["d"] = mm.s.table(df, "tDept", calc=calc, widths={"Department": 24, "Hours": 8, "Score": 8, "Students": 9})
@@ -316,34 +316,34 @@ def m37(b, D):
        steps=["Same category + subcategory range as the treemap.", "Insert › Sunburst.", "Use a sorted bar when exact ranking matters."])
     edges = [0, 5, 10, 15, 20, 25, 30, 1000]
     lab = ["0–4", "5–9", "10–14", "15–19", "20–24", "25–29", "30+"]
-    cnt = [int(((A.Length_of_Stay >= a) & (A.Length_of_Stay < b_)).sum()) for a, b_ in zip(edges[:-1], edges[1:])]
+    cnt = [int(((A.LOS_Days >= a) & (A.LOS_Days < b_)).sum()) for a, b_ in zip(edges[:-1], edges[1:])]
 
     def bins(mm):
         df = pd.DataFrame({"Days": lab, "From": edges[:-1], "Below": edges[1:]})
         mm.h("tBins: admissions 2023 by length of stay (bin width 5 days)")
         T["b"] = mm.s.table(df, "tBins", fmts={"From": "int", "Below": "int"},
-                            calc={"Admissions": ('COUNTIFS(tAdm23[Length_of_Stay],">="&[@From],tAdm23[Length_of_Stay],"<"&[@Below])', "int", cnt)},
+                            calc={"Admissions": ('COUNTIFS(tAdm23[LOS_Days],">="&[@From],tAdm23[LOS_Days],"<"&[@Below])', "int", cnt)},
                             widths={"Days": 8, "From": 7, "Below": 7, "Admissions": 11})
         mm.s.r += 1
         mm.s.chart("column", [{"name": "Admissions", "categories": T["b"].ref("Days"), "values": T["b"].ref("Admissions"), "gap": 5}],
-                   "Length of stay, Lifecare admissions 2023", x_title="Days", legend=False, rows=16)
+                   "Length of stay, Mercyland admissions 2023", x_title="Days", legend=False, rows=16)
 
     tp(m, "3.7.24",
        [("Admissions 2023", "=SUM(tBins[Admissions])", len(A), "int", "Every admission falls in one bin."),
         ("Most common bin's count", "=MAX(tBins[Admissions])", max(cnt), "int", "")],
        [("n", "How many 2023 admissions stayed 30 days or more?", '=XLOOKUP("30+",tBins[Days],tBins[Admissions])', cnt[-1], "int", "30+ days")],
-       steps=["Select tAdm23[Length_of_Stay] › Insert › Histogram (Excel builds the bins).", "Format the horizontal axis › Bin width: 5.",
+       steps=["Select tAdm23[LOS_Days] › Insert › Histogram (Excel builds the bins).", "Format the horizontal axis › Bin width: 5.",
               "The column chart here is the same picture from tBins (gap width 5%)."], extra=bins)
-    q = A.Length_of_Stay.quantile([0.25, 0.5, 0.75])
+    q = A.LOS_Days.quantile([0.25, 0.5, 0.75])
     tp(m, "3.7.25",
-       [("Q1 (all 2023)", "=QUARTILE.INC(tAdm23[Length_of_Stay],1)", f(q[0.25]), "dec1", ""),
-        ("Median", "=MEDIAN(tAdm23[Length_of_Stay])", f(q[0.5]), "dec1", ""),
-        ("Q3", "=QUARTILE.INC(tAdm23[Length_of_Stay],3)", f(q[0.75]), "dec1", "")],
-       [("n", "What is the interquartile range (Q3 − Q1)?", "=QUARTILE.INC(tAdm23[Length_of_Stay],3)-QUARTILE.INC(tAdm23[Length_of_Stay],1)",
+       [("Q1 (all 2023)", "=QUARTILE.INC(tAdm23[LOS_Days],1)", f(q[0.25]), "dec1", ""),
+        ("Median", "=MEDIAN(tAdm23[LOS_Days])", f(q[0.5]), "dec1", ""),
+        ("Q3", "=QUARTILE.INC(tAdm23[LOS_Days],3)", f(q[0.75]), "dec1", "")],
+       [("n", "What is the interquartile range (Q3 − Q1)?", "=QUARTILE.INC(tAdm23[LOS_Days],3)-QUARTILE.INC(tAdm23[LOS_Days],1)",
          f(q[0.75] - q[0.25]), "dec1", "IQR"),
-        ("n", "Average length of stay in Cardiology, 2023 (1 decimal)?", '=AVERAGEIF(tAdm23[Department],"Cardiology",tAdm23[Length_of_Stay])',
-         f(A[A.Department == "Cardiology"].Length_of_Stay.mean()), "dec1", "Cardiology ALOS")],
-       steps=["Select Department and Length_of_Stay from tAdm23.", "Insert › Box and Whisker.", "Format series: show mean markers; compare the boxes."])
+        ("n", "Average length of stay in Cardiology, 2023 (1 decimal)?", '=AVERAGEIF(tAdm23[Department],"Cardiology",tAdm23[LOS_Days])',
+         f(A[A.Department == "Cardiology"].LOS_Days.mean()), "dec1", "Cardiology ALOS")],
+       steps=["Select Department and LOS_Days from tAdm23.", "Insert › Box and Whisker.", "Format series: show mean markers; compare the boxes."])
     stores = list(DSS.Store_Name)
     sm = DS.assign(M=DS.Order_Date.dt.month).pivot_table(index="Store_Name", columns="M", values="Sales", aggfunc="sum", fill_value=0).reindex(stores)
 
@@ -524,7 +524,7 @@ def m39(b, D):
     m = ModuleSheet(b, "3.9 Blueprints", "3.9  Three Dashboard Blueprints",
                     "Tutor walk-through after Module 3.9: a KPI specification with live current values for each of the three businesses",
                     "3.9.1 - 3.9.3")
-    m.dataset([DASH_DS, ("tCV", "Sheet Data_CV (A1)", "Crestview students 2024/25."), ("tAdm23 / tCensus", "Data_Adm23, Data_Census (A1)", "Lifecare 2023.")])
+    m.dataset([DASH_DS, ("tCV", "Sheet Data_CV (A1)", "Kingsway students 2024/25."), ("tAdm23 / tCensus", "Data_Adm23, Data_Census (A1)", "Mercyland 2023.")])
     S, P = f(DS.Sales.sum()), f(DS.Profit.sum())
     tp(m, "3.9.1",
        [("Net sales", "=SUM(tDash[Sales])", S, N, "KPI card"),
@@ -534,12 +534,12 @@ def m39(b, D):
        [("n", "What value do the loss-making lines lose in total?", '=SUMIF(tDash[Profit],"<0")', f(DS[DS.Profit < 0].Profit.sum()), N, "Total loss"),
         ("o", "Write the definition and source for 'Target attainment'.", "Sales ÷ target for the same stores and period; sales from tDash, targets from tDashStores.")],
        steps=["Audience: regional managers. Slicers: Zone, Month.", "List KPIs with definition, source and visual.", "Fill in current values to check the definitions work."])
-    fa = CV.groupby("Faculty").Exam_Score.mean()
+    fa = CV.groupby("Faculty").Final_Score.mean()
     tp(m, "3.9.2",
-       [("Students enrolled", "=ROWS(tCV)", len(CV), "int", ""), ("Average exam score", "=AVERAGE(tCV[Exam_Score])", f(CV.Exam_Score.mean()), "dec1", ""),
-        ("Grade A share (70+)", '=COUNTIF(tCV[Exam_Score],">=70")/ROWS(tCV)', f((CV.Exam_Score >= 70).mean()), "pct", ""),
+       [("Students enrolled", "=ROWS(tCV)", len(CV), "int", ""), ("Average exam score", "=AVERAGE(tCV[Final_Score])", f(CV.Final_Score.mean()), "dec1", ""),
+        ("Grade A share (70+)", '=COUNTIF(tCV[Final_Score],">=70")/ROWS(tCV)', f((CV.Final_Score >= 70).mean()), "pct", ""),
         ("At-risk students", '=COUNTIF(tCV[At_Risk],"Yes")', int((CV.At_Risk == "Yes").sum()), "int", "Restricted list.")],
-       [("n", "Average exam score in Engineering?", '=AVERAGEIF(tCV[Faculty],"Engineering",tCV[Exam_Score])', f(fa["Engineering"]), "dec1", "Engineering average"),
+       [("n", "Average exam score in Engineering?", '=AVERAGEIF(tCV[Faculty],"Engineering",tCV[Final_Score])', f(fa["Engineering"]), "dec1", "Engineering average"),
         ("n", "At-risk students in Science?", '=COUNTIFS(tCV[Faculty],"Science",tCV[At_Risk],"Yes")', int(((CV.Faculty == "Science") & (CV.At_Risk == "Yes")).sum()),
          "int", "At risk, Science")],
        steps=["Audience: senate and deans. Slicers: Faculty, Department, Level.", "Named lists only for advisers (personal data).", "Bar by faculty for scores."])
@@ -548,9 +548,9 @@ def m39(b, D):
        [("Admissions 2023", "=ROWS(tAdm23)", len(A), "int", ""),
         ("Average occupancy 2023", '=AVERAGEIFS(tCensus[Occupancy_Pct],tCensus[Census_Date],">="&DATE(2023,1,1),tCensus[Census_Date],"<="&DATE(2023,12,31))',
          f(c23.Occupancy_Pct.mean()), "pct", "Line with 85% / 95% bands."),
-        ("ALOS", "=AVERAGE(tAdm23[Length_of_Stay])", f(A.Length_of_Stay.mean()), "dec1", ""),
-        ("30-day readmission rate", '=COUNTIF(tAdm23[Readmit_30d],"Yes")/ROWS(tAdm23)', f((A.Readmit_30d == "Yes").mean()), "pct", ""),
-        ("Average bill", "=AVERAGE(tAdm23[Billing_Amount])", f(A.Billing_Amount.mean()), N, "")],
+        ("ALOS", "=AVERAGE(tAdm23[LOS_Days])", f(A.LOS_Days.mean()), "dec1", ""),
+        ("30-day readmission rate", '=COUNTIF(tAdm23[Readmitted_30d],"Yes")/ROWS(tAdm23)', f((A.Readmitted_30d == "Yes").mean()), "pct", ""),
+        ("Average bill", "=AVERAGE(tAdm23[Bill_Amount_NGN])", f(A.Bill_Amount_NGN.mean()), N, "")],
        [("n", "How many 2023 census days were above 95% full?", '=COUNTIFS(tCensus[Occupancy_Pct],">0.95",tCensus[Census_Date],">="&DATE(2023,1,1),tCensus[Census_Date],"<="&DATE(2023,12,31))',
          int((c23.Occupancy_Pct > 0.95).sum()), "int", "Days above 95% in 2023")],
        steps=["Audience: operations team. Slicers: Department, Month, HMO.", "Occupancy from the daily census.", "Bands at 85% and 95%."])
@@ -561,56 +561,56 @@ def m39(b, D):
 def m310(b, D):
     R, A = D.LD, D.A
     m = ModuleSheet(b, "3.10 File Extracts", "3.10  File Extracts into SQL, DAX and Dashboards",
-                    "Tutor walk-through after Module 3.10: profile the raw 2023 Lifecare extract, stage it, report exceptions, measure and reconcile",
+                    "Tutor walk-through after Module 3.10: profile the raw 2023 Mercyland extract, stage it, report exceptions, measure and reconcile",
                     "3.10.1 - 3.10.5")
-    m.dataset([("tLcDirty", "Sheet Data_LcDirty (A1)", "Lifecare_Admissions_2023_DIRTY.csv as received: 11,026 rows, every column text."),
-               ("tAdm23", "Sheet Data_Adm23 (A1)", "Production: the 2023 admissions in lifecare_hospital.db.")])
+    m.dataset([("tMsDirty", "Sheet Data_LcDirty (A1)", "Mercyland_Episodes_2023_DIRTY.csv as received: 11,026 rows, every column text."),
+               ("tAdm23", "Sheet Data_Adm23 (A1)", "Production: the 2023 admissions in mercyland_hospital.db.")])
     wl = R.Ward[R.Ward != ""].str.lower().nunique()
     tp(m, "3.10.1",
-       [("Rows", "=ROWS(tLcDirty)", len(R), "int", ""),
-        ("Blank Discharge_Date", '=COUNTIF(tLcDirty[Discharge_Date],"")', int((R.Discharge_Date == "").sum()), "int", "Flag, don't guess."),
-        ("Blank HMO", '=COUNTIF(tLcDirty[HMO],"")', int((R.HMO == "").sum()), "int", "Label 'Unknown'."),
-        ("Distinct Ward values (Excel ignores case)", "=COUNTA(UNIQUE(tLcDirty[Ward]))", int(wl), "int", "Python/SQL count 16: Excel's UNIQUE treats 'Topaz ward' = 'Topaz Ward'.")],
-       [("n", "How many distinct Gender values does Excel see?", "=COUNTA(UNIQUE(tLcDirty[Gender]))", int(R.Gender.str.lower().nunique()), "int", "Distinct Gender"),
-        ("n", "How many Admission_Type cells start with 'emerg' (any spelling)?", '=COUNTIF(tLcDirty[Admission_Type],"emerg*")',
-         int(R.Admission_Type.str.lower().str.startswith("emerg").sum()), "int", "Emergency spellings")],
+       [("Rows", "=ROWS(tMsDirty)", len(R), "int", ""),
+        ("Blank Discharge_Date", '=COUNTIF(tMsDirty[Discharge_Date],"")', int((R.Discharge_Date == "").sum()), "int", "Flag, don't guess."),
+        ("Blank HMO", '=COUNTIF(tMsDirty[HMO],"")', int((R.HMO == "").sum()), "int", "Label 'Unknown'."),
+        ("Distinct Ward values (Excel ignores case)", "=COUNTA(UNIQUE(tMsDirty[Ward]))", int(wl), "int", "Python/SQL count 16: Excel's UNIQUE treats 'Baobab ward' = 'Baobab Ward'.")],
+       [("n", "How many distinct Gender values does Excel see?", "=COUNTA(UNIQUE(tMsDirty[Gender]))", int(R.Gender.str.lower().nunique()), "int", "Distinct Gender"),
+        ("n", "How many Admission_Route cells start with 'emerg' (any spelling)?", '=COUNTIF(tMsDirty[Admission_Route],"emerg*")',
+         int(R.Admission_Route.str.lower().str.startswith("emerg").sum()), "int", "Emergency spellings")],
        steps=["Count rows and blanks per column.", "List distinct values of every text column.", "Record each problem and the action, before loading anything."])
-    com = int(R.Billing_Amount.str.contains(",").sum())
+    com = int(R.Bill_Amount_NGN.str.contains(",").sum())
     tp(m, "3.10.2",
-       [("CSV data rows = staging rows", "=ROWS(tLcDirty)", len(R), "int", ""),
-        ("Bills written with commas", '=COUNTIF(tLcDirty[Billing_Amount],"*,*")', com, "int", "CAST would read '2,507,101.35' as 2."),
-        ("Bills that are plain numbers once commas go", '=SUMPRODUCT(--ISNUMBER(--SUBSTITUTE(tLcDirty[Billing_Amount],",","")))', len(R), "int", "")],
-       [("n", "How many bills are written with a minus sign?", '=COUNTIF(tLcDirty[Billing_Amount],"-*")', int(R.Billing_Amount.str.startswith("-").sum()), "int",
+       [("CSV data rows = staging rows", "=ROWS(tMsDirty)", len(R), "int", ""),
+        ("Bills written with commas", '=COUNTIF(tMsDirty[Bill_Amount_NGN],"*,*")', com, "int", "CAST would read '2,507,101.35' as 2."),
+        ("Bills that are plain numbers once commas go", '=SUMPRODUCT(--ISNUMBER(--SUBSTITUTE(tMsDirty[Bill_Amount_NGN],",","")))', len(R), "int", "")],
+       [("n", "How many bills are written with a minus sign?", '=COUNTIF(tMsDirty[Bill_Amount_NGN],"-*")', int(R.Bill_Amount_NGN.str.startswith("-").sum()), "int",
          "Negative bills")],
        steps=["sqlite3: .mode csv, then .import --skip 1 the file into stg_admissions_2023.", "SELECT COUNT(*): must equal the file's data rows.",
               "Convert types in the next step, with REPLACE for the commas."], code=True)
-    disc = int(((R.Discharge_Date != "") & (R.Discharge_Date < R.Admission_Date)).sum())
+    disc = int(((R.Discharge_Date != "") & (R.Discharge_Date < R.Admit_Date)).sum())
     tp(m, "3.10.3",
-       [("Doctor not in production", "=SUMPRODUCT(--(COUNTIF(tAdm23[Doctor_Name],tLcDirty[Doctor_Name])=0))", int((~R.Doctor_Name.isin(A.Doctor_Name)).sum()),
+       [("Doctor not in production", "=SUMPRODUCT(--(COUNTIF(tAdm23[Consultant_Name],tMsDirty[Consultant_Name])=0))", int((~R.Consultant_Name.isin(A.Consultant_Name)).sum()),
          "int", "LEFT JOIN … IS NULL."),
-        ("Discharge before admission", '=SUMPRODUCT((tLcDirty[Discharge_Date]<>"")*(tLcDirty[Discharge_Date]<tLcDirty[Admission_Date]))', disc, "int",
+        ("Discharge before admission", '=SUMPRODUCT((tMsDirty[Discharge_Date]<>"")*(tMsDirty[Discharge_Date]<tMsDirty[Admit_Date]))', disc, "int",
          "ISO text dates compare correctly."),
-        ("Bill below zero", '=COUNTIF(tLcDirty[Billing_Amount],"-*")', int(R.Billing_Amount.str.startswith("-").sum()), "int", "")],
-       [("n", "Production check: how many 2023 admissions in tAdm23 are discharged before admission?", "=SUMPRODUCT(--(tAdm23[Discharge_Date]<tAdm23[Admission_Date]))",
-         int((A.Discharge_Date < A.Admission_Date).sum()), "int", "Production rule breaks"),
-        ("n", "How many rows have no discharge date (an exception to report)?", '=COUNTIF(tLcDirty[Discharge_Date],"")', int((R.Discharge_Date == "").sum()), "int",
+        ("Bill below zero", '=COUNTIF(tMsDirty[Bill_Amount_NGN],"-*")', int(R.Bill_Amount_NGN.str.startswith("-").sum()), "int", "")],
+       [("n", "Production check: how many 2023 admissions in tAdm23 are discharged before admission?", "=SUMPRODUCT(--(tAdm23[Discharge_Date]<tAdm23[Admit_Date]))",
+         int((A.Discharge_Date < A.Admit_Date).sum()), "int", "Production rule breaks"),
+        ("n", "How many rows have no discharge date (an exception to report)?", '=COUNTIF(tMsDirty[Discharge_Date],"")', int((R.Discharge_Date == "").sum()), "int",
          "No discharge date")],
        steps=["One SELECT per rule, each returning a count.", "Stack them with UNION ALL into one report.", "Run the same report on production."], code=True)
     tp(m, "3.10.4",
        [("[Admissions] 2023", "=ROWS(tAdm23)", len(A), "int", ""),
-        ("[ALOS] 2023", "=AVERAGE(tAdm23[Length_of_Stay])", f(A.Length_of_Stay.mean()), "dec1", ""),
-        ("[Readmission %] 2023", '=COUNTIF(tAdm23[Readmit_30d],"Yes")/ROWS(tAdm23)', f((A.Readmit_30d == "Yes").mean()), "pct", ""),
-        ("… Admission type = Emergency", '=COUNTIFS(tAdm23[Admission_Type],"Emergency",tAdm23[Readmit_30d],"Yes")/COUNTIF(tAdm23[Admission_Type],"Emergency")',
-         f((A[A.Admission_Type == "Emergency"].Readmit_30d == "Yes").mean()), "pct", "")],
-       [("n", "[Readmission %] for Oncology in 2023?", '=COUNTIFS(tAdm23[Department],"Oncology",tAdm23[Readmit_30d],"Yes")/COUNTIF(tAdm23[Department],"Oncology")',
-         f((A[A.Department == "Oncology"].Readmit_30d == "Yes").mean()), "pct", "Readmission Oncology"),
-        ("n", "[ALOS] for Elective admissions in 2023?", '=AVERAGEIF(tAdm23[Admission_Type],"Elective",tAdm23[Length_of_Stay])',
-         f(A[A.Admission_Type == "Elective"].Length_of_Stay.mean()), "dec1", "ALOS Elective")],
+        ("[ALOS] 2023", "=AVERAGE(tAdm23[LOS_Days])", f(A.LOS_Days.mean()), "dec1", ""),
+        ("[Readmission %] 2023", '=COUNTIF(tAdm23[Readmitted_30d],"Yes")/ROWS(tAdm23)', f((A.Readmitted_30d == "Yes").mean()), "pct", ""),
+        ("… Admission type = Emergency", '=COUNTIFS(tAdm23[Admission_Route],"Emergency",tAdm23[Readmitted_30d],"Yes")/COUNTIF(tAdm23[Admission_Route],"Emergency")',
+         f((A[A.Admission_Route == "Emergency"].Readmitted_30d == "Yes").mean()), "pct", "")],
+       [("n", "[Readmission %] for Surgery in 2023?", '=COUNTIFS(tAdm23[Department],"Surgery",tAdm23[Readmitted_30d],"Yes")/COUNTIF(tAdm23[Department],"Surgery")',
+         f((A[A.Department == "Surgery"].Readmitted_30d == "Yes").mean()), "pct", "Readmission Surgery"),
+        ("n", "[ALOS] for Elective admissions in 2023?", '=AVERAGEIF(tAdm23[Admission_Route],"Elective",tAdm23[LOS_Days])',
+         f(A[A.Admission_Route == "Elective"].LOS_Days.mean()), "dec1", "ALOS Elective")],
        steps=["Load the cleaned table to the Data Model.", "Write the three measures (code above).", "Test each under a filter against the twin."], code=True)
     tp(m, "3.10.5",
        [("Admissions: production (SQL)", "=ROWS(tAdm23)", len(A), "int", "Dashboard card must show the same."),
-        ("Billing total: production", "=SUM(tAdm23[Billing_Amount])", f(A.Billing_Amount.sum()), "naira2", ""),
-        ("Raw extract rows − production rows", "=ROWS(tLcDirty)-ROWS(tAdm23)", len(R) - len(A), "int", "Explain every row before publishing.")],
+        ("Billing total: production", "=SUM(tAdm23[Bill_Amount_NGN])", f(A.Bill_Amount_NGN.sum()), "naira2", ""),
+        ("Raw extract rows − production rows", "=ROWS(tMsDirty)-ROWS(tAdm23)", len(R) - len(A), "int", "Explain every row before publishing.")],
        [("n", "How many raw rows are exact duplicates? (Data › Remove Duplicates on a copy of Data_LcDirty reports it.)", f"={int(R.duplicated().sum())}",
          int(R.duplicated().sum()), "int", "Duplicates in the extract"),
         ("o", "The extract has more rows than production. List what you would check to explain the difference.",

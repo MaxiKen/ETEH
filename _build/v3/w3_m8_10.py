@@ -1,6 +1,6 @@
 """Week 3 edition-3 slide copy: Modules 3.8 (dashboard development), 3.9 (three blueprints) and 3.10 (file extracts into
 SQL, DAX and dashboards). Dashboard figures: SuperMart Stores FY2025 (tDash, tDashStores). 3.10 loads
-Week2_Data_Files/Lifecare_Admissions_2023_DIRTY.csv into an in-memory SQLite staging table and runs the SQL shown."""
+Week2_Data_Files/Mercyland_Episodes_2023_DIRTY.csv into an in-memory SQLite staging table and runs the SQL shown."""
 import sqlite3
 
 import pandas as pd
@@ -240,14 +240,14 @@ M38 = dict(
 )
 
 # ---------------------------------------------------------------- 3.9
-LC23 = LC[LC.Admission_Date.dt.year == 2023]
+LC23 = LC[LC.Admit_Date.dt.year == 2023]
 C23 = CEN[CEN.Census_Date.dt.year == 2023]
 AR = int((CV.At_Risk == "Yes").sum())
-FAC = CV.groupby("Faculty").Exam_Score.mean().sort_values(ascending=False)
+FAC = CV.groupby("Faculty").Final_Score.mean().sort_values(ascending=False)
 
 M39 = dict(
     id="3.9", title="Three Dashboard Blueprints",
-    subtitle="KPI specifications with current values for SuperMart, Crestview University and Lifecare Hospital.",
+    subtitle="KPI specifications with current values for SuperMart, Kingsway University and Mercyland Hospital.",
     objectives=["Write a dashboard blueprint: audience, KPIs, definitions, visuals and slicers.",
                 "Specify a retail sales dashboard.",
                 "Specify a university progression dashboard with restricted detail.",
@@ -266,28 +266,28 @@ M39 = dict(
               ["Loss-making lines", I(LOSS), "Drill-down table"]]),
           watch="Every KPI needs a written definition and source before anyone builds a chart of it."),
 
-        T("3.9.2", "Blueprint 2: Crestview University Progression Dashboard",
+        T("3.9.2", "Blueprint 2: Kingsway University Progression Dashboard",
           defn="The university blueprint serves the senate and faculty deans, with slicers for Faculty, Department and Level.",
           simple="KPI cards, a bar chart by faculty and a restricted list of at-risk students for advisers only.",
           grid=dict(label="KPI specification, 2024/25", widths=[2, 1.5, 2.2], rows=[
               ["KPI", "Current value", "Visual"],
               ["Students enrolled", I(len(CV)), "KPI card"],
-              ["Average exam score", f"{CV.Exam_Score.mean():.1f}", f"Card + bar by faculty ({FAC.index[0]} highest)"],
-              ["Average attendance", P(CV.Attendance_Pct.mean() / 100), "Card"],
-              ["Grade A share (70+)", P((CV.Exam_Score >= 70).mean()), "Stacked bar by faculty"],
+              ["Average exam score", f"{CV.Final_Score.mean():.1f}", f"Card + bar by faculty ({FAC.index[0]} highest)"],
+              ["Average attendance", P(CV.Lecture_Attendance_Pct.mean() / 100), "Card"],
+              ["Grade A share (70+)", P((CV.Final_Score >= 70).mean()), "Stacked bar by faculty"],
               ["At-risk students", I(AR), "Card + restricted list"]]),
           watch="Named student lists are personal data: restrict them to the people who need them."),
 
-        T("3.9.3", "Blueprint 3: Lifecare Hospital Operations Dashboard",
+        T("3.9.3", "Blueprint 3: Mercyland Hospital Operations Dashboard",
           defn="The hospital blueprint supports daily operations, with slicers for Department, Month and HMO.",
           simple="An occupancy line with 85% and 95% bands, ALOS by department and average bill by HMO.",
           grid=dict(label="KPI specification, 2023", widths=[2, 1.5, 2.2], rows=[
               ["KPI", "Current value", "Visual"],
               ["Admissions", I(len(LC23)), "Card + monthly line"],
               ["Average occupancy", P(C23.Occupancy_Pct.mean()), "Line with 85% / 95% bands"],
-              ["ALOS", f"{LC23.Length_of_Stay.mean():.1f} days", "Bar by department"],
-              ["30-day readmission rate", P((LC23.Readmit_30d == 'Yes').mean()), "Card with status text"],
-              ["Average bill", N(LC23.Billing_Amount.mean()), "Bar by HMO"]]),
+              ["ALOS", f"{LC23.LOS_Days.mean():.1f} days", "Bar by department"],
+              ["30-day readmission rate", P((LC23.Readmitted_30d == 'Yes').mean()), "Card with status text"],
+              ["Average bill", N(LC23.Bill_Amount_NGN.mean()), "Bar by HMO"]]),
           watch="Occupancy needs the daily census table; it cannot be derived reliably from admissions alone."),
     ],
     takeaways=["A blueprint fixes audience, KPIs, definitions, visuals and slicers before building.",
@@ -297,7 +297,7 @@ M39 = dict(
 )
 
 # ---------------------------------------------------------------- 3.10
-RAW = pd.read_csv(W2D / "Lifecare_Admissions_2023_DIRTY.csv", dtype=str, keep_default_na=False, encoding="utf-8-sig")
+RAW = pd.read_csv(W2D / "Mercyland_Episodes_2023_DIRTY.csv", dtype=str, keep_default_na=False, encoding="utf-8-sig")
 
 
 def _staging():
@@ -315,35 +315,35 @@ def sq(sql):
 
 
 STG_ROWS = sq("SELECT COUNT(*) AS n FROM stg_admissions_2023").n[0]
-COMMA = sq("SELECT COUNT(*) AS n FROM stg_admissions_2023 WHERE Billing_Amount LIKE '%,%'").n[0]
-EX = sq("SELECT Billing_Amount AS b, CAST(Billing_Amount AS REAL) AS c FROM stg_admissions_2023 "
-        "WHERE Billing_Amount LIKE '%,%' LIMIT 1").iloc[0]
+COMMA = sq("SELECT COUNT(*) AS n FROM stg_admissions_2023 WHERE Bill_Amount_NGN LIKE '%,%'").n[0]
+EX = sq("SELECT Bill_Amount_NGN AS b, CAST(Bill_Amount_NGN AS REAL) AS c FROM stg_admissions_2023 "
+        "WHERE Bill_Amount_NGN LIKE '%,%' LIMIT 1").iloc[0]
 RULES_SQL = """
 SELECT 'Doctor not in doctors' AS rule, COUNT(*) AS n
 FROM stg_admissions_2023 s
-LEFT JOIN prod.doctors d ON d.doctor_name = s.Doctor_Name
-WHERE d.doctor_id IS NULL
+LEFT JOIN prod.doctors d ON d.consultant_name = s.Consultant_Name
+WHERE d.consultant_id IS NULL
 UNION ALL
 SELECT 'Discharge before admission', COUNT(*)
 FROM stg_admissions_2023
-WHERE Discharge_Date <> '' AND Discharge_Date < Admission_Date
+WHERE Discharge_Date <> '' AND Discharge_Date < Admit_Date
 UNION ALL
 SELECT 'Bill below zero', COUNT(*)
 FROM stg_admissions_2023
-WHERE CAST(REPLACE(Billing_Amount, ',', '') AS REAL) < 0"""
+WHERE CAST(REPLACE(Bill_Amount_NGN, ',', '') AS REAL) < 0"""
 RULES = sq(RULES_SQL)
 DUPS = int(RAW.duplicated().sum())
 PROD = {r: v(s, "lc") for r, s in [
-    ("Discharge before admission", "SELECT COUNT(*) FROM admissions WHERE discharge_date < admission_date"),
-    ("Bill below zero", "SELECT COUNT(*) FROM admissions WHERE billing_amount < 0"),
-    ("Doctor not in doctors", "SELECT COUNT(*) FROM admissions a LEFT JOIN doctors d ON d.doctor_id = a.doctor_id "
-                              "WHERE d.doctor_id IS NULL")]}
+    ("Discharge before admission", "SELECT COUNT(*) FROM admissions WHERE discharge_date < admit_date"),
+    ("Bill below zero", "SELECT COUNT(*) FROM admissions WHERE bill_amount_ngn < 0"),
+    ("Doctor not in doctors", "SELECT COUNT(*) FROM admissions a LEFT JOIN doctors d ON d.consultant_id = a.consultant_id "
+                              "WHERE d.consultant_id IS NULL")]}
 PROFILE = {c: (int((RAW[c].str.strip() == "").sum()), RAW[c].replace("", pd.NA).nunique())   # distinct as received
            for c in ("Discharge_Date", "HMO", "Ward", "Gender")}
-EMERG = (LC[LC.Admission_Type == "Emergency"].Readmit_30d == "Yes").mean()
-ONC = (LC[LC.Department == "Oncology"].Readmit_30d == "Yes").mean()
-SRC = pd.read_csv(SEC / "00_Core_Datasets" / "Lifecare_Admissions_2019_2024.csv", usecols=["Billing_Amount"])
-SQLREC = q("SELECT COUNT(*) AS n, ROUND(SUM(billing_amount), 2) AS b FROM admissions", "lc").iloc[0]
+EMERG = (LC[LC.Admission_Route == "Emergency"].Readmitted_30d == "Yes").mean()
+ONC = (LC[LC.Department == "Surgery"].Readmitted_30d == "Yes").mean()
+SRC = pd.read_csv(SEC / "00_Core_Datasets" / "Mercyland_Inpatient_Episodes_2019_2024.csv", usecols=["Bill_Amount_NGN"])
+SQLREC = q("SELECT COUNT(*) AS n, ROUND(SUM(bill_amount_ngn), 2) AS b FROM admissions", "lc").iloc[0]
 
 M310 = dict(
     id="3.10", title="File Extracts into SQL, DAX and Dashboards",
@@ -357,7 +357,7 @@ M310 = dict(
         T("3.10.1", "Beginner: profile the extract before loading",
           defn="Data profiling summarises each column of a dataset (rows, blanks, distinct values, ranges) to find problems "
                "before the data is used.",
-          simple="Lifecare_Admissions_2023_DIRTY.csv (Week2_Data_Files). Problems found now are cheap; problems found on a dashboard are not.",
+          simple="Mercyland_Episodes_2023_DIRTY.csv (Week2_Data_Files). Problems found now are cheap; problems found on a dashboard are not.",
           grid=dict(label=f"Profile: {I(len(RAW))} rows, {RAW.shape[1]} columns", widths=[1.6, 0.8, 0.9, 2.2], rows=[
               ["Column", "Blank", "Distinct", "Action"],
               ["Discharge_Date", I(PROFILE["Discharge_Date"][0]), I(PROFILE["Discharge_Date"][1]), "Flag; don't guess dates"],
@@ -370,7 +370,7 @@ M310 = dict(
           defn="A staging table holds data exactly as received, every column as TEXT, before any cleaning or type conversion.",
           simple="Load first, check the row count matches the file, then clean in the next step.",
           **CODE(""".mode csv
-.import --skip 1 Lifecare_Admissions_2023_DIRTY.csv stg_admissions_2023
+.import --skip 1 Mercyland_Episodes_2023_DIRTY.csv stg_admissions_2023
 SELECT COUNT(*) FROM stg_admissions_2023;""", label="SQLITE3 SHELL", size=11),
           grid=dict(label="Checks", widths=[2.4, 1.6], size=11.5, rows=[
               ["Check", "Result"],
@@ -395,19 +395,19 @@ SELECT COUNT(*) FROM stg_admissions_2023;""", label="SQLITE3 SHELL", size=11),
           simple="Admissions = COUNTROWS; ALOS = AVERAGE of length of stay; Readmission % = DIVIDE of two counts.",
           **CODE("""
 Admissions := COUNTROWS ( Admissions )
-ALOS := AVERAGE ( Admissions[length_of_stay] )
+ALOS := AVERAGE ( Admissions[los_days] )
 Readmission % :=
 DIVIDE (
     CALCULATE ( [Admissions],
-        Admissions[readmit_30d] = "Yes" ),
+        Admissions[readmitted_30d] = "Yes" ),
     [Admissions] )""", label="DAX MEASURES", size=11.5),
           grid=dict(label="2019–2024 results", widths=[2.2, 1.2], rows=[
               ["Measure / filter", "Result"],
               ["[Admissions]", I(len(LC))],
-              ["[ALOS]", f"{LC.Length_of_Stay.mean():.1f} days"],
-              ["[Readmission %]", P((LC.Readmit_30d == 'Yes').mean())],
+              ["[ALOS]", f"{LC.LOS_Days.mean():.1f} days"],
+              ["[Readmission %]", P((LC.Readmitted_30d == 'Yes').mean())],
               ["… Admission type = Emergency", P(EMERG)],
-              ["… Department = Oncology", P(ONC)]]),
+              ["… Department = Surgery", P(ONC)]]),
           split=0.52,
           watch="The filtered results only make sense if the department and type columns were cleaned in 3.10.1."),
 
@@ -418,10 +418,10 @@ DIVIDE (
           grid=dict(label="Reconciliation, all admissions 2019–2024", widths=[1.4, 1.9, 1.9, 0.8], size=11.5, rows=[
               ["Control", "Source CSV", "SQL", "Result"],
               ["Admissions", I(len(SRC)), I(SQLREC.n), "PASS" if len(SRC) == SQLREC.n else "FAIL"],
-              ["Billing (₦)", f"{SRC.Billing_Amount.sum():,.2f}", f"{SQLREC.b:,.2f}",
-               "PASS" if abs(SRC.Billing_Amount.sum() - SQLREC.b) < 0.5 else "FAIL"]]),
-          points=["Source: 00_Core_Datasets › Lifecare_Admissions_2019_2024.csv",
-                  "SQL: COUNT(*) and SUM(billing_amount) on lifecare_hospital.db",
+              ["Billing (₦)", f"{SRC.Bill_Amount_NGN.sum():,.2f}", f"{SQLREC.b:,.2f}",
+               "PASS" if abs(SRC.Bill_Amount_NGN.sum() - SQLREC.b) < 0.5 else "FAIL"]]),
+          points=["Source: 00_Core_Datasets › Mercyland_Inpatient_Episodes_2019_2024.csv",
+                  "SQL: COUNT(*) and SUM(bill_amount_ngn) on mercyland_hospital.db",
                   "Dashboard: the Admissions card and a billing measure, no slicers"],
           points_label="WHERE EACH NUMBER COMES FROM", stack=True,
           watch="A difference of one row is still a FAIL: find it before anyone sees the dashboard."),

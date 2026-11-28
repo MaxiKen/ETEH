@@ -1,5 +1,5 @@
 """Week 4 edition-3 slide copy: Modules 4.5 (time series and forecasting) and 4.6 (what-if analysis and Solver).
-Data: tMonthly (Lagos Retail monthly sales 2022-2025) and tHotel (Eko Suites bookings). Every number is computed here."""
+Data: tMonthly (Lagos Retail monthly sales 2022-2025) and tHotel (Atlantic Pearl bookings). Every number is computed here."""
 import calendar
 
 import numpy as np
@@ -38,11 +38,11 @@ BACK = [("Holt-Winters (as FORECAST.ETS)", HWB["fc"]), ("Classical decomposition
         ("Same month last year", NAIVE), ("Straight-line trend", LIN)]
 
 # ---------------------------------------------------------------- 4.6 figures
-H = HOT.assign(C=(HOT.Booking_Status == "Cancelled").astype(int))
-H24 = H[(H.Arrival_Year == 2024)]
-HON = H24[H24.Booking_Status != "Cancelled"]
-RN = HON.Total_Nights.sum()
-REV = HON.Booking_Value_NGN.sum()
+H = HOT.assign(C=(HOT.Reservation_Status == "Cancelled").astype(int))
+H24 = H[(H.Check_In_Year == 2024)]
+HON = H24[H24.Reservation_Status != "Cancelled"]
+RN = HON.Nights.sum()
+REV = HON.Reservation_Value_NGN.sum()
 ADR24 = REV / RN
 OCC24 = RN / (ROOMS * 366)
 VC, FC, DAYS = 28_000, 3_600_000_000, 365
@@ -68,7 +68,7 @@ SCP = {k: profit(o, a, f) for k, (o, a, f) in SCEN.items()}
 
 COMM = {"Corporate": 0.0, "Airline Crew": 0.0, "Online Travel Agent": 0.18, "Walk-in / Travel Agent": 0.08}
 SEGS = list(COMM)
-SG = H24[H24.Market_Segment.isin(SEGS)].groupby("Market_Segment").agg(adr=("Avg_Room_Rate_NGN", "mean"), cr=("C", "mean"))
+SG = H24[H24.Sales_Channel.isin(SEGS)].groupby("Sales_Channel").agg(adr=("Room_Rate_NGN", "mean"), cr=("C", "mean"))
 SG["net"] = SG.adr * (1 - SG.cr) * (1 - pd.Series(COMM))
 LO = {"Corporate": 40, "Airline Crew": 10, "Online Travel Agent": 0, "Walk-in / Travel Agent": 0}
 HI = {"Corporate": 70, "Airline Crew": 10, "Online Travel Agent": 220, "Walk-in / Travel Agent": 110}
@@ -235,7 +235,7 @@ M46 = dict(
           defn="What-if analysis changes a model's inputs to see how its outputs respond: for a target, a range, named cases or "
                "the best answer.",
           simple="Inputs in their own cells, outputs as formulas that use them.",
-          grid=dict(label="Eko Suites profit model (tHotel, 2024 honoured stays)", widths=[2.2, 2.4], rows=[
+          grid=dict(label="Atlantic Pearl profit model (tHotel, 2024 stayed stays)", widths=[2.2, 2.4], rows=[
               ["Input", "Value"],
               ["Rooms", f"{ROOMS} (constant)"],
               ["Occupancy (2024 actual)", P(OCC24)],
@@ -308,7 +308,7 @@ M46 = dict(
         T("4.6.9", "Enabling Solver",
           defn="Solver is a free Excel add-in that finds the best value of a formula by changing several cells within constraints.",
           simple="Enable once: File › Options › Add-ins › Manage Excel Add-ins › Go › tick Solver Add-in. It appears on the Data tab.",
-          grid=dict(label=f"The Eko Suites problem: split {ROOMS} rooms across four segments", widths=[1.5, 3.3], rows=[
+          grid=dict(label=f"The Atlantic Pearl problem: split {ROOMS} rooms across four segments", widths=[1.5, 3.3], rows=[
               ["Solver part", "In this example"],
               ["Objective", "Maximise expected net value per night"],
               ["Changing cells", "Rooms given to each segment"],
@@ -338,9 +338,9 @@ M46 = dict(
           defn="Documentation records the inputs and their source, the assumptions, the tools and settings used, the results and "
                "the limits.",
           simple="Someone else must be able to rerun and challenge the analysis.",
-          grid=dict(label="Documentation for the Eko Suites plan", widths=[1.3, 3.5], rows=[
+          grid=dict(label="Documentation for the Atlantic Pearl plan", widths=[1.3, 3.5], rows=[
               ["Item", "Recorded"],
-              ["Inputs", "2024 honoured bookings from tHotel"],
+              ["Inputs", "2024 stayed bookings from tHotel"],
               ["Assumptions", f"{ROOMS} rooms; {N(VC)} variable; {Nm(FC / 1e3, 1).replace('m', 'bn')} fixed; scenario values"],
               ["Tools", "Goal Seek, data tables, 3 scenarios, Solver (Simplex LP)"],
               ["Limits", "Annual averages; no seasonality; demand caps assumed"]]),

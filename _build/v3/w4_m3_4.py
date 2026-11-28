@@ -1,5 +1,5 @@
 """Week 4 edition-3 slide copy: Modules 4.3 (correlation) and 4.4 (linear regression).
-Data: tCV (Crestview), tSal (salary survey), tHotel (Eko Suites bookings). Every number is computed here from w4_data."""
+Data: tCV (Kingsway), tSal (salary survey), tHotel (Atlantic Pearl bookings). Every number is computed here from w4_data."""
 import numpy as np
 import pandas as pd
 from scipy import stats
@@ -8,20 +8,20 @@ from v3kit import T
 from w4_fx import CV, EX, HOT, I, N, Nm, P, SAL, Y, F, F2, ols
 
 # ---------------------------------------------------------------- 4.3 figures
-DRIVERS = ["Attendance_Pct", "Hours_Studied_Per_Week", "Previous_Score", "Tutoring_Sessions", "Sleep_Hours", "Physical_Activity_Hrs"]
-SHORT = {"Attendance_Pct": "Attendance %", "Hours_Studied_Per_Week": "Hours studied", "Previous_Score": "Previous score",
-         "Tutoring_Sessions": "Tutoring", "Sleep_Hours": "Sleep hours", "Physical_Activity_Hrs": "Physical activity"}
+DRIVERS = ["Lecture_Attendance_Pct", "Study_Hours_Wk", "Last_Sem_Score", "Tutorials_Attended", "Sleep_Hrs_Night", "Exercise_Hrs_Wk"]
+SHORT = {"Lecture_Attendance_Pct": "Attendance %", "Study_Hours_Wk": "Hours studied", "Last_Sem_Score": "Previous score",
+         "Tutorials_Attended": "Tutoring", "Sleep_Hrs_Night": "Sleep hours", "Exercise_Hrs_Wk": "Physical activity"}
 R = {c: EX.corr(CV[c]) for c in DRIVERS}
 RS = {c: EX.corr(CV[c], method="spearman") for c in DRIVERS}
-MX = CV[["Exam_Score", "Attendance_Pct", "Hours_Studied_Per_Week", "Previous_Score"]].corr()
+MX = CV[["Final_Score", "Lecture_Attendance_Pct", "Study_Hours_Wk", "Last_Sem_Score"]].corr()
 HI = EX >= 80
-R_NOHI = CV[~HI].Exam_Score.corr(CV[~HI].Hours_Studied_Per_Week)
+R_NOHI = CV[~HI].Final_Score.corr(CV[~HI].Study_Hours_Wk)
 
-H = HOT.assign(C=(HOT.Booking_Status == "Cancelled").astype(int))
-R_LEAD = H.Lead_Time_Days.corr(H.C)
-LB = pd.cut(H.Lead_Time_Days, [-1, 7, 30, 90, 180, 10_000], labels=["0-7", "8-30", "31-90", "91-180", "181+"])
+H = HOT.assign(C=(HOT.Reservation_Status == "Cancelled").astype(int))
+R_LEAD = H.Days_Ahead.corr(H.C)
+LB = pd.cut(H.Days_Ahead, [-1, 7, 30, 90, 180, 10_000], labels=["0-7", "8-30", "31-90", "91-180", "181+"])
 LEAD = H.groupby(LB, observed=True).C.agg(["mean", "size"])
-SEG = H.groupby("Market_Segment").agg(rate=("C", "mean"), lead=("Lead_Time_Days", "mean"), n=("C", "size"))
+SEG = H.groupby("Sales_Channel").agg(rate=("C", "mean"), lead=("Days_Ahead", "mean"), n=("C", "size"))
 
 S2 = SAL[SAL.Gender.isin(["Male", "Female"])].assign(F=lambda d: (d.Gender == "Female").astype(int))
 GM = S2.groupby("Gender").agg(sal=("Annual_Salary_NGN", "mean"), exp=("Years_of_Experience", "mean"))
@@ -31,9 +31,9 @@ XB = pd.cut(S2.Years_of_Experience, [-0.1, 2, 5, 10, 15, 60], labels=["0-2", "3-
 GAPX = S2.groupby([XB, "Gender"], observed=True).Annual_Salary_NGN.mean().unstack()
 GAPX["gap"] = GAPX.Female / GAPX.Male - 1
 
-SP = H[H.Room_Type.isin(["Deluxe", "Standard Twin"])]
-SPA = SP.groupby("Room_Type").C.mean()
-SPY = SP.groupby(["Arrival_Year", "Room_Type"]).C.agg(["mean", "size"])
+SP = H[H.Room_Category.isin(["Deluxe", "Standard Twin"])]
+SPA = SP.groupby("Room_Category").C.mean()
+SPY = SP.groupby(["Check_In_Year", "Room_Category"]).C.agg(["mean", "size"])
 
 # ---------------------------------------------------------------- 4.4 figures
 S1 = ols(Y, SAL, ["Years_of_Experience"])
@@ -81,9 +81,9 @@ M43 = dict(
         T("4.3.2", "Pearson Correlation",
           defn="Pearson's r is the standard correlation coefficient for two numeric columns: CORREL(array1, array2) or PEARSON.",
           simple="Square it to get the share of variation the two columns share: r = 0.58 means about a third.",
-          fx=[("=CORREL(tCV[Attendance_Pct],tCV[Exam_Score])", f"{R['Attendance_Pct']:.3f}", "Attendance and score"),
-              ("=CORREL(tCV[Hours_Studied_Per_Week],tCV[Exam_Score])", f"{R['Hours_Studied_Per_Week']:.3f}", "Study hours and score"),
-              ("=CORREL(tCV[Sleep_Hours],tCV[Exam_Score])", f"{R['Sleep_Hours']:.3f}", "Sleep and score")],
+          fx=[("=CORREL(tCV[Lecture_Attendance_Pct],tCV[Final_Score])", f"{R['Lecture_Attendance_Pct']:.3f}", "Attendance and score"),
+              ("=CORREL(tCV[Study_Hours_Wk],tCV[Final_Score])", f"{R['Study_Hours_Wk']:.3f}", "Study hours and score"),
+              ("=CORREL(tCV[Sleep_Hrs_Night],tCV[Final_Score])", f"{R['Sleep_Hrs_Night']:.3f}", "Sleep and score")],
           fx_widths=[3.6, 0.8, 1.6],
           watch="Pearson is pulled by outliers and only sees straight lines; check the scatter (4.3.6)."),
 
@@ -117,9 +117,9 @@ M43 = dict(
           simple="Plot first, then calculate: the same r can come from very different pictures.",
           grid=dict(label="Hours studied against exam score (tCV)", widths=[2.6, 1.6], rows=[
               ["Check", "Result"],
-              ["r, all students", f"{R['Hours_Studied_Per_Week']:.3f}"],
+              ["r, all students", f"{R['Study_Hours_Wk']:.3f}"],
               [f"r without the {I(HI.sum())} scores of 80+", f"{R_NOHI:.3f}"],
-              ["Hours studied range", f"{CV.Hours_Studied_Per_Week.min()} to {CV.Hours_Studied_Per_Week.max()} a week"]]),
+              ["Hours studied range", f"{CV.Study_Hours_Wk.min()} to {CV.Study_Hours_Wk.max()} a week"]]),
           steps=["Select the two columns, x first", "Insert › Scatter", "Add a trendline", "Look for curves, clusters, outliers"],
           split=0.55,
           watch=f"Removing {I(HI.sum())} high scorers changes r; know which points drive it before you quote it."),
@@ -127,7 +127,7 @@ M43 = dict(
         T("4.3.7", "Correlation Is Not Causation",
           defn="Two columns can move together because one causes the other, because both depend on a third factor, or by chance.",
           simple="Correlation tells you where to look; only an experiment or a strong design can show cause.",
-          grid=dict(label=f"Eko Suites: lead time and cancellation (tHotel, r = {R_LEAD:.2f})", widths=[1.4, 1.2, 1.2], rows=[
+          grid=dict(label=f"Atlantic Pearl: lead time and cancellation (tHotel, r = {R_LEAD:.2f})", widths=[1.4, 1.2, 1.2], rows=[
               ["Days booked ahead", "Cancelled", "Bookings"]] + [[k, P(r["mean"]), I(r["size"])] for k, r in LEAD.iterrows()]),
           watch="Lead time does not 'cause' cancellation: early bookers simply have more time to change plans. Act on the risk, "
                 "not on a supposed cause."),
@@ -145,7 +145,7 @@ M43 = dict(
         T("4.3.9", "Simpson's Paradox",
           defn="Simpson's paradox is when a trend that appears in every group reverses when the groups are combined.",
           simple="It happens when the groups are of very different sizes; always check the split before the total.",
-          grid=dict(label="Eko Suites cancellation rate: Deluxe vs Standard Twin (tHotel)", widths=[1.5, 1.2, 1.4], rows=[
+          grid=dict(label="Atlantic Pearl cancellation rate: Deluxe vs Standard Twin (tHotel)", widths=[1.5, 1.2, 1.4], rows=[
               ["Arrivals", "Deluxe", "Standard Twin"],
               ["2023", P(SPY.loc[(2023, "Deluxe"), "mean"]), P(SPY.loc[(2023, "Standard Twin"), "mean"])],
               ["2024", P(SPY.loc[(2024, "Deluxe"), "mean"]), P(SPY.loc[(2024, "Standard Twin"), "mean"])],
@@ -159,8 +159,8 @@ M43 = dict(
           grid=dict(label="Two versions of the same finding", widths=[1.1, 3.7], size=11.5, rows=[
               ["Version", "Wording"],
               ["Misleading", "Attendance drives exam results: raising attendance will raise scores."],
-              ["Responsible", f"Across {I(len(CV))} Crestview students in 2024/25, attendance and exam score are strongly associated "
-                              f"(r = {R['Attendance_Pct']:.2f}); this shows association, not cause."]]),
+              ["Responsible", f"Across {I(len(CV))} Kingsway students in 2024/25, attendance and exam score are strongly associated "
+                              f"(r = {R['Lecture_Attendance_Pct']:.2f}); this shows association, not cause."]]),
           watch="Never write 'drives', 'causes' or 'leads to' about a correlation alone."),
     ],
     takeaways=["r measures straight-line association from -1 to +1, nothing more.",

@@ -58,9 +58,9 @@ def zsum(z=None, y=None, extra=""):
 def m29(b, D):
     S, A = D.S, D.A
     m = ModuleSheet(b, "2.9 M Language", "2.9  The M Language", "Tutor walk-through after Module 2.9: reading and writing the M "
-                    "behind every Power Query step, on Lifecare, Crestview and SuperMart", "2.9.1 - 2.9.11")
-    m.dataset([("Lifecare_Admissions_2023_DIRTY.csv", "Week2_Data_Files", f"{LQ['dedup'] + 63:,} raw rows. The main M example (M_LIFECARE below)."),
-               ("Crestview_Student_Performance.csv", "00_Core_Datasets", f"{CVF['n']:,} students. Used for if … then … else (2.9.3, 2.9.11)."),
+                    "behind every Power Query step, on Mercyland, Kingsway and SuperMart", "2.9.1 - 2.9.11")
+    m.dataset([("Mercyland_Episodes_2023_DIRTY.csv", "Week2_Data_Files", f"{LQ['dedup'] + 63:,} raw rows. The main M example (M_LIFECARE below)."),
+               ("Kingsway_Student_Results.csv", "00_Core_Datasets", f"{CVF['n']:,} students. Used for if … then … else (2.9.3, 2.9.11)."),
                ("tSales25", "Sheet Data_Sales25 (starts in A1)", "Excel twins of M functions, and the store-by-month Group By (2.9.10)."),
                ("tDirty25", "Sheet Data_Dirty25 (starts in A1)", "Excel's view of nulls and text (2.9.4).")])
     m.note("M runs in the Power Query Editor, not in cells. Where a topic asks for a Power Query result, build the query on the file named "
@@ -75,12 +75,12 @@ def m29(b, D):
 
     t = head(m, "2.9.2")
     grid(m, t)
-    m.worked([("Excel compares text without case", '="ruby ward"="Ruby Ward"', True, None, "Excel: TRUE"),
-              ("EXACT behaves like M", '=EXACT("ruby ward","Ruby Ward")', False, None, "M's = is case-sensitive, like EXACT.")])
+    m.worked([("Excel compares text without case", '="obeche ward"="Obeche Ward"', True, None, "Excel: TRUE"),
+              ("EXACT behaves like M", '=EXACT("obeche ward","Obeche Ward")', False, None, "M's = is case-sensitive, like EXACT.")])
     watch(m, t)
     m.turn()
-    m.ex_text('In M, what does "ruby ward" = "Ruby Ward" return? (true / false)', "false")
-    _lit(m, "In Power Query on the Lifecare file, filter Ward to exactly 'Ruby Ward' before the ward mapping. How many rows?", LQ["ruby_raw"])
+    m.ex_text('In M, what does "obeche ward" = "Obeche Ward" return? (true / false)', "false")
+    _lit(m, "In Power Query on the Mercyland file, filter Ward to exactly 'Obeche Ward' before the ward mapping. How many rows?", LQ["ruby_raw"])
 
     t = head(m, "2.9.3")
     grid(m, t)
@@ -116,7 +116,7 @@ def m29(b, D):
           ("Add a step with fx and type = Table.RowCount(Dedup).", f"{LQ['dedup']:,}. Delete the step afterwards.")])
 
     t = head(m, "2.9.7")
-    code(m, M_LIFECARE, "M_LIFECARE: the whole Lifecare cleaning query (Home › Advanced Editor › paste; create the DataFolder parameter first, 2.3.7)")
+    code(m, M_LIFECARE, "M_LIFECARE: the whole Mercyland cleaning query (Home › Advanced Editor › paste; create the DataFolder parameter first, 2.3.7)")
     grid(m, t)
     m.do([("Blank Query › Advanced Editor › paste M_LIFECARE › Done.", f"{LQ['clean']:,} rows load."),
           ("Display Options › tick Display line numbers.", "Each step on its own numbered line.")])
@@ -161,7 +161,7 @@ def m29(b, D):
     m.turn()
     _lit(m, "Filter Needs_Mentor to true. How many students?", CVF["mentor"])
     m.ex_open("Write the M condition for 'needs a mentor' in your own words and in M.",
-              "Exam score below 60 AND attendance below 75%:  each [Exam_Score] < 60 and [Attendance_Pct] < 75")
+              "Exam score below 60 AND attendance below 75%:  each [Final_Score] < 60 and [Lecture_Attendance_Pct] < 75")
     m.finish()
 
 
@@ -403,8 +403,8 @@ def m211(b, D):
                     "types and filtering, with charts drawn from formula twins so they show in any viewer", "2.11.1 - 2.11.11")
     m._SM = SM
     m.dataset([("tSM", "Sheet Data_SM (starts in A1)", "Source of Live Pivots 1 and 5, and of every twin table here."),
-               ("tAdm23", "Sheet Data_Adm23 (starts in A1)", "Lifecare 2023 admissions, for the bar chart in 2.11.11."),
-               ("Crestview_Student_Performance.csv", "00_Core_Datasets", "Grades for the pie chart in 2.11.11.")])
+               ("tAdm23", "Sheet Data_Adm23 (starts in A1)", "Mercyland 2023 admissions, for the bar chart in 2.11.11."),
+               ("Kingsway_Student_Results.csv", "00_Core_Datasets", "Grades for the pie chart in 2.11.11.")])
     sw = SMF["sw_year"]
 
     t = head(m, "2.11.1")
@@ -483,19 +483,19 @@ def m211(b, D):
     td = m.s.table(pd.DataFrame({"Department": list(dep.index)}), "tDeptChart", widths={"Department": 28},
                    calc={"Admissions": ("=COUNTIF(tAdm23[Department],[@Department])", "int", [int(v) for v in dep.values])})
     m.s.chart("bar", [{"name": "Admissions", "categories": td.ref("Department"), "values": td.ref("Admissions"), "labels": True, "label_fmt": "#,##0"}],
-              "Lifecare admissions by department, 2023", legend=False, rows=15)
-    cv = pd.read_csv(SEC / "00_Core_Datasets" / "Crestview_Student_Performance.csv", usecols=["Grade"])
+              "Mercyland admissions by department, 2023", legend=False, rows=15)
+    cv = pd.read_csv(SEC / "00_Core_Datasets" / "Kingsway_Student_Results.csv", usecols=["Grade"])
     gr = cv.Grade.value_counts().reindex(["A", "B", "C"]).reset_index()
     gr.columns = ["Grade", "Students"]
     tg = m.s.table(gr, "tGradeChart", fmts={"Students": "int"})
-    m.note("Grade counts come from Crestview_Student_Performance.csv (a pivot on that file in Power Query or Excel gives the same).")
+    m.note("Grade counts come from Kingsway_Student_Results.csv (a pivot on that file in Power Query or Excel gives the same).")
     m.s.chart("pie", [{"name": "Students", "categories": tg.ref("Grade"), "values": tg.ref("Students"), "labels": True,
                        "points": [{"fill": {"color": c}} for c in ["#13807A", "#0B2545", "#E0A526"]]}],
-              "Crestview grades: B dominates", rows=15, size=(480, 290))
+              "Kingsway grades: B dominates", rows=15, size=(480, 290))
     m.turn()
-    m.ex("How many 2023 admissions did Endocrinology have?", '=COUNTIF(tAdm23[Department],"Endocrinology")', int(dep["Endocrinology"]), "int",
-         short="Endocrinology admissions")
-    m.ex("What share of Crestview students got a B?", '=XLOOKUP("B",tGradeChart[Grade],tGradeChart[Students])/SUM(tGradeChart[Students])',
+    m.ex("How many 2023 admissions did Internal Medicine have?", '=COUNTIF(tAdm23[Department],"Internal Medicine")', int(dep["Internal Medicine"]), "int",
+         short="Internal Medicine admissions")
+    m.ex("What share of Kingsway students got a B?", '=XLOOKUP("B",tGradeChart[Grade],tGradeChart[Students])/SUM(tGradeChart[Students])',
          float(CVF["grades"]["B"]), "pct", short="Share with grade B")
     m.finish()
 

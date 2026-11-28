@@ -1,5 +1,5 @@
 """Week 3 edition-3 slide copy: Module 3.7 (chart anatomy and the 17 Excel chart types).
-Chart data: SuperMart Stores POS lines 2022-2025 (tDash for FY2025), SuperMart Online, Crestview and Lifecare (w3_fx)."""
+Chart data: SuperMart Stores POS lines 2022-2025 (tDash for FY2025), SuperMart Online, Kingsway and Mercyland (w3_fx)."""
 import numpy as np
 import pandas as pd
 
@@ -15,7 +15,7 @@ DSS = DS.sort_values("Sales", ascending=False)
 YEARS = SM.groupby("Year").Sales.sum()
 TIER = CU.membership_tier.value_counts()
 PAY = TX.groupby("payment_method").total_price.sum().sort_values(ascending=False)
-R = {c: CV.Exam_Score.corr(CV[c]) for c in ("Attendance_Pct", "Hours_Studied_Per_Week", "Sleep_Hours")}
+R = {c: CV.Final_Score.corr(CV[c]) for c in ("Lecture_Attendance_Pct", "Study_Hours_Wk", "Sleep_Hrs_Night")}
 ZZ = S25.groupby("Zone").agg(Sales=("Sales", "sum"), Profit=("Profit", "sum"), Orders=("Order_ID", "nunique"))
 ZZ["Margin"] = ZZ.Profit / ZZ.Sales
 RAD = ZZ / ZZ.max()
@@ -24,9 +24,9 @@ P25 = S25.groupby("Category").Profit.sum()
 SUB = NT.groupby(["category", "subcategory"]).total_price.sum().sort_values(ascending=False)
 NCAT, NSUB = NT.category.nunique(), NT.subcategory.nunique()
 CATN = NT.groupby("category").total_price.sum().sort_values(ascending=False)
-BINS = pd.cut(LC.Length_of_Stay, [0, 5, 10, 15, 20, 25, 30, 1000], right=False,
+BINS = pd.cut(LC.LOS_Days, [0, 5, 10, 15, 20, 25, 30, 1000], right=False,
               labels=["0–4", "5–9", "10–14", "15–19", "20–24", "25–29", "30+"]).value_counts().sort_index()
-BOX = LC.groupby("Department").Length_of_Stay.quantile([0.25, 0.5, 0.75]).unstack()
+BOX = LC.groupby("Department").LOS_Days.quantile([0.25, 0.5, 0.75]).unstack()
 SP = S25.assign(M=S25.Order_Date.dt.month).pivot_table(index="Store_Name", columns="M", values="Sales", aggfunc="sum", fill_value=0)
 NOT_CANC = int((TX.order_status != "Cancelled").sum())
 SHIPPED = int(TX.delivery_id.notna().sum())
@@ -142,7 +142,7 @@ M37 = dict(
               ["Question", "Chart", "Data"],
               ["Which store sold most?", "Bar", f"{len(DS)} SuperMart stores"],
               ["How did sales move monthly?", "Line", f"{len(SMONTH)} months"],
-              ["Does study time relate to score?", "Scatter", f"{I(len(CV))} Crestview students"],
+              ["Does study time relate to score?", "Scatter", f"{I(len(CV))} Kingsway students"],
               ["How long do patients stay?", "Histogram", f"{I(len(LC))} admissions"]]),
           watch="Pick the chart for the question, not for variety."),
 
@@ -196,15 +196,15 @@ M37 = dict(
           simple="It shows correlation, clusters and outliers. Both axes are numbers.",
           grid=dict(label=f"Exam score against … ({I(len(CV))} students)", widths=[2, 1.2, 1.6], rows=[
               ["Variable", "Correlation r", "Reading"],
-              ["Attendance %", f"{R['Attendance_Pct']:.2f}", "Moderate, positive"],
-              ["Hours studied per week", f"{R['Hours_Studied_Per_Week']:.2f}", "Moderate, positive"],
-              ["Sleep hours", f"{R['Sleep_Hours']:.2f}", "No relationship"]]),
+              ["Attendance %", f"{R['Lecture_Attendance_Pct']:.2f}", "Moderate, positive"],
+              ["Hours studied per week", f"{R['Study_Hours_Wk']:.2f}", "Moderate, positive"],
+              ["Sleep hours", f"{R['Sleep_Hrs_Night']:.2f}", "No relationship"]]),
           watch="Correlation is not cause: attendance and score may both reflect motivation."),
 
         T("3.7.17", "Bubble Chart",
           defn="A bubble chart is a scatter chart in which a third numeric variable sets the size of each point.",
           simple="Use it only when the third number matters; bubble sizes are hard to compare precisely.",
-          grid=dict(label="Crestview: one bubble per department", widths=[1.6, 1.4, 2], rows=[
+          grid=dict(label="Kingsway: one bubble per department", widths=[1.6, 1.4, 2], rows=[
               ["Variable", "Shown as", "Read it as"],
               ["Hours studied (avg)", "Across", "Further right = more study"],
               ["Exam score (avg)", "Up", "Higher = better"],
@@ -266,7 +266,7 @@ M37 = dict(
         T("3.7.24", "Histogram Chart",
           defn="A histogram shows the distribution of a numeric variable by counting values in consecutive ranges (bins).",
           simple="The bars touch, because the axis is a continuous scale.",
-          grid=dict(label="Lifecare length of stay", widths=[1.2, 1.2], rows=[
+          grid=dict(label="Mercyland length of stay", widths=[1.2, 1.2], rows=[
               ["Days", "Admissions"]] + [[str(k), I(n)] for k, n in BINS.items()]),
           watch="Bin width changes the picture; state it, and try two widths before choosing."),
 

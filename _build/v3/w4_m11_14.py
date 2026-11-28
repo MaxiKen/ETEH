@@ -1,6 +1,6 @@
 """Week 4 edition-3 slide copy: Modules 4.11 (AI co-pilots), 4.12 (verifying AI output), 4.13 (data ethics, PII and PHI) and
 4.14 (internal benchmarks, PDF checks and reconciliation).
-Data: tSal, tDash25, tStores, tLOS, tHotel, tCV, the Week 3 SuperMart Online database, the Crestview wellbeing survey
+Data: tSal, tDash25, tStores, tLOS, tHotel, tCV, the Week 3 SuperMart Online database, the Kingsway wellbeing survey
 (aggregates only), the Week 2 dirty extract and the full SuperMart sales file. Every number is computed here."""
 import sqlite3
 from pathlib import Path
@@ -64,22 +64,22 @@ _dirty = pd.read_csv(PACK / "Week2_Data_Files" / "SuperMart_Sales_2025_DIRTY.csv
 QMISS = int(pd.to_numeric(_dirty.Quantity, errors="coerce").isna().sum())
 NDIRTY = len(_dirty)
 
-# ---------------------------------------------------------------- Lifecare, Eko Suites, Crestview
-RE = LOS.assign(k=(LOS.Readmit_30d == "Yes").astype(int)).groupby("Department").agg(n=("k", "size"), k=("k", "sum"))
+# ---------------------------------------------------------------- Mercyland, Atlantic Pearl, Kingsway
+RE = LOS.assign(k=(LOS.Readmitted_30d == "Yes").astype(int)).groupby("Department").agg(n=("k", "size"), k=("k", "sum"))
 RE["p"] = RE.k / RE.n
 RE["moe"] = 1.96 * np.sqrt(RE.p * (1 - RE.p) / RE.n)
 RE = RE.sort_values("p", ascending=False)
 TOPD = RE.index[0]
 SEPD = [d for d in RE.index[1:] if RE.p[d] + RE.moe[d] < RE.p[TOPD] - RE.moe[TOPD]]
-RE_ALL = (LOS.Readmit_30d == "Yes").mean()
-LC_COLS = pd.read_csv(PACK / "00_Core_Datasets" / "Lifecare_Admissions_2019_2024.csv", nrows=1).columns.tolist()
-NEED = ["Department", "Readmit_30d", "Admission_Date"]
-CR = (HOT.Booking_Status == "Cancelled").mean()
-R_ATT = CV.Attendance_Pct.corr(CV.Exam_Score)
+RE_ALL = (LOS.Readmitted_30d == "Yes").mean()
+LC_COLS = pd.read_csv(PACK / "00_Core_Datasets" / "Mercyland_Inpatient_Episodes_2019_2024.csv", nrows=1).columns.tolist()
+NEED = ["Department", "Readmitted_30d", "Admit_Date"]
+CR = (HOT.Reservation_Status == "Cancelled").mean()
+R_ATT = CV.Lecture_Attendance_Pct.corr(CV.Final_Score)
 
-_wb = pd.read_csv(PACK / "00_Core_Datasets" / "Crestview_Wellbeing_Survey_SENSITIVE.csv")
+_wb = pd.read_csv(PACK / "00_Core_Datasets" / "Kingsway_Student_Welfare_Survey_SENSITIVE.csv")
 WB_N = len(_wb)
-WBP = (_wb.groupby("Programme").agg(n=("Respondent_ID", "count"), k=("Depression_Screen_Positive", lambda v: (v == "Yes").sum()))
+WBP = (_wb.groupby("Programme").agg(n=("Respondent_ID", "count"), k=("PHQ9_Positive", lambda v: (v == "Yes").sum()))
        .sort_values("n"))
 UNIQ1 = int((_wb.groupby(["Gender", "Age", "State_of_Origin", "Programme"]).size() == 1).sum())
 UNIQ2 = int((_wb.assign(B=pd.cut(_wb.Age, [0, 20, 25, 30, 100]).astype(str)).groupby(["Gender", "B", "Programme"]).size() == 1).sum())
@@ -95,7 +95,7 @@ CLAIMS = [("FY2025 store sales were ₦733.2m", 733.2e6, TOT25, 0.001, "m"),
           ("Lagos stores made 30% of FY2025 sales", 0.30, LAGOS, 0.005, "p"),
           ("Median salary is ₦12.5m", 12.5e6, SAL.Annual_Salary_NGN.median(), 0.001, "m"),
           ("2023 readmission rate was 10.3%", 0.103, RE_ALL, 0.0005, "p"),
-          ("Eko Suites cancellation rate is 22%", 0.22, CR, 0.005, "p"),
+          ("Atlantic Pearl cancellation rate is 22%", 0.22, CR, 0.005, "p"),
           ("Attendance-score correlation is 0.81", 0.81, R_ATT, 0.005, "r")]
 
 
@@ -196,7 +196,7 @@ M411 = dict(
           simple="Structure and totals are usually safe; individual records never are.",
           grid=dict(label="Which data can be pasted?", widths=[2.4, 0.8, 1.6], rows=[
               ["Data", "Paste?", "Instead"],
-              ["Patient names, Patient_ID", "Never", "Schema only"],
+              ["Patient names, Patient_No", "Never", "Schema only"],
               ["Customer email, phone", "Never", "Schema only"],
               ["Table and column names", "Yes", "-"],
               ["12 store totals", "If approved", "Aggregates only"]]),
@@ -345,8 +345,8 @@ M413 = dict(
           simple="Every bootcamp dataset describes real kinds of people; mistakes harm them.",
           grid=dict(label="Who is in our datasets?", widths=[1.8, 1.3, 1.7], rows=[
               ["Dataset", "Who", "Harm if mishandled"],
-              ["Lifecare admissions", "Patients", "Health details exposed"],
-              ["Crestview wellbeing", "Students", "Mental-health stigma"],
+              ["Mercyland admissions", "Patients", "Health details exposed"],
+              ["Kingsway wellbeing", "Students", "Mental-health stigma"],
               ["SuperMart Online", "Customers", "Fraud, spam"],
               ["Salary survey", "Employees", "Pay revealed"]]),
           watch="Nigeria Data Protection Act 2023: fines and liability apply to organisations and their staff."),
@@ -366,12 +366,12 @@ M413 = dict(
           defn="Health data (PHI) is information about a person's physical or mental health or care; it is special-category data "
                "with stricter rules.",
           simple="Health data never travels with names attached.",
-          grid=dict(label=f"Lifecare admissions ({len(LC_COLS)} columns)", widths=[2.3, 1.2, 1.5], size=11, rows=[
+          grid=dict(label=f"Mercyland admissions ({len(LC_COLS)} columns)", widths=[2.3, 1.2, 1.5], size=11, rows=[
               ["Columns", "Class", "Rule"],
-              ["Patient_Name, Patient_ID", "Direct (PHI)", "Remove before extract"],
-              ["Medical_Condition, Medication, Test_Result", "Health", "Aggregate; min 5 per cell"],
-              ["Age, Gender, Admission_Date", "Quasi", "Band or use year"]]),
-          watch="Mental-health screening answers (Crestview) are among the most sensitive data in the course."),
+              ["Patient_Name, Patient_No", "Direct (PHI)", "Remove before extract"],
+              ["Diagnosis_Group, Medication, Lab_Result", "Health", "Aggregate; min 5 per cell"],
+              ["Age, Gender, Admit_Date", "Quasi", "Band or use year"]]),
+          watch="Mental-health screening answers (Kingsway) are among the most sensitive data in the course."),
 
         T("4.13.4", "Data Minimisation",
           defn="Data minimisation means collecting and extracting only the columns and rows needed for the stated question.",
@@ -379,7 +379,7 @@ M413 = dict(
           grid=dict(label="'Which departments have the highest readmission rate?'", widths=[2.6, 1.4], rows=[
               ["Measure", "Value"],
               ["Columns in the admissions extract", str(len(LC_COLS))],
-              ["Columns needed", f"{len(NEED)}: Department, Readmit_30d, year"],
+              ["Columns needed", f"{len(NEED)}: Department, Readmitted_30d, year"],
               ["Columns to drop", str(len(LC_COLS) - len(NEED))]]),
           watch=f"{len(NEED)} columns answer the question; the other {len(LC_COLS) - len(NEED)} only add risk."),
 
@@ -387,7 +387,7 @@ M413 = dict(
           defn="Anonymisation removes or generalises identifiers so people cannot be re-identified; aggregation publishes counts, "
                "with small cells (under 5) suppressed.",
           simple="Band exact values, drop rare fields, and replace counts under 5 with '<5'.",
-          grid=dict(label=f"Crestview wellbeing survey ({I(WB_N)} responses, aggregates only)", widths=[3.2, 1.2], rows=[
+          grid=dict(label=f"Kingsway wellbeing survey ({I(WB_N)} responses, aggregates only)", widths=[3.2, 1.2], rows=[
               ["Check", "Result"],
               [f"Smallest programme ({WBP.index[0]})", f"{WBP.n.iloc[0]} respondents"],
               ["Unique on gender + exact age + state + programme", I(UNIQ1)],
@@ -400,7 +400,7 @@ M413 = dict(
           simple="'We already have the data' is not a reason to use it for something new.",
           grid=dict(label="Purpose and basis", widths=[1.4, 2.0, 1.6], size=11, rows=[
               ["Dataset", "Typical basis", "Check before new use"],
-              ["Lifecare", "Provision of care", "Ethics approval"],
+              ["Mercyland", "Provision of care", "Ethics approval"],
               ["SuperMart Online", "Contract", "Marketing needs consent"],
               ["Wellbeing survey", "Consent", "Only the stated research"]]),
           watch="Using survey data for a purpose the respondents were not told about breaks their consent."),
@@ -431,7 +431,7 @@ M413 = dict(
         T("4.13.9", "Governance and Accountability",
           defn="Data governance assigns roles and approvals: who owns the data, who may access it, who approves new uses.",
           simple="Every extract can be traced to an approval.",
-          grid=dict(label="Roles for a Lifecare readmission study", widths=[1.6, 3.2], rows=[
+          grid=dict(label="Roles for a Mercyland readmission study", widths=[1.6, 3.2], rows=[
               ["Role", "Action"],
               ["Data owner", f"Approves the {len(NEED)}-column extract"],
               ["Analyst", "Documents the minimisation and checks"],

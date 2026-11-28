@@ -146,9 +146,9 @@ def m31(b, D):
               "Run the GROUP BY on the view as if it were a table.", "Data_Lines here is that view, imported through ODBC."], code=True)
     tp(m, "3.1.11",
        [("SuperMart order lines (main)", "=ROWS(tTransactions)", len(TX), "int", "main.transactions"),
-        ("Lifecare admissions 2023 (lh)", "=ROWS(tAdm23)", len(D.A), "int", "lh.admissions after ATTACH, filtered to 2023.")],
-       [("t", "After ATTACH DATABASE 'lifecare_hospital.db' AS lh, how do you name its admissions table in a query?", "lh.admissions", None, None, ())],
-       steps=["Open supermart_online.db, then run: ATTACH DATABASE 'lifecare_hospital.db' AS lh;",
+        ("Mercyland admissions 2023 (lh)", "=ROWS(tAdm23)", len(D.A), "int", "lh.admissions after ATTACH, filtered to 2023.")],
+       [("t", "After ATTACH DATABASE 'mercyland_hospital.db' AS lh, how do you name its admissions table in a query?", "lh.admissions", None, None, ())],
+       steps=["Open supermart_online.db, then run: ATTACH DATABASE 'mercyland_hospital.db' AS lh;",
               "Query main.transactions and lh.admissions in the same session.",
               "The prefix (main., lh.) is the namespace: it removes any doubt about which file a table is in."])
     tp(m, "3.1.12",
@@ -218,9 +218,9 @@ def m32(b, D):
     tp(m, "3.2.3",
        [("Tables in supermart_online.db (rows)", "=ROWS(tTransactions)+ROWS(tCustomers)+ROWS(tProducts)+ROWS(tSellers)+ROWS(tDeliveries)+ROWS(tStates)",
          len(TX) + len(C) + len(P) + len(D.SE) + len(DV) + len(D.ST), "int", "One file, no server."),
-        ("Lifecare 2023 admissions", "=ROWS(tAdm23)", len(D.A), "int", "lifecare_hospital.db, filtered to 2023.")],
+        ("Mercyland 2023 admissions", "=ROWS(tAdm23)", len(D.A), "int", "mercyland_hospital.db, filtered to 2023.")],
        [("t", "Does SQLite need a database server running? (Yes / No)", "No", None, None, ("n",))],
-       steps=["Find Week3_Data_Files › supermart_online.db and lifecare_hospital.db.", "Each is one ordinary file: copy, email or back it up like a workbook.",
+       steps=["Find Week3_Data_Files › supermart_online.db and mercyland_hospital.db.", "Each is one ordinary file: copy, email or back it up like a workbook.",
               "Open either in DB Browser; nothing to install on a server."])
     tp(m, "3.2.4",
        [("Rows any tool returns for SELECT COUNT(*) FROM transactions", "=ROWS(tTransactions)", len(TX), "int",

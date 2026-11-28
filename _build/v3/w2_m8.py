@@ -52,7 +52,7 @@ STORE_PROPER = DR[DR.Store_Name != ""].Store_Name.str.title().nunique()
 P1, P2, P3 = S.Product_ID.head(3).tolist()
 O1, O2, O3 = S.Order_ID.head(3).tolist()
 A0, A1 = A.iloc[0], A.iloc[1]
-LOS = (A.Discharge_Date - A.Admission_Date).dt.days.mean()
+LOS = (A.Discharge_Date - A.Admit_Date).dt.days.mean()
 _sc = S[S.Ship_Mode == "Standard Class"]
 NWD_STD = np.mean([np.busday_count(o.date(), (s + pd.Timedelta(days=1)).date()) for o, s in zip(_sc.Order_Date, _sc.Ship_Date)])
 NWD_1 = int(np.busday_count("2025-01-01", "2025-01-07"))
@@ -308,9 +308,9 @@ TOPICS_B = [
        ["dd/mm/yyyy text dates in tDirty25", I(DF["d_slash"]), "To repair"]]),
     F("2.8.53", "DATEDIF", "=DATEDIF(start_date, end_date, unit) returns the gap in \"d\" days, \"m\" whole months or \"y\" whole years.",
       "Ages, tenure, length of stay.",
-      [[f"=DATEDIF([@Admission_Date], [@Discharge_Date], \"d\")", str((A0.Discharge_Date - A0.Admission_Date).days),
-        f"{A0.Admission_ID}"],
-       [f"Same for {A1.Admission_ID}", str((A1.Discharge_Date - A1.Admission_Date).days), ""],
+      [[f"=DATEDIF([@Admit_Date], [@Discharge_Date], \"d\")", str((A0.Discharge_Date - A0.Admit_Date).days),
+        f"{A0.Episode_ID}"],
+       [f"Same for {A1.Episode_ID}", str((A1.Discharge_Date - A1.Admit_Date).days), ""],
        [f"Average over all {len(A):,} stays in tAdm23", f"{LOS:.2f}", "Days"]],
       "DATEDIF does not appear in formula autocomplete: type it in full. A start_date after end_date gives #NUM!."),
     F("2.8.54", "EOMONTH", "=EOMONTH(start_date, months) returns the last day of the month, months before or after start_date.",

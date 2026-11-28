@@ -30,11 +30,11 @@ fence = q3_ + 1.5 * (q3_ - q1_)
 phd, bach = sal[sal.Education_Level == "PhD"].Annual_Salary_NGN.mean(), sal[sal.Education_Level == "Bachelor's"].Annual_Salary_NGN.mean()
 
 cv = L("cv_perf")
-STU = ["Student_ID", "Faculty", "Level", "Sleep_Hours", "Previous_Score", "Tutoring_Sessions", "Hours_Studied_Per_Week", "Attendance_Pct", "Exam_Score"]
+STU = ["Matric_No", "Faculty", "Level", "Sleep_Hrs_Night", "Last_Sem_Score", "Tutorials_Attended", "Study_Hours_Wk", "Lecture_Attendance_Pct", "Final_Score"]
 stu = cv[STU].copy()
-y = stu.Exam_Score.astype(float)
-xa, xh = stu.Attendance_Pct.astype(float), stu.Hours_Studied_Per_Week.astype(float)
-r_att, r_hrs, r_slp = np.corrcoef(xa, y)[0, 1], np.corrcoef(xh, y)[0, 1], np.corrcoef(stu.Sleep_Hours, y)[0, 1]
+y = stu.Final_Score.astype(float)
+xa, xh = stu.Lecture_Attendance_Pct.astype(float), stu.Study_Hours_Wk.astype(float)
+r_att, r_hrs, r_slp = np.corrcoef(xa, y)[0, 1], np.corrcoef(xh, y)[0, 1], np.corrcoef(stu.Sleep_Hrs_Night, y)[0, 1]
 lr = stats.linregress(xa, y)
 X = np.column_stack([xh, xa, np.ones(len(y))])
 beta, *_ = np.linalg.lstsq(X, y, rcond=None)
@@ -43,10 +43,10 @@ r2_multi = 1 - ((y - yhat) ** 2).sum() / ((y - y.mean()) ** 2).sum()
 b_hours, b_att = beta[0], beta[1]
 
 h = hotel()
-hon = h[(h.Booking_Status == "Honoured") & (h.Arrival_Date >= "2023-08-01")]
-hm = hon.groupby(hon.Arrival_Date.dt.to_period("M")).agg(Bookings=("Booking_ID", "size"), Room_Nights=("Total_Nights", "sum"),
-                                                         Booking_Value=("Booking_Value_NGN", "sum")).reset_index()
-hm["Month"] = hm.Arrival_Date.dt.to_timestamp()
+hon = h[(h.Reservation_Status == "Stayed") & (h.Check_In >= "2023-08-01")]
+hm = hon.groupby(hon.Check_In.dt.to_period("M")).agg(Bookings=("Reservation_ID", "size"), Room_Nights=("Nights", "sum"),
+                                                         Booking_Value=("Reservation_Value_NGN", "sum")).reset_index()
+hm["Month"] = hm.Check_In.dt.to_timestamp()
 hm["Month_No"] = range(1, len(hm) + 1)
 hm = hm[["Month", "Month_No", "Bookings", "Room_Nights", "Booking_Value"]]
 NTR = 11   # Aug-2023 .. Jun-2024 training window
@@ -128,30 +128,30 @@ def build(key: bool):
     A.end_task(s)
 
     # ---------------------------------------------------------------- T3 correlation
-    s = A.task("T3 Correlation", "Task 3 - What moves exam scores at Crestview?", "4.3",
-               "D_Students (tStudents) holds 6,607 Crestview students. The Dean wants to know which habits are most associated with exam performance.")
-    A.q(s, "3.1", "Correlation between Attendance_Pct and Exam_Score.", "=CORREL(tStudents[Attendance_Pct],tStudents[Exam_Score])", r_att, "dec3", 2, header=True)
-    A.q(s, "3.2", "Correlation between Hours_Studied_Per_Week and Exam_Score.", "=CORREL(tStudents[Hours_Studied_Per_Week],tStudents[Exam_Score])", r_hrs, "dec3", 2)
-    A.q(s, "3.3", "Which of these has the WEAKEST relationship with Exam_Score?", "Sleep_Hours", marks=1,
-        choices=["Sleep_Hours", "Attendance_Pct", "Hours_Studied_Per_Week", "Previous_Score"], guide=f"r = {r_slp:.3f}.")
-    A.q(s, "3.4", "Share of exam-score variance explained by attendance alone (R²).", "=RSQ(tStudents[Exam_Score],tStudents[Attendance_Pct])", r_att ** 2, "pct", 1)
+    s = A.task("T3 Correlation", "Task 3 - What moves exam scores at Kingsway?", "4.3",
+               "D_Students (tStudents) holds 6,607 Kingsway students. The Dean wants to know which habits are most associated with exam performance.")
+    A.q(s, "3.1", "Correlation between Lecture_Attendance_Pct and Final_Score.", "=CORREL(tStudents[Lecture_Attendance_Pct],tStudents[Final_Score])", r_att, "dec3", 2, header=True)
+    A.q(s, "3.2", "Correlation between Study_Hours_Wk and Final_Score.", "=CORREL(tStudents[Study_Hours_Wk],tStudents[Final_Score])", r_hrs, "dec3", 2)
+    A.q(s, "3.3", "Which of these has the WEAKEST relationship with Final_Score?", "Sleep_Hrs_Night", marks=1,
+        choices=["Sleep_Hrs_Night", "Lecture_Attendance_Pct", "Study_Hours_Wk", "Last_Sem_Score"], guide=f"r = {r_slp:.3f}.")
+    A.q(s, "3.4", "Share of exam-score variance explained by attendance alone (R²).", "=RSQ(tStudents[Final_Score],tStudents[Lecture_Attendance_Pct])", r_att ** 2, "pct", 1)
     A.long(s, "3.5", "The Dean says: 'Attendance causes higher scores, so we will make lectures compulsory.' Give one reason to be cautious.",
-           "Correlation is not causation: motivated students both attend more AND study more (confounder - Motivation_Level, Parental_Involvement). "
+           "Correlation is not causation: motivated students both attend more AND study more (confounder - Motivation, Guardian_Support). "
            "Compulsory attendance may raise attendance without raising motivation, so scores may not rise as much as r suggests. "
            "A pilot with a comparison group would test the effect.", marks=2, rows=3, guide="Names confounding/reverse causation 1; concrete example 1.")
     A.end_task(s)
 
     # ---------------------------------------------------------------- T4 regression
     s = A.task("T4 Regression", "Task 4 - Predict exam score from attendance and study hours", "4.4",
-               "Fit a simple regression (Exam_Score on Attendance_Pct) and a multiple regression (on Hours_Studied_Per_Week AND Attendance_Pct - adjacent columns in tStudents).")
-    A.q(s, "4.1", "Slope: exam points per attendance point.", "=SLOPE(tStudents[Exam_Score],tStudents[Attendance_Pct])", lr.slope, "dec3", 2, header=True)
-    A.q(s, "4.2", "Intercept.", "=INTERCEPT(tStudents[Exam_Score],tStudents[Attendance_Pct])", lr.intercept, "dec2", 1)
-    A.q(s, "4.3", "Predicted exam score at 80% attendance (simple model).", "=FORECAST.LINEAR(80,tStudents[Exam_Score],tStudents[Attendance_Pct])",
+               "Fit a simple regression (Final_Score on Lecture_Attendance_Pct) and a multiple regression (on Study_Hours_Wk AND Lecture_Attendance_Pct - adjacent columns in tStudents).")
+    A.q(s, "4.1", "Slope: exam points per attendance point.", "=SLOPE(tStudents[Final_Score],tStudents[Lecture_Attendance_Pct])", lr.slope, "dec3", 2, header=True)
+    A.q(s, "4.2", "Intercept.", "=INTERCEPT(tStudents[Final_Score],tStudents[Lecture_Attendance_Pct])", lr.intercept, "dec2", 1)
+    A.q(s, "4.3", "Predicted exam score at 80% attendance (simple model).", "=FORECAST.LINEAR(80,tStudents[Final_Score],tStudents[Lecture_Attendance_Pct])",
         lr.intercept + lr.slope * 80, "dec1", 2)
-    xs = "tStudents[[Hours_Studied_Per_Week]:[Attendance_Pct]]"
-    A.q(s, "4.4", "R² of the multiple model (LINEST with stats).", f"=INDEX(LINEST(tStudents[Exam_Score],{xs},TRUE,TRUE),3,1)", r2_multi, "dec3", 2,
+    xs = "tStudents[[Study_Hours_Wk]:[Lecture_Attendance_Pct]]"
+    A.q(s, "4.4", "R² of the multiple model (LINEST with stats).", f"=INDEX(LINEST(tStudents[Final_Score],{xs},TRUE,TRUE),3,1)", r2_multi, "dec3", 2,
         "Data Analysis ToolPak > Regression gives the same.")
-    A.q(s, "4.5", "Coefficient of Hours_Studied_Per_Week in the multiple model.", f"=INDEX(LINEST(tStudents[Exam_Score],{xs},TRUE,TRUE),1,2)", b_hours, "dec3", 2,
+    A.q(s, "4.5", "Coefficient of Study_Hours_Wk in the multiple model.", f"=INDEX(LINEST(tStudents[Final_Score],{xs},TRUE,TRUE),1,2)", b_hours, "dec3", 2,
         "LINEST returns coefficients in REVERSE column order: row 1 = {Attendance, Hours, Intercept}.")
     A.q(s, "4.6", "Best interpretation of that coefficient:", "+1 study hour/week ≈ +0.29 points, attendance held constant", marks=1,
         choices=["+1 study hour/week ≈ +0.29 points, attendance held constant", "Studying causes 29% higher scores", "Hours explain 29% of variance",
@@ -159,10 +159,10 @@ def build(key: bool):
     A.end_task(s)
 
     # ---------------------------------------------------------------- T5 forecasting
-    s = A.task("T5 Forecasting", "Task 5 - Forecast Eko Suites room-nights and test the method", "4.5",
-               "D_Hotel_Monthly (tHotelM) holds honoured bookings by arrival month, Aug 2023 - Dec 2024 (Month_No 1-17). Fit on the first 11 months "
+    s = A.task("T5 Forecasting", "Task 5 - Forecast Atlantic Pearl room-nights and test the method", "4.5",
+               "D_Hotel_Monthly (tHotelM) holds stayed bookings by arrival month, Aug 2023 - Dec 2024 (Month_No 1-17). Fit on the first 11 months "
                "(Aug 2023 - Jun 2024), test on Jul-Dec 2024, then forecast January 2025.")
-    A.q(s, "5.1", "The raw extract also has July 2023 with only 120 honoured bookings. Why is it excluded?", "Incomplete first month of the extract", marks=1,
+    A.q(s, "5.1", "The raw extract also has July 2023 with only 120 stayed bookings. Why is it excluded?", "Incomplete first month of the extract", marks=1,
         choices=["Incomplete first month of the extract", "July is always quiet", "It is an outlier to delete everywhere", "Excel cannot forecast July"], header=True)
     s.band("5.2", "Holdout test - fill the yellow columns (train = rows 1-11 of tHotelM)")
     r0, c0 = 4, 1      # header row / first col of tHotelM on D_Hotel_Monthly (asserted below)
@@ -213,8 +213,8 @@ def build(key: bool):
     A.end_task(s)
 
     # ---------------------------------------------------------------- T7 storytelling
-    s = A.task("T7 Story, Report & Slides", "Task 7 - Communicate the Eko Suites forecast", "4.7-4.9",
-               "You must brief the Eko Suites General Manager on Task 5 in one slide and a short written summary.")
+    s = A.task("T7 Story, Report & Slides", "Task 7 - Communicate the Atlantic Pearl forecast", "4.7-4.9",
+               "You must brief the Atlantic Pearl General Manager on Task 5 in one slide and a short written summary.")
     A.q(s, "7.1", "Which is the best slide headline?", f"Room-nights rose {q4_24 / q4_23 - 1:.0%} year on year in Q4 but growth has levelled off", marks=2,
         choices=[f"Room-nights rose {q4_24 / q4_23 - 1:.0%} year on year in Q4 but growth has levelled off", "Monthly room-nights chart", "Forecast analysis 2023-2025",
                  "Data shows interesting trends"], header=True, guide="A headline states the finding with a number.")
@@ -224,7 +224,7 @@ def build(key: bool):
     A.q(s, "7.4", "Best visual for actual vs forecast room-nights with the holdout period marked?", "Line chart with forecast shaded", marks=2,
         choices=["Line chart with forecast shaded", "Pie chart", "3-D column chart", "Table only"])
     A.long(s, "7.5", "Write a 3-sentence executive summary for the General Manager (finding, evidence, recommendation).",
-           f"Honoured room-nights grew strongly through 2024 (Q4 {q4_24:,} vs {q4_23:,} a year earlier) but monthly volumes have plateaued at about 4,500-5,500 since March. "
+           f"Stayed room-nights grew strongly through 2024 (Q4 {q4_24:,} vs {q4_23:,} a year earlier) but monthly volumes have plateaued at about 4,500-5,500 since March. "
            f"On the July-December holdout a simple 'same as last month' forecast was more accurate (MAPE {ape_n.mean():.1%}) than a straight-line trend ({ape_l.mean():.1%}), "
            "so the trend overstates future demand. Plan 2025 staffing and rates on a flat-to-seasonal baseline and revisit the forecast quarterly.",
            marks=4, rows=4, guide="Finding 1, evidence with numbers 2, actionable recommendation 1.")
@@ -280,12 +280,12 @@ def build(key: bool):
                "For each claim enter TRUE or FALSE, then the correct figure as a live formula. Never paste an AI number into a report unchecked.")
     claims = [
         ("'The median salary in the survey is ₦11.3m.'", "FALSE", "=MEDIAN(tSalary[Annual_Salary_NGN])", S.median(), "naira", "₦11.3m is the MEAN; median is ₦11.0m."),
-        ("'Attendance explains about a third of the variation in Crestview exam scores.'", "TRUE", "=RSQ(tStudents[Exam_Score],tStudents[Attendance_Pct])", r_att ** 2, "pct",
+        ("'Attendance explains about a third of the variation in Kingsway exam scores.'", "TRUE", "=RSQ(tStudents[Final_Score],tStudents[Lecture_Attendance_Pct])", r_att ** 2, "pct",
          f"R² = {r_att ** 2:.1%}."),
         ("'PhD holders earn more than double what Bachelor's holders earn on average.'", "TRUE" if phd / bach > 2 else "FALSE",
          '=AVERAGEIFS(tSalary[Annual_Salary_NGN],tSalary[Education_Level],"PhD")/AVERAGEIFS(tSalary[Annual_Salary_NGN],tSalary[Education_Level],"Bachelor\'s")',
          phd / bach, "dec2", f"Ratio {phd / bach:.2f}x."),
-        ("'Eko Suites room-nights grew by more than 50% from Q4 2023 to Q4 2024.'", "TRUE" if q4_24 / q4_23 > 1.5 else "FALSE",
+        ("'Atlantic Pearl room-nights grew by more than 50% from Q4 2023 to Q4 2024.'", "TRUE" if q4_24 / q4_23 > 1.5 else "FALSE",
          '=SUMIFS(tHotelM[Room_Nights],tHotelM[Month],">="&DATE(2024,10,1))/SUMIFS(tHotelM[Room_Nights],tHotelM[Month],">="&DATE(2023,10,1),tHotelM[Month],"<"&DATE(2024,1,1))-1',
          q4_24 / q4_23 - 1, "pct", f"+{q4_24 / q4_23 - 1:.1%}."),
     ]
@@ -296,9 +296,9 @@ def build(key: bool):
 
     # ---------------------------------------------------------------- T10 ethics
     s = A.task("T10 Ethics & Privacy", "Task 10 - Classify the fields before sharing data", "4.13",
-               "Lifecare wants to share its admissions table with a university researcher. Classify each field under the Nigeria Data Protection Act 2023 categories used in class.")
+               "Mercyland wants to share its admissions table with a university researcher. Classify each field under the Nigeria Data Protection Act 2023 categories used in class.")
     opts = ["Direct identifier (PII)", "Sensitive health data (PHI)", "Quasi-identifier", "Not personal data"]
-    for i, (f, a) in enumerate([("Patient_Name", opts[0]), ("Medical_Condition", opts[1]), ("Age + Gender + Admission_Date together", opts[2]),
+    for i, (f, a) in enumerate([("Patient_Name", opts[0]), ("Diagnosis_Group", opts[1]), ("Age + Gender + Admit_Date together", opts[2]),
                                 ("Ward staffed-bed count", opts[3])], 1):
         A.q(s, f"10.{i}", f"Field: {f}", a, marks=1, choices=opts, header=(i == 1))
     A.end_task(s)
@@ -329,15 +329,15 @@ def build(key: bool):
                  widths={"Job_Title": 28})
     b.data_sheet("D_Salary", sal, "tSalary", fmts={"Annual_Salary_NGN": "naira"}, title="ETEH Talent Salary Survey - clean (table tSalary)",
                  widths={"Job_Title": 28, "Job_Family": 22})
-    b.data_sheet("D_Students", stu, "tStudents", title="Crestview University students, 2024/25 semester 1 (table tStudents)", widths={"Student_ID": 18, "Faculty": 18})
+    b.data_sheet("D_Students", stu, "tStudents", title="Kingsway University students, 2024/25 semester 1 (table tStudents)", widths={"Matric_No": 18, "Faculty": 18})
     t = b.data_sheet("D_Hotel_Monthly", hm, "tHotelM", fmts={"Month": "mon", "Booking_Value": "naira", "Room_Nights": "int"},
-                     title="Eko Suites honoured bookings by arrival month (table tHotelM)")
+                     title="Atlantic Pearl stayed bookings by arrival month (table tHotelM)")
     assert (t.r0, t.c0) == (r0, c0) and t.cols[1] == "Month_No" and t.cols[3] == "Room_Nights"
     return A.finish("Week 4 Assignment - Statistics, Forecasting & Responsible Reporting",
-                    ["Scenario: ETEH's consulting team has four client questions this week - HR pay benchmarking (Talent Salary Survey), exam drivers for Crestview's Dean, "
-                     "a demand forecast for Eko Suites and a margin rescue plan for SuperMart Furniture - and every number must survive audit, AI-checking and a privacy review.",
+                    ["Scenario: ETEH's consulting team has four client questions this week - HR pay benchmarking (Talent Salary Survey), exam drivers for Kingsway's Dean, "
+                     "a demand forecast for Atlantic Pearl and a margin rescue plan for SuperMart Furniture - and every number must survive audit, AI-checking and a privacy review.",
                      "Tasks 1-11 follow the Week 4 modules in order. Time guide: 8 hours."],
-                    [("Salary Survey", DATASETS_TEXT["Salary Survey"]), ("Crestview", DATASETS_TEXT["Crestview"]), ("Eko Suites", DATASETS_TEXT["Eko Suites"]),
+                    [("Salary Survey", DATASETS_TEXT["Salary Survey"]), ("Kingsway", DATASETS_TEXT["Kingsway"]), ("Atlantic Pearl", DATASETS_TEXT["Atlantic Pearl"]),
                      ("SuperMart Stores", DATASETS_TEXT["SuperMart Stores"] + " - Task 6 uses the 2025 Furniture lines; Task 8 the 2024-25 zone totals.")],
                     rubric=[["Live formulas", "Typed numbers score zero where a formula is required."],
                             ["Tolerance", "Statistics to the decimals shown; money ±₦1; percentages ±0.1 pt."],

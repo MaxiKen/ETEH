@@ -36,7 +36,7 @@ M21 = dict(
               ["Format", "What it holds", "Our example"],
               [".xlsx / .xls", "Sheets, tables, types, formulas", "SuperMart_Online_RAW_Export.xlsx (5 sheets)"],
               [".csv", "Plain text, one record per line, comma-separated", "SuperMart_Sales_2025_DIRTY.csv"],
-              [".txt", "Plain text with another delimiter, e.g. | or Tab", "Lifecare_Admissions_2023_pipe.txt"],
+              [".txt", "Plain text with another delimiter, e.g. | or Tab", "Mercyland_Episodes_2023_pipe.txt"],
               [".json", "Nested records from web services (APIs)", "SuperMart_Online_Sellers.json (200 sellers)"],
               [".html", "Web page; tables inside <table> tags", "SuperMart_Store_Directory.html"],
               [".pdf", "Printed layout; tables must be extracted", "SuperMart_Monthly_Sales_Bulletin_2025.pdf"]]),
@@ -69,11 +69,11 @@ M21 = dict(
 
         T("2.1.5", "Importing from TXT Files",
           simple="A .txt file is the same idea as a CSV with a different separator. Tell Excel which character splits the fields.",
-          grid=dict(label="First lines of Lifecare_Admissions_2023_pipe.txt", widths=[1], size=11, rows=[
+          grid=dict(label="First lines of Mercyland_Episodes_2023_pipe.txt", widths=[1], size=11, rows=[
               ["Raw text (first 6 of 22 fields)"],
-              ["Admission_ID|Patient_ID|Patient_Name|Age|Gender|Blood_Type|…"],
-              ["ADM2023-40124|LGH-P001804|Ahmed Y. Oseni|23|Male|O+|…"],
-              ["ADM2023-40125|LGH-P004812|Musa C. Lawal|80|Male|AB-|…"]]),
+              ["Episode_ID|Patient_No|Patient_Name|Age|Gender|Blood_Group|…"],
+              ["ADM2023-40124|MSH-P001804|Ahmed Y. Oseni|23|Male|O+|…"],
+              ["ADM2023-40125|MSH-P004812|Musa C. Lawal|80|Male|AB-|…"]]),
           steps=["Data › From Text/CSV › pick the .txt file", "Delimiter › Custom › type |",
                  f"Check the preview: 22 columns, {len(D.adm23()):,} records", "Transform Data or Load"],
           order=["grid", "steps"], split=0.55,
@@ -275,7 +275,7 @@ M23 = dict(
         T("2.3.3", "Connecting to Text Files",
           simple="Text files use the same connector; only the delimiter changes.",
           fx=[["Csv.Document(File.Contents(path), [Delimiter=\"|\", Columns=22, Encoding=65001])",
-               f"Lifecare pipe file: {len(D.adm23()):,} records"],
+               f"Mercyland pipe file: {len(D.adm23()):,} records"],
               ["Splitter.SplitTextByPositions({0, 12, 24})", "Fixed-width files: split at character positions"]],
           fx_label="PIPE AND FIXED-WIDTH TEXT", fx_head=["Step formula", "What it does"], fx_widths=[3.6, 2.0],
           watch="Columns=22 is fixed in the step. If the source adds a column, edit the step or remove the Columns option."),

@@ -60,12 +60,12 @@ def data_sheets(b, D):
     sm = DataSheet(b, "Data_SM", "tSM: every SuperMart sales line 2022-2025 (clean), one row per product line (A1)",
                    f"{len(D.SM):,} rows · the source of the PivotTables in 2.10 and 2.11")
     tsm = sm.put(D.SM, "tSM", fmts=SALES_FMT, widths=_w(D.SM, SALES_W))
-    ad = DataSheet(b, "Data_Adm23", "tAdm23: Lifecare admissions 2023 from the pipe-delimited file, 14 of 22 columns (A1)",
+    ad = DataSheet(b, "Data_Adm23", "tAdm23: Mercyland admissions 2023 from the pipe-delimited file, 14 of 22 columns (A1)",
                    f"{len(D.A):,} rows · used in 2.1, 2.3, 2.8, 2.11")
-    ad.put(D.A, "tAdm23", fmts={"Admission_Date": "date", "Discharge_Date": "date", "Billing_Amount": "naira", "Age": "gen",
-                                "Length_of_Stay": "gen"},
-           widths={"Admission_ID": 15, "Patient_Name": 22, "Department": 20, "Admission_Type": 13, "Admission_Date": 12,
-                   "Discharge_Date": 12, "Ward": 14, "Doctor_Name": 20, "HMO": 16, "Billing_Amount": 14})
+    ad.put(D.A, "tAdm23", fmts={"Admit_Date": "date", "Discharge_Date": "date", "Bill_Amount_NGN": "naira", "Age": "gen",
+                                "LOS_Days": "gen"},
+           widths={"Episode_ID": 15, "Patient_Name": 22, "Department": 20, "Admission_Route": 13, "Admit_Date": 12,
+                   "Discharge_Date": 12, "Ward": 14, "Consultant_Name": 20, "HMO": 16, "Bill_Amount_NGN": 14})
     return tsm
 
 
@@ -102,8 +102,8 @@ def main():
          "result and read how it was worked out."],
         [("SuperMart Retail", "tSales25 (3,312 clean FY2025 lines), tDirty25 (the raw FY2025 export, 3,387 rows), tSM (9,994 lines "
                               "2022-2025), tStores (12 stores) and the monthly files, web page and PDF bulletin."),
-         ("Lifecare General Hospital", "tAdm23: 10,918 admissions in 2023 (pipe-delimited file), plus the dirty 2023 extract used in 2.9."),
-         ("Crestview University", "6,607 students, used in the M examples of 2.9."),
+         ("Mercyland Specialist Hospital", "tAdm23: 10,918 admissions in 2023 (pipe-delimited file), plus the dirty 2023 extract used in 2.9."),
+         ("Kingsway University", "6,607 students, used in the M examples of 2.9."),
          ("SuperMart Online", "SuperMart_Online_RAW_Export.xlsx (5 sheets) and the sellers JSON, used in 2.1 and 2.3.")],
         extra_rows=[("Answer cells", "White cell with a gold border: type here. The check cell beside it updates as you type."),
                     ("Folder path", "Set your own folder once in the DataFolder cell on sheet 2.3 Connect & Combine."),
