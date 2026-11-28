@@ -20,6 +20,9 @@ from w1_m1_4 import MODULES as MA  # noqa: E402
 from w1_m5_6 import MODULES as MB  # noqa: E402
 from w1_m7_9 import MODULES as MC  # noqa: E402
 
+import w1_charts  # noqa: E402
+print(f"charts on {w1_charts.attach(MA)} topics")
+
 CFG = v3deck.Config(
     week=1,
     week_title="Week 1: Data Analytics Foundations & Core Microsoft Excel Mastery",
