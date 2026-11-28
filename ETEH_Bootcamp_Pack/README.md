@@ -6,6 +6,8 @@ Eaglet2EagleHub Ltd · Instructor: Abdulrahaman Kehinde
 
 Edition 2 explained every topic with two fixed slides, which made the decks long and repetitive. Edition 3 was rolled out one week at a time and is now **complete for all five volumes**: Weeks 1–4 (deck, examples workbook and assignment for each) and the Capstone deck (Volume 5).
 
+**Download:** this edition is packaged as `ETEH_Bootcamp_Pack_v3.zip` at the repository root. Editions 1 and 2 are kept unchanged in `ETEH_Bootcamp_Pack_v1.zip` and `ETEH_Bootcamp_Pack_v2.zip`.
+
 ### New organisations and datasets (edition 3)
 Three datasets that were reworked from public Kaggle files are replaced by **original data from new organisations**, generated from scratch by `_build/neworgs.py` (fixed seed, no third-party rows). Every deck, workbook, assignment, project and capstone is rebuilt on them, and every figure on a slide is computed from the files.
 
