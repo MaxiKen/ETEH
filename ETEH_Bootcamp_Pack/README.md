@@ -4,7 +4,7 @@ Eaglet2EagleHub Ltd · Instructor: Abdulrahaman Kehinde
 
 ## Edition 3 (in progress): leaner decks, practical work in the workbooks
 
-Edition 2 explained every topic with two fixed slides, which made the decks long and repetitive. Edition 3 is being rolled out one week at a time. **Weeks 1, 2 and 3 are done, and the Week 4 deck is built**; the Week 4 workbook and the Capstone volume are in progress.
+Edition 2 explained every topic with two fixed slides, which made the decks long and repetitive. Edition 3 is being rolled out one week at a time. **Weeks 1–4 are done** (deck, examples workbook and assignment for each); the Capstone volume is in progress.
 
 ### New organisations and datasets (edition 3)
 Three datasets that were reworked from public Kaggle files are replaced by **original data from new organisations**, generated from scratch by `_build/neworgs.py` (fixed seed, no third-party rows). Every deck, workbook, assignment, project and capstone is rebuilt on them, and every figure on a slide is computed from the files.
@@ -137,6 +137,37 @@ Rebuilt from scratch in the Week 1 format (`_build/02_sec_w3.py` with `_build/v3
 - An untaught-function scan (`_build/rev/untaught_scan.py`) finds no function in the student file or the key that the Week 1–3 workbooks do not teach.
 - Both files verify with 0 mismatches. The student file has 24 formulas (17 recalculated, 7 FORMULATEXT). The key has 43,677 formulas (43,670 recalculated, 7 FORMULATEXT).
 
+### Week 4 deck (`ETEH_Vol4_Week4_Stats_Forecast_AI_Slides.pptx`, 188 slides, 139 topics)
+- The same one-slide-per-topic design, for modules 4.1–4.14: descriptive statistics, distributions, correlation, regression, forecasting, what-if analysis, storytelling, report writing, presentations, auditing, the AI co-pilot, AI verification, data ethics and benchmarking.
+- Every figure is computed from the edition 3 datasets when the deck is built (`_build/w4_data.py`, `_build/v3/w4_fx.py`); `_build/rev/check_facts.py` confirms the headline facts appear on the slides.
+
+### Week 4 examples workbook (`01_Section_Examples/ETEH_Week4_Section_Examples.xlsx`)
+Rebuilt from scratch in the Week 1 format (`_build/02_sec_w4.py` with `_build/v3/wb4_common.py`, `wb4_a.py` for 4.1–4.4, `wb4_b.py` for 4.5–4.9 and `wb4_c.py` for 4.10–4.14). The edition 2 builder is kept as `_build/rev/02_sec_w4_edition2.py`.
+- **Sheets:**
+  - one sheet per module (4.1–4.14), plus **4.10 Audit Case**, a zone summary with the planted errors the 4.10 slides describe (a SUM that misses the last zone, a typed share, and a share divided by itself) beside the corrected column and an OK/ERROR check;
+  - 10 data sheets, each with one table starting in A1: tSal (ETEH Talent Salary Survey), tOrders (SuperMart Online lines), tCV (Kingsway), tLOS and tCensus23 (Mercyland), tHotel (Atlantic Pearl), tDash25, tMonthly, tCustRev and tStores (SuperMart Stores).
+- **All 139 mini-sections are covered** (the build asserts it). Each has Steps, a Worked solution with live formulas, and "Your turn" work: **171 exercises with live ✓/✗ checks**, plus written and do-it-in-Excel tasks, with an answer key on every sheet.
+- **Statistics (4.1–4.4):** AVERAGE/MEDIAN/MODE, STDEV.S, QUARTILE.INC, SKEW and KURT; STANDARDIZE, NORM.DIST and confidence intervals; CORREL, RSQ and a rank-based (Spearman) check; SLOPE, INTERCEPT, FORECAST.LINEAR and LINEST with residuals.
+- **Forecasting (4.5):** moving averages, a linear trend, seasonal indices, a simple exponential smoothing column on Data_Monthly, FORECAST.ETS with its confidence band, and MAE/MAPE/RMSE to compare same-month-last-year, straight-line and decomposition forecasts.
+- **What-if (4.6):** an Atlantic Pearl profit model driven by input cells, with Goal Seek, a scenario table and a Solver layout (the inputs and constraints are on the sheet; the learner runs Solver in Excel).
+- **Storytelling, reports and slides (4.7–4.9):** formula-driven chart titles that state the finding (for example the SuperMart store furthest behind its 2025 target), and report/slide checklists tied to the numbers on the sheet.
+- **Auditing, AI and ethics (4.10–4.14):** error-finding with Trace Precedents, Show Formulas and FORMULATEXT on the audit case; AI claims checked against live formulas (tClaims); data ethics on the Mercyland extract (column minimisation, small-cell suppression for patients aged 95+) and a Talent Survey pay-gap test by seniority; and a benchmark lab that reconciles the SuperMart monthly sales bulletin PDF with the sales ledger, store by store (tBulletin).
+- **Charts:** 15 real Excel charts (9 column/bar, 4 line, 2 scatter), each fed by a formula-built table. Histograms, box plots and waterfalls use Excel 2016 chart types the build cannot write, so the sheet has the prepared data and the steps.
+- **Verification:**
+  - 1,567 formulas checked with `_build/verify_xlsx.py`: 1,106 recalculate to their cached values and none disagree;
+  - of the other 461, 395 are the FORMULATEXT column, 54 are FORECAST.ETS cells and the band built on them, and 12 use things pycel cannot read (such as `tSal[#Headers]`);
+  - every file passes `check_xml.py` and `_build/rev/scan_thisrow.py`;
+  - pycel gained MODE (and MODE.SNGL) for the 4.1 checks.
+
+### Week 4 assignment
+- The 11 tasks follow the Week 4 modules in order.
+- A new **Function Guide** sheet shows the patterns the tasks need (PERCENTILE.INC, STANDARDIZE, NORM.DIST, CORREL, RSQ, SLOPE, FORECAST.LINEAR, INDEX(LINEST(…)), APE and a date-window SUMIFS). Each is a live example on the assignment's own tables that answers a different question from the tasks.
+- **Updated for the new data:**
+  - **Task 5:** the Atlantic Pearl series now runs a full 18 months (July 2023 to December 2024). It peaks every December and has no opening ramp-up. Training is now July 2023 to June 2024, the test is July to December 2024, and the forecast is for January 2025 (Month_No 19). Q5.1 now asks about the December seasonal peak, replacing the old "incomplete first month" question.
+  - **Claims that now come from the data:** the coefficient in Q4.6, the Q7.1 headline (Q4 room-nights fell 14% year on year), the Q7.5 model summary and the Task 9 AI claims. The Task 9 answers are now FALSE, TRUE, TRUE, FALSE.
+- The untaught-function scan now checks each assignment against the examples workbooks up to its own week. It reports functions taught only on an assignment's Function Guide separately: EDATE in Week 1, WEEKDAY in Week 2, none in Weeks 3–4.
+- VERIFY_A4
+
 ### Build
 ```
 python3 _build/07_v3_week1_deck.py --preview   # deck (+ PNG previews in _build/_stage/v3_preview)
@@ -149,7 +180,10 @@ python3 _build/03_asg_w2.py                    # Week 2 assignment + answer key
 python3 _build/07_v3_week3_deck.py && python3 _build/rev/lint_v3.py 3
 cd _build && python3 02_sec_w3.py              # Week 3 workbook + SQL examples file (asserts all 158 topics are covered)
 python3 _build/03_asg_w3.py                    # Week 3 assignment + answer key
-python3 _build/rev/untaught_scan.py <Week3 file.xlsx>   # functions not taught in the Week 1-3 workbooks
+python3 _build/07_v3_week4_deck.py && python3 _build/rev/lint_v3.py 4
+cd _build && python3 02_sec_w4.py              # Week 4 workbook (asserts all 139 topics are covered)
+python3 _build/03_asg_w4.py                    # Week 4 assignment + answer key
+python3 _build/rev/untaught_scan.py <WeekN file.xlsx>   # functions not taught in the Week 1-N workbooks
 python3 _build/verify_xlsx.py <file.xlsx>      # independent formula check
 ```
 

@@ -96,7 +96,7 @@ def m410(b, D):
     tp(m, "4.10.3",
        [("Typed value in D11", f"={AUD}!D11", 0.15, "pct", "Show Formulas reveals a number where a formula should be."),
         ("D12 as submitted", f"={AUD}!D12", 1.0, "pct", "=C12/C12: every zone divided by itself is 100%.")],
-       [("t", "What should D12 contain? (write the formula)", "=C12/$C$13", None, None, ("C12/$C$13", "=C12/C$13"))],
+       [("t", "What should D12 contain? (type the formula without the = sign)", "C12/$C$13", None, None, ("=C12/$C$13", "C12/C$13", "=C12/C$13"))],
        steps=["Ctrl+` (Show Formulas) on the audit sheet: D11 shows 0.15, not a formula.", "Select D12 › Formulas › Evaluate Formula: it divides C12 by C12."])
     m.do([("Fix the three errors on '4.10 Audit Case' (C13, D11, D12).", "Column F reads OK on all four rows and D13 shows 100%.")])
     tp(m, "4.10.4",
