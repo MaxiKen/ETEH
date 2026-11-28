@@ -2,7 +2,115 @@
 
 Eaglet2EagleHub Ltd · Instructor: Abdulrahaman Kehinde
 
-## Edition 3: leaner decks, practical work in the workbooks
+## Edition 3.1: follow the learning, find every file
+
+Edition 3.1 rebuilds every learner workbook around one rule: **a question never asks for something that has not been
+taught yet**. The decks are unchanged apart from the folder paths they quote.
+
+### Which file do I open? (students)
+
+| When | Open | Where |
+|---|---|---|
+| During the week, after each module's slides | that module's sheet in the week's **Section Examples** workbook | `01_Section_Examples › Week_N › ETEH_WeekN_Section_Examples.xlsx` |
+| At the end of the week | the week's **Assignment** | `02_Assignments › Week_N › ETEH_WeekN_Assignment.xlsx` |
+| Week 5 (after Week 4) | the **Capstone** workbook, then one of the four **projects** | `01_Section_Examples › Week_5_Capstone`, `04_Student_Projects › Week_5_Capstone › ProjectN_…` |
+
+Tutors: the assignment answer keys are in `03_Instructor_Projects › Week_N`; the capstone solutions and project keys are in
+`03_Instructor_Projects › Week_5_Capstone`.
+
+### Folder layout
+Each of the four top folders holds **only one sub-folder per week**. Each week's files live in that week's folder, and
+every exercise that needs outside files has its **own folder next to the workbook**.
+
+```
+01_Section_Examples/
+  Week_1/  ETEH_Week1_Section_Examples.xlsx
+  Week_2/  ETEH_Week2_Section_Examples.xlsx   Ex2.1_Files/  Ex2.2_Files/  Ex2.3_Files/  Ex2.4_Files/  Ex2.6_Files/
+  Week_3/  ETEH_Week3_Section_Examples.xlsx   Ex3.1_Files/  Ex3.2_Files/  Ex3.4_Files/  Ex3.10_Files/
+  Week_4/  ETEH_Week4_Section_Examples.xlsx   Ex4.14_Files/
+  Week_5_Capstone/  ETEH_Capstone_Section_Examples.xlsx
+02_Assignments/
+  Week_1/  ETEH_Week1_Assignment.xlsx
+  Week_2/  ETEH_Week2_Assignment.xlsx   Assignment_Files/  (Mercyland_EMR_Export_2023.csv)
+  Week_3/  ETEH_Week3_Assignment.xlsx   Assignment_Files/  (mercyland_hospital.db + schema)
+  Week_4/  ETEH_Week4_Assignment.xlsx
+03_Instructor_Projects/
+  Week_1 … Week_4/  ETEH_WeekN_Assignment_ANSWER_KEY.xlsx
+  Week_5_Capstone/  Capstone1_SuperMart_Stores/  Capstone2_Kingsway_University/  Capstone3_Mercyland_Hospital/
+                    Student_Project_Keys/
+04_Student_Projects/
+  Week_5_Capstone/  Project1_SuperMart_Online_SQL/  Project2_AtlanticPearl_Hotel/
+                    Project3_Mercyland_Diabetes_Screening/  Project4_Talent_Salary_Benchmark/   (each with its own Data/ folder)
+```
+
+### Naming standard for linked data
+- Every sheet states its data as **File › Sheet › Table** in the gold box at the top, for example
+  `File: ETEH_Week2_Section_Examples.xlsx › Sheet: Data_Stores › Table: tStores`.
+- A data sheet is called `Data_<Name>` and holds exactly one Excel table called `t<Name>`, starting in cell A1
+  (one header row, then one row per record). A two-digit suffix is the year, e.g. `tStores25` = 2025.
+- Outside files are named as **Folder › File**, e.g. `Ex2.1_Files › SuperMart_Sales_2025_DIRTY.csv`. The folder sits next
+  to the workbook. Section Examples use `Ex<module>_Files`, assignments use `Assignment_Files`, projects use `Data`.
+
+### How every workbook works
+- `Start_Here` (first tab): five steps, the sheet map in teaching order (with each sheet's data and question types) and
+  the list of data sheets.
+- One sheet per module (Section Examples) or per task (assignments). The header says what you have just learned and which
+  data to use. Questions come in short parts: multiple choice, Yes/No, True/False, choose-from-a-list, short answers,
+  numbers, and "do it in Excel, then type the result".
+- Answer in the white cell with the gold border (column E). Column F checks the answer straight away (✓ Correct /
+  ✗ Try again). Assignments show marks instead (2 for a number or Excel task, 1 for anything else).
+- **Solutions** (last tab of every Section Examples workbook and every answer key): every answer, a one-line explanation
+  and, for numbers, the live formula that produces it.
+
+### Progression (what each week may ask)
+| Week | Starts with | Calculations allowed |
+|---|---|---|
+| 1 | terms: data, information, data analytics (1.1–1.4 have no numbers at all) | the status bar, then SUM / AVERAGE / COUNT / COUNTA / MIN / MAX (1.7), then filter + Total Row (1.8) |
+| 2 | file formats and Power Query | from 2.8A: SUMIFS / COUNTIFS / AVERAGEIFS, ROUND, IF, TEXT; from 2.8B: lookups, dates, FILTER / UNIQUE; then pivots |
+| 3 | database words (no SQL in 3.1) | SQL one clause at a time (each question gives the query); every DAX answer has a Week 2 formula twin |
+| 4 | descriptive statistics, one function per question | CORREL, SLOPE, INTERCEPT, RSQ, FORECAST.LINEAR, simple what-if models |
+| 5 | the project lifecycle | Weeks 1–4 skills only (SUMIFS / COUNTIFS / AVERAGE on the capstone tables) |
+
+The Week 1 assignment no longer has a "Function Guide": it uses Week 1 skills only (the filter and Total Row instead of
+SUMIFS). Each assignment's "Do it" questions use the files in its own `Assignment_Files` folder, and the later tasks use a
+cleaned copy of the data inside the workbook, so a mistake in an early task does not spoil the rest.
+
+### Size and checks
+| Workbook | Sheets | Questions | Data sheets (tables) |
+|---|---|---|---|
+| Week 1 Section Examples | 9 modules | 105 | tStores25, tStudents, tSales, tDirtySales |
+| Week 2 Section Examples | 12 modules | 106 | tStores, tSales25, tDirty25, tSM |
+| Week 3 Section Examples | 11 modules | 92 | tTransactions, tProducts, tCustomers, tDimDate |
+| Week 4 Section Examples | 14 modules | 95 | tSalary, tStudents, tMonthly, tStoreBench |
+| Capstone Section Examples | 9 modules | 52 | tSM, tStudents, tAdmissions, tCensus |
+| Week 1 Assignment · SuperMart Q1 2025 store review | 5 tasks | 46 (64 marks) | tSalesQ1, tStores |
+| Week 2 Assignment · Mercyland admissions: import, clean, summarise | 4 tasks | 32 (48 marks) | tWardMap, tAdm |
+| Week 3 Assignment · Mercyland: SQL, Data Model and DAX | 5 tasks | 35 (52 marks) | tAdm23, tWards, tDoctors, tDate23 |
+| Week 4 Assignment · statistics, forecasting, what-if, ethics | 5 tasks | 32 (50 marks) | tSalary, tStudents, tHotelMonthly |
+
+- `_build/learn/selftest.py` types every correct answer and then a wrong answer into each workbook and recalculates the
+  checks: **0 problems** in all nine workbooks (one Week 2 FILTER question is a dynamic array that the checker cannot
+  spill; Excel 365 can).
+- `_build/verify_xlsx.py`: every formula matches its cached value (0 mismatches) in all Section Examples, answer keys,
+  capstone solutions and project keys.
+- Deck lint (`_build/rev/lint_v3.py 1…5`): 0 issues. `_build/rev/check_facts.py`: 20 facts, 0 missing.
+
+### Build (edition 3.1)
+```
+python3 _build/01_build_datasets.py          # source data -> _build/_stage/source (not shipped in the pack)
+python3 _build/10_learner_workbooks.py       # Section Examples, Weeks 1-4 and Capstone (or: ... 1 2 3 4 5)
+python3 _build/11_learner_assignments.py     # assignments + answer keys, Weeks 1-4
+python3 _build/04_proj_i1.py  (i2, i3, s1-s4)  # capstone solutions and the four student projects
+python3 _build/07_v3_week1_deck.py  (week2 … week4, capstone)  && python3 _build/rev/lint_v3.py N
+python3 _build/learn/selftest.py <workbook.xlsx>   # answer checks
+python3 _build/verify_xlsx.py <workbook.xlsx>      # formula check
+```
+The edition 3.0 workbook and assignment builders are kept in `_build/legacy/` for reference only.
+
+## Edition 3.0 (history): leaner decks, practical work in the workbooks
+
+> The workbook, assignment and folder descriptions in this section describe edition 3.0. They are replaced by edition 3.1 above; the deck notes still apply.
+
 
 Edition 2 explained every topic with two fixed slides, which made the decks long and repetitive. Edition 3 was rolled out one week at a time and is now **complete for all five volumes**: Weeks 1–4 (deck, examples workbook and assignment for each) and the Capstone deck (Volume 5).
 
@@ -205,26 +313,8 @@ Rebuilt from scratch in the Week 1 format (`_build/02_sec_w4.py` with `_build/v3
 - **Week 2 answer key 5.8:** the sample headline said all four wards admitted "similar volumes (about 2,600–2,800 each)". In fact Iroko admitted 4,062 and Mahogany 1,588. The headline is now computed from the data.
 - **Vol4 4.3.9:** Simpson's paradox is now explained as one group concentrated in the subgroup with the highest rate, not as "groups of very different sizes".
 
-### Build
-```
-python3 _build/07_v3_week1_deck.py --preview   # deck (+ PNG previews in _build/_stage/v3_preview)
-python3 _build/rev/lint_v3.py                  # deck lint
-python3 _build/02_sec_w1.py                    # examples workbook (asserts all 111 topics are covered)
-python3 _build/03_asg_w1.py                    # assignment + answer key
-python3 _build/07_v3_week2_deck.py && python3 _build/rev/lint_v3.py 2
-cd _build && python3 02_sec_w2.py              # Week 2 workbook (asserts all 175 topics are covered)
-python3 _build/03_asg_w2.py                    # Week 2 assignment + answer key
-python3 _build/07_v3_week3_deck.py && python3 _build/rev/lint_v3.py 3
-cd _build && python3 02_sec_w3.py              # Week 3 workbook + SQL examples file (asserts all 158 topics are covered)
-python3 _build/03_asg_w3.py                    # Week 3 assignment + answer key
-python3 _build/07_v3_week4_deck.py && python3 _build/rev/lint_v3.py 4
-cd _build && python3 02_sec_w4.py              # Week 4 workbook (asserts all 139 topics are covered)
-python3 _build/03_asg_w4.py                    # Week 4 assignment + answer key
-python3 _build/07_v3_capstone_deck.py && python3 _build/rev/lint_v3.py 5   # Capstone deck
-python3 _build/rev/check_facts.py              # headline facts vs the CSVs (Vol1 and Vol5)
-python3 _build/rev/untaught_scan.py <WeekN file.xlsx>   # functions not taught in the Week 1-N workbooks
-python3 _build/verify_xlsx.py <file.xlsx>      # independent formula check
-```
+### Build (edition 3.0)
+See "Build (edition 3.1)" above; the 3.0 workbook builders now live in `_build/legacy/`.
 
 ## Edition 2: beginner-friendly self-study slides
 
@@ -305,21 +395,10 @@ Every topic in all five volumes (663 topics) now has two slides.
 - Week 1 dollar amounts were converted to naira. `$` signs inside cell references such as `$B$2` were kept.
 
 ## Folders
-1. **01_Section_Examples**: one workbook per week, with one worksheet per module or subsection. It also contains:
-   - 00_Core_Datasets: the standardised CSVs and the data dictionary.
-   - Week2_Data_Files: dirty and multi-format files (CSV, pipe-delimited TXT, JSON, HTML, PDF, XLSX).
-   - Week3_Data_Files: SQLite databases plus their schema and data SQL scripts.
-2. **02_Assignments**: one multi-sheet assignment workbook per week, plus their data.
-3. **03_Instructor_Projects**:
-   - Assignment answer keys.
-   - Student project keys.
-   - Capstones 1–3, each with a solution workbook and an instructor brief PDF. Capstone 3 also has its extraction SQL.
-4. **04_Student_Projects**: four projects for students.
-   - P1 SuperMart Online SQL (joins).
-   - P2 AtlanticPearl Hotel.
-   - P3 Mercyland Diabetes Screening.
-   - P4 Talent Salary Benchmark.
+See **Folder layout** under Edition 3.1 at the top. The source CSVs, databases and practice files are generated into
+`_build/_stage/source/` by `_build/01_build_datasets.py`; learners get exactly the files each exercise needs, copied into
+that exercise's own folder.
 
 All files are generated by the scripts in `_build/` at the repository root.
 - `05_update_slides.py` rebuilds the edition 1 decks from the original volumes.
-- `06_revise_slides.py` builds the edition 2 decks from the topic copy in `_build/rev/` (one file per module; the layout rules are in `DESIGN.md`). For example, `python3 _build/06_revise_slides.py --vol=5` rebuilds Volume 5.
+- `06_revise_slides.py` builds the edition 2 decks from the topic copy in `_build/rev/`.

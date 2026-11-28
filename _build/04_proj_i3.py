@@ -11,8 +11,10 @@ from common import IPR, W3D
 from proj_common import brief_pdf, kpi_cards
 from xlhelp import Book
 
-OUT = IPR / "Capstone3_Mercyland_Hospital"
-OUT.mkdir(parents=True, exist_ok=True)
+OUT = IPR / "Week_5_Capstone" / "Capstone3_Mercyland_Hospital"
+(OUT / "Data").mkdir(parents=True, exist_ok=True)
+import shutil  # noqa: E402
+shutil.copy2(W3D / "mercyland_hospital.db", OUT / "Data" / "mercyland_hospital.db")
 XLSX = OUT / "Capstone3_Mercyland_SOLUTION.xlsx"
 PDF = OUT / "Capstone3_Instructor_Brief.pdf"
 SQLF = OUT / "Capstone3_Extraction_Queries.sql"
@@ -92,7 +94,7 @@ cen["census_date"] = pd.to_datetime(cen.census_date)
 cen["year"] = cen.year.astype(int)
 assert len(adm) == int(ctl.loc[str(YEAR), "admissions"])
 
-SQLF.write_text("-- Mercyland Hospital - Capstone 3 extraction queries (SQLite; run against 01_Section_Examples/Week3_Data_Files/mercyland_hospital.db)\n"
+SQLF.write_text("-- Mercyland Hospital - Capstone 3 extraction queries (SQLite; run against Data/mercyland_hospital.db in this folder)\n"
                 "-- Every query below was executed during the build; row counts are recorded on sheet 2 of the solution workbook.\n\n"
                 + "\n\n".join(Q.values()) + "\n", encoding="utf-8")
 
@@ -337,7 +339,7 @@ def brief():
                   ("h", "1. Purpose"),
                   ("p", "Shows the full SQL-to-Excel pipeline on sensitive health data: extract only what is needed, reconcile, analyse with statistical care, report to a board."),
                   ("h", "2. Data"),
-                  ("p", "01_Section_Examples/Week3_Data_Files/mercyland_hospital.db and Capstone3_Extraction_Queries.sql (five queries, all tested)."),
+                  ("p", "Data/mercyland_hospital.db and Capstone3_Extraction_Queries.sql (five queries, all tested)."),
                   ("h", "3. Answer key"),
                   ("t", [["Measure", f"FY{YEAR}"], ["Admissions", f"{len(adm):,}"], ["Occupancy (bed-days)", f"{occ:.1%}"], ["Days > 95% / > 100%", f"{d95} / {d100}"],
                          ["Extra beds for 85%", f"{int(np.ceil(beds_needed))}"], ["Average LOS", f"{alos:.2f} days"], ["Readmission", f"{rr:.2%}"],

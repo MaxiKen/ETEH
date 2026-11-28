@@ -1,12 +1,12 @@
 """Week 3 edition-3 slide copy: Modules 3.8 (dashboard development), 3.9 (three blueprints) and 3.10 (file extracts into
 SQL, DAX and dashboards). Dashboard figures: SuperMart Stores FY2025 (tDash, tDashStores). 3.10 loads
-Week2_Data_Files/Mercyland_Episodes_2023_DIRTY.csv into an in-memory SQLite staging table and runs the SQL shown."""
+the Mercyland_Episodes_2023_DIRTY.csv source extract into an in-memory SQLite staging table and runs the SQL shown."""
 import sqlite3
 
 import pandas as pd
 
 import w3_data as D
-from common import SEC, W2D
+from common import CORE, W2D
 from v3kit import T
 from w3_fx import (CEN, CODE, CV, DS, FY24, FY25, I, LC, N, Nm, P, PROFIT25, S25, SQL, TARGET25, ZS, q, v)
 
@@ -342,7 +342,7 @@ PROFILE = {c: (int((RAW[c].str.strip() == "").sum()), RAW[c].replace("", pd.NA).
            for c in ("Discharge_Date", "HMO", "Ward", "Gender")}
 EMERG = (LC[LC.Admission_Route == "Emergency"].Readmitted_30d == "Yes").mean()
 ONC = (LC[LC.Department == "Surgery"].Readmitted_30d == "Yes").mean()
-SRC = pd.read_csv(SEC / "00_Core_Datasets" / "Mercyland_Inpatient_Episodes_2019_2024.csv", usecols=["Bill_Amount_NGN"])
+SRC = pd.read_csv(CORE / "Mercyland_Inpatient_Episodes_2019_2024.csv", usecols=["Bill_Amount_NGN"])
 SQLREC = q("SELECT COUNT(*) AS n, ROUND(SUM(bill_amount_ngn), 2) AS b FROM admissions", "lc").iloc[0]
 
 M310 = dict(
@@ -357,7 +357,7 @@ M310 = dict(
         T("3.10.1", "Beginner: profile the extract before loading",
           defn="Data profiling summarises each column of a dataset (rows, blanks, distinct values, ranges) to find problems "
                "before the data is used.",
-          simple="Mercyland_Episodes_2023_DIRTY.csv (Week2_Data_Files). Problems found now are cheap; problems found on a dashboard are not.",
+          simple="Mercyland_Episodes_2023_DIRTY.csv (Week_3 › Ex3.10_Files). Problems found now are cheap; problems found on a dashboard are not.",
           grid=dict(label=f"Profile: {I(len(RAW))} rows, {RAW.shape[1]} columns", widths=[1.6, 0.8, 0.9, 2.2], rows=[
               ["Column", "Blank", "Distinct", "Action"],
               ["Discharge_Date", I(PROFILE["Discharge_Date"][0]), I(PROFILE["Discharge_Date"][1]), "Flag; don't guess dates"],
@@ -420,7 +420,7 @@ DIVIDE (
               ["Admissions", I(len(SRC)), I(SQLREC.n), "PASS" if len(SRC) == SQLREC.n else "FAIL"],
               ["Billing (₦)", f"{SRC.Bill_Amount_NGN.sum():,.2f}", f"{SQLREC.b:,.2f}",
                "PASS" if abs(SRC.Bill_Amount_NGN.sum() - SQLREC.b) < 0.5 else "FAIL"]]),
-          points=["Source: 00_Core_Datasets › Mercyland_Inpatient_Episodes_2019_2024.csv",
+          points=["Source: the EMR extract Mercyland_Inpatient_Episodes_2019_2024.csv",
                   "SQL: COUNT(*) and SUM(bill_amount_ngn) on mercyland_hospital.db",
                   "Dashboard: the Admissions card and a billing measure, no slicers"],
           points_label="WHERE EACH NUMBER COMES FROM", stack=True,

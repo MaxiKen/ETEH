@@ -4,7 +4,7 @@
 
 Engine: _build/v3deck.py (template _build/templates/ETEH_deck_template.pptx). Copy lives in _build/v3/w3_*.py;
 example tables and every SQL result come from _build/w3_data.py (the SQL printed on a slide is the SQL that was run on
-Week3_Data_Files/supermart_online.db or mercyland_hospital.db); other figures are computed in _build/v3/w3_fx.py.
+01_Section_Examples/Week_3/Ex3.2_Files: supermart_online.db or mercyland_hospital.db); other figures are computed in _build/v3/w3_fx.py.
 """
 from __future__ import annotations
 

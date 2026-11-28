@@ -40,19 +40,19 @@ def build(b):
         M[code] = b.module(code, sheet, title, learned)
         return M[code]
 
-    m31 = mod("3.1", "3.1 Database Fundamentals", "Database Fundamentals",
+    m31 = mod("3.1", "3.1 Database Basics", "Database Fundamentals",
               "Databases, tables, rows and fields, primary and foreign keys, relational vs flat files, normal forms, "
               "data types, indexes, views, ACID transactions, star schema, fact and dimension tables, OLTP vs OLAP.")
-    m32 = mod("3.2", "3.2 SQL and SQLite", "Introduction to SQL and SQLite",
+    m32 = mod("3.2", "3.2 SQL with SQLite", "Introduction to SQL and SQLite",
               "SELECT, FROM, WHERE, AND / OR / NOT, ORDER BY, LIMIT, GROUP BY, HAVING, aliases, DISTINCT, CASE, "
               "subqueries and date functions, run in DB Browser for SQLite.")
-    m33 = mod("3.3", "3.3 ODBC", "Connecting Excel to Databases with ODBC",
+    m33 = mod("3.3", "3.3 ODBC Connections", "Connecting Excel to Databases with ODBC",
               "ODBC and drivers, DSN and DSN-less connections, credentials, importing a table vs writing SQL, refreshing, "
               "parameters and troubleshooting.")
     m34 = mod("3.4", "3.4 Merge & Append", "Merging and Appending in Power Query",
               "Merge vs append, the six join kinds, fuzzy matching, expand vs aggregate, the Cartesian trap, appending "
               "tables, schema mismatches, cleaning join keys and checking row counts.")
-    m35 = mod("3.5", "3.5 Data Model", "The Excel Data Model and Star Schema",
+    m35 = mod("3.5", "3.5 Data Model & Star", "The Excel Data Model and Star Schema",
               "The Data Model, relationships and cardinality, fact and dimension tables, the date table, and why "
               "relationships beat VLOOKUP columns.")
     m36a = mod("3.6A", "3.6A DAX Foundations", "Power Pivot and DAX: Foundations and Context",
@@ -61,14 +61,14 @@ def build(b):
     m36b = mod("3.6B", "3.6B DAX Time & KPIs", "Power Pivot and DAX: Time Intelligence, KPIs and Performance",
                "TOTALYTD, SAMEPERIODLASTYEAR, DATEADD, running totals, % of total, RANKX, BLANK vs zero, measure tables, "
                "format strings, implicit vs explicit measures and KPI measures.")
-    m37 = mod("3.7", "3.7 Charts", "Chart Anatomy and the 17 Excel Chart Types",
+    m37 = mod("3.7", "3.7 Chart Types", "Chart Anatomy and the 17 Excel Chart Types",
               "What makes a chart effective, chart parts (axes, legend, labels, titles) and when to use each chart type.")
-    m38 = mod("3.8", "3.8 Dashboard", "Dashboard Development",
+    m38 = mod("3.8", "3.8 Dashboard Build", "Dashboard Development",
               "Dashboard purpose and design principles, planning, layout, colour, KPI cards, slicers and timelines, "
               "interaction, printing, accessibility, performance and the QA checklist.")
     m39 = mod("3.9", "3.9 Blueprints", "Three Dashboard Blueprints",
               "The SuperMart retail, Kingsway progression and Mercyland operations dashboards.")
-    m310 = mod("3.10", "3.10 File Extracts", "File Extracts into SQL, DAX and Dashboards",
+    m310 = mod("3.10", "3.10 Files to SQL & DAX", "File Extracts into SQL, DAX and Dashboards",
                "Profiling an extract before loading, staging tables, SQL exception reports, DAX measures and reconciling "
                "a governed dashboard.")
 
@@ -86,10 +86,9 @@ def build(b):
     sql_src = (W3D / "ETEH_Week3_SQL_Examples.sql").read_text(encoding="utf-8")
     sql_fixed = STAGE / "learn_files" / "ETEH_Week3_SQL_Examples.sql"
     sql_fixed.parent.mkdir(parents=True, exist_ok=True)
-    sql_fixed.write_text(sql_src.replace("(folder Week3_Data_Files)", "(supermart_online.db and mercyland_hospital.db, "
-                                         "Week 3 Section Examples)"), encoding="utf-8")
+    sql_fixed.write_text(sql_src.replace("(folder Week3_Data_Files)", "(both databases are in this Ex3.2_Files folder)"), encoding="utf-8")
     f31 = m31.link_files([W3D / "supermart_online_01_schema.sql"])
-    f32 = m32.link_files([db, sql_fixed])
+    f32 = m32.link_files([db, W3D / "mercyland_hospital.db", sql_fixed])
     f34 = m34.link_files([CORE / f"SuperMart_Online_{t}.csv" for t in ("transactions", "products", "customers", "deliveries")])
     f310 = m310.link_files([W2D / "Mercyland_Episodes_2023_DIRTY.csv"])
     m35.set_refs([r_tx, r_pr, r_cu, r_dd])

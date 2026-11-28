@@ -1,5 +1,5 @@
 -- ETEH Week 3 - SQL examples (SQLite), edition 3: every query shown on the Week 3 slides.
--- Run each against the database named above it (supermart_online.db and mercyland_hospital.db, Week 3 Section Examples) in DB Browser for SQLite or sqlite3.
+-- Run each against the database named above it (both databases are in this Ex3.2_Files folder) in DB Browser for SQLite or sqlite3.
 -- The result printed on the slide is what the query returns on these files.
 
 -- 3.1.3 Primary Keys

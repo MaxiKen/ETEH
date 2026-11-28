@@ -246,9 +246,10 @@ def roadmap_slide(deck):
 def how_slide(deck):
     s, cv, top = frame(deck, HOW(), U().upper(), f"{U()} overview", "how")
     y = top
-    msg = (f"After each module, your tutor opens that module's sheet in **{WORKBOOK}** and works through the "
-           f"prepared dataset, the step-by-step solutions and the exercises with you. Keep the workbook open "
-           f"alongside these slides; each sheet starts with the module's dataset and ends with exercises and answers.")
+    wk = "Week_5_Capstone" if CFG.week == 5 else f"Week_{CFG.week}"
+    msg = (f"After each module, open that module's sheet in **01_Section_Examples › {wk} › {WORKBOOK}**. Each sheet "
+           f"asks only about what you have learned so far. The gold box names the data (File › Sheet › Table, or the "
+           f"Ex_Files folder next to the workbook); column F checks your answer at once; the Solutions sheet explains every answer.")
     h = V.card_h(V.W, msg, 15)
     V.card(cv, V.X0, y, V.W, h, ORANGE, f"PRACTICAL WORK: THE {U().upper()} EXAMPLES WORKBOOK", msg, 15)
     y += h + 0.22
@@ -266,10 +267,10 @@ def how_slide(deck):
         x, yy = V.X0 + k * (wc + 0.25), y + r * 1.15
         V.card(cv, x, yy, wc, 1.0, c, lab, txt, 13)
     y += 2.35
-    t = CFG.assessment or f"Assessment: the Week {CFG.week} assignment (02_Assignments/{CFG.assignment}) is set at the end of the week."
+    t = CFG.assessment or f"Assessment: the Week {CFG.week} assignment (02_Assignments › Week_{CFG.week} › {CFG.assignment}) is set at the end of the week."
     cv.text(V.X0, y, V.W, 0.3, [t], 13, GREY)
     notes(s, "This is the only place the deck mentions the workbook. After every module, switch to Excel and open the "
-             "module's sheet: work the guided example, then let students try the exercises before revealing answers.")
+             "module's sheet: go through any worked example, then let students answer; open the Solutions sheet only after they have tried.")
 
 
 def divider(deck, m):
@@ -358,8 +359,9 @@ def takeaways_slide(deck, m):
         y += h + 0.14
     if y > V.BOTTOM + 0.01:
         K.WARN.append(f"OVERFLOW {m['id']} takeaways")
-    notes(s, f"Now switch to Excel: open {WORKBOOK}, sheet '{m['sheet']}'. Work through the module dataset and the "
-             f"step-by-step solutions, then set the exercises; reveal the answers after students have tried.")
+    notes(s, f"Now switch to Excel: open {WORKBOOK}, sheet '{m['sheet']}'. Go through any worked example "
+             f"together, then let students answer the questions (column F checks each answer). Open the Solutions sheet "
+             f"only after students have tried.")
 
 
 def summary_slide(deck):

@@ -10,7 +10,7 @@ from proj_common import SKEY, brief_pdf
 from wk_common import DATASETS_TEXT, L, hotel
 
 NAME = "Project2_AtlanticPearl_Hotel"
-FOLDER = SPR / NAME
+FOLDER = SPR / "Week_5_Capstone" / NAME
 (FOLDER / "Data").mkdir(parents=True, exist_ok=True)
 ROOMS = 320
 
@@ -73,7 +73,7 @@ def build(key):
             submission="Submit this workbook, your cleaning/analysis workbook (with the Power Query), a dashboard and a 1-page recommendation memo. Names: Surname_Firstname_P2_*.")
     s = A.task("M1 Clean the Export", "Milestone 1 - Clean the property-management-system export", "2.5-2.9",
                "Data/AtlanticPearl_PMS_Export_RAW.csv is the bookings export as the front office sent it. Clean it with Power Query (recommended) and record each fix. "
-               "The answer key reconciles to the official clean file in 00_Core_Datasets.")
+               "The answer key reconciles to the official clean file held by your tutor.")
     rows = [("Rows in the raw export.", len(raw), "int", 1, ""),
             ("Rows after removing exact duplicate bookings.", n_dedup, "int", 2, "120 re-sent by the channel manager."),
             ("Rows whose Sales_Channel had to be recoded (OTA, Offline, corporate, Comp, Aviation).", n_seg_fix, "int", 2,
@@ -86,7 +86,7 @@ def build(key):
             ("Rebuild Nights (= Weekend_Nights + Week_Nights). Total room-nights in the clean file?", int(h.Nights.sum()), "int", 3, ""),
             ("Rebuild Reservation_Value_NGN (= Nights × Room_Rate_NGN). Total value of STAYED bookings arriving in 2024 (₦)?", rev24, "naira", 4,
              "Control total - must match the official clean file to the naira."),
-            ("Clean row count you will analyse.", len(h), "int", 1, "= 00_Core_Datasets/AtlanticPearl_Reservations_2023_2024.csv")]
+            ("Clean row count you will analyse.", len(h), "int", 1, "= the official clean file held by your tutor")]
     for i, (t, v, k, m, gd) in enumerate(rows, 1):
         choices = ["Booked_On + Days_Ahead", "Change to 28/02/2023", "Change to 01/03/2023", "Delete the rows"] if i == 6 else None
         A.q(s, f"1.{i}", t, v, None, k, m, gd, choices=choices, header=(i == 1))
@@ -149,7 +149,7 @@ def build(key):
                     ["Client: General Manager, Atlantic Pearl Hotel, Lekki (320 rooms). One in three bookings is cancelled and the GM wants to know why - and what to do.",
                      "Clean the PMS export (M1), build the KPI pack (M2), diagnose the drivers (M3) and size a deposit policy (M4). Duration: Weeks 2-4, about 12-15 hours."],
                     [("Atlantic Pearl", DATASETS_TEXT["Atlantic Pearl"] + " - you receive the raw PMS export (36,395 rows) with deliberate defects.")],
-                    files="04_Student_Projects/Project2_AtlanticPearl_Hotel/Data/AtlanticPearl_PMS_Export_RAW.csv",
+                    files="Data folder (inside this project folder) › AtlanticPearl_PMS_Export_RAW.csv",
                     rubric=[["Reconciliation", "M2-M4 must be computed on YOUR cleaned table; if M1 control totals differ, explain why."],
                             ["Tolerance", "Rates ±0.1 pt; money ±₦1."], ["Communication", "Memo: BLUF, numbers, action, owner."]])
 

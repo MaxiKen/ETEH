@@ -10,7 +10,7 @@ from proj_common import SKEY, brief_pdf
 from wk_common import DATASETS_TEXT, L
 
 NAME = "Project3_Mercyland_Diabetes_Screening"
-FOLDER = SPR / NAME
+FOLDER = SPR / "Week_5_Capstone" / NAME
 (FOLDER / "Data").mkdir(parents=True, exist_ok=True)
 raw = L("dirty_diab").copy()
 raw.to_csv(FOLDER / "Data" / "Mercyland_Screening_Clinic_Extract_RAW.csv", index=False)
@@ -129,7 +129,7 @@ def build(key):
                     ["Client: Head of the Mercyland diabetes screening clinic. Questions: who is most at risk, how good is the proposed flagging rule, and how can results be shared safely?",
                      "Clean the extract (M1), measure prevalence (M2), evaluate the screening rule (M3) and handle protected health information in your report (M4). Duration about 12 hours."],
                     [("Mercyland Screening", DATASETS_TEXT["Mercyland Screening"] + " - you receive a 12,000-patient sample with deliberate defects.")],
-                    files="04_Student_Projects/Project3_Mercyland_Diabetes_Screening/Data/Mercyland_Screening_Clinic_Extract_RAW.csv",
+                    files="Data folder (inside this project folder) › Mercyland_Screening_Clinic_Extract_RAW.csv",
                     rubric=[["Health data", "Treat every row as protected health information. Never paste row-level data into slides or AI tools."],
                             ["Tolerance", "Rates ±0.1 pt; means ±0.01."], ["Communication", "Plain English; no clinical advice beyond what the data shows."]])
 

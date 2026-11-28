@@ -178,8 +178,9 @@ def _lc_query():
 
 LQ = _lc_query()
 
-CV = pd.read_csv(os.path.join(os.path.dirname(D.__file__), "..", "ETEH_Bootcamp_Pack", "01_Section_Examples", "00_Core_Datasets",
-                              "Kingsway_Student_Results.csv"))
+from common import CORE  # noqa: E402
+
+CV = pd.read_csv(CORE / "Kingsway_Student_Results.csv")
 CVF = dict(n=len(CV), bands=pd.cut(CV.Lecture_Attendance_Pct, [-1, 74.999, 89.999, 1000], labels=["Below 75%", "75-89%", "90%+"])
            .value_counts().to_dict(), mentor=int(((CV.Final_Score < 60) & (CV.Lecture_Attendance_Pct < 75)).sum()),
            grades=CV.Grade.value_counts(normalize=True).to_dict())

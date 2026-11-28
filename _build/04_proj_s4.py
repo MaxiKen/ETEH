@@ -10,7 +10,7 @@ from proj_common import SKEY, brief_pdf
 from wk_common import DATASETS_TEXT, L
 
 NAME = "Project4_Talent_Salary_Benchmark"
-FOLDER = SPR / NAME
+FOLDER = SPR / "Week_5_Capstone" / NAME
 (FOLDER / "Data").mkdir(parents=True, exist_ok=True)
 raw = L("sal_dirty").copy()
 raw.to_csv(FOLDER / "Data" / "ETEH_Salary_Survey_Form_Export_RAW.csv", index=False)
@@ -51,7 +51,7 @@ def build(key):
             submission="Submit this workbook, your analysis workbook, a dashboard and a 1-page pay-equity note. Names: Surname_Firstname_P4_*.")
     sh = A.task("M1 Clean & Standardise", "Milestone 1 - From form export to analysable survey", "1.9, 2.5-2.9",
                 "Data/ETEH_Salary_Survey_Form_Export_RAW.csv is the raw web-form export (respondents could submit many times). Clean it, then standardise job titles "
-                "into job families and seniority using the rules in the brief. The key reconciles to 00_Core_Datasets/ETEH_Talent_Salary_Survey.csv.")
+                "into job families and seniority using the rules in the brief. The answer key reconciles to the official clean file held by your tutor.")
     rows = [("Rows in the raw export.", len(raw), "int", 1, ""), ("Rows after removing exact duplicates.", n_dedup, "int", 2, ""),
             ("Rows after also removing incomplete responses (any blank).", n_noblank, "int", 2, ""),
             ("Final clean respondents (after education-label standardisation, re-dedup, salary < ₦1m keying errors and experience > age − 16 removed).", len(s), "int", 4,
@@ -117,7 +117,7 @@ def build(key):
                      "for experience, and what bands should a client use for data roles?",
                      "Clean and standardise the raw survey (M1), benchmark (M2), analyse pay equity (M3), and propose bands (M4). Duration about 12 hours."],
                     [("Salary Survey", DATASETS_TEXT["Salary Survey"] + " - you receive the raw form export (6,704 rows).")],
-                    files="04_Student_Projects/Project4_Talent_Salary_Benchmark/Data/ETEH_Salary_Survey_Form_Export_RAW.csv",
+                    files="Data folder (inside this project folder) › ETEH_Salary_Survey_Form_Export_RAW.csv",
                     rubric=[["Statistics", "Medians and percentiles with PERCENTILE.INC/QUARTILE.INC; regression with LINEST or the ToolPak."],
                             ["Ethics", "Never single out individuals; suppress groups smaller than 5; describe gaps, do not allege discrimination."],
                             ["Tolerance", "Money ±₦1; percentages ±0.1 pt."]])

@@ -39,7 +39,7 @@ def build(b):
     m41 = mod("4.1", "4.1 Descriptive Stats", "Descriptive Statistics and the Analysis ToolPak",
               "Mean, median, mode, range, IQR, variance, standard deviation, coefficient of variation, skewness, "
               "kurtosis, percentiles and quartiles, the 1.5 × IQR outlier rule and the ToolPak Descriptive Statistics.")
-    m42 = mod("4.2", "4.2 Distributions", "Distributions, Pareto, Percentiles and Z-Scores",
+    m42 = mod("4.2", "4.2 Distributions & Z", "Distributions, Pareto, Percentiles and Z-Scores",
               "Distribution shape, the normal curve, histograms, Pareto (80/20), percentile rank, z-scores and "
               "standardising measures, and spotting anomalies.")
     m43 = mod("4.3", "4.3 Correlation", "Correlation Analysis",
@@ -57,23 +57,23 @@ def build(b):
     m47 = mod("4.7", "4.7 Storytelling", "Data Storytelling",
               "The three-act narrative, the headline message, message hierarchy, evidence for the audience, titles that "
               "state the finding, annotation and avoiding misleading charts.")
-    m48 = mod("4.8", "4.8 Reports & PDF", "Report Writing and PDF Production",
+    m48 = mod("4.8", "4.8 Report Writing", "Report Writing and PDF Production",
               "Report structure, the executive summary, layout, table design, page setup, PDF export, metadata and "
               "version control.")
     m49 = mod("4.9", "4.9 Presentations", "Slide Presentations",
               "One message per slide, charts for projection, text density, visual identity, timing and handling questions.")
-    m410 = mod("4.10", "4.10 Auditing & Macros", "Formula Auditing, Protection and Light Automation",
+    m410 = mod("4.10", "4.10 Audit & Protect", "Formula Auditing, Protection and Light Automation",
                "Trace precedents and dependents, Show Formulas, Evaluate Formula, Error Checking, the Watch Window, "
                "protecting sheets, recording macros and Office Scripts.")
     m411 = mod("4.11", "4.11 AI Co-pilots", "AI Co-pilots for Analysts",
                "What AI can and cannot do, prompt structure, schema prompts, AI for formulas, SQL and narrative, and "
                "what must never be pasted into an AI tool.")
-    m412 = mod("4.12", "4.12 Verifying AI", "Verifying AI Output and Handling Hallucinations",
+    m412 = mod("4.12", "4.12 Verify AI", "Verifying AI Output and Handling Hallucinations",
                "Hallucinations, the verification protocol, control totals, plausible-but-wrong output, provenance and sign-off.")
-    m413 = mod("4.13", "4.13 Data Ethics", "Data Ethics, PII and PHI",
+    m413 = mod("4.13", "4.13 Ethics PII PHI", "Data Ethics, PII and PHI",
                "Personal and health data, minimisation, anonymisation and aggregation, consent and purpose, bias, "
                "retention and governance.")
-    m414 = mod("4.14", "4.14 Benchmark Lab", "Internal Benchmarks, PDF Checks and Reconciliation",
+    m414 = mod("4.14", "4.14 Benchmarks", "Internal Benchmarks, PDF Checks and Reconciliation",
                "Sales per m² against the chain median, checking the PDF bulletin against the ledger, periods and "
                "definitions, uncertainty and the decision memo.")
 

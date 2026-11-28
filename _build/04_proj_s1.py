@@ -11,8 +11,13 @@ from proj_common import SKEY, brief_pdf
 from wk_common import DATASETS_TEXT
 
 NAME = "Project1_SuperMart_Online_SQL"
-FOLDER = SPR / NAME
-FOLDER.mkdir(parents=True, exist_ok=True)
+FOLDER = SPR / "Week_5_Capstone" / NAME
+(FOLDER / "Data").mkdir(parents=True, exist_ok=True)
+import shutil  # noqa: E402
+from common import CORE  # noqa: E402
+shutil.copy2(W3D / "supermart_online.db", FOLDER / "Data" / "supermart_online.db")
+for _t in ("transactions", "customers", "products", "sellers", "deliveries"):
+    shutil.copy2(CORE / f"SuperMart_Online_{_t}.csv", FOLDER / "Data" / f"SuperMart_Online_{_t}.csv")
 con = sqlite3.connect(W3D / "supermart_online.db")
 
 
@@ -81,7 +86,7 @@ def build(key):
             label="Student Project 1", submission="Submit this workbook (answers), your .sql file, your dashboard workbook, a 1-page memo (PDF) and a 5-slide deck. "
                                                   "File names: Surname_Firstname_P1_*.")
     s = A.task("M1 Data Audit", "Milestone 1 - Audit the database before trusting it", "Weeks 1-3 (3.1-3.4)",
-               "Open 01_Section_Examples/Week3_Data_Files/supermart_online.db in DB Browser for SQLite. Answer with SQL (write the queries in Project1_SQL_Template.sql).")
+               "Open Data › supermart_online.db (the Data folder inside this project folder) in DB Browser for SQLite. Answer with SQL (write the queries in Project1_SQL_Template.sql).")
     for i, ((t, _), a) in enumerate(zip(AUDIT, AUD_A), 1):
         k = "gen" if isinstance(a, str) else "int"
         gd = {6: "All 570 are Cancelled orders - a NULL delivery is expected, not an error.", 7: "0 confirms the rule."}.get(i, "")
@@ -103,7 +108,7 @@ def build(key):
     A.end_task(s)
 
     s = A.task("M3 Excel Model", "Milestone 3 - Load to Excel, model and measure", "3.3, 3.5-3.6",
-               "Load transactions, customers, products, sellers and deliveries into the Data Model (Power Query from the CSVs in 00_Core_Datasets, or ODBC). "
+               "Load transactions, customers, products, sellers and deliveries into the Data Model (Power Query from the SuperMart_Online_*.csv files in the Data folder, or ODBC). "
                "Add a DimDate table, build a star schema and create the measures. Report the 2025 values your measures return.")
     A.q(s, "3.1", "Net Revenue measure, 2025 (₦) - must equal Q1.", QS_A[0], None, "naira", 2, header=True)
     A.q(s, "3.2", "Net Orders 2025 (count of Delivered + Completed transactions).", len(net25), None, "int", 2)
@@ -141,8 +146,8 @@ def build(key):
                      "You will audit the database, answer business questions in SQL, build an Excel data model with DAX, and present a dashboard, memo and deck.",
                      "Duration: assigned at the end of Week 3, due at the end of Week 4 (about 12-15 hours)."],
                     [("SuperMart Online", DATASETS_TEXT["SuperMart Online"])],
-                    files="Database: 01_Section_Examples/Week3_Data_Files/supermart_online.db. CSVs: 01_Section_Examples/00_Core_Datasets/SuperMart_Online_*.csv. "
-                          "SQL template: 04_Student_Projects/Project1_SuperMart_Online_SQL/Project1_SQL_Template.sql.",
+                    files="Data folder (inside this project folder) › supermart_online.db and SuperMart_Online_*.csv (5 files). "
+                          "SQL template: Project1_SQL_Template.sql (next to this workbook).",
                     rubric=[["SQL", "Correct result 2, correct SQL 2 (any equivalent query)."],
                             ["Reconciliation", "M3 measures must reconcile to M2 SQL results; unexplained differences lose the marks."],
                             ["Communication", "Findings must quote numbers from your own work."]])
@@ -158,6 +163,8 @@ def main():
                         "The Head of Marketplace has asked ETEH for an independent review of 2025: <b>How did the marketplace perform, where does net revenue come from, "
                         "and what should we change in 2026?</b>"),
                   ("h", "2. The data"),
+                  ("p", "Everything is in the <b>Data</b> folder inside this project folder: supermart_online.db (open it in DB Browser for SQLite) "
+                        "and the same five tables as CSV files, SuperMart_Online_&lt;table&gt;.csv, for Power Query."),
                   ("t", [["Table", "Rows", "Grain / key", "Joins to"],
                          ["transactions", f"{AUD_A[4]:,}", "one order line · transaction_id", "customers, products, sellers (customer_id, product_id, seller_id); deliveries (delivery_id)"],
                          ["deliveries", f"{AUD_A[3]:,}", "one shipment · delivery_id", "transactions (1:1); NULL for cancelled orders"],

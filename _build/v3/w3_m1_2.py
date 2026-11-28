@@ -316,7 +316,7 @@ FROM transactions;""", fmt={"gross_value": "n"}, widths=[1, 1.4], split=0.55),
           simple="Nothing to install or log in to: copy the file and you have copied the database. It supports nearly all the "
                  "SQL an analyst needs.",
           like="Like a USB stick with a whole filing cabinet inside.",
-          grid=dict(label="The Week 3 databases (folder Week3_Data_Files)", widths=[1.8, 0.8, 2], rows=[
+          grid=dict(label="The Week 3 databases (01_Section_Examples › Week_3 › Ex3.2_Files)", widths=[1.8, 0.8, 2], rows=[
               ["File", "Size", "Largest table"],
               ["supermart_online.db", f"{SIZES['smo']:.1f} MB", f"transactions: {I(len(TX))} rows"],
               ["mercyland_hospital.db", f"{SIZES['lc']:.1f} MB", f"admissions: {I(LC_ADM)} rows"]]),

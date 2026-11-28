@@ -24,7 +24,7 @@ M21 = dict(
                  "job is to bring it in without damaging it.",
           like="Like foodstuff from the market: it comes from outside your kitchen, so you check and wash it before cooking.",
           ex=dict(t="tFiles", cols=["File", "Format", "Rows"], n=5, size=11,
-                  note="5 of the 9 Week 2 practice files (folder Week2_Data_Files): all external to the workbook."),
+                  note="5 of the Week 2 practice files (01_Section_Examples › Week_2 › Ex2.x_Files folders): all external to the workbook."),
           order=["ex"]),
 
         T("2.1.2", "Common Data File Formats",

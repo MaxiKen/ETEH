@@ -5,12 +5,14 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
-from common import IPR
+import shutil
+
+from common import CORE, IPR
 from proj_common import brief_pdf, kpi_cards
 from wk_common import L
 from xlhelp import Book, Sheet
 
-OUT = IPR / "Capstone2_Kingsway_University"
+OUT = IPR / "Week_5_Capstone" / "Capstone2_Kingsway_University"
 (OUT / "Data").mkdir(parents=True, exist_ok=True)
 XLSX = OUT / "Capstone2_Kingsway_SOLUTION.xlsx"
 PDF = OUT / "Capstone2_Instructor_Brief.pdf"
@@ -24,6 +26,7 @@ for c in raw.columns:
         raw[c] = conv.astype("Int64") if (conv.dropna() % 1 == 0).all() else conv
 RAWCSV = OUT / "Data" / "Kingsway_Registry_Export_RAW.csv"
 raw.to_csv(RAWCSV, index=False)
+shutil.copy2(CORE / "Kingsway_Student_Results.csv", OUT / "Data" / "Kingsway_Student_Results.csv")
 
 # ---------------------------------------------------------------- reference cleaning (asserted equal to the published clean cohort)
 DEPTS = sorted(cv.Department.unique())
@@ -157,8 +160,8 @@ def build():
             ["Act", "Threshold-driven at-risk list; intervention estimate with sensitivity", "45 min"],
             ["Communicate", "Dashboard, senate paper, ethics, defence", "45 min"]], merge_last=True)
     s.band("1.3", "Files")
-    s.grid([["03_Instructor_Projects/Capstone2_Kingsway_University/Data/Kingsway_Registry_Export_RAW.csv", f"Raw export, {len(raw):,} rows, 8 defect types"],
-            ["01_Section_Examples/00_Core_Datasets/Kingsway_Student_Results.csv", "Published clean cohort - the reconciliation target"]],
+    s.grid([["Data/Kingsway_Registry_Export_RAW.csv", f"Raw export, {len(raw):,} rows, 8 defect types"],
+            ["Data/Kingsway_Student_Results.csv", "Published clean cohort - the reconciliation target"]],
            header=["File", "Use"], merge_last=True)
 
     # ---- 2 Clean & Reconcile

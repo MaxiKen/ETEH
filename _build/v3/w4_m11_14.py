@@ -11,8 +11,9 @@ import pandas as pd
 from v3kit import T
 from w4_fx import CV, D25, HOT, I, LOS, N, Nm, P, SAL, STO
 
-PACK = Path(__file__).resolve().parents[2] / "ETEH_Bootcamp_Pack" / "01_Section_Examples"
-DB = PACK / "Week3_Data_Files" / "supermart_online.db"
+from common import CORE, W2D, W3D  # noqa: E402  (source data lives in _build/_stage/source)
+
+DB = W3D / "supermart_online.db"
 
 # ---------------------------------------------------------------- SuperMart Online (Week 3 database)
 AI_SQL = ("SELECT c.zone, SUM(t.total_price) AS revenue\nFROM transactions t\nJOIN customers c ON c.customer_id = t.customer_id\n"
@@ -57,10 +58,10 @@ BUL["diff"] = BUL.fy - BUL.ledger
 BUL["mdiff"] = BUL.months - BUL.fy
 BIGM = BUL.mdiff.abs().idxmax()
 
-_sm = pd.read_csv(PACK / "00_Core_Datasets" / "SuperMart_Stores_Sales_2022_2025.csv", usecols=["Order_Date", "Sales"],
+_sm = pd.read_csv(CORE / "SuperMart_Stores_Sales_2022_2025.csv", usecols=["Order_Date", "Sales"],
                   parse_dates=["Order_Date"])
 APRFY = _sm[(_sm.Order_Date >= "2024-04-01") & (_sm.Order_Date <= "2025-03-31")].Sales.sum()
-_dirty = pd.read_csv(PACK / "Week2_Data_Files" / "SuperMart_Sales_2025_DIRTY.csv", dtype=str, keep_default_na=False)
+_dirty = pd.read_csv(W2D / "SuperMart_Sales_2025_DIRTY.csv", dtype=str, keep_default_na=False)
 QMISS = int(pd.to_numeric(_dirty.Quantity, errors="coerce").isna().sum())
 NDIRTY = len(_dirty)
 
@@ -75,12 +76,12 @@ _lo, _hi = RE.p - RE.moe, RE.p + RE.moe
 OVL = [(a, b) for i, a in enumerate(RE.index) for b in RE.index[i + 1:] if _lo[a] <= _hi[b] and _lo[b] <= _hi[a]]
 OVL_TXT = ("; ".join(f"{a} and {b} overlap" for a, b in OVL) + ", so do not rank those") if OVL else "no two intervals overlap"
 RE_ALL = (LOS.Readmitted_30d == "Yes").mean()
-LC_COLS = pd.read_csv(PACK / "00_Core_Datasets" / "Mercyland_Inpatient_Episodes_2019_2024.csv", nrows=1).columns.tolist()
+LC_COLS = pd.read_csv(CORE / "Mercyland_Inpatient_Episodes_2019_2024.csv", nrows=1).columns.tolist()
 NEED = ["Department", "Readmitted_30d", "Admit_Date"]
 CR = (HOT.Reservation_Status == "Cancelled").mean()
 R_ATT = CV.Lecture_Attendance_Pct.corr(CV.Final_Score)
 
-_wb = pd.read_csv(PACK / "00_Core_Datasets" / "Kingsway_Student_Welfare_Survey_SENSITIVE.csv")
+_wb = pd.read_csv(CORE / "Kingsway_Student_Welfare_Survey_SENSITIVE.csv")
 WB_N = len(_wb)
 WBP = (_wb.groupby("Programme").agg(n=("Respondent_ID", "count"), k=("PHQ9_Positive", lambda v: (v == "Yes").sum()))
        .sort_values("n"))

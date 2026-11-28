@@ -8,7 +8,7 @@ from xlsxwriter.utility import xl_rowcol_to_cell
 
 from common import FONT_DIR, IPR, SPR
 
-SKEY = IPR / "Student_Project_Keys"
+SKEY = IPR / "Week_5_Capstone" / "Student_Project_Keys"
 SKEY.mkdir(parents=True, exist_ok=True)
 
 _FONTS = False

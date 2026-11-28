@@ -5,13 +5,17 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
-from common import IPR
+import shutil
+
+from common import CORE, IPR, W2D
 from proj_common import brief_pdf, kpi_cards
 from wk_common import L, sm_sales
 from xlhelp import Book
 
-OUT = IPR / "Capstone1_SuperMart_Stores"
-OUT.mkdir(parents=True, exist_ok=True)
+OUT = IPR / "Week_5_Capstone" / "Capstone1_SuperMart_Stores"
+(OUT / "Data").mkdir(parents=True, exist_ok=True)
+for _f in (CORE / "SuperMart_Stores_Sales_2022_2025.csv", CORE / "SuperMart_Stores_Directory.csv", W2D / "SuperMart_Sales_2025_DIRTY.csv"):
+    shutil.copy2(_f, OUT / "Data" / _f.name)
 XLSX = OUT / "Capstone1_SuperMart_Stores_SOLUTION.xlsx"
 PDF = OUT / "Capstone1_Instructor_Brief.pdf"
 
@@ -122,9 +126,9 @@ def build():
             ["6 Recommend", "Discount-cap what-if with sensitivity", "45 min", "5 What-If"],
             ["7 Communicate", "Dashboard, memo, 10-question defence", "45 min", "3, 7"]], merge_last=True)
     s.band("1.3", "Files")
-    s.grid([["01_Section_Examples/00_Core_Datasets/SuperMart_Stores_Sales_2022_2025.csv", "Clean POS ledger (D_Ledger here holds FY2024-FY2025)"],
-            ["01_Section_Examples/00_Core_Datasets/SuperMart_Stores_Directory.csv", "12 stores with FY2025 targets"],
-            ["01_Section_Examples/Week2_Data_Files/SuperMart_Sales_2025_DIRTY.csv", f"Store returns as submitted - {len(dirty):,} rows with 16 defect types"]],
+    s.grid([["Data/SuperMart_Stores_Sales_2022_2025.csv", "Clean POS ledger (D_Ledger here holds FY2024-FY2025)"],
+            ["Data/SuperMart_Stores_Directory.csv", "12 stores with FY2025 targets"],
+            ["Data/SuperMart_Sales_2025_DIRTY.csv", f"Store returns as submitted - {len(dirty):,} rows with 16 defect types"]],
            header=["File", "Use"], merge_last=True)
 
     # =========================== data sheets (built first so formulas can reference them)

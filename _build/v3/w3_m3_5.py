@@ -70,8 +70,8 @@ M33 = dict(
           like="A DSN is a speed-dial entry on your phone; DSN-less is the full number written on the document.",
           **CODE("""
 Driver={SQLite3 ODBC Driver};
-Database=C:\\ETEH\\01_Section_Examples\\
-         Week3_Data_Files\\supermart_online.db;""", label="DSN-LESS CONNECTION STRING"),
+Database=C:\\ETEH\\01_Section_Examples\\Week_3\\
+         Ex3.2_Files\\supermart_online.db;""", label="DSN-LESS CONNECTION STRING"),
           grid=dict(label="Which to use", widths=[1.1, 1.6, 1.8], rows=[
               ["Type", "Stored", "On a colleague's PC"],
               ["DSN", "Windows, your PC", "Only if they create the same DSN"],
@@ -327,7 +327,7 @@ Table.FuzzyNestedJoin(Supplier, {"typed"},
         T("3.4.11", "Appending Two Tables",
           defn="Append Queries stacks two tables, matching columns by name, not by position.",
           simple="Home › Append Queries. A column named differently in one table becomes a separate, half-empty column.",
-          grid=dict(label="Week2_Data_Files › SuperMart_Monthly_Sales_2025", widths=[2.4, 0.8, 1.4], rows=[
+          grid=dict(label="Week_2 › Ex2.3_Files › SuperMart_Monthly_Sales_2025", widths=[2.4, 0.8, 1.4], rows=[
               ["Table", "Rows", "Columns"],
               ["2025-01_SuperMart_Sales.csv", I(MROWS[0]), "21, same names"],
               ["2025-02_SuperMart_Sales.csv", I(MROWS[1]), "21, same names"],

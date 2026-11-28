@@ -51,8 +51,8 @@ CFG = v3deck.Config(
     title_notes="Welcome to the capstone. Weeks 1-4 taught the tools. Now we run three complete projects on the bootcamp data, "
                 "prove every number, defend the findings to a panel and turn the work into a portfolio.",
     assignment="",
-    assessment="Assessment: the three capstone builds (03_Instructor_Projects briefs), a ten-minute executive defence and a "
-               "portfolio write-up.",
+    assessment="Assessment: the capstone builds, the four projects (04_Student_Projects › Week_5_Capstone), "
+               "a ten-minute defence and a write-up.",
     volume="Volume 5 of 5",
     modules_text="9 modules",
     example_table="tSM",
