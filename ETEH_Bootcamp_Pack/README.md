@@ -4,7 +4,23 @@ Eaglet2EagleHub Ltd · Instructor: Abdulrahaman Kehinde
 
 ## Edition 3 (in progress): leaner decks, practical work in the workbooks
 
-Edition 2 explained every topic with two fixed slides, which made the decks long and repetitive. Edition 3 is being rolled out one week at a time. **Weeks 1, 2 and 3 are done**; Week 4 and the Capstone volume are still edition 2.
+Edition 2 explained every topic with two fixed slides, which made the decks long and repetitive. Edition 3 is being rolled out one week at a time. **Weeks 1, 2 and 3 are done, and the Week 4 deck is built**; the Week 4 workbook and the Capstone volume are in progress.
+
+### New organisations and datasets (edition 3)
+Three datasets that were reworked from public Kaggle files are replaced by **original data from new organisations**, generated from scratch by `_build/neworgs.py` (fixed seed, no third-party rows). Every deck, workbook, assignment, project and capstone is rebuilt on them, and every figure on a slide is computed from the files.
+
+| Old (editions 1-2) | New (edition 3) | Files (`01_Section_Examples/00_Core_Datasets`) |
+|---|---|---|
+| Lifecare General Hospital | **Mercyland Specialist Hospital, Abuja**: 200 staffed beds in four wards (W1 Iroko, W2 Mahogany, W3 Obeche, W4 Baobab) | `Mercyland_Inpatient_Episodes_2019_2024.csv` (58,856 episodes; 12,626 in 2023), `Mercyland_Patients.csv`, `Mercyland_Consultants.csv`, `Mercyland_Wards.csv`, `Mercyland_Daily_Bed_Census.csv`, `Mercyland_Diabetes_Screening.csv` (60,000) |
+| Crestview University | **Kingsway University, Ilorin** | `Kingsway_Student_Results.csv` (5,840 students), `Kingsway_Student_Welfare_Survey_SENSITIVE.csv` (9,600), `Kingsway_Digital_Habits_Survey.csv` (640) |
+| Eko Suites Hotel, Victoria Island | **Atlantic Pearl Hotel, Lekki**: 320 rooms | `AtlanticPearl_Reservations_2023_2024.csv` (38,400 reservations) |
+
+- SuperMart Stores, SuperMart Online and the ETEH Talent Salary Survey are unchanged.
+- **Mercyland 2023:** average stay 5.02 days, 30-day readmission 8.7%, bed occupancy 86.9% (June peak 98.1%; 60 days above 95%). The Week 2 dirty extract (`Week2_Data_Files/Mercyland_Episodes_2023_DIRTY.csv`, 12,772 rows) has duplicate rows, ward spelling variants, mixed gender codes, bills stored as text, negative bills and impossible dates. The documented cleaning rules turn it back into the clean file exactly, and the Capstone builders check this.
+- **Kingsway:** mean final score 66.3; 1,591 students (27.2%) are at risk. Attendance (r = 0.47) and study hours (r = 0.31) are the strongest drivers. Engineering has the highest at-risk rate (36.8%), Arts & Education the lowest (20.4%).
+- **Atlantic Pearl:** 33.5% of reservations are cancelled (OTA 37.8%, Corporate 4.5%). The room-type table shows Simpson's paradox: Deluxe cancels less than Twin within each year, but more overall.
+- The SQLite database is now `Week3_Data_Files/mercyland_hospital.db`. Its tables are `wards`, `doctors`, `patients`, `admissions` and `bed_census`, plus the view `v_admissions`.
+- ID formats: `ADM2023-00001` (episode), `MSH-P000001` (patient), `CON001` (consultant), `KU/2024/EEE/0001` (matric number), `APH-00001` (reservation).
 
 ### Week 1 deck (`ETEH_Vol1_Week1_Foundations_Slides.pptx`, 146 slides, 111 topics)
 - Built from the ETEH deck template (title, welcome, module divider, content frame, closing).
@@ -116,7 +132,7 @@ Rebuilt from scratch in the Week 1 format (`_build/02_sec_w3.py` with `_build/v3
 ### Week 3 assignment
 - The tasks and marks are unchanged.
 - A new **Function Guide** sheet shows the worksheet patterns the tasks use: an XLOOKUP calculated column, year-filtered COUNTIFS/AVERAGEIFS, a month count bounded by EOMONTH, and census rates. Each is a live example on the assignment's own tables that answers a different question from the tasks.
-- **Bug fixed in the key:** the Task 3 formula grid held two `=XLOOKUP([@ward_code],…)` formulas outside any table. Excel cannot resolve `[@…]` there, so it would repair the file on opening. They are now shown as text. A new scan (`_build/rev/scan_thisrow.py`) checks every pack workbook for this; no other file has it.
+- **Bug fixed in the key:** the Task 3 formula grid held two `=XLOOKUP([@ward_id],…)` formulas outside any table. Excel cannot resolve `[@…]` there, so it would repair the file on opening. They are now shown as text. A new scan (`_build/rev/scan_thisrow.py`) checks every pack workbook for this; no other file has it.
 - The reference dashboard in the key now counts months with EOMONTH, which Week 3 teaches, instead of EDATE, which no week teaches.
 - An untaught-function scan (`_build/rev/untaught_scan.py`) finds no function in the student file or the key that the Week 1–3 workbooks do not teach.
 - Both files verify with 0 mismatches. The student file has 24 formulas (17 recalculated, 7 FORMULATEXT). The key has 43,677 formulas (43,670 recalculated, 7 FORMULATEXT).
@@ -151,7 +167,7 @@ Every topic in all five volumes (663 topics) now has two slides.
    - **Remember**: one tip.
    - **Avoid**: the most common beginner mistake.
 2. **Worked-example slide**
-   - **The situation**: a real business question on the pack datasets (SuperMart, Kingsway, Mercyland, AtlanticPearl, the Talent Survey or SuperMart Online).
+   - **The situation**: a real business question on the pack datasets (SuperMart, Crestview, Lifecare, EkoSuites, the Talent Survey or SuperMart Online).
    - **Step by step**: three steps.
    - **What you should see**: a table of the exact results you should get.
    - **What this tells us**: the business meaning in one line.
@@ -205,14 +221,14 @@ Every topic in all five volumes (663 topics) now has two slides.
   - Week 3 keeps 3.6A and 3.6B.
 - External sources were removed: Wikipedia tables, CBN/NBS figures and "live source" links. The modules that depended on them now use files in the pack:
   - 2.4 · Web and PDF sources: the SuperMart store directory HTML page and the monthly sales bulletin PDF.
-  - 3.10 · File extracts into SQL, DAX and dashboards: the Mercyland 2023 dirty CSV and mercyland_hospital.db.
-  - 4.14 · Internal benchmarks, PDF checks and reconciliation: the SuperMart ledger and bulletin, and Mercyland readmission intervals.
+  - 3.10 · File extracts into SQL, DAX and dashboards: the Lifecare 2023 dirty CSV and lifecare_hospital.db.
+  - 4.14 · Internal benchmarks, PDF checks and reconciliation: the SuperMart ledger and bulletin, and Lifecare readmission intervals.
   - P.2 · Source governance: a register of the capstone sources.
 - The Capstone 1–3 modules (P.3–P.5) are rewritten around the instructor capstones. Every figure on those slides comes from the solution workbooks.
 - Headline worked examples elsewhere now quote real dataset figures, for example:
   - SuperMart FY2025: ₦733.2m sales, 12.7% margin, 3,312 lines.
-  - Kingsway: 6,607 students, 86.4% progression, 901 at risk.
-  - Mercyland FY2023: 10,918 admissions, 89.5% occupancy.
+  - Crestview: 6,607 students, 86.4% progression, 901 at risk.
+  - Lifecare FY2023: 10,918 admissions, 89.5% occupancy.
 - Week 1 dollar amounts were converted to naira. `$` signs inside cell references such as `$B$2` were kept.
 
 ## Folders

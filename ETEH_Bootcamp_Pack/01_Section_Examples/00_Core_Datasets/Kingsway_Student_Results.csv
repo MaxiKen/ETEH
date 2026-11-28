@@ -53,7 +53,7 @@ KU/2022/ECO/0051,Social Sciences,Economics,300,Female,17,63,5,61,1,3,High,Medium
 KU/2022/PHY/0052,Science,Physics,300,Female,13,81,6,63,2,6,High,High,Yes,Medium,Yes,Low,High,Private Secondary,Negative,No,Postgraduate,Near,69,B,80-89%,No
 KU/2021/ECO/0053,Social Sciences,Economics,400,Male,12,83,6,77,2,5,Medium,Medium,Yes,Medium,Yes,Medium,Medium,Public Secondary,Neutral,Yes,Secondary,Near,63,B,80-89%,No
 KU/2021/ACC/0054,Social Sciences,Accounting,400,Female,11,95,8,78,1,0,High,High,No,Medium,Yes,High,High,Public Secondary,Negative,No,Secondary,Near,66,B,90-100%,No
-KU/2021/EEE/0055,Engineering,Electrical Engineering,400,Male,15,62,8,93,3,5,Medium,Medium,Yes,Medium,No,Medium,Medium,Public Secondary,Positive,No,Postgraduate,Near,89,A,<70%,Yes
+KU/2021/EEE/0055,Engineering,Electrical Engineering,400,Male,15,62,8,93,3,5,Medium,Medium,Yes,Medium,No,Medium,Medium,Public Secondary,Positive,No,Postgraduate,Near,90,A,<70%,Yes
 KU/2021/EDU/0056,Arts & Education,Education,400,Male,17,96,6,61,0,2,High,Medium,Yes,Medium,Yes,High,Medium,Public Secondary,Neutral,No,Secondary,Near,73,A,90-100%,No
 KU/2021/HIS/0057,Arts & Education,History,400,Male,12,77,5,50,1,5,Medium,High,No,Medium,Yes,Low,High,Public Secondary,Positive,No,College,Near,65,B,70-79%,No
 KU/2023/CSC/0058,Science,Computer Science,200,Female,16,80,6,82,1,4,High,Low,Yes,Low,Yes,Low,Low,Private Secondary,Negative,No,Secondary,Near,65,B,80-89%,No
@@ -69,7 +69,7 @@ KU/2022/PHY/0067,Science,Physics,300,Female,18,60,9,85,1,0,High,Low,Yes,High,Yes
 KU/2024/CSC/0068,Science,Computer Science,100,Male,11,98,8,49,2,5,Low,Medium,Yes,Medium,Yes,Medium,Medium,Private Secondary,Negative,No,Secondary,Moderate,70,A,90-100%,No
 KU/2022/ACC/0069,Social Sciences,Accounting,300,Male,16,81,6,93,1,6,Medium,High,Yes,Medium,Yes,High,High,Public Secondary,Neutral,No,Secondary,Near,71,A,80-89%,No
 KU/2022/POL/0070,Social Sciences,Political Science,300,Female,15,91,8,78,0,4,High,Medium,Yes,Medium,No,High,Medium,Public Secondary,Neutral,No,Postgraduate,Near,73,A,90-100%,No
-KU/2023/MCB/0071,Science,Microbiology,200,Male,14,81,6,98,2,5,Medium,Medium,No,Medium,Yes,Low,High,Public Secondary,Positive,No,Secondary,Near,95,A,80-89%,No
+KU/2023/MCB/0071,Science,Microbiology,200,Male,14,81,6,98,2,5,Medium,Medium,No,Medium,Yes,Low,High,Public Secondary,Positive,No,Secondary,Near,96,A,80-89%,No
 KU/2023/EEE/0072,Engineering,Electrical Engineering,200,Male,12,97,5,92,0,3,High,High,No,Low,Yes,Low,Medium,Public Secondary,Positive,No,Postgraduate,Near,73,A,90-100%,No
 KU/2023/MCB/0073,Science,Microbiology,200,Female,23,67,8,90,0,3,Medium,Medium,Yes,High,Yes,Medium,High,Private Secondary,Positive,No,Not Recorded,Moderate,68,B,<70%,No
 KU/2023/ENG/0074,Arts & Education,English,200,Female,15,80,10,64,3,4,Medium,High,No,High,Yes,Medium,Medium,Public Secondary,Positive,No,Secondary,Moderate,67,B,80-89%,No
@@ -114,7 +114,7 @@ KU/2022/MAC/0112,Social Sciences,Mass Communication,300,Male,22,76,6,91,2,2,Medi
 KU/2023/MAC/0113,Social Sciences,Mass Communication,200,Female,26,88,7,94,0,6,Medium,Medium,Yes,Medium,Yes,Medium,Medium,Private Secondary,Negative,No,Secondary,Near,72,A,80-89%,No
 KU/2024/MEE/0114,Engineering,Mechanical Engineering,100,Female,20,63,7,55,0,2,High,High,No,Low,Yes,Low,High,Private Secondary,Positive,No,College,Moderate,56,C,<70%,Yes
 KU/2023/CSC/0115,Science,Computer Science,200,Male,18,94,7,87,1,4,Medium,Medium,Yes,High,Yes,Medium,Medium,Public Secondary,Negative,No,Secondary,Near,67,B,90-100%,No
-KU/2024/ACC/0116,Social Sciences,Accounting,100,Male,22,66,6,84,5,5,Medium,High,No,Medium,Yes,Low,Medium,Public Secondary,Neutral,No,Secondary,Near,96,A,<70%,No
+KU/2024/ACC/0116,Social Sciences,Accounting,100,Male,22,66,6,84,5,5,Medium,High,No,Medium,Yes,Low,Medium,Public Secondary,Neutral,No,Secondary,Near,97,A,<70%,No
 KU/2021/POL/0117,Social Sciences,Political Science,400,Male,17,93,5,52,1,1,Medium,Low,No,Medium,No,Medium,Low,Private Secondary,Positive,No,Postgraduate,Near,69,B,90-100%,No
 KU/2024/POL/0118,Social Sciences,Political Science,100,Female,17,74,8,63,3,2,High,High,Yes,Medium,Yes,Medium,Medium,Public Secondary,Negative,No,College,Moderate,68,B,70-79%,No
 KU/2023/MAC/0119,Social Sciences,Mass Communication,200,Female,29,74,8,96,1,5,Low,Low,Yes,Medium,Yes,Low,Not Recorded,Public Secondary,Neutral,Yes,Secondary,Near,66,B,70-79%,No
@@ -133,7 +133,7 @@ KU/2022/HIS/0131,Arts & Education,History,300,Female,28,94,6,82,1,5,Medium,High,
 KU/2021/MEE/0132,Engineering,Mechanical Engineering,400,Male,16,66,7,63,1,3,Medium,Medium,No,Medium,No,Low,High,Public Secondary,Negative,No,Postgraduate,Moderate,57,C,<70%,Yes
 KU/2023/ENG/0133,Arts & Education,English,200,Female,18,98,9,75,3,6,Medium,High,Yes,High,Yes,Medium,Medium,Private Secondary,Positive,Yes,Secondary,Near,78,A,90-100%,No
 KU/2024/BCH/0134,Science,Biochemistry,100,Female,24,86,8,86,1,3,Medium,High,Yes,Medium,Yes,Medium,Medium,Public Secondary,Neutral,No,Secondary,Near,65,B,80-89%,No
-KU/2023/EDU/0135,Arts & Education,Education,200,Male,17,74,7,49,1,0,Medium,High,Yes,Low,Yes,Medium,Medium,Public Secondary,Negative,No,College,Moderate,94,A,70-79%,No
+KU/2023/EDU/0135,Arts & Education,Education,200,Male,17,74,7,49,1,0,Medium,High,Yes,Low,Yes,Medium,Medium,Public Secondary,Negative,No,College,Moderate,95,A,70-79%,No
 KU/2024/PHY/0136,Science,Physics,100,Male,14,66,8,91,1,1,Low,Medium,Yes,Medium,Yes,High,High,Public Secondary,Neutral,No,Secondary,Near,60,B,<70%,Yes
 KU/2024/ECO/0137,Social Sciences,Economics,100,Male,21,82,5,57,1,3,Medium,Low,No,Medium,Yes,Medium,Medium,Public Secondary,Neutral,Yes,Secondary,Far,63,B,80-89%,No
 KU/2022/EEE/0138,Engineering,Electrical Engineering,300,Male,24,85,5,75,1,6,High,Medium,Yes,Low,Yes,Medium,Low,Public Secondary,Neutral,No,College,Moderate,68,B,80-89%,No
@@ -147,7 +147,7 @@ KU/2023/EEE/0145,Engineering,Electrical Engineering,200,Female,16,98,6,71,1,0,Me
 KU/2022/ACC/0146,Social Sciences,Accounting,300,Male,24,65,5,87,7,5,Medium,High,Yes,High,Yes,Low,Medium,Private Secondary,Neutral,No,Secondary,Near,64,B,<70%,No
 KU/2023/POL/0147,Social Sciences,Political Science,200,Female,24,82,6,79,3,4,Medium,Medium,Yes,Low,Yes,Medium,High,Private Secondary,Neutral,Yes,Secondary,Moderate,66,B,80-89%,No
 KU/2024/POL/0148,Social Sciences,Political Science,100,Male,18,60,6,92,1,0,Medium,High,No,Low,Yes,Medium,Low,Public Secondary,Neutral,No,Secondary,Near,64,B,<70%,Yes
-KU/2023/ECO/0149,Social Sciences,Economics,200,Male,22,89,6,59,1,6,Medium,High,Yes,Low,Yes,Low,Medium,Private Secondary,Neutral,Yes,Secondary,Far,89,A,80-89%,No
+KU/2023/ECO/0149,Social Sciences,Economics,200,Male,22,89,6,59,1,6,Medium,High,Yes,Low,Yes,Low,Medium,Private Secondary,Neutral,Yes,Secondary,Far,90,A,80-89%,No
 KU/2024/ACC/0150,Social Sciences,Accounting,100,Female,34,75,6,76,0,1,Low,Medium,Yes,Medium,Yes,Low,Not Recorded,Private Secondary,Positive,No,Secondary,Moderate,73,A,70-79%,No
 KU/2023/CSC/0151,Science,Computer Science,200,Female,10,94,7,80,1,5,High,Medium,Yes,Medium,Yes,Low,Medium,Public Secondary,Neutral,No,Secondary,Moderate,67,B,90-100%,No
 KU/2023/CSC/0152,Science,Computer Science,200,Male,21,88,8,93,0,4,Medium,Medium,Yes,Medium,Yes,Medium,Medium,Public Secondary,Negative,No,Secondary,Near,66,B,80-89%,No
@@ -305,12 +305,12 @@ KU/2023/MEE/0303,Engineering,Mechanical Engineering,200,Male,23,97,7,75,2,4,High
 KU/2024/HIS/0304,Arts & Education,History,100,Male,21,96,6,48,2,2,Medium,Medium,No,Medium,Yes,Low,High,Public Secondary,Neutral,No,College,Near,66,B,90-100%,No
 KU/2024/PHY/0305,Science,Physics,100,Female,26,74,6,57,4,2,Low,High,Yes,Low,Yes,Low,High,Public Secondary,Positive,No,Secondary,Near,60,B,70-79%,Yes
 KU/2024/MAC/0306,Social Sciences,Mass Communication,100,Female,17,70,9,58,1,4,Medium,Low,Yes,High,Yes,Medium,High,Public Secondary,Neutral,No,College,Moderate,59,C,70-79%,Yes
-KU/2022/ACC/0307,Social Sciences,Accounting,300,Male,22,68,8,77,3,1,High,Medium,No,Medium,Yes,Low,High,Public Secondary,Neutral,No,Secondary,Near,91,A,<70%,No
+KU/2022/ACC/0307,Social Sciences,Accounting,300,Male,22,68,8,77,3,1,High,Medium,No,Medium,Yes,Low,High,Public Secondary,Neutral,No,Secondary,Near,92,A,<70%,No
 KU/2024/CSC/0308,Science,Computer Science,100,Male,23,85,10,53,2,2,Medium,High,No,Medium,Yes,Medium,Medium,Public Secondary,Neutral,No,Secondary,Near,67,B,80-89%,No
 KU/2021/PHY/0309,Science,Physics,400,Female,27,90,9,94,1,1,Medium,High,Yes,Low,Yes,High,Medium,Public Secondary,Neutral,No,Secondary,Near,78,A,90-100%,No
 KU/2021/CSC/0310,Science,Computer Science,400,Male,17,71,7,62,0,5,Medium,Medium,No,Medium,Yes,High,Medium,Private Secondary,Negative,Yes,Secondary,Near,62,B,70-79%,No
 KU/2021/EEE/0311,Engineering,Electrical Engineering,400,Male,18,73,7,90,0,6,Medium,Medium,Yes,Medium,Yes,Low,High,Public Secondary,Positive,No,Secondary,Near,62,B,70-79%,No
-KU/2023/ENG/0312,Arts & Education,English,200,Female,15,81,5,62,0,1,Medium,Low,Yes,Medium,Yes,Medium,Medium,Public Secondary,Positive,No,Postgraduate,Near,94,A,80-89%,No
+KU/2023/ENG/0312,Arts & Education,English,200,Female,15,81,5,62,0,1,Medium,Low,Yes,Medium,Yes,Medium,Medium,Public Secondary,Positive,No,Postgraduate,Near,95,A,80-89%,No
 KU/2022/EDU/0313,Arts & Education,Education,300,Male,13,93,7,95,0,6,High,High,No,Low,Yes,Medium,Medium,Public Secondary,Neutral,No,College,Moderate,68,B,90-100%,No
 KU/2023/MEE/0314,Engineering,Mechanical Engineering,200,Male,17,92,8,48,0,3,High,Medium,Yes,Medium,Yes,Medium,High,Public Secondary,Positive,Yes,College,Near,63,B,90-100%,No
 KU/2021/ACC/0315,Social Sciences,Accounting,400,Male,32,66,5,60,1,5,Medium,High,No,Low,Yes,Low,High,Public Secondary,Neutral,No,Secondary,Moderate,47,D,<70%,Yes
@@ -487,7 +487,7 @@ KU/2022/CSC/0485,Science,Computer Science,300,Female,15,82,5,52,2,5,Medium,Mediu
 KU/2022/CSC/0486,Science,Computer Science,300,Male,12,99,7,67,0,4,Medium,High,No,Medium,Yes,Low,Medium,Public Secondary,Negative,No,College,Moderate,63,B,90-100%,No
 KU/2022/MCB/0487,Science,Microbiology,300,Female,21,97,8,49,2,1,High,Medium,No,Low,Yes,Medium,Medium,Private Secondary,Positive,No,College,Near,72,A,90-100%,No
 KU/2022/CVE/0488,Engineering,Civil Engineering,300,Male,20,76,6,90,1,2,Low,Low,No,Medium,No,Low,Medium,Private Secondary,Positive,No,College,Near,63,B,70-79%,No
-KU/2023/ACC/0489,Social Sciences,Accounting,200,Female,22,64,6,64,1,3,Medium,Medium,No,Low,Yes,Medium,Medium,Private Secondary,Negative,No,College,Moderate,93,A,<70%,Yes
+KU/2023/ACC/0489,Social Sciences,Accounting,200,Female,22,64,6,64,1,3,Medium,Medium,No,Low,Yes,Medium,Medium,Private Secondary,Negative,No,College,Moderate,94,A,<70%,Yes
 KU/2021/CSC/0490,Science,Computer Science,400,Male,16,72,6,53,1,0,Medium,Medium,Yes,Medium,Yes,Medium,Medium,Private Secondary,Positive,No,Postgraduate,Near,65,B,70-79%,No
 KU/2024/EEE/0491,Engineering,Electrical Engineering,100,Female,26,71,7,62,0,5,Medium,Low,Yes,Low,Yes,Low,Low,Public Secondary,Neutral,No,Postgraduate,Near,62,B,70-79%,No
 KU/2023/MEE/0492,Engineering,Mechanical Engineering,200,Female,18,86,5,78,3,0,High,Medium,No,Medium,Yes,High,Medium,Public Secondary,Negative,No,College,Near,68,B,80-89%,No
@@ -572,7 +572,7 @@ KU/2024/BCH/0570,Science,Biochemistry,100,Male,16,95,7,79,2,4,High,Medium,Yes,Me
 KU/2022/MCB/0571,Science,Microbiology,300,Female,5,61,8,83,1,2,Low,Medium,No,Low,Yes,Low,Low,Public Secondary,Neutral,No,Secondary,Far,54,C,<70%,Yes
 KU/2022/ACC/0572,Social Sciences,Accounting,300,Male,9,66,8,77,3,4,Medium,High,Yes,Medium,Yes,Low,Medium,Public Secondary,Neutral,No,Postgraduate,Moderate,62,B,<70%,No
 KU/2022/EEE/0573,Engineering,Electrical Engineering,300,Female,21,76,5,74,0,0,Medium,High,No,Medium,Yes,Low,High,Public Secondary,Positive,No,College,Far,43,F,70-79%,Yes
-KU/2023/MEE/0574,Engineering,Mechanical Engineering,200,Male,13,90,5,48,0,4,High,High,No,Medium,Yes,Medium,Medium,Public Secondary,Negative,No,College,Near,97,A,90-100%,No
+KU/2023/MEE/0574,Engineering,Mechanical Engineering,200,Male,13,90,5,48,0,4,High,High,No,Medium,Yes,Medium,Medium,Public Secondary,Negative,No,College,Near,98,A,90-100%,No
 KU/2024/MEE/0575,Engineering,Mechanical Engineering,100,Male,29,75,8,84,3,5,Medium,Low,No,Medium,Yes,Medium,Medium,Public Secondary,Neutral,No,Secondary,Near,71,A,70-79%,No
 KU/2022/MCB/0576,Science,Microbiology,300,Female,20,84,6,51,3,2,High,Medium,Yes,High,No,Medium,High,Private Secondary,Positive,No,Secondary,Moderate,71,A,80-89%,No
 KU/2022/EEE/0577,Engineering,Electrical Engineering,300,Female,23,84,8,70,2,2,Medium,Medium,Yes,High,Yes,Medium,Medium,Public Secondary,Neutral,No,College,Near,66,B,80-89%,No
@@ -693,7 +693,7 @@ KU/2022/CVE/0691,Engineering,Civil Engineering,300,Male,19,100,7,80,6,1,Low,Medi
 KU/2024/MEE/0692,Engineering,Mechanical Engineering,100,Female,18,85,6,58,2,0,High,High,Yes,Medium,No,Medium,Medium,Public Secondary,Positive,No,Secondary,Near,65,B,80-89%,No
 KU/2021/BCH/0693,Science,Biochemistry,400,Male,15,81,5,57,3,4,Medium,Low,No,High,Yes,Medium,High,Public Secondary,Neutral,No,Secondary,Near,66,B,80-89%,No
 KU/2022/ECO/0694,Social Sciences,Economics,300,Male,17,78,6,79,2,1,High,High,Yes,Medium,Yes,Low,Medium,Private Secondary,Neutral,No,College,Near,70,A,70-79%,No
-KU/2023/POL/0695,Social Sciences,Political Science,200,Male,10,71,8,59,1,0,Medium,Medium,Yes,Low,Yes,Low,Low,Private Secondary,Positive,No,College,Near,95,A,70-79%,No
+KU/2023/POL/0695,Social Sciences,Political Science,200,Male,10,71,8,59,1,0,Medium,Medium,Yes,Low,Yes,Low,Low,Private Secondary,Positive,No,College,Near,96,A,70-79%,No
 KU/2021/ECO/0696,Social Sciences,Economics,400,Female,8,84,8,73,3,1,Medium,High,Yes,Medium,Yes,Medium,Medium,Public Secondary,Positive,No,Secondary,Moderate,66,B,80-89%,No
 KU/2023/ECO/0697,Social Sciences,Economics,200,Male,8,78,6,51,0,1,High,Medium,No,Medium,Yes,Low,Medium,Public Secondary,Positive,No,Secondary,Near,61,B,70-79%,Yes
 KU/2024/ECO/0698,Social Sciences,Economics,100,Male,17,88,5,75,1,0,Medium,Medium,Yes,Medium,Yes,Low,Medium,Public Secondary,Negative,No,College,Near,70,A,80-89%,No
@@ -787,7 +787,7 @@ KU/2023/MAC/0785,Social Sciences,Mass Communication,200,Male,9,66,8,94,0,5,Mediu
 KU/2022/EDU/0786,Arts & Education,Education,300,Male,15,75,7,54,2,2,High,Low,Yes,Medium,Yes,Low,Medium,Public Secondary,Neutral,No,Postgraduate,Near,70,A,70-79%,No
 KU/2024/MAC/0787,Social Sciences,Mass Communication,100,Female,2,84,5,52,0,3,Medium,High,Yes,Low,Yes,Low,High,Private Secondary,Negative,No,Secondary,Near,58,C,80-89%,Yes
 KU/2022/MCB/0788,Science,Microbiology,300,Female,18,93,7,53,2,0,Low,Medium,Yes,High,Yes,Medium,Medium,Public Secondary,Neutral,No,College,Near,68,B,90-100%,No
-KU/2023/ACC/0789,Social Sciences,Accounting,200,Female,8,84,6,100,0,0,Medium,High,Yes,Low,Yes,Low,High,Private Secondary,Positive,No,College,Far,97,A,80-89%,No
+KU/2023/ACC/0789,Social Sciences,Accounting,200,Female,8,84,6,100,0,0,Medium,High,Yes,Low,Yes,Low,High,Private Secondary,Positive,No,College,Far,98,A,80-89%,No
 KU/2024/MAC/0790,Social Sciences,Mass Communication,100,Female,24,66,7,54,0,2,Medium,Medium,Yes,Medium,Yes,Low,Medium,Private Secondary,Negative,No,Secondary,Near,62,B,<70%,No
 KU/2021/PHY/0791,Science,Physics,400,Male,15,97,5,87,1,5,Medium,Medium,No,Medium,Yes,Low,Medium,Public Secondary,Positive,No,Secondary,Near,73,A,90-100%,No
 KU/2023/POL/0792,Social Sciences,Political Science,200,Female,18,85,7,70,1,5,Medium,High,Yes,Medium,Yes,Medium,Medium,Public Secondary,Negative,No,Secondary,Near,73,A,80-89%,No
@@ -883,7 +883,7 @@ KU/2024/ENG/0881,Arts & Education,English,100,Male,26,92,6,86,0,5,Medium,Low,No,
 KU/2021/ECO/0882,Social Sciences,Economics,400,Male,12,67,5,83,3,1,Low,Medium,No,High,Yes,Low,High,Public Secondary,Neutral,No,College,Moderate,66,B,<70%,No
 KU/2024/ACC/0883,Social Sciences,Accounting,100,Male,23,95,8,77,2,5,Low,High,No,Medium,Yes,Medium,Medium,Private Secondary,Neutral,Yes,Secondary,Moderate,73,A,90-100%,No
 KU/2022/MAC/0884,Social Sciences,Mass Communication,300,Female,9,99,8,81,1,5,Medium,High,No,Medium,Yes,Low,Medium,Public Secondary,Positive,No,College,Near,72,A,90-100%,No
-KU/2023/POL/0885,Social Sciences,Political Science,200,Male,14,64,6,79,0,3,Medium,Medium,Yes,High,Yes,Medium,Medium,Private Secondary,Positive,No,Secondary,Near,98,A,<70%,Yes
+KU/2023/POL/0885,Social Sciences,Political Science,200,Male,14,64,6,79,0,3,Medium,Medium,Yes,High,Yes,Medium,Medium,Private Secondary,Positive,No,Secondary,Near,100,A,<70%,Yes
 KU/2023/ENG/0886,Arts & Education,English,200,Female,23,88,8,95,3,0,High,High,No,Low,Yes,Low,Medium,Public Secondary,Positive,No,Secondary,Near,37,F,80-89%,Yes
 KU/2024/CVE/0887,Engineering,Civil Engineering,100,Female,11,75,7,61,4,4,High,Medium,No,Low,Yes,High,Medium,Private Secondary,Neutral,No,Secondary,Moderate,58,C,70-79%,Yes
 KU/2024/ECO/0888,Social Sciences,Economics,100,Male,11,90,6,70,0,1,Low,High,No,Medium,No,Medium,High,Public Secondary,Neutral,No,Secondary,Near,61,B,90-100%,Yes
@@ -895,7 +895,7 @@ KU/2023/ACC/0893,Social Sciences,Accounting,200,Female,17,63,8,59,1,3,Medium,Hig
 KU/2023/ACC/0894,Social Sciences,Accounting,200,Male,37,99,8,72,0,3,Low,High,No,Medium,Yes,Low,Medium,Public Secondary,Positive,No,Not Recorded,Near,82,A,90-100%,No
 KU/2024/PHY/0895,Science,Physics,100,Female,21,84,7,84,1,3,High,Medium,No,High,Yes,High,Medium,Private Secondary,Neutral,No,College,Moderate,67,B,80-89%,No
 KU/2024/PHY/0896,Science,Physics,100,Female,21,96,8,60,2,6,Medium,Medium,Yes,Medium,Yes,Low,High,Private Secondary,Negative,No,Secondary,Near,70,A,90-100%,No
-KU/2021/MAC/0897,Social Sciences,Mass Communication,400,Female,15,69,6,94,1,6,Low,Medium,No,Medium,Yes,Low,Low,Public Secondary,Negative,No,Secondary,Near,97,A,<70%,No
+KU/2021/MAC/0897,Social Sciences,Mass Communication,400,Female,15,69,6,94,1,6,Low,Medium,No,Medium,Yes,Low,Low,Public Secondary,Negative,No,Secondary,Near,98,A,<70%,No
 KU/2021/BCH/0898,Science,Biochemistry,400,Female,24,71,9,58,2,0,Medium,Medium,Yes,Medium,Yes,Low,Medium,Public Secondary,Negative,No,College,Near,65,B,70-79%,No
 KU/2022/EDU/0899,Arts & Education,Education,300,Female,1,64,6,84,1,2,Medium,Low,No,Low,Yes,Low,Medium,Public Secondary,Negative,No,College,Moderate,53,C,<70%,Yes
 KU/2023/ECO/0900,Social Sciences,Economics,200,Female,24,89,8,49,1,3,Medium,Medium,Yes,Low,Yes,Medium,Medium,Public Secondary,Positive,No,Postgraduate,Near,75,A,80-89%,No
@@ -943,7 +943,7 @@ KU/2022/CSC/0941,Science,Computer Science,300,Female,15,94,10,68,1,5,Low,High,Ye
 KU/2022/HIS/0942,Arts & Education,History,300,Female,26,79,10,97,5,3,Medium,Medium,Yes,Low,Yes,Low,Medium,Private Secondary,Neutral,Yes,Postgraduate,Near,72,A,70-79%,No
 KU/2021/MAC/0943,Social Sciences,Mass Communication,400,Male,23,77,7,76,2,6,Medium,High,Yes,Low,Yes,Medium,Medium,Private Secondary,Positive,No,Postgraduate,Near,73,A,70-79%,No
 KU/2021/MCB/0944,Science,Microbiology,400,Female,22,66,8,100,0,1,Medium,High,Yes,Low,Yes,Low,Medium,Public Secondary,Positive,No,Secondary,Near,62,B,<70%,No
-KU/2023/EEE/0945,Engineering,Electrical Engineering,200,Female,26,96,7,76,0,0,High,High,No,Medium,No,Low,Medium,Public Secondary,Neutral,No,Secondary,Moderate,89,A,90-100%,No
+KU/2023/EEE/0945,Engineering,Electrical Engineering,200,Female,26,96,7,76,0,0,High,High,No,Medium,No,Low,Medium,Public Secondary,Neutral,No,Secondary,Moderate,90,A,90-100%,No
 KU/2021/POL/0946,Social Sciences,Political Science,400,Female,6,61,7,84,3,6,Medium,Medium,Yes,Medium,Yes,Medium,Medium,Private Secondary,Neutral,No,Secondary,Near,60,B,<70%,Yes
 KU/2023/HIS/0947,Arts & Education,History,200,Female,28,83,7,96,0,0,Low,Low,Yes,Low,No,High,Medium,Public Secondary,Positive,No,Secondary,Near,71,A,80-89%,No
 KU/2022/ACC/0948,Social Sciences,Accounting,300,Female,11,69,7,77,5,0,High,Low,No,Medium,Yes,Medium,High,Public Secondary,Positive,No,College,Near,71,A,<70%,No
@@ -1061,7 +1061,7 @@ KU/2024/MEE/1059,Engineering,Mechanical Engineering,100,Female,17,61,8,95,2,6,Me
 KU/2021/EDU/1060,Arts & Education,Education,400,Female,14,89,6,66,1,4,Medium,Medium,Yes,Low,Yes,Medium,Medium,Private Secondary,Positive,No,College,Near,68,B,80-89%,No
 KU/2024/ECO/1061,Social Sciences,Economics,100,Female,27,90,7,61,4,4,Low,Medium,Yes,Medium,Yes,Medium,Medium,Private Secondary,Positive,No,Postgraduate,Moderate,71,A,90-100%,No
 KU/2022/ECO/1062,Social Sciences,Economics,300,Female,20,68,6,55,2,1,Medium,Low,No,Low,Yes,Medium,High,Public Secondary,Neutral,No,Secondary,Moderate,55,C,<70%,Yes
-KU/2021/POL/1063,Social Sciences,Political Science,400,Male,25,73,8,96,3,2,Low,Medium,No,Low,Yes,Medium,Medium,Public Secondary,Neutral,Yes,Secondary,Near,88,A,70-79%,No
+KU/2021/POL/1063,Social Sciences,Political Science,400,Male,25,73,8,96,3,2,Low,Medium,No,Low,Yes,Medium,Medium,Public Secondary,Neutral,Yes,Secondary,Near,89,A,70-79%,No
 KU/2021/POL/1064,Social Sciences,Political Science,400,Female,13,84,8,99,2,3,Medium,Low,No,Medium,Yes,Medium,Medium,Public Secondary,Positive,No,Secondary,Near,68,B,80-89%,No
 KU/2022/HIS/1065,Arts & Education,History,300,Female,26,96,8,94,2,4,High,Medium,No,Low,Yes,Medium,Medium,Private Secondary,Negative,No,College,Near,77,A,90-100%,No
 KU/2024/CSC/1066,Science,Computer Science,100,Female,23,94,8,50,1,6,High,Low,No,Medium,Yes,Low,Medium,Public Secondary,Neutral,No,College,Near,68,B,90-100%,No
@@ -1121,7 +1121,7 @@ KU/2021/MAC/1119,Social Sciences,Mass Communication,400,Female,29,77,5,79,1,6,Me
 KU/2024/CSC/1120,Science,Computer Science,100,Male,11,78,7,89,3,4,Medium,Low,No,Medium,Yes,Medium,High,Public Secondary,Positive,No,Secondary,Near,67,B,70-79%,No
 KU/2021/CSC/1121,Science,Computer Science,400,Female,17,74,9,69,1,4,Low,Medium,Yes,Low,Yes,Medium,High,Public Secondary,Positive,No,Secondary,Near,68,B,70-79%,No
 KU/2024/MAC/1122,Social Sciences,Mass Communication,100,Male,18,68,5,81,1,5,High,Medium,Yes,Medium,Yes,Medium,Medium,Public Secondary,Negative,No,Postgraduate,Near,67,B,<70%,No
-KU/2023/CSC/1123,Science,Computer Science,200,Male,30,97,7,54,2,5,Low,Medium,Yes,Low,Yes,Low,High,Public Secondary,Positive,No,College,Moderate,92,A,90-100%,No
+KU/2023/CSC/1123,Science,Computer Science,200,Male,30,97,7,54,2,5,Low,Medium,Yes,Low,Yes,Low,High,Public Secondary,Positive,No,College,Moderate,93,A,90-100%,No
 KU/2022/MEE/1124,Engineering,Mechanical Engineering,300,Male,11,71,5,91,0,0,Medium,Low,Yes,Medium,Yes,Medium,High,Public Secondary,Positive,No,Secondary,Near,61,B,70-79%,Yes
 KU/2023/CSC/1125,Science,Computer Science,200,Female,23,79,6,88,2,0,Medium,Medium,Yes,Medium,Yes,Low,Medium,Private Secondary,Positive,No,Secondary,Moderate,67,B,70-79%,No
 KU/2022/ECO/1126,Social Sciences,Economics,300,Female,20,91,7,100,0,2,Medium,High,No,Medium,No,Low,Low,Public Secondary,Negative,No,Postgraduate,Near,70,A,90-100%,No
@@ -1152,7 +1152,7 @@ KU/2023/CSC/1150,Science,Computer Science,200,Male,26,93,6,69,2,3,High,Medium,No
 KU/2021/BCH/1151,Science,Biochemistry,400,Male,17,100,9,100,1,4,Medium,Medium,Yes,Low,Yes,Low,Medium,Public Secondary,Positive,No,College,Moderate,74,A,90-100%,No
 KU/2021/MCB/1152,Science,Microbiology,400,Male,18,100,7,81,1,5,Medium,Low,Yes,Medium,No,Medium,Low,Public Secondary,Positive,No,Secondary,Not Recorded,71,A,90-100%,No
 KU/2024/MAC/1153,Social Sciences,Mass Communication,100,Male,16,96,8,98,1,5,High,Low,Yes,Medium,Yes,High,Medium,Public Secondary,Negative,Yes,Secondary,Near,52,C,90-100%,Yes
-KU/2024/ACC/1154,Social Sciences,Accounting,100,Female,16,99,7,74,0,1,Medium,Medium,Yes,Medium,Yes,High,Low,Private Secondary,Negative,No,College,Near,94,A,90-100%,No
+KU/2024/ACC/1154,Social Sciences,Accounting,100,Female,16,99,7,74,0,1,Medium,Medium,Yes,Medium,Yes,High,Low,Private Secondary,Negative,No,College,Near,95,A,90-100%,No
 KU/2023/MAC/1155,Social Sciences,Mass Communication,200,Female,15,75,6,99,2,4,Medium,High,No,Medium,Yes,Medium,Medium,Private Secondary,Positive,No,Secondary,Moderate,66,B,70-79%,No
 KU/2021/BCH/1156,Science,Biochemistry,400,Male,22,63,4,88,4,6,High,Low,Yes,Low,Yes,Medium,High,Public Secondary,Neutral,No,Postgraduate,Moderate,67,B,<70%,Yes
 KU/2023/MAC/1157,Social Sciences,Mass Communication,200,Female,4,82,7,89,3,4,Medium,Medium,Yes,Medium,Yes,Low,Medium,Private Secondary,Positive,No,College,Near,67,B,80-89%,No
@@ -1202,7 +1202,7 @@ KU/2022/ACC/1200,Social Sciences,Accounting,300,Female,18,68,7,55,1,0,Medium,Med
 KU/2023/MCB/1201,Science,Microbiology,200,Male,9,89,7,66,2,0,Low,Medium,No,Medium,Yes,Low,Medium,Private Secondary,Neutral,No,College,Far,63,B,80-89%,No
 KU/2024/ECO/1202,Social Sciences,Economics,100,Female,12,78,10,82,1,1,Low,Medium,Yes,High,Yes,Medium,Medium,Private Secondary,Neutral,No,Secondary,Near,55,C,70-79%,Yes
 KU/2022/CVE/1203,Engineering,Civil Engineering,300,Female,20,62,10,76,2,5,Medium,High,Yes,Medium,Yes,High,Low,Private Secondary,Negative,Yes,College,Near,60,B,<70%,Yes
-KU/2023/CVE/1204,Engineering,Civil Engineering,200,Male,29,85,6,68,1,5,Low,Medium,No,High,No,Medium,High,Public Secondary,Neutral,No,Secondary,Near,93,A,80-89%,No
+KU/2023/CVE/1204,Engineering,Civil Engineering,200,Male,29,85,6,68,1,5,Low,Medium,No,High,No,Medium,High,Public Secondary,Neutral,No,Secondary,Near,94,A,80-89%,No
 KU/2022/BCH/1205,Science,Biochemistry,300,Male,27,61,6,97,1,6,Low,Medium,No,Medium,No,Low,High,Private Secondary,Positive,No,Postgraduate,Near,62,B,<70%,Yes
 KU/2021/MEE/1206,Engineering,Mechanical Engineering,400,Female,23,72,9,58,2,2,Low,High,Yes,Low,Yes,Low,High,Private Secondary,Neutral,No,Secondary,Near,63,B,70-79%,No
 KU/2023/BCH/1207,Science,Biochemistry,200,Male,25,75,9,59,0,5,Medium,High,Yes,High,Yes,Medium,Medium,Public Secondary,Neutral,No,Secondary,Moderate,71,A,70-79%,No
@@ -1270,7 +1270,7 @@ KU/2024/EEE/1268,Engineering,Electrical Engineering,100,Female,28,95,8,49,3,5,Hi
 KU/2024/MEE/1269,Engineering,Mechanical Engineering,100,Male,14,98,6,85,1,4,Low,High,Yes,High,Yes,Medium,Medium,Public Secondary,Negative,No,Postgraduate,Near,70,A,90-100%,No
 KU/2023/MAC/1270,Social Sciences,Mass Communication,200,Female,29,87,10,87,1,6,Medium,Medium,No,Medium,Yes,Low,Medium,Private Secondary,Neutral,No,College,Near,71,A,80-89%,No
 KU/2022/MAC/1271,Social Sciences,Mass Communication,300,Male,14,90,4,86,5,4,Low,High,Yes,High,Yes,Medium,High,Public Secondary,Negative,No,Secondary,Near,72,A,90-100%,No
-KU/2023/PHY/1272,Science,Physics,200,Female,8,86,6,62,2,2,High,Medium,Yes,Medium,Yes,Medium,Medium,Public Secondary,Neutral,No,Secondary,Moderate,97,A,80-89%,No
+KU/2023/PHY/1272,Science,Physics,200,Female,8,86,6,62,2,2,High,Medium,Yes,Medium,Yes,Medium,Medium,Public Secondary,Neutral,No,Secondary,Moderate,98,A,80-89%,No
 KU/2022/ECO/1273,Social Sciences,Economics,300,Male,22,95,6,62,1,5,High,Medium,Yes,Low,Yes,Low,Medium,Private Secondary,Neutral,No,College,Moderate,70,A,90-100%,No
 KU/2023/MCB/1274,Science,Microbiology,200,Male,15,95,7,71,1,6,Low,Medium,No,Low,Yes,Medium,Medium,Public Secondary,Neutral,No,Postgraduate,Near,71,A,90-100%,No
 KU/2023/EEE/1275,Engineering,Electrical Engineering,200,Female,24,70,7,72,1,0,Low,Medium,Yes,Low,Yes,Medium,High,Private Secondary,Neutral,No,Postgraduate,Near,60,B,70-79%,Yes
@@ -1319,7 +1319,7 @@ KU/2024/ACC/1317,Social Sciences,Accounting,100,Male,10,78,5,74,0,1,Medium,High,
 KU/2021/CVE/1318,Engineering,Civil Engineering,400,Female,19,99,7,53,0,0,Medium,High,No,Medium,Yes,Medium,Medium,Public Secondary,Positive,No,Postgraduate,Moderate,69,B,90-100%,No
 KU/2024/CSC/1319,Science,Computer Science,100,Male,22,72,6,81,3,1,Medium,Low,Yes,Medium,Yes,Medium,Medium,Public Secondary,Positive,No,Postgraduate,Near,64,B,70-79%,No
 KU/2021/HIS/1320,Arts & Education,History,400,Female,28,91,8,51,4,0,Medium,Medium,Yes,Medium,Yes,Medium,Medium,Private Secondary,Positive,No,Secondary,Near,77,A,90-100%,No
-KU/2021/MAC/1321,Social Sciences,Mass Communication,400,Female,32,91,6,60,0,2,Medium,Medium,No,Low,Yes,Medium,Medium,Public Secondary,Positive,No,Postgraduate,Far,94,A,90-100%,No
+KU/2021/MAC/1321,Social Sciences,Mass Communication,400,Female,32,91,6,60,0,2,Medium,Medium,No,Low,Yes,Medium,Medium,Public Secondary,Positive,No,Postgraduate,Far,95,A,90-100%,No
 KU/2024/EDU/1322,Arts & Education,Education,100,Male,12,60,7,61,3,5,Medium,Medium,No,Medium,Yes,Medium,High,Public Secondary,Neutral,Yes,Secondary,Moderate,62,B,<70%,Yes
 KU/2024/CSC/1323,Science,Computer Science,100,Male,22,68,5,58,1,6,High,Medium,No,Medium,Yes,Low,Medium,Private Secondary,Neutral,No,Secondary,Near,65,B,<70%,No
 KU/2021/CSC/1324,Science,Computer Science,400,Male,17,70,7,90,1,0,Medium,Medium,Yes,Low,Yes,High,Medium,Private Secondary,Positive,No,Postgraduate,Near,64,B,70-79%,No
@@ -1481,7 +1481,7 @@ KU/2023/ACC/1479,Social Sciences,Accounting,200,Male,23,79,5,50,1,1,High,Medium,
 KU/2021/MAC/1480,Social Sciences,Mass Communication,400,Female,23,67,7,81,0,0,High,Medium,No,Low,Yes,Medium,Low,Public Secondary,Negative,No,Secondary,Moderate,64,B,<70%,No
 KU/2022/POL/1481,Social Sciences,Political Science,300,Female,23,67,8,89,0,4,Medium,Medium,No,Medium,Yes,Medium,Medium,Private Secondary,Positive,No,Secondary,Near,63,B,<70%,No
 KU/2024/ACC/1482,Social Sciences,Accounting,100,Female,21,75,8,72,2,1,High,High,Yes,Medium,Yes,Medium,High,Private Secondary,Neutral,No,Postgraduate,Near,65,B,70-79%,No
-KU/2023/CVE/1483,Engineering,Civil Engineering,200,Male,27,60,7,86,2,6,Medium,High,Yes,Low,Yes,Medium,Medium,Public Secondary,Negative,Yes,Secondary,Moderate,94,A,<70%,Yes
+KU/2023/CVE/1483,Engineering,Civil Engineering,200,Male,27,60,7,86,2,6,Medium,High,Yes,Low,Yes,Medium,Medium,Public Secondary,Negative,Yes,Secondary,Moderate,95,A,<70%,Yes
 KU/2024/BCH/1484,Science,Biochemistry,100,Female,24,98,7,51,1,2,Medium,Medium,Yes,Medium,Yes,Low,High,Private Secondary,Negative,No,Secondary,Moderate,64,B,90-100%,No
 KU/2021/BCH/1485,Science,Biochemistry,400,Female,5,64,8,73,3,0,Medium,Low,No,High,Yes,Low,Medium,Private Secondary,Negative,No,Secondary,Moderate,54,C,<70%,Yes
 KU/2022/EDU/1486,Arts & Education,Education,300,Male,26,62,8,83,2,5,High,Medium,Yes,Medium,Yes,Medium,High,Private Secondary,Neutral,No,Secondary,Near,70,A,<70%,Yes
@@ -1706,7 +1706,7 @@ KU/2024/MEE/1704,Engineering,Mechanical Engineering,100,Male,24,98,6,91,1,3,Medi
 KU/2024/ECO/1705,Social Sciences,Economics,100,Female,24,88,8,89,2,5,Low,High,Yes,Low,Yes,Medium,Medium,Private Secondary,Positive,Yes,Secondary,Moderate,73,A,80-89%,No
 KU/2022/CSC/1706,Science,Computer Science,300,Male,20,79,5,59,1,2,High,Medium,Yes,High,Yes,Medium,Medium,Public Secondary,Positive,No,Secondary,Near,64,B,70-79%,No
 KU/2024/CSC/1707,Science,Computer Science,100,Female,22,68,6,75,1,6,Medium,High,Yes,Medium,Yes,Medium,Low,Public Secondary,Neutral,No,Secondary,Near,63,B,<70%,No
-KU/2023/ECO/1708,Social Sciences,Economics,200,Female,8,97,5,68,1,3,High,High,No,Medium,Yes,Medium,Low,Public Secondary,Neutral,No,Postgraduate,Near,93,A,90-100%,No
+KU/2023/ECO/1708,Social Sciences,Economics,200,Female,8,97,5,68,1,3,High,High,No,Medium,Yes,Medium,Low,Public Secondary,Neutral,No,Postgraduate,Near,94,A,90-100%,No
 KU/2024/HIS/1709,Arts & Education,History,100,Male,32,69,6,59,3,1,Low,Medium,Yes,Medium,Yes,Medium,Medium,Public Secondary,Negative,No,Secondary,Moderate,66,B,<70%,No
 KU/2021/ENG/1710,Arts & Education,English,400,Female,27,83,7,64,1,2,Low,Medium,Yes,Medium,Yes,Medium,Low,Public Secondary,Neutral,No,Secondary,Near,76,A,80-89%,No
 KU/2021/EDU/1711,Arts & Education,Education,400,Female,10,81,6,55,4,0,High,Medium,No,Medium,Yes,Medium,Medium,Public Secondary,Neutral,No,College,Near,71,A,80-89%,No
@@ -1721,10 +1721,10 @@ KU/2023/CSC/1719,Science,Computer Science,200,Female,16,95,6,79,0,5,Medium,Low,Y
 KU/2022/MCB/1720,Science,Microbiology,300,Female,24,62,7,53,0,3,Medium,High,No,Medium,Yes,Medium,Medium,Public Secondary,Neutral,No,College,Near,61,B,<70%,Yes
 KU/2024/CSC/1721,Science,Computer Science,100,Female,16,61,7,64,2,2,High,Medium,Yes,High,Yes,High,Low,Public Secondary,Positive,No,College,Near,64,B,<70%,Yes
 KU/2024/MCB/1722,Science,Microbiology,100,Male,21,63,7,68,4,2,High,Low,Yes,Medium,Yes,Medium,Low,Public Secondary,Positive,No,Secondary,Moderate,57,C,<70%,Yes
-KU/2021/EDU/1723,Arts & Education,Education,400,Male,23,88,4,78,1,3,Low,Medium,No,High,Yes,Low,Medium,Public Secondary,Neutral,No,Postgraduate,Moderate,88,A,80-89%,No
+KU/2021/EDU/1723,Arts & Education,Education,400,Male,23,88,4,78,1,3,Low,Medium,No,High,Yes,Low,Medium,Public Secondary,Neutral,No,Postgraduate,Moderate,89,A,80-89%,No
 KU/2024/MCB/1724,Science,Microbiology,100,Female,17,80,10,99,3,0,Medium,Medium,No,High,Yes,Medium,Low,Public Secondary,Neutral,No,Secondary,Near,70,A,80-89%,No
 KU/2024/CSC/1725,Science,Computer Science,100,Male,18,64,8,91,0,0,High,Medium,Yes,Low,Yes,Low,Medium,Public Secondary,Positive,No,College,Near,62,B,<70%,Yes
-KU/2022/ENG/1726,Arts & Education,English,300,Male,19,62,7,49,1,2,Low,Medium,Yes,Medium,Yes,Low,Medium,Public Secondary,Neutral,No,Postgraduate,Near,94,A,<70%,Yes
+KU/2022/ENG/1726,Arts & Education,English,300,Male,19,62,7,49,1,2,Low,Medium,Yes,Medium,Yes,Low,Medium,Public Secondary,Neutral,No,Postgraduate,Near,95,A,<70%,Yes
 KU/2021/MEE/1727,Engineering,Mechanical Engineering,400,Male,23,88,7,88,1,3,High,Low,No,High,Yes,Low,High,Public Secondary,Positive,No,College,Near,73,A,80-89%,No
 KU/2024/MAC/1728,Social Sciences,Mass Communication,100,Male,14,93,5,81,2,4,High,Medium,No,Medium,Yes,Low,Medium,Public Secondary,Positive,No,Secondary,Near,70,A,90-100%,No
 KU/2023/MAC/1729,Social Sciences,Mass Communication,200,Female,16,77,7,100,8,0,Medium,High,No,Low,Yes,High,High,Private Secondary,Positive,No,Secondary,Near,74,A,70-79%,No
@@ -1744,7 +1744,7 @@ KU/2021/ACC/1742,Social Sciences,Accounting,400,Male,15,66,9,87,1,3,Low,Medium,N
 KU/2024/ACC/1743,Social Sciences,Accounting,100,Male,22,68,5,98,2,1,Medium,Low,No,Medium,Yes,High,Medium,Public Secondary,Positive,No,Postgraduate,Near,67,B,<70%,No
 KU/2022/EEE/1744,Engineering,Electrical Engineering,300,Female,30,73,9,69,1,4,High,Medium,No,Low,Yes,High,High,Public Secondary,Positive,No,Secondary,Near,68,B,70-79%,No
 KU/2022/POL/1745,Social Sciences,Political Science,300,Female,17,93,5,92,1,0,Low,Low,Yes,Medium,Yes,High,High,Public Secondary,Neutral,No,College,Near,70,A,90-100%,No
-KU/2022/PHY/1746,Science,Physics,300,Male,18,85,7,73,2,5,Medium,Medium,No,Medium,Yes,Medium,High,Public Secondary,Neutral,No,Secondary,Moderate,89,A,80-89%,No
+KU/2022/PHY/1746,Science,Physics,300,Male,18,85,7,73,2,5,Medium,Medium,No,Medium,Yes,Medium,High,Public Secondary,Neutral,No,Secondary,Moderate,90,A,80-89%,No
 KU/2021/MEE/1747,Engineering,Mechanical Engineering,400,Female,9,65,8,85,1,6,High,Low,No,Medium,Yes,Low,Medium,Public Secondary,Neutral,No,Postgraduate,Near,58,C,<70%,Yes
 KU/2021/ECO/1748,Social Sciences,Economics,400,Male,15,86,7,90,3,1,Medium,Low,Yes,Low,No,Medium,Medium,Public Secondary,Negative,No,College,Moderate,66,B,80-89%,No
 KU/2024/CSC/1749,Science,Computer Science,100,Female,17,76,6,80,0,4,Medium,Low,No,Medium,Yes,High,Medium,Public Secondary,Neutral,No,Secondary,Near,66,B,70-79%,No
@@ -1947,7 +1947,7 @@ KU/2022/ACC/1945,Social Sciences,Accounting,300,Male,22,83,7,79,1,2,Medium,Mediu
 KU/2021/MEE/1946,Engineering,Mechanical Engineering,400,Female,10,61,9,56,4,0,Medium,High,Yes,Medium,Yes,Low,Low,Public Secondary,Neutral,No,Secondary,Near,54,C,<70%,Yes
 KU/2024/ECO/1947,Social Sciences,Economics,100,Female,19,60,9,90,0,1,High,High,Yes,Low,Yes,Medium,High,Public Secondary,Positive,No,Secondary,Near,53,C,<70%,Yes
 KU/2024/EEE/1948,Engineering,Electrical Engineering,100,Female,12,70,4,83,1,0,Low,High,Yes,Medium,Yes,Low,Medium,Public Secondary,Neutral,No,College,Far,60,B,70-79%,Yes
-KU/2021/PHY/1949,Science,Physics,400,Male,15,98,7,77,1,6,Medium,Medium,No,High,Yes,Medium,Medium,Public Secondary,Positive,No,College,Far,89,A,90-100%,No
+KU/2021/PHY/1949,Science,Physics,400,Male,15,98,7,77,1,6,Medium,Medium,No,High,Yes,Medium,Medium,Public Secondary,Positive,No,College,Far,90,A,90-100%,No
 KU/2024/EDU/1950,Arts & Education,Education,100,Male,12,86,9,57,0,6,High,Medium,Yes,Medium,Yes,Medium,High,Private Secondary,Positive,No,Secondary,Moderate,68,B,80-89%,No
 KU/2023/MAC/1951,Social Sciences,Mass Communication,200,Male,17,71,7,70,0,5,Low,High,Yes,Medium,Yes,High,Medium,Public Secondary,Positive,No,Postgraduate,Near,65,B,70-79%,No
 KU/2024/EEE/1952,Engineering,Electrical Engineering,100,Male,24,77,6,91,3,1,High,High,No,Medium,Yes,Medium,Medium,Public Secondary,Positive,No,Not Recorded,Near,67,B,70-79%,No
@@ -2341,7 +2341,7 @@ KU/2023/BCH/2339,Science,Biochemistry,200,Male,21,97,10,55,5,3,Medium,Medium,No,
 KU/2022/HIS/2340,Arts & Education,History,300,Female,16,66,8,82,1,0,Medium,Medium,No,Low,Yes,Low,High,Private Secondary,Neutral,No,Secondary,Near,62,B,<70%,No
 KU/2024/PHY/2341,Science,Physics,100,Male,9,84,8,53,1,1,Low,Medium,Yes,Medium,Yes,Medium,Medium,Public Secondary,Negative,No,College,Far,64,B,80-89%,No
 KU/2023/MCB/2342,Science,Microbiology,200,Male,16,72,9,54,2,2,Low,High,No,Low,Yes,Low,Medium,Public Secondary,Negative,No,Secondary,Far,62,B,70-79%,No
-KU/2024/EDU/2343,Arts & Education,Education,100,Female,27,61,6,81,2,3,Medium,Medium,Yes,Medium,Yes,Medium,Medium,Public Secondary,Neutral,Yes,Secondary,Near,97,A,<70%,Yes
+KU/2024/EDU/2343,Arts & Education,Education,100,Female,27,61,6,81,2,3,Medium,Medium,Yes,Medium,Yes,Medium,Medium,Public Secondary,Neutral,Yes,Secondary,Near,98,A,<70%,Yes
 KU/2023/CVE/2344,Engineering,Civil Engineering,200,Female,18,77,6,89,0,1,Medium,Medium,Yes,Medium,Yes,Medium,Medium,Public Secondary,Positive,No,Secondary,Moderate,65,B,70-79%,No
 KU/2024/PHY/2345,Science,Physics,100,Male,20,64,6,71,0,5,Low,Low,Yes,Low,Yes,Medium,High,Public Secondary,Negative,No,Postgraduate,Near,55,C,<70%,Yes
 KU/2022/BCH/2346,Science,Biochemistry,300,Female,16,64,7,60,2,5,Medium,High,No,Medium,Yes,Medium,High,Public Secondary,Positive,No,College,Near,60,B,<70%,Yes
@@ -2528,7 +2528,7 @@ KU/2022/ACC/2526,Social Sciences,Accounting,300,Male,22,96,5,53,6,6,Low,High,Yes
 KU/2022/EDU/2527,Arts & Education,Education,300,Female,20,99,5,82,1,1,High,High,No,Medium,Yes,Medium,Medium,Public Secondary,Neutral,No,College,Near,72,A,90-100%,No
 KU/2022/POL/2528,Social Sciences,Political Science,300,Female,15,83,5,81,5,3,Medium,Medium,Yes,Medium,Yes,High,Medium,Public Secondary,Negative,No,Secondary,Moderate,69,B,80-89%,No
 KU/2023/ENG/2529,Arts & Education,English,200,Female,23,93,7,81,1,5,Medium,Medium,Yes,Medium,Yes,Low,Medium,Public Secondary,Neutral,Yes,College,Near,75,A,90-100%,No
-KU/2024/ACC/2530,Social Sciences,Accounting,100,Female,18,96,9,97,2,0,High,Medium,Yes,Low,Yes,High,Medium,Public Secondary,Positive,No,College,Near,89,A,90-100%,No
+KU/2024/ACC/2530,Social Sciences,Accounting,100,Female,18,96,9,97,2,0,High,Medium,Yes,Low,Yes,High,Medium,Public Secondary,Positive,No,College,Near,90,A,90-100%,No
 KU/2024/MAC/2531,Social Sciences,Mass Communication,100,Female,12,72,5,64,5,1,Medium,Medium,No,High,Yes,Medium,Not Recorded,Public Secondary,Positive,No,Not Recorded,Moderate,60,B,70-79%,Yes
 KU/2024/ACC/2532,Social Sciences,Accounting,100,Female,20,72,9,96,1,6,Low,Medium,Yes,High,No,Medium,Medium,Public Secondary,Positive,No,Secondary,Near,62,B,70-79%,No
 KU/2022/PHY/2533,Science,Physics,300,Male,17,100,8,52,1,3,Medium,Medium,Yes,Medium,Yes,Medium,Medium,Public Secondary,Negative,No,College,Moderate,69,B,90-100%,No
@@ -2542,7 +2542,7 @@ KU/2023/ECO/2540,Social Sciences,Economics,200,Male,20,62,6,74,4,5,High,Low,Yes,
 KU/2022/HIS/2541,Arts & Education,History,300,Female,25,69,9,69,2,5,Low,Medium,Yes,Medium,Yes,Low,Low,Public Secondary,Neutral,Yes,Postgraduate,Far,69,B,<70%,No
 KU/2024/MAC/2542,Social Sciences,Mass Communication,100,Male,26,84,6,91,0,2,High,Low,Yes,Medium,Yes,High,Medium,Public Secondary,Positive,No,Secondary,Near,75,A,80-89%,No
 KU/2021/POL/2543,Social Sciences,Political Science,400,Male,21,66,6,64,0,1,High,Medium,Yes,Medium,Yes,Low,High,Public Secondary,Negative,Yes,Postgraduate,Moderate,61,B,<70%,Yes
-KU/2024/MCB/2544,Science,Microbiology,100,Male,21,78,5,77,2,5,High,High,Yes,Medium,Yes,Low,Medium,Private Secondary,Negative,No,Secondary,Moderate,99,A,70-79%,No
+KU/2024/MCB/2544,Science,Microbiology,100,Male,21,78,5,77,2,5,High,High,Yes,Medium,Yes,Low,Medium,Private Secondary,Negative,No,Secondary,Moderate,100,A,70-79%,No
 KU/2021/EEE/2545,Engineering,Electrical Engineering,400,Female,17,91,9,76,1,5,Low,High,Yes,Low,Yes,High,Medium,Private Secondary,Positive,No,College,Moderate,67,B,90-100%,No
 KU/2021/ENG/2546,Arts & Education,English,400,Male,4,70,10,85,1,6,Medium,High,Yes,Medium,Yes,High,Medium,Public Secondary,Neutral,No,College,Moderate,65,B,70-79%,No
 KU/2024/PHY/2547,Science,Physics,100,Male,23,72,8,98,1,5,Medium,Medium,No,Low,Yes,Medium,Medium,Private Secondary,Neutral,No,Secondary,Far,64,B,70-79%,No
@@ -2705,7 +2705,7 @@ KU/2023/ACC/2703,Social Sciences,Accounting,200,Female,13,79,7,81,1,2,Medium,Med
 KU/2021/ACC/2704,Social Sciences,Accounting,400,Female,4,95,6,77,1,2,High,High,Yes,High,Yes,Low,Low,Private Secondary,Positive,No,Secondary,Near,69,B,90-100%,No
 KU/2024/CVE/2705,Engineering,Civil Engineering,100,Male,17,83,7,69,2,2,High,High,Yes,High,Yes,Medium,High,Public Secondary,Negative,No,Postgraduate,Near,63,B,80-89%,No
 KU/2021/PHY/2706,Science,Physics,400,Male,15,71,9,92,0,5,High,Medium,Yes,Medium,Yes,Low,Medium,Private Secondary,Negative,No,Secondary,Moderate,65,B,70-79%,No
-KU/2024/CSC/2707,Science,Computer Science,100,Female,18,76,8,53,1,4,High,Low,Yes,Low,Yes,Low,Medium,Public Secondary,Positive,No,Postgraduate,Near,90,A,70-79%,No
+KU/2024/CSC/2707,Science,Computer Science,100,Female,18,76,8,53,1,4,High,Low,Yes,Low,Yes,Low,Medium,Public Secondary,Positive,No,Postgraduate,Near,91,A,70-79%,No
 KU/2022/MAC/2708,Social Sciences,Mass Communication,300,Female,10,63,7,88,4,1,Low,High,Yes,Low,Yes,High,Medium,Public Secondary,Positive,No,Secondary,Near,62,B,<70%,Yes
 KU/2023/CSC/2709,Science,Computer Science,200,Female,13,73,6,88,1,2,Medium,Medium,Yes,High,Yes,Medium,Medium,Public Secondary,Neutral,No,Secondary,Near,61,B,70-79%,Yes
 KU/2022/POL/2710,Social Sciences,Political Science,300,Female,9,76,9,92,2,1,Low,High,No,Medium,Yes,High,Medium,Public Secondary,Neutral,No,College,Near,67,B,70-79%,No
@@ -2894,7 +2894,7 @@ KU/2024/MAC/2892,Social Sciences,Mass Communication,100,Female,14,97,7,68,2,0,Lo
 KU/2023/EDU/2893,Arts & Education,Education,200,Female,17,79,9,74,1,1,Low,Medium,No,Low,Yes,Medium,Medium,Public Secondary,Negative,No,College,Near,67,B,70-79%,No
 KU/2024/PHY/2894,Science,Physics,100,Female,18,69,6,54,1,6,High,Medium,Yes,Medium,Yes,Medium,High,Public Secondary,Neutral,No,Secondary,Near,57,C,<70%,Yes
 KU/2021/MAC/2895,Social Sciences,Mass Communication,400,Male,16,64,7,91,2,3,Medium,Medium,No,Medium,Yes,Low,Medium,Public Secondary,Positive,No,Postgraduate,Near,62,B,<70%,Yes
-KU/2022/EEE/2896,Engineering,Electrical Engineering,300,Male,25,76,8,60,1,5,Medium,Medium,Yes,Medium,Yes,Medium,High,Private Secondary,Positive,No,Secondary,Near,86,A,70-79%,No
+KU/2022/EEE/2896,Engineering,Electrical Engineering,300,Male,25,76,8,60,1,5,Medium,Medium,Yes,Medium,Yes,Medium,High,Private Secondary,Positive,No,Secondary,Near,87,A,70-79%,No
 KU/2022/MCB/2897,Science,Microbiology,300,Male,18,97,7,59,1,2,Low,Medium,No,Medium,Yes,High,Medium,Public Secondary,Positive,No,Secondary,Moderate,70,A,90-100%,No
 KU/2022/EEE/2898,Engineering,Electrical Engineering,300,Female,19,88,5,58,1,3,Medium,Low,Yes,Medium,Yes,Low,Medium,Private Secondary,Positive,No,Postgraduate,Near,66,B,80-89%,No
 KU/2021/HIS/2899,Arts & Education,History,400,Male,17,97,8,83,0,6,Medium,High,No,Medium,Yes,Medium,High,Public Secondary,Positive,No,Postgraduate,Moderate,78,A,90-100%,No
@@ -3144,7 +3144,7 @@ KU/2022/EDU/3142,Arts & Education,Education,300,Male,21,68,10,89,0,2,Medium,Medi
 KU/2022/CVE/3143,Engineering,Civil Engineering,300,Female,16,65,8,93,3,6,Medium,High,No,Medium,Yes,High,Medium,Public Secondary,Negative,No,College,Moderate,64,B,<70%,No
 KU/2021/EEE/3144,Engineering,Electrical Engineering,400,Male,20,96,8,69,0,4,Low,Medium,No,Medium,Yes,High,Medium,Public Secondary,Positive,No,Secondary,Near,73,A,90-100%,No
 KU/2023/CVE/3145,Engineering,Civil Engineering,200,Female,29,92,6,58,2,4,Medium,High,Yes,Medium,Yes,Low,Medium,Public Secondary,Positive,No,Secondary,Moderate,73,A,90-100%,No
-KU/2024/PHY/3146,Science,Physics,100,Male,9,71,5,93,2,5,Medium,High,Yes,Low,No,Medium,Medium,Public Secondary,Neutral,No,Secondary,Moderate,95,A,70-79%,No
+KU/2024/PHY/3146,Science,Physics,100,Male,9,71,5,93,2,5,Medium,High,Yes,Low,No,Medium,Medium,Public Secondary,Neutral,No,Secondary,Moderate,96,A,70-79%,No
 KU/2022/EEE/3147,Engineering,Electrical Engineering,300,Female,17,70,5,87,1,0,High,Medium,No,High,Yes,Medium,Medium,Public Secondary,Positive,No,Secondary,Near,66,B,70-79%,No
 KU/2022/BCH/3148,Science,Biochemistry,300,Female,15,65,6,56,2,3,High,Medium,No,High,No,Low,High,Public Secondary,Positive,No,Secondary,Far,59,C,<70%,Yes
 KU/2021/MEE/3149,Engineering,Mechanical Engineering,400,Female,17,71,9,58,3,4,Medium,Medium,Yes,Low,Yes,High,Medium,Public Secondary,Neutral,No,Secondary,Near,63,B,70-79%,No
@@ -3152,7 +3152,7 @@ KU/2022/ENG/3150,Arts & Education,English,300,Male,24,66,8,85,1,6,Medium,Low,No,
 KU/2023/PHY/3151,Science,Physics,200,Male,18,75,8,58,4,1,Low,Medium,Yes,High,Yes,Medium,Medium,Public Secondary,Neutral,No,Secondary,Moderate,71,A,70-79%,No
 KU/2024/ACC/3152,Social Sciences,Accounting,100,Male,13,61,7,52,3,2,High,High,No,Medium,Yes,Medium,Medium,Private Secondary,Neutral,No,Secondary,Moderate,61,B,<70%,Yes
 KU/2023/POL/3153,Social Sciences,Political Science,200,Female,24,89,8,94,2,5,Medium,Medium,Yes,Medium,Yes,Low,Medium,Public Secondary,Neutral,No,College,Moderate,71,A,80-89%,No
-KU/2022/ACC/3154,Social Sciences,Accounting,300,Female,16,85,7,100,2,1,High,High,Yes,Medium,Yes,Medium,Medium,Public Secondary,Positive,No,Postgraduate,Near,93,A,80-89%,No
+KU/2022/ACC/3154,Social Sciences,Accounting,300,Female,16,85,7,100,2,1,High,High,Yes,Medium,Yes,Medium,Medium,Public Secondary,Positive,No,Postgraduate,Near,94,A,80-89%,No
 KU/2024/ENG/3155,Arts & Education,English,100,Male,20,62,8,65,0,3,High,Medium,Yes,Low,Yes,High,Medium,Private Secondary,Negative,No,Secondary,Moderate,64,B,<70%,Yes
 KU/2024/MCB/3156,Science,Microbiology,100,Male,17,81,9,68,0,5,Medium,Medium,Yes,High,Yes,Medium,Medium,Public Secondary,Negative,No,Secondary,Near,65,B,80-89%,No
 KU/2021/HIS/3157,Arts & Education,History,400,Female,17,84,4,85,1,3,Medium,Medium,No,Medium,Yes,Low,Medium,Private Secondary,Negative,Yes,Secondary,Near,69,B,80-89%,No
@@ -3255,7 +3255,7 @@ KU/2021/CSC/3253,Science,Computer Science,400,Female,19,73,7,95,2,6,Medium,Mediu
 KU/2024/ENG/3254,Arts & Education,English,100,Male,15,99,8,100,1,3,Low,Medium,No,Medium,Yes,Low,High,Public Secondary,Neutral,No,Secondary,Far,94,A,90-100%,No
 KU/2022/MEE/3255,Engineering,Mechanical Engineering,300,Female,18,72,7,80,0,3,Low,High,Yes,Low,Yes,Medium,High,Private Secondary,Positive,No,Secondary,Near,59,C,70-79%,Yes
 KU/2024/CSC/3256,Science,Computer Science,100,Male,31,64,7,73,2,3,Low,High,Yes,High,Yes,Medium,Medium,Public Secondary,Negative,No,Secondary,Moderate,60,B,<70%,Yes
-KU/2021/MAC/3257,Social Sciences,Mass Communication,400,Male,27,69,7,69,1,0,High,High,No,Low,Yes,Medium,Medium,Private Secondary,Positive,No,Secondary,Near,89,A,<70%,No
+KU/2021/MAC/3257,Social Sciences,Mass Communication,400,Male,27,69,7,69,1,0,High,High,No,Low,Yes,Medium,Medium,Private Secondary,Positive,No,Secondary,Near,100,A,<70%,No
 KU/2024/CSC/3258,Science,Computer Science,100,Female,10,94,7,59,1,1,Medium,Medium,No,High,Yes,Medium,Medium,Public Secondary,Neutral,No,Secondary,Near,70,A,90-100%,No
 KU/2023/BCH/3259,Science,Biochemistry,200,Female,29,80,9,50,1,6,High,Low,No,Low,Yes,Low,Medium,Public Secondary,Positive,No,Secondary,Near,62,B,80-89%,No
 KU/2022/ACC/3260,Social Sciences,Accounting,300,Male,31,99,7,96,0,4,High,Medium,Yes,Medium,Yes,Medium,High,Public Secondary,Positive,No,Secondary,Moderate,81,A,90-100%,No
@@ -3449,7 +3449,7 @@ KU/2023/PHY/3447,Science,Physics,200,Female,15,82,6,67,0,0,Medium,Medium,No,Medi
 KU/2024/ACC/3448,Social Sciences,Accounting,100,Female,19,73,9,86,4,6,Medium,Medium,Yes,Medium,Yes,Medium,High,Public Secondary,Negative,No,Secondary,Near,66,B,70-79%,No
 KU/2022/POL/3449,Social Sciences,Political Science,300,Female,19,89,9,60,0,5,Low,Low,Yes,High,Yes,High,Medium,Public Secondary,Neutral,No,College,Near,63,B,80-89%,No
 KU/2022/PHY/3450,Science,Physics,300,Female,23,67,9,91,1,1,High,High,No,Low,Yes,Medium,Low,Private Secondary,Negative,No,Secondary,Moderate,65,B,<70%,No
-KU/2021/HIS/3451,Arts & Education,History,400,Female,10,74,6,74,1,5,Medium,Medium,No,Low,Yes,Medium,High,Public Secondary,Positive,No,College,Near,89,A,70-79%,No
+KU/2021/HIS/3451,Arts & Education,History,400,Female,10,74,6,74,1,5,Medium,Medium,No,Low,Yes,Medium,High,Public Secondary,Positive,No,College,Near,90,A,70-79%,No
 KU/2024/BCH/3452,Science,Biochemistry,100,Female,22,75,7,68,1,4,High,Medium,Yes,Medium,Yes,High,High,Private Secondary,Neutral,No,College,Moderate,63,B,70-79%,No
 KU/2024/EEE/3453,Engineering,Electrical Engineering,100,Female,15,70,8,91,1,6,Medium,Medium,Yes,Low,Yes,Low,Medium,Public Secondary,Neutral,No,Secondary,Near,62,B,70-79%,No
 KU/2022/CSC/3454,Science,Computer Science,300,Male,8,79,6,65,1,5,Medium,Medium,No,Medium,Yes,Medium,Medium,Private Secondary,Negative,No,Secondary,Moderate,66,B,70-79%,No
@@ -3561,7 +3561,7 @@ KU/2024/CVE/3559,Engineering,Civil Engineering,100,Male,28,64,7,97,1,5,Medium,Lo
 KU/2023/BCH/3560,Science,Biochemistry,200,Male,19,64,7,87,2,3,High,Low,No,Medium,Yes,Low,Medium,Public Secondary,Negative,No,Postgraduate,Near,64,B,<70%,Yes
 KU/2022/PHY/3561,Science,Physics,300,Male,21,90,10,78,0,4,Medium,Medium,Yes,High,Yes,Medium,Medium,Public Secondary,Positive,Yes,College,Near,71,A,90-100%,No
 KU/2024/MCB/3562,Science,Microbiology,100,Male,13,82,9,61,0,2,Medium,Low,Yes,Low,Yes,High,High,Public Secondary,Neutral,No,Postgraduate,Moderate,63,B,80-89%,No
-KU/2022/ECO/3563,Social Sciences,Economics,300,Male,15,62,10,89,1,4,Medium,High,No,High,Yes,Medium,High,Public Secondary,Positive,No,Secondary,Near,97,A,<70%,Yes
+KU/2022/ECO/3563,Social Sciences,Economics,300,Male,15,62,10,89,1,4,Medium,High,No,High,Yes,Medium,High,Public Secondary,Positive,No,Secondary,Near,98,A,<70%,Yes
 KU/2022/ECO/3564,Social Sciences,Economics,300,Male,20,85,7,93,1,0,Medium,High,Yes,High,Yes,Low,Medium,Public Secondary,Neutral,No,College,Near,75,A,80-89%,No
 KU/2024/MAC/3565,Social Sciences,Mass Communication,100,Male,16,93,10,77,4,4,Medium,Medium,Yes,Medium,Yes,Low,High,Public Secondary,Neutral,Yes,Secondary,Far,73,A,90-100%,No
 KU/2023/ECO/3566,Social Sciences,Economics,200,Female,10,98,6,94,1,1,High,High,No,Medium,Yes,Low,High,Private Secondary,Positive,No,Postgraduate,Near,67,B,90-100%,No
@@ -3918,7 +3918,7 @@ KU/2022/ACC/3916,Social Sciences,Accounting,300,Male,21,99,9,54,0,6,Medium,Low,Y
 KU/2023/BCH/3917,Science,Biochemistry,200,Female,25,84,7,61,1,4,Low,High,Yes,Low,Yes,Low,Medium,Public Secondary,Negative,Yes,Secondary,Near,62,B,80-89%,No
 KU/2024/HIS/3918,Arts & Education,History,100,Male,25,60,7,78,1,6,Low,High,Yes,Medium,Yes,Low,Low,Public Secondary,Positive,No,Postgraduate,Moderate,60,B,<70%,Yes
 KU/2022/EEE/3919,Engineering,Electrical Engineering,300,Female,31,97,6,54,3,2,Medium,Low,Yes,Medium,Yes,High,Medium,Public Secondary,Negative,Yes,Secondary,Near,69,B,90-100%,No
-KU/2022/HIS/3920,Arts & Education,History,300,Female,34,77,7,99,0,6,High,Medium,Yes,Low,Yes,Low,Medium,Public Secondary,Neutral,No,Secondary,Near,88,A,70-79%,No
+KU/2022/HIS/3920,Arts & Education,History,300,Female,34,77,7,99,0,6,High,Medium,Yes,Low,Yes,Low,Medium,Public Secondary,Neutral,No,Secondary,Near,89,A,70-79%,No
 KU/2023/ACC/3921,Social Sciences,Accounting,200,Male,12,97,8,80,0,2,Low,Medium,No,Medium,Yes,Medium,Medium,Public Secondary,Negative,Yes,Secondary,Moderate,62,B,90-100%,No
 KU/2023/ECO/3922,Social Sciences,Economics,200,Male,22,71,8,50,2,3,High,Low,Yes,High,Yes,Medium,Medium,Public Secondary,Positive,No,Postgraduate,Far,69,B,70-79%,No
 KU/2023/EDU/3923,Arts & Education,Education,200,Male,21,74,9,99,4,2,High,Medium,Yes,Medium,Yes,Medium,Medium,Public Secondary,Positive,No,Secondary,Moderate,64,B,70-79%,No
@@ -3940,7 +3940,7 @@ KU/2021/POL/3938,Social Sciences,Political Science,400,Male,5,64,8,57,1,1,Medium
 KU/2023/BCH/3939,Science,Biochemistry,200,Male,31,76,7,62,2,1,Low,Medium,Yes,High,Yes,Low,Not Recorded,Private Secondary,Positive,No,Secondary,Near,70,A,70-79%,No
 KU/2024/ENG/3940,Arts & Education,English,100,Male,7,66,8,50,2,6,Medium,Medium,No,Medium,Yes,Medium,Medium,Public Secondary,Positive,Yes,Secondary,Moderate,55,C,<70%,Yes
 KU/2024/CSC/3941,Science,Computer Science,100,Male,20,80,7,78,2,6,High,Medium,No,High,Yes,Low,Medium,Private Secondary,Neutral,No,Secondary,Near,66,B,80-89%,No
-KU/2024/ECO/3942,Social Sciences,Economics,100,Female,23,65,6,73,1,1,Low,Low,Yes,Low,Yes,Low,Medium,Public Secondary,Neutral,No,College,Near,97,A,<70%,No
+KU/2024/ECO/3942,Social Sciences,Economics,100,Female,23,65,6,73,1,1,Low,Low,Yes,Low,Yes,Low,Medium,Public Secondary,Neutral,No,College,Near,98,A,<70%,No
 KU/2021/CSC/3943,Science,Computer Science,400,Male,20,86,10,65,2,0,Medium,Medium,No,Medium,Yes,Medium,Low,Private Secondary,Positive,No,Postgraduate,Near,74,A,80-89%,No
 KU/2023/BCH/3944,Science,Biochemistry,200,Female,22,96,10,98,2,1,High,Medium,Yes,Medium,Yes,Low,High,Private Secondary,Negative,No,Secondary,Near,78,A,90-100%,No
 KU/2023/MCB/3945,Science,Microbiology,200,Female,25,82,7,95,0,5,Medium,Low,No,Medium,Yes,Low,Medium,Public Secondary,Neutral,No,Secondary,Not Recorded,73,A,80-89%,No
@@ -4003,7 +4003,7 @@ KU/2023/POL/4001,Social Sciences,Political Science,200,Male,29,93,8,96,3,3,Low,M
 KU/2024/CSC/4002,Science,Computer Science,100,Female,17,90,9,87,3,4,Low,High,Yes,Medium,Yes,High,Medium,Private Secondary,Negative,No,Postgraduate,Near,73,A,90-100%,No
 KU/2024/CSC/4003,Science,Computer Science,100,Female,26,63,7,86,0,4,Medium,Low,No,Medium,Yes,Low,Medium,Private Secondary,Negative,No,Secondary,Near,60,B,<70%,Yes
 KU/2024/MCB/4004,Science,Microbiology,100,Male,17,94,6,70,3,6,Low,Medium,Yes,Low,Yes,Medium,High,Public Secondary,Neutral,No,Postgraduate,Moderate,64,B,90-100%,No
-KU/2023/MEE/4005,Engineering,Mechanical Engineering,200,Female,27,65,7,67,1,0,High,Medium,No,Low,Yes,Low,Medium,Private Secondary,Neutral,No,Not Recorded,Near,84,A,<70%,No
+KU/2023/MEE/4005,Engineering,Mechanical Engineering,200,Female,27,65,7,67,1,0,High,Medium,No,Low,Yes,Low,Medium,Private Secondary,Neutral,No,Not Recorded,Near,85,A,<70%,No
 KU/2022/CSC/4006,Science,Computer Science,300,Female,12,91,6,83,2,0,Medium,Medium,Yes,Medium,No,High,High,Public Secondary,Positive,Yes,Postgraduate,Far,62,B,90-100%,No
 KU/2021/MEE/4007,Engineering,Mechanical Engineering,400,Female,15,79,8,90,2,1,Medium,Medium,No,Medium,Yes,Low,Medium,Public Secondary,Positive,No,Postgraduate,Near,67,B,70-79%,No
 KU/2022/PHY/4008,Science,Physics,300,Male,17,97,9,90,0,6,High,Medium,Yes,Medium,No,Low,Medium,Public Secondary,Negative,No,Secondary,Near,71,A,90-100%,No
@@ -4231,7 +4231,7 @@ KU/2024/EDU/4229,Arts & Education,Education,100,Female,23,80,7,53,0,4,Low,High,N
 KU/2022/ACC/4230,Social Sciences,Accounting,300,Female,17,62,9,58,4,5,Medium,Medium,No,Medium,Yes,Medium,High,Public Secondary,Positive,No,Secondary,Moderate,61,B,<70%,Yes
 KU/2021/MEE/4231,Engineering,Mechanical Engineering,400,Male,22,83,8,56,0,2,Medium,High,Yes,High,Yes,High,High,Private Secondary,Neutral,No,College,Near,63,B,80-89%,No
 KU/2022/BCH/4232,Science,Biochemistry,300,Female,29,65,7,54,0,6,High,High,No,Low,Yes,High,High,Private Secondary,Neutral,No,Postgraduate,Near,65,B,<70%,No
-KU/2022/CVE/4233,Engineering,Civil Engineering,300,Male,22,82,7,77,0,2,Medium,Low,No,Medium,Yes,Medium,Medium,Private Secondary,Neutral,No,Secondary,Near,95,A,80-89%,No
+KU/2022/CVE/4233,Engineering,Civil Engineering,300,Male,22,82,7,77,0,2,Medium,Low,No,Medium,Yes,Medium,Medium,Private Secondary,Neutral,No,Secondary,Near,96,A,80-89%,No
 KU/2021/CSC/4234,Science,Computer Science,400,Female,19,66,8,62,1,4,Medium,Medium,Yes,Low,Yes,Low,Medium,Private Secondary,Positive,No,Secondary,Moderate,62,B,<70%,No
 KU/2022/EEE/4235,Engineering,Electrical Engineering,300,Male,31,62,5,63,0,1,Low,Medium,Yes,Low,Yes,High,High,Private Secondary,Neutral,Yes,Postgraduate,Near,63,B,<70%,Yes
 KU/2021/PHY/4236,Science,Physics,400,Male,31,76,7,61,2,5,Medium,High,Yes,Medium,No,Medium,Medium,Private Secondary,Neutral,No,Secondary,Near,68,B,70-79%,No
@@ -5342,7 +5342,7 @@ KU/2021/HIS/5340,Arts & Education,History,400,Male,21,84,4,60,2,5,High,Low,No,Me
 KU/2022/PHY/5341,Science,Physics,300,Female,20,78,7,58,2,2,Low,Low,Yes,Medium,Yes,High,Low,Public Secondary,Neutral,No,Postgraduate,Near,85,A,70-79%,No
 KU/2021/POL/5342,Social Sciences,Political Science,400,Female,14,60,6,51,3,5,High,Medium,No,Medium,Yes,High,Medium,Public Secondary,Neutral,Yes,College,Near,61,B,<70%,Yes
 KU/2023/MCB/5343,Science,Microbiology,200,Male,24,69,7,58,2,0,Medium,Medium,Yes,Medium,Yes,Low,Low,Public Secondary,Positive,No,Postgraduate,Moderate,68,B,<70%,No
-KU/2024/PHY/5344,Science,Physics,100,Male,28,74,9,74,1,0,High,Medium,No,Medium,Yes,Low,Medium,Public Secondary,Positive,No,College,Near,88,A,70-79%,No
+KU/2024/PHY/5344,Science,Physics,100,Male,28,74,9,74,1,0,High,Medium,No,Medium,Yes,Low,Medium,Public Secondary,Positive,No,College,Near,100,A,70-79%,No
 KU/2021/CSC/5345,Science,Computer Science,400,Female,10,73,7,84,0,6,Medium,High,No,Low,No,Medium,Medium,Private Secondary,Negative,No,Secondary,Near,59,C,70-79%,Yes
 KU/2021/MAC/5346,Social Sciences,Mass Communication,400,Female,25,68,9,58,2,2,High,Medium,No,Medium,Yes,Low,High,Private Secondary,Positive,No,College,Near,65,B,<70%,No
 KU/2021/ENG/5347,Arts & Education,English,400,Male,6,90,9,88,0,4,Low,High,No,Medium,Yes,Medium,High,Private Secondary,Positive,No,Secondary,Near,68,B,90-100%,No
@@ -5392,7 +5392,7 @@ KU/2024/POL/5390,Social Sciences,Political Science,100,Male,16,73,6,57,2,5,Mediu
 KU/2023/ACC/5391,Social Sciences,Accounting,200,Male,12,76,6,93,1,0,Medium,Medium,Yes,Medium,Yes,Low,Medium,Public Secondary,Positive,No,Secondary,Near,65,B,70-79%,No
 KU/2024/CSC/5392,Science,Computer Science,100,Female,21,78,4,95,1,2,Medium,Low,No,Low,Yes,Medium,Medium,Private Secondary,Negative,No,Secondary,Near,64,B,70-79%,No
 KU/2024/ECO/5393,Social Sciences,Economics,100,Female,22,98,7,52,2,1,Medium,Medium,Yes,Medium,Yes,High,High,Public Secondary,Neutral,No,College,Near,71,A,90-100%,No
-KU/2023/POL/5394,Social Sciences,Political Science,200,Female,10,91,6,93,1,4,Medium,Medium,Yes,Medium,Yes,Medium,High,Public Secondary,Negative,No,Not Recorded,Near,85,A,90-100%,No
+KU/2023/POL/5394,Social Sciences,Political Science,200,Female,10,91,6,93,1,4,Medium,Medium,Yes,Medium,Yes,Medium,High,Public Secondary,Negative,No,Not Recorded,Near,100,A,90-100%,No
 KU/2022/MCB/5395,Science,Microbiology,300,Female,15,72,9,70,1,6,Low,Medium,No,Medium,Yes,Low,Not Recorded,Public Secondary,Negative,No,Secondary,Near,57,C,70-79%,Yes
 KU/2024/MCB/5396,Science,Microbiology,100,Male,22,66,6,96,1,1,Low,Medium,Yes,High,Yes,Low,Medium,Private Secondary,Negative,Yes,Secondary,Near,62,B,<70%,No
 KU/2024/MEE/5397,Engineering,Mechanical Engineering,100,Male,18,85,8,51,1,3,Medium,High,Yes,Low,Yes,High,High,Private Secondary,Negative,No,Secondary,Far,60,B,80-89%,Yes
@@ -5501,7 +5501,7 @@ KU/2024/ECO/5499,Social Sciences,Economics,100,Female,35,72,6,94,2,1,Medium,Medi
 KU/2021/EEE/5500,Engineering,Electrical Engineering,400,Male,17,74,7,61,0,4,Medium,High,No,Low,Yes,Low,Medium,Private Secondary,Negative,No,Postgraduate,Near,61,B,70-79%,Yes
 KU/2021/ACC/5501,Social Sciences,Accounting,400,Male,27,70,5,74,3,0,Medium,High,Yes,Medium,Yes,Medium,High,Private Secondary,Negative,No,College,Moderate,75,A,70-79%,No
 KU/2023/EDU/5502,Arts & Education,Education,200,Male,25,67,9,63,2,5,Medium,Medium,Yes,Medium,Yes,Medium,Low,Private Secondary,Neutral,No,College,Near,66,B,<70%,No
-KU/2024/POL/5503,Social Sciences,Political Science,100,Female,22,99,7,92,2,3,Medium,Medium,Yes,Medium,Yes,Low,Medium,Public Secondary,Positive,No,College,Far,85,A,90-100%,No
+KU/2024/POL/5503,Social Sciences,Political Science,100,Female,22,99,7,92,2,3,Medium,Medium,Yes,Medium,Yes,Low,Medium,Public Secondary,Positive,No,College,Far,100,A,90-100%,No
 KU/2023/HIS/5504,Arts & Education,History,200,Female,1,60,6,65,1,6,High,Medium,Yes,Medium,Yes,Low,High,Public Secondary,Neutral,No,Secondary,Moderate,57,C,<70%,Yes
 KU/2024/ACC/5505,Social Sciences,Accounting,100,Male,20,75,5,54,2,2,Medium,High,No,High,No,Medium,Low,Public Secondary,Neutral,No,College,Moderate,71,A,70-79%,No
 KU/2024/ECO/5506,Social Sciences,Economics,100,Female,16,72,6,71,3,4,High,Medium,Yes,Medium,Yes,High,Medium,Private Secondary,Neutral,No,Secondary,Near,67,B,70-79%,No
@@ -5603,7 +5603,7 @@ KU/2023/BCH/5601,Science,Biochemistry,200,Female,20,83,7,53,1,5,Medium,Medium,No
 KU/2023/MCB/5602,Science,Microbiology,200,Male,20,61,4,67,0,4,High,Medium,Yes,Medium,Yes,High,High,Public Secondary,Negative,No,Secondary,Near,62,B,<70%,Yes
 KU/2023/MEE/5603,Engineering,Mechanical Engineering,200,Female,11,89,7,54,1,6,Medium,Low,Yes,High,Yes,Medium,Medium,Public Secondary,Negative,No,Postgraduate,Moderate,60,B,80-89%,Yes
 KU/2021/CSC/5604,Science,Computer Science,400,Female,17,64,8,98,0,5,High,Medium,Yes,Medium,Yes,Medium,High,Private Secondary,Neutral,No,College,Near,64,B,<70%,Yes
-KU/2022/EEE/5605,Engineering,Electrical Engineering,300,Female,24,91,7,72,2,3,Medium,Low,Yes,Medium,Yes,Medium,Medium,Public Secondary,Negative,No,Secondary,Near,92,A,90-100%,No
+KU/2022/EEE/5605,Engineering,Electrical Engineering,300,Female,24,91,7,72,2,3,Medium,Low,Yes,Medium,Yes,Medium,Medium,Public Secondary,Negative,No,Secondary,Near,93,A,90-100%,No
 KU/2024/MAC/5606,Social Sciences,Mass Communication,100,Male,16,87,9,98,0,3,Low,Medium,No,Low,Yes,High,High,Private Secondary,Positive,No,College,Moderate,70,A,80-89%,No
 KU/2022/ENG/5607,Arts & Education,English,300,Male,30,85,4,62,1,6,Medium,Medium,No,Medium,Yes,High,High,Public Secondary,Negative,No,Postgraduate,Near,72,A,80-89%,No
 KU/2021/HIS/5608,Arts & Education,History,400,Female,18,75,5,86,3,5,Medium,High,Yes,Medium,Yes,Low,Medium,Public Secondary,Positive,Yes,Secondary,Near,68,B,70-79%,No
@@ -5802,10 +5802,10 @@ KU/2021/ECO/5800,Social Sciences,Economics,400,Female,18,80,7,65,1,5,Medium,Medi
 KU/2022/MAC/5801,Social Sciences,Mass Communication,300,Female,16,84,6,56,0,0,Low,High,Yes,Low,Yes,Low,Medium,Private Secondary,Positive,Yes,Postgraduate,Moderate,66,B,80-89%,No
 KU/2024/CSC/5802,Science,Computer Science,100,Female,19,87,7,55,3,4,Medium,Low,Yes,High,Yes,Medium,Medium,Private Secondary,Negative,No,College,Not Recorded,66,B,80-89%,No
 KU/2024/HIS/5803,Arts & Education,History,100,Female,23,100,5,94,1,0,Medium,Medium,No,Medium,Yes,High,Medium,Private Secondary,Negative,No,College,Near,70,A,90-100%,No
-KU/2023/EDU/5804,Arts & Education,Education,200,Male,23,80,7,93,3,0,Medium,Medium,No,Low,Yes,High,Medium,Public Secondary,Negative,No,College,Far,89,A,80-89%,No
+KU/2023/EDU/5804,Arts & Education,Education,200,Male,23,80,7,93,3,0,Medium,Medium,No,Low,Yes,High,Medium,Public Secondary,Negative,No,College,Far,90,A,80-89%,No
 KU/2021/BCH/5805,Science,Biochemistry,400,Female,17,60,7,64,2,4,High,Medium,Yes,Medium,Yes,High,Medium,Public Secondary,Positive,No,College,Near,66,B,<70%,Yes
 KU/2021/BCH/5806,Science,Biochemistry,400,Male,21,94,7,72,0,2,High,High,No,Low,Yes,Low,Medium,Public Secondary,Negative,No,College,Near,79,A,90-100%,No
-KU/2022/ACC/5807,Social Sciences,Accounting,300,Female,16,100,6,88,3,2,Medium,Medium,Yes,High,Yes,Medium,Medium,Public Secondary,Negative,No,College,Moderate,90,A,90-100%,No
+KU/2022/ACC/5807,Social Sciences,Accounting,300,Female,16,100,6,88,3,2,Medium,Medium,Yes,High,Yes,Medium,Medium,Public Secondary,Negative,No,College,Moderate,91,A,90-100%,No
 KU/2021/BCH/5808,Science,Biochemistry,400,Male,15,82,9,72,1,5,Low,Medium,No,Medium,Yes,Medium,Medium,Public Secondary,Positive,Yes,College,Near,59,C,80-89%,Yes
 KU/2022/ECO/5809,Social Sciences,Economics,300,Female,30,74,7,86,4,0,High,Medium,Yes,High,Yes,High,Medium,Private Secondary,Neutral,No,College,Near,70,A,70-79%,No
 KU/2024/MCB/5810,Science,Microbiology,100,Male,8,61,8,94,3,0,Medium,Medium,Yes,Low,Yes,Medium,Low,Public Secondary,Positive,Yes,Secondary,Near,58,C,<70%,Yes

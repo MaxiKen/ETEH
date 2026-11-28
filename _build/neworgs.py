@@ -257,8 +257,9 @@ def gen_students(n=5840):
     u = r.random(n)
     hi = u < 0.015                                                 # high-achiever cluster, above the cloud
     lo = u > 0.975                                                 # 2.5% who stopped engaging: low scores at any attendance
-    score = np.where(hi, r.integers(84, 100, n), np.where(lo, r.integers(36, 60, n), score))
+    score = np.where(hi, r.integers(84, 101, n), np.where(lo, r.integers(36, 60, n), score))
     score = np.clip(np.round(score), 0, 100).astype(int)
+    score[r.choice(np.flatnonzero(hi), 5, replace=False)] = 100     # a handful of perfect scores
     entry = 2024 - (level // 100 - 1)
     out = pd.DataFrame({
         "Matric_No": [f"KU/{e}/{DEPT_CODE[depts[c][1]]}/{s:04d}" for e, c, s in zip(entry, ch, range(1, n + 1))],

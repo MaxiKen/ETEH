@@ -64,6 +64,11 @@ X = np.column_stack([cv[k] for k in XP] + [np.ones(len(cv))])
 beta, *_ = np.linalg.lstsq(X, y, rcond=None)
 r2 = 1 - ((y - X @ beta) ** 2).sum() / ((y - y.mean()) ** 2).sum()
 B_ATT = beta[0]
+FAC = risk.groupby(cv.Faculty).mean().sort_values(ascending=False)
+LVL = risk.groupby(cv.Level).mean()
+N_OVER = int((raw.Final_Score.astype(int) > 100).sum())
+TOP_SHARE = float(risk[cv.Faculty == FAC.index[0]].sum() / risk.sum())
+QUIET = max(abs(corr["Sleep_Hrs_Night"]), abs(corr["Exercise_Hrs_Wk"]))
 
 
 def lifted(lift, coef=B_ATT):
@@ -168,7 +173,7 @@ def build():
             ("Padded Student_IDs fixed by TRIM", "=SUMPRODUCT(--(tRaw[Matric_No]<>tRaw[ID_Clean]))", n_pad, "int", "Matches the defect log (25)"),
             ("Gender not Male/Female after cleaning", '=COUNTIFS(tRaw[Gender_Clean],"<>Male",tRaw[Gender_Clean],"<>Female")', 0, "int", ""),
             ("Attendance outside 0-100", '=COUNTIFS(tRaw[Attendance_Clean],">100")+COUNTIFS(tRaw[Attendance_Clean],"<0")', 0, "int", ""),
-            ("Exam scores capped at 100", '=COUNTIFS(tRaw[Final_Score],">100")', 1, "int", "One genuine 101 in the source - query, then cap"),
+            ("Exam scores capped at 100", '=COUNTIFS(tRaw[Final_Score],">100")', N_OVER, "int", f"{N_OVER} keying errors above 100 - query, then cap"),
             ("Distinct students (Remove Duplicates on ID_Clean)", "=COUNTA(UNIQUE(tRaw[ID_Clean]))", len(cv), "int", f"{len(raw) - len(cv)} double registrations removed"),
             ("Clean cohort rows", "=ROWS(tStudents)", len(cv), "int", "Must equal the line above"),
             ("Difference", f"=ROWS(tStudents)-{len(cv)}", 0, "int", "Registry headcount = 5,840")])
@@ -218,7 +223,7 @@ def build():
                   ("AT RISK", '=COUNTIFS(tStudents[At_Risk],"Yes")', int(risk.sum()), "int", "Week-5 support list"),
                   ("AVG ATTENDANCE", "=AVERAGE(tStudents[Lecture_Attendance_Pct])", cv.Lecture_Attendance_Pct.mean(), "dec1", "%"),
                   ("AVG EXAM", "=AVERAGE(tStudents[Final_Score])", y.mean(), "dec1", "out of 100")])
-    s.band("4.2", "At-risk rate by faculty - flat")
+    s.band("4.2", f"At-risk rate by faculty - {FAC.index[0]} highest")
     fd = pd.DataFrame({"Faculty": fac.index})
     tf = s.table(fd, "tFaculty", widths={"Faculty": 20},
                  calc={"Students": ("=COUNTIFS(tStudents[Faculty],[@Faculty])", "int", fac.tolist()),
@@ -227,7 +232,7 @@ def build():
                        "Avg_Exam": ("=AVERAGEIFS(tStudents[Final_Score],tStudents[Faculty],[@Faculty])", "dec1", [float(y[cv.Faculty == f].mean()) for f in fac.index])},
                  total={"Faculty": "Total", "Students": "sum", "At_Risk": "sum"})
     lv = sorted(cv.Level.unique())
-    s.band("4.3", "At-risk rate by level - flat")
+    s.band("4.3", f"At-risk rate by level - {LVL.idxmax()}-level highest")
     tlv = s.table(pd.DataFrame({"Level": lv}), "tLevel", fmts={"Level": "gen"},
                   calc={"Students": ("=COUNTIFS(tStudents[Level],[@Level])", "int", [int((cv.Level == l).sum()) for l in lv]),
                         "Rate": ('=COUNTIFS(tStudents[Level],[@Level],tStudents[At_Risk],"Yes")/[@Students]', "pct", [float(risk[cv.Level == l].mean()) for l in lv])})
@@ -239,8 +244,10 @@ def build():
     s.chart("column", [{"name": "At-risk rate", "categories": ta.ref("Attendance_Band"), "values": ta.ref("Rate"), "color": "#B23A48"}],
             f"At-risk rate falls from {band_rate['<70%']:.0%} (<70% attendance) to {band_rate['90-100%']:.0%} (90%+)", y_fmt="0%", legend=False, rows=15, size=(520, 260))
     s.chart("bar", [{"name": "At-risk rate", "categories": tf.ref("Faculty"), "values": tf.ref("Rate")}],
-            "Faculties differ by under 2 points - the problem is not where students study", y_fmt="0%", legend=False, rows=15, size=(520, 240))
-    s.insight("Target students by behaviour (attendance, study hours), not faculties: a faculty-level programme would spend 86% of its effort on students already progressing.")
+            f"{FAC.index[0]} {FAC.iloc[0]:.0%} vs {FAC.index[-1]} {FAC.iloc[-1]:.0%}: a real gap, but far smaller than the attendance gap", y_fmt="0%", legend=False, rows=15, size=(520, 240))
+    s.insight(f"Faculty matters ({FAC.index[0]} {FAC.iloc[0]:.1%} vs {FAC.index[-1]} {FAC.iloc[-1]:.1%}), but attendance matters far more "
+              f"({band_rate['<70%']:.0%} vs {band_rate['90-100%']:.0%}). A programme confined to {FAC.index[0]} would reach only {TOP_SHARE:.0%} of the at-risk students: "
+              f"target by behaviour first, with extra tutorial capacity in {FAC.index[0]}.")
 
     # ---- 5 Drivers
     s = s4
@@ -256,19 +263,19 @@ def build():
     s.calc(rows)
     s.band("5.3", "Multiple regression: Exam ~ Attendance + Hours + Previous score + Tutoring")
     lin = "LINEST(tStudents[Final_Score],tStudents[[Lecture_Attendance_Pct]:[Tutorials_Attended]],TRUE,TRUE)"
-    s.calc([("R²", f"=INDEX({lin},3,1)", r2, "dec4", "Week 4 two-predictor model: 0.5415"),
+    s.calc([("R²", f"=INDEX({lin},3,1)", r2, "dec4", "Compare with the Week 4 regression (4.4)"),
             ("Attendance (per point)", f"=INDEX({lin},1,4)", beta[0], "dec3", "LINEST returns coefficients in REVERSE column order"),
             ("Hours studied (per hour/week)", f"=INDEX({lin},1,3)", beta[1], "dec3", ""),
             ("Previous score (per point)", f"=INDEX({lin},1,2)", beta[2], "dec3", ""),
             ("Tutoring (per session)", f"=INDEX({lin},1,1)", beta[3], "dec3", ""),
             ("Intercept", f"=INDEX({lin},1,5)", beta[4], "dec2", "")])
-    s.insight(f"Attendance and study hours explain most of the variation (R² {r2:.3f}). Sleep and physical activity show no relationship (|r| < 0.03).")
+    s.insight(f"Attendance and study hours explain most of the variation (R² {r2:.3f}). Sleep and physical activity show no relationship (|r| < {QUIET + .005:.2f}).")
 
     # ---- 6 Senate paper
     s = s6
     s.band("6.1", "Model senate paper (one page)")
     for m in [f"CONTEXT: Progression target 90%. FINDING: {1 - risk.mean():.1%} of {len(cv):,} students progressed ({(1 - risk.mean() - .9) * 100:+.1f} points vs target); {int(risk.sum())} are at risk.",
-              f"EVIDENCE: At-risk rates are flat across faculties ({min(risk.groupby(cv.Faculty).mean()):.1%}-{max(risk.groupby(cv.Faculty).mean()):.1%}) and levels, but fall from "
+              f"EVIDENCE: At-risk rates range from {FAC.iloc[-1]:.1%} ({FAC.index[-1]}) to {FAC.iloc[0]:.1%} ({FAC.index[0]}) across faculties, but fall far more steeply with attendance: from "
               f"{band_rate['<70%']:.0%} for attendance below 70% to {band_rate['90-100%']:.0%} at 90%+. Attendance (r = {corr['Lecture_Attendance_Pct']:.2f}) and study hours "
               f"(r = {corr['Study_Hours_Wk']:.2f}) are the strongest drivers.",
               f"RECOMMENDATION: A Week-5 attendance-and-tutorial programme for the {int(risk.sum())} named students (owners: Deans; advisers hold the list). "
@@ -277,12 +284,12 @@ def build():
               "RISKS & ETHICS: association not cause - evaluate with a comparison group; the named list is restricted to advisers; never publish groups under 10."]:
         s.para(m, "text")
     s.band("6.2", "Defence questions")
-    s.grid([["Which faculty is worst?", "None materially - the spread is under 2 points; that is the finding."],
-            ["Why not target 100-level students?", "Level rates are also flat (12.7%-14.5%); level is not the driver."],
+    s.grid([["Which faculty is worst?", f"{FAC.index[0]} ({FAC.iloc[0]:.1%}), and the gap holds within every attendance band - but it holds only {TOP_SHARE:.0%} of the at-risk students."],
+            ["Why not target 100-level students?", f"100-level is highest ({LVL[100]:.1%} vs {LVL.drop(100).min():.1%}-{LVL.drop(100).max():.1%} for the others): add a first-year induction, but attendance is still the bigger lever."],
             ["How reliable is the regression?", f"R² {r2:.2f} on {len(cv):,} students; coefficients are associations, the programme needs evaluation."],
             ["Could the thresholds be wrong?", "They are inputs on sheet 3 - the list, dashboard and estimate all recalculate."],
             ["Who sees names?", "Advisers only; the Senate sees aggregates."],
-            ["What about the 101 score?", "Queried with the exams office and capped at 100; it does not affect any rate."]],
+            ["What about the scores above 100?", f"{N_OVER} keying errors (a 100 typed wrongly); queried with the exams office and capped at 100 - none changes a rate."]],
            header=["Question", "Model answer"], merge_last=True)
     s.band("6.3", "Marking guide")
     s.grid([["Cleaning & reconciliation", "25", "Formula pipeline; 5,840 students; all checks 0"], ["Analysis", "30", "Faculty/level/band rates, drivers, regression"],
@@ -305,7 +312,7 @@ def brief(sens):
                   ("p", "A people-centred capstone: the analysis ends in a named support list, so it also teaches restricted distribution and careful wording of causal claims."),
                   ("h", "2. Data"),
                   ("p", f"Data/Kingsway_Registry_Export_RAW.csv - {len(raw):,} rows: padded IDs, M/F codes, '84%' text, department abbreviations, Y/yes/N variants, blanks, "
-                        f"45 double registrations and one 101 score. Target: the published {len(cv):,}-student cohort."),
+                        f"45 double registrations and {N_OVER} scores keyed above 100. Target: the published {len(cv):,}-student cohort."),
                   ("h", "3. Answer key"),
                   ("t", [["Measure", "Value"], ["Clean cohort", f"{len(cv):,} (from {len(raw):,})"], ["At risk / progression", f"{int(risk.sum())} / {1 - risk.mean():.1%}"],
                          ["Faculty at-risk range", f"{min(risk.groupby(cv.Faculty).mean()):.1%} - {max(risk.groupby(cv.Faculty).mean()):.1%}"],
@@ -314,7 +321,7 @@ def brief(sens):
                          ["Multiple R² (4 predictors)", f"{r2:.4f}"], ["Attendance coefficient", f"{B_ATT:.3f} exam points per point"],
                          ["Students rescued (+5/+10/+15)", " / ".join(str(n) for _, n in sens) + f" ({mech} of the +10 figure via attendance alone)"]], [80, 100]),
                   ("h", "4. Teaching points"),
-                  ("b", ["A flat result is a finding: 'no faculty is the problem' redirects the budget.", "VLOOKUP is case-insensitive - upper-case variants match the master list.",
+                  ("b", [f"Compare gradients, not just groups: faculty moves the rate {FAC.iloc[0] - FAC.iloc[-1]:.0%} points, attendance {band_rate['<70%'] - band_rate['90-100%']:.0%}.", "VLOOKUP is case-insensitive - upper-case variants match the master list.",
                          "VALUE(\"84%\") = 0.84: strip the sign first.", "LINEST returns coefficients in reverse order.",
                          "Make thresholds inputs: policy changes become a recalculation, not a rebuild."]),
                   ("note", "Solution: Capstone2_Kingsway_SOLUTION.xlsx. The at-risk list contains student IDs - treat the workbook as restricted."),

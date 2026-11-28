@@ -38,8 +38,9 @@ EM, ESD = EX.mean(), EX.std()
 W1 = ((EX - EM).abs() <= ESD).mean()
 W2 = ((EX - EM).abs() <= 2 * ESD).mean()
 SW1 = ((Y - YM).abs() <= YSD).mean()
-EBINS = pd.cut(EX, [55, 60, 65, 70, 75, 80, 101], right=False,
-               labels=["55-59", "60-64", "65-69", "70-74", "75-79", "80+"]).value_counts().sort_index()
+EBINS = pd.cut(EX, [0, 55, 60, 65, 70, 75, 80, 101], right=False,
+               labels=["Below 55", "55-59", "60-64", "65-69", "70-74", "75-79", "80+"]).value_counts().sort_index()
+EPEAK = EBINS.idxmax()
 NT = ORD[ORD.order_status.isin(["Delivered", "Completed"])]
 CUST = NT.groupby("customer_id").total_price.sum().sort_values(ascending=False)
 CUM = CUST.cumsum() / CUST.sum()
@@ -274,7 +275,8 @@ M42 = dict(
               ["Salary (tSal)", P(SW1), P(((Y - YM).abs() <= 2 * YSD).mean())]]),
           fx=[("=NORM.DIST(75,AVERAGE(tCV[Final_Score]),STDEV.S(tCV[Final_Score]),TRUE)", P(norm.cdf(75, EM, ESD)),
                "Normal share below 75")], fx_widths=[3.6, 0.9, 1.4],
-          watch="Exam scores are more peaked than normal (75% within 1 SD): normal-curve shares would mislead."),
+          watch=(f"Exam scores are more peaked than normal ({P(W1, 0)} within 1 SD): normal-curve shares would mislead." if W1 > 0.71 else
+                 f"Exam scores are close to the 68 / 95 rule ({P(W1, 0)} and {P(W2, 0)}), so normal-curve shares are a fair guide.")),
 
         T("4.2.3", "Histograms for Distribution Analysis",
           defn="A histogram is a column chart of counts per bin (a range of values), with no gaps between the columns.",
@@ -282,7 +284,7 @@ M42 = dict(
           grid=dict(label=f"The same {I(len(EX))} exam scores, three bin widths", widths=[1.1, 0.8, 2.6], rows=[
               ["Bin width", "Bins", "What the chart shows"],
               ["2 points", str(int(np.ceil((EX.max() - EX.min() + 1) / 2))), "Spiky columns: noise"],
-              ["5 points", str(len(EBINS)), f"Peak at 65-69 ({P(EBINS['65-69'] / len(EX), 0)}), long right tail"],
+              ["5 points", str(int(np.ceil((EX.max() - EX.min() + 1) / 5))), f"Peak at {EPEAK} ({P(EBINS[EPEAK] / len(EX), 0)}), tails both sides"],
               ["20 points", "3", "Almost one block: shape hidden"]]),
           steps=["Select tCV[Final_Score]", "Insert › Statistic Chart › Histogram",
                  "Format the horizontal axis › Bin width: 5", "Title the finding, not the variable"],

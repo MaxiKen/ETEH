@@ -187,17 +187,17 @@ SELECT 'deliveries', COUNT(*), COUNT(DISTINCT order_id)
 FROM deliveries;
 
 -- 3.10.3 Intermediate: SQL joins and an exception report
--- database: a staging copy - load Lifecare_Admissions_2023_DIRTY.csv as stg_admissions_2023 (3.10.2), then
---           ATTACH DATABASE 'lifecare_hospital.db' AS prod;
+-- database: a staging copy - load Mercyland_Episodes_2023_DIRTY.csv as stg_admissions_2023 (3.10.2), then
+--           ATTACH DATABASE 'mercyland_hospital.db' AS prod;
 SELECT 'Doctor not in doctors' AS rule, COUNT(*) AS n
 FROM stg_admissions_2023 s
-LEFT JOIN prod.doctors d ON d.doctor_name = s.Doctor_Name
-WHERE d.doctor_id IS NULL
+LEFT JOIN prod.doctors d ON d.consultant_name = s.Consultant_Name
+WHERE d.consultant_id IS NULL
 UNION ALL
 SELECT 'Discharge before admission', COUNT(*)
 FROM stg_admissions_2023
-WHERE Discharge_Date <> '' AND Discharge_Date < Admission_Date
+WHERE Discharge_Date <> '' AND Discharge_Date < Admit_Date
 UNION ALL
 SELECT 'Bill below zero', COUNT(*)
 FROM stg_admissions_2023
-WHERE CAST(REPLACE(Billing_Amount, ',', '') AS REAL) < 0;
+WHERE CAST(REPLACE(Bill_Amount_NGN, ',', '') AS REAL) < 0;

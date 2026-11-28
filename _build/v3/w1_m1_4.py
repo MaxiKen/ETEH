@@ -93,7 +93,7 @@ M11 = dict(
               ["SuperMart Online marketplace", "Which payment methods do buyers prefer?", "11,000 orders, 5 linked tables"],
               ["Kingsway University", "Which students are at risk of failing?", "5,840 student records"],
               ["Mercyland Specialist Hospital", "Which departments have most readmissions?", "58,856 admissions, 2019-2024"],
-              ["Atlantic Pearl Hotel, Lekki", "Which booking channels cancel most?", "34,000 reservations, 2023-2024"]])),
+              ["Atlantic Pearl Hotel, Lekki", "Which booking channels cancel most?", "38,400 reservations, 2023-2024"]])),
 
         T("1.1.8", "The Role of a Data Analyst",
           defn="A data analyst collects, cleans, analyses and interprets data to answer business questions, and "
@@ -171,7 +171,7 @@ M11 = dict(
               ["What the data shows", "General knowledge says", "Domain knowledge adds"],
               ["Q4 is 38.2% of SuperMart's FY2025 sales", "Festive season: people buy more", "Order stock and staff for Q4 early"],
               ["Bed occupancy 95% or higher on 63 days in 2023", "The hospital was very busy", "Above about 85% is widely seen as a safety risk"],
-              ["Online travel agent bookings: 37.5% cancelled", "Many people change plans", "Overbook carefully; ask for deposits"]])),
+              ["Online travel agent bookings: 37.8% cancelled", "Many people change plans", "Overbook carefully; ask for deposits"]])),
 
         T("1.1.14", "Making Decisions Based on Data Rather Than Assumptions",
           simple="An assumption is a belief nobody has checked. Data-driven decisions test the belief against the "
@@ -381,7 +381,7 @@ M13 = dict(
         T("1.3.8", "Interpretation of Results",
           defn="Interpretation is explaining what the results mean in the real-world context: whether they are good or "
                "bad, why they matter and what they suggest.",
-          simple="A number is not a finding. '37.5%' becomes a finding when you say 'more than one in three online "
+          simple="A number is not a finding. '37.8%' becomes a finding when you say 'more than one in three online "
                  "travel agent bookings is cancelled, three times the corporate rate'.",
           ex=dict(t="tHotelSeg", cols=["Sales_Channel", "Bookings", "Cancelled", "Cancel_Rate"], n=5),
           points=["Compare with something: a target, last year, another group", "Say what it means for the business",
@@ -551,7 +551,7 @@ M14 = dict(
               ["SuperMart Retail", "Lines discounted above 20% lost ₦47.6m in FY2025", "Cap Furniture discounts at 20%"],
               ["Kingsway University", "1,591 students flagged at risk", "Target tutoring at flagged students"],
               ["Mercyland Hospital", "Occupancy 95% or more on 63 days in 2023", "Plan surge staffing for peak months"],
-              ["Atlantic Pearl Hotel", "37.5% of online agency bookings cancelled", "Require deposits on agency bookings"],
+              ["Atlantic Pearl Hotel", "37.8% of online agency bookings cancelled", "Require deposits on agency bookings"],
               ["SuperMart Online", "Paystack and Flutterwave: 52.5% of orders", "Keep both gateways reliable at checkout"]])),
     ],
     takeaways=["Every industry asks the same kinds of questions about performance, causes, forecasts and actions.",

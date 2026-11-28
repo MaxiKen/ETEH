@@ -983,7 +983,9 @@ def dirty_lifecare_2023(raw, adm):
     log.append(("Impossible ages", "Age 0 or 150 keyed in error", 12, "Data Validation 0-120; query records"))
     idx = r.choice(n, 40, replace=False); d.loc[idx, "HMO"] = None
     log.append(("Missing payer", "HMO blank", 40, "Label 'Self-pay / Unknown' only if policy allows"))
-    idx = r.choice(n, int(n * 0.04), replace=False); d.loc[idx, "Bill_Amount_NGN"] = [f"{float(v):,.2f}" for v in d.loc[idx, "Bill_Amount_NGN"]]
+    idx = r.choice(n, int(n * 0.04), replace=False)
+    idx = np.union1d(idx, np.flatnonzero(pd.to_numeric(d.Bill_Amount_NGN, errors="coerce").values < 0)[::5][:6])
+    d.loc[idx, "Bill_Amount_NGN"] = [f"{float(v):,.2f}" for v in d.loc[idx, "Bill_Amount_NGN"]]
     log.append(("Thousands separator in text", "Bill_Amount_NGN stored as text '1,234,567.89'", len(idx), "Change Type with Locale / VALUE"))
     return d, pd.DataFrame(log, columns=["Defect", "What was injected", "Rows affected", "Expected fix"])
 
@@ -992,15 +994,11 @@ def dirty_crestview(perf):
     r = np.random.default_rng(SEED + 3)
     d = perf.drop(columns=["Grade", "Attendance_Band", "At_Risk"]).copy().astype(object)
     n = len(d)
-    bad = r.choice(n, 3, replace=False)
-    d.loc[bad, "Final_Score"] = [101, 104, 110]
-    blanks = 0
-    for col, k in [("Lecturer_Rating", 0), ("Guardian_Education", 1), ("Commute_Band", 2)]:
-        idx = r.choice(n, 40 + 15 * k, replace=False)
-        d.loc[idx, col] = None
+    bad = r.choice(np.flatnonzero(perf.Final_Score.values == 100), 3, replace=False)
+    d.loc[bad, "Final_Score"] = [101, 104, 110]                    # true score 100, keyed with an extra digit
     d = d.replace({"Not Recorded": None})
     blanks = int(d[["Lecturer_Rating", "Guardian_Education", "Commute_Band"]].isna().sum().sum())
-    log = [("Out-of-range score", "Final_Score above 100 (keying errors)", 3, "Validate 0-100; cap/query"),
+    log = [("Out-of-range score", "Final_Score above 100 (keying errors on scores of 100)", 3, "Validate 0-100; cap at 100 after checking"),
            ("Missing categories", "Lecturer_Rating / Guardian_Education / Commute_Band blank", blanks, "Label 'Not Recorded'")]
     idx = r.choice(n, int(n * 0.06), replace=False)
     d.loc[idx, "Home_Internet"] = [{"Yes": ["Y", "yes", "YES"], "No": ["N", "no", "NO"]}[v][h(i, 3)] for i, v in zip(idx, d.loc[idx, "Home_Internet"])]

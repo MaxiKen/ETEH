@@ -116,7 +116,7 @@ def main():
                               "12 Nigerian stores, 9,994 sales lines 2022-2025 and the raw FY2025 export (3,387 rows)."),
          ("Kingsway University", "tStudents and tFaculty: 5,840 students, 2024/2025 first semester."),
          ("Mercyland Specialist Hospital", "tDept23: 12,626 admissions in 2023, summarised by department."),
-         ("Atlantic Pearl Hotel", "tHotelSeg: 34,000 reservations 2023-2024, summarised by sales channel."),
+         ("Atlantic Pearl Hotel", "tHotelSeg: 38,400 reservations 2023-2024, summarised by sales channel."),
          ("ETEH Talent Salary Survey", "tSeniority: 1,781 professionals, summarised by seniority."),
          ("SuperMart Online", "tPayMix and tCouriers: 11,000 orders and their deliveries, summarised."),
          ("Practice data", "A few small tables are marked 'illustrative practice data'; they are made up for a skill and "

@@ -29,7 +29,8 @@ n_neg_num = int(raw.Bill_Amount_NGN.map(lambda x: (not isinstance(x, str)) and x
 n_age_bad = int(((raw.Age < 1) | (raw.Age > 120)).sum())
 n_gender_bad = int((~raw.Gender.isin(["Male", "Female"])).sum())
 n_ward_unique_excel = raw.Ward.str.lower().nunique()               # UNIQUE / Remove Duplicates ignore case, not spaces
-assert len(neg) == 18 and n_neg_num < 18, (n_neg_num, len(neg))
+N_NEG = len(neg)
+assert n_neg_num < N_NEG, (n_neg_num, N_NEG)
 
 # near-duplicates (identical except one blank field)
 cols_cmp = [c for c in cl.columns if c not in ("Discharge_Date", "HMO", "LOS_Days", "LOS_Valid")]
@@ -173,7 +174,7 @@ def build(key: bool):
     A.q(s, "2.2", "How many Bill_Amount_NGN values are stored as TEXT?", "=SUMPRODUCT(--ISTEXT(tRaw[Bill_Amount_NGN]))", n_text_bill, "int", 2,
         "COUNTA - COUNT on the column is also correct.")
     A.q(s, "2.3", "How many bills are negative (finance reversals keyed as admissions)?", '=COUNTIF(tRaw[Bill_Amount_NGN],"<0")', n_neg_num, "int", 2,
-        f"COUNTIF only sees numbers: {18 - n_neg_num} more negative bills are stored as text and only surface after conversion (18 removed in Task 3).")
+        f"COUNTIF only sees numbers: {N_NEG - n_neg_num} more negative bills are stored as text and only surface after conversion ({N_NEG} removed in Task 3).")
     A.q(s, "2.4", "How many ages are impossible (below 1 or above 120)?", '=COUNTIF(tRaw[Age],"<1")+COUNTIF(tRaw[Age],">120")', n_age_bad, "int", 2)
     A.q(s, "2.5", "How many Gender values are NOT exactly 'Male' or 'Female' (case matters)?",
         '=ROWS(tRaw)-SUMPRODUCT(--EXACT(tRaw[Gender],"Male"))-SUMPRODUCT(--EXACT(tRaw[Gender],"Female"))', n_gender_bad, "int", 2,

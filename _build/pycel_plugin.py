@@ -324,3 +324,59 @@ def countifs(*args):
             out_row.append(_countifs(*a))
         out.append(tuple(out_row))
     return tuple(out)
+
+
+# ---------------------------------------------------------------- Week 4 additions (verification only)
+pearson = correl
+
+
+def _rows(x):
+    """2-D range -> list of lists of floats (one per row)."""
+    if not isinstance(x, (tuple, list)):
+        return [[float(x)]]
+    return [[float(v) for v in (r if isinstance(r, (tuple, list)) else (r,))] for r in x]
+
+
+def steyx(ys, xs):
+    y, x = np.array(_nums(ys), float), np.array(_nums(xs), float)
+    b, a = np.polyfit(x, y, 1)
+    return float(np.sqrt(((y - (a + b * x)) ** 2).sum() / (len(y) - 2)))
+
+
+def norm_s_inv(p):
+    from scipy import stats
+    return float(stats.norm.ppf(p))
+
+
+def norm_inv(p, m, s):
+    from scipy import stats
+    return float(stats.norm.ppf(p, m, s))
+
+
+def var_p(*args):
+    return statistics.pvariance(_nums(args))
+
+
+def linest(known_y, known_x, const=True, want_stats=False):
+    """LINEST with intercept; returns Excel's layout (coefficients right-to-left, intercept last; 5 stat rows if asked)."""
+    y = np.array(_nums(known_y), float)
+    X = np.array(_rows(known_x), float)
+    if X.shape[0] != len(y) and X.shape[1] == len(y):
+        X = X.T
+    n, k = X.shape
+    Xm = np.column_stack([X, np.ones(n)])
+    beta, *_ = np.linalg.lstsq(Xm, y, rcond=None)
+    fit = Xm @ beta
+    sse = float(((y - fit) ** 2).sum())
+    sst = float(((y - y.mean()) ** 2).sum())
+    df = n - k - 1
+    se = np.sqrt(np.diag(sse / df * np.linalg.inv(Xm.T @ Xm)))
+    row1 = tuple(float(v) for v in list(beta[:k][::-1]) + [beta[k]])
+    if not want_stats:
+        return (row1,)
+    na = "#N/A"
+    r2 = 1 - sse / sst
+    rows_ = [row1, tuple(float(v) for v in list(se[:k][::-1]) + [se[k]]),
+             (r2, float(np.sqrt(sse / df))) + (na,) * (k - 1), (float(r2 / k / ((1 - r2) / df)), float(df)) + (na,) * (k - 1),
+             (sst - sse, sse) + (na,) * (k - 1)]
+    return tuple(rows_)

@@ -48,5 +48,5 @@ DATASETS_TEXT = {
     "Kingsway Welfare": "Kingsway student welfare survey - 9,600 respondents, SENSITIVE",
     "Digital Wellbeing": "Kingsway digital habits survey - 640 students from 5 West African countries",
     "Salary Survey": "ETEH Talent Salary Survey - 1,781 professionals (built from 'Salary_Data.csv')",
-    "Atlantic Pearl": "Atlantic Pearl Hotel, Lekki - 34,000 room reservations 2023-2024, 320 rooms",
+    "Atlantic Pearl": "Atlantic Pearl Hotel, Lekki - 38,400 room reservations 2023-2024, 320 rooms",
 }
